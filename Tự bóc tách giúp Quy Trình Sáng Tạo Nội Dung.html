@@ -56,15 +56,6 @@
         .ram-block:nth-child(2) { top: 70%; left: 30%; animation-delay: 0.5s; background: var(--neon-pink);}
         .ram-block:nth-child(3) { top: 40%; left: 70%; animation-delay: 1s; background: #fbbf24;}
 
-        /* Art 5: The 5 Examples */
-        .art-5examples { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; width: 100%; max-width: 300px; height: 60px; }
-        .ex-shape { background: #334155; border-radius: 8px; position: relative; overflow: hidden; }
-        .ex-shape:nth-child(1)::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:4px; background:var(--neon-blue); } /* Timeline */
-        .ex-shape:nth-child(2) { border: 2px dashed #94a3b8; background: transparent; } /* Framing */
-        .ex-shape:nth-child(3) { transform: skewX(-15deg); background: linear-gradient(45deg, transparent, #475569); } /* Moving Gimbal */
-        .ex-shape:nth-child(4) { border-radius: 50%; background: radial-gradient(circle at 30% 30%, #e2e8f0, #475569); } /* Bathroom thoughts/bubble */
-        .ex-shape:nth-child(5) { width: 10px; height: 80%; margin: auto; background: #fbbf24; transform: rotate(45deg); } /* Pool cue */
-
         /* Flashcard Styles */
         .flashcard { background-color: var(--card-bg); border-left: 4px solid var(--neon-blue); transition: transform 0.2s; }
         .flashcard:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 243, 255, 0.1); }
@@ -85,13 +76,13 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-24">
 
         <!-- PART 1: THE EPIPHANY -->
         <section class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-bold mb-6 text-white">1. Sự Giác Ngộ: Từ Thụ Động Sang Chủ Động</h2>
-                <div class="space-y-4 text-slate-300 leading-relaxed">
+                <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
                     <p>Bạn vừa chạm đến một "sự giác ngộ" cực kỳ sâu sắc mà rất nhiều người làm nội dung chuyên nghiệp phải mất nhiều năm, hoặc bị "burnout" (kiệt sức) liên tục mới nhận ra được.</p>
                     <p>Cảm nhận của bạn là hoàn toàn chính xác. Việc đọc một bản bóc tách chi tiết (dù do AI hay do một đạo diễn khác viết) bản chất vẫn là quá trình <strong class="text-pink-400">"Tiêu thụ thụ động" (Passive Consumption)</strong>. Bộ não của bạn hiểu vấn đề về mặt logic, nhưng cơ thể bạn không có sự kết nối nào với không gian đó, dẫn đến việc không có động lực.</p>
                     <p>Khi bạn tự tay cầm bút hoặc gõ phím ghi chép lại từng góc máy, cách chuyển cảnh, bạn đã ép mình chuyển sang trạng thái <strong class="text-blue-400">"Kiến tạo chủ động" (Active Generation)</strong>.</p>
@@ -124,32 +115,32 @@
                 </div>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="space-y-6">
                 <!-- Mechanism 1 -->
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-600">
                     <h3 class="text-xl font-bold text-blue-400 mb-3">🧠 Tế bào thần kinh gương & Vỏ não vận động</h3>
-                    <p class="text-slate-300 text-sm">Khi đọc chữ AI viết, vùng não xử lý ngôn ngữ hoạt động. Nhưng khi tự tay viết "cảnh này giật tay", tế bào thần kinh gương kích hoạt vỏ não vận động (Motor Cortex). Não mô phỏng lại hành động (Sự diễn tập tâm trí). Cảm giác "gần gũi" xuất hiện vì não tin cơ thể đang cầm máy quay.</p>
+                    <p class="text-slate-300 text-lg leading-relaxed">Khi đọc chữ AI viết, vùng não xử lý ngôn ngữ hoạt động. Nhưng khi tự tay viết "cảnh này giật tay", tế bào thần kinh gương kích hoạt vỏ não vận động (Motor Cortex). Não mô phỏng lại hành động (Sự diễn tập tâm trí). Cảm giác "gần gũi" xuất hiện vì não tin cơ thể đang cầm máy quay.</p>
                 </div>
                 <!-- Mechanism 2 -->
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-600">
                     <h3 class="text-xl font-bold text-pink-400 mb-3">🛠️ Hiệu ứng Tự tạo dựng (IKEA Effect)</h3>
-                    <p class="text-slate-300 text-sm">Tâm lý học chứng minh ta trân trọng thứ tự tay làm ra. Khi tự bóc tách, kịch bản mang dấu ấn tư duy của bạn. Não bộ xem đó là "tài sản của tôi" và sinh ra thôi thúc mãnh liệt phải hoàn thiện tài sản đó (đi quay).</p>
+                    <p class="text-slate-300 text-lg leading-relaxed">Tâm lý học chứng minh ta trân trọng thứ tự tay làm ra. Khi tự bóc tách, kịch bản mang dấu ấn tư duy của bạn. Não bộ xem đó là "tài sản của tôi" và sinh ra thôi thúc mãnh liệt phải hoàn thiện tài sản đó (đi quay).</p>
                 </div>
                 <!-- Mechanism 3 -->
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-600">
                     <h3 class="text-xl font-bold text-amber-400 mb-3">🧩 Chia nhỏ nhận thức (Cognitive Chunking)</h3>
-                    <p class="text-slate-300 text-sm">"Quay video khóa học" là tảng đá lớn khiến hạch hạnh nhân phát tín hiệu lo âu. Chép từng cảnh ngắn (3s) là băm đá thành sỏi. Xong 1 cảnh -> não tiết Dopamine. Chuỗi chiến thắng nhỏ tạo Đà tâm lý (Momentum) cuốn bạn đi bật camera.</p>
+                    <p class="text-slate-300 text-lg leading-relaxed">"Quay video khóa học" là tảng đá lớn khiến hạch hạnh nhân phát tín hiệu lo âu. Chép từng cảnh ngắn (3s) là băm đá thành sỏi. Xong 1 cảnh -> não tiết Dopamine. Chuỗi chiến thắng nhỏ tạo Đà tâm lý (Momentum) cuốn bạn đi bật camera.</p>
                 </div>
             </div>
 
-            <div class="mt-10 p-6 bg-blue-900/20 border-l-4 border-blue-500 rounded-r-lg">
-                <p class="text-slate-200"><strong>Đây có phải cách tiếp cận SỚM NHẤT?</strong> Đúng 100%. Đây là con đường ngắn nhất triệt tiêu "Ma sát khởi động" (Activation Energy). Trong làm phim, đây là kỹ thuật <em>Reverse Engineering</em> kết hợp làm <em>Shotlist</em>. Khi ý tưởng mơ hồ biến thành "Thông số hành động vật lý" rõ ràng, não ngầm ra lệnh: "Làm thôi!".</p>
+            <div class="mt-8 p-6 bg-blue-900/20 border-l-4 border-blue-500 rounded-r-lg">
+                <p class="text-slate-200 text-lg"><strong>Đây có phải cách tiếp cận SỚM NHẤT?</strong> Đúng 100%. Đây là con đường ngắn nhất triệt tiêu "Ma sát khởi động" (Activation Energy). Trong làm phim, đây là kỹ thuật <em>Reverse Engineering</em> kết hợp làm <em>Shotlist</em>. Khi ý tưởng mơ hồ biến thành "Thông số hành động vật lý" rõ ràng, não ngầm ra lệnh: "Làm thôi!".</p>
             </div>
         </section>
 
         <!-- PART 3: THE METHOD -->
-        <section class="grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-4 flex flex-col items-center justify-center p-8">
+        <section>
+            <div class="flex flex-col items-center justify-center p-8 mb-8 border-b border-slate-800 pb-12">
                 <h2 class="text-3xl font-bold text-white mb-8 text-center">Quy trình 4 Bước<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 text-5xl">T.Đ.D.Q</span></h2>
                 <div class="art-tdqq">
                     <div class="bar"></div>
@@ -160,34 +151,34 @@
                 <p class="mt-4 text-sm text-slate-400 italic text-center">Giai đoạn "Diễn" (Màu vàng) là bước đệm bùng nổ nhất.</p>
             </div>
             
-            <div class="md:col-span-8 space-y-4">
-                <div class="p-5 bg-slate-800/80 rounded-lg border border-slate-700 flex gap-4">
-                    <div class="text-3xl font-black text-slate-600">1</div>
+            <div class="space-y-6">
+                <div class="p-6 bg-slate-800/80 rounded-xl border border-slate-700 flex gap-6 items-start">
+                    <div class="text-4xl font-black text-slate-600 mt-1">1</div>
                     <div>
-                        <h4 class="text-lg font-bold text-white">Tách (Bóc tách "Mù" - Blind Deconstruction)</h4>
-                        <p class="text-slate-300 text-sm mt-1">Mở video mẫu, <strong>TẮT ÂM THANH</strong>. Tự ghi chép nhịp điệu hình ảnh thuần túy. <em>Vì sao:</em> Không bị phân tâm bởi lời nói, ép tập trung vào tư duy khung hình và nhịp điệu.</p>
+                        <h4 class="text-xl font-bold text-white mb-2">Tách (Bóc tách "Mù" - Blind Deconstruction)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed">Mở video mẫu, <strong>TẮT ÂM THANH</strong>. Tự ghi chép nhịp điệu hình ảnh thuần túy. <br><em class="text-slate-400">Vì sao:</em> Không bị phân tâm bởi lời nói, ép tập trung vào tư duy khung hình và nhịp điệu.</p>
                     </div>
                 </div>
-                <div class="p-5 bg-slate-800/80 rounded-lg border border-slate-700 flex gap-4">
-                    <div class="text-3xl font-black text-slate-600">2</div>
+                <div class="p-6 bg-slate-800/80 rounded-xl border border-slate-700 flex gap-6 items-start">
+                    <div class="text-4xl font-black text-slate-600 mt-1">2</div>
                     <div>
-                        <h4 class="text-lg font-bold text-white">Đắp (Mô hình kịch bản song song)</h4>
-                        <p class="text-slate-300 text-sm mt-1">Kẻ bảng 2 cột. Trái: Khung xương hình ảnh. Phải: Nội dung kiến thức khóa học (Áp tròng). <em>Vì sao:</em> Viết nội dung dựa trên hình ảnh có sẵn dễ hơn vạn lần viết từ giấy trắng.</p>
+                        <h4 class="text-xl font-bold text-white mb-2">Đắp (Mô hình kịch bản song song)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed">Kẻ bảng 2 cột. Trái: Khung xương hình ảnh. Phải: Nội dung kiến thức khóa học (Áp tròng). <br><em class="text-slate-400">Vì sao:</em> Viết nội dung dựa trên hình ảnh có sẵn dễ hơn vạn lần viết từ giấy trắng.</p>
                     </div>
                 </div>
-                <div class="p-5 bg-amber-900/30 rounded-lg border border-amber-500/50 flex gap-4 relative overflow-hidden">
+                <div class="p-6 bg-amber-900/30 rounded-xl border border-amber-500/50 flex gap-6 items-start relative overflow-hidden">
                     <div class="absolute right-0 top-0 w-2 h-full bg-amber-500"></div>
-                    <div class="text-3xl font-black text-amber-500/50">3</div>
+                    <div class="text-4xl font-black text-amber-500/50 mt-1">3</div>
                     <div>
-                        <h4 class="text-lg font-bold text-amber-400">Diễn (Diễn tập bóng - Dry Run / Blocking) - QUAN TRỌNG NHẤT</h4>
-                        <p class="text-slate-200 text-sm mt-1">Tuyệt đối không ngồi yên. Cầm điện thoại <strong>tắt màn hình</strong> (giả làm máy quay), đi ra không gian và diễn thử động tác, nhép miệng đúng kịch bản. <em>Vì sao:</em> Khóa chặt "Trí nhớ cơ bắp", gạt bỏ ngượng ngùng.</p>
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Diễn (Diễn tập bóng - Dry Run / Blocking) - QUAN TRỌNG NHẤT</h4>
+                        <p class="text-slate-200 text-lg leading-relaxed">Tuyệt đối không ngồi yên. Cầm điện thoại <strong>tắt màn hình</strong> (giả làm máy quay), đi ra không gian và diễn thử động tác, nhép miệng đúng kịch bản. <br><em class="text-amber-200">Vì sao:</em> Khóa chặt "Trí nhớ cơ bắp", gạt bỏ ngượng ngùng.</p>
                     </div>
                 </div>
-                <div class="p-5 bg-slate-800/80 rounded-lg border border-slate-700 flex gap-4">
-                    <div class="text-3xl font-black text-slate-600">4</div>
+                <div class="p-6 bg-slate-800/80 rounded-xl border border-slate-700 flex gap-6 items-start">
+                    <div class="text-4xl font-black text-slate-600 mt-1">4</div>
                     <div>
-                        <h4 class="text-lg font-bold text-white">Quay (Quy tắc "Bản nháp rác" - The Ugly Draft)</h4>
-                        <p class="text-slate-300 text-sm mt-1">Bấm quay nháp liền 1 mạch bằng điện thoại. Chấp nhận xấu, bừa bộn, nói vấp. <em>Vì sao:</em> Cú lừa tâm lý, não hiểu "Video đã tồn tại". Áp lực tạo tác phẩm từ số 0 biến mất.</p>
+                        <h4 class="text-xl font-bold text-white mb-2">Quay (Quy tắc "Bản nháp rác" - The Ugly Draft)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed">Bấm quay nháp liền 1 mạch bằng điện thoại. Chấp nhận xấu, bừa bộn, nói vấp. <br><em class="text-slate-400">Vì sao:</em> Cú lừa tâm lý, não hiểu "Video đã tồn tại". Áp lực tạo tác phẩm từ số 0 biến mất.</p>
                     </div>
                 </div>
             </div>
@@ -198,10 +189,10 @@
         
         <section>
             <div class="mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4">Sự Thật Về Việc "Diễn Với Camera Tắt" (Blocking)</h2>
-                <p class="text-slate-400 italic mb-8 text-lg border-l-4 border-slate-500 pl-4">"Tôi chưa hiểu cơ chế của nó... hãy giải thích về cách nó hoạt động trong cuộc sống để tôi có thể quan sát."</p>
+                <h2 class="text-3xl font-bold text-white mb-4">4. Sự Thật Về Việc "Diễn Với Camera Tắt" (Blocking)</h2>
+                <p class="text-slate-400 italic mb-8 text-xl border-l-4 border-slate-500 pl-6 bg-slate-800/30 py-4 rounded-r-lg">"Tôi chưa hiểu cơ chế của nó... hãy giải thích về cách nó hoạt động trong cuộc sống để tôi có thể quan sát."</p>
                 
-                <p class="text-slate-300 mb-6 text-lg">Hành động "cầm điện thoại tắt màn hình, đi loanh quanh diễn nháp" trong điện ảnh chuyên nghiệp được gọi là <strong>Blocking (Chạy đường dây / Dàn cảnh)</strong>. Để bạn thực sự hiểu, tin tưởng và áp dụng nó, chúng ta cần bóc tách 3 cơ chế thần kinh học đằng sau nó:</p>
+                <p class="text-slate-300 mb-6 text-lg leading-relaxed">Hành động "cầm điện thoại tắt màn hình, đi loanh quanh diễn nháp" trong điện ảnh chuyên nghiệp được gọi là <strong>Blocking (Chạy đường dây / Dàn cảnh)</strong>. Để bạn thực sự hiểu, tin tưởng và áp dụng nó, chúng ta cần bóc tách 3 cơ chế thần kinh học đằng sau nó:</p>
             </div>
 
             <div class="space-y-8">
@@ -214,8 +205,8 @@
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-red-400 mb-4">1. Triệt tiêu "Hội chứng đèn đỏ" (Camera Fright / Red Light Syndrome)</h3>
-                        <p class="text-slate-300 text-base leading-relaxed">Ngay khi bạn bật đèn sáng chói và cái chấm đỏ (nút REC) trên máy quay nhấp nháy, hạch hạnh nhân (vùng xử lý sợ hãi của não) lập tức bật chế độ "Sinh tồn". Nó gào lên: <em class="text-pink-300">"Đang bị ghi hình, tốn dung lượng thẻ nhớ, không được nói vấp, góc này mặt đang béo"</em>. Áp lực này làm bạn cứng đơ.</p>
-                        <p class="text-slate-300 text-base leading-relaxed mt-3">Việc dùng một chiếc điện thoại tắt ngúm "lừa" bộ não rằng: <em class="text-pink-300">"Đây chỉ là đồ chơi, không có hậu quả"</em>. Rào cản phòng vệ sụp đổ, bạn thả lỏng 100%.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed">Ngay khi bạn bật đèn sáng chói và cái chấm đỏ (nút REC) trên máy quay nhấp nháy, hạch hạnh nhân (vùng xử lý sợ hãi của não) lập tức bật chế độ "Sinh tồn". Nó gào lên: <em class="text-pink-300">"Đang bị ghi hình, tốn dung lượng thẻ nhớ, không được nói vấp, góc này mặt đang béo"</em>. Áp lực này làm bạn cứng đơ.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed mt-3">Việc dùng một chiếc điện thoại tắt ngúm "lừa" bộ não rằng: <em class="text-pink-300">"Đây chỉ là đồ chơi, không có hậu quả"</em>. Rào cản phòng vệ sụp đổ, bạn thả lỏng 100%.</p>
                     </div>
                 </div>
                 <!-- Offloading -->
@@ -229,8 +220,8 @@
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-blue-400 mb-4">2. Giải phóng RAM bộ nhớ (Cognitive Offloading)</h3>
-                        <p class="text-slate-300 text-base leading-relaxed">Khi đứng trước máy quay thật, não phải mở 5 "tab" cùng lúc: <strong class="text-white">(1) Nhớ lời thoại, (2) Biểu cảm mặt, (3) Nhớ tay vung vẩy lúc nào, (4) Kiểm soát âm lượng, (5) Sợ sai.</strong> Quá tải!</p>
-                        <p class="text-slate-300 text-base leading-relaxed mt-3">Việc "diễn chay" giúp chuyển giao tác vụ (3) và (4) vào Trí nhớ cơ bắp. Khi quay thật, cơ thể sẽ tự động "múa", não bạn được giải phóng hoàn toàn để tập trung 100% vào thần thái ánh mắt.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed">Khi đứng trước máy quay thật, não phải mở 5 "tab" cùng lúc: <strong class="text-white">(1) Nhớ lời thoại, (2) Biểu cảm mặt, (3) Nhớ tay vung vẩy lúc nào, (4) Kiểm soát âm lượng, (5) Sợ sai.</strong> Quá tải!</p>
+                        <p class="text-slate-300 text-lg leading-relaxed mt-3">Việc "diễn chay" giúp chuyển giao tác vụ (3) và (4) vào Trí nhớ cơ bắp. Khi quay thật, cơ thể sẽ tự động "múa", não bạn được giải phóng hoàn toàn để tập trung 100% vào thần thái ánh mắt.</p>
                     </div>
                 </div>
                 <!-- Zeigarnik -->
@@ -242,102 +233,174 @@
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-amber-400 mb-4">3. Hiệu ứng Zeigarnik & Đà tâm lý (Momentum)</h3>
-                        <p class="text-slate-300 text-base leading-relaxed">Tâm lý học chứng minh con người cực kỳ bứt rứt với những việc "đang làm dở". Khi bạn ngồi lỳ trên ghế, bạn ỳ ạch. Nhưng khi bạn đứng dậy diễn chay, cơ thể nóng lên, nhịp điệu trôi chảy, Endorphin tiết ra.</p>
-                        <p class="text-slate-300 text-base leading-relaxed mt-3">Việc diễn rất mượt nhưng <strong class="text-white text-lg">không có file nào được ghi lại</strong> khiến não bộ cảm thấy "thiếu thốn". Nó sẽ sinh ra một cơn ngứa ngáy thôi thúc bạn: <em class="text-amber-300">"Đang mượt quá, bật máy bấm REC ngay kẻo mất nhịp!"</em></p>
+                        <p class="text-slate-300 text-lg leading-relaxed">Tâm lý học chứng minh con người cực kỳ bứt rứt với những việc "đang làm dở". Khi bạn ngồi lỳ trên ghế, bạn ỳ ạch. Nhưng khi bạn đứng dậy diễn chay, cơ thể nóng lên, nhịp điệu trôi chảy, Endorphin tiết ra.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed mt-3">Việc diễn rất mượt nhưng <strong class="text-white">không có file nào được ghi lại</strong> khiến não bộ cảm thấy "thiếu thốn". Nó sẽ sinh ra một cơn ngứa ngáy thôi thúc bạn: <em class="text-amber-300">"Đang mượt quá, bật máy bấm REC ngay kẻo mất nhịp!"</em></p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PART 5: THE 5 EXAMPLES -->
-        <section class="bg-slate-800/40 rounded-3xl p-8 md:p-12 border border-slate-700">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
-                <h2 class="text-3xl font-bold text-white">5 Ví dụ Thực tế Để Quan Sát Cơ Chế</h2>
-                <div class="art-5examples">
-                    <div class="ex-shape"></div>
-                    <div class="ex-shape"></div>
-                    <div class="ex-shape"></div>
-                    <div class="ex-shape"></div>
-                    <div class="ex-shape"></div>
+
+        <!-- PART 5: 10 EXAMPLES (FULL TEXT RETENTION) -->
+        <hr class="border-slate-800">
+
+        <section>
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">5. Bẻ Khóa Hệ Điều Hành Tâm Lý (10 Ví Dụ Sát Sườn)</h2>
+                
+                <div class="bg-indigo-900/20 border-l-4 border-indigo-500 p-6 rounded-r-xl mb-10">
+                    <p class="text-slate-200 text-lg leading-relaxed mb-4">Tôi rất thích sự khắt khe và tư duy đào sâu này của bạn! Việc bạn đòi hỏi thêm ví dụ chứng tỏ bạn không muốn học vẹt một "mẹo vặt", mà bạn đang muốn thực sự "bẻ khóa" (hack) hệ điều hành tâm lý của chính mình. Bạn muốn hiểu nó sâu đến mức nó biến thành một phản xạ tự nhiên.</p>
+                    <p class="text-slate-200 text-lg leading-relaxed mb-4">Sự hoài nghi của bạn thường nằm ở điểm này: <em>"Làm sao một hành động giả vờ (diễn nháp) lại có thể tạo ra một lực đẩy vật lý đủ mạnh để ép tôi phải đứng dậy đi set đèn, set máy và quay thật?"</em>.</p>
+                    <p class="text-slate-200 text-lg leading-relaxed font-semibold text-indigo-300">Bản chất của phương pháp này là nghệ thuật thao túng ranh giới giữa Sự An Toàn (Zero-Stakes) và Sự Bứt Rứt/Nuối Tiếc (Zeigarnik Effect).</p>
+                    <p class="text-slate-200 text-lg leading-relaxed mt-4">Dưới đây là 10 ví dụ sát sườn, từ đời sống hàng ngày đến các ngành nghề đỉnh cao, chia làm 3 nhóm cơ chế thần kinh học để bạn dễ dàng đối chiếu:</p>
                 </div>
             </div>
 
-            <div class="space-y-6">
-                <!-- Ex 1 -->
-                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
-                    <h4 class="text-xl font-bold text-blue-300 mb-3">1. Đôi tay múa phím tắt khi dựng Premiere/CapCut</h4>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-3"><strong class="text-white text-base">Hiện tượng:</strong> Nhớ lại ngày đầu tiên bạn học dựng video, bạn phải nhìn chằm chằm vào bàn phím, lẩm nhẩm "phím C là cắt, phím V là chọn". Quá trình đó rất chậm và tốn não. Nhưng hiện tại? Mắt bạn dán chặt vào timeline trên màn hình, trong khi tay trái tự động "múa" các tổ hợp phím (Shift + Delete, C, V) với tốc độ chóng mặt mà không cần liếc xuống nhìn bàn phím một lần nào.</p>
-                    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-blue-400">Cách hoạt động (Trí nhớ cơ bắp):</strong> Lời nói và ngôn ngữ cơ thể của bạn trước ống kính thực chất cũng là một dạng hành động vật lý y như việc gõ phím. Việc bạn nhép miệng và khua tay 3 lần với chiếc điện thoại tắt màn hình chính là cách bạn đang tạo "phím tắt" cho thanh quản và cơ mặt của mình. Đến lúc bấm máy quay thật, miệng bạn sẽ "chạy Auto" nhả chữ trơn tru không vấp nhịp nào, vì lúc này <em>cơ thể đã nhớ</em> kịch bản rồi chứ không chỉ là <em>bộ não nhớ</em> nữa.</p>
+            <!-- GROUP 1 -->
+            <div class="mb-16">
+                <div class="border-b-2 border-red-500/50 pb-4 mb-8">
+                    <h3 class="text-2xl font-bold text-red-400">Nhóm 1: Triệt tiêu nỗi sợ "Nút REC" (Loại bỏ áp lực Hậu quả)</h3>
+                    <p class="text-slate-300 text-lg mt-3 italic">Máy quay đang ghi hình, khung chat chuẩn bị gửi đi... đều là những thứ mang tính "không thể rút lại", khiến não bộ đóng băng vì sợ sai sót.</p>
                 </div>
-                <!-- Ex 2 -->
-                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50 hover:border-pink-500/50 transition-colors">
-                    <h4 class="text-xl font-bold text-pink-300 mb-3">2. Vị Đạo diễn làm khung hình bằng 2 bàn tay</h4>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-3"><strong class="text-white text-base">Hiện tượng:</strong> Khi ra bối cảnh, bạn sẽ hiếm khi thấy đạo diễn hoặc D.O.P (Giám đốc hình ảnh) bê ngay một bộ máy quay to nặng cắm mặt vào để tìm góc. Thay vào đó, họ thường đi vòng quanh, lấy ngón cái và ngón trỏ của hai bàn tay ghép lại thành một hình chữ nhật (khung hình giả lập), đưa lên mắt nhìn, nhắm một mắt lại và lẩm bẩm tính toán.</p>
-                    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-pink-400">Cách hoạt động (Triệt tiêu ma sát khởi động):</strong> Set đèn và setup máy quay là một tác vụ nặng nhọc (Ma sát tĩnh cao), dễ sinh ra tâm lý lười biếng ngại thử nghiệm. Việc dùng "khung hình bằng tay" (hay việc bạn cầm chiếc điện thoại đang tắt) là công cụ tốn 0đ và 0 sức lực. Khi mắt và tay đã rà soát và xác nhận "góc này đẹp quá", sự hưng phấn thị giác lập tức đè bẹp sự lười biếng. Nó tạo ra động lực mãnh liệt thúc đẩy bạn vác máy thật vào đặt đúng góc đó để ghi lại khung hình tuyệt đẹp vừa thấy.</p>
+
+                <div class="space-y-8">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">1. Viết tin nhắn quan trọng vào app "Ghi chú" (Notes) thay vì gõ thẳng vào Zalo/Messenger</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-red-400 font-bold">Quan sát:</span> Khi cần nhắn một tin chốt Sale lớn, xin nghỉ việc, hoặc cãi lý... tay bạn gõ ở khung Chat rất run, gõ rồi xóa liên tục vì sợ lỡ tay bấm nhầm nút "Gửi". Nhưng nếu bạn mở app Ghi chú để gõ nháp, chữ nghĩa tuôn trào cực kỳ sắc bén, lý lẽ đanh thép.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-red-400 font-bold">Cơ chế:</span> Vì app Ghi chú không có nút "Gửi" (tương đương chiếc điện thoại tắt màn hình không ghi hình), não bộ biết nó an toàn 100%. Rào cản phòng vệ sụp đổ. Khi bạn gõ xong một đoạn nháp xuất thần, tự bạn sẽ thấy thôi thúc mãnh liệt muốn Copy và Dán ngay sang Zalo để chốt hạ vấn đề.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">2. Để trống ô "Người nhận" (To:) khi soạn một Email căng thẳng</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-red-400 font-bold">Quan sát:</span> Tương tự như ví dụ trên, nhiều người có thói quen xóa trắng địa chỉ email người nhận trước khi bắt đầu viết nội dung.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-red-400 font-bold">Cơ chế:</span> Chỉ một hành động nhỏ này giúp gỡ bỏ hoàn toàn "Hội chứng đèn đỏ". Bạn biết chắc email này không thể bay đi lộn địa chỉ. Bạn thả lỏng tâm trí để gõ. Việc bạn lẩm nhẩm kịch bản khi máy quay tắt ngúm mang lại đúng cảm giác an toàn tuyệt đối này.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">3. Hát trong không gian hẹp (Hiệu ứng Car Concert / Phòng tắm)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-red-400 font-bold">Quan sát:</span> Lái xe một mình hoặc đi tắm, bạn luyến láy, lên nốt cao mượt như ca sĩ. Nhưng khi đưa micro thật, đứng trước đám đông, giọng bạn tự nhiên mỏng đi, cứng đơ và hụt hơi.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-red-400 font-bold">Cơ chế:</span> Thanh quản là vùng cơ nhạy cảm nhất với stress. Không có "người đánh giá" (máy quay), thanh quản giãn nở tối đa. Việc diễn chay chính là bạn tạo ra một "phòng tắm vô hình" ngay giữa studio để mở khóa thanh quản, tìm ra tông giọng (mood & tone) "đời" nhất của bạn.</p>
+                    </div>
                 </div>
-                <!-- Ex 3 -->
-                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
-                    <h4 class="text-xl font-bold text-emerald-300 mb-3">3. Cú đi lùi "chạy đường dây" với Gimbal tắt nguồn</h4>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-3"><strong class="text-white text-base">Hiện tượng:</strong> Khi quay một cú Tracking Shot (cầm máy đi lùi theo nhân vật đang tiến lên), các quay phim chuyên nghiệp không bao giờ bấm REC rồi đi lùi ngay lập tức. Họ luôn vác thiết bị (Gimbal đang tắt nguồn) hoặc thậm chí đi tay không, lùi nháp 1-2 vòng trên đúng quỹ đạo đó để xem chân có dẫm vào dây cáp, vấp vào chân đèn C-stand hay va vào mép bàn không.</p>
-                    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-emerald-400">Cách hoạt động (Lập bản đồ không gian - Proprioception):</strong> Việc cầm điện thoại tắt vừa đi lùi vừa nhẩm thoại giúp não bộ và đôi chân bạn "quét 3D" lập bản đồ không gian xung quanh. Nếu bỏ qua bước diễn nháp này, lúc quay thật bản năng sinh tồn sợ ngã sẽ khiến mắt bạn liên tục láo liên nhìn xuống đất làm hỏng thần thái. Nhờ đã "diễn chay" thuộc đường, lúc quay thật cơ thể sẽ tự động né chướng ngại vật, còn ánh mắt bạn tự tin "khóa" chặt vào ống kính cực kỳ uy lực.</p>
+            </div>
+
+            <!-- GROUP 2 -->
+            <div class="mb-16">
+                <div class="border-b-2 border-blue-500/50 pb-4 mb-8">
+                    <h3 class="text-2xl font-bold text-blue-400">Nhóm 2: Lập trình "Phần cứng" (Cognitive Offloading & Muscle Memory)</h3>
+                    <p class="text-slate-300 text-lg mt-3 italic">Não bộ chỉ có thể tập trung xử lý xuất sắc 1 việc. Nếu ép nó vừa nhớ chữ, vừa diễn cảm xúc, vừa lo góc máy... nó sẽ quá tải sinh ra lười biếng.</p>
                 </div>
-                <!-- Ex 4 -->
-                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-colors">
-                    <h4 class="text-xl font-bold text-purple-300 mb-3">4. Cuộc cãi nhau xuất thần... trong phòng tắm</h4>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-3"><strong class="text-white text-base">Hiện tượng:</strong> Đã bao giờ bạn cãi nhau ngoài đời bị đuối lý, ấm ức đi về. Nhưng lúc bước vào phòng tắm một mình, bạn bắt đầu lẩm bẩm: "Đáng ra lúc nãy mình phải nói câu này mới ngầu...", kèm theo đó là tay chân vung vẩy, biểu cảm hùng hồn, lý lẽ tuôn ra sắc bén vạn phần khiến bạn tưởng mình là luật sư đỉnh cao?</p>
-                    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-purple-400">Cách hoạt động (Không gian an toàn tuyệt đối):</strong> Phòng tắm là nơi không có ai phán xét hay soi mói. Khi áp lực bằng 0, "Dòng chảy" (Flow) tư duy của bạn tuôn trào mượt mà nhất. Việc bạn cầm chiếc điện thoại tắt màn hình chính là cách mang "hiệu ứng phòng tắm" ra giữa bối cảnh quay. Bạn cho phép mình diễn lố, nói ngọng, vấp váp thoải mái mà không thấy ngượng vì "đã bấm ghi hình đâu". Nhờ sự thả lỏng đó, bạn sẽ tìm ra nhịp điệu nói chuyện "đời" nhất, tự nhiên nhất của chính mình.</p>
+
+                <div class="space-y-8">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">4. D.O.P ngắm khung hình bằng hai bàn tay (Tách kỹ thuật khỏi thiết bị)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-blue-400 font-bold">Quan sát:</span> Đạo diễn Hình ảnh rất hiếm khi vác ngay con máy quay nặng chục cân ra dò góc. Họ luôn khum hai bàn tay lại thành hình chữ nhật, đưa lên mắt, nhắm 1 mắt lại và đi vòng quanh set để ngắm nghía.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-blue-400 font-bold">Cơ chế:</span> Set máy/đèn là thao tác tốn thể lực (sinh ma sát lười). Đôi bàn tay là thiết bị "nháp" 0 đồng, không trọng lượng. Khi mắt nhìn qua bàn tay thấy một góc hắt sáng quá đẹp, não lập tức tiết ra Dopamine, tạo ra sự hưng phấn kích thích họ phải vác máy thật ra đặt đúng góc đó.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">5. "Kéo dòng thời gian" (Scrubbing Timeline) khi dựng phim</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-blue-400 font-bold">Quan sát:</span> Khi edit video trên Premiere/CapCut, bạn thường kéo thanh Playhead lướt qua lướt lại sóng âm (waveform) rất nhiều lần để tai "nghe" nhịp beat, nhưng tay trái chưa bấm phím Cắt (Cut/Ctrl+K) ngay.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-blue-400 font-bold">Cơ chế:</span> Bạn đang cho não thời gian để đồng bộ hóa thính giác với cơ tay. Khi giai điệu đã "ngấm" vào phản xạ, tay trái tự động nện phím Cắt cực kỳ dứt khoát. Diễn nháp nhép miệng vài lần chính là hành động "Scrubbing" cơ thể để tìm ra nhịp rơi (beat drop) cho câu thoại đó.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">6. Cú vung gậy nháp (Practice Swing) của tay Golf chuyên nghiệp</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-blue-400 font-bold">Quan sát:</span> Không một tay Golf nào bước tới vụt quả bóng ngay lập tức. Họ luôn đứng ra bên cạnh, vung gậy đánh mạnh vào không khí 2-3 lần (Swing nháp).</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-blue-400 font-bold">Cơ chế:</span> Quả bóng đại diện cho "Áp lực kết quả". Vung gậy không bóng giúp não tập trung 100% vào việc tinh chỉnh góc vặn hông, nhịp thở. Ngay khi cú vung tạo ra tiếng "vút" hoàn hảo xé gió, cơ thể lập tức sinh ra một "cơn nghiện" muốn tái hiện lại lực đó lên quả bóng thật.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">7. Đọc thoại "Italian Run" của Diễn viên Hollywood</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-blue-400 font-bold">Quan sát:</span> Trước khi ra set quay thực, các diễn viên ngồi quanh bàn đọc kịch bản với tốc độ siêu tốc, đọc như cái máy, mặt vô cảm, không diễn xuất.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-blue-400 font-bold">Cơ chế:</span> Họ đang tải dữ liệu ngôn từ vào "Trí nhớ cơ hàm/lưỡi". Ép miệng quen với các âm tiết khó trước. Khi chữ đã chạy tự động trong đầu, thì lúc bấm máy thật, não họ mới dư 100% "RAM" để bung tỏa ánh mắt, thần thái và cảm xúc.</p>
+                    </div>
                 </div>
-                <!-- Ex 5 -->
-                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50 hover:border-amber-500/50 transition-colors">
-                    <h4 class="text-xl font-bold text-amber-300 mb-3">5. Cú nhấp gậy giả của tay cơ Bi-a (Billiards)</h4>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-3"><strong class="text-white text-base">Hiện tượng:</strong> Hãy quan sát những tay chơi Bi-a chuyên nghiệp. Trước khi thọc gậy một lực quyết định vào viên bi trắng (hành động thật), họ luôn cúi rạp người xuống, đưa mắt ngắm nghía và "nhấp" đầu gậy tới lui trong không khí 3-4 lần rất nhịp nhàng (hành động nháp).</p>
-                    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-amber-400">Cách hoạt động (Căn chỉnh & Hiệu ứng Zeigarnik):</strong> Cú đánh thật chỉ diễn ra đúng 1 lần, hỏng là mất lượt. Những cú "nhấp bóng nháp" giúp cơ tay đo lường chính xác quỹ đạo và lực. Với bạn cũng vậy! Khi bạn cầm điện thoại tắt và "nhấp thoại" tới lần thứ 3, lời nói tuôn ra hoàn hảo, tay vung lên đúng nhịp. Ngay khoảnh khắc đó, bộ não bạn cảm thấy cực kỳ tiếc nuối vì một "cú diễn" xuất thần vừa rồi lại không được ghi hình lại. Nó sẽ phát ra mệnh lệnh không thể cưỡng lại: "Chốt take này ngay! Bật đèn lên và bấm REC ngay lập tức kẻo trôi mất nhịp độ này!".</p>
+            </div>
+
+            <!-- GROUP 3 -->
+            <div class="mb-16">
+                <div class="border-b-2 border-amber-500/50 pb-4 mb-8">
+                    <h3 class="text-2xl font-bold text-amber-400">Nhóm 3: Hiệu ứng Zeigarnik (Đỉnh cao thao túng tâm lý: Sự nuối tiếc)</h3>
+                    <p class="text-slate-300 text-lg mt-3 italic">Con người cực kỳ ghét việc tạo ra một thứ gì đó hoàn hảo nhưng lại không được ghi nhận.</p>
                 </div>
+
+                <div class="space-y-8">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">8. Nhạc công Guitar chơi "Unplugged" (Không cắm Amply)</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-amber-400 font-bold">Quan sát:</span> Tay guitar thường ôm đàn gảy liên tục trên sofa xem TV, nhưng không cắm điện ra loa. Âm thanh rất bé. Bất chợt họ lướt ra một đoạn Riff cực đỉnh.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-amber-400 font-bold">Cơ chế:</span> Khi não nghe thấy một giai điệu hay xuất thần mà âm thanh lại quá lèo tèo, nó sinh ra sự bứt rứt tột độ. Sự tiếc nuối vì "phí mất một câu đàn hay" tạo ra đà ép cơ thể phải vứt điều khiển TV, cắm ngay dây điện vào Amply và bấm Record để nghe âm thanh đó gầm rú thực sự.</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">9. Chấn thương tâm lý mang tên: "Voice Memo xuất thần"</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-amber-400 font-bold">Quan sát:</span> Đang đi dạo hoặc nấu ăn, bạn nảy ra ý tưởng, rút điện thoại bật Ghi âm (Voice Memo) để nháp thử cho đỡ quên. Tự nhiên bạn nhập tâm, lải nhải một đoạn mượt mà, sâu sắc, ngữ điệu cực kỳ cuốn hút.</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-amber-400 font-bold">Cơ chế:</span> Ngay khi kết thúc đoạn ghi âm nháp đó, trong bạn trào lên một sự tiếc rẻ kinh khủng: "Trời ơi câu nãy mình nói hay quá, giá mà lúc nãy mình setup cái đèn, bật cái máy quay lên có phải xong luôn một take đỉnh cao rồi không!". Lò xo tâm lý đã bị nén đến giới hạn!</p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700/50">
+                        <h4 class="text-xl font-bold text-white mb-4">10. Quán tính vật lý: Sự kì diệu của "Nhấp chuột vào khung text"</h4>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-3"><span class="text-amber-400 font-bold">Quan sát:</span> Khi bí ý tưởng kịch bản, các nhà văn được khuyên đừng cố rặn chữ. Cứ nhấp chuột vào trang Word trắng và gõ đại: "Hôm nay tôi lười quá, tôi chẳng biết viết cái quái gì cả..."</p>
+                        <p class="text-slate-300 text-lg leading-relaxed"><span class="text-amber-400 font-bold">Cơ chế:</span> Lực cản lớn nhất của vạn vật là từ "Đứng im" sang "Chuyển động" (Ma sát tĩnh). Ngay khi ngón tay bạn bắt đầu múa trên bàn phím (dù là gõ linh tinh), quán tính được thiết lập. Máu bơm lên não, tay nóng lên, và chỉ 5 phút sau sự tập trung ập đến, họ bắt đầu viết kịch bản thật. Hành động bạn cầm chiếc điện thoại tắt đi lại trong phòng chính là lực đẩy đầu tiên (ít tốn sức nhất) để phá vỡ sự đóng băng của cơ thể.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OUTRO / CONCLUSION -->
+            <div class="bg-emerald-900/20 border-2 border-emerald-500/50 p-8 rounded-2xl text-center">
+                <h3 class="text-2xl font-bold text-emerald-400 mb-6">Đúc kết lại cho bạn:</h3>
+                <p class="text-slate-200 text-lg leading-relaxed mb-4">Bạn chưa muốn quay không phải vì bạn lười, hay vì bạn thiếu động lực. Bạn chưa quay vì bộ não của bạn đang nhìn thấy một <strong class="text-white">núi công việc rủi ro cao</strong> (Phải chải chuốt -> Phải set đèn đẹp -> Máy xịn tốn dung lượng -> Không được nói vấp). Sự hoàn hảo ngay từ đầu là kẻ thù số 1 của sự khởi đầu.</p>
+                <p class="text-slate-200 text-lg leading-relaxed mb-6">Hành động "cầm điện thoại tắt, đứng lên đi lại lảm nhảm" làm được 2 việc vĩ đại nhất:</p>
+                <ul class="text-left inline-block space-y-3 mb-6 text-lg text-slate-300">
+                    <li><span class="text-emerald-400 mr-2">✔</span><strong>Nó đập nát khối đá tảng áp lực:</strong> Chuyển bộ não về trạng thái vui chơi vô hại.</li>
+                    <li><span class="text-emerald-400 mr-2">✔</span><strong>Nó gài bẫy chính bạn:</strong> Khi bạn lảm nhảm đến lần thứ 3 và thấy ngôn từ tuôn ra trôi chảy, phong thái đĩnh đạc... sự Tự Tôn Nghề Nghiệp bên trong bạn sẽ nổi lòng tham. Nó tiếc rẻ cái khoảnh khắc xuất thần đó, và <strong class="text-white">nó sẽ ra lệnh ép bạn đi bật đèn, cắm máy ảnh xịn lên để "Take - Ăn - Ngay" khoảnh khắc đó.</strong></li>
+                </ul>
+                <p class="text-xl text-emerald-300 font-bold mt-4">Tối nay, hãy chọn đúng 1 cảnh trong kịch bản mới viết, tắt màn hình điện thoại và "diễn lố" thử 3 lần. Nhớ quan sát nhịp tim và sự ngứa ngáy ở cổ họng của mình nhé!</p>
             </div>
         </section>
 
+
         <!-- PART 6: FLASHCARDS (25 QUESTIONS) -->
-        <section class="pt-12 border-t border-slate-800">
+        <section class="pt-16 border-t border-slate-800">
             <h2 class="text-3xl font-bold text-center text-white mb-4">Bộ 25 Flashcard Ôn Tập Nhanh</h2>
-            <p class="text-center text-slate-400 mb-10">Tóm tắt lại toàn bộ lý thuyết và ứng dụng thực chiến (đọc ngay không cần lật).</p>
+            <p class="text-center text-slate-400 mb-10 text-lg">Tóm tắt lại toàn bộ lý thuyết và ứng dụng thực chiến (đọc ngay không cần lật).</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <!-- Generate 25 cards based on content -->
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">1. Tiêu thụ thụ động là gì?</h5><p class="text-xs text-slate-300">Việc đọc kịch bản/bóc tách có sẵn. Não hiểu logic nhưng cơ thể không kết nối, không có động lực.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">2. Kiến tạo chủ động là gì?</h5><p class="text-xs text-slate-300">Tự tay ghi chép góc máy, chuyển cảnh, tạo sự kết nối vật lý và thúc đẩy hành động.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">3. Tế bào thần kinh gương làm gì?</h5><p class="text-xs text-slate-300">Kích hoạt vỏ não vận động khi ta viết mô tả hành động, giúp não "diễn tập tâm trí".</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">4. Hiệu ứng IKEA là gì?</h5><p class="text-xs text-slate-300">Con người trân trọng và muốn hoàn thiện những thứ (kịch bản) do chính tay mình tạo ra.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">5. Tác dụng của Cognitive Chunking?</h5><p class="text-xs text-slate-300">Băm nhỏ task lớn thành cảnh nhỏ (3s). Xong 1 cảnh não tiết Dopamine tạo đà tâm lý.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">1. Tiêu thụ thụ động là gì?</h5><p class="text-sm text-slate-300">Việc đọc kịch bản/bóc tách có sẵn. Não hiểu logic nhưng cơ thể không kết nối, không có động lực.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">2. Kiến tạo chủ động là gì?</h5><p class="text-sm text-slate-300">Tự tay ghi chép góc máy, chuyển cảnh, tạo sự kết nối vật lý và thúc đẩy hành động.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">3. Tế bào thần kinh gương làm gì?</h5><p class="text-sm text-slate-300">Kích hoạt vỏ não vận động khi ta viết mô tả hành động, giúp não "diễn tập tâm trí".</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">4. Hiệu ứng IKEA là gì?</h5><p class="text-sm text-slate-300">Con người trân trọng và muốn hoàn thiện những thứ (kịch bản) do chính tay mình tạo ra.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">5. Tác dụng của Cognitive Chunking?</h5><p class="text-sm text-slate-300">Băm nhỏ task lớn thành cảnh nhỏ (3s). Xong 1 cảnh não tiết Dopamine tạo đà tâm lý.</p></div>
                 
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">6. Kỹ thuật Reverse Engineering?</h5><p class="text-xs text-slate-300">Trong làm phim là bóc tách ngược video mẫu để tạo ra thông số hành động vật lý rõ ràng.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">7. Quy trình T.Đ.D.Q là gì?</h5><p class="text-xs text-slate-300">Tách - Đắp - Diễn - Quay. Quy trình hack não để chuẩn bị quay video trôi chảy.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">8. Bước "Tách" thực hiện thế nào?</h5><p class="text-xs text-slate-300">Mở video mẫu, TẮT ÂM THANH, ghi chép lại nhịp điệu hình ảnh thuần túy.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">9. Tại sao phải tắt âm thanh lúc Tách?</h5><p class="text-xs text-slate-300">Để không bị phân tâm bởi lời nói, ép não tập trung 100% vào khung hình và nhịp điệu.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">10. Bước "Đắp" là làm gì?</h5><p class="text-xs text-slate-300">Lập bảng 2 cột. Gắn nội dung kiến thức của bạn khớp với khung xương hình ảnh vừa bóc.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">6. Kỹ thuật Reverse Engineering?</h5><p class="text-sm text-slate-300">Trong làm phim là bóc tách ngược video mẫu để tạo ra thông số hành động vật lý rõ ràng.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">7. Quy trình T.Đ.D.Q là gì?</h5><p class="text-sm text-slate-300">Tách - Đắp - Diễn - Quay. Quy trình hack não để chuẩn bị quay video trôi chảy.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">8. Bước "Tách" thực hiện thế nào?</h5><p class="text-sm text-slate-300">Mở video mẫu, TẮT ÂM THANH, ghi chép lại nhịp điệu hình ảnh thuần túy.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">9. Tại sao phải tắt âm thanh lúc Tách?</h5><p class="text-sm text-slate-300">Để không bị phân tâm bởi lời nói, ép não tập trung 100% vào khung hình và nhịp điệu.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">10. Bước "Đắp" là làm gì?</h5><p class="text-sm text-slate-300">Lập bảng 2 cột. Gắn nội dung kiến thức của bạn khớp với khung xương hình ảnh vừa bóc.</p></div>
                 
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">11. Tại sao viết nội dung ở bước Đắp lại dễ?</h5><p class="text-xs text-slate-300">Vì viết dựa trên một hình ảnh có sẵn trong đầu dễ hơn vạn lần viết từ trang giấy trắng.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">12. Bước "Diễn" (Blocking) là gì?</h5><p class="text-xs text-slate-300">Cầm điện thoại tắt màn hình, đi lại và diễn thử nhép miệng đúng như kịch bản.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">13. Mục đích chính của bước Diễn?</h5><p class="text-xs text-slate-300">Khóa chặt "Trí nhớ cơ bắp", gạt bỏ ngượng ngùng, kích thích cơ thể đòi quay thật.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">14. Bước "Quay" nháp có quy tắc gì?</h5><p class="text-xs text-slate-300">Quy tắc "Bản nháp rác": Cứ quay 1 mạch bằng đt, chấp nhận xấu, bừa bộn, vấp váp.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">15. Ý nghĩa tâm lý của "Bản nháp rác"?</h5><p class="text-xs text-slate-300">Não hiểu "Video đã tồn tại", xóa bỏ áp lực phải tạo ra kiệt tác từ con số 0.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">11. Tại sao viết nội dung ở bước Đắp lại dễ?</h5><p class="text-sm text-slate-300">Vì viết dựa trên một hình ảnh có sẵn trong đầu dễ hơn vạn lần viết từ trang giấy trắng.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">12. Bước "Diễn" (Blocking) là gì?</h5><p class="text-sm text-slate-300">Cầm điện thoại tắt màn hình, đi lại và diễn thử nhép miệng đúng như kịch bản.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">13. Mục đích chính của bước Diễn?</h5><p class="text-sm text-slate-300">Khóa chặt "Trí nhớ cơ bắp", gạt bỏ ngượng ngùng, kích thích cơ thể đòi quay thật.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">14. Bước "Quay" nháp có quy tắc gì?</h5><p class="text-sm text-slate-300">Quy tắc "Bản nháp rác": Cứ quay 1 mạch bằng đt, chấp nhận xấu, bừa bộn, vấp váp.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">15. Ý nghĩa tâm lý của "Bản nháp rác"?</h5><p class="text-sm text-slate-300">Não hiểu "Video đã tồn tại", xóa bỏ áp lực phải tạo ra kiệt tác từ con số 0.</p></div>
                 
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">16. Hội chứng đèn đỏ (Camera Fright)?</h5><p class="text-xs text-slate-300">Đèn REC bật khiến hạch hạnh nhân kích hoạt chế độ sinh tồn, gây căng thẳng cứng người.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">17. Giải phóng RAM (Cognitive Offloading)?</h5><p class="text-xs text-slate-300">Đẩy việc nhớ tay chân/lời nói vào trí nhớ cơ bắp, để não tập trung vào thần thái ánh mắt.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">18. Hiệu ứng Zeigarnik trong việc diễn nháp?</h5><p class="text-xs text-slate-300">Diễn rất mượt nhưng không ghi hình làm não bứt rứt, thúc đẩy bấm REC để hoàn tất.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">19. Ví dụ về Trí nhớ cơ bắp?</h5><p class="text-xs text-slate-300">Bấm phím tắt Premiere không cần nhìn. Tương tự, miệng nhép 3 lần sẽ tự "chạy Auto".</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">20. Việc Đạo diễn dùng tay đo khung hình?</h5><p class="text-xs text-slate-300">Triệt tiêu ma sát khởi động. Tìm góc đẹp bằng tay (0đ sức) tạo hưng phấn để vác máy thật.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">16. Hội chứng đèn đỏ (Camera Fright)?</h5><p class="text-sm text-slate-300">Đèn REC bật khiến hạch hạnh nhân kích hoạt chế độ sinh tồn, gây căng thẳng cứng người.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">17. Giải phóng RAM (Cognitive Offloading)?</h5><p class="text-sm text-slate-300">Đẩy việc nhớ tay chân/lời nói vào trí nhớ cơ bắp, để não tập trung vào thần thái ánh mắt.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">18. Hiệu ứng Zeigarnik trong việc diễn nháp?</h5><p class="text-sm text-slate-300">Diễn rất mượt nhưng không ghi hình làm não bứt rứt, thúc đẩy bấm REC để hoàn tất.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">19. Ví dụ về Trí nhớ cơ bắp?</h5><p class="text-sm text-slate-300">Bấm phím tắt Premiere không cần nhìn. Tương tự, miệng nhép 3 lần sẽ tự "chạy Auto".</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">20. Việc Đạo diễn dùng tay đo khung hình?</h5><p class="text-sm text-slate-300">Triệt tiêu ma sát khởi động. Tìm góc đẹp bằng tay (0đ sức) tạo hưng phấn để vác máy thật.</p></div>
                 
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">21. Đi lùi nháp với Gimbal tắt giúp gì?</h5><p class="text-xs text-slate-300">Lập bản đồ không gian (quét 3D phòng). Lúc quay thật mắt không sợ ngã, khóa chặt vào ống kính.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">22. Cãi nhau trong phòng tắm chứng minh điều gì?</h5><p class="text-xs text-slate-300">Trong không gian an toàn (0 áp lực), Flow tư duy tuôn trào mượt nhất.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-amber-300 font-bold mb-1">23. Cầm điện thoại tắt tạo ra không gian gì?</h5><p class="text-xs text-slate-300">Một "phòng tắm giả lập" giữa studio, cho phép diễn lố, tìm nhịp điệu đời nhất.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-blue-300 font-bold mb-1">24. Cú nhấp gậy giả của tay cơ Bi-a?</h5><p class="text-xs text-slate-300">Đo quỹ đạo. Tương tự việc "nhấp thoại", giúp chốt take hoàn hảo nhất khi bấm quay.</p></div>
-                <div class="flashcard p-4 rounded-lg"><h5 class="text-sm text-pink-300 font-bold mb-1">25. Công tắc khởi động cỗ máy sáng tạo là gì?</h5><p class="text-xs text-slate-300">Là tự tay ghi chép, dàn cảnh và diễn chay thay vì chỉ nằm đọc ý tưởng.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">21. Đi lùi nháp với Gimbal tắt giúp gì?</h5><p class="text-sm text-slate-300">Lập bản đồ không gian (quét 3D phòng). Lúc quay thật mắt không sợ ngã, khóa chặt vào ống kính.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">22. Cãi nhau trong phòng tắm chứng minh điều gì?</h5><p class="text-sm text-slate-300">Trong không gian an toàn (0 áp lực), Flow tư duy tuôn trào mượt nhất.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-amber-300 font-bold mb-2">23. Cầm điện thoại tắt tạo ra không gian gì?</h5><p class="text-sm text-slate-300">Một "phòng tắm giả lập" giữa studio, cho phép diễn lố, tìm nhịp điệu đời nhất.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-blue-300 font-bold mb-2">24. Cú nhấp gậy giả của tay cơ Bi-a?</h5><p class="text-sm text-slate-300">Đo quỹ đạo. Tương tự việc "nhấp thoại", giúp chốt take hoàn hảo nhất khi bấm quay.</p></div>
+                <div class="flashcard p-5 rounded-lg"><h5 class="text-base text-pink-300 font-bold mb-2">25. Công tắc khởi động cỗ máy sáng tạo là gì?</h5><p class="text-sm text-slate-300">Là tự tay ghi chép, dàn cảnh và diễn chay thay vì chỉ nằm đọc ý tưởng.</p></div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-500 text-sm mt-12">
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 text-center text-slate-500 text-base mt-12">
         <p>Kiến thức tâm lý học & sản xuất video - Đóng gói theo quy trình thực chiến</p>
     </footer>
 
