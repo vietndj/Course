@@ -8,13 +8,14 @@
     <style>
         /* ================= BIẾN MÀU SẮC (RELAXING DARK THEME) ================= */
         :root {
-            --bg: #0f172a;          /* Nền xanh đen dịu mắt */
+            --bg: #0f172a;          
             --text: #f8fafc;
             --muted: #94a3b8;
             --accent1: #38bdf8;     /* Cyan sáng */
             --accent2: #a78bfa;     /* Tím pastel */
             --accent3: #34d399;     /* Xanh ngọc */
             --accent4: #fb7185;     /* Hồng phấn */
+            --accent5: #fbbf24;     /* Vàng Gold */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -31,21 +32,21 @@
 
         /* ================= BỐ CỤC CANVAS RỘNG RÃI ================= */
         .section {
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             scroll-snap-align: start;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 8%;
+            padding: 5rem 8%;
             position: relative;
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
         .container {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 7rem; /* Khoảng cách siêu rộng để mắt nghỉ ngơi */
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 6rem; 
             max-width: 1200px;
             width: 100%;
             align-items: center;
@@ -55,12 +56,12 @@
         .reverse > * { direction: ltr; }
 
         /* ================= TYPOGRAPHY ================= */
-        h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.25; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.5px;}
+        h1 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); line-height: 1.25; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.5px;}
         h1 span { background: linear-gradient(45deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        h2 { font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1.3; margin-bottom: 1.5rem; font-weight: 800; }
+        h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.3; margin-bottom: 1.5rem; font-weight: 800; }
         
-        p { font-size: 1.15rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.2rem; font-weight: 300; }
+        p { font-size: 1.12rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.2rem; font-weight: 300; }
         strong { color: var(--text); font-weight: 600;}
 
         .tag {
@@ -74,60 +75,86 @@
         .box {
             background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
             padding: 1.5rem 2rem; border-radius: 16px; 
-            border-left: 4px solid var(--accent1); margin-top: 2rem;
+            border-left: 4px solid var(--accent1); margin-top: 1.5rem;
             backdrop-filter: blur(10px);
         }
-        .box p { margin: 0; font-size: 1.05rem; }
+        .box p { margin: 0; font-size: 1.05rem; line-height: 1.6; }
         .box.c2 { border-left-color: var(--accent2); }
         .box.c3 { border-left-color: var(--accent3); }
+        .box.c5 { border-left-color: var(--accent5); }
+        
+        .badge-source {
+            display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--bg); background: var(--accent5); padding: 4px 10px; border-radius: 6px;
+            font-weight: 800; margin-bottom: 12px;
+        }
+        .badge-source.blue { background: rgba(56, 189, 248, 0.2); color: var(--accent1); }
 
         .scroll-down {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             display: flex; flex-direction: column; align-items: center; gap: 8px;
             color: var(--muted); font-size: 0.85rem; text-transform: uppercase;
             letter-spacing: 2px; font-weight: 600; animation: bounce 2s infinite; opacity: 0.7;
         }
 
-        /* ================= CSS ABSTRACT ART (THƯ GIÃN) ================= */
-        .art { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; }
+        /* ================= CSS ABSTRACT ART ================= */
+        .art { display: flex; justify-content: center; align-items: center; height: 380px; position: relative; }
 
-        /* ART 1: Vòng tròn tỏa sáng */
+        /* ART 1: Vòng tròn mầm non */
         .art-orbit { position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; }
         .circle-main { width: 90px; height: 90px; border-radius: 50%; background: var(--accent1); box-shadow: 0 0 50px rgba(56,189,248,0.5); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; z-index: 2; animation: float 3s ease-in-out infinite; }
         .orbit-ring { position: absolute; width: 280px; height: 280px; border: 2px dashed rgba(255,255,255,0.1); border-radius: 50%; animation: spin 25s linear infinite; }
         .node { position: absolute; width: 16px; height: 16px; border-radius: 50%; }
         .node:nth-child(1) { top: -8px; left: 50%; transform: translateX(-50%); background: var(--accent2); box-shadow: 0 0 20px var(--accent2);}
         .node:nth-child(2) { bottom: 35px; right: 15px; background: var(--accent3); box-shadow: 0 0 20px var(--accent3);}
-        .node:nth-child(3) { bottom: 35px; left: 15px; background: var(--accent4); box-shadow: 0 0 20px var(--accent4);}
 
-        /* ART 2: AI Radar nhẹ nhàng */
+        /* ART 2 (NEW): Sơn Tùng vs Bạn (Thẻ bài so sánh) */
+        .art-compare { display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center;}
+        .compare-card { width: 280px; padding: 20px; border-radius: 16px; display: flex; flex-direction: column; gap: 12px; position: relative; }
+        
+        .card-celeb { background: rgba(255,255,255,0.02); border: 1px dashed #475569; opacity: 0.7;}
+        .badge-ad { position: absolute; top: -12px; right: -10px; background: #475569; color: #fff; font-weight: 800; font-size: 0.75rem; padding: 5px 12px; border-radius: 20px;}
+        
+        .card-nano { background: linear-gradient(145deg, rgba(52, 211, 153, 0.1), transparent); border: 1px solid var(--accent3); box-shadow: 0 10px 30px rgba(52, 211, 153, 0.1); transform: scale(1.05); z-index: 2; animation: float 3s ease-in-out infinite alternate;}
+        .badge-trust { position: absolute; top: -12px; right: -10px; background: var(--accent3); color: var(--bg); font-weight: 800; font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; box-shadow: 0 5px 15px rgba(52,211,153,0.3);}
+        
+        .c-header { display: flex; align-items: center; gap: 15px;}
+        .c-avt { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; background: var(--bg);}
+        .card-celeb .c-avt { border: 2px solid #475569;}
+        .card-nano .c-avt { border: 2px solid var(--accent3); background: var(--accent3); color: var(--bg);}
+        
+        .i-name { font-weight: 800; font-size: 1.1rem;}
+        .i-sub { font-size: 0.8rem; color: var(--muted);}
+        .c-body { font-size: 0.9rem; color: var(--muted); line-height: 1.5; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; font-style: italic;}
+
+        /* ART 3: AI Radar */
         .radar-bg { width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(167, 139, 250, 0.3); position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;}
         .radar-sweep { position: absolute; width: 50%; height: 50%; top: 0; left: 0; background: linear-gradient(45deg, rgba(167, 139, 250, 0.5), transparent); transform-origin: bottom right; animation: spin 4s linear infinite; }
         .radar-core { width: 60px; height: 60px; background: var(--accent2); border-radius: 50%; box-shadow: 0 0 40px var(--accent2); z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; animation: pulse 2s infinite alternate;}
 
-        /* ART 3: Biểu đồ thân thiện */
+        /* ART 4: Biểu đồ thân thiện */
         .chart-wrap { display: flex; align-items: flex-end; gap: 45px; height: 250px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 10px; width: 280px; justify-content: center;}
-        .col { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 75px;}
+        .col { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 85px;}
         .bar { width: 100%; border-radius: 8px 8px 0 0; position: relative;}
-        .bar1 { height: 20%; background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2);}
-        .bar2 { height: 95%; background: linear-gradient(to top, var(--accent3), #10b981); animation: grow 1.5s ease-out forwards; transform-origin: bottom; box-shadow: 0 0 30px rgba(52,211,153,0.3);}
-        .val { font-size: 1.6rem; font-weight: 800; color: #fff;}
+        .bar1 { height: 15%; background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2);}
+        .bar2 { height: 95%; background: linear-gradient(to top, var(--accent1), #0ea5e9); animation: grow 1.5s ease-out forwards; transform-origin: bottom; box-shadow: 0 0 30px rgba(56,189,248,0.3);}
+        .val { font-size: 1.4rem; font-weight: 800; color: #fff;}
         .lbl { font-size: 0.85rem; color: var(--muted); text-align: center; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;}
 
-        /* ART 4: Lộ trình Steps */
-        .steps-art { display: flex; flex-direction: column; gap: 20px; width: 100%; position: relative; }
+        /* ART 5: Lộ trình Steps */
+        .steps-art { display: flex; flex-direction: column; gap: 18px; width: 100%; position: relative; }
         .steps-art::before { content: ''; position: absolute; top: 20px; bottom: 20px; left: 24px; width: 2px; background: rgba(255,255,255,0.08); z-index: 0; }
         .st-item { display: flex; align-items: center; gap: 20px; z-index: 1; }
-        .st-num { width: 50px; height: 50px; border-radius: 50%; background: var(--bg); border: 2px solid; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; flex-shrink: 0; transition: 0.3s;}
-        .st-txt { padding: 14px 18px; background: rgba(255,255,255,0.02); border-radius: 12px; font-size: 1rem; color: var(--muted); font-weight: 600;}
+        .st-num { width: 48px; height: 48px; border-radius: 50%; background: var(--bg); border: 2px solid; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: bold; flex-shrink: 0; transition: 0.3s;}
+        .st-txt { padding: 14px 18px; background: rgba(255,255,255,0.02); border-radius: 12px; font-size: 0.95rem; color: var(--muted); font-weight: 600; flex: 1;}
         
         .st-item:nth-child(1) .st-num { border-color: var(--accent1); color: var(--accent1); box-shadow: 0 0 15px rgba(56,189,248,0.2);}
         .st-item:nth-child(2) .st-num { border-color: var(--accent3); color: var(--accent3); box-shadow: 0 0 15px rgba(52,211,153,0.2);}
         .st-item:nth-child(3) .st-num { border-color: var(--accent2); color: var(--accent2); box-shadow: 0 0 15px rgba(167,139,250,0.2);}
         .st-item:nth-child(4) .st-num { border-color: var(--accent4); color: var(--accent4); box-shadow: 0 0 15px rgba(251,113,133,0.2);}
 
-        /* ================= FOOTER ĐƠN GIẢN ================= */
-        .footer-section { flex-direction: column; text-align: center; justify-content: center; background: radial-gradient(circle at bottom, rgba(56, 189, 248, 0.05) 0%, transparent 60%); }
+        /* ================= FOOTER ================= */
+        .footer-section { min-height: 80vh; flex-direction: column; text-align: center; justify-content: center; background: radial-gradient(circle at bottom, rgba(56, 189, 248, 0.05) 0%, transparent 60%); border-bottom: none;}
         .footer-box { max-width: 600px; margin: 0 auto; }
         .footer-box h2 { font-size: 2.2rem; margin-bottom: 1rem; }
         .social-links { display: flex; flex-direction: column; gap: 15px; margin-top: 2.5rem;}
@@ -136,7 +163,7 @@
         .s-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
         /* ================= ANIMATIONS ================= */
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.8;} 100% { transform: scale(1.1); opacity: 1;} }
         @keyframes grow { 0% { transform: scaleY(0.1); } 100% { transform: scaleY(1); } }
@@ -145,7 +172,7 @@
         /* ================= RESPONSIVE ================= */
         @media (max-width: 968px) {
             body { scroll-snap-type: none; overflow-y: auto; }
-            .section { height: auto; min-height: 100vh; padding: 6rem 6%; }
+            .section { min-height: auto; padding: 6rem 6%; }
             .container, .container.reverse { grid-template-columns: 1fr; gap: 4rem; text-align: center;}
             .reverse > * { direction: ltr; }
             .box { text-align: left; }
@@ -180,7 +207,7 @@
             </div>
         </div>
         <div class="scroll-down">
-            <span>Cuộn xuống nhẹ nhàng nhé</span>
+            <span>Cuộn để xem ví dụ Sơn Tùng M-TP</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </div>
     </section>
@@ -188,13 +215,56 @@
     <section class="section">
         <div class="container reverse">
             <div>
-                <div class="tag" style="color: var(--accent2);">🤖 Giải oan cho thuật toán</div>
-                <h2>AI chủ động đi tìm<br>khán giả cho bạn</h2>
-                <p>Trước kia, luật chơi là: Có follower thì video mới có người xem. Nhưng bây giờ các nền tảng (như TikTok, Reels, Shorts) đã đập bỏ bộ luật đó. Chúng vận hành bằng <strong>"Biểu đồ sở thích"</strong>.</p>
-                <p>Khi bạn up 1 video lên, dù kênh bạn 0 follow, AI vẫn sẽ chủ động "mời" 500 người lạ mặt xem thử. Nó chỉ quan tâm một điều duy nhất: <em>Video của bạn có giữ chân họ ở lại xem không?</em></p>
+                <div class="tag" style="color: var(--accent5); border-color: rgba(251, 191, 36, 0.3);">🎭 Màng lọc phòng thủ</div>
+                <h2>Sự thật phũ phàng về<br>Quảng cáo của Siêu Sao</h2>
+                <p>Lấy một ví dụ thực tế. Đám đông cực kỳ hâm mộ <strong>Sơn Tùng M-TP</strong>. Nhưng nếu Tùng đăng một bức ảnh cầm chai dầu gội giá 150k và khen nức nở, bạn có tin Tùng đang thực sự gội chai đó hàng ngày không?</p>
+                <p>Dù có thả tim vì hâm mộ, nhưng trong thâm tâm não bộ chúng ta tự động bật "màng lọc phòng thủ": <em>"Họ là người nổi tiếng, họ được trả hàng tỷ đồng để đọc theo kịch bản!"</em>. Lượt xem rất cao, nhưng tỷ lệ mua hàng lại thấp.</p>
+                <p>Nhưng... nếu một người bạn theo dõi (chỉ có 2.000 follow) tự mua đồ về dùng, quay clip mộc mạc và nói: <em>"Chai này gội sạch, nhưng thiết kế nắp hơi khó mở nha mọi người"</em>. Bạn sẽ lập tức tin tưởng! Vì đó là một con người thật, dám khen và <strong>dám CHÊ thẳng thắn</strong>.</p>
+                
+                <div class="box c5">
+                    <span class="badge-source">Nielsen & Edelman Trust Barometer</span>
+                    <p>Dữ liệu khoa học chứng minh: <strong>92% người tiêu dùng</strong> tin tưởng lời khuyên từ nội dung do người dùng tự tạo (UGC) hơn mọi hình thức quảng cáo từ người nổi tiếng. Niềm tin đồng cấp (Peer-trust) đang chiến thắng!</p>
+                </div>
+            </div>
+            <div class="art">
+                <div class="art-compare">
+                    <div class="compare-card card-celeb">
+                        <div class="badge-ad">Được tài trợ</div>
+                        <div class="c-header">
+                            <div class="c-avt">⭐</div>
+                            <div>
+                                <div class="i-name" style="color: #cbd5e1;">Siêu Sao Hạng A</div>
+                                <div class="i-sub">14 Triệu Follower</div>
+                            </div>
+                        </div>
+                        <div class="c-body">"Sản phẩm này cực kỳ hoàn hảo, tuyệt vời 100% không có điểm chê..."</div>
+                    </div>
+                    <div class="compare-card card-nano">
+                        <div class="badge-trust">Đáng tin cậy</div>
+                        <div class="c-header">
+                            <div class="c-avt" style="color: #0f172a;">🙋‍♂️</div>
+                            <div>
+                                <div class="i-name" style="color: var(--accent3);">Kênh Của Bạn</div>
+                                <div class="i-sub">2,000 Follower</div>
+                            </div>
+                        </div>
+                        <div class="c-body">"Dùng khá tốt, nhưng điểm trừ là thiết kế nắp hơi khó mở nha mọi người..."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div>
+                <div class="tag" style="color: var(--accent2);">🤖 AI đi tìm khán giả</div>
+                <h2>Đừng lo up video<br>không ai xem</h2>
+                <p>Trước kia, có follower thì video mới có người xem. Nhưng bây giờ các nền tảng (như TikTok, Reels, Shorts) đã đập bỏ bộ luật đó. Chúng vận hành bằng <strong>"Biểu đồ sở thích"</strong>.</p>
+                <p>Khi bạn up 1 video lên, dù kênh bạn 0 follow, AI vẫn sẽ chủ động "mời" ngẫu nhiên 500 người lạ mặt xem thử. Nó chỉ quan tâm một điều duy nhất: <em>Video của bạn có giữ chân họ ở lại xem không?</em></p>
                 
                 <div class="box c2">
-                    <p>🚀 <strong> Rất công bằng:</strong> Nếu nội dung của bạn thú vị khiến 500 người đầu tiên này không lướt đi, AI sẽ tự động mở rào, bơm video của bạn lên hàng chục ngàn view ngay lập tức.</p>
+                    <p>🚀 <strong>Rất công bằng:</strong> Nếu nội dung của bạn thú vị khiến 500 người đầu tiên này không lướt đi, AI sẽ tự động mở rào, bơm video của bạn lên hàng chục ngàn view ngay lập tức.</p>
                 </div>
             </div>
             <div class="art">
@@ -207,15 +277,16 @@
     </section>
 
     <section class="section">
-        <div class="container">
+        <div class="container reverse">
             <div>
-                <div class="tag" style="color: var(--accent3);">📊 Nhỏ nhưng có võ</div>
-                <h2>Đừng buồn vì ít View,<br>Hãy nhìn vào Tương tác</h2>
-                <p>Nhiều bạn than vãn video chỉ lẹt đẹt vài trăm view rồi tự ti. Nhưng bạn biết không, các nhãn hàng hiện nay lại rất "săn đón" những kênh nhỏ như chúng ta.</p>
-                <p>Có một nghịch lý: Kênh càng đông follower, tương tác càng giảm thê thảm (có khi chỉ 1.5%), khán giả lướt qua rất nhanh. Nhưng kênh siêu nhỏ của bạn lại có tương tác lên tới 15%! Khán giả nán lại bình luận, hỏi đáp và trao đổi cực kỳ sâu.</p>
+                <div class="tag" style="color: var(--accent1);">📉 Nghịch lý tương tác</div>
+                <h2>Data không nói dối:<br>Kênh nhỏ = Tương tác khủng</h2>
+                <p>Nhiều bạn than vãn video chỉ lẹt đẹt vài trăm view rồi tự ti. Nhưng Data lại chỉ ra sự thật trái ngược hoàn toàn khiến nhãn hàng bây giờ phải săn đón kênh nhỏ.</p>
                 
-                <div class="box c3">
-                    <p>💎 <strong>Chất lượng hơn số lượng:</strong> 1.000 người theo dõi trung thành sẽ mang lại cho bạn nguồn thu nhập thực tế tốt hơn rất nhiều so với 100.000 lượt xem vô hồn.</p>
+                <div class="box" style="border-left-color: var(--accent1);">
+                    <span class="badge-source blue">Influencer Marketing Hub (2024)</span>
+                    <p>Tỷ lệ tương tác (Engagement Rate) của các sao hạng A (Mega KOL) rớt thê thảm chỉ còn <strong>1.2% - 1.5%</strong>. Khán giả lướt qua rất nhanh. </p>
+                    <p style="margin-top: 10px;">Trong khi đó, kênh Nano (dưới 10k follow) của chúng ta lại đạt tương tác vọt lên <strong>8.7% - 15%</strong>. Fan nán lại bình luận, hỏi đáp rất sâu và sẵn sàng xuống tiền mua hàng.</p>
                 </div>
             </div>
             <div class="art">
@@ -223,12 +294,12 @@
                     <div class="col">
                         <span class="val" style="color: #94a3b8;">1.5%</span>
                         <div class="bar bar1"></div>
-                        <span class="lbl">Siêu Sao</span>
+                        <span class="lbl">Mega KOL<br>(Siêu Sao)</span>
                     </div>
                     <div class="col">
-                        <span class="val" style="color: var(--accent3);">15%</span>
+                        <span class="val" style="color: var(--accent1);">15%</span>
                         <div class="bar bar2"></div>
-                        <span class="lbl">Kênh Của Bạn</span>
+                        <span class="lbl">Kênh Của<br>Bạn (Nano)</span>
                     </div>
                 </div>
             </div>
@@ -236,7 +307,7 @@
     </section>
 
     <section class="section">
-        <div class="container reverse">
+        <div class="container">
             <div>
                 <div class="tag" style="color: var(--accent4);">🗺️ Bản đồ hành động</div>
                 <h2>Cứ mạnh dạn bấm máy<br>với 4 bước này</h2>
@@ -244,16 +315,16 @@
                 
                 <div style="margin-top: 1.5rem;">
                     <p style="margin-bottom: 1rem;"><strong style="color: var(--accent1);">1. Chọn một Ngách nhỏ (Niche):</strong> Đừng làm nội dung đại trà, thập cẩm. Hãy chọn đúng 1 thứ bạn đam mê (VD: Nuôi mèo, Review góc học tập).</p>
-                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent3);">2. Khen chê thật lòng:</strong> Sự chân thật là vũ khí. Đừng ngại chê điểm yếu của sản phẩm, người xem sẽ tin bạn tuyệt đối.</p>
-                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent2);">3. Gọn gàng phần Nghe/Nhìn:</strong> Video thô mộc cũng được, nhưng bạn nên học một chút kỹ năng Edit cơ bản để cắt bỏ những đoạn ngắc ngứ, giúp video gãy gọn. Như vậy mới giữ chân được người xem!</p>
-                    <p><strong style="color: var(--accent4);">4. Chăm sóc bình luận:</strong> Trả lời tận tâm từng câu hỏi nhỏ nhất. Nhãn hàng sẽ tự tìm đến khi thấy khán giả tin tưởng bạn.</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent5);">2. Khen chê thật lòng:</strong> Nhớ bài học "màng lọc phòng thủ" nhé. Sự chân thật là vũ khí. Đừng ngại chê thẳng điểm yếu của sản phẩm, người xem sẽ tin bạn tuyệt đối.</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent3);">3. Gọn gàng phần Nghe/Nhìn:</strong> Video thô mộc cũng được, nhưng bạn <strong>phải học một chút kỹ năng Edit cơ bản</strong> để cắt bỏ những đoạn ngắc ngứ. Nhịp độ gãy gọn mới giữ chân được người xem!</p>
+                    <p><strong style="color: var(--accent2);">4. Chăm sóc bình luận:</strong> Trả lời tận tâm từng câu hỏi nhỏ nhất. Nhãn hàng sẽ tự tìm đến khi thấy khán giả tin tưởng bạn.</p>
                 </div>
             </div>
             <div class="art">
                 <div class="steps-art">
                     <div class="st-item"><div class="st-num">1</div><div class="st-txt">Đi vào Ngách hẹp</div></div>
-                    <div class="st-item"><div class="st-num">2</div><div class="st-txt">Sự chân thật (UGC)</div></div>
-                    <div class="st-item"><div class="st-num">3</div><div class="st-txt">Quay dựng gãy gọn</div></div>
+                    <div class="st-item"><div class="st-num">2</div><div class="st-txt">Quy tắc Khen/Chê</div></div>
+                    <div class="st-item"><div class="st-num">3</div><div class="st-txt">Kỹ năng Quay Dựng</div></div>
                     <div class="st-item"><div class="st-num">4</div><div class="st-txt">Tương tác Fan</div></div>
                 </div>
             </div>
@@ -263,7 +334,7 @@
     <section class="section footer-section">
         <div class="footer-box">
             <h2>Cùng nhau phát triển nhé! 👋</h2>
-            <p>Mình hy vọng những chia sẻ trên sẽ tiếp thêm một chút tự tin để các bạn bắt đầu xây kênh. Cập nhật nội dung mới nhất từ các kênh này nhé:</p>
+            <p>Mình hy vọng những chia sẻ và số liệu thực tế trên sẽ tiếp thêm một chút tự tin để các bạn bắt đầu xây kênh. Cập nhật nội dung mới nhất từ các kênh này nhé:</p>
             
             <div class="social-links">
                 <a href="https://youtube.com/@vietndonline" target="_blank" class="s-btn">
