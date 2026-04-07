@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghệ Thuật Kể Chuyện Bằng Cỡ Cảnh (Shot Sizes)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+        }
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* CSS Abstract Art Styles */
+        .art-frame {
+            aspect-ratio: 16 / 9;
+            background: #1e293b;
+            border-radius: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Elements for Abstract Art */
+        .abstract-ground {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: #334155;
+        }
+        .abstract-figure {
+            position: absolute;
+            background: #e2e8f0;
+            border-radius: 9999px; /* Round head */
+        }
+        .abstract-body {
+            position: absolute;
+            background: #cbd5e1;
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* 1. Extreme Long Shot */
+        .art-els .abstract-ground { height: 20%; }
+        .art-els .abstract-figure { width: 2%; height: 4%; bottom: 20%; left: 50%; transform: translateX(-50%); }
+        .art-els .abstract-sun { position: absolute; width: 10%; aspect-ratio: 1; background: #fbbf24; border-radius: 50%; top: 20%; right: 20%; }
+
+        /* 2. Long Shot */
+        .art-ls .abstract-ground { height: 25%; }
+        .art-ls .abstract-figure { width: 4%; height: 8%; bottom: 45%; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .art-ls .abstract-body { width: 8%; height: 20%; bottom: 25%; left: 50%; transform: translateX(-50%); z-index: 1; }
+        .art-ls .environment { position: absolute; width: 15%; height: 40%; background: #475569; bottom: 25%; left: 20%; border-radius: 4px; }
+
+        /* 3. Full Shot */
+        .art-fs .abstract-ground { height: 10%; }
+        .art-fs .abstract-figure { width: 10%; height: 15%; top: 10%; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .art-fs .abstract-body { width: 18%; height: 65%; bottom: 10%; left: 50%; transform: translateX(-50%); z-index: 1; }
+
+        /* 4. Medium Long Shot (Cowboy) */
+        .art-mls .abstract-figure { width: 14%; height: 22%; top: 5%; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .art-mls .abstract-body { width: 28%; height: 80%; bottom: -10%; left: 50%; transform: translateX(-50%); z-index: 1; }
+
+        /* 5. Medium Shot */
+        .art-ms .abstract-figure { width: 20%; height: 35%; top: 5%; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .art-ms .abstract-body { width: 40%; height: 65%; bottom: -15%; left: 50%; transform: translateX(-50%); border-radius: 20px 20px 0 0; z-index: 1; }
+
+        /* 6. Medium Close-Up */
+        .art-mcu .abstract-figure { width: 30%; height: 50%; top: -5%; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .art-mcu .abstract-body { width: 60%; height: 60%; bottom: -20%; left: 50%; transform: translateX(-50%); border-radius: 40px 40px 0 0; z-index: 1; }
+
+        /* 7. Close-Up */
+        .art-cu .abstract-figure { width: 60%; height: 95%; top: 5%; left: 50%; transform: translateX(-50%); z-index: 2; border-radius: 45%; background: #f8fafc; }
+        .art-cu .abstract-eye-left { position: absolute; width: 10%; height: 5%; background: #0f172a; top: 45%; left: 30%; border-radius: 50%; }
+        .art-cu .abstract-eye-right { position: absolute; width: 10%; height: 5%; background: #0f172a; top: 45%; right: 30%; border-radius: 50%; }
+
+        /* 8. Extreme Close-Up */
+        .art-ecu .abstract-eye-bg { position: absolute; width: 140%; height: 80%; background: #f8fafc; top: 10%; left: -20%; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center;}
+        .art-ecu .abstract-iris { width: 40%; height: 70%; background: #3b82f6; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .art-ecu .abstract-pupil { width: 40%; height: 40%; background: #020617; border-radius: 50%; }
+
+        /* 9. Over the Shoulder (OTS) */
+        .art-ots .shoulder { position: absolute; width: 50%; height: 80%; background: #0f172a; bottom: -10%; left: -10%; border-radius: 50% 50% 0 0; z-index: 3; box-shadow: 5px 0 15px rgba(0,0,0,0.5);}
+        .art-ots .abstract-figure { width: 15%; height: 25%; top: 20%; right: 20%; z-index: 2; }
+        .art-ots .abstract-body { width: 25%; height: 55%; bottom: -10%; right: 15%; border-radius: 10px 10px 0 0; z-index: 1; }
+
+        /* 10. Point of View (POV) */
+        .art-pov { background: #000; display: flex; justify-content: center; align-items: center;}
+        .art-pov .pov-mask { position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, transparent 25%, black 40%), radial-gradient(circle at 70% 50%, transparent 25%, black 40%); z-index: 5; }
+        .art-pov .pov-target { position: absolute; width: 10%; height: 10%; background: #ef4444; top: 45%; left: 45%; border-radius: 2px; }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="relative py-24 px-6 lg:px-8 bg-slate-900 border-b border-slate-800">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-blue-400 font-semibold tracking-wider uppercase text-sm mb-4">Kiến thức Điện ảnh & Quay phim</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">Nghệ thuật kể chuyện bằng <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Các Cỡ Cảnh</span></h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                Cỡ cảnh (Shot Size) không chỉ là khoảng cách từ máy quay đến chủ thể. Nó là ngôn ngữ vô hình định hướng cảm xúc, sự tập trung và mức độ thấu cảm của khán giả. Hãy cùng khám phá 10 cỡ cảnh cơ bản trong điện ảnh.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content: Shot Sizes -->
+    <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
+
+        <!-- 1. Viễn cảnh (Extreme Long Shot) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="art-frame art-els order-2 md:order-1">
+                <div class="abstract-sun"></div>
+                <div class="abstract-ground"></div>
+                <div class="abstract-figure"></div>
+            </div>
+            <div class="order-1 md:order-2 flex flex-col items-start w-full">
+                <p class="text-blue-400 font-bold mb-2">01 / ELS / EWS</p>
+                <h2 class="text-3xl font-bold mb-4">Viễn Cảnh (Extreme Long Shot)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Khung hình cực rộng bao quát một không gian bao la. Chủ thể (con người) xuất hiện rất nhỏ bé, thậm chí khó nhận diện chi tiết, bị nuốt chửng bởi bối cảnh xung quanh.
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Thường được dùng làm <em>Establishing Shot</em> (Cảnh thiết lập) để cho khán giả biết sự kiện đang diễn ra ở đâu, bối cảnh thời gian nào.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-blue-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Hình ảnh đoàn người đi bộ trên sa mạc mênh mông trong phim <em>Dune</em>.</p>
+                </div>
+                <!-- Thumbnail Fake Player 1:22 (82s) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=82s" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở YouTube xem ví dụ (01:22)</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. Toàn cảnh (Long Shot) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex flex-col items-start w-full">
+                <p class="text-emerald-400 font-bold mb-2">02 / LS / WS</p>
+                <h2 class="text-3xl font-bold mb-4">Toàn Cảnh (Long Shot / Wide Shot)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Nhân vật hiển thị trọn vẹn từ đầu đến chân, nhưng bối cảnh xung quanh vẫn chiếm tỷ lệ lớn trong khung hình. Ta có thể thấy rõ họ đang đứng cạnh vật gì, trong phòng nào.
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Cân bằng giữa nhân vật và môi trường. Cho thấy sự tương tác của nhân vật với không gian xung quanh.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-emerald-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Nhân vật bước vào căn nhà hoang, máy quay lấy toàn cảnh để thấy nhân vật đang đứng giữa đồ đạc ngổn ngang.</p>
+                </div>
+                <!-- Thumbnail Fake Player 4:23 (263s) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=263s" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở YouTube xem ví dụ (04:23)</p>
+                    </div>
+                </a>
+            </div>
+            <div class="art-frame art-ls">
+                <div class="abstract-ground"></div>
+                <div class="environment"></div>
+                <div class="abstract-body"></div>
+                <div class="abstract-figure"></div>
+            </div>
+        </section>
+
+        <!-- 3. Toàn thân (Full Shot) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="art-frame art-fs order-2 md:order-1">
+                <div class="abstract-ground"></div>
+                <div class="abstract-body"></div>
+                <div class="abstract-figure"></div>
+            </div>
+            <div class="order-1 md:order-2 flex flex-col items-start w-full">
+                <p class="text-purple-400 font-bold mb-2">03 / FS</p>
+                <h2 class="text-3xl font-bold mb-4">Toàn Thân (Full Shot)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Nhân vật lấp đầy khung hình từ cạnh trên (đỉnh đầu) xuống cạnh dưới (mũi chân). Bối cảnh xung quanh bị giảm bớt đáng kể so với Long Shot.
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Tập trung hoàn toàn vào ngôn ngữ cơ thể, trang phục, và chuyển động của nhân vật. Rất phổ biến trong các cảnh khiêu vũ, võ thuật.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-purple-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Các cảnh múa võ, máy quay bắt trọn toàn thân để khán giả thấy rõ tay chân không bị cắt phạm.</p>
+                </div>
+                <!-- Thumbnail Fake Player 5:35 (335s) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=335s" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở YouTube xem ví dụ (05:35)</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. GHÉP: Trung cảnh rộng (MLS) & Trung cảnh (MS) -->
+        <section class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="flex flex-col items-start w-full">
+                <p class="text-amber-400 font-bold mb-2">04 / MLS & MS</p>
+                <h2 class="text-3xl font-bold mb-4">Nhóm Trung Cảnh (MLS & MS)</h2>
+                
+                <div class="space-y-6 w-full">
+                    <!-- MLS -->
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-amber-400 mb-2">1. Trung Cảnh Rộng (MLS / Cowboy Shot)</h3>
+                        <p class="text-slate-300 text-sm mb-2"><strong>Định nghĩa:</strong> Cắt khung hình từ khoảng đầu gối/giữa đùi trở lên.</p>
+                        <p class="text-slate-300 text-sm mb-4"><strong>Tác dụng:</strong> Thể hiện tư thế sẵn sàng. Nổi tiếng trong phim Viễn Tây để lấy trọn hình ảnh bao súng đeo ở hông.</p>
+                        <!-- Thumbnail Fake Player 6:26 (386s) -->
+                        <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=386s" target="_blank" class="group relative block w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                            <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <p class="mt-3 text-white font-semibold tracking-wide text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">Xem MLS (06:26)</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- MS -->
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-pink-400 mb-2">2. Trung Cảnh (Medium Shot)</h3>
+                        <p class="text-slate-300 text-sm mb-2"><strong>Định nghĩa:</strong> Cắt nhân vật từ eo hoặc thắt lưng trở lên.</p>
+                        <p class="text-slate-300 text-sm mb-4"><strong>Tác dụng:</strong> Cỡ cảnh phổ biến nhất. Tạo cảm giác tự nhiên như giao tiếp ngoài đời thực, thấy rõ cả biểu cảm mặt và cử chỉ tay.</p>
+                        <!-- Thumbnail Fake Player 7:17 (437s) -->
+                        <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=437s" target="_blank" class="group relative block w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                            <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <p class="mt-3 text-white font-semibold tracking-wide text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">Xem MS (07:17)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sticky top-6">
+                <div class="art-frame art-mls relative shadow-lg shadow-amber-500/20">
+                    <span class="absolute top-3 left-3 z-10 text-[11px] font-bold bg-black/70 px-2 py-1 rounded text-amber-400">MLS</span>
+                    <div class="abstract-body"></div>
+                    <div class="abstract-figure"></div>
+                </div>
+                <div class="art-frame art-ms relative shadow-lg shadow-pink-500/20">
+                    <span class="absolute top-3 left-3 z-10 text-[11px] font-bold bg-black/70 px-2 py-1 rounded text-pink-400">MS</span>
+                    <div class="abstract-body"></div>
+                    <div class="abstract-figure"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. GHÉP: Cận trung (MCU) & Cận cảnh (CU) -->
+        <section class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 md:order-1 sticky top-6">
+                <div class="art-frame art-mcu relative shadow-lg shadow-indigo-500/20">
+                    <span class="absolute top-3 left-3 z-10 text-[11px] font-bold bg-black/70 px-2 py-1 rounded text-indigo-400">MCU</span>
+                    <div class="abstract-body"></div>
+                    <div class="abstract-figure"></div>
+                </div>
+                <div class="art-frame art-cu relative shadow-lg shadow-red-500/20">
+                    <span class="absolute top-3 left-3 z-10 text-[11px] font-bold bg-black/70 px-2 py-1 rounded text-red-400">CU</span>
+                    <div class="abstract-figure">
+                        <div class="abstract-eye-left"></div>
+                        <div class="abstract-eye-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex flex-col items-start w-full">
+                <p class="text-indigo-400 font-bold mb-2">05 / MCU & CU</p>
+                <h2 class="text-3xl font-bold mb-4">Nhóm Cận Cảnh (MCU & CU)</h2>
+                
+                <div class="space-y-6 w-full">
+                    <!-- MCU -->
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-2">1. Cận Trung (Medium Close-Up)</h3>
+                        <p class="text-slate-300 text-sm mb-2"><strong>Định nghĩa:</strong> Cắt khung hình từ khoảng ngực trở lên.</p>
+                        <p class="text-slate-300 text-sm mb-4"><strong>Tác dụng:</strong> Tăng cường sự gần gũi, tập trung vào cảm xúc. Hậu cảnh thường được xóa mờ để người xem không bị phân tâm khỏi gương mặt.</p>
+                        <!-- Thumbnail Fake Player 8:51 (531s) -->
+                        <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=531s" target="_blank" class="group relative block w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                            <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <p class="mt-3 text-white font-semibold tracking-wide text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">Xem MCU (08:51)</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- CU -->
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold text-red-400 mb-2">2. Cận Cảnh (Close-Up)</h3>
+                        <p class="text-slate-300 text-sm mb-2"><strong>Định nghĩa:</strong> Gương mặt nhân vật chiếm gần như trọn vẹn khung hình (từ cổ trở lên).</p>
+                        <p class="text-slate-300 text-sm mb-4"><strong>Tác dụng:</strong> Chuyển tải cảm xúc mạnh mẽ, sâu sắc tột độ. Không thể che giấu được nỗi buồn, tức giận hay sợ hãi.</p>
+                        <!-- Thumbnail Fake Player 9:57 (597s) -->
+                        <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=597s" target="_blank" class="group relative block w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                            <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <p class="mt-3 text-white font-semibold tracking-wide text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">Xem CU (09:57)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Đặc tả (Extreme Close-Up) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex flex-col items-start w-full">
+                <p class="text-cyan-400 font-bold mb-2">06 / ECU</p>
+                <h2 class="text-3xl font-bold mb-4">Đặc Tả (Extreme Close-Up)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Quay cực kỳ cận vào một chi tiết rất nhỏ: một đôi mắt, một đôi môi, ngón tay bóp cò súng...
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Tạo sự căng thẳng tột độ (suspense) hoặc nhấn mạnh một chi tiết mang tính biểu tượng/chìa khóa của câu chuyện.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-cyan-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Đặc tả ánh mắt láo liên của tên trộm trước khi hành động, hay cảnh cắt dây bom.</p>
+                </div>
+                <!-- Thumbnail Fake Player 10:37 (637s) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc&t=637s" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở YouTube xem ví dụ (10:37)</p>
+                    </div>
+                </a>
+            </div>
+            <div class="art-frame art-ecu bg-slate-950">
+                <div class="abstract-eye-bg">
+                    <div class="abstract-iris">
+                        <div class="abstract-pupil"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Qua vai (Over the Shoulder) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="art-frame art-ots order-2 md:order-1">
+                <div class="shoulder"></div>
+                <div class="abstract-body bg-slate-400"></div>
+                <div class="abstract-figure bg-slate-300"></div>
+            </div>
+            <div class="order-1 md:order-2 flex flex-col items-start w-full">
+                <p class="text-orange-400 font-bold mb-2">07 / OTS</p>
+                <h2 class="text-3xl font-bold mb-4">Qua Vai (Over The Shoulder)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Máy quay đặt sau lưng, lấy một phần vai và đầu của nhân vật A (tiền cảnh) để nhìn về phía khuôn mặt của nhân vật B (hậu cảnh).
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Gắn kết hai nhân vật trong cùng một không gian hội thoại, giúp khán giả có cảm giác như đang đứng cùng họ.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-orange-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Cảnh phỏng vấn hoặc tra khảo. Khán giả nhìn qua vai thanh tra để thấy kẻ tình nghi.</p>
+                </div>
+                <!-- Thumbnail Fake Player (Chung) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở xem toàn bộ Video</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 8. Góc nhìn (Point of View) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex flex-col items-start w-full">
+                <p class="text-lime-400 font-bold mb-2">08 / POV</p>
+                <h2 class="text-3xl font-bold mb-4">Góc Nhìn (Point Of View)</h2>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Định nghĩa:</strong> Máy quay đóng vai trò là đôi mắt của nhân vật. Khán giả thấy chính xác những gì nhân vật đang thấy.
+                </p>
+                <p class="text-slate-300 mb-4 leading-relaxed">
+                    <strong>Tác dụng:</strong> Tạo sự nhập vai tối đa. Khán giả trải nghiệm nỗi sợ, sự ngạc nhiên trực tiếp từ lăng kính chủ quan của nhân vật.
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-lime-500 w-full mb-6">
+                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Nhân vật nhìn qua ống nhòm, hoặc tiếng thở dốc và camera rung lắc khi đang chạy trốn.</p>
+                </div>
+                <!-- Thumbnail Fake Player (Chung) -->
+                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
+                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở xem toàn bộ Video</p>
+                    </div>
+                </a>
+            </div>
+            <div class="art-frame art-pov">
+                <div class="pov-mask"></div>
+                <div class="pov-target"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Review Section: Flashcards (Answers explicitly shown) -->
+    <section class="bg-slate-800 py-16 border-t border-slate-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 serif-font">Khối Ôn Tập Nhanh (Flashcards)</h2>
+                <p class="text-slate-400">25 câu hỏi tự ôn tập - Câu trả lời hiển thị trực tiếp để dễ dàng ghi nhớ.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:grid-cols-5 gap-4">
+                
+                <!-- Card 1-5 -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">1. Cỡ cảnh nào thường dùng làm Establishing Shot (Cảnh thiết lập)?</h3>
+                    <p class="text-xs text-blue-400 mt-auto bg-blue-900/20 p-2 rounded">Đáp án: Viễn cảnh (Extreme Long Shot - ELS).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">2. Khung hình cắt từ đầu gối trở lên gọi là gì?</h3>
+                    <p class="text-xs text-blue-400 mt-auto bg-blue-900/20 p-2 rounded">Đáp án: Trung cảnh rộng (Medium Long Shot) hoặc Cowboy Shot.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">3. Cỡ cảnh nào lý tưởng nhất để lột tả giọt nước mắt của nhân vật?</h3>
+                    <p class="text-xs text-blue-400 mt-auto bg-blue-900/20 p-2 rounded">Đáp án: Cận cảnh (Close-Up - CU) hoặc Đặc tả (ECU).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">4. Tên gọi cỡ cảnh cho người xem thấy những gì nhân vật đang nhìn?</h3>
+                    <p class="text-xs text-blue-400 mt-auto bg-blue-900/20 p-2 rounded">Đáp án: Góc nhìn (Point of View - POV).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">5. Cỡ cảnh nào cho thấy toàn bộ nhân vật từ đầu đến chân?</h3>
+                    <p class="text-xs text-blue-400 mt-auto bg-blue-900/20 p-2 rounded">Đáp án: Toàn thân (Full Shot - FS).</p>
+                </div>
+
+                <!-- Card 6-10 -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">6. Medium Shot (MS) thường cắt ở vị trí nào của cơ thể?</h3>
+                    <p class="text-xs text-emerald-400 mt-auto bg-emerald-900/20 p-2 rounded">Đáp án: Từ thắt lưng / eo trở lên.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">7. Vì sao MCU (Cận trung) hay dùng làm mờ hậu cảnh?</h3>
+                    <p class="text-xs text-emerald-400 mt-auto bg-emerald-900/20 p-2 rounded">Đáp án: Để tập trung sự chú ý vào khuôn mặt và biểu cảm của nhân vật.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">8. Ký hiệu OTS viết tắt cho từ gì?</h3>
+                    <p class="text-xs text-emerald-400 mt-auto bg-emerald-900/20 p-2 rounded">Đáp án: Over The Shoulder (Qua vai).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">9. Để nhấn mạnh hành động bóp cò súng, dùng cỡ cảnh nào?</h3>
+                    <p class="text-xs text-emerald-400 mt-auto bg-emerald-900/20 p-2 rounded">Đáp án: Đặc tả (Extreme Close-Up - ECU).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">10. Cỡ cảnh nào hay xuất hiện trên bản tin thời sự truyền hình?</h3>
+                    <p class="text-xs text-emerald-400 mt-auto bg-emerald-900/20 p-2 rounded">Đáp án: Trung cảnh (Medium Shot) hoặc Cận Trung (MCU).</p>
+                </div>
+
+                <!-- Card 11-15 -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">11. Cowboy Shot ra đời từ thể loại phim nào?</h3>
+                    <p class="text-xs text-purple-400 mt-auto bg-purple-900/20 p-2 rounded">Đáp án: Phim Cao bồi / Viễn Tây (Western).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">12. Cỡ cảnh tôn vinh tối đa vũ đạo và hành động toàn thân?</h3>
+                    <p class="text-xs text-purple-400 mt-auto bg-purple-900/20 p-2 rounded">Đáp án: Toàn thân (Full Shot).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">13. Điểm khác biệt giữa Long Shot và Extreme Long Shot?</h3>
+                    <p class="text-xs text-purple-400 mt-auto bg-purple-900/20 p-2 rounded">Đáp án: ELS con người rất bé/khó thấy; LS vẫn thấy rõ nhân vật nhưng bối cảnh rộng.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">14. Tác dụng chính của cảnh OTS (Qua vai) trong hội thoại?</h3>
+                    <p class="text-xs text-purple-400 mt-auto bg-purple-900/20 p-2 rounded">Đáp án: Tạo sự kết nối không gian giữa 2 người đối thoại.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">15. Cảnh quay làm khán giả dễ cảm thấy "chóng mặt" nếu rung lắc?</h3>
+                    <p class="text-xs text-purple-400 mt-auto bg-purple-900/20 p-2 rounded">Đáp án: Góc nhìn (POV) góc nhìn thứ nhất.</p>
+                </div>
+
+                <!-- Card 16-20 -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">16. WS là viết tắt của từ gì?</h3>
+                    <p class="text-xs text-amber-400 mt-auto bg-amber-900/20 p-2 rounded">Đáp án: Wide Shot (đồng nghĩa với Long Shot).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">17. Khi đạo diễn muốn thể hiện sự cô đơn lạc lõng của nhân vật giữa sa mạc, họ dùng cỡ nào?</h3>
+                    <p class="text-xs text-amber-400 mt-auto bg-amber-900/20 p-2 rounded">Đáp án: Viễn cảnh (Extreme Long Shot).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">18. ECU tập trung vào cái gì?</h3>
+                    <p class="text-xs text-amber-400 mt-auto bg-amber-900/20 p-2 rounded">Đáp án: Một chi tiết cực kỳ nhỏ bé (mắt, miệng, đồ vật).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">19. Cỡ cảnh nào cân bằng nhất giữa ngôn ngữ cơ thể (tay/vai) và biểu cảm mặt?</h3>
+                    <p class="text-xs text-amber-400 mt-auto bg-amber-900/20 p-2 rounded">Đáp án: Trung cảnh (Medium Shot).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">20. "Headroom" là gì trong bố cục khung hình?</h3>
+                    <p class="text-xs text-amber-400 mt-auto bg-amber-900/20 p-2 rounded">Đáp án: Khoảng trống từ đỉnh đầu nhân vật tới cạnh trên khung hình.</p>
+                </div>
+
+                <!-- Card 21-25 -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">21. Nếu hai nhân vật nói chuyện qua điện thoại, có dùng OTS được không?</h3>
+                    <p class="text-xs text-pink-400 mt-auto bg-pink-900/20 p-2 rounded">Đáp án: Không (vì họ không chung một không gian vật lý).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">22. Để lột tả chân thực nếp nhăn và đôi mắt sắc lẹm, nên dùng cỡ nào?</h3>
+                    <p class="text-xs text-pink-400 mt-auto bg-pink-900/20 p-2 rounded">Đáp án: Cận cảnh (Close-Up) hoặc Đặc tả (ECU).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">23. Cỡ cảnh "Over The Shoulder" thì nhân vật ở tiền cảnh sẽ như thế nào?</h3>
+                    <p class="text-xs text-pink-400 mt-auto bg-pink-900/20 p-2 rounded">Đáp án: Thường quay lưng, chỉ thấy vai/gáy và thường bị out nét (mờ).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">24. Trình tự cỡ cảnh cổ điển khi bắt đầu một phân đoạn (Scene) là gì?</h3>
+                    <p class="text-xs text-pink-400 mt-auto bg-pink-900/20 p-2 rounded">Đáp án: Bắt đầu từ ELS/LS (Thiết lập) -> MS (Hội thoại) -> CU (Cảm xúc).</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <h3 class="font-semibold text-white mb-2 text-sm">25. Khoảng cách máy quay có quyết định duy nhất cỡ cảnh không?</h3>
+                    <p class="text-xs text-pink-400 mt-auto bg-pink-900/20 p-2 rounded">Đáp án: Không, nó còn phụ thuộc vào tiêu cự ống kính (Zoom/Wide lens).</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 text-center border-t border-slate-800">
+        <p class="text-slate-500 text-sm">Landing Page Giáo Dục Điện Ảnh • Thiết kế bằng HTML/CSS nguyên bản và Abstract Art.</p>
+    </footer>
+
+</body>
+</html>
