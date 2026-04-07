@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi" style="background-color: #0f172a;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lý Thuyết Camera Motion | The Ultimate Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Ép nền cứng tuyệt đối để chống lỗi trong suốt */
+        html, body {
+            background-color: #0f172a !important; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0;
+        }
+
+        /* Hộp chứa ảnh minh họa (Đã bỏ toàn bộ Animation) */
+        .art-box {
+            background-color: #1e293b; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+            border-radius: 1rem;
+            width: 100%;
+            height: 10rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .art-box { height: 12rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bao bọc toàn bộ nội dung trong một khối có nền vững chắc -->
+    <div style="background-color: #0f172a; min-height: 100vh; width: 100%;">
+
+        <!-- Hero Section -->
+        <header class="border-b border-slate-800 py-20 lg:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-amber-500">
+                    Camera Movement
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-400 font-light max-w-3xl mx-auto mb-10">
+                    Khám phá nghệ thuật kể chuyện thông qua các loại chuyển động máy quay cốt lõi. Dựa trên phân tích chuyên sâu từ The Ultimate Guide to Camera Movements.
+                </p>
+                <a href="#movements" class="inline-block px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-full transition-colors">
+                    Bắt đầu khám phá
+                </a>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-6 py-16">
+            
+            <div id="movements" class="space-y-24">
+                
+                <!-- 1. Static Shot -->
+                <section class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-amber-500/20 border border-amber-500/50 text-amber-400 rounded-full text-sm font-semibold mb-2">01. Cơ bản</div>
+                        <h2 class="text-3xl font-bold text-white">Static Shot (Cảnh Tĩnh)</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Máy quay được khóa chặt trên chân máy (tripod), hoàn toàn không có sự di chuyển vật lý nào của thiết bị. Khung hình được cố định tuyệt đối.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Sự vắng mặt của chuyển động máy quay tạo ra một sân khấu thuần túy, cho phép diễn viên hoàn toàn làm chủ khung hình.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-amber-500 mt-4">
+                            <span class="text-amber-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim của <em>Wes Anderson (The Grand Budapest Hotel)</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=78s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <div class="w-32 h-24 border-2 border-slate-600 rounded flex justify-center items-center">
+                                <div class="w-16 h-12 border-2 border-amber-500 rounded flex justify-center items-center bg-amber-500/10">
+                                    <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Pan & Whip Pan -->
+                <section class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 rounded-full text-sm font-semibold mb-2">02. Trục Ngang</div>
+                        <h2 class="text-3xl font-bold text-white">Pan & Whip Pan (Lướt Ngang)</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Xoay máy quay sang trái hoặc phải dọc theo trục ngang cố định. <em>Whip Pan</em> là cú Pan được thực hiện ở tốc độ cực cao, tạo vệt mờ.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Theo dõi đối tượng di chuyển theo phương ngang hoặc bộc lộ một yếu tố bất ngờ. Whip Pan thường dùng để chuyển cảnh dồn dập.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-cyan-500 mt-4">
+                            <span class="text-cyan-500 font-bold">🎬 Ví dụ kinh điển:</span> Đạo diễn <em>Damien Chazelle (Whiplash, La La Land)</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=192s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box justify-start px-12">
+                            <!-- Static Art -->
+                            <div class="flex gap-8 items-center w-full justify-between">
+                                <div class="w-16 h-16 bg-slate-700 rounded-lg opacity-50"></div>
+                                <div class="w-20 h-20 bg-cyan-500 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.6)]"></div>
+                                <div class="w-16 h-16 bg-slate-700 rounded-lg opacity-50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Tilt Shot -->
+                <section class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-rose-500/20 border border-rose-500/50 text-rose-400 rounded-full text-sm font-semibold mb-2">03. Trục Dọc</div>
+                        <h2 class="text-3xl font-bold text-white">Tilt (Nghiêng Lên/Xuống)</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Máy quay nghiêng lên (Tilt Up) hoặc xuống (Tilt Down) theo trục dọc, vị trí đặt máy cố định (như động tác gật đầu).
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Đánh giá tầm vóc đối tượng. Tilt Up khiến nhân vật trông quyền lực, vĩ đại hơn. Tilt Down bộc lộ bí mật dưới mặt đất.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-rose-500 mt-4">
+                            <span class="text-rose-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim <em>Star Wars</em> (cảnh mở đầu không gian).
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=311s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box flex-col justify-between py-6">
+                            <!-- Static Art -->
+                            <div class="w-1/2 h-8 bg-slate-700 rounded opacity-50"></div>
+                            <div class="w-16 h-16 bg-rose-500 rounded-full shadow-[0_0_20px_rgba(244,63,94,0.6)]"></div>
+                            <div class="w-1/2 h-8 bg-slate-700 rounded opacity-50"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Push-in & Pull-out -->
+                <section class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 rounded-full text-sm font-semibold mb-2">04. Trục Z</div>
+                        <h2 class="text-3xl font-bold text-white">Push-in & Pull-out</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Di chuyển tịnh tiến toàn bộ thân máy quay lại gần (Push-in) hoặc ra xa (Pull-out) chủ thể, thường dùng thanh ray (Dolly).
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Push-in tăng sự thân mật, tập trung vào nội tâm. Pull-out tạo sự cô lập, xa cách hoặc kết thúc cảnh.
+                        </p>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=427s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <div class="w-32 h-32 border-4 border-emerald-500 border-solid flex justify-center items-center bg-emerald-500/20 rounded-lg shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                                <div class="w-8 h-8 bg-emerald-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Zoom -->
+                <section class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-purple-500/20 border border-purple-500/50 text-purple-400 rounded-full text-sm font-semibold mb-2">05. Quang Học</div>
+                        <h2 class="text-3xl font-bold text-white">Zoom & Crash Zoom</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Máy quay đứng yên, nhưng thay đổi tiêu cự ống kính để phóng to hoặc thu nhỏ. Crash Zoom là vặn tiêu cự cực nhanh.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Zoom bóp méo không gian, dồn ép chủ thể. Crash Zoom tạo sự hài hước hoặc một phát hiện thót tim.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-purple-500 mt-4">
+                            <span class="text-purple-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim của <em>Quentin Tarantino (Kill Bill)</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=624s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <div class="w-32 h-32 rounded-full border-2 border-purple-500 flex justify-center items-center shadow-[inset_0_0_20px_rgba(168,85,247,0.6)]">
+                                <div class="w-16 h-16 bg-slate-700 rounded-full flex justify-center items-center">
+                                    <div class="w-4 h-4 bg-purple-400 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. Dolly Zoom -->
+                <section class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-orange-500/20 border border-orange-500/50 text-orange-400 rounded-full text-sm font-semibold mb-2">06. Hiệu Ứng</div>
+                        <h2 class="text-3xl font-bold text-white">Dolly Zoom (Vertigo)</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Di chuyển thân máy (Dolly) và thay đổi tiêu cự (Zoom) đồng thời theo hướng NGƯỢC NHAU.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Giữ nguyên kích thước chủ thể nhưng kéo dãn/nén không gian nền. Tạo cảm giác hoảng loạn, mất phương hướng hoặc giác ngộ.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-orange-500 mt-4">
+                            <span class="text-orange-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim <em>Vertigo</em> của Alfred Hitchcock, <em>Jaws</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=770s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <!-- Grid nền tĩnh -->
+                            <div class="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,#334155_25%,transparent_25%,transparent_75%,#334155_75%,#334155),linear-gradient(45deg,#334155_25%,transparent_25%,transparent_75%,#334155_75%,#334155)]" style="background-size:20px 20px; background-position:0 0, 10px 10px;"></div>
+                            <div class="w-16 h-20 bg-orange-500 rounded-md z-10 shadow-[0_0_40px_rgba(249,115,22,0.8)] border-2 border-white"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. Tracking Shot -->
+                <section class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-blue-500/20 border border-blue-500/50 text-blue-400 rounded-full text-sm font-semibold mb-2">07. Di Động</div>
+                        <h2 class="text-3xl font-bold text-white">Tracking & Trucking</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Máy quay di chuyển vật lý trong không gian để đi theo sát nhân vật (đi trước, sau, hoặc song song).
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Biến khán giả thành người chạy cùng chủ thể. Tạo sự hồi hộp, căng thẳng thời gian thực (One-shot).
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-blue-500 mt-4">
+                            <span class="text-blue-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim <em>1917</em>, <em>Oldboy</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=1063s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <div class="absolute w-full h-px bg-slate-600 top-1/2"></div>
+                            <div class="flex items-center gap-12 z-10">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.6)]"></div>
+                                <div class="w-10 h-14 border-2 border-slate-300 rounded relative bg-slate-800">
+                                    <div class="absolute -left-4 top-4 w-4 h-5 bg-slate-300 rounded-l"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. Arc Shot -->
+                <section class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="lg:w-1/2 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-pink-500/20 border border-pink-500/50 text-pink-400 rounded-full text-sm font-semibold mb-2">08. Quỹ Đạo</div>
+                        <h2 class="text-3xl font-bold text-white">Arc Shot (Vòng Cung)</h2>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Khái niệm:</strong> Máy quay di chuyển theo hình bán nguyệt hoặc vòng tròn 360 độ xung quanh chủ thể.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            <strong>Ý nghĩa & Ứng dụng:</strong> Bơm năng lượng vào một cảnh quay nhân vật đứng yên. Nhấn mạnh sự chóng mặt, lãng mạn hoặc khoảnh khắc anh hùng.
+                        </p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-pink-500 mt-4">
+                            <span class="text-pink-500 font-bold">🎬 Ví dụ kinh điển:</span> Phim <em>The Matrix</em>.
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full flex flex-col gap-6">
+                        <a href="https://www.youtube.com/watch?v=IiyBo-qLDeM&t=1240s" target="_blank" rel="noopener noreferrer" class="group relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 block bg-black">
+                            <img src="https://img.youtube.com/vi/IiyBo-qLDeM/maxresdefault.jpg" alt="Video thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="art-box">
+                            <!-- Static Art -->
+                            <div class="w-40 h-40 rounded-full border-2 border-dashed border-pink-500/50 absolute"></div>
+                            <div class="w-10 h-10 bg-pink-500 rounded-full z-10 shadow-[0_0_20px_rgba(236,72,153,0.8)]"></div>
+                            <div class="absolute right-[calc(50%-5.5rem)] top-[calc(50%-1rem)]">
+                                <div class="w-8 h-8 border-2 border-white rounded bg-slate-800 transform rotate-90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="border-t border-slate-800 py-20 mt-12">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">Câu Hỏi Ôn Tập Chớp Nhoáng</h2>
+                    <p class="text-slate-400">Hệ thống hóa kiến thức về 8 loại Camera Motion cốt lõi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">1. Pan là gì?</h4>
+                        <p class="text-sm text-slate-300">Quay ngang trái/phải dọc theo trục, chân máy cố định.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">2. Tilt là gì?</h4>
+                        <p class="text-sm text-slate-300">Quay nghiêng lên/xuống theo trục dọc, chân máy cố định.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">3. Zoom khác Push-in thế nào?</h4>
+                        <p class="text-sm text-slate-300">Zoom đổi tiêu cự (máy đứng yên), Push di chuyển vật lý toàn bộ máy.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">4. Whip Pan là gì?</h4>
+                        <p class="text-sm text-slate-300">Một cú Pan cực nhanh tạo ra vệt mờ, thường dùng để chuyển cảnh.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">5. Vertigo Effect là gì?</h4>
+                        <p class="text-sm text-slate-300">Dolly Zoom - kết hợp Dolly in và Zoom out (hoặc ngược lại).</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">6. Push-in mang ý nghĩa gì?</h4>
+                        <p class="text-sm text-slate-300">Tăng sự thân mật, tập trung vào chi tiết quan trọng hoặc suy nghĩ nội tâm.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">7. Pull-out mang ý nghĩa gì?</h4>
+                        <p class="text-sm text-slate-300">Tạo sự xa cách, cô lập nhân vật hoặc báo hiệu kết thúc phân đoạn.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">8. Tracking Shot là gì?</h4>
+                        <p class="text-sm text-slate-300">Máy quay di chuyển trong không gian để theo sát chủ thể đang chuyển động.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">9. Dolly Zoom gây cảm giác gì?</h4>
+                        <p class="text-sm text-slate-300">Mất phương hướng, hoảng loạn, hoặc giây phút giác ngộ chấn động.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">10. Arc Shot là gì?</h4>
+                        <p class="text-sm text-slate-300">Máy quay di chuyển thành hình bán nguyệt/vòng tròn quanh nhân vật.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">11. Trucking khác Tracking?</h4>
+                        <p class="text-sm text-slate-300">Trucking thường đề cập đặc thù tới di chuyển trượt ngang dọc theo chủ thể.</p>
+                    </div>
+                    <div class="bg-[#1e293b] p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2">12. Static Shot tĩnh nhưng để làm gì?</h4>
+                        <p class="text-sm text-slate-300">Khóa khung hình hoàn mỹ, nhường toàn không gian cho diễn xuất của diễn viên.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+            <p>Trình bày theo giáo trình The Shot List - Ultimate Guide to Camera Movements.</p>
+        </footer>
+
+    </div> <!-- End of Solid Background Wrapper -->
+</body>
+</html>
