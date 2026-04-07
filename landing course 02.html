@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Design & Edit - Thực Hành Ngay</title>
+    <style>
+        /* Font chữ hiện đại, thân thiện, dễ đọc lướt */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary: #f97316; /* Cam nổi bật, kích thích hành động (Action Color) */
+            --primary-hover: #ea580c;
+            --bg-color: #f8fafc; /* Nền xám cực nhạt để làm nổi bật các thẻ trắng */
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 { color: var(--text-dark); font-weight: 800; line-height: 1.3; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+        /* BUTTON (Nút kêu gọi hành động) */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background-color: var(--primary); color: var(--white);
+            padding: 16px 36px; border-radius: 50px; font-size: 1.1rem; font-weight: 700;
+            text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+            border: none; cursor: pointer;
+        }
+        .btn:hover { background-color: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4); }
+
+        /* KHUNG CHỜ CHO VIDEO/ẢNH */
+        .placeholder {
+            background-color: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 16px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 30px 20px; position: relative; overflow: hidden;
+        }
+        .placeholder-title { color: var(--text-dark); font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+        .placeholder-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* --- HERO SECTION (PHẦN MỞ ĐẦU) --- */
+        .hero { background-color: var(--white); padding: 80px 0 120px; text-align: center; border-bottom: 1px solid var(--border); }
+        .hero-badge {
+            display: inline-block; background-color: #fff7ed; color: var(--primary);
+            padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; margin-bottom: 24px;
+            border: 1px solid #ffedd5;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 24px; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto 30px; }
+        .author { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 30px; background: var(--bg-color); display: inline-flex; padding: 10px 25px 10px 10px; border-radius: 50px; border: 1px solid var(--border); }
+        .author .placeholder { width: 48px; height: 48px; border-radius: 50%; padding: 0; min-height: unset; border: none; background: #e2e8f0; }
+        .author-info { text-align: left; }
+        .author-name { font-weight: 800; color: var(--text-dark); font-size: 1rem; }
+        .author-title { font-size: 0.85rem; color: var(--text-light); }
+
+        /* --- QUICK WIN SECTION (ĐIỂM NHẤN CỦA PHƯƠNG ÁN NÀY) --- */
+        .quick-win { margin: -80px auto 60px; position: relative; z-index: 10; width: 100%; }
+        .quick-win-card {
+            background: var(--white); border-radius: 24px; padding: 50px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); border: 2px solid var(--primary);
+        }
+        .quick-win-header { text-align: center; margin-bottom: 40px; }
+        .quick-win-header h2 { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 12px; }
+        
+        .step-wrapper { display: flex; gap: 50px; align-items: center; margin-bottom: 30px; }
+        .step-content { flex: 1; }
+        .step-media { width: 300px; flex-shrink: 0; }
+        
+        .step-number {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; background: var(--primary); color: white;
+            border-radius: 50%; font-weight: 800; font-size: 1.1rem; margin-bottom: 16px;
+        }
+        .step-content h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .step-content p { color: var(--text-main); margin-bottom: 16px; font-size: 1.05rem; }
+        
+        .divider { height: 1px; background: var(--border); margin: 40px 0; }
+
+        .success-box {
+            background: #fff7ed; padding: 16px 20px; border-radius: 12px; border: 1px solid #ffedd5; margin-top: 20px;
+        }
+        .success-box strong { color: var(--primary); display: block; margin-bottom: 5px;}
+
+        /* --- LỘ TRÌNH (DẠNG GRID CARD DỄ ĐỌC lƯỚT) --- */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 12px; }
+        
+        .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; }
+        .module-card {
+            background: var(--white); border-radius: 20px; padding: 30px;
+            border: 1px solid var(--border); transition: all 0.2s ease;
+        }
+        .module-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        .module-num { font-size: 0.9rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; background: var(--bg-color); display: inline-block; padding: 4px 12px; border-radius: 20px; }
+        .module-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .module-card p { font-size: 0.95rem; color: var(--text-light); margin: 0; }
+        
+        /* Làm nổi bật riêng Phần 6 */
+        .module-card.highlight { grid-column: 1 / -1; background: #f0fdfa; border-color: #ccfbf1; display: flex; align-items: center; gap: 30px; }
+        .module-card.highlight .module-num { background: #ccfbf1; color: #0d9488; }
+        .module-card.highlight h3 { color: #115e59; }
+
+        /* --- CÁCH ĐỒNG HÀNH --- */
+        .support-section { background: var(--white); padding: 80px 0; border-top: 1px solid var(--border); margin-top: 40px;}
+        .support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .support-card { text-align: center; }
+        .support-card h4 { font-size: 1.2rem; margin-bottom: 12px; margin-top: 20px; }
+        .support-card p { font-size: 0.95rem; color: var(--text-light); }
+
+        .cta-section { text-align: center; padding: 80px 0; background: var(--bg-color); }
+
+        /* --- FOOTER CHUẨN LINK --- */
+        .footer {
+            background-color: var(--white);
+            padding: 50px 20px 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            margin-top: auto;
+        }
+        .footer-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+        .footer-desc { color: var(--text-light); font-size: 0.95rem; margin-bottom: 30px; }
+        .social-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .social-link {
+            text-decoration: none; color: var(--text-main); font-weight: 600; display: flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: 30px; background-color: var(--bg-color);
+            transition: all 0.3s ease; border: 1px solid var(--border); font-size: 0.95rem;
+        }
+        .social-link:hover { color: #fff; border-color: var(--text-dark); background-color: var(--text-dark); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .icon { width: 20px; height: 20px; fill: currentColor; }
+        .copyright { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; }
+
+        /* RESPONSIVE CHO ĐIỆN THOẠI */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 60px 0 100px; }
+            .quick-win-card { padding: 30px 20px; }
+            .step-wrapper { flex-direction: column; text-align: center; gap: 30px; }
+            .step-media { width: 100%; max-width: 320px; margin: 0 auto; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .module-card.highlight { flex-direction: column; text-align: center; }
+            .support-grid { grid-template-columns: 1fr; gap: 40px; }
+            .social-links { flex-direction: column; align-items: center; gap: 12px; }
+            .social-link { width: 220px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">Dành cho người mới bắt đầu</div>
+            <h1>Vào học là làm được ngay!</h1>
+            <p>Đơn giản hóa mọi rào cản kỹ thuật. Mình sẽ hướng dẫn bạn tự tay quay, cắt ghép và kể câu chuyện của riêng bạn qua những thước phim mượt mà nhất.</p>
+            
+            <div class="author">
+                <div class="placeholder"><span style="font-size: 0.6rem;">Ảnh</span></div>
+                <div class="author-info">
+                    <div class="author-name">Nguyễn Đức Việt</div>
+                    <div class="author-title">Người đồng hành cùng bạn</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="quick-win">
+        <div class="container">
+            <div class="quick-win-card">
+                <div class="quick-win-header">
+                    <h2 style="color: var(--primary);">Bắt đầu thực hành, không lý thuyết suông</h2>
+                    <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Mình biết nhiều bạn rất ngại đụng vào phần mềm chằng chịt nút bấm. Vì vậy, bài học đầu tiên của chúng ta rất đơn giản.</p>
+                </div>
+
+                <div class="step-wrapper">
+                    <div class="step-content">
+                        <div class="step-number">1</div>
+                        <h3>Khởi động: Cầm máy lên và quay</h3>
+                        <p>Đừng ngại bấm máy! Rất đơn giản: Tự quay một đoạn bạn đang ngồi nói chuyện (cảnh chính), sau đó quay thêm vài cảnh sinh hoạt xung quanh bạn (cảnh trám).</p>
+                        <p style="font-size: 0.95rem; color: var(--text-light);"><em>* Xong bước này, bạn sẽ quen với ống kính và có sẵn tư liệu để thực hành ghép ngay lập tức.</em></p>
+                    </div>
+                    <div class="step-media">
+                        <div class="placeholder" style="height: 250px; border-color: #cbd5e1;">
+                            <div class="placeholder-title">[ VIDEO DỌC ]</div>
+                            <div class="placeholder-desc">Anh Việt tự quay cảnh ngồi nói và quay các cảnh trám xung quanh.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="step-wrapper" style="flex-direction: row-reverse;">
+                    <div class="step-content">
+                        <div class="step-number">2</div>
+                        <h3>Phần 01: Ghép cảnh mượt mà</h3>
+                        <p>Mở app lên, bỏ qua hết các nút rườm rà. Thao tác duy nhất mình chỉ bạn là: <strong>Ghép cảnh trám đè lên đúng lúc giọng bạn đang vang lên.</strong></p>
+                        
+                        <div class="success-box">
+                            <strong>💡 Trải nghiệm ngay cảm giác "Chiến thắng"!</strong>
+                            <span style="font-size: 0.95rem; color: #9a3412;">Chỉ 1 thao tác nhỏ trong 5 phút, video của bạn đã bớt nhàm chán và sinh động hơn rất nhiều. Bạn làm được rồi đấy!</span>
+                        </div>
+                    </div>
+                    <div class="step-media">
+                        <div class="placeholder" style="height: 380px; border-color: var(--primary); border-width: 3px; background: #fffaf5;">
+                            <div class="placeholder-title" style="color: var(--primary);">[ VIDEO DEMO DỌC ]</div>
+                            <div class="placeholder-desc">Anh Việt thao tác ghép cảnh trám đè lên cảnh chính trên điện thoại. Tiếng vẫn chạy mượt mà.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 20px 0 40px;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cuốn sổ tay 5 phần tiếp theo</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Khóa học được sắp xếp cực kỳ tinh gọn, đi từ những bước nhỏ nhất.</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card">
+                    <span class="module-num">Phần 02</span>
+                    <h3>Kỹ thuật Edit</h3>
+                    <p>Tư duy cắt ghép tạo nhịp điệu. Cùng làm thử "Hiệu ứng bàn tay to đùng giơ sản phẩm" - một mẹo cực kỳ hút mắt để giới thiệu đồ.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">Phần 03</span>
+                    <h3>Kỹ thuật Quay</h3>
+                    <p>Không cần máy cơ đắt tiền. Cách setup góc máy, ánh sáng cơ bản. Hướng dẫn cách tự quay những cảnh B-roll mượt mà bằng điện thoại.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">Phần 04</span>
+                    <h3>Công cụ AI</h3>
+                    <p>Bí ý tưởng? Mình hướng dẫn dùng AI. Chỉ cần cho AI vài từ khóa vụt qua trong đầu, nó sẽ giúp phác thảo ra kịch bản nội dung nhanh chóng.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">Phần 05</span>
+                    <h3>Kỹ thuật Âm thanh</h3>
+                    <p>Thu âm lồng tiếng (voice-over) tự nhiên. Cách chọn nhạc chill và chèn tiếng động (lật sách, tiếng mưa) để thổi hồn vào video.</p>
+                </div>
+                
+                <div class="module-card highlight">
+                    <div style="flex-shrink: 0; text-align: center;">
+                        <span class="module-num">Phần 06</span>
+                        <h3 style="margin: 0; font-size: 1.5rem;">Bài tập tổng hợp</h3>
+                    </div>
+                    <div>
+                        <p style="color: #115e59; font-size: 1.05rem;">Ráp nối toàn bộ kỹ năng (Quay, Edit, Âm thanh). Mình sẽ hướng dẫn bạn tự setup quay cảnh thoại có 2 người nói chuyện, tự lồng tiếng, cắt ghép để tạo thành một sản phẩm chỉn chu từ A-Z.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 20px;">
+                <h2>Cách chúng ta đồng hành</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Học làm video một mình rất dễ nản, nên team sẽ luôn ở đây để đẩy bạn đi lên.</p>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="placeholder" style="height: 180px; border-radius: 20px; background: #f8fafc;">
+                        <div class="placeholder-desc">[ Ảnh giao diện Skool ]</div>
+                    </div>
+                    <h4>Học thật gọn gàng</h4>
+                    <p>Lý thuyết được đóng gói tối giản trên Skool. Có sẵn "video cực kỳ đơn giản" ngay đầu để xem là làm được.</p>
+                </div>
+                <div class="support-card">
+                    <div class="placeholder" style="height: 180px; border-radius: 20px; background: #f8fafc;">
+                        <div class="placeholder-desc">[ Ảnh Group Zalo nộp bài ]</div>
+                    </div>
+                    <h4>Nộp bài là bị "hối thúc"</h4>
+                    <p>Group Zalo là nơi thực hành. Làm xong nộp lên ngay, team hỗ trợ sẽ nhận xét để bạn không có cơ hội lười.</p>
+                </div>
+                <div class="support-card">
+                    <div class="placeholder" style="height: 180px; border-radius: 20px; background: #f8fafc;">
+                        <div class="placeholder-desc">[ Ảnh Livestream chữa bài ]</div>
+                    </div>
+                    <h4>Live sửa lỗi mỗi tuần</h4>
+                    <p>Mỗi tuần mình live 1 buổi. Không dạy lý thuyết suông, mình sẽ mở trực tiếp kênh của bạn lên để khám và chữa lỗi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2.2rem; margin-bottom: 24px;">Đã đến lúc bắt đầu câu chuyện của bạn</h2>
+            <a href="#" class="btn">Tham gia lớp học cùng mình nhé</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">Nguyễn Đức Việt</div>
+        <p class="footer-desc">Đồng hành cùng bạn tạo ra những thước phim cảm xúc.</p>
+        
+        <div class="social-links">
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
+                YouTube
+            </a>
+            
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                TikTok
+            </a>
+            
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                Facebook Page
+            </a>
+        </div>
+        
+        <p class="copyright">© 2026 Nguyễn Đức Việt. Chia sẻ để lan tỏa giá trị.</p>
+    </footer>
+
+</body>
+</html>
