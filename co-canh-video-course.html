@@ -81,16 +81,6 @@
         .art-ecu .abstract-iris { width: 40%; height: 70%; background: #3b82f6; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
         .art-ecu .abstract-pupil { width: 40%; height: 40%; background: #020617; border-radius: 50%; }
 
-        /* 9. Over the Shoulder (OTS) */
-        .art-ots .shoulder { position: absolute; width: 50%; height: 80%; background: #0f172a; bottom: -10%; left: -10%; border-radius: 50% 50% 0 0; z-index: 3; box-shadow: 5px 0 15px rgba(0,0,0,0.5);}
-        .art-ots .abstract-figure { width: 15%; height: 25%; top: 20%; right: 20%; z-index: 2; }
-        .art-ots .abstract-body { width: 25%; height: 55%; bottom: -10%; right: 15%; border-radius: 10px 10px 0 0; z-index: 1; }
-
-        /* 10. Point of View (POV) */
-        .art-pov { background: #000; display: flex; justify-content: center; align-items: center;}
-        .art-pov .pov-mask { position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, transparent 25%, black 40%), radial-gradient(circle at 70% 50%, transparent 25%, black 40%); z-index: 5; }
-        .art-pov .pov-target { position: absolute; width: 10%; height: 10%; background: #ef4444; top: 45%; left: 45%; border-radius: 2px; }
-
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
@@ -101,7 +91,7 @@
             <p class="text-blue-400 font-semibold tracking-wider uppercase text-sm mb-4">Kiến thức Điện ảnh & Quay phim</p>
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">Nghệ thuật kể chuyện bằng <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Các Cỡ Cảnh</span></h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                Cỡ cảnh (Shot Size) không chỉ là khoảng cách từ máy quay đến chủ thể. Nó là ngôn ngữ vô hình định hướng cảm xúc, sự tập trung và mức độ thấu cảm của khán giả. Hãy cùng khám phá 10 cỡ cảnh cơ bản trong điện ảnh.
+                Cỡ cảnh (Shot Size) không chỉ là khoảng cách từ máy quay đến chủ thể. Nó là ngôn ngữ vô hình định hướng cảm xúc, sự tập trung và mức độ thấu cảm của khán giả. Hãy cùng khám phá các cỡ cảnh cơ bản trong điện ảnh.
             </p>
         </div>
     </header>
@@ -354,69 +344,6 @@
             </div>
         </section>
 
-        <!-- 7. Qua vai (Over the Shoulder) -->
-        <section class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="art-frame art-ots order-2 md:order-1">
-                <div class="shoulder"></div>
-                <div class="abstract-body bg-slate-400"></div>
-                <div class="abstract-figure bg-slate-300"></div>
-            </div>
-            <div class="order-1 md:order-2 flex flex-col items-start w-full">
-                <p class="text-orange-400 font-bold mb-2">07 / OTS</p>
-                <h2 class="text-3xl font-bold mb-4">Qua Vai (Over The Shoulder)</h2>
-                <p class="text-slate-300 mb-4 leading-relaxed">
-                    <strong>Định nghĩa:</strong> Máy quay đặt sau lưng, lấy một phần vai và đầu của nhân vật A (tiền cảnh) để nhìn về phía khuôn mặt của nhân vật B (hậu cảnh).
-                </p>
-                <p class="text-slate-300 mb-4 leading-relaxed">
-                    <strong>Tác dụng:</strong> Gắn kết hai nhân vật trong cùng một không gian hội thoại, giúp khán giả có cảm giác như đang đứng cùng họ.
-                </p>
-                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-orange-500 w-full mb-6">
-                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Cảnh phỏng vấn hoặc tra khảo. Khán giả nhìn qua vai thanh tra để thấy kẻ tình nghi.</p>
-                </div>
-                <!-- Thumbnail Fake Player (Chung) -->
-                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
-                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở xem toàn bộ Video</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 8. Góc nhìn (Point of View) -->
-        <section class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="flex flex-col items-start w-full">
-                <p class="text-lime-400 font-bold mb-2">08 / POV</p>
-                <h2 class="text-3xl font-bold mb-4">Góc Nhìn (Point Of View)</h2>
-                <p class="text-slate-300 mb-4 leading-relaxed">
-                    <strong>Định nghĩa:</strong> Máy quay đóng vai trò là đôi mắt của nhân vật. Khán giả thấy chính xác những gì nhân vật đang thấy.
-                </p>
-                <p class="text-slate-300 mb-4 leading-relaxed">
-                    <strong>Tác dụng:</strong> Tạo sự nhập vai tối đa. Khán giả trải nghiệm nỗi sợ, sự ngạc nhiên trực tiếp từ lăng kính chủ quan của nhân vật.
-                </p>
-                <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-lime-500 w-full mb-6">
-                    <p class="text-sm text-slate-300"><strong>Ví dụ:</strong> Nhân vật nhìn qua ống nhòm, hoặc tiếng thở dốc và camera rung lắc khi đang chạy trốn.</p>
-                </div>
-                <!-- Thumbnail Fake Player (Chung) -->
-                <a href="https://www.youtube.com/watch?v=AyML8xuKfoc" target="_blank" class="group relative block w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
-                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('https://img.youtube.com/vi/AyML8xuKfoc/hqdefault.jpg');"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-500 transition-transform duration-300 backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <p class="mt-4 text-white font-semibold tracking-wide text-sm bg-black/60 px-4 py-1.5 rounded-full backdrop-blur-md">Mở xem toàn bộ Video</p>
-                    </div>
-                </a>
-            </div>
-            <div class="art-frame art-pov">
-                <div class="pov-mask"></div>
-                <div class="pov-target"></div>
-            </div>
-        </section>
-
     </main>
 
     <!-- Review Section: Flashcards (Answers explicitly shown) -->
@@ -544,8 +471,37 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-8 text-center border-t border-slate-800">
-        <p class="text-slate-500 text-sm">Landing Page Giáo Dục Điện Ảnh • Thiết kế bằng HTML/CSS nguyên bản và Abstract Art.</p>
+    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-xl font-bold text-white mb-4 serif-font">Các kênh hiện tại của mình</h3>
+            <p class="text-slate-400 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+                Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <!-- YouTube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-red-600/10 hover:text-red-500 text-slate-300 rounded-full transition-all border border-slate-700 hover:border-red-500/50 shadow-sm">
+                    <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4s-6.254,0-7.814,0.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
+                    <span class="font-semibold text-sm tracking-wide">YouTube</span>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded-full transition-all border border-slate-700 hover:border-slate-500 hover:text-white shadow-sm">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                    <span class="font-semibold text-sm tracking-wide">TikTok</span>
+                </a>
+                
+                <!-- Facebook -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-blue-600/10 hover:text-blue-500 text-slate-300 rounded-full transition-all border border-slate-700 hover:border-blue-500/50 shadow-sm">
+                    <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H7v-3h3V9.9c0-2.97,1.77-4.61,4.47-4.61c1.3,0,2.66,0.23,2.66,0.23v2.93h-1.5 c-1.48,0-1.94,0.92-1.94,1.86V12h3.33l-0.53,3h-2.8v6.8C18.56,20.87,22,16.84,22,12z"/></svg>
+                    <span class="font-semibold text-sm tracking-wide">Facebook Page</span>
+                </a>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-800">
+                <p class="text-slate-500 text-xs">Landing Page Giáo Dục Điện Ảnh • Thiết kế bằng HTML/CSS nguyên bản và Abstract Art.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
