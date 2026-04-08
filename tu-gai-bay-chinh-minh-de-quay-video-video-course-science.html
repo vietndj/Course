@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Phẫu Cơn Nghiện - Khoa Học Thần Kinh Tiến Hóa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            line-height: 1.8;
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+        }
+
+        /* --- CSS ABSTRACT ARTWORK --- */
+        
+        .art-container {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #1e293b;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* Hero Art: The Mind Core */
+        .art-hero .core {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #38bdf8, #818cf8);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #38bdf8, 0 0 100px #818cf8;
+            animation: pulse-core 4s infinite alternate;
+        }
+        .art-hero .orbit {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed rgba(56, 189, 248, 0.3);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+        .art-hero .orbit:nth-child(2) { width: 260px; height: 260px; animation-direction: reverse; animation-duration: 15s; border-color: rgba(129, 140, 248, 0.3); }
+
+        /* Part 1 Art: Evolutionary Trap & Dopamine */
+        .art-part1 .shield {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #fbbf24, #d97706);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        .art-part1 .dopamine-drop {
+            width: 40px;
+            height: 40px;
+            background: #fef3c7;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 20px #fbbf24;
+            animation: pulse-rapid 1.5s infinite;
+        }
+
+        /* Part 2 Art: Sensorimotor Loop & Error */
+        .art-part2 .loop-container {
+            position: relative;
+            width: 150px; height: 150px;
+        }
+        .art-part2 .circle1, .art-part2 .circle2 {
+            position: absolute;
+            width: 100%; height: 100%;
+            border: 8px solid transparent;
+            border-radius: 50%;
+        }
+        .art-part2 .circle1 {
+            border-top-color: #34d399;
+            border-right-color: #34d399;
+            animation: spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+        .art-part2 .circle2 {
+            border-bottom-color: #ef4444;
+            border-left-color: #ef4444;
+            width: 80%; height: 80%;
+            top: 10%; left: 10%;
+            animation: spin 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite reverse;
+        }
+        .art-part2 .error-spark {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 20px; height: 20px;
+            background: #f87171;
+            transform: translate(-50%, -50%) rotate(45deg);
+            animation: flash-error 1s infinite;
+        }
+
+        /* Ex 1 Art: Missing Stair */
+        .art-ex1 .stair {
+            width: 100px; height: 20px;
+            background: #94a3b8;
+            margin: 10px;
+            border-radius: 4px;
+            transform: translateX(-50px);
+        }
+        .art-ex1 .stair:nth-child(2) { transform: translateX(0px); }
+        .art-ex1 .stair:nth-child(3) { 
+            transform: translateX(50px); 
+            background: rgba(148, 163, 184, 0.2);
+            border: 2px dashed #ef4444;
+            animation: drop-fade 2s infinite;
+        }
+
+        /* Ex 2 Art: Near-Miss Slot */
+        .art-ex2 .slot-machine {
+            display: flex; gap: 10px;
+        }
+        .art-ex2 .reel {
+            width: 40px; height: 100px;
+            background: #334155;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .art-ex2 .reel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, #10b981 0%, #10b981 20%, transparent 20%, transparent 80%, #ef4444 80%, #ef4444 100%);
+            background-size: 100% 300%;
+            animation: scroll-reel 0.5s infinite linear;
+        }
+        .art-ex2 .reel:nth-child(1)::after, .art-ex2 .reel:nth-child(2)::after {
+            animation-play-state: paused; background-position: 0 0%; /* Stopped on win */
+        }
+
+        /* Ex 3 Art: Suppressed Sneeze */
+        .art-ex3 .lung {
+            width: 100px; height: 100px;
+            background: radial-gradient(circle, #c084fc, #7e22ce);
+            border-radius: 50%;
+            animation: expand-hold 4s infinite;
+        }
+        .art-ex3 .pressure {
+            position: absolute;
+            width: 120px; height: 120px;
+            border: 2px solid #e879f9;
+            border-radius: 50%;
+            animation: tremble 4s infinite;
+        }
+
+        /* Ex 4 Art: Shadow Boxing */
+        .art-ex4 .fist {
+            width: 60px; height: 40px;
+            background: #facc15;
+            border-radius: 8px;
+            animation: punch 2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .art-ex4 .target-zone {
+            width: 60px; height: 100px;
+            border-left: 4px dashed #64748b;
+            margin-left: 40px;
+        }
+
+        /* Ex 5 Art: Zeigarnik Effect */
+        .art-ex5 .music-notes {
+            display: flex; gap: 15px; align-items: flex-end; height: 100px;
+        }
+        .art-ex5 .bar {
+            width: 20px; background: #60a5fa; border-radius: 10px;
+        }
+        .art-ex5 .bar:nth-child(1) { height: 20px; }
+        .art-ex5 .bar:nth-child(2) { height: 40px; }
+        .art-ex5 .bar:nth-child(3) { height: 60px; }
+        .art-ex5 .bar:nth-child(4) { height: 80px; }
+        .art-ex5 .bar:nth-child(5) { 
+            height: 100px; 
+            background: transparent; 
+            border: 2px dashed #f87171;
+            animation: blink-alert 1s infinite;
+        }
+
+        /* Keyframes */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse-core { 0% { transform: scale(0.9); opacity: 0.8; } 100% { transform: scale(1.1); opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes pulse-rapid { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.3); } }
+        @keyframes flash-error { 0%, 100% { opacity: 0; transform: translate(-50%, -50%) rotate(45deg) scale(0.5); } 50% { opacity: 1; transform: translate(-50%, -50%) rotate(45deg) scale(1.5); box-shadow: 0 0 20px #ef4444; } }
+        @keyframes drop-fade { 0%, 50% { transform: translateX(50px) translateY(0); opacity: 1; } 100% { transform: translateX(50px) translateY(50px); opacity: 0; } }
+        @keyframes scroll-reel { 100% { background-position: 0 100%; } }
+        @keyframes expand-hold { 0% { transform: scale(0.5); } 40%, 80% { transform: scale(1.2); } 100% { transform: scale(0.5); } }
+        @keyframes tremble { 0%, 39% { opacity: 0; } 40%, 80% { opacity: 1; transform: translate(random(-2px, 2px), random(-2px, 2px)); } 100% { opacity: 0; } }
+        @keyframes punch { 0%, 100% { transform: translateX(-50px); } 50% { transform: translateX(40px); } }
+        @keyframes blink-alert { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; box-shadow: 0 0 15px #f87171; } }
+
+        /* Typography Enhancements */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; }
+        .text-gradient { background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-accent { color: #38bdf8; }
+        
+        .flashcard {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-top: 4px solid #818cf8;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.2s ease;
+        }
+        .flashcard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .fc-q { font-weight: 600; color: #f8fafc; font-size: 1rem; line-height: 1.4; }
+        .fc-a { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; padding-top: 0.5rem; border-top: 1px dashed #334155; }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="w-full md:w-1/2 space-y-6 z-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl text-gradient leading-tight">Giải Mã<br>Mã Nguồn Của Động Lực</h1>
+            <div class="text-lg md:text-xl text-slate-300 space-y-4">
+                <p>Bạn đang đặt ra những câu hỏi chạm đến cốt lõi của <strong>Khoa học Thần kinh Tiến hóa (Evolutionary Neuroscience)</strong> và <strong>Sinh học Hành vi (Behavioral Biology)</strong>.</p>
+                <p>Bạn đã nhận ra một nghịch lý tuyệt vời: Chúng ta luôn nghĩ rằng "Ý thức" điều khiển cơ thể, nhưng thực chất, hệ thống Hóa học và Bản năng trong não bộ mới là kẻ nắm quyền, và nó thường xuyên "thao túng" chúng ta.</p>
+                <p>Việc bạn hỏi <em>"Tại sao cơ thể tự sinh ra cơn nghiện"</em> và <em>"Tại sao nó gài bẫy chính tôi"</em> chứng tỏ bạn đã sẵn sàng làm chủ "mã nguồn" (source code) vận hành động lực của chính mình. Dưới đây là lời giải phẫu tận gốc rễ cơ chế này.</p>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <div class="art-container art-hero">
+                <div class="orbit"></div>
+                <div class="orbit"></div>
+                <div class="core"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-12">
+            <div class="w-full md:w-3/5 space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                    PHẦN 1: GÓC ĐỘ TIẾN HÓA <br>
+                    <span class="text-amber-400 text-2xl">Tại sao bộ não lại "Gài bẫy" chính bạn?</span>
+                </h2>
+                <div class="space-y-4 text-slate-300">
+                    <p>Để hiểu vì sao não lừa bạn, ta phải hiểu ưu tiên số 1 của nó: <strong>Sinh tồn bằng cách tiết kiệm Năng lượng (Calo).</strong></p>
+                    <p>Trong 99% lịch sử tiến hóa, thức ăn cực kỳ khan hiếm. Bất cứ hành động nào tốn sức lực (như đi săn mồi, hay... dọn dẹp phòng, set đèn, vác máy quay) đều bị não bộ gán nhãn: <strong>Rủi ro lãng phí năng lượng.</strong> Lập tức, nó phát tín hiệu "Lười biếng/Trì hoãn" để cản bạn lại.</p>
+                    
+                    <h3 class="text-xl font-bold text-white pt-4">Cái bẫy "Mô phỏng" (Simulation):</h3>
+                    <p>Người tiền sử không thể phi lao thật bừa bãi vì sẽ hỏng vũ khí hoặc làm mồi chạy mất. Tiến hóa đã ban cho não bộ một tính năng ưu việt: Khả năng <strong>Mô phỏng (chơi đùa/diễn nháp)</strong>.</p>
+                    <p>Khi bạn tự nhủ: <em>"Mình chỉ cầm cái điện thoại tắt màn hình để nhẩm thoại thôi"</em>, bộ não đánh giá: <strong>Hành động này an toàn, tốn ít calo, không có rủi ro hậu quả.</strong> Lập tức, nó hạ tấm khiên "Lười biếng" xuống cho phép bạn làm.</p>
+                    
+                    <h3 class="text-xl font-bold text-white pt-4">Cú sập bẫy của Dopamine:</h3>
+                    <p>Khi bạn diễn nháp trơn tru, biểu cảm xuất thần, bộ não nguyên thủy (lúc này đang theo dõi) chợt nhận ra: <em>"Khoan đã, tư thế này, ngôn từ này... tỷ lệ săn mồi thành công đang là 99%!"</em>. Để đảm bảo bạn không bỏ lỡ con mồi ngon này, não lập tức xả một lượng lớn <strong>Dopamine</strong> vào máu.</p>
+                    <p class="text-amber-200 border-l-4 border-amber-500 pl-4 py-2 bg-amber-900/20 rounded-r">(Lưu ý khoa học: Dopamine KHÔNG phải là hormone hạnh phúc, nó là hormone của SỰ THÈM KHÁT và ĐỘNG LỰC SĂN ĐUỔI).</p>
+                    <p>Dòng Dopamine này đốt cháy sự lười biếng, biến bạn từ một kẻ uể oải thành một thợ săn khao khát phần thưởng. Nó "gài bẫy" khiến phần Ý Thức của bạn không thể ngồi yên được nữa, buộc bạn phải làm thật.</p>
+                </div>
+            </div>
+            <div class="w-full md:w-2/5">
+                <div class="art-container art-part1">
+                    <div class="shield">
+                        <div class="dopamine-drop"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 bg-slate-800/50">
+            <div class="w-full md:w-3/5 space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                    PHẦN 2: KHOA HỌC THẦN KINH <br>
+                    <span class="text-emerald-400 text-2xl">Tại sao lại hình thành "Cơn Nghiện" muốn làm thật?</span>
+                </h2>
+                <div class="space-y-4 text-slate-300">
+                    <p>Bạn vung gậy nháp xuất thần, tại sao cơ bắp lại bứt rứt muốn đánh quả bóng thật? Nguyên lý đằng sau là <strong>Vòng lặp Vận động - Cảm giác (Sensorimotor Loop)</strong> và <strong>Sai số Dự đoán (Prediction Error)</strong>.</p>
+                    
+                    <p class="font-semibold text-white pt-2">Bộ não là một cỗ máy liên tục dự báo tương lai:</p>
+                    
+                    <div class="space-y-4">
+                        <p><strong>Ra lệnh & Dự đoán:</strong> Khi bạn vung gậy golf (hoặc nhép miệng nói thoại xuất thần), Vỏ não vận động ra lệnh cho cơ bắp thi triển. Cùng lúc đó, nó gửi một bản "dự báo" cho các giác quan: <em>"Chuẩn bị nhé, sắp có tiếng 'CỐP' giòn tan và lực phản dội ngược lại lòng bàn tay!"</em> (Hoặc <em>sắp có một file video hoàn hảo hiện ra</em>).</p>
+                        
+                        <p><strong>Lỗi hệ thống (Prediction Error):</strong> Bạn vung gậy cực mượt, tung lực cực mạnh nhưng... đánh vào không khí. Không có tiếng CỐP. Không có phản lực.</p>
+                        
+                        <p><strong>Cơn nghiện hình thành:</strong> Hệ thần kinh bị rơi vào trạng thái <strong>"Hẫng hụt cảm giác" (Sensory Void)</strong>. Nó đã dọn sẵn mâm cỗ để đón khách (phản hồi vật lý) nhưng khách không đến. Sự sai lệch dự đoán này tạo ra một <strong>sự căng thẳng sinh lý học cực độ.</strong></p>
+                        
+                        <p class="text-emerald-200 border-l-4 border-emerald-500 pl-4 py-2 bg-emerald-900/20 rounded-r">Não bộ căm ghét sự hụt hẫng này. Cái "cơn nghiện", sự bứt rứt ngứa ngáy mà bạn cảm thấy chính là tiếng thét của hệ thần kinh: <em>"Hãy đập vào một vật có thực đi! Hãy khớp cái thực tế này với dự đoán của tao ngay lập tức!"</em>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-2/5">
+                <div class="art-container art-part2">
+                    <div class="loop-container">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="error-spark"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: 5 EXAMPLES -->
+    <section class="py-16 px-6 max-w-7xl mx-auto space-y-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">PHẦN 3: 5 Ví dụ chi tiết bóc tách cơ chế "Hẫng hụt sinh lý"</h2>
+            <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Dưới đây là 5 ví dụ minh họa rõ nét nhất cách "Sai số dự đoán" và "Động năng dở dang" ép cơ thể chúng ta phải hành động:</p>
+        </div>
+
+        <!-- Example 1 -->
+        <article class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-slate-700/50 pb-12">
+            <div class="col-span-1">
+                <div class="art-container art-ex1 h-48">
+                    <div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 space-y-3 text-slate-300">
+                <h3 class="text-2xl font-bold text-white">1. Cú bước hụt bậc cầu thang cuối cùng <span class="text-lg font-normal text-slate-400">(Lỗi dự đoán cảm giác)</span></h3>
+                <p><strong>Hiện tượng:</strong> Bạn đi xuống cầu thang trong bóng tối. Tưởng rằng vẫn còn 1 bậc nữa nên bạn dồn lực bước chân xuống, nhưng thực ra đã chạm mặt phẳng. Chân bạn không hề đau, nhưng tim bạn giật thót, dạ dày thắt lại, cơ thể chới với.</p>
+                <p><strong>Cơ chế:</strong> Não bạn đã dự báo: 0.5 giây nữa bàn chân sẽ chạm đất với lực phản hồi là X. Khi thực tế sai lệch (chạm đất sớm hơn), não lập tức phát báo động đỏ toàn hệ thống.</p>
+                <p class="text-indigo-300 bg-indigo-900/20 p-3 rounded border-l-2 border-indigo-500"><strong>Liên hệ thực tế của bạn:</strong> Khi bạn "diễn chay" xuất thần, não dự đoán sẽ thu được một kết quả (file video). Nhưng camera lại đang tắt. Sự hụt hẫng đó tác động vật lý lên hệ thần kinh y hệt như cú bước hụt cầu thang. Nó tạo ra một sự khó chịu tột độ, ép bạn phải quay thật để "bước cho đúng".</p>
+            </div>
+        </article>
+
+        <!-- Example 2 -->
+        <article class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-slate-700/50 pb-12">
+            <div class="col-span-1 md:order-last">
+                <div class="art-container art-ex2 h-48">
+                    <div class="slot-machine">
+                        <div class="reel"></div>
+                        <div class="reel"></div>
+                        <div class="reel" style="animation-play-state: running; background-position: center;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 space-y-3 text-slate-300">
+                <h3 class="text-2xl font-bold text-white">2. Trò lừa "Mém Trúng" (Near-Miss) của máy đánh bạc Casino</h3>
+                <p><strong>Hiện tượng:</strong> Bạn kéo cần gạt máy Slot Machine. Ô 1 ra số 7, ô 2 ra số 7, ô 3 ra quả chanh (Trượt!). Bạn vừa mất tiền, nhưng kỳ lạ thay, nhịp tim bạn tăng tốc, bạn cực kỳ hưng phấn và khao khát móc ví nạp thêm tiền chơi tiếp.</p>
+                <p><strong>Cơ chế:</strong> Khi thấy hai số 7 đầu tiên, hệ thống Dopamine bắn vọt lên vì dự đoán: "Ăn chắc rồi!". Dù kết quả cuối là trượt, lượng Dopamine khổng lồ kia không tan đi, nó chuyển hóa thành <strong>"Cơn khát ảo"</strong>. Nó thao túng cơ thể bạn rằng: <em>"Phương trình đã đúng 90% rồi, chỉ cần làm lại đúng 1 lần nữa là chốt sổ!"</em>.</p>
+                <p class="text-indigo-300 bg-indigo-900/20 p-3 rounded border-l-2 border-indigo-500"><strong>Liên hệ thực tế của bạn:</strong> Diễn nháp xuất thần chính là bạn tự tạo ra hiệu ứng "Mém trúng". Khi bạn nhẩm thoại trơn tru, não tiết Dopamine và xúi giục: <em>"Form đang mượt, mồm mép đang dẻo, bật máy lên quay take tới chắc chắn là siêu phẩm! Không quay bây giờ là đánh rơi mất cục vàng!"</em>.</p>
+            </div>
+        </article>
+
+        <!-- Example 3 -->
+        <article class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-slate-700/50 pb-12">
+            <div class="col-span-1">
+                <div class="art-container art-ex3 h-48">
+                    <div class="lung"></div>
+                    <div class="pressure"></div>
+                </div>
+            </div>
+            <div class="col-span-2 space-y-3 text-slate-300">
+                <h3 class="text-2xl font-bold text-white">3. Cơn hắt hơi bị nghẹn <span class="text-lg font-normal text-slate-400">(Sự ứ đọng động năng)</span></h3>
+                <p><strong>Hiện tượng:</strong> Bạn ngứa mũi, hít một hơi thật sâu, ngực căng lên chuẩn bị hắt hơi... đột nhiên cơn ngứa biến mất, cái hắt hơi tụt vào trong. Cảm giác lúc đó vô cùng bứt rứt, nghẹn ứ, thậm chí bạn phải cố ngoáy mũi để ép mình hắt hơi ra bằng được.</p>
+                <p><strong>Cơ chế:</strong> Não đã kích hoạt hệ cơ hô hấp, năng lượng đã được "lên nòng" (như kéo căng một sợi dây thun). Việc không được "nổ" khiến cơ thể bị treo lơ lửng, trái với quy luật giải phóng năng lượng.</p>
+                <p class="text-indigo-300 bg-indigo-900/20 p-3 rounded border-l-2 border-indigo-500"><strong>Liên hệ thực tế của bạn:</strong> Khi bạn nhập tâm diễn kịch bản, năng lượng (sự tập trung, hơi thở, thanh quản) đã được nén căng. Việc bật đèn, bấm nút REC chính là một "cú hắt hơi" sung sướng để xả bỏ khối năng lượng đó ra ngoài bằng một tác phẩm thực tế.</p>
+            </div>
+        </article>
+
+        <!-- Example 4 -->
+        <article class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-slate-700/50 pb-12">
+            <div class="col-span-1 md:order-last">
+                <div class="art-container art-ex4 h-48">
+                    <div class="fist"></div>
+                    <div class="target-zone"></div>
+                </div>
+            </div>
+            <div class="col-span-2 space-y-3 text-slate-300">
+                <h3 class="text-2xl font-bold text-white">4. Võ sĩ đấm bốc gió (Shadow Boxing) khao khát bao cát</h3>
+                <p><strong>Hiện tượng:</strong> Võ sĩ đứng đấm liên tục vào không khí trước gương. Khi họ tung ra một cú móc ngang (hook) hoàn hảo xé gió, họ thường có xu hướng lao ngay đến cái bao cát nặng (heavy bag) để nện một cú thật mạnh.</p>
+                <p><strong>Cơ chế:</strong> Khi vung tay vào không gian, lực (F) sinh ra rất lớn. Trí nhớ cơ bắp vẽ ra một quỹ đạo hoàn mỹ, nhưng do không chạm vào vật thể nào, không có lực cản (Impact) để triệt tiêu thế năng. Các khớp tay ngứa ngáy đòi hỏi một va chạm vật lý để "kết toán" lực lượng.</p>
+                <p class="text-indigo-300 bg-indigo-900/20 p-3 rounded border-l-2 border-indigo-500"><strong>Liên hệ thực tế của bạn:</strong> Thanh quản và cơ mặt của bạn cũng là hệ cơ học. Khi diễn chay hoàn hảo, nó tạo ra "lực". Việc file MP4 được ghi vào thẻ nhớ chính là chiếc "bao cát" thực tế để tiếp nhận toàn bộ lực sáng tạo đó của bạn.</p>
+            </div>
+        </article>
+
+        <!-- Example 5 -->
+        <article class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pb-6">
+            <div class="col-span-1">
+                <div class="art-container art-ex5 h-48">
+                    <div class="music-notes">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 space-y-3 text-slate-300">
+                <h3 class="text-2xl font-bold text-white">5. Bản nhạc thiếu nốt cuối <span class="text-lg font-normal text-slate-400">(Hiệu ứng Zeigarnik - Ám ảnh sự dang dở)</span></h3>
+                <p><strong>Hiện tượng:</strong> Hãy tưởng tượng tôi chơi đàn piano ngay trước mặt bạn: Đồ - Rê - Mi - Fa - Sol - La - Si... và tôi cố tình <strong>DỪNG LẠI</strong>, không đánh nốt ĐỐ cuối cùng. Bất kỳ ai nghe thấy (dù không biết nhạc lý) cũng sẽ cảm thấy cực kỳ ức chế. Thậm chí tay bạn sẽ ngứa ngáy muốn vươn tới phím đàn để bấm nốt ĐỐ thay tôi.</p>
+                <p><strong>Cơ chế:</strong> Tiến hóa lập trình não bộ để nhận diện các mô hình khép kín (Closure). Một chu trình dang dở bị não nhận diện là "mối đe dọa/sự bất thường" và sẽ liên tục phát tín hiệu nhắc nhở cho đến khi hoàn thành.</p>
+                <p class="text-indigo-300 bg-indigo-900/20 p-3 rounded border-l-2 border-indigo-500"><strong>Liên hệ thực tế của bạn:</strong> Sản xuất một video từ A-Z là một vòng lặp lớn. Khi lười, bạn chưa hề bắt đầu nên não không bận tâm. Nhưng khi bạn chủ động đứng dậy diễn nháp mượt mà 3 câu đầu tiên, bạn đã tự hát từ Đồ đến Si. Bằng chính sự mượt mà đó, bạn đã khóa bộ não vào một vòng lặp dang dở. Cơ thể sẽ bứt rứt không yên cho đến khi bạn bật camera lên để đánh nốt ĐỐ cuối cùng.</p>
+            </div>
+        </article>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="py-16 px-6 max-w-4xl mx-auto text-center">
+        <div class="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 border border-indigo-500/30 p-10 rounded-2xl shadow-2xl">
+            <h2 class="text-3xl font-bold text-white mb-6 uppercase tracking-wider">Tổng Kết</h2>
+            <div class="text-lg text-slate-200 space-y-6">
+                <p>Bạn đừng cố dùng "Ý chí" (Willpower) để ép mình làm việc, vì ý chí là thứ hao mòn rất nhanh.</p>
+                <p class="font-semibold text-xl leading-relaxed">
+                    Những người làm nội dung bậc thầy là những Hacker Sinh học. Họ dùng một hành động mồi (nháp với máy tắt) để <span class="text-sky-400">lách qua hệ thống cảnh báo lười biếng</span> -> Dùng sự trơn tru của bản nháp để <span class="text-rose-400">tạo ra Lỗi Dự Đoán (Sự hẫng hụt)</span> -> Cuối cùng, họ để mặc cho <span class="text-amber-400">Dopamine và Cơn bứt rứt sinh lý</span> làm công việc mệt mỏi nhất là đẩy họ lao vào setup máy quay.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLASHCARDS SECTION -->
+    <section class="py-20 px-6 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">🧠 Flashcard Ôn Tập Nhanh</h2>
+                <p class="text-slate-400">25 câu hỏi cốt lõi để ghi nhớ mã nguồn động lực (Hiển thị trực tiếp nội dung để tra cứu).</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="flashcard">
+                    <div class="fc-q">1. Môn khoa học nào giải thích hiện tượng này?</div>
+                    <div class="fc-a">Khoa học Thần kinh Tiến hóa (Evolutionary Neuroscience) và Sinh học Hành vi (Behavioral Biology).</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="flashcard">
+                    <div class="fc-q">2. Kẻ thực sự nắm quyền điều khiển cơ thể là ai?</div>
+                    <div class="fc-a">Hệ thống Hóa học và Bản năng trong não bộ, không phải "Ý thức".</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="flashcard">
+                    <div class="fc-q">3. Ưu tiên số 1 của bộ não là gì?</div>
+                    <div class="fc-a">Sinh tồn bằng cách tiết kiệm Năng lượng (Calo).</div>
+                </div>
+                <!-- Card 4 -->
+                <div class="flashcard">
+                    <div class="fc-q">4. Não gán nhãn gì cho các hành động tốn sức lực?</div>
+                    <div class="fc-a">Rủi ro lãng phí năng lượng.</div>
+                </div>
+                <!-- Card 5 -->
+                <div class="flashcard">
+                    <div class="fc-q">5. Phản ứng của não trước rủi ro lãng phí năng lượng?</div>
+                    <div class="fc-a">Phát tín hiệu "Lười biếng/Trì hoãn" để cản bạn lại.</div>
+                </div>
+                <!-- Card 6 -->
+                <div class="flashcard">
+                    <div class="fc-q">6. Khả năng "Mô phỏng" của não là gì?</div>
+                    <div class="fc-a">Là khả năng chơi đùa/diễn nháp mà không gây rủi ro thực tế.</div>
+                </div>
+                <!-- Card 7 -->
+                <div class="flashcard">
+                    <div class="fc-q">7. Tại sao não cho phép "diễn nháp"?</div>
+                    <div class="fc-a">Vì hành động này an toàn, tốn ít calo, không có rủi ro hậu quả.</div>
+                </div>
+                <!-- Card 8 -->
+                <div class="flashcard">
+                    <div class="fc-q">8. Khi diễn nháp trơn tru, não nguyên thủy nghĩ gì?</div>
+                    <div class="fc-a">"Tỷ lệ săn mồi thành công đang là 99%!"</div>
+                </div>
+                <!-- Card 9 -->
+                <div class="flashcard">
+                    <div class="fc-q">9. Chất hóa học nào được xả ra khi diễn trơn tru?</div>
+                    <div class="fc-a">Dopamine.</div>
+                </div>
+                <!-- Card 10 -->
+                <div class="flashcard">
+                    <div class="fc-q">10. Dopamine có phải hormone hạnh phúc không?</div>
+                    <div class="fc-a">KHÔNG. Nó là hormone của SỰ THÈM KHÁT và ĐỘNG LỰC SĂN ĐUỔI.</div>
+                </div>
+                <!-- Card 11 -->
+                <div class="flashcard">
+                    <div class="fc-q">11. Tác dụng của dòng Dopamine lúc này là gì?</div>
+                    <div class="fc-a">Đốt cháy sự lười biếng, biến bạn thành thợ săn khao khát phần thưởng.</div>
+                </div>
+                <!-- Card 12 -->
+                <div class="flashcard">
+                    <div class="fc-q">12. 2 nguyên lý hình thành cơn nghiện vận động?</div>
+                    <div class="fc-a">Vòng lặp Vận động - Cảm giác và Sai số Dự đoán.</div>
+                </div>
+                <!-- Card 13 -->
+                <div class="flashcard">
+                    <div class="fc-q">13. Bộ não liên tục làm công việc gì?</div>
+                    <div class="fc-a">Là một cỗ máy liên tục dự báo tương lai.</div>
+                </div>
+                <!-- Card 14 -->
+                <div class="flashcard">
+                    <div class="fc-q">14. Khi vận động, vỏ não gửi gì cho giác quan?</div>
+                    <div class="fc-a">Một bản "dự báo" về cảm giác sắp nhận được (phản lực, âm thanh...).</div>
+                </div>
+                <!-- Card 15 -->
+                <div class="flashcard">
+                    <div class="fc-q">15. Sai số Dự đoán (Prediction Error) là gì?</div>
+                    <div class="fc-a">Là khi thực tế sai lệch hoặc không xảy ra như dự báo của não.</div>
+                </div>
+                <!-- Card 16 -->
+                <div class="flashcard">
+                    <div class="fc-q">16. Hậu quả của Sai số Dự đoán lên thần kinh?</div>
+                    <div class="fc-a">Tạo ra trạng thái "Hẫng hụt cảm giác" (Sensory Void) gây căng thẳng cực độ.</div>
+                </div>
+                <!-- Card 17 -->
+                <div class="flashcard">
+                    <div class="fc-q">17. Tiếng thét của hệ thần kinh khi hẫng hụt là gì?</div>
+                    <div class="fc-a">"Hãy khớp cái thực tế này với dự đoán của tao ngay lập tức!"</div>
+                </div>
+                <!-- Card 18 -->
+                <div class="flashcard">
+                    <div class="fc-q">18. Bước hụt cầu thang sinh ra cảm giác gì?</div>
+                    <div class="fc-a">Tim giật thót, dạ dày thắt lại do lỗi dự đoán cảm giác.</div>
+                </div>
+                <!-- Card 19 -->
+                <div class="flashcard">
+                    <div class="fc-q">19. Máy Casino dùng thủ thuật gì để thao túng?</div>
+                    <div class="fc-a">Trò lừa "Mém Trúng" (Near-Miss) tạo Cơn khát ảo từ Dopamine.</div>
+                </div>
+                <!-- Card 20 -->
+                <div class="flashcard">
+                    <div class="fc-q">20. Hắt hơi bị nghẹn minh họa cho nguyên lý nào?</div>
+                    <div class="fc-a">Sự ứ đọng động năng (năng lượng lên nòng nhưng không được nổ).</div>
+                </div>
+                <!-- Card 21 -->
+                <div class="flashcard">
+                    <div class="fc-q">21. Vì sao võ sĩ đấm gió lại muốn đấm bao cát?</div>
+                    <div class="fc-a">Vì các khớp tay cần một va chạm vật lý để "kết toán" lực lượng.</div>
+                </div>
+                <!-- Card 22 -->
+                <div class="flashcard">
+                    <div class="fc-q">22. Hiệu ứng Zeigarnik là gì?</div>
+                    <div class="fc-a">Ám ảnh sự dang dở (như bản nhạc thiếu nốt cuối).</div>
+                </div>
+                <!-- Card 23 -->
+                <div class="flashcard">
+                    <div class="fc-q">23. Vì sao không nên dùng "Ý chí" để ép bản thân?</div>
+                    <div class="fc-a">Vì ý chí là thứ hao mòn rất nhanh.</div>
+                </div>
+                <!-- Card 24 -->
+                <div class="flashcard">
+                    <div class="fc-q">24. Bậc thầy nội dung dùng hành động nháp để làm gì?</div>
+                    <div class="fc-a">Để lách qua hệ thống cảnh báo lười biếng.</div>
+                </div>
+                <!-- Card 25 -->
+                <div class="flashcard">
+                    <div class="fc-q">25. Cú chốt cuối cùng đẩy họ vào setup máy quay?</div>
+                    <div class="fc-a">Để mặc cho Dopamine và Cơn bứt rứt sinh lý thao túng ép làm thật.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
