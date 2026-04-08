@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Điều Hành Tâm Lý & Hack Sinh Học | VietNDJ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === BIẾN MÀU SẮC & HIỆU ỨNG === */
+        :root {
+            --bg-base: #09090b; /* Nền tối sâu */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            /* Màu Abstract Blobs */
+            --blob-cyan: #06b6d4;
+            --blob-purple: #8b5cf6;
+            --blob-rose: #f43f5e;
+            
+            /* Glassmorphism */
+            --card-bg: rgba(24, 24, 27, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            
+            /* Badges */
+            --badge-moi-bg: rgba(6, 182, 212, 0.15);
+            --badge-moi-txt: #22d3ee;
+            --badge-dich-bg: rgba(139, 92, 246, 0.15);
+            --badge-dich-txt: #c084fc;
+            --badge-coche-bg: rgba(244, 63, 94, 0.15);
+            --badge-coche-txt: #fb7185;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .card-num {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* === 1. ABSTRACT CSS BLOBS & CANVAS === */
+        #neural-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .abstract-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            animation: drift 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--blob-cyan); animation-delay: 0s; }
+        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: var(--blob-purple); animation-delay: -5s; }
+        .blob-3 { top: 30%; left: 40%; width: 40vw; height: 40vw; background: var(--blob-rose); animation-delay: -10s; opacity: 0.2; }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 10%) scale(1.1); }
+            100% { transform: translate(-5%, -5%) scale(0.9); }
+        }
+
+        /* === 2. BỐ CỤC CHÍNH (TYPOGRAPHY FOCUS) === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+        }
+
+        .kicker {
+            display: inline-block;
+            color: var(--blob-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 30px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lead-text {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* === 3. PHẦN LÝ THUYẾT CHI TIẾT === */
+        .theory-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--blob-cyan);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 80px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .theory-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .theory-content p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .mech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .mech-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mech-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+        }
+        .mech-box.step-1::before { background: var(--blob-cyan); }
+        .mech-box.step-2::before { background: var(--blob-rose); }
+        .mech-box.step-3::before { background: var(--blob-purple); }
+
+        .mech-box h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
+        .mech-box h3 span { color: var(--text-muted); font-size: 1rem;}
+        .mech-box p { font-size: 0.95rem; color: var(--text-muted); margin: 0;}
+
+        /* === 4. LƯỚI 20 VÍ DỤ TRỰC QUAN === */
+        .category-title {
+            font-size: 1.8rem;
+            margin: 80px 0 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+            color: #fff;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            background: rgba(39, 39, 42, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-num {
+            position: absolute;
+            top: 16px; right: 20px;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .card h4 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 24px;
+            padding-right: 50px; /* Tránh đè số */
+        }
+
+        .info-block { margin-bottom: 16px; }
+        
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+
+        .badge-moi { background: var(--badge-moi-bg); color: var(--badge-moi-txt); border-color: rgba(6, 182, 212, 0.3); }
+        .badge-dich { background: var(--badge-dich-bg); color: var(--badge-dich-txt); border-color: rgba(139, 92, 246, 0.3); }
+        .badge-coche { background: var(--badge-coche-bg); color: var(--badge-coche-txt); border-color: rgba(244, 63, 94, 0.3); }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .info-block.mech {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px dashed var(--card-border);
+        }
+        .info-block.mech p { color: var(--text-muted); }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .theory-section { padding: 32px 20px; }
+            .card { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="abstract-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="container">
+        
+        <header>
+            <span class="kicker">Mã nguồn nội bộ • VietNDJ</span>
+            <h1>Giải Phẫu Hệ Điều Hành Tâm Lý & Sự Trì Hoãn</h1>
+            <p class="lead-text">Đừng dùng "Ý chí" để làm việc, vì ý chí là tài nguyên hữu hạn. Hãy học cách thao túng hệ thần kinh trung ương, lách qua lá chắn lười biếng và để Bản năng làm phần việc khó nhất.</p>
+        </header>
+
+        <section class="theory-section">
+            <h2>Hiệu Ứng Mồi & Bẫy Sinh Học</h2>
+            <div class="theory-content">
+                <p>Tiến hóa lập trình bộ não con người để <strong>ưu tiên tiết kiệm Calo sinh tồn</strong>. Bất cứ hành động nào tạo ra "ma sát" vật lý và tư duy lớn (như vác máy quay nặng, set đèn, đối mặt với dữ liệu lớn, thay đồ đi Gym) đều bị bộ não tự động kích hoạt tín hiệu "Lười biếng" để cản bạn lại.</p>
+                <p>Sự hoàn hảo ngay từ đầu chính là kẻ thù số 1 của việc khởi đầu. Để thao túng ranh giới này, ta cần chạy 3 đoạn mã hóa thần kinh:</p>
+            </div>
+            
+            <div class="mech-grid">
+                <div class="mech-box step-1">
+                    <h3><span>01</span> Hành động Mồi (Zero-Stakes)</h3>
+                    <p>Bắt đầu bằng một việc ngớ ngẩn, "nháp", tốn ít calo và <strong>không có hậu quả đánh giá</strong> (VD: giả vờ diễn lúc máy tắt). Nó lừa hạch hạnh nhân hạ khiên phòng thủ xuống.</p>
+                </div>
+                <div class="mech-box step-2">
+                    <h3><span>02</span> Lỗi Dự Đoán (Prediction Error)</h3>
+                    <p>Hành động nháp diễn ra mượt mà sinh ra "động năng vật lý". Não dự đoán sẽ có thành quả. Nhưng kết quả thực tế = 0 (do máy tắt). Cảm giác này sinh ra một sự <strong>hẫng hụt sinh lý</strong> tột độ.</p>
+                </div>
+                <div class="mech-box step-3">
+                    <h3><span>03</span> Cơn Bứt Rứt (Zeigarnik Effect)</h3>
+                    <p>Bộ não căm ghét sự dang dở. Nỗi tiếc rẻ chất xám kích hoạt xả Dopamine vào máu, sinh ra "cơn vã" ép cơ thể bạn tự động đi setup máy/làm thật để lấp đầy sự dang dở đó.</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="category-title">I. Quản Lý Sản Xuất Nội Dung</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-num">01</div>
+                <h4>Voice Memo "Buôn chuyện"</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Lái xe đi làm, cắm tai nghe lảm nhảm ý tưởng trick Edit bằng giọng thô ráp như đang càu nhàu với bạn thân.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Xóa rào cản bí từ, đập tan "bộ lọc chuyên gia" cứng nhắc.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Sự tiếc rẻ ý tưởng xuất thần bị kẹt trong một file âm thanh rác ép não bộ hối thúc bạn về nhà phải gõ lại thành kịch bản ngay.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">02</div>
+                <h4>Tracking cốc nước</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Lười bê Gimbal. Bưng 1 cốc nước đầy tới mép, hạ trọng tâm đi rón rén (ninja-walk) 2 vòng quanh bối cảnh.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Test đường dây bố cục mà triệt tiêu ma sát lười vác máy.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Đi mượt mà tạo "ứ đọng lực" trong cơ bắp. Thể lực hưng phấn thèm khát sức nặng 2kg của máy ảnh để xả lực, tự xúi bạn bê máy.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">03</div>
+                <h4>Đạo diễn "Ống bơ"</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Cuộn giấy A4 làm ống nhòm, lảng vảng ngó gầm bàn, khe hẹp tìm góc tụ điểm thay vì cắm Tripod.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Nảy số góc máy điện ảnh mà không tốn calo xê dịch thiết bị.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Bắt được ánh sáng đỉnh cao qua khe giấy sinh hội chứng FOMO. Nỗi sợ "đánh rơi bối cảnh đẹp" đè bẹp sự lười biếng.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">04</div>
+                <h4>Dựng phim "Câm"</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Ném source vào Premiere, TẮT LOA máy tính, kéo Playhead lướt siêu nhanh qua các khung hình.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Vượt qua sự ngán ngẩm trước hàng chục GB dữ liệu thô.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Lỗi dự đoán thính giác: Hình ảnh va đập mượt nhưng tai điếc đặc. Sự trống rỗng lôi tay trái múa phím chèn Beat/Sound lấp chỗ ngay.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">05</div>
+                <h4>Screen-Record Tắt Mic</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Bật quay màn hình thao tác bài giảng Capcut nhưng TẮT MICRO, tập trung múa chuột cực khét.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Tránh quá tải RAM não (vừa thao tác kỹ thuật vừa phải giảng bài).</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Video xuất ra đỉnh cao không động tác thừa nhưng bị câm. Sự nuối tiếc ép bạn tự nguyện cắm mic thu Voice-over lồng vào.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">06</div>
+                <h4>Đòn hủy Voice Chat</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Bấm mic chốt sale khách nói 1 tràng học thuật cực cháy, rồi CỐ TÌNH trượt tay hủy bỏ gửi đi.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Ép nặn ra kịch bản nội dung Sales Video định hướng dư luận.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Sự phẫn nộ vì "mất trắng chất xám xuất thần" nén lò xo tâm lý, ép bạn bật camera xả luồng văn đó lên public để đòi lại công sức.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">07</div>
+                <h4>Story 15s lấp lửng</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Quay màn hình 15s trick dị up Story thả thính: "Có nên đưa thủ thuật này vào khóa học không?" rồi đi ngủ.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Mượn áp lực dư luận làm deadline ép mình hoàn thành giáo trình.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Học viên inbox hối thúc. Hormone Uy tín (Ego) dâng cao tột đỉnh ép bạn thức đêm làm xong module để giữ hình ảnh người thầy.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">II. Hack Sức Ỳ Nạp Dữ Liệu (Instagram)</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-num">08</div>
+                <h4>Screenshot Rác Rưởi</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Thấy setup đèn hay, cố tình chụp màn hình đúng lúc nhân vật nhắm mắt hoặc text che nhoe nhoẹt.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Ép chuyển hóa ý tưởng lướt xem thành tài liệu lưu trữ đàng hoàng.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Sự ức chế thẩm mỹ của Đạo diễn. Căm ghét khung hình xấu ép bạn mở Notion gõ kiến thức ra để tự cho phép mình XÓA ảnh đó đi.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">09</div>
+                <h4>Mật mã 1 từ</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Gửi ý tưởng hay vào nick clone kèm ĐÚNG 1 TỪ KHÓA (VD: "Lật trục"). Đóng app.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Lưu trữ với ma sát bằng 0, tạo cục nợ giải đố cho hôm sau.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Hiệu ứng Zeigarnik gài chéo. Hôm sau không nhớ chi tiết, não tự bật chế độ "Thám tử phân tích" xem lại video với sự chủ động 200%.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">10</div>
+                <h4>Tua Ngược Bóc Phốt</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Gặp Reel ảo diệu, dùng ngón tay kéo Playhead tua NGƯỢC từ cuối lên đầu.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Mổ xẻ mánh khóe edit của đối thủ mà không tốn calo phân tích logic.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Đảo ngược Entropy lột trần thủ thuật che mắt thô thiển. Khám phá ra lỗ hổng sinh Dopamine đắc thắng: "Mình làm mịn hơn nó 10 lần".</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">11</div>
+                <h4>Tắt Tiếng Soi Lỗi</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Mở clip ngàn view của đối thủ cạnh tranh, TẮT ÂM THANH hoàn toàn, chỉ ngồi soi hình.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Khai phá luồng kịch bản rực rỡ khi bản thân đang cạn kiệt ý tưởng.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Tai không bị lừa, mắt soi ra hàng tá lỗi chiếu sáng. Sự bất bình (Dở thế mà ngàn view) biến thành nhiên liệu sạch ép bạn quay clip "Chỉnh đốn".</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">III. Thao Túng Thói Quen (Mua sắm)</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-num">12</div>
+                <h4>Giỏ Hàng Zeigarnik</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Thêm Lens/Gimbal vào giỏ, điền thanh toán NHƯNG tuyệt đối cấm nhập mật khẩu chuyển tiền. Đóng app.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Biến khao khát tiêu tiền lười biếng thành động lực cày cuốc.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Thao tác bấm nút bơm Dopamine. Đóng app đột ngột tạo cơn vã vật lý. Não tự thỏa hiệp: "Chốt 2 khóa học rồi quẹt thẻ", ép bạn lao vào sale.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">13</div>
+                <h4>Săn Review 1 Sao</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Đang mụ mị muốn mua đồ (hoặc soi đối thủ), kéo thẳng xuống đọc nguyên bình luận chửi rủa 1 sao.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Cắt cơn nghiện mua sắm, bật công tắc tư duy thiết kế nội dung Phễu.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Review lộ ra "Nỗi đau" (Pain-point) của thị trường. Bản năng Sói kinh doanh nhận ra lỗ hổng, ngứa tay ép bạn viết Landing Page đánh vào đó.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">14</div>
+                <h4>Hệ Quy Chiếu Học Viên</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Thấy đèn giá 3 triệu. Đừng đọc là tiền, tự lẩm bẩm đổi tên: "Món này bằng công 1.5 Học Viên".</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Đập nát ma sát tĩnh sinh ra từ tư duy tiêu tiền thụ động.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Bẻ gãy mỏ neo giá trị. Nghĩ "1.5 học viên" gợi nhớ chuỗi làm nội dung quen thuộc. Việc "đổi 1 clip lấy cái đèn" là quá hời làm bạn bật dậy quay ngay.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">IV. Vượt Ma Sát Thể Chất (Gym)</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-num">15</div>
+                <h4>Đồ Gym lệch bối cảnh</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Lúc lười đi tập, tự nhủ: "Nay nghỉ, chỉ thay nguyên bộ đồ bó sát xỏ giày vào... rồi ngồi dựng phim tiếp".</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Lừa não qua bước khó nhất (thay đồ), dùng sự ức chế ép cơ thể vận động.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Bất đồng sinh lý: Đồ nén phát lệnh "Vận động", ngồi gõ phím tạo mâu thuẫn. Sự bức bối hất văng bạn khỏi ghế lao đến Gym giải tỏa.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">16</div>
+                <h4>Cú Lừa 1-Rep</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Thỏa thuận với cơn lười: Chỉ hít đất ĐÚNG 1 CÁI rồi dậy lướt web tiếp. Làm 1 cái xong đứng khoanh tay.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Đề pa hệ thần kinh trung ương (CNS) không tạo áp lực mệt mỏi ban đầu.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>1 rep làm cơ căng, lực lên nòng. Dừng lại gây cụt hứng tột độ. Sự lố bịch vật lý này ngứa ngáy xúi giục: "Lỡ gồng rồi đấm luôn 20 cái cho bõ".</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">17</div>
+                <h4>Render Plank</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Bấm Export video. Úp người xuống sàn Plank đến khi thanh báo 100%. Tuyệt đối không bấm mạng xã hội.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Chữa bệnh sương mù não (Brain-fog) lờ đờ sau hàng giờ nhìn màn hình.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Trò chơi hóa. Màn hình 100% là lúc được "cứu sống". Đứng dậy tim đập nhanh, oxy nạp đầy não giúp bạn soi lỗi video với độ sắc nét tuyệt đối.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">18</div>
+                <h4>Thu Voice 140bpm</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Vừa chạy bộ thở dốc hoặc hạ hiệp tạ nặng, rút mic thu âm lảm nhảm 1 ý tưởng bài giảng.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Đập vỡ vỏ bọc lý thuyết, tìm giọng văn mạnh mẽ, thu hút nhất.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Cơ thể kiệt sức vô hiệu hóa vùng não kiểm duyệt ngôn từ. Câu từ bật ra gai góc, khẩn trương cực kỳ truyền cảm hứng ép bạn lấy làm kịch bản.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">19</div>
+                <h4>Camera Check Form</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Lười tập nhưng đam mê đồ công nghệ? Xách máy ra bảo đi quay lại form xem kéo tạ có võng lưng không.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Mượn bệnh nghề nghiệp mồi chài cơ thể tập luyện đau đớn.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Nhìn vô màn hình, não đạo diễn nổi lên đi chỉnh góc, ven sáng. Việc setup ánh sáng làm quên nỗi đau nâng tạ. Tập xong không thấy mệt.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-num">20</div>
+                <h4>Hemingway Stop</h4>
+                <div class="info-block">
+                    <span class="badge badge-moi">Hành động mồi</span>
+                    <p>Định tập 4 hiệp. Đến hiệp 3 lúc cơ căng mẩy, máu bơm sướng nhất -> BỎ XUỐNG VÀ ĐI VỀ NHÀ.</p>
+                </div>
+                <div class="info-block">
+                    <span class="badge badge-dich">Mục đích</span>
+                    <p>Thiết lập tự động hóa động lực để ngày mai xách xe đi tập không cần ý chí.</p>
+                </div>
+                <div class="info-block mech">
+                    <span class="badge badge-coche">Cơ chế Hẫng hụt</span>
+                    <p>Nuối tiếc đỉnh cao. Bỏ về lúc sung nhốt lại năng lượng hoang dã (không để não ghim nỗi đau kiệt quệ). Qua đêm cơ bắp cồn cào đòi bung nốt sức mạnh.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>VietNDJ Content Architecture &copy; 2024 | Thiết kế dựa trên Khoa học Thần kinh (Neuroscience)</p>
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+
+        // Xử lý Resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        // Tạo hạt Synapse
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = '#06b6d4';
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        // Khởi tạo mạng lưới
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 1) - 0.5;
+                let directionY = (Math.random() * 1) - 0.5;
+                let color = '#06b6d4';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        // Vẽ đường nối nơ-ron
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = 'rgba(139, 92, 246,' + opacityValue + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Vòng lặp Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
