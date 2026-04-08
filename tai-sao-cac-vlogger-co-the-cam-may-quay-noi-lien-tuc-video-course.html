@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giải Mã Sự Lưu Loát: Khoa Học Thần Kinh & Tiến Hóa</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #0B192C; color: #E2E8F0; }
+.card { background-color: #1E3E62; border-radius: 1rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); padding: 2.5rem; border-top: 5px solid #00FF9C; position: relative; overflow: hidden; }
+.card-orange { border-top-color: #FF6500; }
+.card-blue { border-top-color: #00B8FF; }
+.chart-container { position: relative; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; height: 350px; max-height: 450px; }
+@media (min-width: 768px) { .chart-container { height: 420px; } }
+.gradient-text { background: linear-gradient(to right, #00FF9C, #00B8FF); -webkit-background-clip: text; color: transparent; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1.25rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+th { color: #00FF9C; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem; background-color: rgba(0,0,0,0.2); }
+tr:hover { background-color: rgba(255,255,255,0.05); }
+.flashcard { background: linear-gradient(145deg, #162E4A, #11253C); border: 1px solid rgba(0, 255, 156, 0.2); transition: transform 0.2s ease; }
+.flashcard:hover { transform: translateY(-5px); border-color: #00FF9C; }
+.css-art-container { display: flex; justify-content: center; align-items: center; height: 200px; position: relative; }
+.art-node { position: absolute; border-radius: 50%; mix-blend-screen; }
+.art-line { position: absolute; background: linear-gradient(90deg, transparent, currentColor, transparent); }
+</style>
+</head>
+<body class="antialiased min-h-screen pb-20 selection:bg-[#00FF9C] selection:text-[#0B192C]">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <header class="text-center mb-20 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#00FF9C] opacity-10 rounded-full blur-[100px] -z-10"></div>
+        <h1 class="text-4xl md:text-7xl font-extrabold mb-6 text-white tracking-tight leading-tight">Bí Ẩn Của <span class="gradient-text">Sự Lưu Loát</span></h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light">Tại sao các Vlogger có thể cầm máy quay nói liên tục không vấp váp? Khám phá cơ chế "chạy ngầm" của bộ não qua lăng kính Thần kinh học và Sinh học Tiến hóa.</p>
+    </header>
+
+    <div class="flex flex-col gap-12 mb-16">
+        
+        <div class="card grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            <div class="lg:col-span-2 relative z-10">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#00FF9C]/20 text-[#00FF9C] text-2xl font-bold mb-4">&#9888;</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">1. Nghịch lý của sự trơn tru: Gánh nặng Nhận thức</h2>
+                <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+                    <p>Khi bạn nhìn thấy một người quay vlog cầm máy nói thao thao bất tuyệt, trông họ vô cùng tự nhiên. Nhưng sự thật là não bộ của họ đang thực hiện một bản giao hưởng xử lý dữ liệu khổng lồ.</p>
+                    <p>Với một người mới bắt đầu, việc này đòi hỏi <strong>Vỏ não trước trán (Prefrontal Cortex - PFC)</strong> - trung tâm của ý thức và tư duy logic - phải làm việc với cường độ cực đại để xử lý cùng lúc:</p>
+                    <ul class="list-none space-y-2 pl-4 border-l-4 border-[#00FF9C]">
+                        <li><span class="text-[#00FF9C] font-bold">&rarr;</span> Truy xuất từ vựng từ bộ nhớ ngữ nghĩa.</li>
+                        <li><span class="text-[#00FF9C] font-bold">&rarr;</span> Duy trì sợi dây logic của câu chuyện.</li>
+                        <li><span class="text-[#00FF9C] font-bold">&rarr;</span> Điều khiển biểu cảm cơ mặt, giọng điệu.</li>
+                        <li><span class="text-[#00FF9C] font-bold">&rarr;</span> Quan sát không gian xung quanh và canh góc ống kính.</li>
+                    </ul>
+                    <p>Vì bộ nhớ làm việc (Working Memory) của ý thức có giới hạn rất nhỏ (chỉ chứa được 4-7 luồng thông tin cùng lúc). Việc bạn bị khựng lại, quên bài, ấp úng, nói mất tự nhiên... không phải vì bạn kém, mà vì phần cứng "Ý thức" của bạn đã bị quá tải (Cognitive Overload).</p>
+                </div>
+            </div>
+            <div class="css-art-container lg:col-span-1">
+                <div class="w-48 h-48 relative animate-[spin_10s_linear_infinite]">
+                    <div class="art-node w-32 h-32 bg-[#00FF9C]/40 top-0 left-0 border-4 border-[#00FF9C]"></div>
+                    <div class="art-node w-24 h-24 bg-[#00B8FF]/40 bottom-0 right-0 border-4 border-[#00B8FF]"></div>
+                    <div class="art-node w-20 h-20 bg-[#FF6500]/40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-[#FF6500]"></div>
+                    <div class="absolute inset-0 flex items-center justify-center text-white font-bold tracking-widest uppercase text-xs z-10 drop-shadow-md">OVERLOAD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-blue grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="css-art-container lg:col-span-1 hidden lg:flex flex-col gap-4">
+                <div class="w-full h-2 bg-[#FF6500] rounded-full w-1/4 self-start opacity-30"></div>
+                <div class="w-full h-2 bg-[#FF6500] rounded-full w-2/4 self-center opacity-50"></div>
+                <div class="w-full h-2 bg-[#FF6500] rounded-full w-3/4 self-end opacity-70"></div>
+                <div class="w-full h-1 my-4 bg-gray-600 rounded-full"></div>
+                <div class="w-full h-3 bg-[#00B8FF] rounded-full w-full opacity-100 shadow-[0_0_15px_#00B8FF]"></div>
+                <div class="w-full h-3 bg-[#00B8FF] rounded-full w-full opacity-100 shadow-[0_0_15px_#00B8FF]"></div>
+                <div class="text-center text-[#00B8FF] text-xs font-bold uppercase mt-2">Data Consolidation</div>
+            </div>
+            <div class="lg:col-span-2 relative z-10">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#00B8FF]/20 text-[#00B8FF] text-2xl font-bold mb-4">&#128164;</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">2. Phép màu của Giấc ngủ: Tiến trình "Củng cố Trí nhớ"</h2>
+                <div class="space-y-4 text-gray-300 text-lg leading-relaxed mb-8">
+                    <p>Tại sao hôm qua bạn luyện tập thấy rối rắm, não bộ kẹt cứng, nhưng sáng hôm sau thức dậy, đột nhiên nhận thức về đường đi nước bước, logic câu chuyện lại rõ ràng và dễ dàng hơn hẳn?</p>
+                    <p>Sự thật khoa học là: <strong>Việc học không thực sự hoàn tất khi bạn đang nhồi nhét, nó hoàn tất khi bạn nhắm mắt ngủ.</strong></p>
+                    <p>Khi bạn ngủ, đặc biệt là trong pha Ngủ Sâu (Slow-Wave Sleep) và REM, não không hề nghỉ ngơi. <strong>Mạng lưới trạng thái mặc định (Default Mode Network - DMN)</strong> được kích hoạt mạnh. Nó bắt đầu quá trình <em>Memory Consolidation</em> (Củng cố trí nhớ):</p>
+                    <p>Não bộ sẽ tự động nhặt nhạnh các mảnh dữ liệu rời rạc hôm qua bạn vừa nạp (đang nằm tạm ở Hippocampus - Hồi hải mã), dọn dẹp các nơ-ron thừa, kết nối chúng lại thành một khối logic chặt chẽ, và chuyển dời chúng lên lưu trữ vĩnh viễn ở Vỏ não (Neocortex). Quá trình này diễn ra hoàn toàn ngoài tầm kiểm soát của ý thức.</p>
+                </div>
+            </div>
+            <div class="lg:col-span-3 chart-container mt-4 bg-[#0B192C]/50 p-4 rounded-xl border border-gray-700">
+                <canvas id="sleepChart"></canvas>
+            </div>
+            <div class="lg:col-span-3 text-center text-sm text-gray-400 mt-2">Biểu đồ: Sự chuyển giao năng lực xử lý từ ý thức căng thẳng ban ngày sang tiến trình sắp xếp ngầm vô thức khi ngủ.</div>
+        </div>
+
+        <div class="card card-orange grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="relative z-10">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#FF6500]/20 text-[#FF6500] text-2xl font-bold mb-4">&#129429;</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">3. Góc nhìn Tiến hóa: Bộ não "Lười biếng" để Sinh tồn</h2>
+                <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+                    <p>Tại sao con người lại sở hữu cơ chế học ngầm ngoài ý thức này? Tất cả đều quy về bài toán năng lượng.</p>
+                    <p>Bộ não người chỉ chiếm khoảng 2% trọng lượng cơ thể, nhưng nó lại ngốn đến 20% tổng lượng calo bạn nạp vào. Ý thức (sự tập trung chủ động của Vỏ não trước trán) là một cỗ máy ngốn điện khủng khiếp.</p>
+                    <p>Nếu tổ tiên chúng ta ở thảo nguyên phải dùng "ý thức" để suy nghĩ từng bước: "Nâng chân trái lên, uốn cong đầu gối, đạp chân phải xuống" khi đang bị sư tử đuổi... thì loài người đã tuyệt chủng từ lâu.</p>
+                    <p>Sinh học tiến hóa đã tạo ra một giải pháp tối ưu: <strong>Tự động hóa</strong>. Bất kỳ hành động, chuỗi thông tin nào được lặp đi lặp lại đủ nhiều, não sẽ ngay lập tức "đóng gói" nó và chuyển giao từ vùng ý thức (PFC) sâu xuống <strong>Hạch nền (Basal Ganglia)</strong> và <strong>Tiểu não (Cerebellum)</strong>. Khi dữ liệu nằm ở đây, nó chạy tự động, cực nhanh và gần như không tốn chút năng lượng nhận thức nào.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full">
+                <div class="css-art-container w-full h-40 mb-8">
+                    <div class="w-32 h-32 rounded-full border-[8px] border-dashed border-[#FF6500]/50 relative flex items-center justify-center animate-[spin_20s_linear_infinite_reverse]">
+                        <div class="absolute w-full h-full bg-[#FF6500]/10 rounded-full"></div>
+                    </div>
+                    <div class="w-16 h-16 rounded-full bg-[#00B8FF] absolute shadow-[0_0_30px_#00B8FF] flex items-center justify-center text-xs font-bold text-[#0B192C]">CORE</div>
+                </div>
+                <div class="chart-container w-full" style="height: 320px;">
+                    <canvas id="energyChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card grid grid-cols-1 gap-8">
+            <div class="text-center relative z-10 max-w-4xl mx-auto">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white text-2xl font-bold mb-4">&#128269;</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">4. Bằng chứng Thực tiễn: 5 Ví dụ Về "Trí Nhớ Cơ Bắp"</h2>
+                <p class="text-gray-300 text-lg mb-8">Vì hệ thống này chạy ngầm và ta sử dụng 5 giác quan (vốn gắn liền với ý thức) để đánh giá thế giới, ta thường sinh ra ảo giác "mình không thể làm được". Dưới đây là 5 kỹ năng phức tạp bạn đã đẩy thành công vào Hạch nền, chứng minh tiềm thức mạnh hơn ý thức.</p>
+            </div>
+
+            <div class="chart-container mb-4">
+                <canvas id="examplesChart"></canvas>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#11253C] p-6 rounded-xl border-t-4 border-[#00FF9C] hover:bg-[#162E4A] transition-colors">
+                    <div class="text-[#00FF9C] text-2xl mb-2 font-bold">01</div>
+                    <h3 class="text-white text-xl font-bold mb-3">Đi bộ (Walking)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Kỹ năng sinh tồn phức tạp nhất về phối hợp cơ, thăng bằng trọng lực. Một em bé mất hàng năm trời ngã đau đớn (Nạp dữ liệu căng thẳng). Nay bạn có thể vừa đi bộ vừa bấm điện thoại nhắn tin không cần liếc nhìn mặt đất.</p>
+                </div>
+                <div class="bg-[#11253C] p-6 rounded-xl border-t-4 border-[#00B8FF] hover:bg-[#162E4A] transition-colors">
+                    <div class="text-[#00B8FF] text-2xl mb-2 font-bold">02</div>
+                    <h3 class="text-white text-xl font-bold mb-3">Đạp xe đạp</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Việc cân bằng trên 2 thiết diện cực hẹp khi di chuyển là phi logic với ý thức. Nhưng một khi não bộ đã tính toán xong phương trình vật lý này và ghi vào Hạch nền, bạn sẽ không bao giờ quên cách đạp xe suốt đời.</p>
+                </div>
+                <div class="bg-[#11253C] p-6 rounded-xl border-t-4 border-[#FF6500] hover:bg-[#162E4A] transition-colors">
+                    <div class="text-[#FF6500] text-2xl mb-2 font-bold">03</div>
+                    <h3 class="text-white text-xl font-bold mb-3">Gõ phím 10 ngón</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Nhớ lại ngày đầu bạn phải nhìn chằm chằm từng phím, dùng 2 ngón trỏ mổ cò. Khi bạn luyện tập đủ nhiều, "trí nhớ cơ bắp" hình thành. Bạn lướt tay trên phím trong khi mắt nhìn màn hình, ngón tay tự biết chữ nằm ở đâu.</p>
+                </div>
+                <div class="bg-[#11253C] p-6 rounded-xl border-t-4 border-[#00FF9C] hover:bg-[#162E4A] transition-colors md:col-span-1 lg:col-span-1 lg:col-start-1">
+                    <div class="text-[#00FF9C] text-2xl mb-2 font-bold">04</div>
+                    <h3 class="text-white text-xl font-bold mb-3">Lái xe trong phố</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Giai đoạn tập lái: Não căng cứng lo côn, ga, phanh, nhìn gương. Hiện tại: Bạn lái xe chục kilomet qua hàng trăm ngã tư kẹt xe khói bụi, nhưng trong đầu lại đang bận nghĩ về deadline công ty. Tiềm thức đã lái xe thay bạn.</p>
+                </div>
+                <div class="bg-[#11253C] p-6 rounded-xl border-t-4 border-[#00B8FF] hover:bg-[#162E4A] transition-colors md:col-span-2 lg:col-span-2 lg:col-start-2">
+                    <div class="text-[#00B8FF] text-2xl mb-2 font-bold">05</div>
+                    <h3 class="text-white text-xl font-bold mb-3">Buộc dây giày</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Một ví dụ kinh điển về việc tiềm thức "đánh cắp" thông tin. Hãy thử dùng lời nói (ý thức) miêu tả chi tiết cách thắt nơ dây giày cho một người khác nghe mà không dùng tay làm mẫu? Bạn sẽ lập tức bị "lag". Vì kỹ năng này đã hoàn toàn bị khóa chặt ở vùng vô thức.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-blue grid grid-cols-1 gap-10">
+            <div class="text-center relative z-10 max-w-4xl mx-auto">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#00FF9C]/20 text-[#00FF9C] text-2xl font-bold mb-4">&#9889;</div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white uppercase tracking-wider">HACK TIẾN HÓA: Bí Quyết Vlogging Trôi Chảy</h2>
+                <p class="text-gray-300 text-lg">Khi đã thấu hiểu cơ chế, bạn có thể lợi dụng nó. Để nói chuyện tự nhiên trước máy quay suốt 10 phút, đừng cố dùng Ý thức để nhớ bài trong lúc quay. Hãy dùng Ý thức để nạp dữ liệu ban đầu, và để Tiềm thức làm phần việc trình diễn.</p>
+            </div>
+
+            <div class="css-art-container w-full h-32 mb-4">
+                <div class="flex items-end justify-center gap-2 w-full h-full pb-4">
+                    <div class="w-16 bg-[#11253C] border border-[#FF6500] h-1/4 rounded-t-sm flex items-center justify-center text-xs font-bold text-[#FF6500]">LOAD</div>
+                    <div class="w-16 bg-[#11253C] border border-[#00B8FF] h-2/4 rounded-t-sm flex items-center justify-center text-xs font-bold text-[#00B8FF]">DIFFUSE</div>
+                    <div class="w-16 bg-[#11253C] border border-gray-400 h-3/4 rounded-t-sm flex items-center justify-center text-xs font-bold text-gray-400">SLEEP</div>
+                    <div class="w-16 bg-[#00FF9C] shadow-[0_0_20px_#00FF9C] h-full rounded-t-sm flex items-center justify-center text-xs font-bold text-[#0B192C]">MYELIN</div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border-2 border-gray-700 bg-[#0B192C]/50 shadow-2xl">
+                <table class="w-full text-base text-left text-gray-300">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-1/4">Giai đoạn thực thi</th>
+                            <th scope="col" class="w-1/3">Hành động cụ thể của bạn</th>
+                            <th scope="col" class="w-1/3">Cơ chế Thần kinh / Tiến hóa bên trong</th>
+                            <th scope="col" class="w-1/12 text-center">Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700/50">
+                        <tr class="hover:bg-gray-800/50 transition-colors">
+                            <td class="font-bold text-[#FF6500] text-lg"><span class="block text-sm text-gray-500 mb-1">Bước 1</span> Nạp Dữ Liệu Ép Buộc</td>
+                            <td class="text-sm">Viết gạch đầu dòng logic. Bấm máy quay nghiệm thu nháp. Cố gắng nói, mắt nhìn ống kính. Dù nói vấp, quên bài, ấp úng, chán nản cũng KHÔNG ĐƯỢC DỪNG LẠI. Phải hoàn thành luồng logic từ A-Z.</td>
+                            <td class="text-sm">Bắt ép Vỏ não trước trán (PFC) làm việc quá tải. Bạn đang phát đi tín hiệu sinh tồn khẩn cấp cho não: "Cái này quan trọng, phải nhớ!". Đây là lúc các nơ-ron tạo liên kết lỏng lẻo đầu tiên.</td>
+                            <td class="text-center font-bold text-red-500">Mệt mỏi<br>Căng thẳng</td>
+                        </tr>
+                        <tr class="bg-gray-800/30 hover:bg-gray-800/70 transition-colors">
+                            <td class="font-bold text-[#00B8FF] text-lg"><span class="block text-sm text-gray-500 mb-1">Bước 2</span> Trạng Thái Phân Tán</td>
+                            <td class="text-sm">Tắt máy quay. Rời đi. Làm việc nhà, đi bộ, tắm nước ấm, nghe nhạc. Tuyệt đối KHÔNG cố dùng ý thức để nhớ lại kịch bản nữa. Thả lỏng hoàn toàn sự tập trung.</td>
+                            <td class="text-sm">Chuyển từ Focus Mode sang Diffuse Mode. Mạng DMN kích hoạt. Tiềm thức bắt đầu lục lọi kho dữ liệu vừa nạp, tự động ghép nối các mảnh logic lại với nhau mà không cần bạn ra lệnh.</td>
+                            <td class="text-center font-bold text-blue-400">Thư giãn<br>Thả lỏng</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/50 transition-colors">
+                            <td class="font-bold text-gray-300 text-lg"><span class="block text-sm text-gray-500 mb-1">Bước 3</span> Hợp Nhất & Cắt Tỉa</td>
+                            <td class="text-sm">Đi ngủ đúng giờ. Tránh xa màn hình xanh trước lúc ngủ 1 tiếng. Ngủ đủ 7.5 - 8 tiếng để đảm bảo trải qua đủ 4-5 chu kỳ Ngủ sâu và REM.</td>
+                            <td class="text-sm">Memory Consolidation & Synaptic Pruning. Não di chuyển dữ liệu từ bộ nhớ tạm sang vỏ não vĩnh viễn, cắt đứt các kết nối nhiễu (sự ấp úng), giữ lại đường dẫn logic trơn tru nhất.</td>
+                            <td class="text-center font-bold text-gray-500">Vô thức</td>
+                        </tr>
+                        <tr class="bg-gray-800/30 hover:bg-gray-800/70 transition-colors">
+                            <td class="font-bold text-[#00FF9C] text-lg"><span class="block text-sm text-gray-500 mb-1">Bước 4</span> Tự Động Hóa (Myelin hóa)</td>
+                            <td class="text-sm">Ngày hôm sau, bật máy quay lên và nói lại. Bạn sẽ kinh ngạc thấy logic tự chảy ra mồm trơn tru. Lặp lại quá trình này vài ngày, kỹ năng sẽ thành bản năng.</td>
+                            <td class="text-sm">Bao Myelin (lớp cách điện) bọc quanh các rễ thần kinh liên quan ngày càng dày lên. Tốc độ truyền dẫn tín hiệu tăng gấp 100 lần. Kỹ năng được hạ cấp an toàn xuống Hạch nền.</td>
+                            <td class="text-center font-bold text-[#00FF9C]">Lưu loát<br>Tự nhiên</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-white inline-block border-b-4 border-[#00FF9C] pb-2">25 CÂU HỎI ÔN TẬP NHANH (FLASHCARDS)</h2>
+                <p class="text-gray-400 mt-4">Nắm vững kiến thức khoa học qua các thẻ hỏi đáp trực quan dưới đây.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="flashcard-container">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const flashcardsData = [
+    {q: "Vùng não nào chịu trách nhiệm cho 'Ý thức' và tư duy logic?", a: "Vỏ não trước trán (Prefrontal Cortex - PFC)."},
+    {q: "Tại sao người mới quay vlog thường bị vấp, quên bài?", a: "Do sự quá tải nhận thức (Cognitive Overload) khi PFC phải làm quá nhiều việc cùng lúc."},
+    {q: "Bộ nhớ làm việc (Working Memory) của ý thức có dung lượng bao nhiêu?", a: "Rất nhỏ, thường chỉ chứa được khoảng 4 đến 7 luồng thông tin cùng lúc."},
+    {q: "Cơ chế 'Memory Consolidation' (Củng cố trí nhớ) diễn ra mạnh nhất khi nào?", a: "Khi chúng ta ngủ, đặc biệt là ở pha Ngủ Sâu (SWS) và pha REM."},
+    {q: "Mạng lưới nào trong não hoạt động ngầm để sắp xếp dữ liệu khi ta không tập trung?", a: "Mạng lưới trạng thái mặc định (Default Mode Network - DMN)."},
+    {q: "Hippocampus (Hồi hải mã) đóng vai trò gì trong việc học?", a: "Là nơi lưu trữ tạm thời các dữ liệu mới nạp vào trong ngày."},
+    {q: "Dữ liệu sau khi được củng cố trong lúc ngủ sẽ được chuyển đi đâu?", a: "Được chuyển từ Hippocampus lên lưu trữ dài hạn tại Vỏ não (Neocortex)."},
+    {q: "Vì sao bộ não lại muốn biến mọi thứ thành 'kỹ năng tự động'?", a: "Để tiết kiệm năng lượng sinh tồn. Ý thức tiêu tốn quá nhiều Calo."},
+    {q: "Vùng não nào quản lý các hành động tự động, quen thuộc (trí nhớ cơ bắp)?", a: "Hạch nền (Basal Ganglia) và Tiểu não."},
+    {q: "Kể tên 1 ví dụ điển hình về kỹ năng đã được tự động hóa hoàn toàn ở người lớn?", a: "Đi bộ, đạp xe, gõ bàn phím, buộc dây giày, lái xe quen đường."},
+    {q: "Tại sao bạn khó dùng lời nói mô tả chi tiết cách buộc nơ dây giày?", a: "Vì kỹ năng đó nằm ở Hạch nền, trong khi ngôn ngữ thuộc vùng Ý thức, chúng bị mất kết nối truy xuất."},
+    {q: "Bước 1 của 'Hack tiến hóa' (Nạp dữ liệu) đòi hỏi trạng thái tâm lý gì?", a: "Chấp nhận sự mệt mỏi, vấp váp, ép bộ não nhận biết đây là thông tin sinh tồn cần thiết."},
+    {q: "Bước 2 (Diffuse Mode) khuyên bạn làm gì sau khi tập quay mệt mỏi?", a: "Dừng ép buộc, buông bỏ tập trung, đi tắm hoặc đi dạo để mạng DMN chạy ngầm."},
+    {q: "Quá trình 'Synaptic Pruning' khi ngủ có tác dụng gì?", a: "Cắt tỉa, loại bỏ các kết nối nơ-ron thừa thãi, nhiễu loạn (như những lúc ấp úng), giữ lại đường dẫn mượt nhất."},
+    {q: "Bao Myelin là gì?", a: "Là lớp mỡ cách điện bọc quanh sợi trục thần kinh."},
+    {q: "Bao Myelin dày lên nhờ sự lặp lại mang lại lợi ích gì?", a: "Tăng tốc độ truyền dẫn tín hiệu thần kinh lên gấp hàng trăm lần, tạo ra sự trơn tru."},
+    {q: "Sự khác biệt giữa Focus Mode và Diffuse Mode?", a: "Focus (Ý thức căng thẳng nạp liệu) vs Diffuse (Tiềm thức thư giãn để kết nối diện rộng)."},
+    {q: "Bộ não chiếm 2% trọng lượng nhưng tiêu thụ bao nhiêu % Calo?", a: "Tiêu thụ tới 20% tổng lượng calo cơ thể nạp vào."},
+    {q: "Sự trơn tru liên tục (flow) trên video bản chất là kết quả của điều gì?", a: "Sự chuyển giao quyền kiểm soát thành công từ Vỏ não trước trán xuống Hạch nền."},
+    {q: "Nếu không ngủ đủ giấc, điều gì sẽ xảy ra với kịch bản bạn vừa học?", a: "Dữ liệu kẹt ở Hippocampus, bị mờ dần và không tạo thành nếp nhăn dài hạn ở Vỏ não."},
+    {q: "Ảo giác 'mình không thể làm được' bắt nguồn từ đâu?", a: "Do 5 giác quan gắn với ý thức hiện tại thấy quá khó, không nhận thức được tiềm thức đang tiến hóa ngầm."},
+    {q: "Tại sao việc lặp lại (Repetition) lại quan trọng theo sinh học?", a: "Nó làm kích hoạt quá trình Myelin hóa liên tục các rễ thần kinh mục tiêu."},
+    {q: "Dấu hiệu nhận biết bạn đang dùng ý thức (PFC) để làm một việc?", a: "Cảm thấy tốn năng lượng, phải nghĩ xem bước tiếp theo làm gì, dễ bị phân tâm khi có việc khác xen vào."},
+    {q: "Dấu hiệu nhận biết kỹ năng đã thuộc về tiềm thức (Hạch nền)?", a: "Làm chuẩn xác nhưng tâm trí lại đang vẩn vơ nghĩ về một vấn đề hoàn toàn khác."},
+    {q: "Bản chất khoa học của câu 'ngủ dậy thấy thông suốt' là gì?", a: "Sự hoàn tất chu trình Memory Consolidation của não bộ trong đêm."}
+];
+
+const flashcardContainer = document.getElementById('flashcard-container');
+flashcardsData.forEach((item, index) => {
+    const cardHTML = `
+        <div class="flashcard p-5 rounded-xl h-full flex flex-col justify-between">
+            <div>
+                <span class="text-xs font-bold text-gray-500 mb-2 block">CÂU HỎI ${index + 1}</span>
+                <h4 class="text-[#00FF9C] font-semibold text-sm mb-4 leading-snug">${item.q}</h4>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-700/50">
+                <p class="text-gray-300 text-xs leading-relaxed font-light"><span class="font-bold text-white mr-1">Đáp án:</span> ${item.a}</p>
+            </div>
+        </div>
+    `;
+    flashcardContainer.innerHTML += cardHTML;
+});
+
+const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: '#E2E8F0',
+    plugins: {
+        legend: { labels: { color: '#E2E8F0', font: { family: 'Inter', size: 13 } } },
+        tooltip: {
+            backgroundColor: 'rgba(11, 25, 44, 0.95)',
+            titleColor: '#00FF9C',
+            bodyColor: '#FFFFFF',
+            borderColor: '#00B8FF',
+            borderWidth: 1,
+            padding: 12,
+            titleFont: { size: 14, family: 'Inter' },
+            bodyFont: { size: 13, family: 'Inter' },
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        }
+    }
+};
+
+function wrapLabel(label) {
+    if (label.length <= 16) return label;
+    const words = label.split(' ');
+    const lines = [];
+    let currentLine = '';
+    words.forEach(word => {
+        if ((currentLine + word).length > 16) {
+            lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        } else {
+            currentLine += word + ' ';
+        }
+    });
+    if (currentLine.trim() !== '') lines.push(currentLine.trim());
+    return lines;
+}
+
+const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+new Chart(sleepCtx, {
+    type: 'line',
+    data: {
+        labels: [wrapLabel('Ngày 1: Nạp liệu (Căng thẳng PFC)'), wrapLabel('Ngủ NREM: Cắt tỉa (Pruning)'), wrapLabel('Ngủ REM: Kết nối (Consolidation)'), wrapLabel('Ngày 2: Thức dậy (Thông suốt)')],
+        datasets: [
+            {
+                label: 'Tải trọng Ý thức (Mệt mỏi)',
+                data: [95, 10, 5, 20],
+                borderColor: '#FF6500',
+                backgroundColor: 'rgba(255, 101, 0, 0.15)',
+                fill: true,
+                tension: 0.4,
+                borderWidth: 3,
+                pointBackgroundColor: '#FF6500',
+                pointRadius: 5
+            },
+            {
+                label: 'Sức mạnh Tổ chức Ngầm (DMN)',
+                data: [15, 60, 95, 85],
+                borderColor: '#00B8FF',
+                backgroundColor: 'rgba(0, 184, 255, 0.15)',
+                fill: true,
+                tension: 0.4,
+                borderWidth: 3,
+                pointBackgroundColor: '#00B8FF',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: {
+        ...commonOptions,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100,
+                grid: { color: 'rgba(255,255,255,0.05)' },
+                ticks: { color: '#94a3b8', callback: function(value){return value + '%'} }
+            },
+            x: { 
+                grid: { color: 'rgba(255,255,255,0.05)' }, 
+                ticks: { color: '#94a3b8', font: {size: 11} } 
+            }
+        }
+    }
+});
+
+const energyCtx = document.getElementById('energyChart').getContext('2d');
+new Chart(energyCtx, {
+    type: 'doughnut',
+    data: {
+        labels: [wrapLabel('Ý thức - Vỏ não trước trán (Tiêu hao Calo cao)'), wrapLabel('Tiềm thức - Hạch nền (Tự động, Tiết kiệm năng lượng)')],
+        datasets: [{
+            data: [20, 80],
+            backgroundColor: ['#FF6500', '#00FF9C'],
+            borderColor: '#0B192C',
+            borderWidth: 4,
+            hoverOffset: 8
+        }]
+    },
+    options: {
+        ...commonOptions,
+        cutout: '70%',
+        plugins: {
+            ...commonOptions.plugins,
+            legend: { position: 'bottom', labels: { color: '#E2E8F0', font: { family: 'Inter', size: 12 } } }
+        }
+    }
+});
+
+const exampleLabelsRaw = [
+    'Bước đi thăng bằng',
+    'Gõ phím 10 ngón',
+    'Lái xe quen đường',
+    'Đạp xe giữ thăng bằng',
+    'Thắt nơ dây giày'
+];
+const exampleLabelsWrapped = exampleLabelsRaw.map(wrapLabel);
+
+const examplesCtx = document.getElementById('examplesChart').getContext('2d');
+new Chart(examplesCtx, {
+    type: 'bar',
+    data: {
+        labels: exampleLabelsWrapped,
+        datasets: [
+            {
+                label: 'Mức độ Tự động hóa (Tiềm thức) %',
+                data: [99, 90, 85, 95, 98],
+                backgroundColor: '#00FF9C',
+                borderRadius: {topLeft: 0, bottomLeft: 0, topRight: 6, bottomRight: 6},
+                borderWidth: 0,
+                barPercentage: 0.7
+            },
+            {
+                label: 'Can thiệp Ý thức (Sự chú ý) %',
+                data: [1, 10, 15, 5, 2],
+                backgroundColor: '#1E3E62',
+                borderRadius: {topLeft: 6, bottomLeft: 6, topRight: 0, bottomRight: 0},
+                borderWidth: 0,
+                barPercentage: 0.7
+            }
+        ]
+    },
+    options: {
+        ...commonOptions,
+        indexAxis: 'y',
+        scales: {
+            x: {
+                stacked: true,
+                max: 100,
+                grid: { color: 'rgba(255,255,255,0.05)' },
+                ticks: { color: '#94a3b8', callback: function(value){return value + '%'} }
+            },
+            y: {
+                stacked: true,
+                grid: { display: false },
+                ticks: { color: '#E2E8F0', font: {weight: 'bold'} }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
