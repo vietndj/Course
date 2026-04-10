@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện B-roll Cảm Xúc - Đôi mắt Đạo diễn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        .font-serif-title { font-family: 'Playfair Display', serif; }
+        
+        /* CSS Abstract Art Styles */
+        .art-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: #111;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid #333;
+        }
+
+        /* 1. The Mechanical Loop */
+        .art-loop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loop-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #555;
+            border-bottom-color: #333;
+            animation: spin infinite linear;
+        }
+        .loop-ring:nth-child(1) { width: 200px; height: 200px; animation-duration: 4s; border-top-color: #888; }
+        .loop-ring:nth-child(2) { width: 150px; height: 150px; animation-duration: 3s; animation-direction: reverse; }
+        .loop-ring:nth-child(3) { width: 100px; height: 100px; animation-duration: 2s; border-top-color: #666;}
+        
+        /* 2. The Cleansing Rain */
+        .art-rain { background: linear-gradient(to bottom, #1a202c, #2d3748); }
+        .raindrop {
+            position: absolute;
+            bottom: 100%;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(255,255,255,0.5));
+            animation: rain-fall infinite linear;
+        }
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            filter: blur(8px);
+        }
+        
+        /* 3. The Play of Light */
+        .art-light { background: #000; }
+        .light-beam {
+            position: absolute;
+            top: -20%; left: -20%;
+            width: 150%; height: 60%;
+            background: linear-gradient(180deg, rgba(255,215,0,0.15) 0%, transparent 100%);
+            transform: rotate(-35deg);
+            filter: blur(10px);
+        }
+        .dust {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: float-dust infinite linear;
+            filter: blur(1px);
+        }
+
+        /* 4. Urban Isolation */
+        .art-isolation { background: #0f0f15; display: flex; justify-content: center; align-items: center;}
+        .light-trail {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color), transparent);
+            animation: shoot-across infinite linear;
+            opacity: 0.6;
+        }
+        .lone-circle {
+            width: 10px; height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #fff;
+            z-index: 10;
+        }
+
+        /* 5. The Ephemeral Form */
+        .art-smoke { background: #050505; display: flex; justify-content: center; align-items: flex-end;}
+        .smoke-blob {
+            position: absolute;
+            bottom: -20px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: rise-smoke infinite ease-in-out;
+        }
+
+        /* Keyframes */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes rain-fall { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(500px); opacity: 0; } }
+        @keyframes float-dust { 0% { transform: translate(0, 0) scale(1); opacity: 0;} 50% { opacity: 1; } 100% { transform: translate(-20px, -100px) scale(0.5); opacity: 0;} }
+        @keyframes shoot-across { 0% { left: -100%; transform: scaleX(1); } 50% { transform: scaleX(5); } 100% { left: 200%; transform: scaleX(1); } }
+        @keyframes rise-smoke { 0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; } 50% { opacity: 1; transform: translateY(-100px) scale(1.5) translateX(20px); } 100% { transform: translateY(-250px) scale(2) translateX(-20px); opacity: 0; } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #666; }
+    </style>
+</head>
+<body class="antialiased selection:bg-yellow-600 selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="max-w-6xl mx-auto px-6 pt-24 pb-16">
+        <div class="mb-4 inline-block px-3 py-1 border border-gray-700 rounded-full text-sm text-gray-400">
+            Trong loại 7
+        </div>
+        <h1 class="font-serif-title text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
+            7. Cảnh trám Cảm xúc / Không gian âm <br>
+            <span class="text-gray-500 text-3xl md:text-4xl">(Emotional / Negative Space B-roll)</span>
+        </h1>
+        
+        <div class="prose prose-invert prose-lg max-w-none text-gray-300 space-y-6 border-l-4 border-yellow-600 pl-6 mb-12">
+            <p><strong class="text-white">Định nghĩa:</strong> Không chiếu cảnh làm việc, mà chiếu cảnh một ly cà phê đang bốc khói mờ ảo, một góc phố mưa rơi (Slow-motion), chiếc quạt trần quay chậm.</p>
+            <p><strong class="text-white">Tác dụng:</strong> Tạo "khoảng trống" (Breathing room) để khán giả có thời gian tiêu hóa một câu nói buồn hoặc triết lý sâu sắc bạn vừa thốt ra.</p>
+        </div>
+
+        <div class="bg-gray-900 rounded-2xl p-8 md:p-12 border border-gray-800 shadow-2xl">
+            <p class="text-xl leading-relaxed text-gray-200 mb-6 italic">
+                "Tôi cần phải để ý trong cuộc sống có những đoạn video nào có thể cung cấp cảm xúc để chộp lấy đúng không. Hãy đưa ra năm tình huống để tôi có thểquay va luu lai broll thu vien do . Loại khổ phổ biến nhất hay dùng nhất ấy. Và đưa ra cả tiêu đề của loai do . dung trogn truong hop nao"
+            </p>
+            <div class="w-16 h-1 bg-yellow-600 mb-6"></div>
+            <div class="space-y-4 text-gray-300">
+                <p>Suy nghĩ của bạn cực kỳ nhạy bén! Việc bạn chủ động muốn "đi săn" những khoảnh khắc này chứng tỏ <strong>"Đôi mắt Đạo diễn" (The Director's Eye)</strong> của bạn đã chính thức được kích hoạt.</p>
+                <p>Trong giới làm phim tài liệu và YouTube Storytelling chuyên nghiệp (như Johnny Harris, Nathaniel Drew hay Kraig Adams), kỹ năng này được gọi là <strong>Xây dựng Thư viện B-roll cá nhân (Building a B-roll Vault)</strong>.</p>
+                <p>Cảm xúc là thứ không thể "set-up" giả tạo. Bạn không thể đợi đến lúc viết xong một kịch bản buồn thì mới chạy ra đường cầu trời mưa. Thay vào đó, những Storyteller giỏi có một thói quen: Bất cứ khi nào đi dạo, uống cafe hay chờ đèn đỏ, nếu thấy một khoảnh khắc có "Vibe", họ sẽ giơ điện thoại lên <strong>quay tĩnh đúng 10 giây</strong>, sau đó cất vào kho.</p>
+                <p class="text-white font-medium mt-6">Dưới đây là 5 Thể loại Không gian âm (Archetypes) kinh điển nhất, quyền lực nhất mà bạn có thể "chộp" được ở bất cứ đâu. Hãy tạo ngay một Album trong điện thoại tên là "B-roll Cảm Xúc" và bắt đầu thu thập chúng:</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 5 ARCHETYPES SECTIONS -->
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-24">
+
+        <!-- Loại 1 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="art-box art-loop shadow-[0_0_50px_rgba(255,255,255,0.05)]">
+                <div class="loop-ring"></div>
+                <div class="loop-ring"></div>
+                <div class="loop-ring"></div>
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-serif-title font-bold text-white">1. Tiêu đề: VÒNG LẶP VÔ HỒN (The Mechanical Loop)</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p><strong class="text-yellow-500">Tình huống để chộp lấy:</strong> Bất kỳ đồ vật nào chuyển động xoay vòng hoặc lặp đi lặp lại một cách vô tri. Ví dụ: Chiếc quạt trần cũ quay lờ đờ trong quán cafe vắng; Cần gạt nước ô tô quạt qua lại dưới trời mưa; Lồng máy giặt đang xoay tít; Con lắc đồng hồ đong đưa.</p>
+                    <p><strong class="text-yellow-500">Cách quay:</strong> Giữ điện thoại hoàn toàn tĩnh (kê lên bàn hoặc tựa vào tường). Khung hình nên lấy góc rộng để sự vật lọt thỏm giữa những mảng tường trống trải. Quay đủ 10-15 giây để thấy sự lặp lại.</p>
+                    <p><strong class="text-yellow-500">Dùng trong trường hợp nào?</strong><br>
+                    Đại diện cho sự trôi đi của thời gian một cách mòn mỏi, vòng lặp nhàm chán (Rat race), sự bế tắc, giậm chân tại chỗ.</p>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-yellow-600">
+                        <strong class="text-white">Ví dụ ghép vào kịch bản của bạn (P2):</strong> "Và thời gian trôi qua, cơ hội đi mất, kỹ năng không tiến triển..." -> Cắt sang cảnh chiếc quạt trần lờ đờ hoặc lồng máy giặt. Khán giả nhìn vòng quay luẩn quẩn đó sẽ tự động thấy mệt mỏi và ngột ngạt thay cho bạn.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loại 2 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 order-2 lg:order-1">
+                <h2 class="text-3xl font-serif-title font-bold text-white">2. Tiêu đề: SỰ THANH LỌC CỦA NƯỚC (The Cleansing Rain/Water)</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p><strong class="text-yellow-500">Tình huống để chộp lấy:</strong> Khi trời mưa: Những giọt nước đọng trên ô kính cửa sổ/kính ô tô đang từ từ trượt dài xuống. Hoặc sau cơn mưa: Cận cảnh một vũng nước đọng trên mặt đường nhựa đang phản chiếu bầu trời xám xịt. Một vòi nước rỉ tong tong.</p>
+                    <p><strong class="text-yellow-500">Cách quay:</strong> Dí sát điện thoại vào kính (Macro), chạm khóa nét căng vào giọt nước để đường phố phía sau mờ nhòe (Hiệu ứng Bokeh). BẮT BUỘC quay Slow-motion.</p>
+                    <p><strong class="text-yellow-500">Dùng trong trường hợp nào?</strong><br>
+                    Giọt nước trượt trên kính là mã code thị giác vĩ đại nhất đại diện cho giọt nước mắt, sự thất bại, buồn bã, hoặc quá trình rửa trôi/chữa lành.</p>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-yellow-600">
+                        <strong class="text-white">Ví dụ ghép vào kịch bản:</strong> "Bạn bơi trong rất nhiều công thức... nhưng nghe theo công thức nào? Nó có hoạt động không?" -> Cắt sang cảnh giọt mưa trượt trên kính. Một nốt trầm hoàn hảo để tiêu hóa sự bất lực.
+                    </div>
+                </div>
+            </div>
+            <div class="art-box art-rain order-1 lg:order-2 shadow-[0_0_50px_rgba(0,100,255,0.05)]">
+                <!-- Raindrops generated by JS -->
+                <div class="bokeh" style="width: 100px; height: 100px; top: 20%; left: 30%;"></div>
+                <div class="bokeh" style="width: 150px; height: 150px; top: 60%; left: 60%; background: rgba(100,150,255,0.05);"></div>
+            </div>
+        </section>
+
+        <!-- Loại 3 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="art-box art-light shadow-[0_0_50px_rgba(255,215,0,0.05)]">
+                <div class="light-beam"></div>
+                <!-- Dust generated by JS -->
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-serif-title font-bold text-white">3. Tiêu đề: VŨ ĐIỆU CỦA NẮNG & BỤI (The Play of Light)</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p><strong class="text-yellow-500">Tình huống để chộp lấy:</strong> Vào khoảng 4-5h chiều (Golden Hour), một vệt nắng xiên hắt qua khe rèm cửa rọi lên mảng tường trống. Nếu tinh mắt, bạn sẽ thấy những hạt bụi li ti bay lơ lửng, cuộn xoáy rực sáng trong vệt nắng đó. Hoặc bóng của cành cây đang rung rinh in hằn trên mặt đường.</p>
+                    <p><strong class="text-yellow-500">Cách quay:</strong> Chạm tay khóa nét (AF Lock) vào vệt sáng/hạt bụi. Vuốt giảm độ sáng (Exposure) xuống cực thấpđể không gian xung quanh tối đen lại, chỉ còn vệt nắng sáng rực lên.</p>
+                    <p><strong class="text-yellow-500">Dùng trong trường hợp nào?</strong><br>
+                    Đại diện cho sự hoài niệm (Nostalgia), sự trôi qua êm đềm của thời gian, sự thiêng liêng, hoặc một khoảnh khắc giác ngộ (A-ha moment).</p>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-yellow-600">
+                        <strong class="text-white">Ví dụ ghép vào kịch bản (P3):</strong> Bạn vừa chốt câu: "Lý do nằm ở chính bạn... BẠN CHÍNH LÀ SẢN PHẨM." -> Cắt sang cảnh vệt nắng và bụi bay lơ lửng. Nó mang lại cảm giác "khai sáng" rùng mình, như một bức màn bí mật vừa được vén lên.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loại 4 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 order-2 lg:order-1">
+                <h2 class="text-3xl font-serif-title font-bold text-white">4. Tiêu đề: CÔ ĐỘC GIỮA ĐÁM ĐÔNG (Urban Isolation)</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p><strong class="text-yellow-500">Tình huống để chộp lấy:</strong> Bạn ngồi quán cafe trên cao nhìn xuống ngã tư đông đúc. Dòng xe máy lướt qua dưới ánh đèn chạng vạng. Những bước chân của dòng người đi bộ hối hả đan chéo nhau trên vỉa hè.</p>
+                    <p><strong class="text-yellow-500">Cách quay:</strong> Có 2 cách cực nghệ thuật. Cách 1: Dùng chế độ Tua nhanh (Timelapse) để biến dòng xe thành những vệt sáng vùn vụt. Cách 2: Quay mất nét (Out-focus) bằng cách đưa tay sát ống kính khóa nét rồi rút tay ra, dòng người phía xa sẽ biến thành những vệt mờ nhòe vô danh.</p>
+                    <p><strong class="text-yellow-500">Dùng trong trường hợp nào?</strong><br>
+                    Đại diện cho áp lực đồng trang lứa (Peer-pressure), FOMO (sợ bị bỏ lỡ), sự nhỏ bé, cô độc. Thế giới quay quá nhanh còn mình thì dậm chân tại chỗ.</p>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-yellow-600">
+                        <strong class="text-white">Ví dụ ghép vào kịch bản:</strong> "Bạn đi tìm giải pháp, đăng ký khóa học, chạy đua đa kênh..." -> Cắt sang dòng xe trôi vùn vụt. Sự chuyển động siêu tốc của thế giới đối lập với sự loay hoay của bạn tạo ra sức ép tâm lý cực tốt.
+                    </div>
+                </div>
+            </div>
+            <div class="art-box art-isolation order-1 lg:order-2 shadow-[0_0_50px_rgba(255,0,0,0.05)]">
+                <div class="lone-circle"></div>
+                <!-- Trails generated by JS -->
+            </div>
+        </section>
+
+        <!-- Loại 5 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="art-box art-smoke shadow-[0_0_50px_rgba(255,255,255,0.02)]">
+                <div class="smoke-blob" style="animation-delay: 0s; background: rgba(255,255,255,0.03);"></div>
+                <div class="smoke-blob" style="animation-delay: 1.5s; background: rgba(255,255,255,0.04);"></div>
+                <div class="smoke-blob" style="animation-delay: 3s; background: rgba(255,255,255,0.02);"></div>
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-serif-title font-bold text-white">5. Tiêu đề: SỰ MONG MANH / TAN BIẾN (The Ephemeral Form)</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p><strong class="text-yellow-500">Tình huống để chộp lấy:</strong> Làn khói bồng bềnh bốc lên từ một ly cà phê nóng/ly trà. Khói uốn lượn từ một que trầm hương. Sương sớm trên mặt hồ. Ly cà phê đen để quên trên bàn, viên đá đã tan chảy hết thành nước loãng.</p>
+                    <p><strong class="text-yellow-500">Cách quay:</strong> Để quay khói, BẮT BUỘC phải có một phông nền tối màu ở phía sau (bức tường xám, chiếc áo đen) và quay Slow-motion.</p>
+                    <p><strong class="text-yellow-500">Dùng trong trường hợp nào?</strong><br>
+                    Đại diện cho sự tĩnh lặng, sự buông bỏ, sự thư giãn sâu sắc, sự vô thường.</p>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-yellow-600">
+                        <strong class="text-white">Ví dụ ghép vào kịch bản (Phần 5: Chill/Tận hưởng):</strong> Câu chốt cuối cùng: "Mọi thứ mà bạn kết xuất ra... nó đều hấp dẫn cả, nó đều Miracle." -> Cắt sang làn sương/khói mỏng từ ly cafe từ từ lượn lờ tan vào không khí, kèm nhạc Lofi xoa dịu. Khán giả sẽ hít một hơi thật sâu, cảm giác như mọi gánh nặng vừa bốc hơi mất.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION / HOMEWORK -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-8 md:p-12 mt-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-600 to-transparent"></div>
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <i data-lucide="lightbulb" class="text-yellow-500"></i>
+                💡 Bài tập về nhà cho "Con nghiện Đạo diễn":
+            </h2>
+            <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+                <p>Tại sao gọi chúng là không gian "âm"? Vì đặc điểm chung của cả 5 loại cảnh này là <strong class="text-white">KHÔNG CÓ KHUÔN MẶT NGƯỜI</strong>.</p>
+                <p>Theo khoa học tâm lý, hễ thấy mặt người trên khung hình, não bộ khán giả lập tức bị "tốn RAM" để phân tích: "Người này đang vui hay buồn? Mắt nhìn đi đâu?". Nhưng khi bạn cắt sang một vệt nắng hay một làn khói... bạn đang <strong class="text-white">"Rút phích cắm"</strong> hệ thần kinh của họ. Não họ được nghỉ ngơi, và toàn bộ sức mạnh tập trung sẽ dồn vào việc nhai lại câu nói triết lý bạn vừa thốt ra.</p>
+                <p>Từ ngày mai, đừng nghĩ ngợi gì cả. Cứ thấy hạt bụi bay vờn trong nắng, hay giọt nước đọng trên ly... hãy nín thở quay chậm 10 giây và ném vào Album.</p>
+                <p>Vài tháng sau, khi dựng video, bạn lấy cái clip mây trôi quay vu vơ từ 3 tháng trước, thả vào đúng cái lời thoại bạn thu âm ngày hôm nay. Khoảnh khắc 2 thứ đó khớp vào nhau tạo ra một cảm xúc trọn vẹn... đó chính là lúc bạn sẽ nghiện cảm giác "Thao túng thực tại" này!</p>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS SECTION -->
+        <section class="pt-16 pb-8 border-t border-gray-800">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif-title font-bold text-white mb-4">Khối Flashcard Ôn Tập</h2>
+                <p class="text-gray-400">25 câu hỏi trích xuất từ nội dung để bạn ghi nhớ nhanh chóng.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="flashcards-container">
+                <!-- Flashcards will be injected here via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (Exactly 128px height) -->
+    <footer class="h-[128px] bg-[#050505] border-t border-gray-800 w-full flex flex-col justify-center px-6">
+        <div class="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-left max-w-2xl">
+                <p class="text-sm text-gray-400 leading-tight">
+                    <strong class="text-gray-300">Cập nhật kiến thức thực chiến nhất</strong> về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors text-sm">
+                    <i data-lucide="youtube" class="w-5 h-5"></i> Youtube
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                    TikTok
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-blue-500 transition-colors text-sm">
+                    <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Generate JS elements for CSS Art
+
+        // Art 2: Rain
+        const rainContainer = document.querySelector('.art-rain');
+        for(let i=0; i<30; i++) {
+            let drop = document.createElement('div');
+            drop.className = 'raindrop';
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
+            drop.style.animationDelay = Math.random() * 2 + 's';
+            rainContainer.appendChild(drop);
+        }
+
+        // Art 3: Dust in Light
+        const lightContainer = document.querySelector('.art-light');
+        for(let i=0; i<40; i++) {
+            let dust = document.createElement('div');
+            dust.className = 'dust';
+            dust.style.left = (Math.random() * 60 + 20) + '%';
+            dust.style.top = (Math.random() * 60 + 20) + '%';
+            dust.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            dust.style.animationDelay = Math.random() * 5 + 's';
+            lightContainer.appendChild(dust);
+        }
+
+        // Art 4: Traffic Trails
+        const isolationContainer = document.querySelector('.art-isolation');
+        const colors = ['#ff3333', '#ffffff', '#ffcc00'];
+        for(let i=0; i<15; i++) {
+            let trail = document.createElement('div');
+            trail.className = 'light-trail';
+            trail.style.top = Math.random() * 100 + '%';
+            trail.style.width = (Math.random() * 100 + 50) + 'px';
+            trail.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+            trail.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+            trail.style.animationDelay = Math.random() * 2 + 's';
+            isolationContainer.appendChild(trail);
+        }
+
+        // 2. Generate 25 Flashcards based strictly on text content
+        const flashcardsData = [
+            { q: "Cảnh trám Không gian âm là gì?", a: "Không chiếu cảnh làm việc, mà chiếu cảnh tĩnh vật (ly cafe bốc khói, phố mưa...)." },
+            { q: "Tác dụng của Không gian âm?", a: "Tạo 'khoảng trống' (Breathing room) để khán giả tiêu hóa câu nói buồn/triết lý." },
+            { q: "Kỹ năng lưu trữ những cảnh này gọi là gì?", a: "Xây dựng Thư viện B-roll cá nhân (Building a B-roll Vault)." },
+            { q: "Có thể 'set-up' giả tạo B-roll cảm xúc không?", a: "Không. Cảm xúc là thứ không thể set-up, cần chớp lấy khoảnh khắc có Vibe." },
+            { q: "Nên quay mỗi cảnh tĩnh trong bao lâu?", a: "Quay tĩnh đúng 10 giây." },
+            { q: "Loại 1 tên là gì?", a: "VÒNG LẶP VÔ HỒN (The Mechanical Loop)." },
+            { q: "Đồ vật nào ví dụ cho Loại 1?", a: "Quạt trần quay lờ đờ, lồng máy giặt, con lắc đồng hồ." },
+            { q: "Cách quay Loại 1 (Vòng lặp)?", a: "Giữ điện thoại hoàn toàn tĩnh, góc rộng, quay 10-15s." },
+            { q: "Loại 1 đại diện cho điều gì?", a: "Sự trôi đi của thời gian, vòng lặp nhàm chán (Rat race), sự bế tắc." },
+            { q: "Loại 2 tên là gì?", a: "SỰ THANH LỌC CỦA NƯỚC (The Cleansing Rain/Water)." },
+            { q: "Cách quay Loại 2 (Giọt nước)?", a: "Dí sát (Macro), khóa nét giọt nước, BẮT BUỘC quay Slow-motion." },
+            { q: "Giọt nước trượt trên kính đại diện cho gì?", a: "Nước mắt, thất bại, buồn bã, sự rửa trôi/chữa lành." },
+            { q: "Loại 3 tên là gì?", a: "VŨ ĐIỆU CỦA NẮNG & BỤI (The Play of Light)." },
+            { q: "Thời điểm lý tưởng quay Loại 3?", a: "Khoảng 4-5h chiều (Golden Hour)." },
+            { q: "Cách thiết lập độ sáng quay Loại 3?", a: "Vuốt giảm độ sáng (Exposure) xuống cực thấp." },
+            { q: "Loại 3 (Nắng & Bụi) đại diện cho gì?", a: "Sự hoài niệm, thời gian trôi êm đềm, khoảnh khắc giác ngộ." },
+            { q: "Loại 4 tên là gì?", a: "CÔ ĐỘC GIỮA ĐÁM ĐÔNG (Urban Isolation)." },
+            { q: "2 cách quay Loại 4 là gì?", a: "Tua nhanh (Timelapse) hoặc Quay mất nét (Out-focus)." },
+            { q: "Loại 4 đại diện cho điều gì?", a: "Áp lực đồng trang lứa, FOMO, sự nhỏ bé, cô độc." },
+            { q: "Loại 5 tên là gì?", a: "SỰ MONG MANH / TAN BIẾN (The Ephemeral Form)." },
+            { q: "Điều kiện BẮT BUỘC để quay khói (Loại 5)?", a: "Phải có phông nền tối màu ở phía sau và quay Slow-motion." },
+            { q: "Loại 5 đại diện cho điều gì?", a: "Sự tĩnh lặng, buông bỏ, thư giãn sâu sắc, vô thường." },
+            { q: "Tại sao gọi là không gian 'âm'?", a: "Vì đặc điểm chung là KHÔNG CÓ KHUÔN MẶT NGƯỜI." },
+            { q: "Khuôn mặt người làm não khán giả bị gì?", a: "Bị 'tốn RAM' để phân tích cảm xúc." },
+            { q: "Cảm giác khi ghép hoàn hảo cảnh quay vu vơ và lời thoại gọi là gì?", a: "Cảm giác 'Thao túng thực tại'." }
+        ];
+
+        const flashcardsContainer = document.getElementById('flashcards-container');
+        flashcardsData.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = "bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-yellow-600/50 transition-colors duration-300";
+            card.innerHTML = `
+                <div class="flex items-start gap-3 mb-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded bg-yellow-600/20 text-yellow-500 flex items-center justify-center text-xs font-bold">${index + 1}</span>
+                    <h3 class="text-sm font-semibold text-white leading-tight">${item.q}</h3>
+                </div>
+                <div class="pl-9 text-sm text-gray-400">
+                    <span class="text-gray-500 mr-1">↳</span> ${item.a}
+                </div>
+            `;
+            flashcardsContainer.appendChild(card);
+        });
+
+    </script>
+</body>
+</html>
