@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuẩn Hóa 5 Loại Cảnh Trám - Nghệ Thuật Storytelling</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0F19;
+            color: #E2E8F0;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #38BDF8, #818CF8, #C084FC);
+        }
+
+        /* --- CSS ABSTRACT ARTWORKS --- */
+        .art-container {
+            width: 100%;
+            height: 250px;
+            background: #111827;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #1F2937;
+        }
+
+        /* 1. Literal B-roll (Static + Single) */
+        .art-1 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 6s ease-in-out infinite;
+            position: relative;
+        }
+        .art-1::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px; height: 40px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* 2. Sequence (Continuity) */
+        .art-2-wrapper { display: flex; gap: 10px; transform: rotate(-15deg); }
+        .art-2-bar {
+            width: 30px; height: 120px;
+            background: linear-gradient(to bottom, #10B981, #3B82F6);
+            border-radius: 20px;
+            animation: slideUp 2s infinite alternate ease-in-out;
+        }
+        .art-2-bar:nth-child(2) { animation-delay: 0.3s; height: 150px; background: linear-gradient(to bottom, #F59E0B, #EF4444); }
+        .art-2-bar:nth-child(3) { animation-delay: 0.6s; height: 100px; background: linear-gradient(to bottom, #8B5CF6, #EC4899); }
+
+        /* 3. In-situ (Breaking 4th wall) */
+        .art-3 {
+            width: 120px; height: 120px;
+            border: 4px dashed #F43F5E;
+            border-radius: 50%;
+            animation: spin 8s linear infinite;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .art-3-inner {
+            width: 60px; height: 60px;
+            background: #F43F5E;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #F43F5E;
+            animation: pulse 2s infinite;
+        }
+
+        /* 4. Hybrid (Half & Half) */
+        .art-4 {
+            width: 150px; height: 150px;
+            background: conic-gradient(from 45deg, #10B981 0deg 180deg, #3B82F6 180deg 360deg);
+            border-radius: 20px;
+            transform: rotate(45deg);
+            box-shadow: inset 0 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* 5. Props/Visual Metaphor */
+        .art-5 {
+            width: 0; height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid #F59E0B;
+            position: relative;
+            animation: floaty 4s infinite ease-in-out;
+        }
+        .art-5::after {
+            content: '';
+            position: absolute;
+            top: 100px; left: -60px;
+            width: 0; height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-top: 50px solid #D97706;
+        }
+
+        /* 6. POV */
+        .art-6 {
+            width: 100px; height: 100px;
+            border: 2px solid #06B6D4;
+            border-radius: 50%;
+            position: relative;
+        }
+        .art-6::before {
+            content: ''; position: absolute;
+            top: 50%; left: -20px; right: -20px; height: 2px; background: #06B6D4;
+        }
+        .art-6::after {
+            content: ''; position: absolute;
+            left: 50%; top: -20px; bottom: -20px; width: 2px; background: #06B6D4;
+        }
+
+        /* 7. Negative Space */
+        .art-7 {
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .art-7-circle {
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: drift 10s infinite alternate linear;
+        }
+
+        /* 8. Archival/Meme */
+        .art-8 {
+            width: 120px; height: 90px;
+            background: repeating-linear-gradient(
+                0deg,
+                #111,
+                #111 2px,
+                #333 2px,
+                #333 4px
+            );
+            border: 4px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .art-8::after {
+            content: ''; position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 20%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            animation: glitchScan 3s infinite linear;
+        }
+
+        /* Animations */
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+        @keyframes slideUp { 0% { transform: translateY(20px); } 100% { transform: translateY(-20px); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.8;} 50% { transform: scale(1.1); opacity: 1;} 100% { transform: scale(0.9); opacity: 0.8;} }
+        @keyframes floaty { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+        @keyframes drift { 0% { transform: translate(-30px, 20px) scale(1); } 100% { transform: translate(30px, -20px) scale(1.5); } }
+        @keyframes glitchScan { 0% { top: -50%; } 100% { top: 150%; } }
+
+        /* Flashcard Styling */
+        .flashcard {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="pt-20 pb-16 px-6 max-w-5xl mx-auto text-center border-b border-gray-800">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            Nghệ Thuật <br/><span class="text-gradient">Chuẩn Hóa Cảnh Trám</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto italic">
+            "Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới."
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
+
+        <!-- PHẦN 1 -->
+        <section id="phan1">
+            <div class="mb-12 border-l-4 border-indigo-500 pl-6">
+                <h2 class="text-3xl font-bold text-white mb-4">PHẦN 1: CHUẨN HÓA 5 LOẠI CẢNH TRÁM CỦA BẠN (Tác dụng, Tâm lý học & Độ khó)</h2>
+                <p class="text-gray-300 italic">(Lưu ý thuật ngữ: Cảnh chính có hình bạn nói gọi là A-roll, cảnh phụ chèn vào minh họa gọi là B-roll).</p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Loại 1 -->
+                <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800/50 hover:border-indigo-500/30 transition-colors">
+                    <div class="md:col-span-4">
+                        <div class="art-container"><div class="art-1"></div></div>
+                    </div>
+                    <div class="md:col-span-8 space-y-3">
+                        <h3 class="text-2xl font-bold text-blue-400">1. Loại 1: A-roll tĩnh + B-roll minh họa đơn lẻ</h3>
+                        <p><span class="font-semibold text-white">Thuật ngữ điện ảnh:</span> Cảnh cắt minh họa (Illustrative Cutaway / Literal B-roll).</p>
+                        <p><span class="font-semibold text-white">Tác dụng:</span> Cung cấp hình ảnh trực quan ngay lập tức; che đi các vết cắt (jump cut) khi bạn nói vấp.</p>
+                        <p><span class="font-semibold text-white">Tâm lý học:</span> Thuyết Mã hóa kép (Dual-Coding Theory) của Allan Paivio. Bộ não xử lý thông tin qua hai kênh độc lập: thính giác (nghe bạn nói) và thị giác (nhìn cảnh bạn làm việc). Khi 2 kênh này đồng nhất, thông tin được "mã hóa" hai lần, giúp khán giả ghi nhớ sâu hơn mà não không bị mệt.</p>
+                        <p><span class="font-semibold text-emerald-400">Độ khó:</span> Dễ (1/5).</p>
+                    </div>
+                </div>
+
+                <!-- Loại 2 -->
+                <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800/50 hover:border-indigo-500/30 transition-colors">
+                    <div class="md:col-span-8 space-y-3 md:order-1 order-2">
+                        <h3 class="text-2xl font-bold text-amber-400">2. Loại 2: A-roll tĩnh + B-roll chuỗi hành động</h3>
+                        <p><span class="font-semibold text-white">Thuật ngữ điện ảnh:</span> Dựng phim liên tục (Continuity Sequence) hoặc Chuỗi cảnh (Montage).</p>
+                        <p><span class="font-semibold text-white">Tác dụng:</span> Nén thời gian, tạo nhịp điệu (pacing) nhanh, mượt mà và mang tính "điện ảnh". Giống như bạn nói, dạng này có khả năng tái sử dụng (reusable) rất cao ở các video khác.</p>
+                        <p><span class="font-semibold text-white">Tâm lý học:</span> Thỏa mãn Quy luật Gestalt về tính liên tục (Law of Continuity). Não bộ con người khao khát sự hoàn thiện và có tính dự đoán. Khi thấy bạn mở nắp laptop, não bộ tò mò muốn thấy cảnh gõ phím. Sự trôi chảy này kích thích não tiết ra một lượng nhỏ Dopamine (hormone thỏa mãn), giữ chân người xem tốt hơn hẳn cảnh lẻ tẻ.</p>
+                        <p><span class="font-semibold text-amber-400">Độ khó:</span> Trung bình (3/5). Cần biết cách quay 1 hành động ở nhiều góc (toàn - trung - cận) và cắt ghép khớp nhịp.</p>
+                    </div>
+                    <div class="md:col-span-4 md:order-2 order-1">
+                        <div class="art-container">
+                            <div class="art-2-wrapper">
+                                <div class="art-2-bar"></div><div class="art-2-bar"></div><div class="art-2-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loại 3 -->
+                <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800/50 hover:border-indigo-500/30 transition-colors">
+                    <div class="md:col-span-4">
+                        <div class="art-container"><div class="art-3"><div class="art-3-inner"></div></div></div>
+                    </div>
+                    <div class="md:col-span-8 space-y-3">
+                        <h3 class="text-2xl font-bold text-rose-400">3. Loại 3: Thoại trực tiếp ngay trong bối cảnh hành động</h3>
+                        <p class="italic text-sm text-gray-400">(Lưu ý: Lúc này nó không còn là B-roll nữa, cảnh hành động đã trở thành A-roll).</p>
+                        <p><span class="font-semibold text-white">Thuật ngữ điện ảnh:</span> Phá vỡ bức tường thứ 4 trong không gian thực (Diegetic Direct Address / Walk-and-Talk / In-situ Delivery).</p>
+                        <p><span class="font-semibold text-white">Tác dụng:</span> Xóa nhòa ranh giới giữa người kể chuyện và câu chuyện. Khán giả đang "sống trong khoảnh khắc đó" cùng bạn.</p>
+                        <p><span class="font-semibold text-white">Tâm lý học:</span> Đẩy Tương tác Cận xã hội (Parasocial Interaction) lên mức cao nhất. Khán giả có ảo giác họ là một người bạn đang ngồi chung phòng làm việc với bạn, làm giảm sự phòng thủ tâm lý, mang lại tính chân thực (Authenticity) tuyệt đối.</p>
+                        <p><span class="font-semibold text-rose-500">Độ khó:</span> Rất khó (5/5). Đòi hỏi diễn xuất tự nhiên (vừa làm vừa nói không bị sượng), kiểm soát ánh sáng khó, và cực kỳ khó thu âm sạch (nhiều tạp âm môi trường).</p>
+                    </div>
+                </div>
+
+                <!-- Loại 4 -->
+                <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800/50 hover:border-indigo-500/30 transition-colors">
+                    <div class="md:col-span-8 space-y-3 md:order-1 order-2">
+                        <h3 class="text-2xl font-bold text-fuchsia-400">4. Loại 4: Nửa ngồi tĩnh, Nửa thoại trong hành động</h3>
+                        <p><span class="font-semibold text-white">Thuật ngữ điện ảnh:</span> Lối kể chuyện Phim tài liệu (Hybrid Documentary Style / Intercutting).</p>
+                        <p><span class="font-semibold text-white">Tác dụng:</span> Cân bằng hoàn hảo giữa sự chuyên nghiệp/uy tín (khi ngồi nói) và sự sinh động/thực tế (khi hành động).</p>
+                        <p><span class="font-semibold text-white">Tâm lý học:</span> Tối ưu hóa Tải lượng nhận thức (Cognitive Load). Cảnh ngồi tĩnh là trạm nghỉ để não "tiêu hóa" bài học sâu sắc, cảnh hành động giúp đẩy cảm xúc lên. Việc thay đổi không gian luân phiên cũng kích hoạt Phản xạ định hướng (Orienting Response) giúp reset (làm mới) sự chú ý của não bộ.</p>
+                        <p><span class="font-semibold text-fuchsia-400">Độ khó:</span> Khó (4/5). Yêu cầu tư duy kịch bản chặt chẽ: câu nào nói ở studio, câu nào sẽ ngước lên nói lúc đang làm việc.</p>
+                    </div>
+                    <div class="md:col-span-4 md:order-2 order-1">
+                        <div class="art-container"><div class="art-4"></div></div>
+                    </div>
+                </div>
+
+                <!-- Loại 5 -->
+                <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800/50 hover:border-indigo-500/30 transition-colors">
+                    <div class="md:col-span-4">
+                        <div class="art-container"><div class="art-5"></div></div>
+                    </div>
+                    <div class="md:col-span-8 space-y-3">
+                        <h3 class="text-2xl font-bold text-indigo-400">5. Loại 5: Sử dụng vật biểu tượng (Lego, Hoạt hình)</h3>
+                        <p><span class="font-semibold text-white">Thuật ngữ điện ảnh:</span> Ẩn dụ thị giác / Đạo cụ (Visual Metaphor / Props / Animation).</p>
+                        <p><span class="font-semibold text-white">Tác dụng:</span> Đơn giản hóa các khái niệm trừu tượng (ví dụ: nỗi buồn, áp lực thời gian, v.v.). Tạo dấu ấn hình ảnh cá nhân (Signature visual).</p>
+                        <p><span class="font-semibold text-white">Tâm lý học:</span> Tận dụng Hiệu ứng Cô lập (Von Restorff Effect): con người có xu hướng nhớ những thứ kỳ lạ, khác biệt nhất. Nó mang tính Trò chơi hóa (Gamification), kích thích "đứa trẻ bên trong" của người xem, khiến video bớt khô khan.</p>
+                        <p><span class="font-semibold text-indigo-400">Độ khó:</span> Tùy thuộc vào việc quay đạo cụ thật (3/5) hay làm Animation đồ họa (5/5).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-800">
+
+        <!-- PHẦN 2 -->
+        <section id="phan2">
+            <h2 class="text-3xl font-bold text-white mb-6 border-l-4 border-emerald-500 pl-6">PHẦN 2: CÒN LOẠI CẢNH TRÁM NÀO TRONG LÀM PHIM NỮA KHÔNG?</h2>
+            <p class="mb-10 text-lg">Bên cạnh 5 loại trên, các Storyteller hàng đầu thường sử dụng thêm 3 loại cực kỳ hiệu quả:</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Loại 6 -->
+                <div class="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50">
+                    <div class="art-container h-40 mb-6"><div class="art-6"></div></div>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-3">6. Cảnh trám Góc nhìn thứ nhất (POV - Point of View)</h3>
+                    <p class="mb-2"><span class="font-semibold">Định nghĩa:</span> Đặt máy quay ngang tầm mắt bạn (nhìn xuống đôi bàn tay đang gõ phím).</p>
+                    <p><span class="font-semibold text-white">Tâm lý học:</span> Kích hoạt Tế bào thần kinh gương (Mirror Neurons), khiến khán giả vô thức cảm thấy chính họ đang thực hiện hành động đó -> Tạo sự đồng cảm sâu sắc.</p>
+                </div>
+
+                <!-- Loại 7 -->
+                <div class="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50">
+                    <div class="art-container h-40 mb-6"><div class="art-7"><div class="art-7-circle"></div></div></div>
+                    <h3 class="text-xl font-bold text-purple-400 mb-3">7. Cảnh trám Cảm xúc / Không gian âm (Emotional / Negative Space B-roll)</h3>
+                    <p class="mb-2"><span class="font-semibold">Định nghĩa:</span> Không chiếu cảnh làm việc, mà chiếu cảnh một ly cà phê đang bốc khói mờ ảo, một góc phố mưa rơi (Slow-motion), chiếc quạt trần quay chậm.</p>
+                    <p><span class="font-semibold text-white">Tác dụng:</span> Tạo "khoảng trống" (Breathing room) để khán giả có thời gian tiêu hóa một câu nói buồn hoặc triết lý sâu sắc bạn vừa thốt ra.</p>
+                </div>
+
+                <!-- Loại 8 -->
+                <div class="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50">
+                    <div class="art-container h-40 mb-6"><div class="art-8"></div></div>
+                    <h3 class="text-xl font-bold text-gray-300 mb-3">8. Cảnh trám Lưu trữ / Meme (Archival / Found Footage)</h3>
+                    <p class="mb-2"><span class="font-semibold">Định nghĩa:</span> Dùng các đoạn video trong quá khứ của bạn (5 năm trước), hoặc meme internet, phim cũ.</p>
+                    <p><span class="font-semibold text-white">Tác dụng:</span> Cung cấp bằng chứng thời gian và khơi gợi sự hoài niệm (Nostalgia).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 3 -->
+        <section id="phan3" class="bg-gradient-to-br from-gray-900 to-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-900/50">
+            <h2 class="text-3xl font-bold text-white mb-6 border-l-4 border-yellow-500 pl-6">PHẦN 3: GIỮA LOẠI 3 VÀ LOẠI 4, CÁI NÀO TỐT HƠN?</h2>
+            
+            <p class="text-xl font-bold text-yellow-400 mb-6 uppercase">Đối với định dạng Video Storytelling chia sẻ góc nhìn/trải nghiệm: LOẠI 4 TỐT HƠN VÀ ƯU VIỆT HƠN.</p>
+            <p class="mb-6 font-semibold">Lý do theo khoa học tâm lý:</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-red-900/20 p-6 rounded-xl border border-red-900/30">
+                    <h4 class="text-xl font-bold text-red-400 mb-3">Điểm yếu của Loại 3:</h4>
+                    <p>Nếu bạn làm toàn bộ bằng loại 3, video sẽ biến thành một Vlog (Day in the life). Khán giả sẽ bị <span class="text-white font-bold">Quá tải kích thích (Sensory Overload)</span> vì không gian xung quanh bạn liên tục thay đổi, cạnh tranh sự chú ý với lời bạn nói. Hơn nữa, việc bạn cứ cắm cúi làm rồi ngước lên nhìn làm mất đi <span class="text-white font-bold">"Giao tiếp bằng mắt trực diện tĩnh" (Static Eye-contact)</span> – yếu tố cốt lõi để tạo ra sự Uy quyền và Đáng tin cậy.</p>
+                </div>
+                <div class="bg-green-900/20 p-6 rounded-xl border border-green-900/30">
+                    <h4 class="text-xl font-bold text-green-400 mb-3">Sức mạnh của Loại 4:</h4>
+                    <p>Nó sở hữu điểm mạnh của cả hai. Khung cảnh ngồi nói có setup ánh sáng đẹp (Anchor) đóng vai trò như "Người dẫn đường" đáng tin cậy. Khung cảnh hành động (Explore) đóng vai trò "Bằng chứng thực tế". Sự luân phiên này là <span class="text-white font-bold">công thức vàng của các Master Storyteller</span> trên Youtube (như Ali Abdaal, Nathaniel Drew, Johnny Harris).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 4 -->
+        <section id="phan4">
+            <h2 class="text-3xl font-bold text-white mb-6 border-l-4 border-pink-500 pl-6">PHẦN 4: CHIẾN LƯỢC SỬ DỤNG - CÓ NÊN DÙNG 100% MỘT LOẠI?</h2>
+            
+            <div class="bg-rose-900/20 border-l-4 border-rose-500 p-6 mb-8">
+                <p class="text-xl font-bold text-white">Câu trả lời theo Tâm lý học hành vi là: <span class="text-rose-400">TUYỆT ĐỐI KHÔNG DÙNG 100% BẤT KỲ LOẠI NÀO.</span></p>
+                <p class="mt-4"><span class="font-semibold text-rose-300">Tại sao?</span> Vì <span class="text-white font-bold">Hiện tượng Thích ứng/Quen nhờn kích thích (Sensory Habituation)</span>. Bộ não con người rất lười biếng, nếu bạn cho nó xem 1 định dạng liên tục (ví dụ 100% loại 3), sau khoảng 30-60 giây, não sẽ coi đó là "trạng thái bình thường" (baseline) và ngừng chú ý.</p>
+            </div>
+
+            <p class="text-xl font-medium text-center mb-10 max-w-4xl mx-auto text-gray-300">Sự hấp dẫn của một video không nằm ở bản thân kỹ thuật, mà nằm ở <span class="text-white font-bold tracking-wider">SỰ TƯƠNG PHẢN (Contrast)</span> và <span class="text-white font-bold tracking-wider">NHỊP ĐIỆU (Pacing)</span>. Bạn cần đan xen để tạo ra cảm giác <span class="italic text-indigo-300">"Căng và Chùng" (Tension & Release)</span>.</p>
+
+            <h3 class="text-2xl font-bold text-white mb-8 text-center text-gradient">Gợi ý tỷ lệ vàng cho một video Storytelling lôi cuốn:</h3>
+
+            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-700 before:to-transparent">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-xl font-bold">1</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-gray-800/40 p-6 rounded-xl border border-gray-700/50 shadow">
+                        <h4 class="font-bold text-lg text-white mb-2">Mở đầu (Hook - 10% thời lượng) <br/><span class="text-sm text-indigo-400 font-normal">-> Dùng Loại 3 hoặc Loại 5</span></h4>
+                        <p class="text-sm">Đừng mở đầu bằng cảnh ngồi tĩnh nhàm chán. Ném khán giả thẳng vào một hành động (đang hối hả gõ máy, ngước lên nói: "Tôi đã sai lầm...") hoặc một setup Lego kỳ lạ. Nó ngay lập tức "bắt cóc" sự chú ý của bộ não.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-xl font-bold">2</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-gray-800/40 p-6 rounded-xl border border-gray-700/50 shadow">
+                        <h4 class="font-bold text-lg text-white mb-2">Thiết lập thông tin / Kể quá trình (40% thời lượng) <br/><span class="text-sm text-indigo-400 font-normal">-> Dùng Loại 4 (Ngồi tĩnh) + Loại 2 (Chuỗi action)</span></h4>
+                        <p class="text-sm">Thu về cảnh ngồi tĩnh để giao tiếp ánh mắt, giải thích vấn đề. Khi kể quá trình, chèn Chuỗi sequence (Loại 2) để đẩy nhanh tốc độ video, giúp khán giả lướt qua các thông tin mô tả mà không chán.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-xl font-bold">3</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-gray-800/40 p-6 rounded-xl border border-gray-700/50 shadow">
+                        <h4 class="font-bold text-lg text-white mb-2">Cao trào / Điểm nhấn cảm xúc (20% thời lượng) <br/><span class="text-sm text-indigo-400 font-normal">-> Dùng Loại 3 (In-situ) + Loại 6 (POV)</span></h4>
+                        <p class="text-sm">Hãy coi Loại 3 như một đòn "chí mạng". Bạn đang kể một câu chuyện dài, đến lúc nhận ra chân lý, hãy cắt sang cảnh bạn ở hiện trường. Sự xuất hiện hiếm hoi của Loại 3 sẽ làm câu nói đó có sức nặng nhân lên gấp 10 lần.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-xl font-bold">4</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-gray-800/40 p-6 rounded-xl border border-gray-700/50 shadow">
+                        <h4 class="font-bold text-lg text-white mb-2">Đúc kết bài học (30% thời lượng) <br/><span class="text-sm text-indigo-400 font-normal">-> Dùng Loại 7 (Cảm xúc) và thu về Loại 4</span></h4>
+                        <p class="text-sm">Thả một cảnh chậm rãi (không gian âm) để cảm xúc lắng đọng, sau đó cắt về khuôn mặt bạn (Loại 4) nhìn thẳng vào ống kính để chốt lại thông điệp.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <p class="text-xl font-bold text-white italic">"Hãy coi các kỹ thuật làm phim như một ban nhạc. Không một bản nhạc hay nào chỉ dùng duy nhất 1 nhạc cụ (1 loại b-roll) từ đầu đến cuối. Sự đan xen, luân phiên thay đổi giữa Tĩnh và Động chính là chìa khóa thao túng tâm lý khán giả!"</p>
+            </div>
+        </section>
+
+        <hr class="border-gray-800 my-16">
+
+        <!-- FLASHCARDS SECTION -->
+        <section id="flashcards">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">KHỐI FLASHCARD ÔN TẬP</h2>
+                <p class="text-gray-400">25 câu hỏi đúc kết từ nội dung trên giúp bạn ghi nhớ nhanh chóng (Hiển thị tĩnh).</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Q1 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q1)</span>
+                        <p class="font-semibold text-white text-sm">A-roll là thuật ngữ chỉ điều gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Cảnh chính có hình bạn ngồi nói.</p>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q2)</span>
+                        <p class="font-semibold text-white text-sm">B-roll đóng vai trò gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Là cảnh phụ chèn vào để minh họa.</p>
+                    </div>
+                </div>
+                <!-- Q3 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q3)</span>
+                        <p class="font-semibold text-white text-sm">Tác dụng chính của Loại 1 (Cảnh cắt minh họa)?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Cung cấp hình ảnh trực quan, che đi jump cut khi nói vấp.</p>
+                    </div>
+                </div>
+                <!-- Q4 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q4)</span>
+                        <p class="font-semibold text-white text-sm">Thuyết Mã hóa kép (Dual-Coding) là của ai?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Allan Paivio.</p>
+                    </div>
+                </div>
+                <!-- Q5 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q5)</span>
+                        <p class="font-semibold text-white text-sm">Loại 2 (Chuỗi hành động) ứng dụng quy luật tâm lý nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Quy luật Gestalt về tính liên tục.</p>
+                    </div>
+                </div>
+                <!-- Q6 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q6)</span>
+                        <p class="font-semibold text-white text-sm">Sự trôi chảy của Chuỗi hành động giúp não tiết ra chất gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Dopamine (hormone thỏa mãn).</p>
+                    </div>
+                </div>
+                <!-- Q7 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q7)</span>
+                        <p class="font-semibold text-white text-sm">Độ khó của Loại 3 (Thoại in-situ) là bao nhiêu?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Rất khó (5/5). Yêu cầu diễn xuất tự nhiên, thu âm và ánh sáng phức tạp.</p>
+                    </div>
+                </div>
+                <!-- Q8 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q8)</span>
+                        <p class="font-semibold text-white text-sm">Loại 3 đẩy tương tác gì lên mức cao nhất?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Tương tác Cận xã hội (Parasocial Interaction).</p>
+                    </div>
+                </div>
+                <!-- Q9 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q9)</span>
+                        <p class="font-semibold text-white text-sm">Lối kể chuyện Phim tài liệu (Hybrid) thuộc Loại mấy?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 4 (Nửa ngồi tĩnh, nửa hành động).</p>
+                    </div>
+                </div>
+                <!-- Q10 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q10)</span>
+                        <p class="font-semibold text-white text-sm">Phản xạ định hướng ở Loại 4 giúp làm gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Reset (làm mới) sự chú ý của não bộ.</p>
+                    </div>
+                </div>
+                <!-- Q11 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q11)</span>
+                        <p class="font-semibold text-white text-sm">Hiệu ứng Cô lập (Von Restorff) là gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Con người có xu hướng nhớ những thứ kỳ lạ, khác biệt nhất.</p>
+                    </div>
+                </div>
+                <!-- Q12 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q12)</span>
+                        <p class="font-semibold text-white text-sm">Tác dụng của Loại 5 (Sử dụng vật biểu tượng)?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Đơn giản hóa khái niệm trừu tượng, tạo dấu ấn cá nhân.</p>
+                    </div>
+                </div>
+                <!-- Q13 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q13)</span>
+                        <p class="font-semibold text-white text-sm">Cảnh trám POV (Góc nhìn thứ nhất) kích hoạt tế bào nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Tế bào thần kinh gương (Mirror Neurons).</p>
+                    </div>
+                </div>
+                <!-- Q14 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q14)</span>
+                        <p class="font-semibold text-white text-sm">Cảnh trám Không gian âm dùng để làm gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Tạo "khoảng trống" (Breathing room) để khán giả tiêu hóa thông tin.</p>
+                    </div>
+                </div>
+                <!-- Q15 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q15)</span>
+                        <p class="font-semibold text-white text-sm">Cảnh trám Lưu trữ/Meme (Loại 8) khơi gợi cảm xúc gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Sự hoài niệm (Nostalgia) và là bằng chứng thời gian.</p>
+                    </div>
+                </div>
+                <!-- Q16 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q16)</span>
+                        <p class="font-semibold text-white text-sm">Giữa Loại 3 và Loại 4, cái nào ưu việt hơn cho Storytelling?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 4 TỐT HƠN VÀ ƯU VIỆT HƠN.</p>
+                    </div>
+                </div>
+                <!-- Q17 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q17)</span>
+                        <p class="font-semibold text-white text-sm">Điểm yếu nếu dùng 100% Loại 3 là gì?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Video thành Vlog, khán giả bị Quá tải kích thích (Sensory Overload).</p>
+                    </div>
+                </div>
+                <!-- Q18 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q18)</span>
+                        <p class="font-semibold text-white text-sm">"Giao tiếp mắt trực diện tĩnh" tạo ra yếu tố nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Sự Uy quyền và Đáng tin cậy.</p>
+                    </div>
+                </div>
+                <!-- Q19 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q19)</span>
+                        <p class="font-semibold text-white text-sm">Vì sao TUYỆT ĐỐI KHÔNG dùng 100% một loại cảnh?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Vì Hiện tượng Thích ứng/Quen nhờn kích thích.</p>
+                    </div>
+                </div>
+                <!-- Q20 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q20)</span>
+                        <p class="font-semibold text-white text-sm">Sự hấp dẫn của video nằm ở 2 yếu tố cốt lõi nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">SỰ TƯƠNG PHẢN (Contrast) và NHỊP ĐIỆU (Pacing).</p>
+                    </div>
+                </div>
+                <!-- Q21 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q21)</span>
+                        <p class="font-semibold text-white text-sm">Mở đầu (Hook) chiếm bao nhiêu % thời lượng?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">10% thời lượng.</p>
+                    </div>
+                </div>
+                <!-- Q22 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q22)</span>
+                        <p class="font-semibold text-white text-sm">Nên dùng loại cảnh nào cho phần Mở đầu?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 3 hoặc Loại 5.</p>
+                    </div>
+                </div>
+                <!-- Q23 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q23)</span>
+                        <p class="font-semibold text-white text-sm">Thiết lập thông tin (40%) nên dùng tổ hợp nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 4 (Ngồi tĩnh) + Loại 2 (Chuỗi action).</p>
+                    </div>
+                </div>
+                <!-- Q24 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q24)</span>
+                        <p class="font-semibold text-white text-sm">Cao trào / Điểm nhấn (20%) nên dùng loại nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 3 (In-situ) + Loại 6 (POV).</p>
+                    </div>
+                </div>
+                <!-- Q25 -->
+                <div class="flashcard">
+                    <div class="mb-4">
+                        <span class="bg-indigo-500/20 text-indigo-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Hỏi (Q25)</span>
+                        <p class="font-semibold text-white text-sm">Phần Đúc kết bài học (30%) khuyên dùng loại nào?</p>
+                    </div>
+                    <div>
+                        <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">Đáp</span>
+                        <p class="text-sm text-gray-300">Loại 7 (Cảm xúc) và thu về Loại 4.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="h-[128px] bg-black border-t border-gray-800 flex flex-col justify-center items-center text-center px-4 w-full mt-12">
+        <p class="text-sm text-gray-400 mb-4 max-w-3xl">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6">
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors" title="YouTube">
+                <i class="fa-brands fa-youtube text-2xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="TikTok">
+                <i class="fa-brands fa-tiktok text-2xl"></i>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 transition-colors" title="Facebook Page">
+                <i class="fa-brands fa-facebook text-2xl"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
