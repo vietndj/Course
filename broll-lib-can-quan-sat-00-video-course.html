@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm nang Đạo diễn Hình ảnh (D.O.P) bằng Điện thoại</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #e2e8f0;
+        }
+        h1, h2, h3, .cinematic-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom Animations for Abstract Art */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        @keyframes glitch-anim {
+            0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+            20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+            40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
+            100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
+        }
+        .glitch-effect::before, .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        .glitch-effect::before {
+            left: 2px;
+            text-shadow: -1px 0 red;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        .glitch-effect::after {
+            left: -2px;
+            text-shadow: -1px 0 blue;
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        @keyframes scrollLine {
+            0% { transform: translateY(-100%) rotate(var(--rot)); opacity: 0;}
+            50% { opacity: 1; }
+            100% { transform: translateY(200%) rotate(var(--rot)); opacity: 0;}
+        }
+        .flashcard-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-black">
+
+    <!-- HERO SECTION -->
+    <header class="relative py-20 px-6 max-w-5xl mx-auto flex flex-col items-center justify-center text-center min-h-[70vh]">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent -z-10 blur-3xl"></div>
+        <span class="text-amber-500 font-semibold tracking-widest uppercase text-sm mb-4">Mobile Cinematography</span>
+        <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
+            Tuyệt vời! Việc bạn muốn cầm điện thoại lên và bắt tay vào setup quay ngay chứng tỏ bạn đang chuyển mình từ "người viết kịch bản" sang tư duy của một <span class="text-amber-500 italic">Đạo diễn Hình ảnh (D.O.P)</span>.
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed font-light">
+            Chỉ với chiếc điện thoại, bạn hoàn toàn có thể tạo ra chất lượng phim điện ảnh (Cinematic) nếu nắm vững <strong class="text-white font-semibold">Cỡ cảnh (Shot size)</strong>, <strong class="text-white font-semibold">Góc máy (Angle)</strong> và <strong class="text-white font-semibold">Âm thanh (ASMR)</strong>.
+        </p>
+    </header>
+
+    <!-- 3 RULES SECTION -->
+    <section class="py-16 px-6 bg-slate-900/50 border-y border-slate-800">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10 text-center text-white">Trước khi đi vào chi tiết từng chuỗi, hãy nhớ <span class="text-red-500">3 NGUYÊN TẮC SỐNG CÒN</span> KHI QUAY BẰNG ĐIỆN THOẠI:</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Rule 1 -->
+                <div class="bg-black border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full -z-10 group-hover:bg-amber-500/10 transition-colors"></div>
+                    <div class="text-amber-500 text-5xl font-bold opacity-20 absolute -top-2 -left-2 cinematic-font">1</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Lau thật sạch camera trước:</h3>
+                    <p class="text-slate-400 leading-relaxed">90% video quay bằng điện thoại bị mờ, lóa sương sương là do mồ hôi tay dính trên kính.</p>
+                </div>
+                <!-- Rule 2 -->
+                <div class="bg-black border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full -z-10 group-hover:bg-amber-500/10 transition-colors"></div>
+                    <div class="text-amber-500 text-5xl font-bold opacity-20 absolute -top-2 -left-2 cinematic-font">2</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Khóa nét & Khóa sáng (AE/AF Lock):</h3>
+                    <p class="text-slate-400 leading-relaxed">Chạm giữ ngón tay vào màn hình (chỗ mặt hoặc tay bạn) khoảng 2 giây đến khi hiện chữ "Khóa AE/AF" (màu vàng). Sau đó, <span class="text-white">vuốt thanh mặt trời giảm độ sáng xuống một chút.</span> Việc này giúp điện thoại không bị chớp sáng giật giật khi bạn cử động, tạo chiều sâu như máy quay xịn.</p>
+                </div>
+                <!-- Rule 3 -->
+                <div class="bg-black border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full -z-10 group-hover:bg-amber-500/10 transition-colors"></div>
+                    <div class="text-amber-500 text-5xl font-bold opacity-20 absolute -top-2 -left-2 cinematic-font">3</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Quy tắc "5 giây dư":</h3>
+                    <p class="text-slate-400 leading-relaxed">Bấm nút quay -> Đếm thầm 1,2,3 -> DIỄN -> Diễn xong giữ nguyên tư thế đếm 1,2,3 -> Bấm tắt. Việc này giúp lúc vào Capcut bạn có "thịt" để cắt ghép, không bị hụt nhịp. <br><br><strong class="text-amber-400">Đặc biệt:</strong> Lúc quay các cảnh này (B-roll), <strong class="text-red-400 uppercase">Không nói</strong>, hãy ngậm miệng và tập trung 100% vào diễn xuất ánh mắt/hành động. Thoại sẽ được ghép đè lên sau.</p>
+                </div>
+            </div>
+            
+            <p class="text-center mt-12 text-2xl font-semibold text-white cinematic-font italic">Dưới đây là Kịch bản Phân cảnh (Shotlist) "cầm tay chỉ việc" để bạn tự quay:</p>
+        </div>
+    </section>
+
+    <!-- SHOTLIST SECTION -->
+    <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
+
+        <!-- CHUỖI 1 -->
+        <section class="flex flex-col lg:flex-row gap-12 items-stretch">
+            <!-- Text Content -->
+            <div class="flex-1 space-y-6">
+                <div class="border-l-4 border-slate-600 pl-4 mb-8">
+                    <h2 class="text-3xl font-bold text-white mb-2">CHUỖI 1: "TRANG GIẤY TRẮNG"</h2>
+                    <p class="text-slate-400 text-lg uppercase tracking-wider">(Sự chần chừ & Bế tắc)</p>
+                </div>
+                
+                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800/50 space-y-3">
+                    <p><strong class="text-amber-500">Vibe (Không khí):</strong> Chậm chạp, nặng nề, tĩnh lặng, ngột ngạt. Khán giả phải thấy được sự "rặn mãi không ra ý tưởng".</p>
+                    <p><strong class="text-amber-500">Ánh sáng:</strong> Tắt bớt đèn phòng. Để nguồn sáng chính là <span class="underline decoration-amber-500/50 underline-offset-4">ánh sáng hắt ra từ màn hình laptop</span> đập vào mặt bạn (tạo độ tương phản cao, hơi u ám và cô độc).</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 1.1: Sự ngập ngừng (The Hesitation)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Cực cận (Extreme Close-up). Khung hình CHỈ LẤY khu vực bàn phím và các ngón tay.</li>
+                            <li><strong class="text-white">Góc máy:</strong> Đặt điện thoại sát xuống mặt bàn, dí sát vào bàn phím (góc thấp hất ngang).</li>
+                            <li><strong class="text-white">Hành động:</strong> Ngón tay lơ lửng trên phím Space (run run chưa dám gõ). Sau đó gõ lạch cạch 2-3 chữ thật chậm chạp.</li>
+                            <li><strong class="text-white">Âm thanh:</strong> Kê sát điện thoại để thu tiếng lạch cạch rõ nhất.</li>
+                            <li><strong class="text-white">Thời lượng:</strong> Bấm máy quay 10s. Lúc dựng chỉ cắt lấy <strong>3 giây</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 1.2: Ám ảnh Backspace (The Erase)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Góc qua vai (Over-the-shoulder).</li>
+                            <li><strong class="text-white">Góc máy:</strong> Kê điện thoại lên vài cuốn sách đặt ở phía sau vai (hoặc mang tai) của bạn, chĩa chéo xuống màn hình laptop.</li>
+                            <li><strong class="text-white">Trong khung:</strong> Thấy lờ mờ phần vai áo của bạn ở góc dưới, trọng tâm nét căng vào màn hình laptop đang có vài dòng chữ.</li>
+                            <li><strong class="text-white">Hành động:</strong> Đột nhiên ngón tay bạn vươn tới ấn <strong>đè lỳ</strong> vào phím <strong>Backspace</strong> (hoặc Delete). Dòng chữ trên màn hình lùi về xóa sạch không còn gì. Trả lại con trỏ chuột nhấp nháy trên trang trắng.</li>
+                            <li><strong class="text-white">Thời lượng dựng:</strong> Lấy khoảng <strong>2 giây</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 1.3: Cảm xúc khuôn mặt (Sự bất lực)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Cận cảnh (Close-up).</li>
+                            <li><strong class="text-white">Góc máy:</strong> Đặt điện thoại tựa vào mép màn hình laptop, gầm thấp ngước hất lên mặt bạn.</li>
+                            <li><strong class="text-white">Hành động:</strong> Khuôn mặt bạn được màn hình chiếu sáng. Bạn chớp mắt chậm, lờ đờ. Hít sâu rồi thở dài một cái thật mạnh (thấy vai rũ xuống), tháo kính ra xoa mắt (hoặc vò đầu bứt tai), rồi lấy tay chống cằm ánh mắt nhìn vô định.</li>
+                            <li><strong class="text-white">Thời lượng dựng:</strong> Lấy khoảng <strong>3 - 4 giây</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSS Abstract Art 1 -->
+            <div class="flex-1 min-h-[400px] flex items-center justify-center p-4">
+                <div class="relative w-full h-full min-h-[400px] bg-[#0a0a0a] rounded-2xl border border-[#222] overflow-hidden shadow-2xl flex items-center justify-center">
+                    <!-- Grid background -->
+                    <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+                    <!-- The Blank Page / Screen -->
+                    <div class="relative w-64 h-40 bg-[#111] border border-[#333] shadow-[0_0_50px_rgba(255,255,255,0.05)] rounded overflow-hidden">
+                        <!-- Blinking cursor -->
+                        <div class="absolute top-4 left-4 w-3 h-5 bg-slate-400 animate-[pulse_1s_steps(2,start)_infinite]"></div>
+                        <!-- Vignette -->
+                        <div class="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]"></div>
+                    </div>
+                    <!-- Hesitation lines -->
+                    <div class="absolute bottom-1/4 w-32 h-[1px] bg-gradient-to-r from-transparent via-slate-500 to-transparent opacity-30"></div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-800">
+
+        <!-- CHUỖI 2 -->
+        <section class="flex flex-col lg:flex-row-reverse gap-12 items-stretch">
+            <!-- Text Content -->
+            <div class="flex-1 space-y-6">
+                <div class="border-r-4 border-red-600 pr-4 mb-8 text-right">
+                    <h2 class="text-3xl font-bold text-white mb-2">CHUỖI 2: "BỘI THỰC THÔNG TIN"</h2>
+                    <p class="text-slate-400 text-lg uppercase tracking-wider">(Nhiễu loạn, quá tải)</p>
+                </div>
+                
+                <div class="bg-red-950/20 p-6 rounded-xl border border-red-900/30 space-y-3">
+                    <p><strong class="text-red-400">Vibe (Không khí):</strong> Dồn dập, loạn nhịp, chóng mặt. Phải tạo cảm giác có hàng đống thứ đang tấn công vào não bộ.</p>
+                    <p><strong class="text-red-400">Ánh sáng:</strong> Bật đèn sáng rực rỡ, bật thêm đèn bàn lộn xộn.</p>
+                    <p><strong class="text-red-400">Kỹ thuật dựng:</strong> Nhịp cắt cảnh cực nhanh (Fast cut) - mỗi cảnh chỉ để <strong>0.5 đến 1 giây</strong> để tạo sự dồn dập, khớp với câu thoại "bơi trong rất nhiều công thức, đăng bài hằng ngày..."</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 2.1: Cuộn chuột vô tận (Doom-scrolling)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Đặc tả tay. Đặt điện thoại ngang bàn song song với con chuột.</li>
+                            <li><strong class="text-white">Hành động:</strong> Bàn tay cầm chuột, ngón trỏ lăn con lăn chuột (scroll) liên tục, miết cực mạnh, tốc độ cực nhanh. Thu âm tiếng lăn chuột "xoạch xoạch".</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 2.2: Đôi mắt ngập lụt (Cảnh đắt giá nhất)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Đặc tả (Extreme Close-up). Dí điện thoại sát rạt vào mặt bạn.</li>
+                            <li><strong class="text-white">Trong khung:</strong> CHỈ CẮT LẤY TỪ LÔNG MÀY XUỐNG BỌNG MẮT (Chỉ thấy 2 con mắt).</li>
+                            <li><strong class="text-white">Hành động:</strong> Bạn mở độ sáng màn hình laptop cao nhất (mở tab có nhiều ảnh/chữ đang chạy). Mắt bạn mở to, dại ra, con ngươi đảo liên tục từ trái qua phải thật nhanh như đang quét hàng chục cái tab. Sự phản chiếu ánh sáng chớp nháy trên đồng tử/mắt kính sẽ cực kỳ điện ảnh.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 2.3: Bề bộn vật lý (Ma trận trên bàn)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Góc chim bay (Top-down view). Bạn đứng dậy, giơ điện thoại thẳng đứng hất vuông góc xuống mặt bàn.</li>
+                            <li><strong class="text-white">Trong khung:</strong> Một cái bàn siêu lộn xộn: vài cuốn sổ mở tung tóe, giấy note dán đè lên nhau, bút vứt ngổn ngang.</li>
+                            <li><strong class="text-white">Hành động:</strong> Hai tay bạn lật tung các trang sổ xột xoạt một cách điên cuồng, cầm bút gạch xóa loằng ngoằng. Sự lộn xộn vật lý đại diện cho sự lộn xộn trong não bộ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSS Abstract Art 2 -->
+            <div class="flex-1 min-h-[400px] flex items-center justify-center p-4">
+                <div class="relative w-full h-full min-h-[400px] bg-black rounded-2xl border border-red-900/50 overflow-hidden shadow-[0_0_30px_rgba(220,38,38,0.1)] flex items-center justify-center">
+                    <!-- Fast scrolling lines -->
+                    <div class="absolute w-[200%] h-4 bg-cyan-500/20 shadow-[0_0_20px_cyan]" style="--rot: 15deg; animation: scrollLine 0.4s linear infinite;"></div>
+                    <div class="absolute w-[200%] h-8 bg-red-500/20 shadow-[0_0_30px_red]" style="--rot: -20deg; animation: scrollLine 0.6s linear infinite 0.2s;"></div>
+                    <div class="absolute w-[200%] h-2 bg-yellow-500/30" style="--rot: 45deg; animation: scrollLine 0.3s linear infinite 0.1s;"></div>
+                    <div class="absolute w-[200%] h-1 bg-white/50" style="--rot: -10deg; animation: scrollLine 0.2s linear infinite;"></div>
+                    
+                    <!-- Glitch Text representing Overload -->
+                    <div class="relative z-10 text-5xl md:text-7xl font-black text-white mix-blend-difference uppercase tracking-tighter select-none glitch-effect" data-text="OVERLOAD">OVERLOAD</div>
+                    
+                    <!-- CRT Scanline effect -->
+                    <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] pointer-events-none z-20"></div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-800">
+
+        <!-- CHUỖI 3 -->
+        <section class="flex flex-col lg:flex-row gap-12 items-stretch">
+            <!-- Text Content -->
+            <div class="flex-1 space-y-6">
+                <div class="border-l-4 border-emerald-500 pl-4 mb-8">
+                    <h2 class="text-3xl font-bold text-white mb-2">CHUỖI 3: "CẢM BIẾN / PHI TIÊU"</h2>
+                    <p class="text-slate-400 text-lg uppercase tracking-wider">(Dứt khoát, ném ra thị trường)</p>
+                </div>
+                
+                <div class="bg-emerald-950/20 p-6 rounded-xl border border-emerald-900/30 space-y-3">
+                    <p><strong class="text-emerald-400">Vibe (Không khí):</strong> Dứt khoát, sáng tỏ, phá vỡ sự bế tắc, mang tính giải thoát, "đánh liều" có mục đích.</p>
+                    <p class="text-sm italic text-slate-400 border-l-2 border-slate-600 pl-3 mt-2">(Đạo cụ: BẮT BUỘC nên dùng <strong>Máy bay giấy</strong>. Việc vò giấy mang nghĩa bực dọc/vứt bỏ. Còn máy bay giấy mang hình tượng "dò đường, nhắm mục tiêu, cất cánh bay đi" khớp 100% với lời thoại của bạn).</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 3.1: Đóng gói (The Preparation)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Cận trung (chụp từ hông trở lên thấy đôi tay làm việc trên bàn).</li>
+                            <li><strong class="text-white">Trong khung:</strong> Đôi tay bạn và một tờ giấy nháp (có thể dùng chính tờ giấy gạch xóa nhem nhuốc ở chuỗi 2).</li>
+                            <li><strong class="text-white">Hành động:</strong> Bạn không cần quay từ lúc bắt đầu gấp. Chỉ cần quay đôi tay đang gấp 2 nếp cuối cùng, ngón tay miết thật mạnh, thật sắc lẹm để hoàn thiện chiếc máy bay. Động tác gấp và miết cực kỳ dứt khoát, điêu luyện.</li>
+                            <li><strong class="text-white">Thời lượng dựng:</strong> <strong>2 giây</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-b border-slate-800 pb-4">
+                        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><span class="text-2xl">🎬</span> Cảnh 3.2: Ngắm mục tiêu (Sự tính toán)</h3>
+                        <ul class="space-y-2 text-slate-300 ml-8 list-disc marker:text-slate-600">
+                            <li><strong class="text-white">Cỡ cảnh:</strong> Trung cảnh. Góc ngang mặt (Profile shot). Điện thoại đặt bên hông.</li>
+                            <li><strong class="text-white">Hành động:</strong> Bạn cầm chiếc máy bay lên ngang tầm mắt. Nheo một mắt lại ngắm nghía mục tiêu (thể hiện bạn đang tính toán test thuật toán). Cơ mặt khẽ nhếch mép mỉm cười nhẹ (sự tự tin, chấp nhận thử sai). Kéo tay về phía sau lấy đà.</li>
+                            <li><strong class="text-white">Thời lượng dựng:</strong> <strong>1.5 giây</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-amber-900/20 to-transparent p-6 rounded-xl border border-amber-500/20">
+                        <h3 class="text-2xl font-black text-amber-500 mb-4 flex items-center gap-2 uppercase tracking-tight"><span class="text-3xl">🎬</span> Cảnh 3.3: THE MONEY SHOT - Cú ném thị trường (Góc thấp, trực diện)</h3>
+                        <p class="text-sm text-slate-400 mb-4 italic">(Đây là cảnh chốt hạ đỉnh cao nhất, hãy dùng tính năng Quay chậm - Slow Motion trên điện thoại)</p>
+                        <ul class="space-y-3 text-slate-200 ml-8 list-disc marker:text-amber-500">
+                            <li><strong class="text-white">Góc máy:</strong> Đặt điện thoại lên mặt bàn (dựa vào chai nước/chồng sách), ống kính chĩa thẳng về phía bạn. BẮT BUỘC đặt sát mặt bàn hất nhẹ lên (Low-angle).</li>
+                            <li><strong class="text-white">Thiết lập:</strong> Chạm tay vào khoảng không ngay sát trước ống kính điện thoại (cách 10cm) để Khóa nét (AF Lock) vào điểm đó.</li>
+                            <li><strong class="text-white">Hành động:</strong> Bạn lùi ra xa điện thoại khoảng 1.5 mét. Nhìn <strong>thẳng vào ống kính</strong> (ánh mắt cực kỳ kiên quyết). Phóng chiếc máy bay giấy <strong>bay thẳng tắp đập trúng vào ống kính điện thoại</strong> (hoặc bay sượt qua che kín màn hình).</li>
+                            <li class="bg-black/50 p-3 rounded mt-2 text-slate-300"><strong class="text-amber-400">Mẹo Edit:</strong> Máy bay bay rất chậm (do quay Slo-mo) xé gió lao về phía khán giả và che đen màn hình. Bạn lồng cảnh này đè lên đúng câu thoại: <em>"Nó BẮT BUỘC phải lấy vài chục video đầu ném ra thị trường... NÓ ĐANG TÌM KHÁN GIẢ!"</em> -> Sự kết hợp giữa hình ảnh bay đập vào mắt và câu nói sẽ khiến khán giả nổi da gà vì độ "thực" của nó.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSS Abstract Art 3 -->
+            <div class="flex-1 min-h-[400px] flex items-center justify-center p-4">
+                <div class="relative w-full h-full min-h-[400px] bg-slate-900 rounded-2xl border border-emerald-900/50 overflow-hidden shadow-2xl flex items-center justify-center group cursor-default">
+                    <!-- Glow target -->
+                    <div class="absolute top-1/4 right-1/4 w-32 h-32 bg-emerald-500/20 blur-[50px] rounded-full"></div>
+                    
+                    <!-- Abstract Paper Plane (CSS Triangles) -->
+                    <div class="relative z-10 
+                        w-0 h-0 
+                        border-l-[40px] border-l-transparent 
+                        border-b-[80px] border-b-slate-100 
+                        border-r-[40px] border-r-transparent 
+                        rotate-45 transform 
+                        transition-all duration-[2000ms] ease-out
+                        group-hover:translate-x-[200px] group-hover:-translate-y-[200px] group-hover:scale-150 group-hover:opacity-0
+                        drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                        
+                        <!-- Right wing shade -->
+                        <div class="absolute top-[0px] left-0 w-0 h-0 
+                            border-l-[0px] border-l-transparent 
+                            border-b-[80px] border-b-slate-300 
+                            border-r-[40px] border-r-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Motion Trail -->
+                    <div class="absolute w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-400/50 to-white -rotate-45 transform 
+                        translate-x-[-30%] translate-y-[30%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
+                        
+                    <!-- Target crosshair abstract -->
+                    <div class="absolute top-8 right-8 w-16 h-16 border border-emerald-500/30 rounded-full flex items-center justify-center">
+                        <div class="w-1 h-2 bg-emerald-500/50 absolute top-0"></div>
+                        <div class="w-1 h-2 bg-emerald-500/50 absolute bottom-0"></div>
+                        <div class="w-2 h-1 bg-emerald-500/50 absolute left-0"></div>
+                        <div class="w-2 h-1 bg-emerald-500/50 absolute right-0"></div>
+                        <div class="w-1 h-1 bg-emerald-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUTRO -->
+        <div class="text-center py-10 mt-10">
+            <h2 class="text-2xl md:text-4xl font-bold text-amber-500 cinematic-font mb-4">Bạn hãy set-up góc máy và quay thử ngay nhé.</h2>
+            <p class="text-xl text-slate-300 font-light">Cảm giác tự mình đạo diễn khung hình sẽ cực kỳ nghiện đấy!</p>
+        </div>
+
+    </main>
+
+    <!-- FLASHCARD SECTION -->
+    <section class="py-16 px-6 bg-black border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center text-white">Khối Ôn Tập Nhanh (Flashcards)</h2>
+            <p class="text-center text-slate-400 mb-12">25 câu hỏi & đáp án hiển thị trực tiếp để bạn dễ dàng ghi nhớ.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <!-- Generative static flashcards based purely on the text -->
+                <!-- Card 1 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 1</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Sự chuyển mình từ "người viết kịch bản" là sang tư duy gì?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Đạo diễn Hình ảnh (D.O.P).
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 2</p>
+                    <p class="text-white font-medium mb-4 flex-grow">3 yếu tố để tạo chất lượng điện ảnh bằng điện thoại?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Cỡ cảnh (Shot size), Góc máy (Angle), Âm thanh (ASMR).
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 3</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Nguyên nhân 90% video điện thoại bị mờ/lóa?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Do mồ hôi tay dính trên kính camera trước.
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 4</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Cách thực hiện Khóa AE/AF?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Chạm giữ ngón tay vào màn hình khoảng 2 giây đến khi hiện chữ vàng.
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 5</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Sau khi khóa nét, làm gì để hình không bị chớp giật?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Vuốt thanh mặt trời giảm độ sáng xuống một chút.
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 6</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Quy tắc "5 giây dư" thực hiện thế nào?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Bấm quay -> đếm 1,2,3 -> DIỄN -> giữ tư thế đếm 1,2,3 -> Tắt.
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 7</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Tác dụng của quy tắc "5 giây dư"?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Có "thịt" để cắt ghép trên Capcut, không bị hụt nhịp.
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 8</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Khi quay B-roll (cảnh hành động/ánh mắt), lưu ý gì về âm thanh?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        KHÔNG NÓI, ngậm miệng tập trung diễn xuất. Thoại ghép đè sau.
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 9</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Vibe của Chuỗi 1 (Trang giấy trắng) là gì?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Chậm chạp, nặng nề, tĩnh lặng, ngột ngạt.
+                    </div>
+                </div>
+                <!-- Card 10 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 10</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Setup ánh sáng cho Chuỗi 1 thế nào?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Tắt bớt đèn phòng. Nguồn sáng chính hắt từ màn hình laptop.
+                    </div>
+                </div>
+                <!-- Card 11 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 11</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Cỡ cảnh của Cảnh 1.1 (Sự ngập ngừng)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Cực cận (Extreme Close-up) chỉ lấy bàn phím và ngón tay.
+                    </div>
+                </div>
+                <!-- Card 12 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 12</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Góc máy của Cảnh 1.2 (Ám ảnh Backspace)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Góc qua vai (Over-the-shoulder). Kê điện thoại sau vai.
+                    </div>
+                </div>
+                <!-- Card 13 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 13</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Hành động của tay trong Cảnh 1.2?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Ấn đè lỳ vào phím Backspace/Delete xóa sạch chữ.
+                    </div>
+                </div>
+                <!-- Card 14 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 14</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Góc máy của Cảnh 1.3 (Cảm xúc khuôn mặt)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Tựa mép laptop, gầm thấp ngước hất lên mặt.
+                    </div>
+                </div>
+                <!-- Card 15 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 15</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Vibe của Chuỗi 2 (Bội thực thông tin)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Dồn dập, loạn nhịp, chóng mặt.
+                    </div>
+                </div>
+                <!-- Card 16 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 16</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Kỹ thuật dựng đặc trưng cho Chuỗi 2?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Nhịp cắt cảnh cực nhanh (Fast cut) 0.5 đến 1 giây.
+                    </div>
+                </div>
+                <!-- Card 17 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 17</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Hành động trong Cảnh 2.1 (Cuộn chuột vô tận)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Ngón trỏ lăn chuột liên tục, miết cực mạnh, siêu nhanh.
+                    </div>
+                </div>
+                <!-- Card 18 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 18</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Khung hình của Cảnh 2.2 (Đôi mắt ngập lụt) lấy phần nào?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Đặc tả Extreme Close-up, CẮT LẤY TỪ LÔNG MÀY XUỐNG BỌNG MẮT.
+                    </div>
+                </div>
+                <!-- Card 19 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 19</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Góc máy của Cảnh 2.3 (Bề bộn vật lý)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Góc chim bay (Top-down view) hất vuông góc xuống bàn.
+                    </div>
+                </div>
+                <!-- Card 20 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 20</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Vibe của Chuỗi 3 (Cảm biến / Phi tiêu)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Dứt khoát, sáng tỏ, phá bế tắc, giải thoát.
+                    </div>
+                </div>
+                <!-- Card 21 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 21</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Đạo cụ BẮT BUỘC trong Chuỗi 3 mang ý nghĩa gì?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Máy bay giấy mang ý nghĩa "dò đường, nhắm mục tiêu, bay đi".
+                    </div>
+                </div>
+                <!-- Card 22 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 22</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Hành động chính của tay trong Cảnh 3.1 (Đóng gói)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Gấp 2 nếp cuối, miết thật mạnh, sắc lẹm, dứt khoát.
+                    </div>
+                </div>
+                <!-- Card 23 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 23</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Sự tự tin trong Cảnh 3.2 thể hiện qua đâu?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Nheo mắt ngắm, cơ mặt khẽ nhếch mép mỉm cười nhẹ.
+                    </div>
+                </div>
+                <!-- Card 24 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 24</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Góc máy bắt buộc của THE MONEY SHOT (Cảnh 3.3)?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Đặt sát mặt bàn hất nhẹ lên (Low-angle), nhìn trực diện.
+                    </div>
+                </div>
+                <!-- Card 25 -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl flex flex-col justify-between h-full hover:border-slate-600 transition-colors">
+                    <p class="text-sm text-amber-500 font-semibold mb-3">Câu 25</p>
+                    <p class="text-white font-medium mb-4 flex-grow">Tính năng camera nên dùng cho THE MONEY SHOT?</p>
+                    <div class="bg-black p-3 rounded border-l-2 border-amber-500 text-sm text-slate-300 mt-auto">
+                        Quay chậm - Slow Motion, kết hợp ném máy bay sượt qua che kính.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Exact 128px height as requested) -->
+    <footer class="h-[128px] bg-[#020202] border-t border-slate-800 flex flex-col justify-center items-center px-4 w-full">
+        <p class="text-slate-400 text-xs md:text-sm max-w-3xl text-center mb-3">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex items-center gap-6">
+            <!-- YouTube -->
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-red-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69.48,216.12,123.05,216,128,216s58.52.12,91.84-13.11a24,24,0,0,0,14.49-16.41C236.92,176.5,240,158.26,240,128S236.92,79.5,234.33,69.52Zm-21.53,113a8,8,0,0,1-4.83,5.47C177,200.25,129.08,200,128,200s-49-.25-80-12a8,8,0,0,1-4.83-5.47C40.85,173.34,32,156.45,32,128s8.85-45.34,11.2-54.48a8,8,0,0,1,4.83-5.47C79,55.75,127,56,128,56s49,.25,80,12a8,8,0,0,1,4.83,5.47C215.15,82.66,224,99.55,224,128S215.15,173.34,212.8,182.48ZM104,168V88l64,40Z"></path></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M216,72a8,8,0,0,1-8,8,40,40,0,0,0-40,40v48a72,72,0,1,1-72-72,8,8,0,0,1,0,16,56,56,0,1,0,56,56V32a8,8,0,0,1,8-8c1.37,0,22,1,40,19.34A8,8,0,0,1,216,72Z"></path></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path></svg>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
