@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chữa bài phương án sử dụng cho phần Lego</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+        h1, h2, h3, .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- CSS ABSTRACT ART --- */
+        
+        /* 1. Hero Art: The Trojan Block */
+        .art-hero {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem auto;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(45deg);
+        }
+        .art-hero-face {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 4px solid #10b981; /* Emerald 500 */
+            background: rgba(16, 185, 129, 0.2);
+            box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+        .art-hero-face:nth-child(1) { transform: translateZ(60px); }
+        .art-hero-face:nth-child(2) { transform: rotateY(90deg) translateZ(60px); }
+        .art-hero-face:nth-child(3) { transform: rotateY(180deg) translateZ(60px); }
+        .art-hero-face:nth-child(4) { transform: rotateY(-90deg) translateZ(60px); }
+        .art-hero-face:nth-child(5) { transform: rotateX(90deg) translateZ(60px); background: rgba(16, 185, 129, 0.4); }
+
+        /* 2. Art Part 1: Chaos to Structure */
+        .art-part1 {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .art-p1-block {
+            width: 30px; height: 30px;
+            background: #f59e0b; /* Amber 500 */
+            border-radius: 4px;
+        }
+        .art-p1-chaos1 { transform: rotate(15deg) translateY(-20px); opacity: 0.6;}
+        .art-p1-chaos2 { transform: rotate(-25deg) translateY(20px); opacity: 0.8;}
+        .art-p1-structure {
+            display: grid;
+            grid-template-columns: repeat(3, 30px);
+            gap: 5px;
+            margin-left: 30px;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+        }
+
+        /* 3. Art Part 2: The Spotlight & Lens */
+        .art-part2 {
+            width: 100%;
+            height: 180px;
+            margin-bottom: 2rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.3) 0%, transparent 70%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+        .art-p2-camera {
+            width: 60px; height: 60px;
+            border: 5px solid #94a3b8;
+            border-radius: 50%;
+            position: relative;
+        }
+        .art-p2-camera::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px; height: 20px;
+            background: #ef4444; /* Red 500 - Record button */
+            border-radius: 50%;
+        }
+
+        /* 4. Art Part 3: Gestalt Closure (The Loop) */
+        .art-part3 {
+            width: 150px; height: 150px;
+            margin: 0 auto 2rem auto;
+            border-radius: 50%;
+            border: 4px dashed #3b82f6; /* Blue 500 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .art-p3-inner {
+            width: 60px; height: 60px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+            border-radius: 12px;
+        }
+
+        /* 5. Art Warning */
+        .art-warning {
+            width: 80px; height: 80px;
+            margin: 0 auto 1.5rem auto;
+            background: repeating-linear-gradient(
+                45deg,
+                #ef4444,
+                #ef4444 10px,
+                #0f172a 10px,
+                #0f172a 20px
+            );
+            border: 3px solid #f87171;
+            border-radius: 8px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .art-warning::after {
+            content: '!';
+            font-size: 40px; font-weight: 900; color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0f172a;
+            width: 50px; height: 50px;
+            text-align: center; line-height: 50px;
+            border-radius: 50%;
+        }
+
+        /* Typography & Layout Tweaks */
+        .text-content p { margin-bottom: 1.25rem; line-height: 1.8; }
+        .text-content strong { color: #38bdf8; font-weight: 600; }
+        .text-content ul { margin-bottom: 1.25rem; padding-left: 1.5rem; list-style-type: disc; }
+        .text-content li { margin-bottom: 0.5rem; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="py-20 px-4 border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wide leading-tight">
+                Chữa bài phương án sử dụng cho phần Lego
+            </h1>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 py-12 text-lg">
+        
+        <!-- INTRO -->
+        <section class="mb-16">
+            <div class="art-hero">
+                <div class="art-hero-face"></div>
+                <div class="art-hero-face"></div>
+                <div class="art-hero-face"></div>
+                <div class="art-hero-face"></div>
+                <div class="art-hero-face"></div>
+            </div>
+            
+            <div class="text-content bg-slate-800/50 p-8 rounded-2xl border border-slate-700 shadow-xl">
+                <p>Việc bạn nảy ra ý tưởng sử dụng nhân vật Lego Minecraft chứng tỏ bạn thực sự đã nắm được "chìa khóa" của một Đạo diễn Hình ảnh. Bạn không chỉ kể chuyện bằng lời, mà đang muốn kể chuyện bằng Biểu tượng.</p>
+                <p>Trong giới làm phim, việc sử dụng một món đồ chơi quen thuộc để truyền tải một triết lý sâu xa được gọi là kỹ thuật "Con ngựa thành Troy" (Trojan Horse).</p>
+                <p>Để trả lời ngay câu hỏi của bạn: <strong>CÓ NÊN SỬ DỤNG LEGO TRONG TRƯỜNG HỢP NÀY KHÔNG?</strong></p>
+                <p>Câu trả lời là: <strong>ĐIỂM 10 TUYỆT ĐỐI! NÓ CÒN XUẤT SẮC HƠN CẢ CẢNH GÕ LAPTOP RẤT NHIỀU!</strong></p>
+                <p>Dưới đây là 3 lý do khoa học giải thích vì sao nó là "vũ khí hủy diệt" sự nhàm chán, và kịch bản Đạo diễn chi tiết để bạn bấm máy ngay.</p>
+            </div>
+        </section>
+
+        <!-- PHẦN 1 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-emerald-400 mb-8 border-b border-emerald-900 pb-4">PHẦN 1: VÌ SAO LEGO MINECRAFT LÀ LỰA CHỌN THIÊN TÀI?</h2>
+            
+            <div class="art-part1">
+                <div class="art-p1-block art-p1-chaos1"></div>
+                <div class="art-p1-block art-p1-chaos2"></div>
+                <div class="art-p1-block" style="transform: rotate(45deg);"></div>
+                <div class="art-p1-structure">
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                    <div class="art-p1-block" style="background:#10b981;"></div>
+                </div>
+            </div>
+
+            <div class="text-content">
+                <p><strong>1. Khớp 100% với Triết lý kịch bản (Minecraft = Xây Kênh Youtube)</strong></p>
+                <p>Bản chất của game Minecraft là gì? Bạn bị ném vào một thế giới trống rỗng. Bạn phải tự dò dẫm, đập đá chặt cây (Thu thập dữ liệu), đập đi xây lại (Thử - sai/Làm video nháp), để ráp thành một thế giới của riêng mình (Thị trường ngách/Niche).</p>
+                <p>Việc xây kênh cũng y hệt! Các khối block chính là các ý tưởng. Nỗi đau lớn nhất của người mới là: Có rất nhiều gạch (ý tưởng, khóa học), nhưng không biết phải xếp thành hình thù gì.</p>
+                
+                <p><strong>2. Cú "Phanh gấp tâm lý" cực mạnh (Hiệu ứng Lệch chuẩn - Von Restorff)</strong></p>
+                <p>Khán giả đang lướt mạng xã hội và thấy hàng trăm người "mở đầu video bằng cảnh ngồi gõ laptop rồi thở dài". Sự nhàm chán khiến não họ tự động lướt qua. Khi lướt đến bạn, đập vào mắt họ là một chú búp bê vuông vức đang chật vật giữa đống gạch. Bộ não bị "chập mạch" (Pattern Interrupt) và tò mò cực độ: "Video này định nói cái quái gì với con Lego này đây?". Khả năng giữ chân 3 giây đầu của bạn sẽ tăng vọt.</p>
+                
+                <p><strong>3. Hội chứng "Kẻ tí hon" (The Scale of Vulnerability)</strong></p>
+                <p>Hình ảnh một chú Lego nhỏ bé chơ vơ tạo ra sự tương phản về kích thước cực mạnh so với bàn tay "khổng lồ" của bạn. Nó lột tả xuất sắc sự cô độc, nhỏ bé và bất lực của một người mới làm nội dung khi đứng trước "ngọn núi" thuật toán khổng lồ.</p>
+            </div>
+        </section>
+
+        <!-- PHẦN 2 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-amber-400 mb-8 border-b border-amber-900 pb-4">PHẦN 2: KỊCH BẢN SETUP & CÁCH QUAY MỞ ĐẦU (THE HOOK)</h2>
+            
+            <div class="art-part2">
+                <div class="art-p2-camera"></div>
+                <div style="position: absolute; bottom: 20px; left: 40%; width: 40px; height: 10px; background: #475569; transform: rotate(15deg);"></div>
+                <div style="position: absolute; bottom: 10px; right: 35%; width: 20px; height: 20px; background: #10b981; border-radius: 2px;"></div>
+            </div>
+
+            <div class="text-content">
+                <p>Chủ đề: <strong>"SỰ SỤP ĐỔ CỦA NHỮNG CÔNG THỨC"</strong></p>
+                <p>Mục tiêu: Kích thích nhịp tim bằng sự dồn dập, đổ vỡ. Đánh trúng nỗi đau "Bội thực thông tin".</p>
+                
+                <p><strong>🎬 Chuẩn bị Bối cảnh:</strong></p>
+                <ul>
+                    <li>Mặt bàn tối màu.</li>
+                    <li><strong>Ánh sáng (Sống còn):</strong> TẮT ĐÈN TRẦN PHÒNG. Dùng 1 chiếc đèn bàn học (Spotlight) chiếu xiên chéo 45 độ từ trên xuống mặt bàn. Nó sẽ tạo ra cái bóng đổ dài ngoẵng cho nhân vật Lego, trông cực kỳ u ám, cô độc và đậm chất điện ảnh.</li>
+                    <li>Đạo cụ: 1 nhân vật Minecraft (Steve) và một vốc lớn các khối Block lộn xộn.</li>
+                </ul>
+
+                <p><strong>🎬 BẤM MÁY (Thời lượng hình ảnh: 3 giây trước khi nói)</strong></p>
+                
+                <p><strong>Shot 1 (0.0s - 1.0s): Sự ngột ngạt (Góc giun dế - Worm's Eye View)</strong></p>
+                <ul>
+                    <li><strong>Cách quay:</strong> Để điện thoại CHẠM HẲN XUỐNG BÀN. Ống kính hất nhẹ lên, ngang bằng với tầm mắt của nhân vật Lego.</li>
+                    <li><strong>Setup:</strong> Nhân vật Lego đứng nhỏ bé. Bao vây xung quanh nó và cao ngất ngưởng trên đầu nó là một ngọn núi gạch lộn xộn, chắp vá chông chênh.</li>
+                    <li><strong>Âm thanh lồng:</strong> Tiếng ồn ào của đám đông (thể hiện sự nhiễu loạn thông tin).</li>
+                </ul>
+
+                <p><strong>Shot 2 (1.0s - 2.0s): Sụp đổ / Bất lực</strong></p>
+                <ul>
+                    <li><strong>Cách quay:</strong> Vẫn giữ góc máy chạm bàn đó.</li>
+                    <li><strong>Hành động:</strong> Bàn tay khổng lồ của bạn thò vào từ ngoài khung hình, cầm 1 khối gạch to, cố sức ấn mạnh (ép buộc) lên đỉnh tòa tháp đang chông chênh đó. Vì ép quá mạnh... RẦM! Toàn bộ đống gạch đổ sập tung tóe, đè lấp luôn cả nhân vật Lego.</li>
+                    <li><strong>Âm thanh:</strong> Kê sát Mic điện thoại để thu trọn vẹn tiếng nhựa rào rào "Lạch cạch! Chát chúa" (ASMR cực đã tai). Tiếng đám đông tắt phụt.</li>
+                </ul>
+
+                <p><strong>Shot 3 (2.0s - 2.5s): Phanh gấp tâm lý</strong></p>
+                <ul>
+                    <li><strong>Hành động:</strong> Bàn tay khổng lồ của bạn bực bội thò vào, GẠT PHĂNG đống gạch đổ nát đó văng ra ngoài khung hình. Trả lại khoảng trống.</li>
+                </ul>
+
+                <p><strong>Shot 4 (Bắt đầu nói): Chuyển cảnh về Người thật</strong></p>
+                <ul>
+                    <li><strong>Cách dựng:</strong> Cắt cái rụp sang cảnh bạn (Loại 4). Bạn đang ngồi khoanh tay chống cằm tại đúng cái bàn đó.</li>
+                    <li><strong>Thoại thu trực tiếp (Mắt ghim thẳng ống kính):</strong> "Bạn muốn bắt đầu một kênh YouTube... Bạn nhặt nhạnh đủ thứ công thức, cố đắp vào... Để rồi mọi thứ ĐỔ SẬP vì bạn KHÔNG BIẾT PHẢI ĐĂNG CÁI QUÁI GÌ LÊN ĐÂY!"</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PHẦN 3 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-400 mb-8 border-b border-blue-900 pb-4">PHẦN 3: ĐÓNG VÒNG LẶP KẾT THÚC (THE CIRCULAR LOOP)</h2>
+            
+            <div class="art-part3">
+                <div class="art-p3-inner"></div>
+            </div>
+
+            <div class="text-content">
+                <p>Đã mở đầu bằng Lego lộn xộn/đổ vỡ, thì kết thúc (P5) BẮT BUỘC phải là Lego gọn gàng để não bộ khán giả được "chữa lành" (Gestalt Closure).</p>
+                
+                <p><strong>Hình ảnh cho P5 (Sự trật tự):</strong></p>
+                <ul>
+                    <li>Vẫn mặt bàn đó, nhưng đèn lúc này đổi sang màu vàng cam hoàng hôn (thư giãn).</li>
+                    <li>Không còn đống gạch lộn xộn nữa. Lần này là một công trình rất nhỏ gọn (chỉ 3-4 khối gạch) nhưng được xếp vừa vặn, ngay ngắn, mượt mà (Đại diện cho Niche của bạn). Nhân vật Minecraft đang đứng hiên ngang, tự hào trên đỉnh công trình đó.</li>
+                    <li><strong>Hành động:</strong> Cận cảnh bàn tay khổng lồ của bạn (chuyển động thật chậm) nhẹ nhàng đặt một khối kim cương (hoặc một bông hoa) lên công trình đó cho nhân vật.</li>
+                </ul>
+
+                <p><strong>Thoại chốt (Chuyển về mặt bạn mỉm cười):</strong></p>
+                <p>"Cứ chill chill thôi... Hành trình giống như việc kiên nhẫn nhặt từng viên gạch. Khi bạn hiểu chính mình và enjoy quá trình xây đắp đó... mọi thứ bạn kết xuất ra, đều là Miracle." (Nhạc lofi Minecraft vang lên vỗ về, màn hình tối dần).</p>
+            </div>
+        </section>
+
+        <!-- BÍ QUYẾT TỐI THƯỢNG -->
+        <section class="mb-20">
+            <div class="bg-red-950/40 border-2 border-red-900 rounded-2xl p-8 relative overflow-hidden">
+                <div class="art-warning"></div>
+                
+                <h2 class="text-2xl font-bold text-red-400 mb-6 text-center">⚠️ BÍ QUYẾT TỐI THƯỢNG KHI QUAY ĐỒ CHƠI (TOY CINEMATOGRAPHY)</h2>
+                
+                <div class="text-content text-red-100">
+                    <p>Nếu không nắm 2 bí quyết này, video của bạn sẽ trông giống hệt "trẻ em chơi đồ hàng" thay vì một tác phẩm nghệ thuật:</p>
+                    
+                    <p><strong>TUYỆT ĐỐI không quay từ trên cao chĩa xuống (Bird's Eye View):</strong></p>
+                    <p>Khi bạn đứng chụp từ trên xuống, nhân vật Lego mãi mãi là một món đồ chơi vô tri dưới mặt đất. Phải luôn hạ camera ngang tầm mắt Lego. Góc nhìn này ban cho khối nhựa một "sinh mệnh", một nhân cách, ép người xem phải bước vào thế giới của nó.</p>
+                    
+                    <p><strong>Quy tắc Zoom Quang Học (Telephoto Lens):</strong></p>
+                    <p>Đồ chơi rất nhỏ. Nếu bạn dí điện thoại quá sát vào Lego, ống kính góc rộng sẽ làm hình ảnh bị méo (hiệu ứng mắt cá) và rất khó lấy nét.</p>
+                    <p><strong>Bí quyết:</strong> Hãy lùi điện thoại ra xa con Lego khoảng 15-20cm. Sau đó BẤM NÚT ZOOM 2X hoặc 3X trên màn hình. Kỹ thuật này nén không gian lại, làm cho con Lego cực kỳ sắc nét, đồng thời xóa phông (làm mờ nhòe) toàn bộ cảnh nền phía sau lưng nó. Trông sẽ y hệt quay bằng máy cơ đắt tiền!</p>
+                    
+                    <p class="mt-6 p-4 bg-black/30 rounded-lg border border-red-500/30 italic text-center">Chiều nay, hãy tắt hết đèn, bật cái đèn học lên và bày Lego ra bàn. Khi bạn thử quay shot "đập đổ ngọn núi gạch" ở chế độ zoom 2x, bạn sẽ nổi da gà vì cảm giác mình vừa hóa thân thành một Đạo diễn MV thực thụ!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 25 FLASHCARDS SECTION -->
+        <section class="mb-10 pt-10 border-t border-slate-700">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white mb-2">Hệ thống Flashcard Ôn tập Nhanh</h2>
+                <p class="text-slate-400">Xem lướt 25 ý chính để ghi nhớ nội dung kịch bản ngay lập tức.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 01</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Kỹ thuật dùng đồ chơi truyền tải triết lý gọi là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: "Con ngựa thành Troy" (Trojan Horse).
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 02</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Sử dụng Lego có tốt hơn gõ laptop không?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Điểm 10 tuyệt đối! Xuất sắc hơn cảnh gõ laptop rất nhiều.
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 03</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Lego Minecraft khớp với điều gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Khớp 100% với Triết lý Xây Kênh Youtube.
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 04</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Các khối block trong Minecraft đại diện cho gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Chính là các ý tưởng / khóa học.
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 05</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Nỗi đau lớn nhất của người mới xây kênh là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Có nhiều "gạch" nhưng không biết xếp thành hình thù gì.
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 06</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Hiệu ứng Lệch chuẩn (Von Restorff) là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Tạo ra "Cú phanh gấp tâm lý" khi lướt mạng.
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 07</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Lego làm tăng chỉ số nào trong video?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Khả năng giữ chân khán giả trong 3 giây đầu.
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 08</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Hội chứng Kẻ tí hon diễn tả điều gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Sự cô độc, nhỏ bé của người mới trước thuật toán khổng lồ.
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 09</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Chủ đề của kịch bản Hook này là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: "SỰ SỤP ĐỔ CỦA NHỮNG CÔNG THỨC".
+                    </div>
+                </div>
+                <!-- Card 10 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 10</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Mục tiêu của phần mở đầu là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Kích thích nhịp tim, đánh trúng nỗi đau "Bội thực thông tin".
+                    </div>
+                </div>
+                <!-- Card 11 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 11</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Setup ánh sáng "sống còn" như thế nào?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Tắt đèn trần, dùng đèn bàn chiếu xiên chéo 45 độ.
+                    </div>
+                </div>
+                <!-- Card 12 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 12</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Tác dụng của đèn spotlight xiên 45 độ?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Tạo bóng đổ dài, u ám, cô độc, đậm chất điện ảnh.
+                    </div>
+                </div>
+                <!-- Card 13 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 13</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Góc quay của Shot 1 tên là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Góc giun dế (Worm's Eye View).
+                    </div>
+                </div>
+                <!-- Card 14 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 14</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Thực hiện Góc giun dế như thế nào?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Điện thoại CHẠM BÀN, ống kính hất nhẹ lên ngang tầm mắt Lego.
+                    </div>
+                </div>
+                <!-- Card 15 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 15</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Âm thanh lồng trong Shot 1 là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Tiếng ồn ào của đám đông (sự nhiễu loạn thông tin).
+                    </div>
+                </div>
+                <!-- Card 16 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 16</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Hành động chính trong Shot 2 là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Bàn tay cố ép gạch làm đổ sập tung tóe đè lấp Lego.
+                    </div>
+                </div>
+                <!-- Card 17 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 17</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Âm thanh trong Shot 2 cần lưu ý gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Kê sát Mic thu trọn tiếng nhựa rào rào (ASMR).
+                    </div>
+                </div>
+                <!-- Card 18 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 18</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Shot 3 thực hiện hành động gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Bàn tay bực bội GẠT PHĂNG đống gạch đổ nát.
+                    </div>
+                </div>
+                <!-- Card 19 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 19</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Trong Shot 4 người thật, mắt nhìn đi đâu?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Mắt ghim thẳng vào ống kính.
+                    </div>
+                </div>
+                <!-- Card 20 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 20</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Mục đích của Phần 3 (Đóng vòng lặp) là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Sự gọn gàng để não bộ khán giả được "chữa lành" (Gestalt Closure).
+                    </div>
+                </div>
+                <!-- Card 21 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 21</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Đèn ánh sáng ở phần kết thúc màu gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Màu vàng cam hoàng hôn (thư giãn).
+                    </div>
+                </div>
+                <!-- Card 22 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 22</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Công trình xếp gạch ở cuối đại diện cho gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Đại diện cho Thị trường ngách (Niche) của bạn.
+                    </div>
+                </div>
+                <!-- Card 23 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 23</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Tuyệt đối KHÔNG quay đồ chơi từ góc nào?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Quay từ trên cao chĩa xuống (Bird's Eye View).
+                    </div>
+                </div>
+                <!-- Card 24 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 24</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Vì sao phải hạ camera ngang tầm mắt Lego?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Ban cho khối nhựa một sinh mệnh, một nhân cách.
+                    </div>
+                </div>
+                <!-- Card 25 -->
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-600 flex flex-col h-full shadow-lg">
+                    <span class="text-xs font-bold text-slate-400 mb-2">Q: 25</span>
+                    <h3 class="font-bold text-white mb-2 text-sm">Bí quyết Zoom Quang Học cho đồ chơi là gì?</h3>
+                    <div class="mt-auto pt-2 border-t border-slate-700 text-emerald-400 text-sm font-semibold">
+                        A: Lùi xa 15-20cm, bấm Zoom 2X/3X để chống méo và xóa phông.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="height: 128px;" class="bg-black text-white w-full flex flex-col justify-center items-center px-4 border-t border-slate-800">
+        <p class="text-center text-sm md:text-base text-slate-300 max-w-3xl mb-4 leading-snug">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6">
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-500 transition-colors duration-300" aria-label="YouTube">
+                <i class="fab fa-youtube text-2xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors duration-300" aria-label="TikTok">
+                <i class="fab fa-tiktok text-2xl"></i>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 transition-colors duration-300" aria-label="Facebook">
+                <i class="fab fa-facebook text-2xl"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
