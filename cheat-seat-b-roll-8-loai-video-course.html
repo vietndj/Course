@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Loại Broll - Cheat Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* CSS Abstract Art cho từng loại B-roll */
+        .art-box {
+            height: 160px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        /* 1. Cutaway */
+        .art-cutaway {
+            background: linear-gradient(135deg, #3b82f6 50%, #1d4ed8 50%);
+        }
+        .art-cutaway::after {
+            content: '';
+            width: 80%;
+            height: 40px;
+            background: #fbbf24;
+            transform: rotate(-15deg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 2. Sequence */
+        .art-sequence {
+            background: #1e293b;
+            gap: 10px;
+        }
+        .art-sequence div {
+            width: 30px;
+            height: 80px;
+            background: #38bdf8;
+            border-radius: 4px;
+            animation: slideUp 2s infinite ease-in-out alternate;
+        }
+        .art-sequence div:nth-child(2) { background: #818cf8; animation-delay: 0.2s; height: 100px; }
+        .art-sequence div:nth-child(3) { background: #c084fc; animation-delay: 0.4s; height: 120px; }
+
+        /* 3. POV */
+        .art-pov {
+            background: radial-gradient(circle, #f43f5e 20%, #881337 100%);
+        }
+        .art-pov::before {
+            content: '';
+            width: 80px;
+            height: 80px;
+            border: 4px solid white;
+            border-radius: 50%;
+        }
+        .art-pov::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        /* 4. In-situ */
+        .art-insitu {
+            background: linear-gradient(to right, #10b981 30%, #064e3b 100%);
+            justify-content: flex-start;
+            padding-left: 20%;
+        }
+        .art-insitu::before {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        .art-insitu::after {
+            content: '';
+            width: 100px;
+            height: 80px;
+            border: 2px dashed rgba(255,255,255,0.5);
+            position: absolute;
+            left: 20%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+        }
+
+        /* 5. Intercut */
+        .art-intercut {
+            background: #f1f5f9;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+        .art-intercut div:nth-child(odd) { background: #64748b; }
+        .art-intercut div:nth-child(even) { background: #eab308; }
+
+        /* 6. Metaphor */
+        .art-metaphor {
+            background: #8b5cf6;
+        }
+        .art-metaphor .shape1 {
+            width: 60px; height: 60px; background: white;
+            border-radius: 8px;
+            position: absolute; left: 30%; transform: rotate(15deg);
+        }
+        .art-metaphor .arrow {
+            color: white; font-size: 24px; position: absolute;
+        }
+        .art-metaphor .shape2 {
+            width: 60px; height: 60px; background: #fde047;
+            border-radius: 50%;
+            position: absolute; right: 30%;
+        }
+
+        /* 7. Negative Space */
+        .art-negspace {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+        }
+        .art-negspace::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #a8a29e;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+        }
+
+        /* 8. Archival */
+        .art-archival {
+            background: repeating-linear-gradient(
+                45deg,
+                #27272a,
+                #27272a 10px,
+                #3f3f46 10px,
+                #3f3f46 20px
+            );
+        }
+        .art-archival::after {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border: 6px solid #d4d4d8;
+            border-top-color: transparent;
+            border-radius: 50%;
+            transform: rotate(-45deg);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(10px); }
+            to { transform: translateY(-10px); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Hero Section -->
+    <header class="bg-white shadow-sm border-b border-slate-200 py-16 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 uppercase tracking-tight text-slate-900">
+                8 loại broll <span class="text-slate-400">-</span> <span class="gradient-text">cheat sheet</span>
+            </h1>
+            <div class="text-left text-lg md:text-xl text-slate-700 space-y-4 bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-inner">
+                <p>Việc chuẩn hóa từ vựng là một bước tiến cực kỳ quan trọng! Trong giới làm phim và sáng tạo nội dung, đây gọi là <strong>"Ngôn ngữ Đạo diễn" (Industry Lingo)</strong>.</p>
+                <p>Khi bạn dùng đúng thuật ngữ, bạn không cần phải giải thích dông dài <em>"cái loại mà tôi đang nói xong có hình chèn vào..."</em>. Chỉ cần ném ra một "từ khóa", người dựng phim (Editor), người quay phim (Cameraman) hay thậm chí các AI (ChatGPT, Midjourney, Sora) sẽ lập tức hiểu chính xác 100% ý đồ nhịp điệu và set-up máy của bạn.</p>
+                <p>Để bạn không phải học vẹt từ 1 đến 8, tôi đã đóng gói chúng thành <strong>"Từ điển Cheat-sheet"</strong>, chia theo 3 Nhóm Mục Đích và kèm theo <strong>Câu thần chú ghi nhớ</strong> cho từng loại:</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
+
+        <!-- NHÓM 1 -->
+        <section>
+            <div class="mb-8 border-l-4 border-blue-500 pl-4">
+                <h2 class="text-3xl font-bold text-slate-800">NHÓM 1: TRỤC TẢ THỰC <span class="text-xl font-normal text-slate-500">(Nhóm Hình ảnh & Nhịp độ)</span></h2>
+                <p class="text-lg text-slate-600 mt-2 font-medium">Mục đích: Khán giả thấy gì? Tốc độ video nhanh hay chậm?</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-cutaway"></div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">1. Cảnh Cutaway <br><span class="text-sm font-normal text-slate-500">(Cắt cảnh / Trám minh họa lẻ)</span></h3>
+                    <div class="space-y-3 text-slate-700">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Cutaway shot, Literal B-roll, Insert shot.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Bạn đang nói -> Chèn <strong>1 cảnh ngắn</strong> tĩnh mô tả đúng từ đó -> Cắt về lại mặt bạn. Dùng để cung cấp thông tin cực nhanh và che vết cắt khi nói vấp.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: ✂️ "NÓI GÌ - HÌNH NẤY"</p>
+                            <p class="text-sm">(Nói làm việc -> Chèn hình laptop).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-sequence">
+                        <div></div><div></div><div></div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">2. Chuỗi Sequence <br><span class="text-sm font-normal text-slate-500">(Chuỗi hành động / Montage)<br>(Loại 2 của bạn - Đọc là Xi-quần hoặc Mông-tác)</span></h3>
+                    <div class="space-y-3 text-slate-700">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Action Sequence, Cinematic Montage.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> KHÔNG phải 1 cảnh, mà là <strong>nhiều góc máy nối tiếp nhau</strong> hoàn thành một việc (Mở nắp -> Vuốt tóc -> Gõ phím -> Enter). Dùng để nén thời gian, tạo nhịp điệu (pacing) dồn dập, mượt mà.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: 🎞️ "BĂNG CHUYỀN"</p>
+                            <p class="text-sm">(Các hành động trôi chảy liên tục).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-pov"></div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">3. Góc POV <br><span class="text-sm font-normal text-slate-500">(Góc nhìn thứ nhất)</span></h3>
+                    <div class="space-y-3 text-slate-700 mt-8">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> POV shot (Point of View), First-person perspective.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Máy quay đặt ngang mắt hoặc cằm, chĩa xuống đôi tay đang thao tác. Dùng để kích hoạt "tế bào thần kinh gương", ép khán giả cảm thấy chính họ đang làm việc đó.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: 👁️ "NHẬP VAI KHÁN GIẢ"</p>
+                            <p class="text-sm">(Mượn đôi mắt).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NHÓM 2 -->
+        <section>
+            <div class="mb-8 border-l-4 border-emerald-500 pl-4">
+                <h2 class="text-3xl font-bold text-slate-800">NHÓM 2: TRỤC HIỆN DIỆN <span class="text-xl font-normal text-slate-500">(Nhóm Giao tiếp & Cấu trúc)</span></h2>
+                <p class="text-lg text-slate-600 mt-2 font-medium">Mục đích: Bạn (nhân vật chính) xuất hiện ở đâu và nói chuyện với khán giả thế nào?</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:w-2/3 lg:mx-auto">
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-insitu"></div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">4. Thoại In-situ <br><span class="text-sm font-normal text-slate-500">(Thoại hiện trường / Walk-and-talk)<br>(Loại 3 của bạn - Đọc là In-xi-tu)</span></h3>
+                    <div class="space-y-3 text-slate-700">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> In-situ delivery, Walk-and-talk, Diegetic address.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Không ngồi setup đèn studio. Bạn đang băm thịt, xếp gạch, pha cafe... ngước lên nhìn thẳng máy quay nói. Dùng để phá vỡ khoảng cách, tạo sự chân thật, "sống trong khoảnh khắc" như 1 người bạn.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: 🎬 "VỪA LÀM - VỪA NÓI".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-intercut">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">5. Dựng Intercut <br><span class="text-sm font-normal text-slate-500">(Dựng luân phiên / Style Tài liệu)<br>(Loại 4 của bạn - Đọc là In-tơ-cắt)</span></h3>
+                    <div class="space-y-3 text-slate-700">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Intercutting, Docu-style alternating.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Cắt qua cắt lại liên tục. 10 giây ngồi tĩnh tâm sự (A-roll) -> 5 giây thoại ngoài hiện trường (In-situ) -> Cắt về ngồi tĩnh. Công thức Vàng để cân bằng giữa sự Uy Tín (ngồi tĩnh) và Thực Tế (hành động).</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: ⚖️ "NỬA TĨNH - NỬA ĐỘNG"</p>
+                            <p class="text-sm">(Trong nhà - Ngoài phố).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NHÓM 3 -->
+        <section>
+            <div class="mb-8 border-l-4 border-purple-500 pl-4">
+                <h2 class="text-3xl font-bold text-slate-800">NHÓM 3: TRỤC TÂM LÝ <span class="text-xl font-normal text-slate-500">(Nhóm Vũ khí Nghệ thuật)</span></h2>
+                <p class="text-lg text-slate-600 mt-2 font-medium">Mục đích: Thao túng cảm xúc, nhịp tim và trí tưởng tượng của não bộ.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-metaphor">
+                        <div class="shape1"></div>
+                        <div class="arrow">➔</div>
+                        <div class="shape2"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">6. Cảnh Metaphor <br><span class="text-sm font-normal text-slate-500">(Ẩn dụ thị giác / Đạo cụ)<br>(Loại 5 của bạn - Đọc là Mê-ta-pho)</span></h3>
+                    <div class="space-y-3 text-slate-700">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Visual Metaphor, Prop-based B-roll, Symbolic shot.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Dùng đồ vật (Lego, quả cam vắt kiệt, máy bay giấy) để ám chỉ một ý tưởng trừu tượng vô hình (bế tắc, thuật toán). Dùng để gây tò mò tột độ và đơn giản hóa kiến thức khô khan.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: ♟️ "VẬT THAY LỜI"</p>
+                            <p class="text-sm">(Con ngựa thành Troy).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-negspace"></div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">7. Cảnh Negative Space <br><span class="text-sm font-normal text-slate-500">(Không gian âm / Cảm xúc)</span></h3>
+                    <div class="space-y-3 text-slate-700 mt-8">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Negative Space, Breathing room, Emotional B-roll.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Cảnh quay chậm, trống trải và TUYỆT ĐỐI KHÔNG CÓ MẶT NGƯỜI (khói bay, giọt nước, vệt nắng, quạt trần). Dùng để tạo "khoảng nghỉ" cho não bộ tiêu hóa câu triết lý vừa thốt ra.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: ⏸️ "KHOẢNG LẶNG VÔ HỒN".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="art-box art-archival"></div>
+                    <h3 class="text-2xl font-bold mb-3 text-slate-800">8. Cảnh Archival <br><span class="text-sm font-normal text-slate-500">(Tư liệu quá khứ / Flashback)</span></h3>
+                    <div class="space-y-3 text-slate-700 mt-8">
+                        <p><span class="font-bold text-indigo-600">🤖 Tiếng Anh / Dùng cho AI:</span> Archival Footage, Found footage, Meme insert.</p>
+                        <p><span class="font-bold text-emerald-600">📌 Ý nghĩa:</span> Lấy một clip/ảnh của bạn từ 5 năm trước, hoặc một meme hài hước trên mạng chèn vào. Dùng để chứng minh quá trình (Proof), tạo sự hoài niệm hoặc chọc cười.</p>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900">
+                            <p class="font-bold">💡 Thần chú: ⏳ "CỖ MÁY THỜI GIAN".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VÍ DỤ ỨNG DỤNG THỰC TẾ -->
+        <section class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <i class="fas fa-graduation-cap text-9xl"></i>
+            </div>
+            <div class="relative z-10">
+                <h2 class="text-3xl font-extrabold text-amber-400 mb-6 flex items-center gap-3">
+                    <i class="fas fa-graduation-cap"></i> 🎓 VÍ DỤ ỨNG DỤNG THỰC TẾ <span class="text-xl font-normal text-slate-300">(Nghe cực kỳ "Pro")</span>
+                </h2>
+                <p class="text-lg mb-6 text-slate-300">Bây giờ, nếu bạn tự viết kịch bản hoặc nhắn tin giao việc cho một bạn Editor dựng đoạn Mở Đầu Lego ban nãy, bạn CHỈ CẦN viết như thế này:</p>
+                
+                <blockquote class="bg-slate-800 border-l-4 border-amber-400 p-6 rounded-r-lg text-xl font-medium leading-relaxed italic mb-8">
+                    "Em ơi, đoạn Hook mở đầu anh không dùng <span class="text-amber-400 font-bold">Cutaway</span> gõ phím nữa, anh dùng <span class="text-amber-400 font-bold">Metaphor</span> cảnh đập sập gạch Lego cho bùng nổ. Sau đó anh thoại <span class="text-amber-400 font-bold">In-situ</span> luôn tại bàn đó. Vào phần kể lể bế tắc, em lồng cho anh một <span class="text-amber-400 font-bold">Sequence</span> pha cafe nhưng bị nghẽn nhé. Đoạn chốt đạo lý cuối video, nhớ thả 3 giây <span class="text-amber-400 font-bold">Negative Space</span> có khói cafe bay bay cho chill rồi mới <span class="text-amber-400 font-bold">Intercut</span> về cảnh anh mỉm cười chào kết nha."
+                </blockquote>
+
+                <p class="text-lg text-emerald-400 font-semibold bg-emerald-900/30 p-4 rounded-lg inline-block border border-emerald-800/50">
+                    Khi bạn nói ra đoạn này, bất cứ ai làm trong ngành cũng sẽ nổi da gà vì biết họ đang làm việc với một Đạo diễn có tư duy hệ thống và thấu hiểu tận gốc rễ tâm lý hình ảnh!
+                </p>
+            </div>
+        </section>
+
+        <!-- BẢNG TÓM TẮT (MỚI THÊM) -->
+        <section class="pt-8 border-t border-slate-200 mt-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-800">Bảng Tổng Hợp 8 Loại B-roll</h2>
+                <p class="text-slate-500 mt-2">Lưu ngay bảng này để ghi nhớ toàn bộ "Ngôn ngữ Đạo diễn" chỉ trong 1 phút.</p>
+            </div>
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-lg border border-slate-200">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-slate-800 text-white">
+                            <th class="p-5 font-semibold w-1/4 border-b-2 border-slate-900">Phân Nhóm</th>
+                            <th class="p-5 font-semibold w-1/4 border-b-2 border-slate-900">Tên Loại (Việt / Anh)</th>
+                            <th class="p-5 font-semibold border-b-2 border-slate-900">Tóm Tắt / Thần Chú 1 Câu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <!-- Nhóm 1 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td rowspan="3" class="p-5 align-top border-r border-slate-100 bg-blue-50/40">
+                                <span class="font-bold text-blue-700 text-lg">NHÓM 1: TRỤC TẢ THỰC</span><br>
+                                <span class="text-sm text-slate-500">(Hình ảnh & Nhịp độ)</span>
+                            </td>
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">1. Cảnh Cutaway</span><br><span class="text-sm text-slate-500">Literal / Insert shot</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">✂️ NÓI GÌ - HÌNH NẤY:</span> Chèn 1 cảnh ngắn tĩnh mô tả đúng từ đang nói rồi cắt về.</td>
+                        </tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">2. Chuỗi Sequence</span><br><span class="text-sm text-slate-500">Action / Montage</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">🎞️ BĂNG CHUYỀN:</span> Nhiều góc máy nối tiếp nhau để hoàn thành trôi chảy một việc.</td>
+                        </tr>
+                        <tr class="border-b-2 border-slate-200 hover:bg-slate-50 transition-colors">
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">3. Góc POV</span><br><span class="text-sm text-slate-500">Point of View</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">👁️ NHẬP VAI KHÁN GIẢ:</span> Góc nhìn thứ nhất mượn đôi mắt chĩa xuống đôi tay đang thao tác.</td>
+                        </tr>
+
+                        <!-- Nhóm 2 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td rowspan="2" class="p-5 align-top border-r border-slate-100 bg-emerald-50/40">
+                                <span class="font-bold text-emerald-700 text-lg">NHÓM 2: TRỤC HIỆN DIỆN</span><br>
+                                <span class="text-sm text-slate-500">(Giao tiếp & Cấu trúc)</span>
+                            </td>
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">4. Thoại In-situ</span><br><span class="text-sm text-slate-500">Walk-and-talk</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">🎬 VỪA LÀM - VỪA NÓI:</span> Không ngồi studio tĩnh, vừa thao tác việc thực tế vừa nhìn máy quay nói.</td>
+                        </tr>
+                        <tr class="border-b-2 border-slate-200 hover:bg-slate-50 transition-colors">
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">5. Dựng Intercut</span><br><span class="text-sm text-slate-500">Docu-style alternating</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">⚖️ NỬA TĨNH - NỬA ĐỘNG:</span> Cắt luân phiên liên tục giữa ngồi tĩnh tâm sự và thoại ngoài hiện trường.</td>
+                        </tr>
+
+                        <!-- Nhóm 3 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td rowspan="3" class="p-5 align-top border-r border-slate-100 bg-purple-50/40">
+                                <span class="font-bold text-purple-700 text-lg">NHÓM 3: TRỤC TÂM LÝ</span><br>
+                                <span class="text-sm text-slate-500">(Vũ khí Nghệ thuật)</span>
+                            </td>
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">6. Cảnh Metaphor</span><br><span class="text-sm text-slate-500">Visual Metaphor</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">♟️ VẬT THAY LỜI:</span> Dùng đồ vật/đạo cụ để ám chỉ, đơn giản hóa một ý tưởng trừu tượng vô hình.</td>
+                        </tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">7. Cảnh Negative Space</span><br><span class="text-sm text-slate-500">Breathing room</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">⏸️ KHOẢNG LẶNG VÔ HỒN:</span> Cảnh chậm, tuyệt đối không mặt người, làm khoảng nghỉ cho não bộ tiêu hóa.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-5 border-r border-slate-100"><span class="font-bold text-slate-800">8. Cảnh Archival</span><br><span class="text-sm text-slate-500">Found footage / Meme</span></td>
+                            <td class="p-5"><span class="font-bold text-amber-600">⏳ CỖ MÁY THỜI GIAN:</span> Lấy clip quá khứ hoặc meme hài hước chèn vào để chứng minh hoặc chọc cười.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FLASHCARD 25 CÂU HỎI -->
+        <section class="pt-8 border-t border-slate-200">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-800">25 Câu Hỏi Ôn Tập Nhanh (Flashcards)</h2>
+                <p class="text-slate-500 mt-2">Xem lại nhanh kiến thức, câu hỏi và đáp án hiển thị trực tiếp.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <!-- Data for 25 flashcards generated directly from the text -->
+                
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-indigo-900 text-sm mb-2 border-b border-indigo-200 pb-2">1. "Ngôn ngữ Đạo diễn" (Industry Lingo) là gì?</p>
+                    <p class="text-sm text-indigo-800">Là việc chuẩn hóa từ vựng trong giới làm phim và sáng tạo nội dung.</p>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">2. Mục đích của Nhóm 1 (Trục Tả Thực) là gì?</p>
+                    <p class="text-sm text-blue-800">Cho biết khán giả thấy gì và tốc độ video nhanh hay chậm.</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">3. Thần chú của cảnh Cutaway là gì?</p>
+                    <p class="text-sm text-blue-800">✂️ "NÓI GÌ - HÌNH NẤY"</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">4. Ý nghĩa của cảnh Cutaway?</p>
+                    <p class="text-sm text-blue-800">Chèn 1 cảnh ngắn tĩnh mô tả đúng từ đang nói, che vết cắt.</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">5. Từ tiếng Anh AI cho cảnh Cutaway?</p>
+                    <p class="text-sm text-blue-800">Cutaway shot, Literal B-roll, Insert shot.</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">6. Thần chú của Chuỗi Sequence?</p>
+                    <p class="text-sm text-blue-800">🎞️ "BĂNG CHUYỀN"</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">7. Sequence khác một cảnh tĩnh thế nào?</p>
+                    <p class="text-sm text-blue-800">Nó là NHIỀU góc máy nối tiếp nhau hoàn thành một việc.</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">8. Góc POV có thần chú là gì?</p>
+                    <p class="text-sm text-blue-800">👁️ "NHẬP VAI KHÁN GIẢ"</p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-blue-900 text-sm mb-2 border-b border-blue-200 pb-2">9. Góc máy POV đặt ở đâu?</p>
+                    <p class="text-sm text-blue-800">Đặt ngang mắt hoặc cằm, chĩa xuống đôi tay đang thao tác.</p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-emerald-900 text-sm mb-2 border-b border-emerald-200 pb-2">10. Nhóm 2: Trục Hiện Diện giải quyết mục đích gì?</p>
+                    <p class="text-sm text-emerald-800">Bạn xuất hiện ở đâu và nói chuyện với khán giả thế nào.</p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-emerald-900 text-sm mb-2 border-b border-emerald-200 pb-2">11. Thoại In-situ là hình thức như thế nào?</p>
+                    <p class="text-sm text-emerald-800">Đang làm việc gì đó (băm thịt, xếp gạch...) ngước lên nhìn máy quay nói.</p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-emerald-900 text-sm mb-2 border-b border-emerald-200 pb-2">12. Thần chú của thoại In-situ?</p>
+                    <p class="text-sm text-emerald-800">🎬 "VỪA LÀM - VỪA NÓI"</p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-emerald-900 text-sm mb-2 border-b border-emerald-200 pb-2">13. Thần chú của Dựng Intercut?</p>
+                    <p class="text-sm text-emerald-800">⚖️ "NỬA TĨNH - NỬA ĐỘNG"</p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-emerald-900 text-sm mb-2 border-b border-emerald-200 pb-2">14. Intercut cân bằng 2 yếu tố nào?</p>
+                    <p class="text-sm text-emerald-800">Sự Uy Tín (ngồi tĩnh tâm sự) và Thực Tế (hành động ngoài hiện trường).</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">15. Mục đích của Nhóm 3 (Trục Tâm Lý)?</p>
+                    <p class="text-sm text-purple-800">Thao túng cảm xúc, nhịp tim và trí tưởng tượng của não bộ.</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">16. Cảnh Metaphor dùng để làm gì?</p>
+                    <p class="text-sm text-purple-800">Dùng đồ vật ám chỉ ý tưởng trừu tượng, đơn giản hóa kiến thức khô khan.</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">17. Thần chú của Cảnh Metaphor?</p>
+                    <p class="text-sm text-purple-800">♟️ "VẬT THAY LỜI"</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">18. Quy tắc tuyệt đối của Negative Space?</p>
+                    <p class="text-sm text-purple-800">TUYỆT ĐỐI KHÔNG CÓ MẶT NGƯỜI.</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">19. Tại sao lại dùng Negative Space?</p>
+                    <p class="text-sm text-purple-800">Để tạo "khoảng nghỉ" cho não bộ tiêu hóa câu triết lý vừa thốt ra.</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">20. Thần chú của Negative Space?</p>
+                    <p class="text-sm text-purple-800">⏸️ "KHOẢNG LẶNG VÔ HỒN"</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">21. Cảnh Archival là gì?</p>
+                    <p class="text-sm text-purple-800">Lấy clip/ảnh quá khứ hoặc meme chèn vào.</p>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-purple-900 text-sm mb-2 border-b border-purple-200 pb-2">22. Thần chú của Cảnh Archival?</p>
+                    <p class="text-sm text-purple-800">⏳ "CỖ MÁY THỜI GIAN"</p>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-indigo-900 text-sm mb-2 border-b border-indigo-200 pb-2">23. Khi dùng đúng từ khóa, hiệu quả với Editor/AI là gì?</p>
+                    <p class="text-sm text-indigo-800">Lập tức hiểu chính xác 100% ý đồ nhịp điệu và set-up máy.</p>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-indigo-900 text-sm mb-2 border-b border-indigo-200 pb-2">24. Trong ví dụ, đập sập gạch Lego thuộc loại broll nào?</p>
+                    <p class="text-sm text-indigo-800">Cảnh Metaphor (Ẩn dụ thị giác / Đạo cụ).</p>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col justify-between">
+                    <p class="font-bold text-indigo-900 text-sm mb-2 border-b border-indigo-200 pb-2">25. Tác dụng của việc dùng "Industry Lingo" giao việc?</p>
+                    <p class="text-sm text-indigo-800">Người trong ngành nổi da gà vì biết đang làm việc với Đạo diễn tư duy hệ thống.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer: 128px height, small footer, links & icons -->
+    <footer style="height: 128px;" class="bg-slate-900 text-slate-300 flex flex-col justify-center items-center w-full px-4 border-t-4 border-slate-700">
+        <p class="text-xs md:text-sm text-center mb-3 max-w-2xl font-medium">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6 items-center">
+            <a href="https://youtube.com/@vietndonline" target="_blank" class="hover:text-red-500 transition-colors flex items-center gap-2 text-sm">
+                <i class="fab fa-youtube text-xl"></i> <span class="hidden sm:inline">Youtube</span>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="hover:text-white transition-colors flex items-center gap-2 text-sm">
+                <i class="fab fa-tiktok text-xl"></i> <span class="hidden sm:inline">TikTok</span>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="hover:text-blue-500 transition-colors flex items-center gap-2 text-sm">
+                <i class="fab fa-facebook text-xl"></i> <span class="hidden sm:inline">Facebook Page</span>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
