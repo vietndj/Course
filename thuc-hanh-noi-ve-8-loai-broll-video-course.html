@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành với cách gọi tên 8 loại broll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Abstract Art Styles for B-roll concepts */
+        .art-block {
+            height: 120px;
+            width: 100%;
+            border-radius: 0.5rem 0.5rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 1. Sequence: Chuỗi hành động dồn dập (Các đường chéo lặp lại tốc độ) */
+        .art-sequence {
+            background: repeating-linear-gradient(45deg, #1e293b, #1e293b 10px, #3b82f6 10px, #3b82f6 20px);
+            animation: move-bg 2s linear infinite;
+        }
+
+        /* 2. Negative Space: Không gian âm (Khoảng trống rộng với 1 điểm nhấn nhỏ) */
+        .art-negative-space {
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 80% 20%, #fff 2px, transparent 3px);
+        }
+
+        /* 3. In-situ: Thoại tại bối cảnh (Một ô vuông cố định, tỏa sáng tại chỗ) */
+        .art-in-situ {
+            background-color: #1e293b;
+        }
+        .art-in-situ::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px; height: 40px;
+            background-color: #10b981;
+            border-radius: 4px;
+            box-shadow: 0 0 20px #10b981;
+        }
+
+        /* 4. Metaphor: Ẩn dụ thị giác (Hai mảng màu hòa quyện, phản chiếu) */
+        .art-metaphor {
+            background: linear-gradient(135deg, #8b5cf6 50%, #f43f5e 50%);
+        }
+
+        /* 5. Intercut: Cắt luân phiên (Các khối xen kẽ) */
+        .art-intercut {
+            background: repeating-linear-gradient(90deg, #f59e0b, #f59e0b 33.3%, #1e293b 33.3%, #1e293b 66.6%);
+        }
+
+        /* 6. POV: Góc nhìn thứ nhất (Hình dáng giống ống kính/con mắt) */
+        .art-pov {
+            background-color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-pov::before {
+            content: '';
+            width: 80px; height: 80px;
+            border: 4px solid #ef4444;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 40%, rgba(239, 68, 68, 0.2) 60%);
+        }
+
+        /* 7. Cutaway: Cảnh cắt minh họa đặc tả (Một khối chính bị cắt ngang bởi khối khác) */
+        .art-cutaway {
+            background-color: #334155;
+            position: relative;
+        }
+        .art-cutaway::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 50%; height: 50%;
+            background-color: #06b6d4;
+            border-top-left-radius: 100%;
+        }
+
+        /* 8. Archival: Tư liệu quá khứ (Màu Sepia/Nhiễu hạt giả lập) */
+        .art-archival {
+            background-color: #78350f;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px);
+            opacity: 0.8;
+        }
+
+        @keyframes move-bg {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="bg-slate-900 text-white py-20 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                Thực hành với cách gọi tên 8 loại broll
+            </h1>
+            <p class="text-xl text-slate-300 font-light">Học qua Tình huống mô phỏng (Case-study) - Phương pháp đào tạo chuẩn mực nhất.</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- INTRO BLOCK -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border-l-4 border-blue-500">
+            <h2 class="text-2xl font-bold mb-4 text-slate-800">VÍ DỤ ỨNG DỤNG THỰC TẾ (Nghe cực kỳ "Pro")</h2>
+            <p class="mb-4 leading-relaxed">Bây giờ, nếu bạn tự viết kịch bản hoặc nhắn tin giao việc cho một bạn Editor dựng đoạn Mở Đầu Lego ban nãy, bạn CHỈ CẦN viết như thế này:</p>
+            <blockquote class="bg-slate-50 italic p-6 rounded-lg text-slate-700 border border-slate-200 mb-4 text-lg">
+                "Em ơi, đoạn Hook mở đầu anh không dùng Cutaway gõ phím nữa, anh dùng Metaphor cảnh đập sập gạch Lego cho bùng nổ. Sau đó anh thoại In-situ luôn tại bàn đó. Vào phần kể lể bế tắc, em lồng cho anh một Sequence pha cafe nhưng bị nghẽn nhé. Đoạn chốt đạo lý cuối video, nhớ thả 3 giây Negative Space có khói cafe bay bay cho chill rồi mới Intercut về cảnh anh mỉm cười chào kết nha."
+            </blockquote>
+            <p class="mb-4 leading-relaxed">Tuy nhiên mới với tôi, cần bổ sung các mở ngoặc giải thích ngắn về từ khoá trong bối cảnh viết để tôi hiểu từ đó ứng với loại nào, và để làm gì,</p>
+            <p class="mb-4 leading-relaxed">hãy cho tôi 15 ví dụ nữa tương tự, về các chủ đề khác nhau của video quảng cáo, video chia sẻ..</p>
+            <p class="mb-4 leading-relaxed">mỗi ví dụ cần có đề bài, bối cảnh, mục đích để làm gì,...</p>
+            <p class="mb-4 leading-relaxed">và bạn viết theo kiểu ví dụ trên . để tôi dựa vào đó học theo cách mô tả . chú ý cần mở ngoặc giải thích ở các chỗ gọi tên. và giải thích logic làm thế nào tôi nói được nhưu thế</p>
+            
+            <hr class="my-8 border-slate-200">
+            
+            <p class="mb-4 leading-relaxed text-lg font-medium text-emerald-700">Cách học này của bạn – Học qua Tình huống mô phỏng (Case-study) – chính là phương pháp đào tạo chuẩn mực nhất trong các trường điện ảnh. Khi bạn đặt thuật ngữ vào "ngữ cảnh sống" có mục đích rõ ràng, bộ não sẽ hình thành Phản xạ tư duy, thay vì học thuộc lòng máy móc.</p>
+            <p class="mb-4 leading-relaxed font-bold">Trước khi đi vào 15 ví dụ, tôi tiết lộ cho bạn LOGIC GỐC để não bộ tự nảy số ra các từ khóa này. Nó luôn đi theo 3 bước:</p>
+            <ul class="list-decimal list-inside space-y-3 mb-6 bg-slate-100 p-6 rounded-lg font-medium">
+                <li>Mục đích của tôi đoạn này là gì? <span class="font-normal text-slate-600">(Muốn dồn dập, muốn xót xa, hay muốn uy tín?)</span></li>
+                <li>Hình ảnh/Hành động nào tạo ra cảm giác đó? <span class="font-normal text-slate-600">(Cần nhiều hành động? Cần khoảng trống? Cần đồ vật?)</span></li>
+                <li>Gọi tên Thuật ngữ áp vào hành động đó.</li>
+            </ul>
+            <p class="leading-relaxed">Dưới đây là 15 kịch bản giao việc. Hãy đọc to phần <strong>"Cách nói với Editor"</strong>, chú ý các dòng trong ngoặc vuông <strong>[...]</strong> để thấy cách một Đạo diễn thao túng tâm lý khán giả:</p>
+        </section>
+
+        <!-- GROUP 1 -->
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-8 border-b-2 border-slate-200 pb-4">NHÓM 1: VIDEO QUẢNG CÁO & REVIEW SẢN PHẨM (Thương mại)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-sequence"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">1. Đề bài: Quảng cáo Tai nghe chống ồn (Noise-cancelling).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Ngồi làm việc ở quán cafe quá ồn ào không thể tập trung.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Ép người xem khó chịu với tiếng ồn, sau đó vỡ òa trong sự tĩnh lặng.</p>
+                    <div class="bg-blue-50 p-4 rounded mb-4 text-blue-900 border border-blue-100">
+                        <strong>Cách nói với Editor:</strong> "Đoạn đầu em dập cho anh một Sequence [Chuỗi hành động dồn dập - để đẩy áp lực ồn ào lên não] cảnh xe cộ, người mấp máy môi, ly tách va vào nhau lanh canh. Khi anh đeo tai nghe, cắt phụt âm thanh, thả ngay 3 giây Negative Space [Không gian âm tĩnh lặng - để não được nghỉ ngơi] quay cảnh vệt nắng trôi chậm trên bàn. Cuối cùng anh thoại In-situ [Thoại tại bối cảnh - tạo tính chân thật] đang nhắm mắt gật gù theo nhạc tại quán luôn."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Tiếng ồn cần sự lộn xộn -> Dùng Sequence. Sự "yên tĩnh" vô hình không quay được -> Mượn khoảng trống vắng mặt người -> Dùng Negative Space.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-metaphor"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">2. Đề bài: Bán Nệm/Đệm ngủ cao su cao cấp.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Khách hàng trằn trọc cả đêm vì đau lưng.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Cụ thể hóa nỗi đau vật lý và chứng minh độ đàn hồi êm ái của đệm.</p>
+                    <div class="bg-blue-50 p-4 rounded mb-4 text-blue-900 border border-blue-100">
+                        <strong>Cách nói với Editor:</strong> "Nỗi đau cột sống anh sẽ dùng Metaphor [Ẩn dụ thị giác - mượn vật tả ý] là cảnh một cành cây khô bị bẻ gãy 'rắc'. Để test độ êm của nệm, em lồng Intercut [Cắt luân phiên - nửa này nửa kia] giữa mặt anh chuyên gia phân tích và cảnh thả quả trứng gà rơi xuống đệm không vỡ nhé."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Cột sống bên trong người không thấy được -> Ẩn dụ qua cành cây khô gãy (Metaphor). Thông số nệm rất chán -> Phải chèn luân phiên hành động đập trứng để giữ mắt khán giả (Intercut).</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-pov"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">3. Đề bài: Quảng cáo Ốp lưng điện thoại siêu bền.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Sự hoang mang khi lỡ tay làm rơi điện thoại đắt tiền.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Kịch tính, bạo lực, dứt khoát để chứng minh độ bền bỉ.</p>
+                    <div class="bg-blue-50 p-4 rounded mb-4 text-blue-900 border border-blue-100">
+                        <strong>Cách nói với Editor:</strong> "Khúc rớt điện thoại, bắt buộc lấy góc POV [Góc nhìn thứ nhất - mượn mắt khán giả] nhìn tuột khỏi tay rơi xuống đất cho xót ruột. Quá trình test ốp, đập một Sequence [Chuỗi hành động dồn dập] ném vào tường, xe cán qua, thả từ lầu 2 xuống. Nhớ đệm thêm vài Cutaway [Cảnh cắt minh họa đặc tả] zoom cận viền ốp không trầy xước để chốt sale."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Muốn khán giả xót ruột -> Phải cho họ cảm giác chính họ làm rơi (POV). Chứng minh độ bền -> Cần nhiều bài test liên tục (Sequence).</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-negative-space"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">4. Đề bài: Review Mỹ phẩm phục hồi da tổn thương (Serum).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Da mặt cô gái bị khô ráp, bong tróc nứt nẻ.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Tránh dùng ảnh da mụn ghê rợn, tạo cảm giác được tưới mát, chữa lành.</p>
+                    <div class="bg-blue-50 p-4 rounded mb-4 text-blue-900 border border-blue-100">
+                        <strong>Cách nói với Editor:</strong> "Tuyệt đối không lấy ảnh lở loét, em dùng Metaphor [Ẩn dụ thị giác - biểu tượng hóa]cảnh vùng đất khô cằn đang được rưới dòng nước mát. Quá trình thoa serum, rải các cảnh Cutaway [Cảnh chèn minh họa lẻ] nhỏ giọt serum lên má, bàn tay vỗ nhẹ rào rào. Chốt cuối là một khoảng Negative Space [Không gian âm - sự trong trẻo] mặt hồ nước phẳng lặng phản chiếu ánh sáng."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Bán mỹ phẩm là bán cái đẹp -> Dùng Metaphor đất cằn rưới nước để tả sự phục hồi tinh tế nhất.</p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-intercut"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">5. Đề bài: App Quản lý Chi tiêu cá nhân.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Đầu tháng có lương, cuối tháng rỗng túi không hiểu vì sao.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Trực quan hóa việc tiền bốc hơi để cảnh tỉnh thói quen mua sắm.</p>
+                    <div class="bg-blue-50 p-4 rounded mb-4 text-blue-900 border border-blue-100">
+                        <strong>Cách nói với Editor:</strong> "Cảnh chốt đơn vô thức, em xài POV [Góc nhìn thứ nhất - ép nhập vai] cầm thẻ quẹt tít tít liên tục ở siêu thị. Sự phung phí này anh lấy Metaphor [Ẩn dụ đồ vật] là cảnh nắm cát tuột trôi khỏi kẽ tay. Cuối video anh Intercut [Cắt luân phiên] mặt anh đang giải thích app và cảnh anh thảnh thơi nhâm nhi trà vì hết lo âu."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Tiền mất vô hình -> Dùng cát tuột kẽ tay (Metaphor). Giải pháp uy tín -> Luân phiên mặt người nói và hành động chill (Intercut).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUP 2 -->
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-8 border-b-2 border-slate-200 pb-4">NHÓM 2: VIDEO CHIA SẺ KIẾN THỨC & KỸ NĂNG NỀN TẢNG (Edu-tainment)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Item 6 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-archival"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">6. Đề bài: Giải thích sức mạnh của "Lãi kép" trong đầu tư.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Khái niệm tài chính khô khan, cần thời gian dài để thấy kết quả.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Biến số liệu toán học thành hình ảnh hữu hình, dễ hiểu.</p>
+                    <div class="bg-emerald-50 p-4 rounded mb-4 text-emerald-900 border border-emerald-100">
+                        <strong>Cách nói với Editor:</strong> "Đừng show biểu đồ Excel. Sức mạnh thời gian em dùng Metaphor [Ẩn dụ thị giác]Timelapse nảy mầm từ hạt giống thành cây cổ thụ. Khúc anh bảo người trẻ hay sợ sai, moi cái Archival [Tư liệu quá khứ - bằng chứng thép] bức ảnh hồi sinh viên nghèo của anh đắp vào. Chỗ 'Bấm nút đầu tư ngay', chèn nhanh Cutaway [Cảnh đặc tả] ngón tay ấn nút trên màn hình điện thoại."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Lãi kép là sự tích lũy hữu cơ -> Cái cây là biểu tượng vĩ đại nhất (Metaphor). Lời khuyên đầu tư cần niềm tin -> Lấy quá khứ nghèo khổ ra làm mồi (Archival).</p>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-sequence"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">7. Đề bài: Vượt qua sự Trì hoãn & Áp lực MXH (Doomscrolling).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Lướt Reels/TikTok vô tri hàng giờ, sau đó thấy tội lỗi.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Lột tả sự lặp lại vô nghĩa và ngột ngạt của mạng xã hội.</p>
+                    <div class="bg-emerald-50 p-4 rounded mb-4 text-emerald-900 border border-emerald-100">
+                        <strong>Cách nói với Editor:</strong> "Sự vô tri này anh dựng thành Sequence [Chuỗi hành động lặp lại] ngón tay vuốt vuốt, mắt lờ đờ, đồng hồ chạy thoăn thoắt. Đoạn nhận ra vấn đề, thả cho anh 4 giây Negative Space [Không gian âm - để não nghỉ ngơi] cảnh chiếc quạt trần quay lạch cạch cô độc. Cuối cùng anh cất điện thoại, xỏ giày ra phố thoại In-situ [Thoại hiện trường - hành động thực tế] kêu gọi mọi người đứng lên."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Lướt điện thoại là chuỗi hành động nhanh -> Sequence. Sự trống rỗng trong tâm hồn -> Căn phòng quạt trần vắng người (Negative Space).</p>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-in-situ"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">8. Đề bài: Kỹ năng Thuyết trình trước đám đông.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Nỗi sợ hãi toát mồ hôi hột khi đứng trước bục.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Kéo người xem về đúng cảm giác run rẩy đó, rồi đưa công thức giải quyết.</p>
+                    <div class="bg-emerald-50 p-4 rounded mb-4 text-emerald-900 border border-emerald-100">
+                        <strong>Cách nói với Editor:</strong> "Nỗi sợ này em xài POV [Góc nhìn thứ nhất - ép nhập vai] nhìn từ bục giảng xuống hàng chục đôi mắt đang săm soi bên dưới. Khi anh đưa 3 tips hít thở, hãy Intercut [Cắt luân phiên] mặt anh chuyên gia với hình ảnh lồng ngực đang phập phồng chậm lại. Khúc chốt, anh thoại In-situ [Thoại tại bối cảnh] đứng trên sân khấu trống cầm mic nói luôn."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Nỗi sợ đám đông hiệu quả nhất khi nhìn qua mắt người bị hại (POV). Cầm mic nói thật (In-situ) chứng tỏ bạn là Master trong lĩnh vực này.</p>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-cutaway"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">9. Đề bài: Dạy cách Đọc sách không buồn ngủ.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Người trẻ mua sách về để trưng bày, lật 2 trang là buồn ngủ.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Phá vỡ định kiến "đọc sách lề mề", biến nó thành hành động ngầu, tốc độ.</p>
+                    <div class="bg-emerald-50 p-4 rounded mb-4 text-emerald-900 border border-emerald-100">
+                        <strong>Cách nói với Editor:</strong> "Đừng quay cảnh tĩnh buồn ngủ. Đọc sách anh xài Sequence [Chuỗi hành động dồn dập]rút sách rột rột, lật trang xoạch xoạch. Mỗi lần nhắc đến phương pháp Highlight, đập ngay Cutaway [Cảnh minh họa đặc tả] bút dạ quang gạch chéo cực mạnh. Cuối video anh vừa uống cafe vừa thoại In-situ [Vừa làm vừa nói]gập sách cái 'Cụp'."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Đọc sách thụ động rất chán -> Biến nó thành chuỗi hành động vật lý (Sequence và Cutaway bút gạch) để kích thích não.</p>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-negative-space"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">10. Đề bài: Tác hại rùng rợn của việc Thức khuya cày Deadline.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Bán mạng cho công việc, cơ thể kiệt quệ.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Tạo tiếng chuông cảnh tỉnh lạnh gáy về ranh giới sinh tử.</p>
+                    <div class="bg-emerald-50 p-4 rounded mb-4 text-emerald-900 border border-emerald-100">
+                        <strong>Cách nói với Editor:</strong> "Sự cạn kiệt anh xài Metaphor [Ẩn dụ thị giác] cục pin điện thoại chớp nháy đỏ rồi sập nguồn đen thui. Lúc nói về rủi ro đột quỵ, cấm dùng nhạc, để 3 giây Negative Space [Không gian âm - sự lạnh lẽo] cảnh chiếc ghế văn phòng trống rỗng xoay vòng vòng giữa đêm. Sau đó Intercut [Cắt luân phiên] về anh bác sĩ khuyên đi ngủ."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Cái chết/Đột quỵ không thể diễn tả trực tiếp -> Ghế trống xoay vòng (Negative Space) là hình ảnh ám ảnh nhất về sự mất mát.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUP 3 -->
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-8 border-b-2 border-slate-200 pb-4">NHÓM 3: STORYTELLING / NHÂN HIỆU & VLOG ĐỜI SỐNG</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Item 11 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-archival"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">11. Đề bài: Vlog Bỏ phố về quê (Digital Detox).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Áp lực còi xe thành phố, quyết định xách balo lên núi.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Tương phản gay gắt giữa sự bức bối và sự tự do vỡ òa.</p>
+                    <div class="bg-purple-50 p-4 rounded mb-4 text-purple-900 border border-purple-100">
+                        <strong>Cách nói với Editor:</strong> "Mở đầu nhét Archival [Tư liệu quá khứ] clip kẹt xe khói bụi hồi anh còn ở phố. Lên đến đèo, cấm chèn mặt người, thả 5 giây Negative Space [Không gian âm tĩnh lặng] biển mây cuồn cuộn trôi để khán giả thở phào. Cuối cùng, anh cúp máy thoại In-situ [Thoại tại hiện trường] đang tưới rau trước hiên nhà gỗ ngập nắng."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Quá khứ làm nền (Archival). Sự hùng vĩ của thiên nhiên cần khoảng trống không người để thưởng thức (Negative Space).</p>
+                </div>
+            </div>
+
+            <!-- Item 12 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-sequence"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">12. Đề bài: Hành trình Giảm cân lột xác 10kg.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Những ngày đầu béo phì ục ịch, đau đớn phòng gym, lột xác thành công.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Đẩy sự nỗ lực lên tột đỉnh, truyền cảm hứng hành động.</p>
+                    <div class="bg-purple-50 p-4 rounded mb-4 text-purple-900 border border-purple-100">
+                        <strong>Cách nói với Editor:</strong> "Để thấy anh từng tệ thế nào, ném cái Archival [Tư liệu cũ - bằng chứng] anh mặc áo chật bụng mỡ vào. Quá trình tập luyện cực khổ băm thành Sequence [Chuỗi hành động đẩy nhịp] mồ hôi nhỏ giọt, nghiến răng đẩy tạ. Lúc khoe body mới, chèn vài cái Cutaway [Cảnh đặc tả] vuốt sáp tóc, xỏ đồng hồ bảnh bao."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Giảm cân là hành trình dài -> Ép lại bằng Sequence có nhịp điệu. Sự tự tin chi tiết qua phụ kiện -> Dùng Cutaway.</p>
+                </div>
+            </div>
+
+            <!-- Item 13 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-metaphor"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">13. Đề bài: Kể lại câu chuyện Khởi nghiệp thất bại / Phá sản.</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Dọn dẹp nhà kho công ty, mất hết vốn liếng.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Chân thực, cay đắng nhưng chứng tỏ bản lĩnh đã vượt qua.</p>
+                    <div class="bg-purple-50 p-4 rounded mb-4 text-purple-900 border border-purple-100">
+                        <strong>Cách nói với Editor:</strong> "Khúc kể tin xấu xập tới, em lồng Metaphor [Ẩn dụ thị giác] cảnh tòa tháp Jenga (rút gỗ) sập đổ tan tành. Lúc dọn đồ, đánh góc POV [Góc nhìn thứ nhất] nhìn đôi bàn tay run rẩy gỡ tấm biển hiệu xuống. Chốt video, anh sẽ Intercut [Cắt luân phiên] mặt anh điềm tĩnh uống trà hiện tại với hình ảnh xót xa nhà kho trống năm xưa."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Tháp gỗ sập (Metaphor) thay cho việc gào khóc. POV tay run tháo biển tạo độ đau đớn vật lý cực cao cho người xem.</p>
+                </div>
+            </div>
+
+            <!-- Item 14 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-cutaway"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">14. Đề bài: Vlog dọn dẹp Setup lại phòng ốc (Room Makeover).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Biến phòng bừa bộn như bãi rác thành góc setup lung linh.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Tạo hiệu ứng thỏa mãn thị giác (OCD Satisfying).</p>
+                    <div class="bg-purple-50 p-4 rounded mb-4 text-purple-900 border border-purple-100">
+                        <strong>Cách nói với Editor:</strong> "Khúc bắt đầu dọn, dập nhạc nhanh làm Sequence [Chuỗi hành động dồn dập] xịt bọt tuyết, lau kính, vứt rác. Xen kẽ các Cutaway [Cảnh đặc tả] giẻ lau quét qua mảng bụi sạch bóng. Cuối cùng, anh ngả lưng lên ghế mới, bấm nút đổi màu đèn LED và thoại In-situ [Thoại hiện trường] tận hưởng thành quả."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Dọn nhà xem chậm rất chán -> Ép nhịp dồn dập bằng Sequence và làm đã mắt bằng đặc tả vết bẩn biến mất (Cutaway).</p>
+                </div>
+            </div>
+
+            <!-- Item 15 -->
+            <div class="bg-white rounded-xl shadow-lg flex flex-col">
+                <div class="art-block art-pov"></div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-xl mb-3">15. Đề bài: Vlog Đi phượt/Camping một mình (Solo Travel).</h3>
+                    <p class="mb-2"><strong>Bối cảnh:</strong> Ban đầu thấy cô đơn, sau đó nhận ra sự tự do tận cùng.</p>
+                    <p class="mb-4"><strong>Mục đích:</strong> Chữa lành, tĩnh tâm, kích thích khao khát đi trốn của khán giả.</p>
+                    <div class="bg-purple-50 p-4 rounded mb-4 text-purple-900 border border-purple-100">
+                        <strong>Cách nói với Editor:</strong> "Sự cô đơn ban đầu, anh xài POV [Góc nhìn thứ nhất] chỉ thấy hai mũi giày đi bộ giữa rừng vắng. Khi lên lửa trại ban đêm, thả Negative Space [Không gian âm - khoảng lặng] tiếng củi nổ lách tách lửa cháy bập bùng 4 giây không nói năng gì. Sáng mai ngủ dậy mở lều, anh thoại In-situ [Tại hiện trường] hít một hơi thật sâu chào ngày mới."
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-100 p-3 rounded"><strong>Giải thích Logic:</strong> Không ai đi phượt một mình mà nói nhiều. Cần góc nhìn mượn mắt (POV) và khoảng lặng lửa trại (Negative Space) để tâm hồn tự phản chiếu.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRACTICE SECTION -->
+        <section class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-2xl shadow-xl p-10 mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-300">CÁCH LUYỆN TẬP CHO BẠN CHIỀU NAY:</h2>
+            <p class="text-xl mb-6 leading-relaxed max-w-3xl mx-auto font-light">Khi bạn cầm điện thoại lên, hãy nhìn quanh phòng và tự nói ra miệng: <strong class="text-white">"À, kia là cửa sổ vệt nắng rọi vào tường, mình quay 5 giây tĩnh để làm Negative Space dọn dẹp tâm trí khán giả"</strong>. Hoặc <strong class="text-white">"Mình sẽ cầm điện thoại bằng 1 tay, tay kia mở tủ lạnh lấy nước để lấy góc POV nhập vai"</strong>.</p>
+            <p class="text-lg bg-white/10 p-4 rounded border border-white/20 inline-block font-medium">Chỉ cần 3 ngày lặp lại hệ thống từ vựng này, hệ thống R.A.S trong não bạn sẽ chính thức được kích hoạt. Bạn sẽ thực sự "nhìn thấu Ma trận" của việc làm video!</p>
+        </section>
+
+        <!-- FLASHCARDS SECTION (25 Questions) -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-2 text-center">Flashcards Ôn Tập Nhanh</h2>
+            <p class="text-center text-slate-500 mb-8">25 câu hỏi giúp bạn ghi nhớ sâu vào tiềm thức (Xem và tự nhẩm lại ngay tại đây).</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <!-- Q1 to Q25 -->
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">1. Metaphor là gì?</p>
+                    <p class="text-sm text-slate-600">Ẩn dụ thị giác - mượn vật tả ý (vd: cây khô gãy thay cho đau lưng).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">2. Sequence là gì?</p>
+                    <p class="text-sm text-slate-600">Chuỗi hành động dồn dập, liên tục để đẩy nhịp độ và áp lực.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">3. Negative Space là gì?</p>
+                    <p class="text-sm text-slate-600">Không gian âm tĩnh lặng, vắng người để não khán giả nghỉ ngơi.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">4. Intercut là gì?</p>
+                    <p class="text-sm text-slate-600">Cắt luân phiên giữa 2 cảnh/hành động xảy ra song song.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">5. POV là gì?</p>
+                    <p class="text-sm text-slate-600">Góc nhìn thứ nhất, mượn mắt khán giả để ép họ nhập vai.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">6. Cutaway là gì?</p>
+                    <p class="text-sm text-slate-600">Cảnh cắt minh họa đặc tả vào một chi tiết nhỏ để nhấn mạnh.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">7. Archival là gì?</p>
+                    <p class="text-sm text-slate-600">Tư liệu quá khứ, hình ảnh cũ dùng làm bằng chứng thép.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">8. In-situ là gì?</p>
+                    <p class="text-sm text-slate-600">Thoại trực tiếp tại bối cảnh/hiện trường tạo tính chân thật.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">9. Diễn tả sự tĩnh lặng, trống rỗng?</p>
+                    <p class="text-sm text-slate-600">Dùng Negative Space (vd: quạt trần quay lạch cạch).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">10. Gợi cảm giác xót ruột, rơi vỡ?</p>
+                    <p class="text-sm text-slate-600">Dùng POV (nhìn từ tay tuột rơi xuống).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">11. Thể hiện lãi kép/thời gian?</p>
+                    <p class="text-sm text-slate-600">Dùng Metaphor (hạt giống nảy mầm thành cây).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">12. Thể hiện quá trình giảm cân?</p>
+                    <p class="text-sm text-slate-600">Dùng Sequence băm nhỏ hành động tập luyện liên tục.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">13. Nhấn mạnh độ không xước của ốp?</p>
+                    <p class="text-sm text-slate-600">Dùng Cutaway zoom cận viền ốp.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">14. Thể hiện sự phá sản, sập đổ?</p>
+                    <p class="text-sm text-slate-600">Dùng Metaphor cảnh tòa tháp Jenga (rút gỗ) sập.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">15. Thể hiện sự uy tín/bản lĩnh?</p>
+                    <p class="text-sm text-slate-600">Dùng In-situ (Đứng trên sân khấu trống cầm mic nói luôn).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">16. Tác hại rùng rợn (đột quỵ)?</p>
+                    <p class="text-sm text-slate-600">Dùng Negative Space (ghế văn phòng trống xoay vòng).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">17. Tiền bốc hơi vô hình?</p>
+                    <p class="text-sm text-slate-600">Dùng Metaphor (cát tuột trôi khỏi kẽ tay).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">18. So sánh mặt chuyên gia & test đệm?</p>
+                    <p class="text-sm text-slate-600">Dùng Intercut luân phiên hai cảnh để giữ mắt khán giả.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">19. Khuyên đọc sách ngầu, tốc độ?</p>
+                    <p class="text-sm text-slate-600">Dùng Sequence rút lật sách, đệm Cutaway gạch highlight.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">20. Tương phản sự tĩnh lặng rừng núi?</p>
+                    <p class="text-sm text-slate-600">Nhét Archival cảnh kẹt xe phố trước khi thả Negative Space.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">21. 3 bước Logic gốc là gì?</p>
+                    <p class="text-sm text-slate-600">1. Mục đích -> 2. Hành động tạo cảm giác -> 3. Gọi tên broll.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">22. Sự cô đơn khi đi phượt một mình?</p>
+                    <p class="text-sm text-slate-600">Dùng POV thấy hai mũi giày đi bộ giữa rừng vắng.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">23. Thỏa mãn thị giác dọn dẹp (OCD)?</p>
+                    <p class="text-sm text-slate-600">Dùng Sequence dọn nhanh và Cutaway đặc tả bụi sạch bóng.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">24. Phương pháp đào tạo chuẩn mực?</p>
+                    <p class="text-sm text-slate-600">Học qua Tình huống mô phỏng (Case-study).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <p class="font-bold text-slate-800 text-sm mb-2 pb-2 border-b border-slate-100">25. Kết quả sau 3 ngày luyện tập?</p>
+                    <p class="text-sm text-slate-600">Kích hoạt hệ thống R.A.S, "nhìn thấu Ma trận" video.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-300 w-full h-[128px] flex flex-col justify-center items-center px-4 border-t border-slate-800">
+        <p class="text-sm md:text-base font-medium text-center mb-3 max-w-4xl text-slate-400">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6">
+            <a href="https://youtube.com/@vietndonline" target="_blank" class="flex items-center gap-2 hover:text-red-500 transition-colors">
+                <i class="fa-brands fa-youtube text-xl"></i>
+                <span class="text-sm font-semibold">vietndonline</span>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                <i class="fa-brands fa-tiktok text-xl"></i>
+                <span class="text-sm font-semibold">nguyenducviet.viral</span>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="flex items-center gap-2 hover:text-blue-500 transition-colors">
+                <i class="fa-brands fa-facebook text-xl"></i>
+                <span class="text-sm font-semibold">Fanpage</span>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
