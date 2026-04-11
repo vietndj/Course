@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chữa phương án cho cảnh kết</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+        }
+
+        /* --- CSS ABSTRACT ART CLASSES --- */
+        
+        /* Art 1: Negative Space & Emotion */
+        .art-negative-space {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .art-negative-space::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(99,102,241,0) 70%);
+            animation: pulse-slow 4s infinite alternate;
+        }
+        .art-negative-space::after {
+            content: '';
+            position: absolute;
+            right: 10%;
+            bottom: 20%;
+            width: 40px;
+            height: 2px;
+            background: #cbd5e1;
+            box-shadow: 0 0 10px #cbd5e1;
+        }
+
+        /* Art 2: Loop, Extract, Swirl */
+        .art-three-elements {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        /* Laptop loop */
+        .art-element-1 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 60px;
+            border: 2px solid #38bdf8;
+            border-radius: 4px;
+            transform: perspective(200px) rotateX(20deg);
+        }
+        .art-element-1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            width: 100px;
+            height: 10px;
+            background: #38bdf8;
+            border-radius: 2px;
+        }
+        /* Smoke/Extract */
+        .art-element-2 {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 80px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: 3px solid #f472b6;
+            border-top: none;
+        }
+        .art-element-2::before, .art-element-2::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #f472b6;
+            filter: blur(2px);
+            border-radius: 50%;
+        }
+        .art-element-2::before { height: 40px; top: -50px; left: 20px; animation: float-up 3s infinite linear; }
+        .art-element-2::after { height: 60px; top: -70px; right: 20px; animation: float-up 4s infinite linear 1s; }
+        /* Swirl */
+        .art-element-3 {
+            position: absolute;
+            top: 50px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px dashed #10b981;
+            animation: spin-slow 8s infinite linear;
+        }
+        .art-element-3::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border-radius: 50%;
+            border: 2px solid rgba(16, 185, 129, 0.5);
+            border-top-color: transparent;
+            animation: spin-slow 4s infinite linear reverse;
+        }
+
+        /* Art 3: The Pregnant Pause & Hold Frame */
+        .art-secret {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #000;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .art-secret .recording-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ef4444;
+            margin-right: 30px;
+            animation: blink 1s infinite;
+        }
+        .art-secret .pause-lines {
+            display: flex;
+            gap: 15px;
+        }
+        .art-secret .pause-lines div {
+            width: 8px;
+            height: 60px;
+            background-color: #f8fafc;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* Art 4: Camera Ecosystem (Sony, iPhone, DJI Nano) */
+        .art-cameras {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(to bottom right, #1e293b, #020617);
+            border-radius: 16px;
+        }
+        .cam-sony {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 120px;
+            height: 80px;
+            background: #334155;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cam-sony::after {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 8px solid #94a3b8;
+            background: #0f172a;
+        }
+        .cam-iphone {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            width: 70px;
+            height: 140px;
+            border: 4px solid #64748b;
+            border-radius: 12px;
+            background: #1e293b;
+        }
+        .cam-iphone::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px;
+            width: 15px; height: 15px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            box-shadow: 0 20px 0 #cbd5e1;
+        }
+        .cam-nano {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #475569;
+            border-radius: 6px;
+            border: 2px solid #cbd5e1;
+        }
+        .cam-nano::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #0f172a;
+            border: 2px solid #ef4444;
+        }
+        .sync-wave {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, transparent, transparent 10px, #38bdf8 10px, #38bdf8 12px);
+            opacity: 0.3;
+        }
+
+        /* Animations */
+        @keyframes pulse-slow { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; } }
+        @keyframes float-up { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-50px); opacity: 0; } }
+        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+        @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Hero Header -->
+    <header class="pt-20 pb-16 px-6 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-800">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-4 tracking-tight">
+            Chữa phương án cho cảnh kết
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg">Đúc kết bài học, thiết lập cảm xúc và các phương án Đạo diễn Hình ảnh chi tiết.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
+
+        <!-- Block 1: Philosophy -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-slate-300 leading-relaxed text-lg">
+                <p>Đúc kết bài học (30% thời lượng)<br>
+                Thả một cảnh chậm rãi (không gian âm) để cảm xúc lắng đọng, sau đó cắt về khuôn mặt bạn (Loại 4) nhìn thẳng vào ống kính để chốt lại thông điệp.</p>
+
+                <p>Phần này với kịch bản của tôi có bao nhiêu cách quay và xử lý. hãy đưa ra 3   phương án và cách quay chi tiết</p>
+
+                <p>Phần Đúc kết (P5: CHILL & TẬN HƯỞNG) trong kịch bản của bạn là điểm rơi cảm xúc quan trọng nhất. Nếu Mở đầu (Hook) là một "cú tát" để khán giả tỉnh mộng, thì Kết thúc BẮT BUỘC phải là một <strong>"cái ôm"</strong> vỗ về.</p>
+                
+                <p>Trong Tâm lý học Nhận thức, đây gọi là <strong>Hiệu ứng Đỉnh - Kết (Peak-End Rule)</strong>: Khán giả có thể quên những lập luận logic phức tạp ở giữa video, nhưng họ sẽ <strong>nhớ mãi cảm giác</strong> mà bạn mang lại cho họ ở 10 giây cuối cùng.</p>
+                
+                <p>Khán giả đã trải qua sự bức bối (P1, P2) và căng thẳng của việc dò đường (P4). Lúc này, bạn phải dùng <strong>Negative Space</strong> [Không gian âm] làm "trạm trung chuyển" để làm chậm nhịp tim của họ lại, dọn dẹp tâm trí, sau đó mới tung câu chốt (Loại 4) để ghim từ <strong>"Miracle"</strong> vào sâu tiềm thức.</p>
+            </div>
+            <div class="w-full">
+                <!-- CSS Art 1 -->
+                <div class="art-negative-space shadow-2xl shadow-indigo-900/20"></div>
+                <p class="text-center text-sm text-slate-500 mt-4 italic">Abstract Art: Negative Space & The "Miracle" Anchor</p>
+            </div>
+        </section>
+
+        <!-- Block 2: The First 3 Options -->
+        <section class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="text-xl text-slate-300 mb-8">Dưới đây là 3 phương án Đạo diễn Hình ảnh (Director's Treatment) chi tiết nhất dựa trên các bối cảnh bạn đã có:</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 relative flex flex-col justify-center">
+                     <!-- CSS Art 2 -->
+                     <div class="art-three-elements shadow-2xl shadow-slate-900/50 sticky top-10">
+                        <div class="art-element-1"></div>
+                        <div class="art-element-2"></div>
+                        <div class="art-element-3"></div>
+                     </div>
+                     <p class="text-center text-sm text-slate-500 mt-4 italic">Abstract Art: Loop, Extract, and Swirl</p>
+                </div>
+
+                <div class="lg:col-span-8 space-y-12 text-slate-300 leading-relaxed">
+                    <!-- Option 1 -->
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/50">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-4">🎬 PHƯƠNG ÁN 1: ĐÓNG VÒNG LẶP CHIẾC LAPTOP (Cảm giác "Về nhà")</h3>
+                        <p class="mb-4">Phương án này cực kỳ xuất sắc nếu ở P1 bạn mở đầu bằng cảnh bức bối bên bàn làm việc. Việc kết thúc ở đúng vị trí đó nhưng với tâm thế khác tạo ra "Sự hoàn thiện" (Gestalt Closure).</p>
+                        <p class="font-semibold text-white mt-4">Shot 1: Thả Negative Space [Không gian âm tĩnh lặng] (Dài 3-4s)</p>
+                        <p><strong>Cách quay:</strong> Điện thoại đặt tĩnh. Bắt buộc quay ở góc có một vệt nắng (ánh sáng hoàng hôn) hắt lên bức tường trống, hoặc rèm cửa sổ đang đung đưa nhè nhẹ. Khung hình tuyệt đối vắng mặt người. Nếu có những hạt bụi li ti lơ lửng trong nắng thì càng tuyệt (nó đại diện cho sự tĩnh lặng của thời gian).</p>
+                        <p><strong>Âm thanh & Tiếng:</strong> Tắt âm thanh hiện trường. Nhạc Lofi/Acoustic êm dịu nổi lên. Bạn lồng tiếng (Voiceover) nhỏ nhẹ, thì thầm: <em>"Cho nên là mình cứ đạp xe đều thôi... cứ chill chill thôi... kể cả bây giờ mình đạp xe vào Đà Nẵng."</em></p>
+                        
+                        <p class="font-semibold text-white mt-6">Shot 2: Cắt về chốt hạ (Loại 4 [Thoại tĩnh A-roll] - Dài 6-8s)</p>
+                        <p><strong>Góc máy:</strong> Cắt về khuôn mặt bạn đang ngồi tại bàn làm việc.</p>
+                        <p><strong>Diễn xuất:</strong> Khác với sự gồng cứng lúc đầu video. Lưng bạn đang ngả thật sâu vào ghế, hai vai buông thõng hoàn toàn (xả vai). Bàn tay bạn từ tốn, chậm rãi gập nắp laptop lại (Tiếng 'cụp' rất êm). Gập xong, mắt bạn từ từ quay lại nhìn thẳng vào ống kính, mỉm cười nhẹ nhõm.</p>
+                        <p><strong>Thoại thu trực tiếp:</strong> <em>"Và chất lượng hành trình phụ thuộc vào việc bạn có enjoy hay không... Bởi vì khi bạn enjoy, mọi thứ mà bạn kết xuất ra từ chiếc máy này... "</em> (Vỗ nhẹ tay lên nắp laptop).</p>
+                        <p>(Dừng 1 nhịp thở) <em>"...nó đều hấp dẫn cả. Nó đều là Miracle."</em></p>
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/50">
+                        <h3 class="text-2xl font-bold text-pink-400 mb-4">🎬 PHƯƠNG ÁN 2: CHIẾT XUẤT CỦA SỰ BÌNH YÊN (Ẩn dụ thỏa mãn)</h3>
+                        <p class="mb-4">Cách này cực kỳ phù hợp nếu bạn đã dùng máy pha cà phê ở P4. Từ "Kết xuất" (Render video) được đồng nhất với từ "Chiết xuất" (Extract cafe).</p>
+                        <p class="font-semibold text-white mt-4">Shot 1: Thả Negative Space [Không gian âm khoảng lặng] (Dài 3-4s)</p>
+                        <p><strong>Cách quay:</strong> Quay siêu cận (Macro) đặt máy ngang mặt bàn. Trọng tâm là ly Espresso nóng (hoặc ly trà). Phải có phông nền phía sau tối màu (bức tường xám/đen) để làm bật lên làn khói mỏng manh từ từ bốc lên uốn lượn từ miệng ly (Quay Slow-motion 0.5x). Khói bốc lên chậm sẽ ép nhịp thở khán giả chậm lại.</p>
+                        <p><strong>Âm thanh & Tiếng:</strong> Lồng tiếng Voiceover thong thả: <em>"Cho nên là mình cứ đạp xe đều thôi... cứ chill chill thôi... kể cả vào Đà Nẵng."</em></p>
+                        
+                        <p class="font-semibold text-white mt-6">Shot 2: Cắt về chốt hạ (Loại 4 [Thoại tĩnh A-roll] - Dài 6-8s)</p>
+                        <p><strong>Góc máy:</strong> Cắt về bạn đang ngồi trên sô-pha hoặc đứng tựa lưng vào quầy bếp.</p>
+                        <p><strong>Diễn xuất:</strong> Bạn vừa đưa ly cafe lên môi nhấp một ngụm. Nhắm hờ mắt lại 1 giây cảm nhận hương vị (để thể hiện đúng chữ "enjoy"). Sau đó từ từ đặt ly xuống bàn, mở mắt nhìn khóa chặt vào ống kính. Ánh mắt rạng rỡ, ngập tràn sự biết ơn.</p>
+                        <p><strong>Thoại thu trực tiếp:</strong> <em>"Chất lượng của hành trình phụ thuộc vào việc bạn có enjoy nó hay không... Bởi vì khi bạn enjoy... mọi thứ bạn kết xuất ra..."</em></p>
+                        <p>(Mỉm cười mím môi) <em>"...nó đều là Miracle."</em></p>
+                    </div>
+
+                    <!-- Option 3 -->
+                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/50">
+                        <h3 class="text-2xl font-bold text-emerald-400 mb-4">🎬 PHƯƠNG ÁN 3: VÒNG XOÁY THÔI MIÊN (Trực quan hóa sự "Đều đặn")</h3>
+                        <p class="mb-4">Khớp hoàn hảo với câu thoại "đạp xe đều" của bạn. Đại diện cho tính chu kỳ, bền bỉ của việc làm sáng tạo.</p>
+                        <p class="font-semibold text-white mt-4">Shot 1: Dùng Vòng lặp cơ học thay cho Negative Space (Dài 3-4s)</p>
+                        <p><strong>Cách quay:</strong> Đặt điện thoại chĩa thẳng từ trên trần nhà xuống (Top-down) hoặc góc chéo sát mặt bàn. Bàn tay bạn cầm một chiếc thìa dài, khuấy ly cafe đá theo vòng tròn cực kỳ chậm rãi và đều nhịp. (Không lấy mặt người).</p>
+                        <p><strong>Tác động tâm lý:</strong> Chuyển động xoay tròn đều đặn có tác dụng ru ngủ và xoa dịu hệ thần kinh (Hypnotic effect). Nó tạo cảm giác an tâm: Cuộc sống không phải là cuộc đua sinh tử, nó là một nhịp điệu nếu ta biết cách tận hưởng.</p>
+                        <p><strong>Âm thanh & Tiếng:</strong> Thu tiếng đá va lanh canh vào thành ly thủy tinh trong vắt theo nhịp 1-2, 1-2. Lồng tiếng Voiceover: <em>"Cứ đạp xe đều là bạn sẽ đến được nơi cần đến... kể cả bây giờ đạp xe vào Đà Nẵng."</em></p>
+                        
+                        <p class="font-semibold text-white mt-6">Shot 2: Cắt về chốt hạ (Loại 4 [Thoại tĩnh A-roll] - Dài 6-8s)</p>
+                        <p><strong>Góc máy:</strong> Cắt về mặt bạn (Góc trung cảnh).</p>
+                        <p><strong>Diễn xuất:</strong> Lần này bạn không ngồi dựa ngửa lưng ra sau. Bạn chống cằm lên bàn (hoặc vắt chéo tay hờ hững), tư thế hơi nghiêng đầu thoải mái (ngôn ngữ cơ thể của sự tâm tình, thủ thỉ với bạn thân). Bạn đã mỉm cười hiền lành sẵn từ lúc chuyển cảnh.</p>
+                        <p><strong>Thoại thu trực tiếp:</strong> <em>"Và chất lượng của hành trình, phụ thuộc vào việc bạn có enjoy nó hay không. Khi bạn thực sự enjoy... mọi thứ bạn kết xuất ra..."</em></p>
+                        <p>(Chớp mắt chậm lại) <em>"...đều hấp dẫn cả. Nó đều là Miracle."</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Block 3: Director's Secret -->
+        <section class="bg-red-900/20 border border-red-500/30 p-8 md:p-12 rounded-3xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl -z-10"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-slate-300">
+                    <h2 class="text-3xl font-black text-white flex items-center gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-yellow-500"></i> 
+                        BÍ QUYẾT ĐẠO DIỄN: VŨ KHÍ HẠT NHÂN CHO TỪ "MIRACLE"
+                    </h2>
+                    <p class="text-lg">Dù bạn chọn phương án nào, để từ "Miracle" (Phép màu) thực sự trở thành một đòn thao túng tâm lý sâu sắc, bạn BẮT BUỘC phải làm 2 động tác này khi quay:</p>
+                    
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-white text-xl">1. Kỹ thuật "Khoảng lặng mang thai" (The Pregnant Pause):</h4>
+                        <p>Trong kịch bản bạn viết có dấu ba chấm: <em>"mọi thứ bạn kết xuất ra... nó đều là miracle"</em>.</p>
+                        <p>Khi nói đến chữ <em>"ra..."</em>, bạn KHÔNG ĐƯỢC NÓI LIỀN. Hãy ngậm miệng lại, dừng im lặng trong đúng 1 đến 1.5 giây. Khẽ nuốt nước bọt, hoặc hít một hơi thật nhẹ, rồi mới nói tiếp từ khóa cuối cùng.</p>
+                        <p>Khoảng ngắt này ép nhịp tim khán giả phải hẫng lại một nhịp để chờ đợi, làm tăng sức nặng (Gravity) của câu chốt lên gấp 10 lần. Nó chứng tỏ bạn đang thực sự chiêm nghiệm, chứ không phải trả bài thuộc lòng kịch bản.</p>
+                    </div>
+
+                    <div class="space-y-4 mt-6">
+                        <h4 class="font-bold text-white text-xl">2. Đừng bao giờ tắt máy quay ngay lập tức (Hold the Frame):</h4>
+                        <p>Lỗi lớn nhất của người mới là vừa nói xong chữ <em>"Miracle"</em>, tay đã với ra bấm nút tắt điện thoại. Khán giả sẽ bị tát tỉnh khỏi ảo giác hình ảnh và cảm thấy hụt hẫng.</p>
+                        <p><strong>Luật của điện ảnh:</strong> Sau khi nói xong chữ <em>"Miracle"</em>, hãy nín thở, giữ nguyên nụ cười, mắt vẫn nhìn khóa chặt vào ống kính thêm 3-4 giây im lặng tuyệt đối.</p>
+                        <p>Đến lúc bỏ vào phần mềm Capcut dựng, bạn dùng 4 giây hình ảnh đó làm hiệu ứng <strong>Tối Dần (Fade to Black)</strong> chìm vào màn hình đen, đồng thời đẩy âm lượng nhạc Lofi to dần lên. Đây chính là "cú nín thở" phong ấn toàn bộ cảm xúc của người xem lại trong đầu họ!</p>
+                    </div>
+                </div>
+                
+                <div class="w-full">
+                    <!-- CSS Art 3 -->
+                    <div class="art-secret shadow-2xl shadow-red-900/30">
+                        <div class="recording-dot"></div>
+                        <div class="pause-lines">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <p class="text-center text-sm text-slate-500 mt-4 italic">Abstract Art: Recording Dot & The Pregnant Pause</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Block 4 & 5: New Request & 4 New Options -->
+        <section class="space-y-12">
+            <!-- User Quote -->
+            <div class="bg-indigo-900/30 border-l-4 border-indigo-500 p-6 rounded-r-xl">
+                <p class="text-indigo-200 italic">"Tôi cần thêm 4 phương án nữa cho cái này, chi tiết hơn, và dễ quay hơn, chi tiết về góc máy, đặt máy, tôi có điện thoại ip17, và sony a6400 sigma 35 f1.4 , dji nano ( chất lượng hơi kém, dùng cảnh phfu hợp thôi ko phai canh chinh ) . 4 phương án này nói chi tiết đặt cam thê nao, cam nào, và cảnh nào càn đặt 2 cam tiện lợi hơn cho triển khai"</p>
+            </div>
+
+            <div class="space-y-6 text-slate-300 leading-relaxed text-lg">
+                <p>Xin nhận lỗi với bạn vì sự nhầm lẫn tai hại về chiếc DJI Nano ở phần trước! Khi bạn đính chính nó là một chiếc <strong>Camera Action siêu nhỏ</strong> (chứ không phải Flycam), thì cục diện đã thay đổi hoàn toàn.</p>
+                <p>Trong điện ảnh, một chiếc camera mini không bay được lại là một <strong>"vũ khí bí mật"</strong> đáng sợ hơn rất nhiều. Sức mạnh của nó nằm ở việc chui vào những góc "bất khả thi" (Impossible Angles) – như dán trên mặt kính, đặt trên bàn phím, hay gắn lên ngực áo để tạo ra những thước phim <strong>POV (Góc nhìn thứ nhất)</strong> vô cùng bụi bặm và chân thật (Raw Vibe).</p>
+                
+                <p>Dưới đây là 4 phương án được thiết kế chuẩn xác cho hệ sinh thái thiết bị của bạn: <strong>Sony A6400 (Máy A - Uy quyền), iPhone 17 (Máy B - Slowmo/Góc hẹp), DJI Nano (Máy C - Góc hiểm/POV)</strong>. Ba phương án đầu có thể <strong>chạy 2 máy cùng lúc</strong> để bạn diễn 1 lần ăn ngay.</p>
+                <p>(Mẹo lúc quay: Bấm Record 2 máy xong, bạn đưa tay lên trước mặt <strong>VỖ 1 TIẾNG "BỐP" THẬT TO</strong>. Cái gai sóng âm thanh nhọn hoắt đó sẽ giúp bạn đồng bộ (Sync) hình và tiếng của 2 máy trong Capcut khớp nhau 100% trong vòng 1 nốt nhạc).</p>
+            </div>
+
+            <!-- CSS Art 4 -->
+            <div class="w-full max-w-2xl mx-auto my-12">
+                <div class="art-cameras shadow-2xl shadow-indigo-900/40">
+                    <div class="sync-wave"></div>
+                    <div class="cam-sony"></div>
+                    <div class="cam-iphone"></div>
+                    <div class="cam-nano"></div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-4 italic">Abstract Art: Device Ecosystem (Sony, iPhone, Nano) & Audio Sync Wave</p>
+            </div>
+
+            <!-- The 4 New Options Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300">
+                
+                <!-- New Option 1 -->
+                <div class="bg-slate-800/40 p-8 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition duration-300">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4">🎬 PHƯƠNG ÁN 1: ĐÓNG VÒNG LẶP LAPTOP (Góc máy "Bị nhốt")</h3>
+                    <p class="mb-4 text-sm"><strong>Ý tưởng:</strong> Hình ảnh nắp laptop gập xuống đại diện cho việc khép lại sự cày cuốc, dọn dẹp tâm trí để chuyển sang trạng thái "Enjoy".</p>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách đặt 2 máy (Quay cùng lúc):</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm mt-2">
+                        <li><strong>Máy chính (Sony A6400):</strong> Cắm Tripod lấy góc thẳng mặt (Trung cảnh). <em>Chú ý:</em> Vặn khẩu độ lên f/1.8 hoặc f/2.0 [Để khoảng lấy nét sâu hơn, mặt không bị mờ khi bạn cử động cúi/ngẩng]. Bật Eye-AF.</li>
+                        <li><strong>Máy lót (DJI Nano):</strong> Tận dụng sự siêu nhỏ, đặt cục Nano ngửa mặt ngay trên bàn phím laptop (hoặc sát bản lề màn hình), ống kính chĩa ngược lên mặt bạn. (Đây là góc Low-angle, làm đôi tay bạn trông rất quyền lực).</li>
+                    </ul>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách diễn:</p>
+                    <p class="text-sm mt-2">Bạn nhìn màn hình thở phào. Hai tay từ tốn gập nắp máy lại. (Lúc nắp sập xuống, màn hình của DJI Nano sẽ bị tối đen). Vừa gập xong "cụp", bạn ngả lưng ra ghế, nhìn thẳng ống kính Sony mỉm cười: <em>"Khi bạn enjoy, mọi thứ bạn kết xuất ra, đều là Miracle."</em></p>
+                    <div class="mt-4 p-4 bg-slate-900/80 rounded-lg text-sm border-l-2 border-indigo-500">
+                        <p><strong>🗣️ Cách nhắn việc cho Editor:</strong><br>
+                        "Đoạn cuối, em lấy cái góc POV [Góc nhìn thứ nhất từ dưới hất lên] quay bằng con DJI Nano lúc anh gập máy để làm Negative Space [Không gian âm - khoảng lặng vắng mặt người]. Lúc nắp máy sập xuống tối thui, em Cut [Cắt chuyển cảnh tức thì] rụp sang góc anh quay bằng Sony nét căng lúc ngẩng mặt lên chốt thoại A-roll [Cảnh ngồi nói chính diện] nhé."</p>
+                    </div>
+                </div>
+
+                <!-- New Option 2 -->
+                <div class="bg-slate-800/40 p-8 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition duration-300">
+                    <h3 class="text-xl font-bold text-pink-300 mb-4">🎬 PHƯƠNG ÁN 2: LÀN KHÓI CHIẾT XUẤT (Sức mạnh Slow-mo)</h3>
+                    <p class="mb-4 text-sm"><strong>Ý tưởng:</strong> Đồng nhất chữ "Kết xuất video" với "Chiết xuất cafe nóng". Dùng sức mạnh quay chậm của iPhone để làm dịu nhịp tim khán giả.</p>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách đặt 2 máy (Quay cùng lúc):</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm mt-2">
+                        <li><strong>Máy phụ (iPhone 17):</strong> Gắn lên Tripod mini sát mặt bàn. Dí sát ống kính vào ly cafe nóng. Bật chế độ quay chậm Slow-mo 120fps. (Mẹo: Kéo thanh độ sáng tối xuống 1 chút, và bắt buộc để 1 chiếc áo/balo màu đen ở phía sau ly để khói trắng hiện lên rõ nhất).</li>
+                        <li><strong>Máy chính (Sony A6400):</strong> Đặt Tripod góc chéo 45 độ, lấy nửa người bạn đang ngồi. Khúc này bạn ngồi tĩnh, hãy mạnh dạn mở khẩu f/1.4 [Để xóa phông mù mịt đằng sau, tạo Vibe cực kỳ điện ảnh].</li>
+                    </ul>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách diễn:</p>
+                    <p class="text-sm mt-2">Bạn nhấc ly cafe lên nhấp 1 ngụm, nhắm hờ mắt 1 giây [Ngôn ngữ cơ thể của sự thỏa mãn]. Đặt ly xuống (khói sẽ bốc lên lọt vào khung hình iPhone). Mở mắt ra, quay sang nhìn thẳng ống kính Sony A6400 mỉm cười và thoại.</p>
+                    <div class="mt-4 p-4 bg-slate-900/80 rounded-lg text-sm border-l-2 border-pink-500">
+                        <p><strong>🗣️ Cách nhắn việc cho Editor:</strong><br>
+                        "Khúc này em thả cái file Slo-mo khói bay quay bằng iPhone làm Negative Space [Khoảng lặng dọn dẹp tâm trí] để lót giọng Voiceover [Giọng đọc thu âm] của anh xuống dưới. Tích tắc anh đặt ly xuống bàn, em Intercut [Cắt luân phiên] về mặt anh quay bằng Sony. Đoạn anh cười xong, nhớ Hold Frame [Giữ nguyên hình tĩnh] 3 giây rồi mới Fade to Black [Hiệu ứng tối dần màn hình] để lại dư âm nhé."</p>
+                    </div>
+                </div>
+
+                <!-- New Option 3 -->
+                <div class="bg-slate-800/40 p-8 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition duration-300">
+                    <h3 class="text-xl font-bold text-emerald-300 mb-4">🎬 PHƯƠNG ÁN 3: VÒNG XOÁY THÔI MIÊN (Tính chu kỳ êm ái)</h3>
+                    <p class="mb-4 text-sm"><strong>Ý tưởng:</strong> Chuyển động xoay tròn đều đặn có tác dụng xoa dịu thần kinh, khớp hoàn hảo với câu thoại "cứ đạp xe đều".</p>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách đặt 2 máy (Quay cùng lúc):</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm mt-2">
+                        <li><strong>Máy phụ (iPhone 17):</strong> Dùng ngàm kẹp iPhone, chĩa ống kính vuông góc thẳng từ trần nhà xuống mặt bàn ngay trên ly cafe đá. (Không lấy mặt người, chỉ lấy miệng ly và tay).</li>
+                        <li><strong>Máy chính (Sony A6400):</strong> Cắm Tripod lấy góc chính diện ngang mặt bạn (khẩu độ f/1.8).</li>
+                    </ul>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách diễn:</p>
+                    <p class="text-sm mt-2">Bạn cầm thìa khuấy ly cafe đá thành vòng tròn. Khuấy được 3 vòng đều đặn (tiếng đá lanh canh lọt vào mic iPhone), bạn dừng lại, rút tay lên chống cằm [Tư thế của sự tâm tình, thủ thỉ]. Đầu hơi nghiêng nhẹ, nhìn thẳng Sony mỉm cười và thoại.</p>
+                    <div class="mt-4 p-4 bg-slate-900/80 rounded-lg text-sm border-l-2 border-emerald-500">
+                        <p><strong>🗣️ Cách nhắn việc cho Editor:</strong><br>
+                        "Đoạn đọc Voiceover 'đạp xe đều', em thả cái Sequence [Chuỗi hành động lặp lại] khuấy cafe với góc Top-down [Góc chim bay 90 độ từ trên xuống] của con iPhone vào. Đẩy cái ASMR [Âm thanh cọ xát hiện trường] tiếng đá lanh canh to lên để hút người xem. Xong làm quả Cutaway [Cắt chuyển cảnh] sang mặt anh đang chống cằm quay bằng con Sony để chốt đạo lý."</p>
+                    </div>
+                </div>
+
+                <!-- New Option 4 -->
+                <div class="bg-slate-800/40 p-8 rounded-2xl border border-slate-700/50 hover:bg-slate-800/60 transition duration-300">
+                    <h3 class="text-xl font-bold text-amber-300 mb-4">🎬 PHƯƠNG ÁN 4: HÀNH TRÌNH TỪ GÓC NHÌN NGƯỜI ĐẠP XE (Sửa lỗi Flycam)</h3>
+                    <p class="mb-4 text-sm"><strong>Ý tưởng:</strong> Vì DJI Nano là action cam, ta sẽ gắn nó lên người để minh họa đúng nghĩa đen của câu "đạp xe vào Đà Nẵng", lột tả sự tự do, rong ruổi thực tế.</p>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách đặt máy (Quay 2 Shot tách biệt vì ở 2 nơi khác nhau):</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm mt-2">
+                        <li><strong>Shot 1 (DJI Nano):</strong> Dùng ngàm nam châm kẹp DJI Nano lên giữa ngực áo bạn, hoặc gắn thẳng vào ghi-đông xe đạp/xe máy.</li>
+                        <li><strong>Shot 2 (Sony A6400):</strong> Cắm Tripod trong phòng, chỗ có setup ánh sáng ưng ý nhất của bạn.</li>
+                    </ul>
+                    <p class="font-semibold text-white mt-4 text-sm">Cách diễn:</p>
+                    <p class="text-sm mt-2"><strong>B-roll (Cảnh trám):</strong> Bạn xách xe đạp ra ngõ hoặc công viên, đạp tà tà dưới bóng cây. Khung hình siêu rộng của DJI Nano chỉ lấy 2 cánh tay bạn đang bám ghi-đông và con đường phía trước. Hình ảnh sẽ hơi rung lắc tự nhiên. (Quay 15 giây).</p>
+                    <p class="text-sm mt-2"><strong>A-roll (Cảnh thoại tĩnh):</strong> Bạn về phòng, ngồi tựa ghế cầm ly nước lọc, mỉm cười điềm tĩnh nhìn thẳng máy Sony: <em>"Chất lượng hành trình là lúc bạn enjoy nó... Mọi thứ bạn kết xuất ra, đều là Miracle."</em></p>
+                    <div class="mt-4 p-4 bg-slate-900/80 rounded-lg text-sm border-l-2 border-amber-500">
+                        <p><strong>🗣️ Cách nhắn việc cho Editor:</strong><br>
+                        "Đoạn anh bảo 'Đạp xe vào Đà Nẵng', em lấy cái POV [Góc nhìn thứ nhất] anh gắn con DJI đạp xe ngoài đường làm B-roll [Cảnh trám minh họa]. Ảnh nó hơi Noise [Nhiễu hạt] hoặc rung lắc tí kệ nó, lấy cái Vibe mộc mạc bụi bặm. Xong Cut [Cắt hình] rụp về góc anh quay bằng Sony ở trong nhà để tạo ra Sự tương phản Nhịp điệu [Pacing Contrast - Ngoài đường động, trong nhà tĩnh]."</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Block 6: Flashcards Section (25 items) -->
+        <section class="pt-12 border-t border-slate-800">
+            <h2 class="text-3xl font-black text-center text-white mb-2">Bộ 25 Flashcard Ôn Tập</h2>
+            <p class="text-center text-slate-400 mb-10">Hiển thị trực tiếp nội dung từ bài học để dễ dàng ghi nhớ.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <!-- Javascript will populate this, but doing it in pure HTML/Tailwind for strict adherence to "no interaction needed" -->
+                
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-indigo-400 text-sm mb-2">Q1. Phần đúc kết chiếm bao nhiêu % thời lượng?</p>
+                    <p class="text-slate-300 text-sm">30% thời lượng.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-indigo-400 text-sm mb-2">Q2. Vai trò của phần kết thúc là gì?</p>
+                    <p class="text-slate-300 text-sm">Là điểm rơi cảm xúc quan trọng nhất, bắt buộc phải là một "cái ôm" vỗ về.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-indigo-400 text-sm mb-2">Q3. Hiệu ứng Peak-End Rule là gì?</p>
+                    <p class="text-slate-300 text-sm">Khán giả nhớ mãi cảm giác mang lại ở 10 giây cuối cùng.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-indigo-400 text-sm mb-2">Q4. Tác dụng của Negative Space?</p>
+                    <p class="text-slate-300 text-sm">Làm chậm nhịp tim, dọn dẹp tâm trí trước khi tung câu chốt.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-indigo-400 text-sm mb-2">Q5. Từ khóa cần ghim vào tiềm thức là gì?</p>
+                    <p class="text-slate-300 text-sm">Từ "Miracle".</p>
+                </div>
+
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-pink-400 text-sm mb-2">Q6. Phương án 1 (Gập laptop) tạo cảm giác gì?</p>
+                    <p class="text-slate-300 text-sm">Cảm giác "Về nhà", "Sự hoàn thiện" (Gestalt Closure).</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-pink-400 text-sm mb-2">Q7. Voiceover ở shot không gian âm nên thế nào?</p>
+                    <p class="text-slate-300 text-sm">Nhỏ nhẹ, thì thầm, trên nền nhạc Lofi/Acoustic êm dịu.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-pink-400 text-sm mb-2">Q8. Chốt thoại Loại 4 là gì?</p>
+                    <p class="text-slate-300 text-sm">Thoại tĩnh A-roll, nhìn thẳng vào ống kính để chốt thông điệp.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-pink-400 text-sm mb-2">Q9. Ẩn dụ trong Phương án 2 (Cafe) là gì?</p>
+                    <p class="text-slate-300 text-sm">Đồng nhất từ "Kết xuất" (Render) với "Chiết xuất" (Extract cafe).</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-pink-400 text-sm mb-2">Q10. Tại sao dùng nền tối khi quay cafe nóng?</p>
+                    <p class="text-slate-300 text-sm">Để làm bật lên làn khói mỏng manh từ từ bốc lên.</p>
+                </div>
+
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-emerald-400 text-sm mb-2">Q11. Ý nghĩa của Vòng xoáy thôi miên (PA3)?</p>
+                    <p class="text-slate-300 text-sm">Đại diện cho tính chu kỳ, bền bỉ, ru ngủ và xoa dịu hệ thần kinh.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-emerald-400 text-sm mb-2">Q12. Ngôn ngữ cơ thể khi chống cằm thể hiện gì?</p>
+                    <p class="text-slate-300 text-sm">Sự tâm tình, thủ thỉ với bạn thân.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-emerald-400 text-sm mb-2">Q13. Khoảng lặng mang thai (Pregnant Pause) là gì?</p>
+                    <p class="text-slate-300 text-sm">Dừng im lặng 1-1.5s trước khi nói từ khóa cuối cùng.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-emerald-400 text-sm mb-2">Q14. Tác dụng của Khoảng lặng mang thai?</p>
+                    <p class="text-slate-300 text-sm">Làm tăng sức nặng câu chốt gấp 10 lần, chứng tỏ sự chiêm nghiệm.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-emerald-400 text-sm mb-2">Q15. Lỗi lớn nhất của người mới khi nói xong là gì?</p>
+                    <p class="text-slate-300 text-sm">Vừa nói xong chữ cuối đã với tay bấm nút tắt điện thoại.</p>
+                </div>
+
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-amber-400 text-sm mb-2">Q16. Luật Hold the Frame yêu cầu gì?</p>
+                    <p class="text-slate-300 text-sm">Giữ nguyên nụ cười, nhìn khóa ống kính thêm 3-4s im lặng sau khi thoại xong.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-amber-400 text-sm mb-2">Q17. Sức mạnh của Camera Action siêu nhỏ (DJI Nano) là gì?</p>
+                    <p class="text-slate-300 text-sm">Chui vào góc "bất khả thi", tạo thước phim POV bụi bặm, chân thật.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-amber-400 text-sm mb-2">Q18. Cách đồng bộ 2 máy quay dễ nhất?</p>
+                    <p class="text-slate-300 text-sm">Vỗ tay 1 tiếng "BỐP" to để tạo gai sóng âm thanh đồng bộ trong Capcut.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-amber-400 text-sm mb-2">Q19. Khi quay A6400 góc thẳng mặt, khẩu độ nên đặt bao nhiêu?</p>
+                    <p class="text-slate-300 text-sm">f/1.8 hoặc f/2.0 để khoảng lấy nét sâu, không mờ mặt khi cử động.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-amber-400 text-sm mb-2">Q20. Góc Low-angle (hất từ dưới lên) mang lại cảm giác gì?</p>
+                    <p class="text-slate-300 text-sm">Làm chủ thể (ví dụ đôi tay) trông rất quyền lực.</p>
+                </div>
+
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-sky-400 text-sm mb-2">Q21. Kỹ thuật Intercut là gì?</p>
+                    <p class="text-slate-300 text-sm">Cắt luân phiên giữa các góc máy/cảnh quay khác nhau.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-sky-400 text-sm mb-2">Q22. Nhắm hờ mắt 1 giây khi uống cafe thể hiện điều gì?</p>
+                    <p class="text-slate-300 text-sm">Ngôn ngữ cơ thể của sự thỏa mãn ("enjoy").</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-sky-400 text-sm mb-2">Q23. Góc Top-down là gì?</p>
+                    <p class="text-slate-300 text-sm">Góc chim bay vuông góc 90 độ từ trên trần nhà xuống.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-sky-400 text-sm mb-2">Q24. B-roll khác A-roll thế nào?</p>
+                    <p class="text-slate-300 text-sm">B-roll là cảnh trám minh họa, A-roll là cảnh ngồi nói chính diện (thoại tĩnh).</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <p class="font-bold text-sky-400 text-sm mb-2">Q25. Tương phản Nhịp điệu (Pacing Contrast) trong PA4 là gì?</p>
+                    <p class="text-slate-300 text-sm">Sự tương phản giữa ngoài đường động (rung lắc) và trong nhà tĩnh.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer fixed 128px height as requested -->
+    <footer class="w-full h-[128px] bg-slate-950 border-t border-slate-800 flex items-center justify-center px-6">
+        <div class="max-w-6xl w-full flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
+            
+            <div class="max-w-2xl">
+                <p class="text-slate-400 text-sm font-medium leading-relaxed">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <div class="flex gap-6">
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-slate-500 hover:text-red-500 transition-colors duration-300" aria-label="Youtube">
+                    <i class="fa-brands fa-youtube text-2xl"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-slate-500 hover:text-white transition-colors duration-300" aria-label="Tiktok">
+                    <i class="fa-brands fa-tiktok text-2xl"></i>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-slate-500 hover:text-blue-500 transition-colors duration-300" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook text-2xl"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
