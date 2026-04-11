@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broll Lib - chi tiết 6 chuỗi cảnh cho niche video</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        h1, h2, h3, .cinematic-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* CSS Abstract Art Styles */
+        .art-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Intro Art: Focus & Lock */
+        .art-intro {
+            background: radial-gradient(circle, #222 0%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-intro .lens {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            animation: pulse-lens 3s infinite alternate;
+        }
+        .art-intro .focus-box {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #fbbf24; /* Yellow AF/AE lock */
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+        @keyframes pulse-lens {
+            0% { transform: scale(1); filter: blur(2px); }
+            100% { transform: scale(1.05); filter: blur(0px); }
+        }
+
+        /* Art 4: Water & Sharpness */
+        .art-water-knife {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+        .art-water-knife .water-splash {
+            position: absolute;
+            top: -20px; left: 20%;
+            width: 60%; height: 150%;
+            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+            transform: rotate(15deg);
+        }
+        .art-water-knife .red-contrast {
+            position: absolute;
+            bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ef4444;
+            animation: float 4s infinite ease-in-out;
+        }
+        .art-water-knife .knife-cut {
+            position: absolute;
+            width: 150%; height: 2px;
+            background: rgba(255,255,255,0.8);
+            top: 50%; left: -25%;
+            transform: rotate(-15deg);
+            box-shadow: 0 0 10px white;
+        }
+
+        /* Art 5: Boiling 100C */
+        .art-boil {
+            background: linear-gradient(to top, #450a0a 0%, #000 100%);
+        }
+        .art-boil .bubble {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(251, 146, 60, 0.6);
+            border-radius: 50%;
+            animation: rise infinite ease-in;
+        }
+        .art-boil .backlight {
+            position: absolute;
+            top: 20%; left: 50%;
+            transform: translateX(-50%);
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(253, 224, 71, 0.8) 0%, transparent 70%);
+            mix-blend-mode: screen;
+            animation: flicker 2s infinite alternate;
+        }
+        @keyframes rise {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+        }
+        @keyframes flicker {
+            0% { opacity: 0.7; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Art 6: Signature Seasoning */
+        .art-seasoning {
+            background: #171717;
+        }
+        .art-seasoning .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #d4d4d8;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        .art-seasoning .intuition-glow {
+            position: absolute;
+            top: -50px; left: -50px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 60%);
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(260px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Art 7: Pressure & Slow Drop */
+        .art-pressure {
+            background: linear-gradient(to bottom, #27272a 0%, #1c1917 100%);
+        }
+        .art-pressure .tamper {
+            position: absolute;
+            top: 0; left: 20%; width: 60%; height: 80px;
+            background: #3f3f46;
+            border-bottom: 5px solid #18181b;
+            transform-origin: top;
+            animation: press-down 4s infinite;
+        }
+        .art-pressure .drop {
+            position: absolute;
+            bottom: 60px; left: 50%;
+            transform: translateX(-50%);
+            width: 15px; height: 25px;
+            background: #451a03;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: slow-drop 4s infinite cubic-bezier(1, 0, 0, 1);
+        }
+        @keyframes press-down {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.2); }
+        }
+        @keyframes slow-drop {
+            0% { transform: translate(-50%, -20px) scale(0); opacity: 0; }
+            40% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+            90% { transform: translate(-50%, 80px) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, 100px) scale(0); opacity: 0; }
+        }
+
+        /* Art 8: Black Mirror */
+        .art-mirror {
+            background: #000;
+        }
+        .art-mirror .screen {
+            position: absolute;
+            top: 10%; left: 10%; right: 10%; bottom: 10%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,1) 50%);
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .art-mirror .reflection-silhouette {
+            position: absolute;
+            bottom: -20px; left: 50%;
+            transform: translateX(-50%);
+            width: 100px; height: 120px;
+            background: radial-gradient(ellipse at top, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50px 50px 0 0;
+            filter: blur(5px);
+        }
+        .art-mirror .af-lock {
+            position: absolute;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px; height: 40px;
+            border: 1px solid rgba(251, 191, 36, 0.5);
+        }
+
+        /* Art 9: Smooth Swirl */
+        .art-swirl {
+            background: #1c1917;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-swirl .vortex {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            border: 2px dashed rgba(217, 119, 6, 0.4);
+            border-top: 2px solid #f59e0b;
+            animation: spin 3s linear infinite;
+        }
+        .art-swirl .vortex-inner {
+            position: absolute;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            border: 2px dashed rgba(217, 119, 6, 0.2);
+            border-bottom: 2px solid #fbbf24;
+            animation: spin 2s linear infinite reverse;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Art 10: Miracle / Chill */
+        .art-miracle {
+            background: linear-gradient(120deg, #27272a 0%, #3f3f46 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-miracle .sun-ray {
+            position: absolute;
+            top: -50px; left: -50px;
+            width: 200px; height: 300px;
+            background: linear-gradient(to bottom right, rgba(253, 230, 138, 0.15) 0%, transparent 100%);
+            transform: rotate(30deg);
+        }
+        .art-miracle .smile-curve {
+            width: 100px; height: 50px;
+            border-bottom: 4px solid #fbbf24;
+            border-radius: 0 0 100px 100px;
+            opacity: 0;
+            animation: fade-smile 5s infinite;
+        }
+        @keyframes fade-smile {
+            0%, 20% { opacity: 0; transform: translateY(10px); }
+            50%, 80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* Text Highlighting */
+        .highlight-text { color: #fbbf24; }
+        .quote-box {
+            border-left: 4px solid #fbbf24;
+            background: rgba(255,255,255,0.03);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        /* Flashcard Grid */
+        .flashcard {
+            background: #171717;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .flashcard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border-color: #fbbf24;
+        }
+        
+        /* Fixed Footer */
+        .custom-footer {
+            height: 128px;
+            background-color: #000;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-yellow-500 selection:text-black">
+
+    <!-- Header / Hero Section -->
+    <header class="pt-20 pb-12 px-4 border-b border-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-yellow-500 font-bold tracking-widest text-sm uppercase mb-4 block">Kịch bản phân cảnh</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 cinematic-font leading-tight">
+                Broll Lib - chi tiết 6 chuỗi cảnh cho niche video
+            </h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Intro Section -->
+        <section class="mb-16">
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                <div class="space-y-4 text-lg text-gray-300">
+                    <p>Tuyệt vời! Bạn đang thực sự bước vào thế giới của một Đạo diễn Hình ảnh (D.O.P). Việc hình dung trước các cỡ cảnh (Visualize) là bước quan trọng nhất trước khi bấm máy.</p>
+                    <p>Để quay bằng điện thoại mà vẫn ra chất lượng "Điện ảnh" (Cinematic Vlog), bạn BẮT BUỘC phải nhớ <strong class="text-white">3 Thần chú</strong> này trước khi set-up bất kỳ cảnh nào:</p>
+                </div>
+                <!-- Abstract Art Intro -->
+                <div class="art-container art-intro">
+                    <div class="lens"></div>
+                    <div class="focus-box"></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800 space-y-4 text-gray-300">
+                <ul class="list-none space-y-4">
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-camera mt-1.5 mr-4 text-gray-500"></i>
+                        <div><strong class="text-yellow-400">Lau áo vào ống kính:</strong> 90% video mờ nhòe là do mồ hôi tay dính trên kính.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-expand mt-1.5 mr-4 text-yellow-500"></i>
+                        <div><strong class="text-yellow-400">Khóa nét/Khóa sáng (AE/AF Lock):</strong> Chạm và giữ ngón tay vào màn hình (ngay vật thể bạn muốn nét) khoảng 2 giây đến khi hiện ô vuông màu vàng chữ AE/AF Lock. Sau đó, vuốt thanh mặt trời kéo độ sáng tối xuống một chút. Bóng tối sẽ tạo ra chiều sâu điện ảnh.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-stopwatch mt-1.5 mr-4 text-red-500"></i>
+                        <div><strong class="text-yellow-400">Quy tắc "5 Giây Dư":</strong> Bấm quay -> Đếm thầm 1, 2 -> BẮT ĐẦU DIỄN -> Diễn xong giữ nguyên tư thế đếm 1, 2 -> Bấm tắt máy. (Phải làm vậy để vào Capcut bạn có khoảng trống để cắt ghép).</div>
+                    </li>
+                </ul>
+            </div>
+            <p class="mt-8 text-xl font-medium text-center cinematic-font">Dưới đây là Kịch bản phân cảnh (Shotlist) cực kỳ chi tiết cầm tay chỉ việc cho bạn:</p>
+        </section>
+
+        <hr class="border-gray-800 my-12">
+
+        <!-- BỐI CẢNH 2 -->
+        <section class="mb-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold cinematic-font text-white mb-2">BỐI CẢNH 2: NẤU ĂN</h2>
+                <p class="text-gray-400 italic">(Đại diện cho: Thu thập Dữ liệu & Tính Độc bản)</p>
+                <div class="mt-4 inline-block bg-gray-900 border border-gray-800 px-6 py-3 rounded-full text-sm">
+                    <span class="text-yellow-500 font-bold">Vibe chung:</span> Sắc bén, dứt khoát, màu sắc rực rỡ, âm thanh thô mộc (Raw). Đại diện cho việc gọt giũa và xử lý thông tin.
+                </div>
+            </div>
+
+            <!-- Chuỗi 4 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="art-container art-water-knife sticky top-6">
+                        <div class="water-splash"></div>
+                        <div class="red-contrast"></div>
+                        <div class="knife-cut"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 4. Chuỗi "Sơ chế/Nạp Data" <span class="text-sm font-normal text-gray-500 ml-2">(Sự gạn lọc thông tin)</span></h3>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 4.1: Dòng nước thanh lọc</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Cận cảnh (Close-up).</li>
+                            <li><strong>Góc máy:</strong> Đặt điện thoại tựa vào bồn rửa, cao hơn mặt nước một chút, góc hất chéo xuống.</li>
+                            <li><strong>Lấy trong cam:</strong> Miệng vòi nước, đôi tay bạn và củ quả. <span class="text-gray-400 italic">(Mẹo: Bắt buộc dùng củ quả màu rực rỡ như Cà chua đỏ, Ớt chuông vàng/đỏ để tương phản với nước).</span></li>
+                            <li><strong>Hành động:</strong> Bật vòi nước xối xả. Tay đưa quả cà chua vào xoa thật dứt khoát. Nước bắn tung tóe li ti lên vỏ quả.</li>
+                            <li><strong>Âm thanh (Cực quan trọng):</strong> Dí đuôi điện thoại (chỗ có mic) gần vòi nước. Tiếng nước chảy "rào rào" sẽ tạo cảm giác rửa trôi data rác rất "đã tai". Lấy 2 giây trên video.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 4.2: Nhịp dao sắc bén</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Đặc tả (Extreme Close-up). Bật camera Zoom 2x để xóa phông nhẹ.</li>
+                            <li><strong>Góc máy:</strong> Đặt điện thoại nằm hẳn xuống bàn bếp, ống kính ngang bằng với mặt thớt gỗ.</li>
+                            <li><strong>Lấy trong cam:</strong> Mặt thớt, nguyên liệu, và lưỡi dao. KHÔNG lấy mặt người.</li>
+                            <li><strong>Hành động:</strong> Tay thái nguyên liệu liên tục. Đừng thái vội, hãy thái chậm nhưng đều nhịp.</li>
+                            <li><strong>Âm thanh:</strong> Tiếng dao chạm thớt gỗ "Cụp... cụp... cụp" đanh gọn. Ghép đúng vào câu: <span class="text-white">"Phải nâng cấp nhận thức và kỹ năng"</span>. Lấy 1.5 giây.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chuỗi 5 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 md:order-2">
+                    <div class="art-container art-boil sticky top-6">
+                        <div class="backlight"></div>
+                        <div class="bubble" style="left: 30%; animation-duration: 2s;"></div>
+                        <div class="bubble" style="left: 50%; width: 20px; height: 20px; animation-duration: 1.5s; animation-delay: 0.5s;"></div>
+                        <div class="bubble" style="left: 70%; width: 15px; height: 15px; animation-duration: 2.5s; animation-delay: 1s;"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 md:order-1 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 5. Chuỗi "100 Độ C" <span class="text-sm font-normal text-gray-500 ml-2">(Sự tích lũy & Điểm bùng nổ)</span></h3>
+                    
+                    <div class="bg-red-950/30 border border-red-900/50 p-4 rounded-lg text-gray-300 text-sm">
+                        <strong class="text-red-400">⚠️ CHÚ Ý SỐNG CÒN:</strong> Hơi nước nóng bốc lên sẽ làm mờ ống kính điện thoại ngay lập tức. BẮT BUỘC bạn phải lùi ra xa nồi 50cm, dùng chế độ ZOOM 2x hoặc 3x chĩa chéo từ trên xuống.
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 5.1: Sự ngầm vận động (99 Độ C)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Lấy trong cam:</strong> Mặt nước và đáy nồi. Kéo độ sáng (Exposure) tối xuống một chút.</li>
+                            <li><strong>Hành động:</strong> Nước chưa sôi hẳn. Những bọt khí nhỏ li ti lăm tăm bám ở đáy nổi lên vỡ nhẹ. Mặt nước rung động. (Khớp với câu: <span class="text-white">"Nếu tích lũy đủ số giờ..."</span>).</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 5.2: Điểm bùng phát (Money Shot - Cảnh đắt giá)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Mẹo ánh sáng (Rất ảo):</strong> Tắt đèn trần bếp. Dùng đèn bàn (hoặc đèn hút mùi) chiếu hắt từ phía sau nồi về phía điện thoại (Backlight).</li>
+                            <li><strong>Hành động:</strong> Nước sôi sùng sục, cuộn trào mãnh liệt. Khói bốc lên nghi ngút. Nhờ ánh sáng đánh từ phía sau, luồng khói sẽ rực sáng lên cực kỳ ấn tượng.</li>
+                            <li><strong>Cách ghép:</strong> Cảnh bùng nổ này BẬT LÊN màn hình CÙNG TÍCH TẮC với lúc bạn nói câu: <span class="text-white font-bold">"Giống như quy luật tự nhiên, NƯỚC SÔI Ở 100 ĐỘ"</span>. Khán giả sẽ nổi da gà.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chuỗi 6 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="art-container art-seasoning sticky top-6">
+                        <div class="intuition-glow"></div>
+                        <script>
+                            for(let i=0; i<30; i++) {
+                                document.write(`<div class="particle" style="left: ${Math.random()*100}%; animation-duration: ${1 + Math.random()*2}s; animation-delay: ${Math.random()*2}s;"></div>`);
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 6. Chuỗi "Gia vị của riêng tôi" <span class="text-sm font-normal text-gray-500 ml-2">(Sự độc bản/Niche)</span></h3>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 6.1: Lắng nghe trực giác</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Cận mặt (Ngang tầm ngực hất lên).</li>
+                            <li><strong>Hành động:</strong> Bạn múc 1 thìa nước dùng đưa lên nếm. Nhíu mày nhẹ, ánh mắt nhìn bâng quơ lên trần nhà (body-language của việc não đang phân tích mùi vị). Khẽ lắc đầu (chưa đúng ý mình lắm).</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 6.2: Cái rắc "Signature" (Dấu ấn cá nhân)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Đặc tả không gian giữa tay và nồi. Bật chế độ Quay chậm (Slo-mo).</li>
+                            <li><strong>Hành động:</strong> Ngón cái và ngón trỏ nhón một nhúm hạt tiêu/muối. Giơ tay lên cao (cách nồi 20cm). Từ từ vê ngón tay rắc hạt gia vị rớt lả tả tự do. Phông nền phía sau tay nên là mảng tường tối để thấy rõ hạt gia vị rơi.</li>
+                            <li><strong>Ý nghĩa:</strong> Cảnh nêm nếm bằng tay (không cần thìa đong) đại diện cho cảm giác và DNA của riêng bạn. Khớp với câu: <span class="text-white">"Bạn có một suy nghĩ độc nhất... nó khớp với bạn nhất"</span>. Lấy 2.5 giây.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-800 my-16">
+
+        <!-- BỐI CẢNH 3 -->
+        <section class="mb-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold cinematic-font text-white mb-2">BỐI CẢNH 3: PHA CAFE MÁY & KHÔNG GIAN</h2>
+                <p class="text-gray-400 italic">(Đại diện cho: Thời gian, Bản thể & Chữa lành)</p>
+                <div class="mt-4 inline-block bg-gray-900 border border-gray-800 px-6 py-3 rounded-full text-sm">
+                    <span class="text-yellow-500 font-bold">Vibe chung:</span> Chậm rãi, ngột ngạt (lúc đầu) sau đó sâu lắng, bình yên (lúc sau). Tone màu vàng/ấm.
+                </div>
+            </div>
+
+            <!-- Chuỗi 7 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 md:order-2">
+                    <div class="art-container art-pressure sticky top-6">
+                        <div class="tamper"></div>
+                        <div class="drop"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 md:order-1 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 7. Chuỗi "Đình trệ/Thời gian trôi" <span class="text-sm font-normal text-gray-500 ml-2">(Sự bế tắc)</span></h3>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 7.1: Sức nén (Áp lực vô hình)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Đặc tả tay. Góc máy ngang mặt bàn.</li>
+                            <li><strong>Hành động:</strong> Cho cafe vào tay cầm, dùng dụng cụ nén (Tamper) ấn lỳ xuống thật mạnh. Gồng tay miết chặt. Đại diện cho áp lực nén chặt trong đầu bạn.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 7.2: Giọt thời gian mỏi mòn</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Siêu cận (Macro) vòi cafe. Bật quay Slo-mo. Hạ tối màn hình.</li>
+                            <li><strong>Hành động:</strong> Bấm máy pha. Máy bơm rít lên nhưng cafe bị nghẽn (không chảy ngay). Phải mất 3-4 giây, giọt cafe đen đặc quánh đầu tiên mới rỉ ra, nặng trĩu, lơ lửng rồi rớt xuống cực kỳ chậm.</li>
+                            <li><strong>Ý nghĩa:</strong> Cảm giác ngột ngạt. Khớp với câu: <span class="text-white">"Và bạn bị tắc ở đó không tiến thêm được... thời gian trôi qua, cơ hội đi mất"</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chuỗi 8 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="art-container art-mirror sticky top-6">
+                        <div class="screen">
+                            <div class="reflection-silhouette"></div>
+                            <div class="af-lock"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 8. Chuỗi "Sản phẩm là BẠN" <span class="text-sm font-normal text-gray-500 ml-2">(Cú Twist / Điểm thức tỉnh)</span></h3>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 8.1: Chiếc gương đen (The Black Mirror - Cảnh đỉnh nhất video)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Góc qua vai (Over-the-shoulder). Đặt điện thoại sau gáy bạn, chĩa chéo xuống màn hình laptop trên bàn.</li>
+                            <li><strong>Thiết lập:</strong> Màn hình laptop TẮT ĐEN. Đặt một ngọn đèn (hoặc ánh sáng cửa sổ) hắt vào mặt bạn.</li>
+                            <li><strong>Hành động:</strong> Lúc này, màn hình laptop đen bóng sẽ biến thành một tấm gương. Khán giả sẽ thấy bóng khuôn mặt bạn phản chiếu rành rọt trên màn hình. Bạn đang nhìn chằm chằm vào đôi mắt của chính mình.<br>
+                            <span class="italic text-gray-400">(Nhớ chạm Khóa nét AF Lock vào hình bóng của bạn trên màn hình kính).</span></li>
+                            <li><strong>Ý nghĩa:</strong> Khớp tuyệt đối với câu nói thì thầm: <span class="text-white font-bold">"Lý do nằm ở chính bạn... BẠN CHÍNH LÀ SẢN PHẨM"</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chuỗi 9 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 md:order-2">
+                    <div class="art-container art-swirl sticky top-6">
+                        <div class="vortex"></div>
+                        <div class="vortex-inner"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 md:order-1 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 9. Chuỗi "Guồng quay đều đặn" <span class="text-sm font-normal text-gray-500 ml-2">(Tính chu kỳ êm ái)</span></h3>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 9.1: Dòng chảy mượt mà</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Hành động:</strong> Trái ngược với cảnh tắc nghẽn số 7, lúc này vòi cafe chiết xuất ra một dòng vàng óng (Crema), chảy mượt mà tuôn trào liên tục (dòng đuôi chuột). Đại diện cho việc đã "bắt được mạch".</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 9.2: Vòng xoáy trật tự</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Góc máy:</strong> Góc chim bay (Top-down) từ trên trần nhà chĩa thẳng góc 90 độ xuống ly cafe.</li>
+                            <li><strong>Hành động:</strong> Tay bạn cầm thìa khuấy ly cafe đá. Khuấy thành vòng tròn cực kỳ êm ái. Đá chạm vào ly lanh canh theo nhịp đếm 1-2-1-2. Vòng xoáy xoay tít thôi miên. Khớp câu: <span class="text-white">"Cứ chill chill thôi, đạp xe đều thôi..."</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chuỗi 10 -->
+            <div class="mb-16 grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="art-container art-miracle sticky top-6">
+                        <div class="sun-ray"></div>
+                        <div class="smile-curve"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-6">
+                    <h3 class="text-2xl font-bold text-white border-b border-gray-800 pb-2">🎬 10. Chuỗi "Miracle / Tận hưởng" <span class="text-sm font-normal text-gray-500 ml-2">(Chữa lành & Tự do)</span></h3>
+                    
+                    <div class="bg-gray-900 border border-gray-800 p-4 rounded-lg text-gray-300 text-sm">
+                        <strong class="text-yellow-500">Vibe:</strong> Yên bình. Bắt buộc quay ở nơi có ánh sáng đẹp nhất phòng (cửa sổ buổi sáng hoặc chiều tà nắng chiếu xiên).
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 10.1: Cú xả vai (The Release)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Trung cảnh rộng (Thấy được một chút không gian phòng).</li>
+                            <li><strong>Hành động:</strong> Đang ngồi hơi rướn người, bạn từ từ thở hắt ra một hơi thật dài. Vai rũ xuống buông thõng mọi gánh nặng. Lưng ngả chìm thật sâu vào tựa ghế phía sau.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-2">Cảnh 10.2: Nụ cười Miracle (Cảnh chốt Video)</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Cỡ cảnh:</strong> Cận mặt. Đặt máy trên chân tripod ngang tầm mắt.</li>
+                            <li><strong>Hành động:</strong> Vẫn đang ngả lưng thư giãn, bạn đưa ly lên nhấp một ngụm. Mắt đang nhìn bâng quơ... sau đó từ từ quay đầu lại NHÌN THẲNG TRỰC DIỆN VÀO CAMERA. Cơ mặt hoàn toàn thả lỏng. Khóe môi nhếch lên một nụ cười cực kỳ nhẹ nhõm và tự tin. (Smile with your eyes).</li>
+                            <li>Đoạn này khớp mồm nói thật: <span class="text-white font-bold">"Bởi vì khi bạn enjoy... nó đều Miracle."</span></li>
+                            <li><strong class="text-yellow-500">Mẹo Edit:</strong> Nói xong giữ nụ cười nhìn máy quay 2 giây trong im lặng. Nhạc Lofi vang to lên. Màn hình tối dần (Fade out).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-box text-xl text-center mt-12 bg-gray-900 border border-gray-800 p-8 rounded-xl shadow-2xl">
+                "Hãy vác điện thoại lên và quay nháp ngay nhé. Đừng sợ sai, mỗi set hãy quay đi quay lại 2-3 lần, hỏng thì xóa. Cảm giác lắp ráp các hình ảnh này khớp với lời thoại sẽ khiến bạn "nghiện" làm video đấy!"
+            </div>
+        </section>
+        
+        <hr class="border-gray-800 my-16">
+
+        <!-- Flashcards Section -->
+        <section class="mb-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold cinematic-font text-white mb-2">25 Câu Hỏi Ôn Tập Nhanh</h2>
+                <p class="text-gray-400 text-sm">Kiểm tra lại kiến thức cốt lõi (Không cần tương tác - Đọc là nhớ ngay)</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="flashcard-container">
+                <!-- Data will be injected here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="custom-footer flex flex-col justify-center px-4 w-full relative z-10 text-center text-sm text-gray-400">
+        <div class="max-w-4xl mx-auto w-full">
+            <p class="mb-3 max-w-2xl mx-auto leading-relaxed">
+                Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-gray-400 hover:text-red-500 transition flex items-center">
+                    <i class="fa-brands fa-youtube text-xl mr-2"></i> Youtube
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-gray-400 hover:text-white transition flex items-center">
+                    <i class="fa-brands fa-tiktok text-xl mr-2"></i> Tiktok
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-gray-400 hover:text-blue-500 transition flex items-center">
+                    <i class="fa-brands fa-facebook text-xl mr-2"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script to render 25 Flashcards -->
+    <script>
+        const flashcardsData = [
+            { q: "Bước quan trọng nhất trước khi bấm máy là gì?", a: "Hình dung trước các cỡ cảnh (Visualize)." },
+            { q: "Mục tiêu phong cách của các thần chú này?", a: "Chất lượng 'Điện ảnh' (Cinematic Vlog)." },
+            { q: "Nguyên nhân 90% video mờ nhòe là do đâu?", a: "Do mồ hôi tay dính trên kính." },
+            { q: "Cách thực hiện khóa nét/sáng (AE/AF Lock)?", a: "Chạm và giữ màn hình 2s đến khi hiện ô vuông vàng, rồi kéo sáng xuống." },
+            { q: "Tại sao cần vuốt thanh độ sáng xuống?", a: "Vì bóng tối sẽ tạo ra chiều sâu điện ảnh." },
+            { q: "Quy trình chi tiết của Quy tắc '5 Giây Dư'?", a: "Bấm quay -> Đếm thầm 1,2 -> DIỄN -> Giữ tư thế đếm 1,2 -> Tắt máy." },
+            { q: "Mục đích của việc đếm dư giây ở hai đầu cảnh?", a: "Để vào Capcut có khoảng trống để cắt ghép dễ dàng." },
+            { q: "Vibe chung của Bối cảnh Nấu ăn là gì?", a: "Sắc bén, dứt khoát, màu rực rỡ, âm thanh thô mộc (Raw)." },
+            { q: "Bối cảnh Nấu ăn đại diện cho ý nghĩa gì?", a: "Thu thập Dữ liệu & Tính Độc bản." },
+            { q: "Cỡ cảnh và Góc máy cho cảnh 'Dòng nước' (4.1)?", a: "Cận cảnh (Close-up). Tựa hất chéo xuống bồn rửa." },
+            { q: "Mẹo bắt buộc về màu sắc trong cảnh rửa (4.1)?", a: "Dùng củ quả màu rực rỡ (Cà chua, Ớt chuông) để tương phản với nước." },
+            { q: "Cỡ cảnh cho cảnh 'Nhịp dao' (4.2)?", a: "Đặc tả (Extreme Close-up), bật Zoom 2x xóa phông." },
+            { q: "Âm thanh tiếng dao chặt khớp với câu thoại nào?", a: "'Phải nâng cấp nhận thức và kỹ năng'." },
+            { q: "Chú ý sống còn khi quay nước sôi (Cảnh 5.1)?", a: "Lùi xa 50cm, dùng Zoom 2x/3x chĩa chéo xuống để tránh mờ kính." },
+            { q: "Mẹo đánh sáng đắt giá cho cảnh Bùng phát (5.2)?", a: "Tắt đèn trần, dùng đèn bàn chiếu hắt từ phía sau nồi (Backlight)." },
+            { q: "Cảnh nước sôi sùng sục bật lên khớp với câu nào?", a: "'Giống như quy luật tự nhiên, NƯỚC SÔI Ở 100 ĐỘ'." },
+            { q: "Hành động 'nêm bằng tay' (6.2) mang ý nghĩa gì?", a: "Đại diện cho cảm giác và DNA của riêng bạn (Tính độc bản)." },
+            { q: "Vibe chung của Bối cảnh Pha cafe?", a: "Chậm rãi, ngột ngạt (lúc đầu), sau đó sâu lắng, bình yên." },
+            { q: "Hành động nén cafe mạnh (7.1) tượng trưng cho gì?", a: "Đại diện cho áp lực nén chặt trong đầu bạn." },
+            { q: "Giọt cafe rơi chậm (7.2) khớp với cảm giác nào?", a: "Sự ngột ngạt: 'Và bạn bị tắc ở đó không tiến thêm được...'." },
+            { q: "Thiết lập cảnh 'Chiếc gương đen' (8.1) thế nào?", a: "Màn hình laptop tắt đen, đánh đèn hắt vào mặt, máy quay sau gáy." },
+            { q: "Câu thoại đinh đi kèm cảnh 'Chiếc gương đen'?", a: "'Lý do nằm ở chính bạn... BẠN CHÍNH LÀ SẢN PHẨM'." },
+            { q: "Hành động trong Cảnh 9.2 (Vòng xoáy trật tự)?", a: "Tay khuấy ly cafe đá thành vòng tròn êm ái, đá chạm lanh canh." },
+            { q: "Body-language chốt hạ video ở Cảnh 10.2?", a: "Quay đầu nhìn thẳng camera, nhếch mép cười nhẹ nhõm (Smile with eyes)." },
+            { q: "Lời khuyên cuối cùng về việc thực hành quay?", a: "Quay nháp ngay, đừng sợ sai, mỗi set quay đi quay lại 2-3 lần, hỏng thì xóa." }
+        ];
+
+        const container = document.getElementById('flashcard-container');
+        flashcardsData.forEach((item, index) => {
+            container.innerHTML += `
+                <div class="flashcard flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs text-yellow-600 font-bold mb-2 block">Câu hỏi ${index + 1}</span>
+                        <div class="text-sm text-gray-200 font-semibold mb-3 leading-snug">${item.q}</div>
+                    </div>
+                    <div class="text-sm text-gray-400 border-t border-gray-800 pt-2 bg-gray-900/50 p-2 rounded">
+                        <span class="text-yellow-500 font-bold mr-1">A:</span> ${item.a}
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
