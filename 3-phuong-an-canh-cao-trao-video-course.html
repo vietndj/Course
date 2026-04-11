@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 phương án cảnh cao trào</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #f8fafc; /* slate-50 */
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- CSS ABSTRACT ART ILLUSTRATIONS --- */
+
+        /* 1. Intro Art: Cinematic Lighting / Liberating Truth */
+        .art-intro {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: #0f172a;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1rem;
+        }
+        .art-intro::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(234,179,8,0.8) 0%, rgba(234,179,8,0) 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: pulse-light 4s infinite alternate;
+        }
+        .art-intro::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 150%;
+            background: rgba(255,255,255,0.5);
+            transform: rotate(45deg);
+            box-shadow: 0 0 20px 5px rgba(255,255,255,0.3);
+        }
+
+        /* 2. Coffee Art: Fluid Splash */
+        .art-coffee {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: linear-gradient(135deg, #1e1b4b, #2e1065);
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .blob-coffee {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(to right, #78350f, #b45309);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            box-shadow: inset 20px 20px 20px rgba(0,0,0,0.5), 0 0 50px rgba(180, 83, 9, 0.4);
+            animation: morph 6s ease-in-out infinite alternate;
+        }
+        .splash {
+            position: absolute;
+            bottom: 20%;
+            left: 20%;
+            width: 50px;
+            height: 50px;
+            background: #92400e;
+            border-radius: 50%;
+            filter: blur(5px);
+            animation: fly-up 2s infinite ease-out;
+        }
+
+        /* 3. Radar/Paper Plane Art: Sharp Geometry */
+        .art-radar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: linear-gradient(to bottom right, #082f49, #0f172a);
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .plane-shape {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 80px solid #38bdf8;
+            transform: rotate(-15deg);
+            filter: drop-shadow(0 0 15px #38bdf8);
+            animation: shoot 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .radar-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 2px dashed rgba(56, 189, 248, 0.3);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+
+        /* 4. Smoke Art: Soft blur circles */
+        .art-smoke {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: linear-gradient(to top, #450a0a, #0f172a);
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .smoke-particle {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 50%;
+            filter: blur(25px);
+            animation: rise 4s infinite ease-in;
+        }
+        .smoke-particle:nth-child(2) { left: 30%; width: 100px; animation-duration: 5s; animation-delay: 1s; }
+        .smoke-particle:nth-child(3) { left: 60%; width: 200px; animation-duration: 6s; animation-delay: 2s; }
+        .heat-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100px;
+            background: radial-gradient(ellipse at bottom, rgba(220, 38, 38, 0.8) 0%, transparent 70%);
+        }
+
+        /* 5. Director Tips Art: Camera Lens */
+        .art-lens {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: #020617;
+            overflow: hidden;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lens-ring-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 15px solid #334155;
+            box-shadow: inset 0 0 20px #000, 0 0 30px rgba(255,255,255,0.1);
+        }
+        .lens-ring-2 {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 10px solid #1e293b;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, transparent 20%),
+                        radial-gradient(circle, #0f172a 40%, #020617 100%);
+            margin: auto;
+            transform: translateY(15px);
+            animation: focus-lens 5s infinite alternate ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes pulse-light { 0% { opacity: 0.5; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
+        @keyframes morph { 0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 100% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; } }
+        @keyframes fly-up { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-100px) scale(0); opacity: 0; } }
+        @keyframes shoot { 0% { left: -20%; opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { left: 120%; opacity: 0; } }
+        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes rise { 0% { transform: translateY(0) scale(1); opacity: 0.8; } 100% { transform: translateY(-300px) scale(1.5); opacity: 0; } }
+        @keyframes focus-lens { 0% { transform: translateY(15px) scale(1); } 100% { transform: translateY(15px) scale(1.05); box-shadow: inset 0 0 40px #38bdf8; } }
+
+        /* Typography Enhancements */
+        .highlight-text { color: #facc15; font-weight: 800; }
+        .quote-block { border-left: 4px solid #facc15; padding-left: 1rem; font-style: italic; color: #cbd5e1; margin-top: 1rem; margin-bottom: 1rem;}
+        
+        /* Flashcard scrollbar */
+        .flashcard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Footer requirement */
+        .custom-footer {
+            height: 128px;
+            background-color: #020617; /* Very dark */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600 uppercase">
+                3 Phương Án Cảnh Cao Trào
+            </h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-lg leading-relaxed text-slate-300 space-y-6">
+                <p>
+                    .Cao trào / Điểm nhấn cảm xúc (20% thời lượng) <br>
+                    -> Dùng Loại 3 (In-situ) + Loại 6 (POV)
+                </p>
+                <p>
+                    Hãy coi Loại 3 như một đòn "chí mạng". Bạn đang kể một câu chuyện dài, đến lúc nhận ra chân lý, hãy cắt sang cảnh bạn ở hiện trường. Sự xuất hiện hiếm hoi của Loại 3 sẽ làm câu nói đó có sức nặng nhân lên gấp 10 lần.
+                </p>
+                <p>
+                    Với kịch bản của tôi thì phần cao trào này là những phần thoại nào và cho tôi ba cách để làm phần quay và kịch bản chi tiết quay thế nào nói thế nào tác động là gì với phần cao trào kịch bản này. Chi tiết cả về cách diễn để tôi có thể quay thử luôn
+                </p>
+                <p>
+                    Trong nghệ thuật kể chuyện, <strong class="text-white">Cao trào (Climax)</strong> không phải là lúc bạn gào thét hay khóc lóc. Cao trào là khoảnh khắc bạn vạch trần một <strong class="text-white">"Sự thật giải phóng" (Liberating Truth)</strong> – khoảnh khắc mà mọi lo âu, tự ti của khán giả bị đập tan bởi một chân lý vô cùng sắc bén.
+                </p>
+            </div>
+            <div class="h-full w-full shadow-2xl">
+                <div class="art-intro"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUTH REVEAL SECTION -->
+    <section class="py-16 bg-slate-900 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto space-y-8 text-lg text-slate-300">
+            <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                <span class="text-yellow-500">🎯</span> CAO TRÀO TRONG KỊCH BẢN CỦA BẠN NẰM Ở ĐÂU?
+            </h2>
+            <p>
+                Nó nằm trọn vẹn ở nửa sau của <strong class="text-white">P4 (LOGIC & PROOF)</strong>. Đây là lúc bạn dội 2 "nhát chém" tâm lý để cởi trói cho người xem:
+            </p>
+            <div class="pl-6 border-l-4 border-amber-500 space-y-4">
+                <p><strong class="text-amber-400">Cú đấm Tự tôn:</strong> "Bạn có một suy nghĩ độc nhất, một góc nhìn độc nhất... ĐIỀU ĐÓ KHÔNG THỂ BỊ THAY THẾ!"</p>
+                <p><strong class="text-amber-400">Cú đấm Giải thoát:</strong> "Nền tảng BẮT BUỘC phải lấy vài chục video đầu ném ra thị trường làm cảm biến dò đường... NÓ ĐANG TÌM KHÁN GIẢ!"</p>
+            </div>
+            <p>
+                Nếu từ P1 đến P3 khán giả đã quen với hình ảnh bạn ngồi tâm sự nhẹ nhàng (Loại 4), thì ngay tại 2 câu này, chúng ta sẽ <strong class="text-red-400">CẮT CÁI RỤP</strong> sang Góc nhìn thứ nhất (POV) làm bước đà, rồi chốt bằng Thoại hiện trường (In-situ). Cú giật không gian này ép não bộ họ thốt lên: <em class="text-white">"Anh ấy đang nói thẳng vào mặt mình, chuyện này cực kỳ quan trọng!"</em>
+            </p>
+            <p class="pt-4 border-t border-slate-700">
+                Dưới đây là <strong class="text-white">3 Concept Đạo diễn</strong> dùng chính 3 bối cảnh bạn đã có để bạn bấm máy quay nháp ngay chiều nay:
+            </p>
+        </div>
+    </section>
+
+    <!-- CONCEPTS BLOCKS -->
+    <main class="py-16 space-y-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+        <!-- CÁCH 1 -->
+        <article class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 h-full w-full shadow-2xl rounded-xl">
+                <div class="art-coffee">
+                    <div class="blob-coffee"></div>
+                    <div class="splash"></div>
+                    <div class="splash" style="left: 60%; animation-delay: 0.5s;"></div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 space-y-6 text-slate-300 text-lg">
+                <h3 class="text-3xl font-bold text-white"><span class="text-2xl">🎬</span> CÁCH 1: CÚ ĐỔ BỎ KIÊU HÃNH</h3>
+                <p class="text-sm font-semibold text-amber-500 uppercase tracking-widest mb-4">(Bối cảnh: Máy pha Cafe)</p>
+                
+                <p>Tập trung vào câu: "Video đầu chỉ là nháp... Nó đang tìm khán giả".</p>
+                
+                <p><strong class="text-amber-400">Tác động tâm lý:</strong> Phá vỡ áp lực "chủ nghĩa hoàn hảo". Khán giả luôn xót xa khi video ít view (flop). Khi thấy bạn tự tay hất bỏ một ly cafe hỏng một cách thản nhiên, họ nhận ra: <em class="text-white">"Thử-sai là một phần hiển nhiên của cuộc chơi"</em>. Sự tự ti của họ bị đập tan.</p>
+                
+                <h4 class="text-xl font-bold text-white mt-6 mb-2 border-b border-slate-700 pb-2">Kịch bản Quay & Diễn xuất:</h4>
+                
+                <div class="bg-slate-800/50 p-6 rounded-lg space-y-4">
+                    <p><strong class="text-white">Shot 1 - Mồi POV (Loại 6 | Dài 2s):</strong> Kẹp điện thoại sát cằm chĩa xuống tay. Bạn đang cầm một ly Espresso pha lỗi (chảy lỏng loét). Không do dự, bạn <strong class="text-red-400">HẤT ĐỔ MẠNH</strong> nó xuống bồn rửa. Tiếng nước xối ào ào.</p>
+                    <p class="quote-block">(Thoại lồng tiếng - Voiceover): "Và tin vui là... các video đầu của bạn CHỈ LÀ VIDEO NHÁP để hệ thống học hỏi..."</p>
+                    
+                    <div class="h-px bg-slate-700 my-4"></div>
+                    
+                    <p><strong class="text-white">Shot 2 - Đòn In-situ (Loại 3 | Dài 5s):</strong></p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong class="text-slate-100">Cách quay:</strong> Cắt sang máy đặt trên quầy bếp ngang mặt.</li>
+                        <li><strong class="text-slate-100">Diễn xuất:</strong> Vừa hất đổ xong, bạn đặt ly rỗng xuống bàn "CỘC". Bạn quay mặt lại, vắt chiếc khăn lau lên vai. <strong class="text-red-400">KHÔNG</strong> tỏ ra tiếc nuối, hãy hơi nhếch mép cười của một người đã thấu hiểu luật chơi. Ánh mắt ghim thẳng vào ống kính.</li>
+                    </ul>
+                    <p class="quote-block text-amber-300 mt-2 font-semibold">Thoại trực tiếp: "Nó làm gì có dữ liệu về bạn? Nền tảng BẮT BUỘC phải lấy vài chục video đầu tiên đó ném ra thị trường làm cảm biến dò đường. Đừng sợ... NÓ ĐANG TÌM KHÁN GIẢ CHO BẠN!"</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- CÁCH 2 -->
+        <article class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-slate-300 text-lg">
+                <h3 class="text-3xl font-bold text-white"><span class="text-2xl">🎬</span> CÁCH 2: CÚ PHÓNG "RADAR"</h3>
+                <p class="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">(Bối cảnh: Bàn làm việc/Giấy nháp)</p>
+                
+                <p>Cụ thể hóa hành động "ném ra thị trường làm cảm biến". Năng lượng cực cao và bùng nổ.</p>
+                
+                <p><strong class="text-blue-400">Tác động tâm lý:</strong> Biến nỗi sợ "đăng video không ai xem" thành một hành động vĩ đại có chủ đích: Phát tín hiệu dò đường. Cú phóng máy bay sẽ xâm phạm vùng an toàn thị giác của khán giả, ép họ phải tỉnh ngộ.</p>
+                
+                <h4 class="text-xl font-bold text-white mt-6 mb-2 border-b border-slate-700 pb-2">Kịch bản Quay & Diễn xuất:</h4>
+                
+                <div class="bg-slate-800/50 p-6 rounded-lg space-y-4">
+                    <p><strong class="text-white">Shot 1 - Mồi POV (Loại 6 | Dài 2s):</strong> Góc máy nhìn xuống mặt bàn. Cận cảnh đôi tay bạn đang miết nếp gấp cuối cùng của một chiếc máy bay giấy (làm từ tờ giấy nháp gạch xóa). Động tác vuốt cực kỳ điêu luyện, sắc lẹm.</p>
+                    <p class="quote-block">(Thoại lồng tiếng - Voiceover): "Bạn không phải học công thức hào nhoáng ở đâu cả... "</p>
+                    
+                    <div class="h-px bg-slate-700 my-4"></div>
+                    
+                    <p><strong class="text-white">Shot 2 - Đòn In-situ (Loại 3 | Dài 5s):</strong></p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong class="text-slate-100">Cách quay:</strong> Máy quay đặt tĩnh trên bàn.</li>
+                        <li><strong class="text-slate-100">Diễn xuất:</strong> Đừng ngồi dựa lưng. Hãy rướn thân người về phía trước, cùi chỏ chống mạnh xuống bàn, mặt sát lại gần máy quay. Bạn cầm chiếc máy bay đưa lên ngang mắt, lườm nhẹ đầy thách thức.</li>
+                    </ul>
+                    <p class="quote-block text-blue-300 mt-2 font-semibold">Thoại trực tiếp (Tông giọng dồn dập, gắt): "Nền tảng BẮT BUỘC phải lấy các video của bạn ném ra thị trường làm cảm biến..."</p>
+                    <p><strong class="text-white">(Hành động chốt):</strong> Vừa dứt chữ "cảm biến", bạn <strong class="text-red-400">VUNG TAY PHÓNG MẠNH</strong> chiếc máy bay sượt qua ống kính (làm tối màn hình 1 tích tắc). Giọng bạn gằn xuống: <strong class="text-white">"...NÓ ĐANG TÌM KHÁN GIẢ!"</strong></p>
+                </div>
+            </div>
+            <div class="h-full w-full shadow-2xl rounded-xl">
+                <div class="art-radar">
+                    <div class="radar-circle"></div>
+                    <div class="plane-shape"></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- CÁCH 3 -->
+        <article class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 h-full w-full shadow-2xl rounded-xl">
+                <div class="art-smoke">
+                    <div class="heat-glow"></div>
+                    <div class="smoke-particle"></div>
+                    <div class="smoke-particle"></div>
+                    <div class="smoke-particle"></div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 space-y-6 text-slate-300 text-lg">
+                <h3 class="text-3xl font-bold text-white"><span class="text-2xl">🎬</span> CÁCH 3: CHÂN LÝ TRONG LÀN KHÓI</h3>
+                <p class="text-sm font-semibold text-red-500 uppercase tracking-widest mb-4">(Bối cảnh: Nấu ăn)</p>
+                
+                <p>Tập trung vào câu "Quy luật nước sôi... Góc nhìn độc nhất". Mang tính "Craftsman" (Người thợ thủ công) cực kỳ ngầu và uy quyền.</p>
+                
+                <p><strong class="text-red-400">Tác động tâm lý:</strong> Hình ảnh dầu sôi lửa bỏng tạo ra nhiệt lượng, lột tả sự tôi luyện bản thân. Hành động nêm nếm bằng trực giác đập tan ảo tưởng về việc "phải vay mượn công thức của người khác".</p>
+                
+                <h4 class="text-xl font-bold text-white mt-6 mb-2 border-b border-slate-700 pb-2">Kịch bản Quay & Diễn xuất:</h4>
+                
+                <div class="bg-slate-800/50 p-6 rounded-lg space-y-4">
+                    <p><strong class="text-white">Shot 1 - Mồi POV (Loại 6 | Dài 2s):</strong> Góc máy chĩa sát xuống nồi nước đang sôi bùng lên, khói bốc ngùn ngụt. Tay bạn thò vào rắc một nhúm gia vị (muối/tiêu) một cách đầy cảm tính (bằng tay, không dùng thìa).</p>
+                    <p class="quote-block">(Thoại lồng tiếng - Voiceover): "Quy trình sẽ tự sáng tỏ... Giống như quy luật nước sôi ở 100 độ..."</p>
+                    
+                    <div class="h-px bg-slate-700 my-4"></div>
+                    
+                    <p><strong class="text-white">Shot 2 - Đòn In-situ (Loại 3 | Dài 5s):</strong></p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong class="text-slate-100">Cách quay:</strong> Đặt điện thoại lùi ra xa, bật chế độ Zoom 2x hất qua làn khói lên mặt bạn. Bạn đứng giữa ống kính và nồi nước sôi phía sau lưng.</li>
+                        <li><strong class="text-slate-100">Diễn xuất:</strong> Đang dùng thìa khuấy nồi, bạn múc một chút lên nếm thử. Vừa nếm xong, bạn <strong class="text-red-400">DỪNG PHẮT TAY LẠI</strong>. Gật đầu nhẹ (cảm giác đã tìm đúng khẩu vị của mình). Bạn ngước lên nhìn xuyên qua làn khói, chĩa thẳng chiếc thìa về phía máy quay.</li>
+                    </ul>
+                    <p class="quote-block text-red-300 mt-2 font-semibold">Thoại trực tiếp (Giọng trầm, nói chậm rãi từng chữ): "Bởi vì bạn có một suy nghĩ độc nhất, một góc nhìn ĐỘC NHẤT. Trên toàn thế giới này... ĐIỀU ĐÓ KHÔNG THỂ THAY THẾ ĐƯỢC!"</p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- DIRECTOR TIPS SECTION -->
+    <section class="py-16 bg-black px-4 sm:px-6 lg:px-8 border-t border-b border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            
+            <div class="lg:col-span-1 sticky top-8">
+                <h2 class="text-3xl font-extrabold text-white mb-4 flex items-center gap-3">
+                    <span>🧠</span> BÍ QUYẾT ĐẠO DIỄN
+                </h2>
+                <p class="text-slate-400 text-lg mb-8">
+                    CÁCH DIỄN IN-SITU KHÔNG BỊ "SƯỢNG"
+                </p>
+                <p class="text-slate-300 mb-6">
+                    Để những đòn chí mạng này xoáy thẳng vào tim người xem mà không giống như đang "trả bài thuộc lòng", bạn phải áp dụng 3 quy luật hình thể này khi bấm máy:
+                </p>
+                <div class="w-full h-64 rounded-xl shadow-lg mt-8">
+                    <div class="art-lens">
+                        <div class="lens-ring-1">
+                            <div class="lens-ring-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 p-4 bg-yellow-900/30 border border-yellow-700 rounded-lg">
+                    <p class="text-yellow-400 italic text-sm">
+                        "Bạn hãy chọn nghiệm phương án 1 hoặc 2, dựng Tripod lên và thử ném chiếc máy bay giấy nhé. Cảm giác lúc xem lại chính ánh mắt của mình sẽ rất "nghiện" đấy!"
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Tip 1 -->
+                <div class="bg-slate-900 border border-slate-700 p-8 rounded-2xl transform transition hover:-translate-y-1 hover:border-slate-500 duration-300">
+                    <h3 class="text-xl font-bold text-white mb-4">1. Quy tắc "Hành động dẫn dắt ánh mắt" (Leading Action):</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Đừng nhìn chằm chằm vào máy quay ngay từ lúc đạo diễn hô "Diễn!". Ban đầu, mắt bạn <strong class="text-red-400">PHẢI</strong> đang nhìn vào nồi súp, nhìn vào chiếc máy bay. Chỉ khi miệng chuẩn bị phát ra từ khóa quan trọng (<em class="text-white">"Nền tảng BẮT BUỘC..."</em> hoặc <em class="text-white">"Góc nhìn độc nhất"</em>), bạn mới <strong class="text-red-400">QUAY NGOẮT MẶT LÊN</strong> nhìn ống kính. Cú bắt chéo ánh mắt đột ngột này tạo ra sự "giác ngộ" cực kỳ chân thật.
+                    </p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="bg-slate-900 border border-slate-700 p-8 rounded-2xl transform transition hover:-translate-y-1 hover:border-slate-500 duration-300">
+                    <h3 class="text-xl font-bold text-white mb-4">2. Quy luật Tương phản Động - Tĩnh:</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Tay bạn đang ném, đang đổ nước... rất ồn ào (Động). Nhưng ngay trước khi thốt ra câu chốt <em class="text-white">"Nó đang tìm khán giả"</em>, hãy để toàn bộ cơ thể (đầu, vai, tay) <strong class="text-white">đứng im phăng phắc (Tĩnh)</strong>. Sự im lặng của hình thể trong 0.5 giây đó sẽ dồn 100% trọng lượng vào lời nói của bạn.
+                    </p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="bg-slate-900 border border-slate-700 p-8 rounded-2xl transform transition hover:-translate-y-1 hover:border-slate-500 duration-300">
+                    <h3 class="text-xl font-bold text-white mb-4">3. Ảo giác về "Người đứng sau ống kính" (Tử huyệt ánh mắt):</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Tuyệt đối <strong class="text-red-400">KHÔNG</strong> nhìn vào mặt bạn trên màn hình điện thoại, mắt bạn sẽ bị dại đi. Hãy ép bản thân ghim chặt mắt vào <strong class="text-white">cái lỗ camera màu đen</strong>. Hãy tưởng tượng đằng sau cái lỗ đó là một người em, một người bạn đang rơm rớm nước mắt vì tuyệt vọng muốn bỏ cuộc. Ánh mắt bạn lúc đó sẽ tự động rực lửa, bao dung và đầy quyền lực để "tát" cho họ tỉnh!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FLASHCARDS SECTION -->
+    <section class="py-16 bg-slate-900 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white mb-2">📚 25 Câu Hỏi Ôn Tập Thực Chiến</h2>
+                <p class="text-slate-400">Nắm vững ngay kiến thức đạo diễn kịch bản qua bộ flashcard dưới đây.</p>
+            </div>
+            
+            <div class="flashcard-grid">
+                <!-- Cards generated from text context -->
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Cao trào (Climax) trong kể chuyện thực chất là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Là khoảnh khắc bạn vạch trần một "Sự thật giải phóng" (Liberating Truth).</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Tác dụng của khoảnh khắc "Sự thật giải phóng" là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Mọi lo âu, tự ti của khán giả bị đập tan bởi một chân lý vô cùng sắc bén.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Cảnh cao trào nên chiếm bao nhiêu thời lượng video?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Khoảng 20% thời lượng.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Sự kết hợp góc quay nào tạo ra cao trào đỉnh cao?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Dùng Loại 6 (POV) làm bước đà + Loại 3 (In-situ) làm đòn chốt.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Tại sao nói Loại 3 (In-situ) là đòn "chí mạng"?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Sự xuất hiện hiếm hoi của hiện trường làm câu nói có sức nặng nhân lên gấp 10 lần.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Cao trào trong kịch bản này nằm trọn vẹn ở phần nào?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Nửa sau của P4 (LOGIC & PROOF).</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: 2 "nhát chém" tâm lý để cởi trói cho người xem là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Cú đấm Tự tôn và Cú đấm Giải thoát.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Thông điệp cốt lõi của Cú đấm Tự tôn?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: "Bạn có suy nghĩ, góc nhìn độc nhất... Không thể bị thay thế!"</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Thông điệp cốt lõi của Cú đấm Giải thoát?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: "Nền tảng ném video ra thị trường làm cảm biến... Nó đang tìm khán giả!"</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Cú "giật không gian" từ ngồi tâm sự sang POV/In-situ khiến não bộ khán giả nghĩ gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: "Anh ấy đang nói thẳng vào mặt mình, chuyện này cực kỳ quan trọng!"</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Bối cảnh của Cách 1 (Cú đổ bỏ kiêu hãnh) là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Máy pha Cafe.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Hành động POV trong Cách 1 là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Cầm ly Espresso pha lỗi hất đổ mạnh xuống bồn rửa.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Nét mặt chuẩn khi diễn In-situ Cách 1?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Không tiếc nuối, hơi nhếch mép cười của người đã hiểu luật chơi.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Tác động tâm lý Cách 1 mang lại?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Đập tan chủ nghĩa hoàn hảo, nhận ra thử-sai là hiển nhiên.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Bối cảnh của Cách 2 (Cú phóng "Radar") là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Bàn làm việc/Giấy nháp.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Động tác cơ thể khi diễn In-situ Cách 2?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Không dựa lưng, rướn thân người lên trước, cùi chỏ chống mạnh.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Hành động chốt màn ảnh trong Cách 2?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Vung tay phóng mạnh máy bay giấy sượt qua ống kính.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Bối cảnh của Cách 3 (Chân lý trong làn khói) là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Nấu ăn / Nồi nước sôi bốc khói.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Tác động tâm lý Cách 3 mang lại?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Đập tan ảo tưởng phải vay mượn công thức người khác. Thể hiện sự Craftsman.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Hành động diễn xuất In-situ Cách 3?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Nếm thử đồ ăn, dừng phắt tay, gật đầu nhẹ và chĩa thẳng thìa về máy quay.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Quy tắc "Hành động dẫn dắt ánh mắt" là gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Mắt đang nhìn vật thể, chỉ quay ngoắt lên nhìn ống kính khi nói từ khóa quan trọng.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Quy luật Tương phản Động - Tĩnh có tác dụng gì?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Sự im lặng hình thể 0.5s trước câu chốt dồn 100% trọng lượng vào lời nói.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Lỗi sai lớn nhất về ánh mắt khi quay bằng điện thoại?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Nhìn vào mặt bản thân trên màn hình (sẽ bị dại mắt).</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: "Tử huyệt ánh mắt" khuyên bạn nhìn vào đâu?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Ghim chặt mắt vào cái lỗ camera màu đen.</div>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md flex flex-col justify-between">
+                    <div class="text-sm text-yellow-500 font-bold mb-3 border-b border-slate-600 pb-2">Hỏi: Bí quyết tâm lý để ánh mắt có "thần" và quyền lực?</div>
+                    <div class="text-sm text-slate-300 font-medium">Đáp: Tưởng tượng đằng sau camera là người bạn đang tuyệt vọng cần bạn "tát" cho tỉnh.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FIXED HEIGHT FOOTER (128px) -->
+    <footer class="custom-footer">
+        <p class="text-[13px] sm:text-sm text-slate-400 max-w-4xl mx-auto mb-3 leading-tight px-2">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex space-x-6 items-center">
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-red-500 transition-colors duration-300" title="Kênh Youtube">
+                <i class="fa-brands fa-youtube text-2xl sm:text-3xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors duration-300" title="Kênh Tiktok">
+                <i class="fa-brands fa-tiktok text-2xl sm:text-3xl"></i>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-500 transition-colors duration-300" title="Facebook Page">
+                <i class="fa-brands fa-facebook text-2xl sm:text-3xl"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
