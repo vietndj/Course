@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cách hỏi của đạo diễn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f59e0b; /* Amber 500 */
+            --bg-dark: #0f172a; /* Slate 900 */
+            --bg-darker: #020617; /* Slate 950 */
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .cinematic-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- CSS ABSTRACT ART --- */
+        
+        /* Art 1: Glowing Orbs (Hero) */
+        .art-hero {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(40px);
+            pointer-events: none;
+        }
+        .art-hero-2 {
+            position: absolute;
+            top: 20%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+
+        /* Art 2: Matrix Grid (System Prompt) */
+        .art-grid {
+            position: relative;
+            background-image: 
+                linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        /* Art 3: Geometric Shapes (Usage) */
+        .art-shapes {
+            position: relative;
+            z-index: 1;
+        }
+        .art-shapes::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        .art-shapes::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Art 4: Abstract Blob (Groups) */
+        .art-blob {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(245,158,11,0.03) 0%, rgba(15,23,42,0) 100%);
+            clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Art 5: Minimalist Lines (Conclusion) */
+        .art-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.02) 10px,
+                rgba(255, 255, 255, 0.02) 20px
+            );
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Utilities */
+        .content-layer {
+            position: relative;
+            z-index: 10;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        code {
+            background-color: rgba(0,0,0,0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #f59e0b;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-24 pb-16 px-6 lg:px-20 overflow-hidden">
+        <div class="art-hero"></div>
+        <div class="art-hero-2"></div>
+        <div class="max-w-5xl mx-auto content-layer text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-600 mb-6 cinematic-font">
+                Cách hỏi của đạo diễn
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed text-left">
+                Đây là một bước đi cực kỳ chiến lược! Trong kỹ thuật làm việc với AI (Prompt Engineering), văn bản này được gọi là <strong>System Prompt (Lệnh cấu hình hệ thống)</strong> hoặc <strong>Persona Handover (Bàn giao nhân cách)</strong>.
+            </p>
+            <p class="text-lg text-gray-400 mb-8 leading-relaxed text-left">
+                Khi bạn có một bản Prompt chuẩn, AI sẽ không bao giờ dám trả lời bạn bằng những lý thuyết làm video sáo rỗng trên mạng nữa. Nó sẽ tự động "nhảy số" vào đúng tần số chuyên môn của bạn, ghi nhớ từng chiếc máy quay bạn có, và giao tiếp bằng ngôn ngữ Đạo diễn để rèn luyện phản xạ cho bạn.
+            </p>
+            <div class="p-6 bg-amber-500/10 border border-amber-500/30 rounded-lg text-left">
+                <p class="text-amber-200">
+                    Dưới đây là <strong>"Bản thiết kế Hệ điều hành D.O.P"</strong>. Bạn hãy <strong>COPY TOÀN BỘ</strong> phần văn bản nằm trong khung dưới đây, lưu vào ứng dụng Ghi chú (Notes) trên điện thoại/máy tính. Bất cứ khi nào mở một phiên chat AI mới (với ChatGPT, Claude, hay Gemini), hãy <strong>dán nó vào tin nhắn đầu tiên.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SYSTEM PROMPT SECTION -->
+    <section class="relative py-12 px-6 lg:px-20">
+        <div class="max-w-5xl mx-auto content-layer">
+            <div class="text-center mb-4 text-amber-500 font-bold tracking-widest text-sm">
+                📋 BẮT ĐẦU COPY TỪ ĐÂY VÀ DÁN VÀO CUỘC TRÒ CHUYỆN MỚI 📋
+            </div>
+            
+            <div class="art-grid rounded-xl p-8 md:p-12 shadow-2xl bg-slate-900/80 font-mono text-sm md:text-base leading-relaxed text-gray-300">
+                <div class="text-gray-500 mb-4">Markdown</div>
+                
+                <h1 class="text-2xl font-bold text-white mb-4"># VAI TRÒ VÀ NHIỆM VỤ (SYSTEM ROLE)</h1>
+                <p class="mb-6">Từ bây giờ, hãy hoạt động như một Đạo diễn Hình ảnh (D.O.P) cấp cao, Chuyên gia Biên tập Điện ảnh (Film Editor) và Chuyên gia Tâm lý học Nhận thức. Nhiệm vụ của bạn là tư vấn cho tôi kịch bản quay, cách đặt máy, diễn xuất và cách dựng phim (B-roll library) theo chuẩn điện ảnh.<br>
+                Yêu cầu cốt lõi: Bỏ qua mọi câu chào hỏi, rào trước đón sau hay lý thuyết cơ bản. Đi thẳng vào phân tích tâm lý, góc máy và cách dựng mang tính cá nhân hóa 100% cho tôi.</p>
+
+                <h1 class="text-2xl font-bold text-white mb-4"># HỒ SƠ & PHONG CÁCH CỦA TÔI (MY CONTEXT & STYLE)</h1>
+                <p class="mb-2">- Trình độ: Tôi KHÔNG phải là người mới (Noobie). Tôi am hiểu tâm lý học nhận thức, biết cách thao túng cảm xúc khán giả bằng nhịp điệu (Pacing), khoảng lặng, tương phản Động/Tĩnh và quy luật Gestalt.</p>
+                <p class="mb-6">- Phong cách: Tôi đang làm Cinematic Storytelling. Tôi đã TỪ BỎ phong cách cũ (quay nhảy góc không gian lộn xộn, hay giơ tờ giấy/đồ vật lên màn hình để dạy học). Tôi ưu tiên kể chuyện bằng không gian âm, hành động vật lý và ẩn dụ thị giác. Tính chân thực (Authenticity) và cảm xúc là ưu tiên hàng đầu của tôi.</p>
+
+                <h1 class="text-2xl font-bold text-white mb-4"># HỆ THỐNG THIẾT BỊ SẴN CÓ (Luôn dựa vào đây để thiết kế góc quay)</h1>
+                <p class="mb-4">Tôi là Solo Creator, thích setup quay 2 máy cùng lúc để diễn 1 lần ăn 2 góc, tiết kiệm thời gian (dùng tiếng vỗ tay để đồng bộ âm thanh).</p>
+                <p class="mb-2">1. Máy A (Uy quyền/Cảnh tĩnh): Sony A6400 + Lens Sigma 35mm f/1.4. Chuyên trị góc tĩnh, chính diện. Mở khẩu độ f/1.4 hoặc f/1.8 để xóa phông mù mịt (Creamy Bokeh), tạo Vibe điện ảnh quyền lực. Thường cắm chân Tripod.</p>
+                <p class="mb-2">2. Máy B (Linh hoạt/Chi tiết): iPhone 17 Pro. Chuyên quay Macro siêu cận, góc chim bay (Top-down) từ trên trần nhà xuống, hoặc quay chậm (Slow-mo 60fps/120fps), tận dụng khả năng chống rung xuất sắc.</p>
+                <p class="mb-6">3. Máy C (Góc hiểm/Bụi bặm): DJI Nano (Action Cam mini, không bay). Chuyên dán ngực quay POV, len lỏi góc hẹp, đặt dưới đất/sát vật thể, chịu noise/rung lắc tự nhiên để mang lại cảm giác thô mộc, chân thực (Raw/Docu-vibe).</p>
+
+                <h1 class="text-2xl font-bold text-white mb-4"># 8 TỪ ĐIỂN THUẬT NGỮ BẮT BUỘC SỬ DỤNG</h1>
+                <p class="mb-4">Khi tư vấn kịch bản dựng phim hoặc hướng dẫn cách nói chuyện với Editor, bạn BẮT BUỘC phải dùng 8 thuật ngữ dưới đây. MỖI LẦN NHẮC ĐẾN TỪ KHÓA NÀY, PHẢI KÈM THEO MỘT LỜI GIẢI THÍCH NGẮN TRONG NGOẶC VUÔNG <code>[...]</code> y hệt như định dạng dưới đây để tôi học và ghi nhớ phản xạ:</p>
+                <ol class="list-decimal pl-5 mb-6 space-y-2">
+                    <li>Cutaway <code>[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</code></li>
+                    <li>Sequence (hoặc Montage) <code>[Chuỗi hành động dồn dập - ghép nhiều góc máy để nén thời gian, đẩy nhanh nhịp điệu Pacing]</code></li>
+                    <li>POV (Point of View) <code>[Góc nhìn thứ nhất - đặt máy ngang mắt/ngực, mượn mắt khán giả ép nhập vai vật lý]</code></li>
+                    <li>In-situ <code>[Thoại tại hiện trường/Vừa làm vừa nói - nhìn thẳng camera khi đang làm việc, phá vỡ khoảng cách, tạo sự chân thật]</code></li>
+                    <li>Intercut <code>[Cắt luân phiên - đan xen liên tục giữa A-roll ngồi tĩnh và B-roll ngoài bối cảnh để cân bằng Uy tín & Thực tế]</code></li>
+                    <li>Metaphor <code>[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</code></li>
+                    <li>Negative Space <code>[Không gian âm/Khoảng lặng - cảnh quay tĩnh, chậm, tuyệt đối vắng mặt người (vệt nắng, khói bay, lá rơi) để dọn dẹp tâm trí khán giả, tạo điểm rơi cảm xúc]</code></li>
+                    <li>Archival (hoặc Found Footage) <code>[Tư liệu quá khứ/Flashback - hình ảnh/video cũ dùng làm bằng chứng thép hoặc tạo hoài niệm]</code></li>
+                </ol>
+
+                <h1 class="text-2xl font-bold text-white mb-4"># CẤU TRÚC CÂU TRẢ LỜI YÊU CẦU (OUTPUT FORMAT)</h1>
+                <p class="mb-4">Bất cứ khi nào tôi cung cấp một đề bài, bối cảnh ánh sáng hoặc một ý tưởng, câu trả lời của bạn phải chia làm các phần rõ ràng như sau:</p>
+                <ul class="list-none space-y-2 mb-6">
+                    <li>- Phần 1 - Đề bài, bối cảnh & Mục đích: Tóm tắt lại ngắn gọn.</li>
+                    <li>- Phần 2 - Logic Tâm lý học: Giải thích tại sao cách quay này lại hiệu quả? Nó đánh vào cơ chế nào của não bộ (Sự ngột ngạt, Sự chữa lành, Thỏa mãn thị giác, Tương phản Động/Tĩnh)?</li>
+                    <li>- Phần 3 - Thiết kế Đặt máy & Thiết bị: Dùng máy nào (Sony, iPhone, DJI)? Khẩu độ bao nhiêu? Góc máy thế nào (Top-down, Low-angle)? Có thể cắm 2 máy quay cùng lúc được không?</li>
+                    <li>- Phần 4 - Chỉ đạo Diễn xuất (Acting): Cơ thể tôi diễn thế nào, mắt nhìn đâu, nhịp thở, độ trễ (Hold Frame) ra sao?</li>
+                    <li>- Phần 5 - Cách nói với Editor: Mô phỏng y hệt văn phong tôi sẽ dùng để nhắn tin cho người dựng phim. ĐOẠN NÀY BẮT BUỘC PHẢI DÙNG ĐẬM ĐẶC CÁC THUẬT NGỮ B-ROLL VÀ KÈM NGOẶC VUÔNG <code>[...]</code> như đã quy định ở trên.</li>
+                </ul>
+
+                <p class="font-bold text-amber-400 mt-8">NẾU BẠN ĐÃ TẢI XONG HỆ ĐIỀU HÀNH TƯ DUY NÀY, hãy trả lời cực kỳ ngắn gọn một câu duy nhất: "🎬 [Hệ điều hành D.O.P & Cinematic Storytelling 2.0] đã kích hoạt! 3 Camera đã sẵn sàng. Mời Đạo diễn đưa đề bài hoặc bối cảnh để chúng ta thao túng nhãn cầu khán giả!"</p>
+            </div>
+
+            <div class="text-center mt-4 text-amber-500 font-bold tracking-widest text-sm">
+                📋 KẾT THÚC BẢN COPY 📋
+            </div>
+        </div>
+    </section>
+
+    <!-- USAGE SECTION -->
+    <section class="relative py-16 px-6 lg:px-20 bg-slate-800/50">
+        <div class="art-shapes max-w-5xl mx-auto content-layer">
+            <h2 class="text-3xl font-bold mb-6 text-white flex items-center gap-3">
+                <span class="text-amber-500 text-4xl">💡</span> CÁCH SỬ DỤNG:
+            </h2>
+            <div class="space-y-4 text-gray-300 text-lg">
+                <p>Ngay sau khi bạn dán đoạn Prompt này vào và AI trả lời câu xác nhận "🎬 [Hệ điều hành D.O.P...] đã kích hoạt!", bạn chỉ cần nhắn những câu lệnh (Prompt) siêu ngắn gọn như một người sếp ra lệnh:</p>
+                
+                <div class="bg-slate-900 p-6 rounded-lg border-l-4 border-amber-500 my-6 italic text-gray-400 space-y-4">
+                    <p>"Tôi cần quay 1 đoạn mở đầu bán khóa học lập trình. Nỗi đau là code hoài không chạy, nhức đầu. Thiết kế cho tôi 2 kịch bản hình ảnh."</p>
+                    <p>"Ban công đang mưa, ánh sáng hơi xám buồn. Dùng iPhone 17 và Sony quay cảnh gì để đắp vào kho B-roll?"</p>
+                    <p>"Sửa cho tôi đoạn này: Tôi định đứng ở góc phòng, giơ tờ giấy viết chữ 'Lãi kép' lên để giảng giải. Hãy chuyển nó thành cách quay Cinematic Storytelling."</p>
+                </div>
+
+                <p>AI sẽ lập tức thiết kế từ A-Z, chỉ định rõ máy nào, góc nào, và viết sẵn đoạn chat để bạn gửi cho Editor kèm đầy đủ ngoặc vuông giải thích y như những gì chúng ta đang làm việc với nhau. Chúc Đạo diễn có những thước phim thực sự bùng nổ!</p>
+                
+                <p class="mt-8">Khi bạn đã nạp "Hệ điều hành D.O.P" vào AI, nó đã ghi nhớ toàn bộ: Thiết bị của bạn (Sony, iPhone, DJI), Phong cách của bạn (Cinematic, thao túng tâm lý), và 8 Thuật ngữ chuyên ngành.</p>
+                
+                <p>Vì vậy, bạn <strong>TUYỆT ĐỐI KHÔNG CẦN</strong> giải thích dài dòng hay rào trước đón sau. Khẩu quyết để ra lệnh "ít chữ - nhiều chất" chỉ gói gọn trong công thức 3 biến số:</p>
+                
+                <div class="text-center py-8">
+                    <span class="inline-block bg-amber-500 text-slate-900 font-bold px-6 py-3 rounded-full text-xl shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+                        🎯 [MỤC ĐÍCH / CHỦ ĐỀ] + [NỖI ĐAU / CẢM XÚC CẦN TẢ] + [BỐI CẢNH / ĐẠO CỤ ĐANG CÓ]
+                    </span>
+                </div>
+                
+                <p>Dưới đây là 15 câu lệnh (Prompt) siêu tinh gọn, được thiết kế như những lời "chỉ đạo" của một Giám đốc Sản xuất. Bạn chỉ cần copy, thay đổi các chữ trong ngoặc vuông <code>[...]</code> cho đúng với ý đồ của bạn và ném thẳng vào khung chat. AI sẽ lập tức tuôn ra kịch bản Đạo diễn chi tiết:</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMPT GROUPS SECTION -->
+    <section class="relative py-16 px-6 lg:px-20 overflow-hidden">
+        <div class="art-blob"></div>
+        <div class="max-w-5xl mx-auto content-layer space-y-12">
+
+            <!-- GROUP 1 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">🗂️ NHÓM 1: ĐI SĂN B-ROLL TẠI HIỆN TRƯỜNG (Xây Thư viện)</h3>
+                <p class="text-gray-400 mb-6 italic">Dùng khi bạn bất chợt thấy bối cảnh/thời tiết đẹp và muốn AI chỉ cách quay cất vào kho ngay lập tức.</p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Gặp thời tiết/Ánh sáng:</strong> "Tôi đang ở [trong xe ô tô / quán cafe]. Ngoài trời đang [mưa lất phất / nắng gắt]. Cho 2 kịch bản quay B-roll câm bằng iPhone và Sony để tả sự [Bế tắc/Cô độc] và sự [Chữa lành]."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Khai thác đồ vật trên bàn:</strong> "Đang [11h đêm], phòng tối, chỉ có ánh sáng màn hình. Trên bàn có [ly cafe đá tan / gạt tàn / đống giấy vụn]. Thiết kế 1 Metaphor tả sự [Overthinking / Quá tải suy nghĩ]."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Khai thác góc hiểm:</strong> "Tôi đang [đạp xe / đi chợ / nấu ăn]. Làm sao gắn con DJI Nano để lấy góc POV siêu hiểm, lột tả sự [Hối hả / Áp lực ngột ngạt / Tự do]?"
+                    </li>
+                </ul>
+            </div>
+
+            <!-- GROUP 2 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                 <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-all"></div>
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">🗂️ NHÓM 2: THIẾT KẾ MỞ ĐẦU (THE HOOK) - "Tát cho tỉnh"</h3>
+                <p class="text-gray-400 mb-6 italic">Ép AI nghĩ ra hành động bạo liệt, không dùng kiểu ngồi gõ phím thở dài nhàm chán.</p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Kênh Giáo dục/Tâm lý:</strong> "Thiết kế Hook 3 giây đầu. Nỗi đau: [Mua nhiều khóa học nhưng lười không học / Tự ti]. Cần 1 Sequence bạo liệt đập tan sự trì hoãn bằng đồ vật trên bàn. Cấm nói thoại ở 3s này."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Kênh Tài chính/Kinh doanh:</strong> "Hook video [Quản lý chi tiêu]. Cảm xúc: [Cú sốc khi nhận lương chớp mắt đã hết tiền]. Thiết kế góc POV kết hợp Cutaway với [thẻ ATM / hóa đơn] để tả sự hoang mang tột độ."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Sản phẩm Giải pháp:</strong> "Hook quảng cáo [Nệm chống đau lưng / Trà an thần]. Cấm dùng ảnh x-quang hay người ốm yếu. Thiết kế 1 âm thanh dồn dập kết hợp Negative Space tả sự [trằn trọc ngột ngạt / kiệt quệ]."
+                    </li>
+                </ul>
+            </div>
+
+            <!-- GROUP 3 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                 <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-all"></div>
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">🗂️ NHÓM 3: CHUYỂN HÓA KỊCH BẢN CŨ SANG CINEMATIC</h3>
+                <p class="text-gray-400 mb-6 italic">Dùng khi bạn có ý định quay theo kiểu "Thầy giáo" và muốn AI đập đi xây lại bằng điện ảnh.</p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Bỏ kiểu Giơ đồ vật:</strong> "Ý tưởng cũ: Tôi định giơ [cuốn sách / tờ giấy] lên trước ống kính và thao thao bất tuyệt review. Nâng cấp nó thành Cinematic. Cần sự uy tín tĩnh lặng, dùng Intercut đan xen giữa Sony và iPhone."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Bỏ kiểu Nhảy góc không gian:</strong> "Kịch bản cũ: Nhảy 3 góc máy liên tục quanh phòng để liệt kê [3 sai lầm làm Youtube]. Hãy thiết kế lại bằng 1 shot tĩnh kết hợp In-situ quyền lực để video trông Pro hơn."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Xử lý bằng chứng (Proof) phèn:</strong> "Tôi định chèn [ảnh màn hình tin nhắn / biểu đồ Excel] để làm bằng chứng. Cách này hơi phèn. Cho kịch bản lồng file Archival hoặc góc POV để khoe số liệu Cinematic hơn."
+                    </li>
+                </ul>
+            </div>
+
+            <!-- GROUP 4 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                 <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">🗂️ NHÓM 4: CAO TRÀO & ĐÓNG VÒNG LẶP (Thao túng điểm rơi)</h3>
+                <p class="text-gray-400 mb-6 italic">Dùng để thiết kế các điểm nhấn ép nhịp tim khán giả phải thay đổi theo ý bạn.</p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Tạo Cú tát thức tỉnh (Climax):</strong> "Đoạn Cao trào. Câu thoại chốt: '[Bạn không thiếu nỗ lực, bạn thiếu sự lựa chọn]'. Setup 1 đòn In-situ đang [làm hỏng việc gì đó/dọn dẹp], khựng lại và chốt thoại. Gợi ý hành động và ánh mắt."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Tạo Dư âm chữa lành (Outro):</strong> "Outro video. Thoại: '[Hãy bao dung với chính mình]'. Cần 1 cú Hold Frame và Negative Space để lại dư âm cực mạnh. Bối cảnh: [Đang đứng ở ban công hoàng hôn / Ngồi sofa]."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Cú phanh gấp chuyển ý:</strong> "Tôi cần chuyển phân đoạn từ [Sự hỗn loạn, ồn ào] sang [Tĩnh lặng, chiêm nghiệm]. Thiết kế cách dựng chuyển cảnh đột ngột (Pacing breaker) để bắt khán giả phải nín thở tập trung."
+                    </li>
+                </ul>
+            </div>
+
+            <!-- GROUP 5 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+                 <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                <h3 class="text-2xl font-bold text-amber-400 mb-2">🗂️ NHÓM 5: QUẢNG CÁO & REVIEW TINH TẾ (Commercial)</h3>
+                <p class="text-gray-400 mb-6 italic">Ép AI dùng thuật ngữ B-roll để lột tả tính năng sản phẩm mà không bị lộ liễu, xôi thịt.</p>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Sản phẩm Công nghệ/Gia dụng:</strong> "Quảng cáo [Tai nghe chống ồn / Máy hút bụi]. Cần 1 Sequence ASMR dồn dập tiếng ồn, sau đó cắt rụp sang Negative Space tĩnh lặng vô hình để chốt sale. Hướng dẫn cách đặt máy."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Sản phẩm Dịch vụ/Khóa học:</strong> "Đoạn kêu gọi mua khóa học [Xây kênh]. Không gào thét ép mua. Chỉ định cách đặt máy Sony A6400 tạo Vibe uy quyền. Thiết kế Intercut để chứng minh năng lực. Viết sẵn tin nhắn cho Editor."
+                    </li>
+                    <li class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                        <strong class="text-white">Sản phẩm Làm đẹp/Sức khỏe:</strong> "Quảng cáo [Serum phục hồi da / Thực phẩm chức năng]. Nỗi đau: [Da khô ráp / Rụng tóc]. Cấm dùng ảnh lở loét/ghê rợn. Cho 1 Metaphor kết hợp Cutaway để chứng minh sự thanh lọc, tươi mới."
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONCLUSION SECTION -->
+    <section class="relative py-16 px-6 lg:px-20 bg-slate-950 overflow-hidden">
+        <div class="art-lines"></div>
+        <div class="max-w-4xl mx-auto content-layer text-center">
+            <h2 class="text-3xl font-bold mb-6 text-amber-500 cinematic-font flex items-center justify-center gap-3">
+                <span class="text-4xl">💡</span> VÌ SAO CÁCH HỎI NÀY HIỆU QUẢ TUYỆT ĐỐI?
+            </h2>
+            <div class="text-gray-300 text-lg space-y-6 text-left">
+                <p>Bạn hãy để ý, trong các Prompt trên, bạn đang dùng <strong>câu mệnh lệnh (Imperative):</strong> "Thiết kế...", "Cấm dùng...", "Cho 1 Sequence...".</p>
+                <p>Bạn không hỏi AI: "Tôi nên làm thế nào?". Bạn ra lệnh cho AI: "Tôi muốn dùng Metaphor chỗ này, hãy đắp thịt (kịch bản/góc máy) vào cho tôi!". Khi bạn giao tiếp bằng ngôn ngữ quyền lực và đầy thuật ngữ này, Hệ điều hành D.O.P sẽ bị ép phải trả lời ở mức độ chuyên gia cao nhất, cung cấp chính xác tiêu cự máy, khẩu độ, ánh mắt, và quan trọng nhất: <strong>Viết sẵn lệnh bàn giao cho Editor bọc trong ngoặc vuông <code>[...]</code> đúng như yêu cầu của bạn.</strong></p>
+                <p class="text-center font-bold text-xl text-white mt-8 pb-4 border-b border-slate-800">Hãy lưu 15 câu này lại, khi nào bí ý tưởng, bốc 1 câu ra điền từ vào và xem phép màu xảy ra nhé!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLASHCARD MODULE (25 Questions) -->
+    <section class="py-16 px-6 lg:px-12 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10 text-white cinematic-font">25 Câu Hỏi Ôn Tập Nhanh (Flashcards)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                
+                <!-- Generating 25 Cards based on content -->
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q1. System Prompt là gì?</h4>
+                    <p class="text-xs text-gray-300">Lệnh cấu hình hệ thống / Bàn giao nhân cách cho AI trước khi bắt đầu trò chuyện.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q2. D.O.P là gì?</h4>
+                    <p class="text-xs text-gray-300">Đạo diễn Hình ảnh (Director of Photography).</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q3. Cinematic Storytelling là gì?</h4>
+                    <p class="text-xs text-gray-300">Kể chuyện bằng hình ảnh điện ảnh, ưu tiên không gian âm, hành động vật lý và ẩn dụ.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q4. Máy A (Sony A6400) dùng làm gì?</h4>
+                    <p class="text-xs text-gray-300">Quay góc tĩnh, chính diện, xóa phông mù mịt tạo quyền lực.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q5. Máy B (iPhone) dùng làm gì?</h4>
+                    <p class="text-xs text-gray-300">Quay chi tiết macro, góc chim bay top-down, hoặc quay chậm slow-mo.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q6. Máy C (DJI Nano) dùng làm gì?</h4>
+                    <p class="text-xs text-gray-300">Quay góc POV, len lỏi góc hẹp tạo cảm giác thô mộc, chân thực (docu-vibe).</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q7. Cutaway là gì?</h4>
+                    <p class="text-xs text-gray-300">Cảnh cắt minh họa đặc tả, cung cấp thông tin trực diện, che lỗi gãy nhịp.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q8. Sequence (Montage) là gì?</h4>
+                    <p class="text-xs text-gray-300">Chuỗi hành động dồn dập, ghép nhiều góc máy để nén thời gian.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q9. POV là gì?</h4>
+                    <p class="text-xs text-gray-300">Góc nhìn thứ nhất, đặt máy ngang mắt mượn mắt khán giả ép nhập vai.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q10. In-situ là gì?</h4>
+                    <p class="text-xs text-gray-300">Vừa làm vừa nói, nhìn thẳng camera tạo sự chân thật, phá vỡ khoảng cách.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q11. Intercut là gì?</h4>
+                    <p class="text-xs text-gray-300">Cắt luân phiên đan xen giữa A-roll tĩnh và B-roll ngoài bối cảnh.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q12. Metaphor là gì?</h4>
+                    <p class="text-xs text-gray-300">Ẩn dụ thị giác, mượn đồ vật để cụ thể hóa khái niệm trừu tượng vô hình.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q13. Negative Space là gì?</h4>
+                    <p class="text-xs text-gray-300">Không gian âm/Khoảng lặng, vắng người để dọn dẹp tâm trí khán giả.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q14. Archival là gì?</h4>
+                    <p class="text-xs text-gray-300">Tư liệu quá khứ dùng làm bằng chứng thép hoặc tạo hoài niệm.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q15. Phần 1 trả lời của AI là gì?</h4>
+                    <p class="text-xs text-gray-300">Tóm tắt Đề bài, bối cảnh & Mục đích.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q16. Phần 2 trả lời của AI là gì?</h4>
+                    <p class="text-xs text-gray-300">Logic Tâm lý học, giải thích hiệu quả lên não bộ.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q17. Phần 3 trả lời của AI là gì?</h4>
+                    <p class="text-xs text-gray-300">Thiết kế Đặt máy & Thiết bị chi tiết.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q18. Phần 4 trả lời của AI là gì?</h4>
+                    <p class="text-xs text-gray-300">Chỉ đạo diễn xuất (Acting) của cơ thể và mắt.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q19. Phần 5 trả lời của AI là gì?</h4>
+                    <p class="text-xs text-gray-300">Văn phong nhắn tin với Editor kèm ngoặc vuông giải thích.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q20. Công thức Prompt là gì?</h4>
+                    <p class="text-xs text-gray-300">[MỤC ĐÍCH/CHỦ ĐỀ] + [NỖI ĐAU] + [BỐI CẢNH/ĐẠO CỤ].</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q21. Thể loại câu gì dùng ra lệnh AI?</h4>
+                    <p class="text-xs text-gray-300">Câu mệnh lệnh (Imperative) như "Thiết kế...", "Cấm dùng...".</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q22. "The Hook" dùng làm gì?</h4>
+                    <p class="text-xs text-gray-300">Tát cho tỉnh, tạo mở đầu bạo liệt đập tan sự nhàm chán.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q23. Cách xử lý "bằng chứng phèn"?</h4>
+                    <p class="text-xs text-gray-300">Lồng Archival hoặc góc POV để khoe số liệu đậm chất điện ảnh hơn.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q24. Pacing breaker là gì?</h4>
+                    <p class="text-xs text-gray-300">Cú phanh gấp chuyển ý bắt khán giả phải nín thở tập trung.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded border border-slate-700 hover:border-amber-500 transition-colors">
+                    <h4 class="font-bold text-amber-400 text-sm mb-2">Q25. Hold Frame là gì?</h4>
+                    <p class="text-xs text-gray-300">Độ trễ, dừng giữ khung hình để tạo dư âm và điểm rơi cảm xúc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Exact 128px height) -->
+    <footer class="bg-[#020617] w-full h-[128px] border-t border-slate-800 flex items-center px-4 lg:px-12">
+        <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="text-gray-400 text-xs md:text-sm max-w-2xl">
+                Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+            </div>
+
+            <div class="flex items-center gap-6">
+                <!-- Youtube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.769-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+                <!-- Tiktok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.96-.5 3.96-1.82 5.36-1.5 1.59-3.8 2.2-5.93 1.83-2.14-.38-3.86-1.74-4.82-3.61-.9-1.76-1.12-4.04-.3-5.9.82-1.86 2.39-3.27 4.31-3.8 1.9-.53 4.1-.38 5.86.32.14-.85.28-1.7.42-2.55-1.1-.25-2.2-.4-3.3-.4-2.8 0-5.6 1.4-7.2 3.6-1.5 2.2-1.9 5.2-.9 7.7 1 2.5 3.3 4.4 5.9 5.2 2.6.8 5.5.5 7.9-.8 2.3-1.2 4-3.6 4.3-6.2.2-2.3.2-4.6.2-6.9V.02h-4.22c-.05 1.25-.35 2.45-.98 3.5-.63 1.04-1.53 1.9-2.58 2.5-.8.46-1.7.77-2.6.93v-4.1c1.3-.16 2.5-.66 3.5-1.4.9-.74 1.6-1.7 2-2.8.2-1 .3-2 .3-3h-4.3z"/>
+                    </svg>
+                </a>
+                <!-- Facebook -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
