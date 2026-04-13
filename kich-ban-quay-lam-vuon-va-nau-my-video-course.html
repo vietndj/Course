@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch bản quay làm vườn, và nấu mỳ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        card: '#1e293b',
+                        accent: '#f59e0b',
+                        highlight: '#38bdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Abstract Art Styles */
+        .art-box {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1.5rem;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* 1. Đất / The Grind (Garden) */
+        .art-earth-grind {
+            background: linear-gradient(135deg, #3e2723 0%, #1b1005 100%);
+        }
+        .art-earth-grind::before {
+            content: '';
+            position: absolute;
+            width: 150%; height: 150%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 69, 19, 0.1) 10px, rgba(139, 69, 19, 0.1) 20px);
+            transform: translate(-10%, -10%) rotate(-15deg);
+        }
+        .art-earth-grind::after {
+            content: '';
+            position: absolute;
+            bottom: -20px; left: 20%;
+            width: 100px; height: 100px;
+            background: #5d4037;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.7;
+        }
+
+        /* 2. Rễ / The Chaos (Garden) */
+        .art-roots-chaos {
+            background: radial-gradient(circle at center, #2c3e50 0%, #000000 100%);
+        }
+        .art-roots-chaos::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 200px; height: 2px;
+            background: #8b0000;
+            box-shadow: 0 0 10px #ff0000;
+            transform: translate(-50%, -50%) rotate(35deg);
+        }
+        .art-roots-chaos::after {
+            content: '';
+            position: absolute;
+            top: 40%; left: 40%;
+            width: 150px; height: 3px;
+            background: #a0522d;
+            transform: translate(-50%, -50%) rotate(-60deg);
+            filter: blur(1px);
+        }
+
+        /* 3. Nước / The Healing (Garden) */
+        .art-water-healing {
+            background: linear-gradient(to bottom, #d4af37 0%, #1e3c72 50%, #2a5298 100%);
+            animation: flow 10s ease infinite alternate;
+            background-size: 100% 200%;
+        }
+        @keyframes flow { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
+        
+        /* 4. Dao / The Grind (Noodles) */
+        .art-knife-grind {
+            background: #0a0a0a;
+        }
+        .art-knife-grind::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 20%;
+            width: 2px; height: 100%;
+            background: #ffffff;
+            box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff;
+            transform: skewX(-20deg);
+        }
+        .art-knife-grind::after {
+            content: '';
+            position: absolute;
+            bottom: 20px; left: 10%;
+            width: 50px; height: 50px;
+            background: #ff4500;
+            border-radius: 50%;
+            filter: blur(8px);
+        }
+
+        /* 5. Sôi / Chaos (Noodles) */
+        .art-boil-chaos {
+            background: #111;
+            overflow: hidden;
+        }
+        .art-boil-chaos .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        .art-boil-chaos .bubble:nth-child(1) { width: 40px; height: 40px; bottom: 10px; left: 20%; filter: blur(2px); }
+        .art-boil-chaos .bubble:nth-child(2) { width: 80px; height: 80px; bottom: -20px; right: 30%; filter: blur(4px); background: rgba(255, 69, 0, 0.1); }
+        .art-boil-chaos .bubble:nth-child(3) { width: 20px; height: 20px; top: 40%; left: 50%; filter: blur(1px); }
+
+        /* 6. Trứng / Healing (Noodles) */
+        .art-egg-healing {
+            background: radial-gradient(circle at center, #2a2a2a 0%, #000 100%);
+        }
+        .art-egg-healing::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px; height: 100px;
+            background: radial-gradient(circle, #ffcc00 20%, #ff8c00 80%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ff8c00;
+            filter: blur(2px);
+        }
+
+        /* Typographic enhancements */
+        .script-part { color: #38bdf8; font-weight: 700; margin-top: 1rem; }
+        .term-bracket { color: #f59e0b; font-style: italic; font-weight: 400; }
+        .cam-name { color: #ef4444; font-weight: 700; }
+        
+        /* Layout Adjustments */
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+        main { flex: 1; }
+    </style>
+</head>
+<body class="bg-darker text-slate-300 antialiased selection:bg-accent selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-dark border-b border-slate-800 sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <h1 class="text-3xl md:text-5xl font-serif text-white leading-tight uppercase tracking-wide">
+                Kịch bản quay làm vườn, và nấu mỳ
+            </h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-20">
+
+        <!-- INTRO TEXT 1 -->
+        <div class="bg-card p-6 rounded-xl border border-slate-700 shadow-lg text-lg leading-relaxed">
+            <p>Dưới đây là 3 phương án kịch bản Cinematic cho concept "Vườn cây nhỏ ở sân nhà - Đôi tay lấm bùn", được thiết kế theo các Trục Tâm lý khác nhau. Trong đó Phương án 1 là kỹ thuật Setup 3 máy đồng thì (1 take ăn 3 góc) tối ưu nhất cho Solo Creator.</p>
+        </div>
+
+        <!-- SCRIPT BLOCK 1: GARDEN 1 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 1: KỊCH BẢN "TRẠNG THÁI DÒNG CHẢY CỦA ĐẤT" (THE GRIND)</h2>
+            <p class="text-slate-400 italic">(Setup Multi-cam đồng thì - Thuộc Tủ 3: Sự cày cuốc & Kỷ luật)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-earth-grind"></div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Ghi lại toàn bộ quá trình bạn nhào trộn đất thịt ẩm, bóp vỡ cục đất sét cằn cỗi bằng tay trần để hạ bầu cây. Mục đích: Phá vỡ hình tượng "chuyên gia bục giảng sạch sẽ", dùng sự thô mộc để chứng minh bạn là một "Doer" (Người thực chiến), xắn tay áo lao vào vùng lầy của thị trường. Bối cảnh: Góc sân vườn râm mát, ánh sáng tản.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Đánh vào cơ chế "Earthing/Grounding" (Chạm đất) và ASMR thị giác. Nhìn bàn tay trần cắm ngập vào bùn đất nguyên thủy sẽ lập tức hạ mức Cortisol của khán giả. Sự lấm lem vật lý dập tắt màng lọc phòng thủ của bộ não, ép não bộ tin tưởng tuyệt đối vào tính chân thực và dán nhãn uy tín cho bạn.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị (Setup 3 cam quay cùng lúc):</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Máy A (Uy quyền tĩnh):</span> Sony f/1.4 cắm Tripod góc chéo 45 độ, đặt thấp ngang hông hất nhẹ lên (Low-angle). Mở khẩu f/1.4 lấy nét cứng vào khuôn mặt đang nhễ nhại mồ hôi. Hậu cảnh vườn cây phía sau bị băm nát thành Creamy Bokeh.</li>
+                    <li><span class="cam-name">Máy B (Chi tiết bao quát):</span> iPhone 17 Pro kẹp tay đòn (C-stand/Boom arm) chĩa thẳng 90 độ từ trên không đâm thẳng xuống chậu cây (Top-down). Bật 4K 60fps. Góc chim bay này bắt trọn sự nhào lặn dứt khoát của 10 ngón tay.</li>
+                    <li><span class="cam-name">Máy C (Góc hiểm thô ráp):</span> DJI Nano bọc màng nilon (chừa thấu kính), vùi lấp lửng 1/2 thân máy ngay mép đống đất thịt. Hất ngược ống kính lên hứng chịu những hạt đất văng trực tiếp vào mặt kính tạo Raw-vibe tột độ.</li>
+                    <li><strong>Cách Sync (Đồng bộ):</strong> Bấm Record 3 máy. Đưa 2 bàn tay đầy bùn vỗ "BỐP" vào nhau một cái thật bạo liệt (đất bay mù mịt). Lát nữa Editor chỉ cần căn đúng cái đỉnh sóng âm đó để chập 3 timeline vào làm 1.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Tay vục sâu vào đất bóp nát sự vón cục bằng sức mạnh cơ bắp. Thở dốc nhẹ. CẤM LIẾC NHÌN CAMERA. Lấy mu bàn tay quệt ngang trán, cố tình để lại vệt bùn đen lấm lem. Đang cào xới, đột ngột dừng tay (Hold frame 2 giây), ngẩng lên nhìn thấu tâm can vào ống kính Máy A ném ra đúng 1 câu thoại gai góc, rồi cúi xuống làm tiếp.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Bro, 3 cam này anh vỗ tay lấy file sync rồi nhé. Đoạn mở bát đấm liên tục cho anh một Sequence (hoặc Montage)<span class="term-bracket">[Chuỗi hành động dồn dập - ghép nhiều góc máy để nén thời gian, đẩy nhanh nhịp điệu Pacing]</span> nhào lặn đất. Em phải Intercut <span class="term-bracket">[Cắt luân phiên - đan xen liên tục giữa A-roll ngồi tĩnh và B-roll ngoài bối cảnh để cân bằng Uy tín & Thực tế]</span> nhịp nhàng giữa góc Máy A và Máy B. Cái mầm cây mới nhú lên giữa đống bùn nhão nhoét này chính là một Metaphor <span class="term-bracket">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> cho sự bứt phá trong nghịch cảnh. Khúc anh ngẩng lên ném câu thoại chốt hạ, giữ nguyên tiếng thở dốc và đất xào xạc làm In-situ <span class="term-bracket">[Thoại tại hiện trường/Vừa làm vừa nói - nhìn thẳng camera khi đang làm việc, phá vỡ khoảng cách, tạo sự chân thật]</span> luôn!"</p>
+            </div>
+        </section>
+
+        <!-- SCRIPT BLOCK 2: GARDEN 2 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 2: KỊCH BẢN "VẬT LỘN VỚI RỄ THỐI" (THE CHAOS)</h2>
+            <p class="text-slate-400 italic">(Thuộc Tủ 5: Sự thô mộc & Sai lầm)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-roots-chaos"></div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Cảnh bạn chật vật nhổ một cái rễ cây mục nát đã chết cứng dưới chậu. Bối cảnh: Ánh nắng Top-light gắt gỏng từ đỉnh đầu hắt xuống đổ bóng hốc mắt mệt mỏi. Mục đích: Phơi bày sự bế tắc, sai lầm, chứng minh bạn cũng từng có những thứ "phải nhổ bỏ" một cách đau đớn.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Hiệu ứng Zeigarnik (Ám ảnh sự giằng co) và Tổn thương sinh thiện cảm (Pratfall Effect). Sự chật vật kéo mãi không đứt một cái rễ tạo ra sự ngột ngạt vật lý, ép khán giả nín thở theo bạn. Dám đưa ra cái ngu ngốc của mình là đỉnh cao của thao túng lòng tin.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị:</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Góc 1 (Sự nghẹt thở):</span> Máy C (DJI Nano) dán chặt lên ngực áo. Tắt chống rung. Thu trọn vẹn hai cánh tay lấm lem nổi gân đang giằng co cái rễ cây. Góc này sẽ bồn chồn theo nhịp thở.</li>
+                    <li><span class="cam-name">Góc 2 (Đặc tả rỉ máu):</span> Máy B (iPhone 17 Pro) bật Macro, cầm tay (Hand-held) dí siêu cận vào khe nứt của cục đất, nơi cái rễ thối đang rỉ nước đục ngầu, khung hình rung nhẹ.</li>
+                    <li><span class="cam-name">Góc 3 (Sự cô độc):</span> Máy A (Sony f/1.4) cắm tĩnh ở khoảng cách cực xa, khuất sau một tán lá cây tiền cảnh (Góc nhìn trộm/Voyeurism). Lấy toàn cảnh bóng dáng bạn đang gù lưng vật lộn một mình.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Gồng cứng cơ vai, cắn chặt hàm. Dùng sức giật rễ cây bị đứt tưa rễ phụ khiến bạn lảo đảo ngã ngửa ra sau nửa nhịp. Thở hắt ra tức tối, quăng mạnh cái bay xúc đất xuống sàn gạch kêu "keng". Hai tay lấm bùn chống gối gục đầu xuống.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Khúc nhổ rễ này tao cần nó Raw nhất có thể! Lấy trục hình ảnh từ con DJI dán ngực làm POV (Point of View)<span class="term-bracket">[Góc nhìn thứ nhất - đặt máy ngang mắt/ngực, mượn mắt khán giả ép nhập vai vật lý]</span> để ép khán giả ngửi thấy mùi bùn thối. Hình ảnh rung lắc chỗ giật rễ cây, mày bồi thêm một phát Cutaway <span class="term-bracket">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</span> từ góc Macro con iPhone quay vũng bùn trào ra. Để tăng độ sát thương, chèn ngay đầu đoạn một cái Archival (hoặc Found Footage) <span class="term-bracket">[Tư liệu quá khứ/Flashback - hình ảnh/video cũ dùng làm bằng chứng thép hoặc tạo hoài niệm]</span> clip tháng trước lúc cái cây này còn tươi tốt, đối lập với sự tàn tạ hiện tại!"</p>
+            </div>
+        </section>
+
+        <!-- SCRIPT BLOCK 3: GARDEN 3 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 3: KỊCH BẢN "GỘT RỬA BÙN ĐẤT" (THE HEALING)</h2>
+            <p class="text-slate-400 italic">(Thuộc Tủ 4: Sự giác ngộ & Chữa lành - Đặt ở Outro)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-water-healing"></div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Cảnh Aftermath (Hậu trường) sau khi làm vườn. Bạn rửa sạch đôi tay lấm lem dưới vòi nước ngoài sân. Bối cảnh: Giờ Vàng (Golden Hour), ánh nắng chiều tà xiên khoai ngược sáng. Mục đích: Thiết kế Outro xoa dịu, gột rửa tâm lý căng thẳng, dọn dẹp tâm trí để khán giả khắc sâu thông điệp cuối cùng.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Kích hoạt Hệ phó giao cảm (Parasympathetic). Chuyển động lỏng của nước và ánh sáng xiên ấm xoa dịu脑 bộ, tiết ra Oxytocin. Vết bùn đen bị rửa trôi mang lại sự thỏa mãn thị giác (Visual Satisfaction), triệt tiêu Cortisol, đưa sóng não về trạng thái Alpha thư giãn tột độ.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị:</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Góc 1 (Sự vô hình/Thăng hoa):</span> Máy A (Sony f/1.4) cắm tĩnh ngược sáng (Backlight). Vặn vòng lấy nét tay (MF) vào những hạt nước văng lên lấp lánh giữa không trung, biến hình thể bạn và đôi tay rửa bùn phía sau thành khối mờ ảo trong Bokeh nhạt nhòa.</li>
+                    <li><span class="cam-name">Góc 2 (Chuyển động chậm):</span> Máy B (iPhone 17 Pro) bật Slow-mo 120fps. Đặt ngang vòi nước, quay cảnh dòng nước trong vắt xối vào kẽ ngón tay, miết vào nhau làm lớp bùn từ từ rã ra và cuốn trôi lộ ra lớp da sạch sẽ.</li>
+                    <li><span class="cam-name">Góc 3 (Sự xả bỏ):</span> Máy C (DJI Nano) vứt tịt xuống đáy rãnh thoát nước trên nền gạch, quay cận cảnh dòng nước bùn đục ngầu cuộn xoáy trôi lững lờ về phía ống kính rồi chảy tuột xuống lỗ cống.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Xả vai 100%. Không thoại. Chuyển động xoa 2 bàn tay vào nhau cực kỳ chậm (như múa Thái Cực). Nhắm hờ mắt, hít sâu lồng ngực tận hưởng sự thanh mát, thở hắt ra nụ cười mỉm. Khóa vòi nước với "độ trễ" (chậm hơn bình thường 1 nhịp) rồi lững thững bước ra khỏi khung hình, để lại vòi nước rỏ tong tong.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Đoạn Outro này vứt mẹ hết nhạc điện tử đi, đẩy âm thanh nước chảy róc rách lên. Lớp bùn chảy tuột xuống cống ở góc con DJI là một Metaphor <span class="term-bracket">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> của sự tha thứ và gột rửa tổn thương. Giãn timecode bằng cú Slow-mo con iPhone làm cảnh Cutaway <span class="term-bracket">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</span> vuốt ve nhãn cầu. Khúc vòi nước khóa lại, cấm chèn Text kêu gọi Follow, để lại một khoảng Negative Space<span class="term-bracket">[Không gian âm/Khoảng lặng - cảnh quay tĩnh, chậm, tuyệt đối vắng mặt người (vệt nắng, khói bay, lá rơi) để dọn dẹp tâm trí khán giả, tạo điểm rơi cảm xúc]</span> bóng nắng hắt trên nền ướt dài đúng 5 giây ép khán giả ngẩn ngơ tự suy ngẫm!"</p>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <hr class="border-slate-800 my-16">
+
+        <!-- INTRO TEXT 2 -->
+        <div class="bg-card p-6 rounded-xl border border-slate-700 shadow-lg text-lg leading-relaxed">
+            <p>Dưới đây là 3 phương án kịch bản Cinematic bóc tách toàn bộ quy trình nấu bát mỳ tôm của bạn thành một trải nghiệm thao túng tâm lý đỉnh cao. Tôi đã chia nhỏ các công đoạn để ráp vào 3 Trục cảm xúc khác nhau. Phương án 1 sẽ là kỹ thuật Setup Multi-cam 1 Take ăn 3 góc.</p>
+        </div>
+
+        <!-- SCRIPT BLOCK 4: NOODLE 1 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 1: KỊCH BẢN "NHIÊN LIỆU KỶ LUẬT ĐÊM KHUYA" (THE GRIND)</h2>
+            <p class="text-slate-400 italic">(Setup Multi-cam đồng thì 1 Take - Xử lý công đoạn: Nấu nước -> Thái cà chua -> Bóc mỳ)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-knife-grind"></div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Nấu mỳ đêm không phải là ăn vặt, mà là nạp "nhiên liệu" sinh tồn của Solo Creator. Bối cảnh: Bếp Low-key, tắt đèn trần, chỉ bật đèn máy hút mùi hắt chùm sáng gắt thẳng xuống mặt thớt (Top-light). Mục đích: Lột tả sự sắc bén, cường độ làm việc dứt khoát không động tác thừa của một chuyên gia cày cuốc.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Đánh thẳng vào ASMR thính giác và "Competence Trigger" (Nhận diện năng lực). Việc bạn miết dao thái cà chua đều tăm tắp, xé nilon bạo liệt đập tan định kiến "kẻ thức khuya luộm thuộm". Tính trật tự trong chuyển động này ép não bộ khán giả tiết ra sự thỏa mãn (Gestalt), tự động dán nhãn bạn là người có kỷ luật thép.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị (Bật Record 3 máy cùng lúc):</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Máy A (Uy quyền tĩnh):</span> Sony f/1.4 cắm Tripod góc chéo 45 độ ngang hông hất nhẹ lên (Low-angle). Mở khẩu f/1.4 lấy nét cứng vào ánh mắt đanh lại. Xóa phông mù mịt hậu cảnh bếp tối tăm thành Creamy Bokeh.</li>
+                    <li><span class="cam-name">Máy B (Sự kiểm soát):</span> iPhone 17 Pro kẹp tay đòn (Boom arm) chĩa góc chim bay (Top-down) vuông góc mặt thớt. Bật 4K 60fps để bắt trọn từng nhát dao phập xuống quả cà chua.</li>
+                    <li><span class="cam-name">Máy C (Góc nghẹt thở):</span> DJI Nano dán chặt ngay giữa ngực áo bằng ngàm. Tắt chống rung. Thu trọn hai cánh tay đang múa dao và lực giật mạnh khi xé đôi gói mỳ.</li>
+                    <li><strong>Cách Sync (Đồng bộ):</strong> Cầm con dao gõ "CẠCH" một tiếng đanh gọn xuống mặt thớt gỗ (hoặc đập mạnh gói mỳ xuống bàn). Đỉnh sóng âm dội lên này sẽ là mốc để Editor chập 3 timeline làm 1. Sau đó diễn 1 lèo.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Vai gồng nhẹ, cơ mặt lạnh tanh (Deadpan). Động tác tay cực kỳ có lực. Dùng sống dao gạt múi cà chua vào nồi rào rào. Xé gói mỳ bằng một cú giật nilon tàn bạo. Đang làm, ngẩng phắt mặt lên nhìn thấu tâm can vào ống kính Máy A ném ra một câu lý thuyết sắc lẹm, rồi lập tức cúi xuống làm tiếp.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Bro, 3 cam này anh gõ dao lấy file sync rồi. Vã ngay cho anh một cái Sequence (hoặc Montage) <span class="term-bracket">[Chuỗi hành động dồn dập - ghép nhiều góc máy để nén thời gian, đẩy nhanh nhịp điệu Pacing]</span> tiếng dao thớt và xé bao bì để kích thích màng nhĩ khán giả. Lấy trục hình ảnh từ POV (Point of View) <span class="term-bracket">[Góc nhìn thứ nhất - đặt máy ngang mắt/ngực, mượn mắt khán giả ép nhập vai vật lý]</span> con DJI dán ngực để ép họ ngửi thấy mùi bếp. Xuyên suốt đoạn này phải Intercut <span class="term-bracket">[Cắt luân phiên - đan xen liên tục giữa A-roll ngồi tĩnh và B-roll ngoài bối cảnh để cân bằng Uy tín & Thực tế]</span> nhịp nhàng với khuôn mặt vô cảm của anh. Khúc anh ngẩng lên thoại, giữ nguyên tiếng xèo xèo làm In-situ <span class="term-bracket">[Thoại tại hiện trường/Vừa làm vừa nói - nhìn thẳng camera khi đang làm việc, phá vỡ khoảng cách, tạo sự chân thật]</span> cho máu!"</p>
+            </div>
+        </section>
+
+        <!-- SCRIPT BLOCK 5: NOODLE 2 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 2: KỊCH BẢN "SỰ CHỜ ĐỢI VÔ TRI" (THE CHAOS & LIMBO)</h2>
+            <p class="text-slate-400 italic">(Thuộc Tủ 1 & 2 - Xử lý công đoạn: Nước sôi bùng -> Cho mỳ vào -> Đợi chín -> Cắt hành luộm thuộm)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-boil-chaos">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Phơi bày khoảng thời gian chết vô nghĩa. Nồi nước sôi sùng sục văng bọt trắng, vắt mỳ cong queo từ từ nhũn nát. Lột tả sự bực dọc, mòn mỏi, bào mòn ý chí trước áp lực deadline.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Tương phản Động/Tĩnh và Kích thích Hạch hạnh nhân (Amygdala). Nồi nước hỗn loạn bốc hơi ngùn ngụt (Động) đối lập hoàn toàn với sự bất động mệt mỏi của bạn (Tĩnh). Sự luẩn quẩn này ép脑 khán giả rơi vào "Bất lực tập nhiễm" (Learned Helplessness), tạo sự đồng cảm sâu sắc với sự bế tắc của bạn lúc đêm khuya.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị:</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Góc 1 (Sự vỡ nát):</span> Máy B (iPhone 17 Pro) dí sát rạt vào mặt nồi, bật Slow-mo 120fps kết hợp Macro. Ghi lại cảnh bọt nước sôi đỏ quạch cuồn cuộn vỡ ra, nhấn chìm vắt mỳ đang nhũn nhão. Cố tình cầm tay (Hand-held) cho khung hình rung nhẹ.</li>
+                    <li><span class="cam-name">Góc 2 (Sự ngột ngạt):</span> Máy C (DJI Nano) ném bệt dưới sàn bếp, hất chéo lên. Mặc kệ hơi nước bốc lên làm mờ ống kính, quay cảnh đôi tay lười biếng cầm kéo xấp xõa cắt từng khúc hành hoa rơi vương vãi lả tả xuống sàn.</li>
+                    <li><span class="cam-name">Góc 3 (Bóng ma vô hồn):</span> Máy A (Sony f/1.4) cắm phía đối diện bếp. Lấy nét tay (MF) vào cột khói cuộn lên. Cơ thể bạn đứng khoanh tay dựa lưng ở hậu cảnh bị nhòe đi (Out of focus) thành một cái bóng.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Xả vai, lộ rõ sự kiệt quệ. Đứng gù lưng, nhăn mặt vì hơi nóng hắt lên. Dùng đũa chọc chọc vắt mỳ dìm xuống một cách thô bạo vô tri. Đứng bất động chôn chân 3 giây, gục đầu vò tóc thở hắt ra não nề.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Khúc đợi mỳ chín này ép nhịp Pacing rớt xuống đáy cho anh. Chèn ngay nhát Cutaway <span class="term-bracket">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</span> bằng cú Macro con iPhone dí vào váng mỡ loang lổ. Khúc vắt mỳ rã nát trong bọt nước sôi chính là một Metaphor <span class="term-bracket">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> ám chỉ ý chí đang bị bào mòn. Để đẩy bi kịch, lót nhẹ đoạn Archival (hoặc Found Footage) <span class="term-bracket">[Tư liệu quá khứ/Flashback - hình ảnh/video cũ dùng làm bằng chứng thép hoặc tạo hoài niệm]</span> clip quá khứ lúc anh ngồi ăn nhà hàng sang chảnh vào, đối lập bôm bốp với sự thảm hại ở xó bếp hiện tại!"</p>
+            </div>
+        </section>
+
+        <!-- SCRIPT BLOCK 6: NOODLE 3 -->
+        <section class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white border-l-4 border-accent pl-4">PHƯƠNG ÁN 3: KỊCH BẢN "SỰ VỖ VỀ CỦA LÒNG ĐỎ TRỨNG" (THE HEALING)</h2>
+            <p class="text-slate-400 italic">(Thuộc Tủ 4 - Xử lý công đoạn: Gắp mỳ ra bát -> Đập trứng trần (poached egg) vào nồi -> Đổ nước dùng)</p>
+            
+            <!-- Abstract Art -->
+            <div class="art-box art-egg-healing"></div>
+
+            <div class="bg-card p-8 rounded-xl border border-slate-800 space-y-4 leading-relaxed text-justify">
+                <p><span class="script-part">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Tạo điểm rơi cảm xúc xoa dịu ở phần Outro. Bát mỳ sứ đã gắp sẵn mỳ tơi xốp, trứng lòng đào núng nính đặt lên trên, nước dùng đỏ au rưới xuống. Bối cảnh: Đem bát mỳ ra bàn làm việc, đánh đèn ngược sáng (Backlight) hắt qua làn khói nóng.</p>
+                
+                <p><span class="script-part">Phần 2 - Logic Tâm lý học:</span> Thỏa mãn thị giác (Visual Satisfaction) và Kích hoạt Oxytocin. Sự óng ả của lòng đỏ trứng đặc sánh trào ra quyện vào mỳ là cú nổ ASMR thị giác tột độ. Nó đánh thẳng vào Vùng khen thưởng (Reward System) của não bộ, tiết ra lượng lớn Dopamine xoa dịu mệt mỏi. Khán giả được "ăn bằng mắt", mọi đề phòng bị tháo dỡ để đón nhận thông điệp cuối.</p>
+                
+                <p><span class="script-part">Phần 3 - Thiết kế Đặt máy & Thiết bị:</span></p>
+                <ul class="list-none space-y-2 pl-4 border-l-2 border-slate-700">
+                    <li><span class="cam-name">Góc 1 (Cú nổ giác quan):</span> Máy B (iPhone 17 Pro) bật Slow-mo 120fps. Chĩa góc 45 độ dí sát miệng bát. Ghi lại cú chấn động: Mũi đũa đâm thủng màng quả trứng trần, lòng đỏ sền sệt rực rỡ tuôn ra ôm trọn lấy sợi mỳ và hành lá.</li>
+                    <li><span class="cam-name">Góc 2 (Góc chạm đáy):</span> Máy C (DJI Nano) đặt chui sát xuống tận đáy chiếc bát sứ từ lúc chưa có gì. Hất ngược lên ghi lại khoảnh khắc "thác lũ" nước dùng cà chua ụp thẳng xuống, che kín thấu kính (Dùng làm Transition chuyển cảnh cực gắt).</li>
+                    <li><span class="cam-name">Góc 3 (Sự thăng hoa vô hình):</span> Máy A (Sony f/1.4) cắm tĩnh. Vặn vòng lấy nét tay (MF) khóa chặt vào dải khói mỏng manh uốn lượn bốc lên từ mặt bát, vạn vật xung quanh chìm vào màn đêm tối mịt.</li>
+                </ul>
+
+                <p><span class="script-part">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Cơ thể thả lỏng tối đa. Mọi thao tác gắp mỳ, rưới nước lèo, chọc trứng phải có "độ trễ" (chậm hơn bình thường 0.5 nhịp) nâng niu như một nghi thức. Khi hoàn thiện, nhắm mắt hít một hơi thật sâu lồng ngực căng tràn hương vị. Môi khẽ mỉm cười xoa dịu, gắp đũa mỳ đầu tiên đưa lên miệng nhai chậm rãi.</p>
+
+                <p><span class="script-part">Phần 5 - Cách nói với Editor:</span><br>
+                "Outro bát mỳ này vứt hết text kêu gọi đi! Cái cảnh đũa chọc thủng màng trứng cho lòng đỏ sóng sánh trào ra là một Metaphor <span class="term-bracket">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> vĩ đại cho quả ngọt sau chuỗi ngày cày cuốc. Tận dụng con iPhone 120fps làm Cutaway <span class="term-bracket">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông diện, che lỗi gãy nhịp]</span> vuốt ve nhãn cầu cực mạnh. Khúc cuối, dọn sạch khung hình, để lại cột khói bốc lên bát mỳ nghi ngút làm một khoảng Negative Space <span class="term-bracket">[Không gian âm/Khoảng lặng - cảnh quay tĩnh, chậm, tuyệt đối vắng mặt người (vệt nắng, khói bay, lá rơi) để dọn dẹp tâm trí khán giả, tạo điểm rơi cảm xúc]</span> tĩnh lặng 4 giây, ép khán giả nuốt nước bọt ực một cái rồi văng ra khỏi video!"</p>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <hr class="border-slate-800 my-16">
+
+        <!-- 25 FLASHCARDS SECTION -->
+        <section class="space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-2">Flashcards Ôn Tập</h2>
+                <p class="text-slate-400">25 Thuật ngữ & Kỹ thuật rút ra từ kịch bản</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Javascript will populate this to keep HTML clean, or hardcode. Hardcoding as requested -->
+                <!-- Card 1 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">1. Setup 3 Máy Đồng Thì</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Kỹ thuật dùng 3 camera quay cùng lúc (1 take ăn 3 góc), tối ưu thời gian cho Solo Creator.</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">2. Low-angle (Góc thấp)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Đặt máy thấp hất nhẹ lên, tạo sự uy quyền, tập trung vào biểu cảm khuôn mặt.</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">3. Top-down (Góc chim bay)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Máy chĩa thẳng 90 độ từ trên không xuống, bắt trọn chi tiết bao quát trên mặt phẳng (thớt, chậu cây).</div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">4. Sync (Đồng bộ)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Tạo một tiếng động lớn (vỗ tay, gõ dao) tạo đỉnh sóng âm để Editor chập các timeline của nhiều máy lại làm 1.</div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">5. Sequence / Montage</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Chuỗi hành động dồn dập - ghép nhiều góc máy để nén thời gian, đẩy nhanh nhịp điệu Pacing.</div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">6. Intercut (Cắt luân phiên)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Đan xen liên tục giữa A-roll (ngồi tĩnh) và B-roll (ngoài bối cảnh) để cân bằng Uy tín & Thực tế.</div>
+                </div>
+                <!-- Card 7 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">7. Metaphor (Ẩn dụ thị giác)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Mượn đồ vật, biểu tượng (mầm cây, vắt mỳ nát...) để cụ thể hóa một khái niệm trừu tượng vô hình.</div>
+                </div>
+                <!-- Card 8 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">8. In-situ (Thoại tại hiện trường)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Vừa làm vừa nói, nhìn thẳng camera phá vỡ khoảng cách, tạo sự chân thật.</div>
+                </div>
+                <!-- Card 9 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">9. POV (Point of View)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Góc nhìn thứ nhất, đặt máy ngang ngực/mắt, mượn mắt khán giả ép nhập vai vật lý.</div>
+                </div>
+                <!-- Card 10 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">10. Cutaway</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện hoặc che lỗi gãy nhịp.</div>
+                </div>
+                <!-- Card 11 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">11. Archival / Found Footage</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Tư liệu quá khứ, dùng hình ảnh/video cũ làm bằng chứng thép hoặc tạo sự hoài niệm, đối lập.</div>
+                </div>
+                <!-- Card 12 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">12. Negative Space</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Không gian âm/Khoảng lặng - cảnh quay tĩnh, vắng người, dùng ở cuối để khán giả tự suy ngẫm.</div>
+                </div>
+                <!-- Card 13 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">13. Earthing / Grounding</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Cơ chế tâm lý chạm đất. Nhìn tay cắm vào bùn giúp hạ Cortisol, tạo sự tin tưởng tuyệt đối.</div>
+                </div>
+                <!-- Card 14 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">14. Hiệu ứng Zeigarnik</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Ám ảnh sự giằng co, sự chật vật tạo ra ngột ngạt vật lý ép khán giả nín thở theo người trong video.</div>
+                </div>
+                <!-- Card 15 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">15. Pratfall Effect</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Tổn thương sinh thiện cảm. Dám thể hiện sự sai lầm/ngu ngốc là cách thao túng lòng tin đỉnh cao.</div>
+                </div>
+                <!-- Card 16 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">16. Hệ phó giao cảm</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Kích hoạt thông qua hình ảnh lỏng (nước), ánh sáng ấm để tiết Oxytocin, đưa não về trạng thái thư giãn.</div>
+                </div>
+                <!-- Card 17 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">17. Competence Trigger</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Nhận diện năng lực thông qua hành động dứt khoát, gọn gàng, đập tan định kiến (VD: thái cà chua đều).</div>
+                </div>
+                <!-- Card 18 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">18. Bất lực tập nhiễm</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Learned Helplessness - Sự luẩn quẩn vô tri ép não khán giả đồng cảm với sự bế tắc, mệt mỏi.</div>
+                </div>
+                <!-- Card 19 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">19. Visual Satisfaction</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Thỏa mãn thị giác (VD: bùn trôi, lòng đỏ trứng vỡ) tiết ra Dopamine, xoa dịu não bộ và tháo dỡ đề phòng.</div>
+                </div>
+                <!-- Card 20 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">20. Creamy Bokeh</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Hiệu ứng xóa phông mờ mịt ở hậu cảnh, thường đạt được bằng lens khẩu độ lớn (f/1.4).</div>
+                </div>
+                <!-- Card 21 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">21. Macro Shot</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Cảnh quay siêu cận cảnh (dí sát rạt) để thấy chi tiết cực nhỏ (vết nứt đất, váng mỡ).</div>
+                </div>
+                <!-- Card 22 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">22. Backlight</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Ánh sáng ngược (đánh từ phía sau chủ thể), tạo viền sáng, khói nổi bật trên nền tối.</div>
+                </div>
+                <!-- Card 23 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">23. Slow-mo 120fps</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Quay khung hình cao rồi làm chậm lại, dùng để đặc tả chuyển động lỏng (nước, trứng) vuốt ve nhãn cầu.</div>
+                </div>
+                <!-- Card 24 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">24. Deadpan Acting</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Diễn xuất khuôn mặt lạnh tanh, vô cảm, tập trung vào hành động dứt khoát để thể hiện sự kỷ luật.</div>
+                </div>
+                <!-- Card 25 -->
+                <div class="bg-card border border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-3 text-center text-sm font-bold text-highlight border-b border-slate-700 h-16 flex items-center justify-center">25. Focus Pull (MF)</div>
+                    <div class="p-4 text-xs text-slate-300 flex-grow">Vặn vòng lấy nét bằng tay để khóa nét vào một chi tiết cụ thể (hạt nước, cột khói) làm mờ xung quanh.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer: Exactly 128px height as requested -->
+    <footer class="bg-slate-900 border-t border-slate-800 h-[128px] w-full flex items-center justify-center px-4">
+        <div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center text-sm text-slate-400 gap-4">
+            <div class="max-w-2xl text-center md:text-left">
+                <p class="font-semibold text-white mb-1">Các kênh hiện tại .</p>
+                <p class="text-xs">Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.</p>
+            </div>
+            
+            <div class="flex space-x-4">
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-slate-400 hover:text-red-500 transition text-2xl" title="Youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-slate-400 hover:text-white transition text-2xl" title="Tiktok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-slate-400 hover:text-blue-500 transition text-2xl" title="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
