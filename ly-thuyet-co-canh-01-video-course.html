@@ -103,45 +103,7 @@
     </header>
 
     <!-- AI ASSISTANT SECTION (NEW FEATURE) -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <div class="bg-card rounded-2xl border border-primary/50 shadow-[0_0_30px_rgba(255,215,0,0.15)] relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-primary to-purple-500"></div>
-            <div class="p-8 md:p-10">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-black text-2xl">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white">Trợ Lý Đạo Diễn AI (D.O.P)</h2>
-                        <p class="text-gray-400">Ứng dụng Gemini AI để tự động phân bổ 3 cỡ cảnh thực chiến.</p>
-                    </div>
-                </div>
-
-                <div class="space-y-4 relative">
-                    <label class="block text-sm font-semibold text-gray-300">Nhập bối cảnh, sản phẩm hoặc chủ đề bạn muốn quay:</label>
-                    <textarea id="aiInput" rows="3" class="w-full bg-[#111] border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-gray-600" placeholder="VD: Quảng cáo trà an thần trị mất ngủ. Nỗi đau là trằn trọc cả đêm. Bối cảnh ở phòng ngủ lúc 2h sáng..."></textarea>
-                    
-                    <button id="generateBtn" onclick="generateScript()" class="bg-primary hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-xl transition-transform transform hover:scale-105 flex items-center gap-2">
-                        <i id="btnIcon" class="fa-solid fa-clapperboard"></i>
-                        <i id="loadingSpinner" class="fa-solid fa-circle-notch animate-spin hidden"></i>
-                        <span id="btnText">Lên Kịch Bản Ngay</span>
-                    </button>
-                    
-                    <p id="errorMsg" class="text-red-500 text-sm hidden mt-2"></p>
-                </div>
-
-                <!-- AI Output Box -->
-                <div id="aiOutputContainer" class="mt-8 hidden">
-                    <div class="border-t border-gray-800 pt-6">
-                        <h3 class="text-lg font-bold text-gray-400 mb-4 uppercase tracking-widest"><i class="fa-solid fa-film mr-2 text-primary"></i>Kịch Bản Của Bạn:</h3>
-                        <div id="aiOutput" class="ai-content bg-[#111] p-6 rounded-xl border border-gray-700 text-gray-300">
-                            <!-- Output injected here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- MAIN CONTENT: 3 SHOTS & EXERCISES -->
     <main class="max-w-5xl mx-auto px-6 py-8 space-y-16">
