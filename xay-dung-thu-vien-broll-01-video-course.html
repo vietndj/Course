@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng thư viện Broll -01</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #e5e5e5; }
+        
+        /* Typography utilities for formatting original text */
+        .text-body { line-height: 1.8; margin-bottom: 1rem; color: #d1d5db; }
+        .highlight-term { color: #fbbf24; font-weight: 600; }
+        .bracket-text { color: #9ca3af; font-style: italic; background: rgba(255,255,255,0.05); padding: 0 4px; border-radius: 4px; }
+        .part-title { color: #60a5fa; font-weight: 700; display: inline-block; margin-right: 8px; }
+
+        /* CSS Abstract Art Containers */
+        .art-box { width: 100%; aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+
+        /* Tủ 1: Chaos - Fast, erratic, red/orange */
+        .art-chaos { background: #1a0505; }
+        .chaos-shape { position: absolute; background: #dc2626; mix-blend-mode: screen; filter: blur(4px); animation: jitter 0.2s infinite alternate; }
+        .chaos-1 { top: 20%; left: 10%; width: 40%; height: 60%; transform: skew(20deg); animation-duration: 0.15s; }
+        .chaos-2 { bottom: 10%; right: 20%; width: 50%; height: 30%; background: #ea580c; transform: skew(-15deg); animation-duration: 0.25s; }
+        .chaos-3 { top: 40%; left: 30%; width: 80%; height: 10%; background: #ef4444; transform: rotate(45deg); animation-duration: 0.1s; }
+        @keyframes jitter { 0% { transform: translate(0, 0) scale(1); opacity: 0.8; } 100% { transform: translate(8px, -8px) scale(1.05); opacity: 1; } }
+
+        /* Tủ 2: Limbo - Slow, grayscale, static, fading */
+        .art-limbo { background: #111827; display: flex; justify-content: center; align-items: center; }
+        .limbo-circle { position: absolute; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; animation: pulse-slow 8s infinite alternate ease-in-out; }
+        .limbo-1 { width: 80%; height: 80%; border-width: 2px; }
+        .limbo-2 { width: 60%; height: 60%; border-color: rgba(255,255,255,0.05); animation-delay: -2s; }
+        .limbo-3 { width: 40%; height: 40%; border-color: rgba(255,255,255,0.02); animation-delay: -4s; }
+        .limbo-drop { position: absolute; top: 20%; width: 2px; height: 15px; background: rgba(255,255,255,0.3); animation: drop 6s infinite ease-in; }
+        @keyframes pulse-slow { 0% { transform: scale(0.95); opacity: 0.5; } 100% { transform: scale(1.05); opacity: 1; } }
+        @keyframes drop { 0% { top: 20%; opacity: 0; } 50% { opacity: 1; } 100% { top: 80%; opacity: 0; } }
+
+        /* Tủ 3: Grind - Structured, grid, pulsing rhythmically */
+        .art-grind { background: #0f172a; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px; animation: pan-bg 10s linear infinite; }
+        .grind-block { position: absolute; background: #eab308; box-shadow: 4px 4px 0 #ffffff; animation: mechanical 2s infinite step-end; }
+        .grind-1 { top: 30%; left: 30%; width: 40px; height: 40px; }
+        .grind-2 { top: 50%; left: 50%; width: 60px; height: 20px; background: #3b82f6; animation-delay: 0.5s; }
+        @keyframes pan-bg { 0% { background-position: 0 0; } 100% { background-position: -40px -40px; } }
+        @keyframes mechanical { 0% { transform: translate(0, 0); } 25% { transform: translate(20px, 0); } 50% { transform: translate(20px, 20px); } 75% { transform: translate(0, 20px); } 100% { transform: translate(0, 0); } }
+
+        /* Tủ 4: Epiphany - Soft glowing orbs, blur, smooth */
+        .art-epiphany { background: #022c22; overflow: hidden; }
+        .epiphany-orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.6; animation: float-smooth 10s infinite alternate ease-in-out; }
+        .epi-1 { top: -10%; left: -10%; width: 60%; height: 60%; background: #fcd34d; }
+        .epi-2 { bottom: -20%; right: -10%; width: 70%; height: 70%; background: #14b8a6; animation-delay: -5s; }
+        .epi-3 { top: 40%; left: 40%; width: 30%; height: 30%; background: #fffbeb; filter: blur(20px); animation-duration: 7s; }
+        @keyframes float-smooth { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -40px) scale(1.2); } }
+
+        /* Tủ 5: Raw - Noise, broken, jagged, asymmetrical */
+        .art-raw { background: #171717; position: relative; }
+        .art-raw::before { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); opacity: 0.15; z-index: 1; }
+        .raw-tear { position: absolute; background: #a3a3a3; clip-path: polygon(0% 0%, 100% 10%, 90% 100%, 10% 90%, 20% 40%); width: 60%; height: 60%; top: 20%; left: 20%; z-index: 2; border-left: 5px solid #ef4444; }
+        .raw-scratch { position: absolute; width: 100%; height: 2px; background: #fff; top: 45%; transform: rotate(-5deg); z-index: 3; animation: scratch-flash 3s infinite; }
+        @keyframes scratch-flash { 0%, 95%, 100% { opacity: 0; } 96% { opacity: 1; } 98% { opacity: 0; } 99% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-16 px-4 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent z-0 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-amber-300 mb-10 tracking-tight uppercase">
+                Xây dựng thư viện Broll -01
+            </h1>
+            
+            <div class="bg-gray-900/80 backdrop-blur-sm border border-gray-800 p-8 md:p-10 rounded-2xl shadow-2xl text-left">
+                <p class="text-body text-lg font-medium">
+                    ĐÁNH GIÁ HỆ THỐNG TỦ B-ROLL:<br><br>
+                    Hệ thống 4 tủ theo Trục Tâm lý của bạn đã xuất sắc, đi thẳng vào Hệ Limbic (Não cảm xúc) và thoát hoàn toàn khỏi tư duy của thợ quay phim thông thường. Tuy nhiên, với mục tiêu "Tính chân thực (Authenticity) là ưu tiên hàng đầu", bạn <strong class="text-red-400">BẮT BUỘC PHẢI BỔ SUNG TỦ 5: SỰ THÔ MỘC & SAI LẦM (The Raw & Unfiltered)</strong>. Khán giả hiện đại có màng lọc phòng thủ cực cao với sự điện ảnh hoàn hảo; họ chỉ tin và đồng cảm khi bạn dám chìa ra vết xước, cú quay hỏng (NG), hay file cũ vỡ nét.<br><br>
+                    Dưới đây là kịch bản đạo diễn chi tiết cho 5 Tủ. Tại mỗi tủ, tôi xây dựng <strong>3 ví dụ góc máy liên kết chặt chẽ với nhau thành 1 Chuỗi (Sequence) hoàn chỉnh</strong>, tận dụng triệt để hệ thống 3 Camera của bạn để thao túng nhãn cầu khán giả.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content: The 5 'Tủ' -->
+    <main class="max-w-6xl mx-auto px-4 pb-20 space-y-24">
+
+        <!-- Tủ 1 -->
+        <section class="grid md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-5 sticky top-8">
+                <div class="art-box art-chaos">
+                    <div class="chaos-shape chaos-1"></div>
+                    <div class="chaos-shape chaos-2"></div>
+                    <div class="chaos-shape chaos-3"></div>
+                </div>
+            </div>
+            <div class="md:col-span-7 bg-gray-900 border border-gray-800 p-8 rounded-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold text-red-500 mb-6 border-b border-gray-800 pb-4">📂 TỦ 1: SỰ NGỘT NGẠT & HỖN LOẠN (The Chaos)</h2>
+                
+                <p class="text-body"><span class="part-title">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Chuỗi "Cơn bão Deadline". Lột tả sự bế tắc, quá tải thông tin ngay đầu video để chốt chặt sự đồng cảm. Bối cảnh: Bàn làm việc ngổn ngang ban đêm, ánh sáng màn hình hắt lên mặt.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 2 - Logic Tâm lý học:</span> Đánh vào hạch hạnh nhân (Amygdala) gây hội chứng "Quá tải nhận thức". Sự rung lắc vật lý, chuyển động nhanh và khung hình chật hẹp phá vỡ quy luật Gestalt (Tính liên tục), ép não khán giả tiết Cortisol, khiến họ tức ngực và bồn chồn y như bạn.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 3 - Thiết kế Đặt máy & Thiết bị (3 Ví dụ góc máy tạo thành 1 chuỗi):</span></p>
+                <ul class="list-disc pl-5 text-body space-y-2 mb-4">
+                    <li><strong>Góc 1 (Sự giam cầm):</strong> Máy A (Sony f/1.4) cắm Tripod góc chéo 45 độ ngang vai. Lấy nét Macro vào con chuột máy tính bạn đang click điên cuồng, cơ thể bạn ở hậu cảnh bị xóa phông (Creamy Bokeh) mù mịt nhưng thấy rõ sự lắc lư bứt rứt.</li>
+                    <li><strong>Góc 2 (Áp lực nhồi nhét):</strong> Máy B (iPhone 17 Pro) kẹp ngàm chĩa thẳng 90 độ từ trên cao xuống bàn phím (Top-down). Bật Timelapse quay đôi tay gạch xóa, bới móc giấy tờ rào rào.</li>
+                    <li><strong>Góc 3 (Góc nhìn nghẹt thở):</strong> Máy C (DJI Nano) dán sát ngực áo, tắt hoàn toàn chống rung. Chĩa hất ngược lên cằm, ghi lại nhịp thở gấp gáp và khuôn mặt lờ mờ dưới ánh sáng xanh.</li>
+                </ul>
+
+                <p class="text-body"><span class="part-title">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Cơ thể tuyệt đối không được tĩnh. Vai gồng cứng, tròng mắt đảo liên tục không tiêu cự. Nhịp thở gấp. Đỉnh điểm là bàn tay vò nát một tờ giấy, quăng mạnh thẳng ra khỏi khung hình rồi ôm đầu.</p>
+
+                <p class="text-body bg-black/50 p-4 rounded-lg border border-gray-700 italic">
+                    <span class="part-title text-gray-400 not-italic">Phần 5 - Cách nói với Editor:</span><br>
+                    "Đoạn Hook này em nện cho anh một <span class="highlight-term">Sequence (hoặc Montage)</span> <span class="bracket-text">[Chuỗi hành động dồn dập - ghép nhiều góc máy để nén thời gian, đẩy nhanh nhịp điệu Pacing]</span> ép nhịp tim khán giả lên max. Dùng góc <span class="highlight-term">POV (Point of View)</span><span class="bracket-text">[Góc nhìn thứ nhất - đặt máy ngang mắt/ngực, mượn mắt khán giả ép nhập vai vật lý]</span> từ con DJI làm mạch chính, cứ 1 giây lại giã một nhát <span class="highlight-term">Cutaway</span> <span class="bracket-text">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</span> tay gạch xóa tốc độ cao từ góc Top-down. Cắt đúng trên nhịp kick bass, cấm dùng chuyển cảnh mượt!"
+                </p>
+            </div>
+        </section>
+
+        <!-- Tủ 2 -->
+        <section class="grid md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-5 md:order-2 sticky top-8">
+                <div class="art-box art-limbo">
+                    <div class="limbo-circle limbo-1"></div>
+                    <div class="limbo-circle limbo-2"></div>
+                    <div class="limbo-circle limbo-3"></div>
+                    <div class="limbo-drop"></div>
+                </div>
+            </div>
+            <div class="md:col-span-7 md:order-1 bg-gray-900 border border-gray-800 p-8 rounded-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-400 mb-6 border-b border-gray-800 pb-4">📂 TỦ 2: THỜI GIAN CHẾT & SỰ MÒN MỎI (The Limbo)</h2>
+                
+                <p class="text-body"><span class="part-title">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Chuỗi "Sự tan rữa". Ép nhịp tim khán giả chậm lại, nếm trải sự vô định, dậm chân tại chỗ. Bối cảnh: Căn phòng tĩnh mịch, thiếu sáng (Low-key).</p>
+                
+                <p class="text-body"><span class="part-title">Phần 2 - Logic Tâm lý học:</span> Tương phản Động/Tĩnh. Mắt người luôn thèm khát chuyển động sống. Khi bạn tước đoạt con người khỏi khung hình và ép họ nhìn chuyển động cơ học siêu chậm lặp đi lặp lại, não bộ rơi vào trạng thái "Bất lực tập nhiễm", tạo ra sự mòn mỏi có chủ đích.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 3 - Thiết kế Đặt máy & Thiết bị (3 Ví dụ góc máy tạo thành 1 chuỗi):</span></p>
+                <ul class="list-disc pl-5 text-body space-y-2 mb-4">
+                    <li><strong>Góc 1 (Sự luẩn quẩn):</strong> Máy C (DJI Nano) vứt ngửa dưới gầm bàn chĩa thẳng lên trần nhà, quay cánh quạt trần quay lờ đờ, chịu noise tự nhiên để tăng độ u ám.</li>
+                    <li><strong>Góc 2 (Sự ngưng đọng):</strong> Máy B (iPhone 17 Pro) bật Macro, quay Slow-mo 120fps dí sát vào thành ly cafe đá tàn tạ, quay giọt nước đang ngưng tụ và từ từ trôi tuột xuống đế ly.</li>
+                    <li><strong>Góc 3 (Sự hao mòn):</strong> Máy A (Sony f/1.4) đặt sát mặt sàn (Low-angle), quay vệt nắng hắt qua khe cửa đang trượt cực kỳ chậm chạp trên bức tường xám.</li>
+                </ul>
+
+                <p class="text-body"><span class="part-title">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> KHÔNG DIỄN. Tuyệt đối vắng mặt người. Chỉ có tiếng tíc tắc đồng hồ hoặc tiếng thở dài vang lên. Nếu xuất hiện, bạn chỉ là một cái bóng (Silhouette) gục đầu ở góc tối, trạng thái "Hold Frame" (đông cứng như tượng).</p>
+
+                <p class="text-body bg-black/50 p-4 rounded-lg border border-gray-700 italic">
+                    <span class="part-title text-gray-400 not-italic">Phần 5 - Cách nói với Editor:</span><br>
+                    "Đoạn này anh đang nói về thất bại, em kéo dài frame hình ra để phủ toàn bộ lớp <span class="highlight-term">Negative Space</span> <span class="bracket-text">[Không gian âm/Khoảng lặng - cảnh quay tĩnh, chậm, tuyệt đối vắng mặt người (vệt nắng, khói bay, lá rơi) để dọn dẹp tâm trí khán giả, tạo điểm rơi cảm xúc]</span> bóng quạt trần dài đúng 4 giây. Hình ảnh giọt nước trôi xuống là một <span class="highlight-term">Metaphor</span><span class="bracket-text">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> ám chỉ thời gian bị bào mòn. Kẹp thêm một đoạn <span class="highlight-term">Archival (hoặc Found Footage)</span> <span class="bracket-text">[Tư liệu quá khứ/Flashback - hình ảnh/video cũ dùng làm bằng chứng thép hoặc tạo hoài niệm]</span> clip vỡ nét anh quay từ 3 năm trước để thấy anh đã dậm chân tại chỗ lâu thế nào."
+                </p>
+            </div>
+        </section>
+
+        <!-- Tủ 3 -->
+        <section class="grid md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-5 sticky top-8">
+                <div class="art-box art-grind">
+                    <div class="grind-block grind-1"></div>
+                    <div class="grind-block grind-2"></div>
+                </div>
+            </div>
+            <div class="md:col-span-7 bg-gray-900 border border-gray-800 p-8 rounded-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold text-yellow-500 mb-6 border-b border-gray-800 pb-4">📂 TỦ 3: SỰ CÀY CUỐC & KỶ LUẬT (The Grind)</h2>
+                
+                <p class="text-body"><span class="part-title">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Chuỗi "Trạng thái Dòng chảy (Flow)". Xây dựng uy tín ngầm (Implicit Authority) bằng hành động đổ mồ hôi, đập tan định kiến "chuyên gia mõm". Bối cảnh: Bàn làm việc setup gọn gàng, đánh đèn nổi khối gắt (High-contrast).</p>
+                
+                <p class="text-body"><span class="part-title">Phần 2 - Logic Tâm lý học:</span> Hiệu ứng ASMR thị giác. Nhìn một người thao tác làm việc lặp lại vô cùng chính xác tạo ra sự thỏa mãn tính trật tự. Cơ chế Competence Trigger trong não sẽ tự động dán nhãn bạn là người có kỷ luật thép và đáng tin cậy.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 3 - Thiết kế Đặt máy & Thiết bị (Setup 3 máy quay cùng lúc, vỗ tay sync âm thanh):</span></p>
+                <ul class="list-disc pl-5 text-body space-y-2 mb-4">
+                    <li><strong>Góc 1 (Sự vững chãi):</strong> Máy A (Sony f/1.8) cắm Tripod ngang ngực chính diện. Lấy nét vào khuôn mặt đanh lại đang đọc sách/nhìn màn hình, thể hiện uy quyền chuyên gia.</li>
+                    <li><strong>Góc 2 (Sự sắc bén):</strong> Máy B (iPhone 17 Pro) kẹp ngàm Top-down chĩa xuống mặt bàn, quay góc chim bay cảnh đôi tay cầm bút gạch chân tài liệu dứt khoát.</li>
+                    <li><strong>Góc 3 (Góc thô ráp):</strong> Máy C (DJI Nano) đặt lấp ló sau cốc cafe, hắt ngang từ mặt bàn lên thẳng yết hầu, hứng chịu ánh sáng hắt vào mặt.</li>
+                </ul>
+
+                <p class="text-body"><span class="part-title">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Mắt khóa chặt vào công việc. Động tác lật giấy, gõ phím cực kỳ có lực, tạo âm thanh "xoẹt", "cạch" dứt điểm. Nhịp thở êm. Đang làm việc, bất ngờ ngẩng mặt nhìn thẳng vào ống kính Máy A ném ra 1 câu chốt lý thuyết, mỉm cười rồi lại cúi xuống làm tiếp.</p>
+
+                <p class="text-body bg-black/50 p-4 rounded-lg border border-gray-700 italic">
+                    <span class="part-title text-gray-400 not-italic">Phần 5 - Cách nói với Editor:</span><br>
+                    "Khúc cày cuốc này em chơi <span class="highlight-term">Intercut</span> <span class="bracket-text">[Cắt luân phiên - đan xen liên tục giữa A-roll ngồi tĩnh và B-roll ngoài bối cảnh để cân bằng Uy tín & Thực tế]</span> nhịp nhàng giữa cận mặt anh và đặc tả đôi tay. Chỗ anh ngẩng lên nhìn máy, em giữ nguyên âm thanh hiện trường làm <span class="highlight-term">In-situ</span> <span class="bracket-text">[Thoại tại hiện trường/Vừa làm vừa nói - nhìn thẳng camera khi đang làm việc, phá vỡ khoảng cách, tạo sự chân thật]</span>. Tắt nhạc nền đi, kích volume âm thanh gõ phím lạch cạch lên để vuốt ve màng nhĩ khán giả!"
+                </p>
+            </div>
+        </section>
+
+        <!-- Tủ 4 -->
+        <section class="grid md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-5 md:order-2 sticky top-8">
+                <div class="art-box art-epiphany">
+                    <div class="epiphany-orb epi-1"></div>
+                    <div class="epiphany-orb epi-2"></div>
+                    <div class="epiphany-orb epi-3"></div>
+                </div>
+            </div>
+            <div class="md:col-span-7 md:order-1 bg-gray-900 border border-gray-800 p-8 rounded-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-400 mb-6 border-b border-gray-800 pb-4">📂 TỦ 4: SỰ GIÁC NGỘ & CHỮA LÀNH (Epiphany & Healing)</h2>
+                
+                <p class="text-body"><span class="part-title">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Chuỗi "Thanh tẩy". Tạo điểm rơi cảm xúc Outro, dọn dẹp tâm trí khán giả để họ ghi nhớ thông điệp cuối trong sự bình yên. Bối cảnh: Ánh sáng Golden Hour (ban mai) xiên qua cửa sổ, hoặc phông nền tối nhung tôn vinh khói/nước.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 2 - Logic Tâm lý học:</span> Kích hoạt Hệ phó giao cảm (Parasympathetic). Mắt nhìn thấy ánh sáng xiên ấm, chuyển động lơ lửng của chất khí/lỏng sẽ kích thích hormone an thần (Oxytocin), đưa sóng não từ Beta (căng thẳng) về Alpha (thư giãn sâu).</p>
+                
+                <p class="text-body"><span class="part-title">Phần 3 - Thiết kế Đặt máy & Thiết bị (3 Ví dụ góc máy tạo thành 1 chuỗi):</span></p>
+                <ul class="list-disc pl-5 text-body space-y-2 mb-4">
+                    <li><strong>Góc 1 (Vô hình hóa vật chất):</strong> Máy A (Sony f/1.4) cắm tĩnh. Vặn vòng lấy nét tay (Manual Focus) chầm chậm vào chùm hạt bụi đang bay lơ lửng trong vệt nắng xiên, để cơ thể bạn chìm vào Bokeh mù mịt phía sau.</li>
+                    <li><strong>Góc 2 (Sự gột rửa):</strong> Máy B (iPhone 17 Pro) quay Slow-mo 60fps góc chéo trên cao nhìn xuống bàn tay đang từ từ xòe ra hứng làn nước trong vắt chảy qua kẽ ngón tay.</li>
+                    <li><strong>Góc 3 (Sự thăng hoa):</strong> Máy C (DJI Nano) đặt chui sát vào ly trà nóng trên nền đen, ghi lại làn khói mỏng manh uốn lượn bốc lên không trung.</li>
+                </ul>
+
+                <p class="text-body"><span class="part-title">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> Thả lỏng toàn bộ cơ vai. Nhắm mắt hít sâu lồng ngực căng tràn, nín 1 giây, thở hắt từ từ ra đằng miệng. Chuyển động tay vuốt nước hay nâng ly phải có "độ trễ" (Hold frame - chậm hơn nhịp bình thường 0.5 nhịp).</p>
+
+                <p class="text-body bg-black/50 p-4 rounded-lg border border-gray-700 italic">
+                    <span class="part-title text-gray-400 not-italic">Phần 5 - Cách nói với Editor:</span><br>
+                    "Đoạn Outro này quăng hết nhịp dồn dập đi. Làn khói uốn lượn chính là một <span class="highlight-term">Metaphor</span> <span class="bracket-text">[Ẩn dụ thị giác - mượn đồ vật, biểu tượng (Lego, quả cam, vệt nắng...) để cụ thể hóa một khái niệm trừu tượng vô hình]</span> cho những muộn phiền đã bốc hơi. Giữ nguyên khung hình vệt nắng và hạt bụi này thành một khoảng <span class="highlight-term">Negative Space</span> <span class="bracket-text">[Không gian âm/Khoảng lặng - cảnh quay tĩnh, chậm, tuyệt đối vắng mặt người (vệt nắng, khói bay, lá rơi) để dọn dẹp tâm trí khán giả, tạo điểm rơi cảm xúc]</span> tĩnh lặng tuyệt đối dài 4 giây, không nhồi nhét bất kỳ text nào trước khi Fade out đen."
+                </p>
+            </div>
+        </section>
+
+        <!-- Tủ 5 -->
+        <section class="grid md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-5 sticky top-8">
+                <div class="art-box art-raw">
+                    <div class="raw-tear"></div>
+                    <div class="raw-scratch"></div>
+                </div>
+            </div>
+            <div class="md:col-span-7 bg-gray-900 border border-gray-800 p-8 rounded-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold text-orange-500 mb-6 border-b border-gray-800 pb-4">📂 TỦ 5 (BỔ SUNG): SỰ THÔ MỘC & SAI LẦM (The Raw & Unfiltered)</h2>
+                
+                <p class="text-body"><span class="part-title">Phần 1 - Đề bài, bối cảnh & Mục đích:</span> Chuỗi "Gỡ bỏ mặt nạ". Bóc trần sự mệt mỏi, vấp váp đằng sau khung hình bóng lộn. Đập tan sự đề phòng của khán giả, chứng minh bạn không phải một cỗ máy đọc kịch bản.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 2 - Logic Tâm lý học:</span> Hiệu ứng Pratfall (Lỗi lầm sinh thiện cảm). Sự hoàn hảo tuyệt đối thường tạo ra rào cản thao túng tâm lý. Nhưng sự tổn thương (Vulnerability) và một vấp váp nhỏ sẽ kích hoạt lòng trắc ẩn, khiến khán giả thấy bạn là "con người thật" và tin tưởng bạn tuyệt đối.</p>
+                
+                <p class="text-body"><span class="part-title">Phần 3 - Thiết kế Đặt máy & Thiết bị (3 Ví dụ góc máy tạo thành 1 chuỗi):</span></p>
+                <ul class="list-disc pl-5 text-body space-y-2 mb-4">
+                    <li><strong>Góc 1 (Góc nhìn trộm):</strong> Máy C (DJI Nano) ném bệt dưới thảm sàn góc phòng, dính đầy noise, hắt ngược lên cảnh hậu trường bạn đang loay hoay lôi kéo chân đèn, mồ hôi nhễ nhại.</li>
+                    <li><strong>Góc 2 (Vỡ kịch bản):</strong> Máy A (Sony f/1.4) quay góc chính diện lúc bạn đang diễn trơn tru thì lỡ miệng nói vấp ngắc ngứ, vỗ tay cái "bốp" bực mình cười trừ.</li>
+                    <li><strong>Góc 3 (Sự xả vai):</strong> Máy B (iPhone 17 Pro) cầm tay hơi rung lắc (Hand-held) lùi dần ra xa, quay bóng lưng bạn lầm lũi đi ra cửa, tiện tay bấm tắt phụp từng cái đèn studio.</li>
+                </ul>
+
+                <p class="text-body"><span class="part-title">Phần 4 - Chỉ đạo Diễn xuất (Acting):</span> CẤM DIỄN. Phì cười tự nhiên, gãi đầu lẩm bẩm "Đoạn này quên cmn thoại rồi", ngồi phịch xuống ghế thở dốc. Dám để mặt mộc, quầng thâm và sự nhếch nhác hậu trường lên sóng.</p>
+
+                <p class="text-body bg-black/50 p-4 rounded-lg border border-gray-700 italic">
+                    <span class="part-title text-gray-400 not-italic">Phần 5 - Cách nói với Editor:</span><br>
+                    "Bro ơi, đoạn dẫn chứng em nhét cái <span class="highlight-term">Archival (hoặc Found Footage)</span> <span class="bracket-text">[Tư liệu quá khứ/Flashback - hình ảnh/video cũ dùng làm bằng chứng thép hoặc tạo hoài niệm]</span> clip hồi 2021 dính noise mù mịt vào. Phải <span class="highlight-term">Intercut</span><span class="bracket-text">[Cắt luân phiên - đan xen liên tục giữa A-roll ngồi tĩnh và B-roll ngoài bối cảnh để cân bằng Uy tín & Thực tế]</span>liên tục giữa con người xịn sò hiện tại và cái video phèn ngày xưa. Còn cái cảnh anh vấp thoại đập bàn, cấm dùng <span class="highlight-term">Cutaway</span> <span class="bracket-text">[Cảnh cắt minh họa đặc tả - nói gì hình nấy, cung cấp thông tin trực diện, che lỗi gãy nhịp]</span> lấp liếm lỗi! Để nguyên sự cố vật lý đó làm <span class="highlight-term">In-situ</span> <span class="bracket-text">[Thoại tại hiện trường/Vừa làm vừa nói - nhìn thẳng camera khi đang làm việc, phá vỡ khoảng cách, tạo sự chân thật]</span>. Khán giả cần thấy những vết xước này!"
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Flashcards Section -->
+    <section class="bg-gray-900 border-t border-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-10 text-center tracking-tight">Thẻ Ôn Tập Nhanh (25 CÂU HỎI)</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Javascript will populate this, but doing hardcoded for strict constraints without JS complexity -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q1. Mục tiêu ưu tiên hàng đầu của hệ thống là gì?</p>
+                    <p class="text-xs text-gray-300">A: Tính chân thực (Authenticity).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q2. Tủ 5 bắt buộc bổ sung có tên là gì?</p>
+                    <p class="text-xs text-gray-300">A: SỰ THÔ MỘC & SAI LẦM.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q3. Tủ 1 đánh vào phần nào của não bộ?</p>
+                    <p class="text-xs text-gray-300">A: Hạch hạnh nhân (Amygdala).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q4. Tủ 1 ép não khán giả tiết ra chất gì?</p>
+                    <p class="text-xs text-gray-300">A: Cortisol.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q5. Sequence/Montage có tác dụng gì?</p>
+                    <p class="text-xs text-gray-300">A: Nén thời gian, đẩy nhanh nhịp điệu Pacing.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q6. POV là viết tắt của thuật ngữ nào?</p>
+                    <p class="text-xs text-gray-300">A: Point of View (Góc nhìn thứ nhất).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q7. Cutaway dùng để làm gì?</p>
+                    <p class="text-xs text-gray-300">A: Cảnh cắt minh họa đặc tả, cung cấp thông tin, che lỗi.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q8. Tủ 2 tạo ra trạng thái gì cho não bộ?</p>
+                    <p class="text-xs text-gray-300">A: Bất lực tập nhiễm.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q9. Negative Space (Không gian âm) là gì?</p>
+                    <p class="text-xs text-gray-300">A: Cảnh quay tĩnh, vắng mặt người, dọn dẹp tâm trí khán giả.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q10. Metaphor (Ẩn dụ thị giác) mang ý nghĩa gì?</p>
+                    <p class="text-xs text-gray-300">A: Mượn đồ vật biểu tượng để cụ thể hóa khái niệm trừu tượng.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q11. Tủ 3 nhằm mục đích xây dựng điều gì?</p>
+                    <p class="text-xs text-gray-300">A: Uy tín ngầm (Implicit Authority).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q12. Cơ chế nào trong não được kích hoạt ở Tủ 3?</p>
+                    <p class="text-xs text-gray-300">A: Competence Trigger / ASMR thị giác.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q13. Intercut là kỹ thuật gì?</p>
+                    <p class="text-xs text-gray-300">A: Cắt luân phiên đan xen A-roll và B-roll ngoài bối cảnh.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q14. In-situ trong Tủ 3 biểu hiện thế nào?</p>
+                    <p class="text-xs text-gray-300">A: Vừa làm vừa nói, nhìn thẳng camera tạo sự chân thật.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q15. Tủ 4 nhắm vào hệ thống thần kinh nào?</p>
+                    <p class="text-xs text-gray-300">A: Hệ phó giao cảm (Parasympathetic).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q16. Tủ 4 kích thích tiết ra hormone gì?</p>
+                    <p class="text-xs text-gray-300">A: Oxytocin (hormone an thần).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q17. Tủ 4 đưa sóng não từ Beta về đâu?</p>
+                    <p class="text-xs text-gray-300">A: Sóng Alpha (thư giãn sâu).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q18. Manual Focus (Lấy nét tay) dùng ở góc máy nào Tủ 4?</p>
+                    <p class="text-xs text-gray-300">A: Góc 1 - Vô hình hóa vật chất (vào chùm hạt bụi).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q19. Tủ 5 sử dụng hiệu ứng tâm lý học gì?</p>
+                    <p class="text-xs text-gray-300">A: Hiệu ứng Pratfall (Lỗi lầm sinh thiện cảm).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q20. Sự tổn thương (Vulnerability) kích hoạt điều gì ở khán giả?</p>
+                    <p class="text-xs text-gray-300">A: Lòng trắc ẩn và sự tin tưởng tuyệt đối.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q21. Chỉ đạo diễn xuất Tủ 5 yêu cầu điều gì đầu tiên?</p>
+                    <p class="text-xs text-gray-300">A: CẤM DIỄN.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q22. Archival/Found Footage là tư liệu gì?</p>
+                    <p class="text-xs text-gray-300">A: Tư liệu quá khứ dùng làm bằng chứng hoặc tạo hoài niệm.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q23. Khán giả hiện đại có màng lọc phòng thủ cao với gì?</p>
+                    <p class="text-xs text-gray-300">A: Sự điện ảnh hoàn hảo.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q24. Hệ thống 4 tủ đi thẳng vào phần nào của não?</p>
+                    <p class="text-xs text-gray-300">A: Hệ Limbic (Não cảm xúc).</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+                    <p class="text-sm font-semibold text-blue-400 mb-2">Q25. Ở Tủ 5, lúc diễn vấp có được dùng Cutaway không?</p>
+                    <p class="text-xs text-gray-300">A: Cấm dùng Cutaway lấp liếm, để nguyên làm In-situ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="h-[128px] bg-[#050505] border-t border-gray-800 flex flex-col justify-center items-center px-4 text-center">
+        <p class="text-xs md:text-sm text-gray-400 mb-4 max-w-3xl">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6 items-center">
+            <!-- Youtube -->
+            <a href="https://youtube.com/@vietndonline" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors" aria-label="Youtube">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- Tiktok -->
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-gray-500 hover:text-white transition-colors" aria-label="Tiktok">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-gray-500 hover:text-blue-500 transition-colors" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
