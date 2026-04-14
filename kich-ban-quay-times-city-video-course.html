@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch bản quay times city</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: '#bef264',
+                        brand: '#3b82f6',
+                        dark: '#09090b',
+                        card: '#18181b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #09090b;
+            color: #f8fafc;
+        }
+        
+        /* Table Styling */
+        .script-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #27272a;
+        }
+        .script-table th {
+            background-color: #27272a;
+            color: #bef264;
+            padding: 16px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+        }
+        .script-table td {
+            background-color: #18181b;
+            padding: 16px;
+            border-top: 1px solid #27272a;
+            vertical-align: top;
+            color: #d4d4d8;
+            line-height: 1.6;
+        }
+        .script-table tr:hover td {
+            background-color: #202024;
+        }
+
+        /* Abstract CSS Art */
+        .art-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #27272a;
+            margin: 32px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Art 1: Glowing Orbs (Represents transitions & energy) */
+        .css-art-1 {
+            background: linear-gradient(to bottom right, #000, #18181b);
+        }
+        .css-art-1 .orb-1 {
+            position: absolute;
+            width: 200px; height: 200px;
+            background: #bef264;
+            border-radius: 50%;
+            filter: blur(60px);
+            top: -50px; left: -50px;
+            opacity: 0.4;
+        }
+        .css-art-1 .orb-2 {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: #3b82f6;
+            border-radius: 50%;
+            filter: blur(80px);
+            bottom: -100px; right: -50px;
+            opacity: 0.3;
+        }
+        .css-art-1 .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Art 2: Motion Lines (Represents Fast Montage/Whip Pan) */
+        .css-art-2 {
+            background: #18181b;
+        }
+        .css-art-2 .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #bef264, transparent);
+            height: 2px;
+            width: 150%;
+            transform: rotate(-15deg);
+            opacity: 0.5;
+        }
+        .css-art-2 .l1 { top: 20%; left: -25%; animation: slide 3s infinite linear; }
+        .css-art-2 .l2 { top: 50%; left: -25%; animation: slide 4s infinite linear reverse; width: 200%; background: linear-gradient(90deg, transparent, #3b82f6, transparent);}
+        .css-art-2 .l3 { top: 80%; left: -25%; animation: slide 2.5s infinite linear; }
+        @keyframes slide {
+            0% { transform: translateX(-10%) rotate(-15deg); }
+            100% { transform: translateX(10%) rotate(-15deg); }
+        }
+
+        /* Art 3: Camera Focus / Match Cut (Geometric) */
+        .css-art-3 {
+            background: radial-gradient(circle at center, #27272a, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .css-art-3 .lens {
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(190, 242, 100, 0.5);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: inset 0 0 40px rgba(59, 130, 246, 0.2), 0 0 40px rgba(190, 242, 100, 0.1);
+        }
+        .css-art-3 .lens::before, .css-art-3 .lens::after {
+            content: ''; position: absolute;
+            background: #bef264;
+        }
+        .css-art-3 .lens::before { top: -10px; left: 50%; width: 2px; height: 20px; transform: translateX(-50%); }
+        .css-art-3 .lens::after { bottom: -10px; left: 50%; width: 2px; height: 20px; transform: translateX(-50%); }
+        .css-art-3 .lens-h::before { left: -10px; top: 50%; height: 2px; width: 20px; transform: translateY(-50%); position: absolute; content: ''; background: #bef264;}
+        .css-art-3 .lens-h::after { right: -10px; top: 50%; height: 2px; width: 20px; transform: translateY(-50%); position: absolute; content: ''; background: #bef264;}
+
+        /* Art 4: Layers/Masking */
+        .css-art-4 {
+            background: #09090b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        .css-art-4 .layer {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            border-radius: 8px;
+            transform-style: preserve-3d;
+        }
+        .css-art-4 .layer:nth-child(1) { background: rgba(59, 130, 246, 0.6); transform: translateZ(-50px) translateX(-30px) rotateY(20deg); backdrop-filter: blur(5px);}
+        .css-art-4 .layer:nth-child(2) { background: rgba(190, 242, 100, 0.6); transform: translateZ(0) rotateY(20deg); backdrop-filter: blur(5px);}
+        .css-art-4 .layer:nth-child(3) { border: 2px solid #fff; background: transparent; transform: translateZ(50px) translateX(30px) rotateY(20deg); }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-neon selection:text-black">
+
+    <!-- HERO SECTION -->
+    <header class="relative overflow-hidden border-b border-zinc-800 bg-black pt-24 pb-16">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon to-brand"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-zinc-900 border border-zinc-700 text-neon text-sm font-semibold mb-6">
+                Masterclass Đạo Diễn Hình Ảnh Bằng Smartphone
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">
+                KỊCH BẢN QUAY <br><span class="text-neon">TIMES CITY</span>
+            </h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+                Hệ thống kịch bản chuyên sâu, từ vựng Đạo diễn và Kỹ thuật chuyển cảnh (Transitions) trên CapCut giúp tạo ra những video triệu view, giữ chân khán giả tuyệt đối.
+            </p>
+        </div>
+        
+        <!-- Abstract Bg for Hero -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand opacity-20 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
+
+        <!-- Lời ngỏ -->
+        <section class="prose prose-invert max-w-none">
+            <div class="bg-card p-8 rounded-2xl border border-zinc-800 shadow-xl">
+                <p class="text-lg text-zinc-300 leading-relaxed mb-4">
+                    Tuyệt vời! Việc bạn chuẩn hóa và đóng gói hệ thống từ vựng thành "Ngôn ngữ Đạo diễn" (Industry Lingo) cùng các câu "Thần chú" là một bước đi cực kỳ xuất sắc. Nó biến khóa học của bạn từ một "lớp dạy bấm nút phần mềm" thành một "Khóa Đào tạo Tư duy Đạo diễn Hình ảnh bằng Smartphone". Khi bạn dùng đúng thuật ngữ, học viên sẽ cảm thấy vô cùng "Pro", dễ nhớ và áp dụng chính xác 100% ý đồ.
+                </p>
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Để tiếp nối 7 kịch bản trước, dưới đây là 5 kịch bản chuyên sâu về Kỹ thuật Chuyển cảnh (Transitions). Mỗi kịch bản là một bài toán giải quyết sự mượt mà của video bằng các kỹ thuật Edit kinh điển, kết hợp nhuần nhuyễn bộ từ vựng 8 loại B-roll của bạn và hướng dẫn quay/dựng cực kỳ chi tiết trên CapCut.
+                </p>
+            </div>
+            
+            <!-- CSS Art 1 -->
+            <div class="art-container css-art-1">
+                <div class="orb-1"></div>
+                <div class="orb-2"></div>
+                <div class="grid-overlay"></div>
+            </div>
+        </section>
+
+        <!-- KỊCH BẢN 8 - 12 -->
+        <section class="space-y-16">
+            
+            <!-- KB 8 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">KỊCH BẢN 8:</span> KỸ THUẬT "ACTION CUT" (Cắt nối trên hành động liên tục)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Trọng tâm Chuyển cảnh:</strong> Mượn quán tính của một hành động ở cảnh A, tiếp nối ngay ở đầu cảnh B để "đánh lừa" mắt khán giả, tạo sự trơn tru không tì vết (Seamless). Rất hợp để tả sự "tiện lợi, bước một bước là tới" của Times City.</p>
+                <table class="script-table">
+                    <thead>
+                        <tr>
+                            <th width="10%">Giây</th>
+                            <th width="30%">Hình ảnh (Ngôn ngữ Đạo diễn & Thần chú)</th>
+                            <th width="30%">Lời thoại & Âm thanh</th>
+                            <th width="30%">Hướng dẫn Quay & Dựng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0-5s</td>
+                            <td>[4. Thoại In-situ] 🎬 VỪA LÀM - VỪA NÓI: Bạn xách túi đồ, bước về phía camera, vươn tay đẩy mạnh một cánh cửa kính sảnh chung cư.</td>
+                            <td>"Sống ở Times City, mọi tiện ích đều trôi chảy và kết nối mượt mà như cú đẩy tay này..."</td>
+                            <td>🎥 Quay: Quay bạn vươn tay đẩy cửa ra xa. Đẩy dứt khoát.<br><br>✂️ CapCut: Kéo timeline, tìm đúng khung hình (frame) tay bạn duỗi thẳng ra được 50% để Cắt (Split) và vứt bỏ phần đuôi.</td>
+                        </tr>
+                        <tr>
+                            <td>5-15s</td>
+                            <td>[2. Chuỗi Sequence] 🎞️ BĂNG CHUYỀN:<br><br>- Góc 1: Bàn tay đang đẩy tiếp xe hàng tại FujiMart.<br>- Góc 2: Bàn tay đang đẩy cửa kính vào Starbucks.<br>- Góc 3: Bàn tay vươn ra bấm thang máy.</td>
+                            <td>(Âm thanh: Tiếng lạch cạch của xe hàng, tiếng leng keng mở cửa quán). "Đi chợ chân đế. Cafe chanh sả. Mọi thứ nối tiếp nhau không một giây ngắt quãng."</td>
+                            <td>🎥 Quay: Đặt góc [3. Góc POV] nhìn xuống tay. Quay các hành động "ĐẨY TỚI TRƯỚC" với cùng một lực và hướng.<br><br>✂️ CapCut: Cắt bỏ phần đầu của các clip này, chỉ lấy đoạn tay đang dang dở hành động đẩy nối vào phần trước. Khán giả sẽ thấy một lực đẩy xuyên qua 3 không gian!</td>
+                        </tr>
+                        <tr>
+                            <td>15-20s</td>
+                            <td>[1. Cảnh Cutaway] ✂️ NÓI GÌ - HÌNH NẤY: Chèn siêu nhanh logo của Winmart, Dalat Mart, TH True Mart.</td>
+                            <td>"Chuỗi siêu thị shophouse bủa vây."</td>
+                            <td>Dựng cắt nhanh 0.5s/cảnh để cung cấp thông tin.</td>
+                        </tr>
+                        <tr>
+                            <td>20-30s</td>
+                            <td>[4. Thoại In-situ]: Bạn mỉm cười nhìn thẳng camera.</td>
+                            <td>"Thay vì quay video đi lòng vòng buồn ngủ, hãy dùng Action Cut. Khóa học CapCut của tôi sẽ chỉ bạn cắt dính dấp đến từng frame hình!"</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- KB 9 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">KỊCH BẢN 9:</span> KỸ THUẬT "MATCH CUT" (Chuyển cảnh Đồng dạng)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Trọng tâm Chuyển cảnh:</strong> "Hack não" thị giác. Dùng sự tương đồng về hình dáng của một đồ vật nằm TRUNG TÂM khung hình để nhảy cóc không gian.</p>
+                <table class="script-table">
+                    <thead>
+                        <tr>
+                            <th width="10%">Giây</th>
+                            <th width="30%">Hình ảnh</th>
+                            <th width="30%">Lời thoại & Âm thanh</th>
+                            <th width="30%">Hướng dẫn Quay & Dựng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0-8s</td>
+                            <td>[6. Cảnh Metaphor] ♟️ VẬT THAY LỜI: Quay cận cảnh một chiếc đồng hồ bấm giờ (Hình tròn) trên tay bạn đang đếm ngược.</td>
+                            <td>"Thứ đắt giá nhất ở Times City không phải là nhà cửa, mà là..."</td>
+                            <td>Đồng hồ ám chỉ "Thời gian".<br><br>🎥 Quay: Bật lưới (Grid) 3x3 trên camera. Đặt chiếc đồng hồ vào ĐÚNG HỒNG TÂM của khung hình.</td>
+                        </tr>
+                        <tr>
+                            <td>8-18s</td>
+                            <td>MATCH CUT (Chuyển cảnh hình tròn):<br><br>- Từ mặt đồng hồ -> Cắt sang Tháp đồng hồ rực sáng.<br>- Cắt sang mặt chiếc Pizza tròn (Pizza Company).<br>- Cắt sang miệng cốc cafe The Coffee House nhìn từ trên xuống.</td>
+                            <td>(Tiếng chuông KENG) "...Là Thời gian! Vài bước tới tháp trung tâm, vài nhịp chân là có Pizza béo ngậy hay cốc cafe chanh sả."</td>
+                            <td>🎥 Quay: Ra quay Tháp đồng hồ, chiếc Pizza, miệng cốc cafe sao cho chúng cũng có HÌNH TRÒN nằm ĐÚNG TÂM LƯỚI.<br><br>✂️ CapCut: Đặt Clip 1 ở track chính, Clip 2 ở Lớp phủ (Overlay). Giảm Độ mờ (Opacity) Clip 2 xuống 50% để nhìn xuyên thấu, phóng to/nhỏ cho 2 hình tròn đè khít vào nhau 100%. Trả Opacity về 100% rồi cắt nối. BÙM! Ảo thuật xuất hiện!</td>
+                        </tr>
+                        <tr>
+                            <td>18-25s</td>
+                            <td>[2. Chuỗi Sequence] (Match Cut hình chữ nhật): Bàn tay quẹt thẻ FaceID (hình chữ nhật) -> Cắt sang tay nhặt khay thịt bò (hình chữ nhật) ở Dalat Mart.</td>
+                            <td>"Quẹt thẻ đi bơi hay nhặt thực phẩm tươi sống, mọi sự lựa chọn đều nằm trong tay bạn."</td>
+                            <td>Áp dụng tương tự nguyên lý đồng dạng.</td>
+                        </tr>
+                        <tr>
+                            <td>25-35s</td>
+                            <td>[4. Thoại In-situ] 🎬 VỪA LÀM - VỪA NÓI: Bạn đang cầm ly cafe nháy mắt.</td>
+                            <td>"Tư duy Match Cut đồng dạng sẽ biến bạn thành Đạo diễn có gu cực đỉnh. Đăng ký học để làm chủ kỹ thuật này!"</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CSS Art 3 -->
+            <div class="art-container css-art-3">
+                <div class="lens">
+                    <div class="lens-h"></div>
+                </div>
+            </div>
+
+            <!-- KB 10 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">KỊCH BẢN 10:</span> KỸ THUẬT "WIPE MASKING" (Xuyên không qua vật cản)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Trọng tâm Chuyển cảnh:</strong> "Invisible Wipe" (Xóa nhòa không gian) - Lợi dụng lúc máy quay lướt qua một gốc cây, cái cột (vùng tối) để "xuyên không" từ sự ồn ào sang sự tĩnh lặng chữa lành.</p>
+                <table class="script-table">
+                    <tbody>
+                        <tr>
+                            <td width="10%"><strong>0-10s</strong></td>
+                            <td width="30%">[8. Cảnh Archival] ⏳ CỖ MÁY THỜI GIAN: Chèn 1 clip/meme cũ về cảnh kẹt xe ngột ngạt, bụi mù mịt vã mồ hôi hột.</td>
+                            <td width="30%">(Tiếng còi xe ầm ĩ). "Áp lực cả ngày trên phố bụi bặm đã đủ mệt mỏi rồi..."</td>
+                            <td width="30%">Đánh mạnh vào nỗi đau (Pain point) của tệp khách hàng.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10-25s</strong></td>
+                            <td>[3. Góc POV] 👁️ + MASKING WIPE: Cầm máy rảo bước. Cố tình lướt ống kính sát rạt qua một GỐC CÂY TO (màn hình chớp đen). Khi lướt qua hẳn, mở ra là mặt hồ nước, tháp đồng hồ lấp lánh nắng, sạch bong.</td>
+                            <td>(Tiếng còi xe vụt tắt. Thay bằng tiếng chim hót). "...Về nhà, bạn xứng đáng có một vùng vi khí hậu tươi mát như thế này."</td>
+                            <td>🎥 Quay Wipe: Chủ động cầm điện thoại lia sát rạt vào vật cản tối màu để lấp đầy ống kính thành màu đen.<br><br>✂️ CapCut: Đặt Clip hồ nước nằm dưới Clip gốc cây. Dùng công cụ Mặt nạ (Masking) -> Tuyến tính (Linear). Đặt các Keyframe (Hình thoi) di chuyển đường kẻ mặt nạ bám sát theo mép gốc cây đang lướt qua để "gạt" cảnh cũ ra, hé lộ cảnh mới.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>25-35s</strong></td>
+                            <td>[7. Cảnh Negative Space] ⏸️ KHOẢNG LẶNG VÔ HỒN: Cận cảnh một vạt nắng chiếu qua vòm cây, góc khu vui chơi trẻ em nhiều màu (Tuyệt đối không có người).</td>
+                            <td>(Nhạc Acoustic êm dịu). "Những mảng xanh được chăm chút, những góc tĩnh lặng không một cọng rác."</td>
+                            <td>Ép não bộ khán giả thư giãn. Cho họ thấy một khía cạnh rất "thơ" của Times City.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>35-45s</strong></td>
+                            <td>[5. Dựng Intercut] ⚖️ NỬA TĨNH - NỬA ĐỘNG: Cắt sang cảnh bạn ngồi tĩnh ở ghế đá đọc sách.</td>
+                            <td>"Kỹ năng Masking gạt cảnh sẽ hô biến video của bạn thành phim điện ảnh. Cùng tôi thực hành trên CapCut nhé!"</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- KB 11 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">KỊCH BẢN 11:</span> KỸ THUẬT "WHIP PAN" (Vẩy máy tốc độ cao)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Trọng tâm Chuyển cảnh:</strong> Năng lượng bùng nổ, dồn dập. Vẩy gắt máy quay sang một bên để tạo độ mờ (Motion Blur). Rất hợp để review hàng chục quán ăn nhộn nhịp dưới MegaMall.</p>
+                <table class="script-table">
+                    <tbody>
+                        <tr>
+                            <td width="10%"><strong>0-5s</strong></td>
+                            <td width="30%">[4. Thoại In-situ] 🎬 VỪA LÀM - VỪA NÓI: Bạn bẻ khớp tay vươn vai ở sảnh. "Ăn gì dưới MegaMall?" -> Bạn tát mạnh vào cạnh điện thoại để máy văng nhanh sang trái.</td>
+                            <td width="30%">"Bạn hỏi ăn gì dưới hầm MegaMall ư? Lên xe!"</td>
+                            <td width="30%">🎥 Quay: Tát nhẹ vào viền đt, hoặc bẻ gập cổ tay thật nhanh sang trái để tạo cú nhòe vật lý.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5-25s</strong></td>
+                            <td>[2. Chuỗi Sequence] 🎞️ + WHIP PAN:<br><br>- Máy nhào từ trái vào Haidilao -> Lại vẩy ra trái.<br>- Máy nhào từ trái vào Gogi xèo xèo -> Vẩy ra trái.<br>- Máy nhào vào Mixue -> Vẩy ra trái.</td>
+                            <td>(SFX: Tiếng xé gió VÚT - VÚT liên tục). "Một ma trận ẩm thực không lối thoát! Lẩu nướng Á Âu, ăn vặt ngập mặt."</td>
+                            <td>🎥 Quay: Luật: Cảnh trước vẩy ra hướng nào, cảnh sau phải hất từ hướng đó đi vào.<br><br>✂️ CapCut: Cắt bỏ đoạn nhìn rõ, chỉ lấy đúng đoạn hình bị nhòe nhất của 2 clip nối vào nhau. Vào hiệu ứng thêm Mờ chuyển động (Motion Blur) ngay vết cắt để giấu đi sự giả trân.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>25-35s</strong></td>
+                            <td>[1. Cảnh Cutaway] ✂️ NÓI GÌ - HÌNH NẤY: Các hàng ăn vặt vỉa hè Leng Keng đỏ lửa ban đêm đông đúc cư dân trẻ.</td>
+                            <td>"Chưa đã? Lên mặt đất quẩy tiếp đến 2h sáng cùng cư dân trẻ!"</td>
+                            <td>Ngừng vẩy máy để mắt nghỉ ngơi, cung cấp thông tin.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>35-45s</strong></td>
+                            <td>[5. Dựng Intercut] ⚖️ NỬA TĨNH - NỬA ĐỘNG: Cắt rụp về cảnh bạn ngồi thở hổn hển ôm cái bụng no ở nhà.</td>
+                            <td>"Muốn làm video tốc độ chóng mặt không cần Gimbal? Học ngay kỹ thuật Whip Pan cùng tôi!"</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- KB 12 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">KỊCH BẢN 12:</span> KỸ THUẬT "J-CUT & L-CUT" (Thao túng bằng Âm Thanh)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Trọng tâm Chuyển cảnh:</strong> Đỉnh cao của phim tài liệu. Âm thanh của cảnh mới xuất hiện trước khi hình ảnh chuyển tới (J-Cut), hoặc Hình ảnh đã qua cảnh mới nhưng âm thanh cũ vẫn đọng lại (L-Cut).</p>
+                <table class="script-table">
+                    <tbody>
+                        <tr>
+                            <td width="10%"><strong>0-10s</strong></td>
+                            <td width="30%">[5. Dựng Intercut] ⚖️ NỬA TĨNH - NỬA ĐỘNG: Bạn ngồi trong nhà pha trà, không gian tĩnh lặng, setup uy tín (A-roll).</td>
+                            <td width="30%">"Điều đắt giá nhất ở khu chung cư này là gì?"</td>
+                            <td width="30%">Cảnh A-roll để định vị hình ảnh Chuyên gia.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10-20s</strong></td>
+                            <td>[7. Cảnh Negative Space] ⏸️ (Kết hợp J-CUT): Cảnh đài phun nước rực sáng đèn ban đêm (Không có người).<br><br>👉 (Lúc này, tiếng nhạc xập xình, tiếng hò reo cụng ly của dân cư ĐÃ VANG LÊN TỪ TRƯỚC).</td>
+                            <td>"...Đó là nhịp đập của một cộng đồng không bao giờ ngủ."</td>
+                            <td>✂️ CapCut J-Cut (Âm đi trước Hình): Tách âm thanh (Extract Audio) của đoạn đi nhậu phía sau, kéo trượt nó lấn lên nằm dưới hình ảnh đài phun nước tĩnh lặng. Não bộ sẽ bị mâu thuẫn và thắc mắc: "Ủa tiếng vui vậy ở đâu ra?".</td>
+                        </tr>
+                        <tr>
+                            <td><strong>20-30s</strong></td>
+                            <td>[1. Cảnh Cutaway] ✂️ NÓI GÌ - HÌNH NẤY: Khung hình chính thức chuyển sang các quán nhậu, Highland đông đúc, dân cư đi dạo nhộn nhịp.</td>
+                            <td>(Âm thanh lúc này đã khớp hoàn toàn với hình ảnh). "Cộng đồng trẻ, văn minh, và tràn đầy sinh khí."</td>
+                            <td>Hình ảnh giải tỏa sự tò mò của J-cut.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>30-45s</strong></td>
+                            <td>[5. Dựng Intercut] ⚖️ (Kết hợp L-CUT): Cắt về lại cảnh bạn ngồi tĩnh ở nhà.<br><br>👉 (Nhưng tiếng hò reo cụng ly VẪN KÉO DÀI vang vọng sang cảnh nhà tĩnh lặng này thêm 2 giây).</td>
+                            <td>"Muốn thao túng cảm xúc khán giả bằng kỹ thuật J-Cut, L-Cut đỉnh cao? Đăng ký ngay khóa học của tôi!"</td>
+                            <td>✂️ CapCut L-Cut (Hình đi trước Âm): Cảnh đã chuyển về nhà tĩnh, nhưng vẫn kéo dôi đoạn Audio ồn ào sang 2 giây. Cực kỳ điện ảnh!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- CSS Art 2 -->
+            <div class="art-container css-art-2">
+                <div class="line l1"></div>
+                <div class="line l2"></div>
+                <div class="line l3"></div>
+            </div>
+
+            <!-- Gợi ý sư phạm -->
+            <div class="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-2xl border border-neon/30 shadow-[0_0_30px_rgba(190,242,100,0.1)]">
+                <h3 class="text-xl font-bold text-neon flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-lightbulb"></i> GỢI Ý SƯ PHẠM DÀNH CHO BẠN (GIẢNG VIÊN):
+                </h3>
+                <ul class="space-y-3 text-zinc-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-neon mt-1"></i>
+                        <span><strong>Tuyệt chiêu giảng dạy:</strong> Trong các video dạy học, hãy liên tục "Hô thần chú". Ví dụ: "Chỗ này mình không nói mồm nhé, mình ném vào một cái ✂️ Cutaway (Nói gì hình nấy) siêu thị Winmart cho nó trực quan. Sau đó đổi gió sang 👁️ Góc POV (Nhập vai) tự tay gắp thịt nướng cho học viên chảy nước miếng..."</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-neon mt-1"></i>
+                        <span><strong>Bài tập thực hành đỉnh cao:</strong> Hãy đóng gói File quay thô (Raw Footage lộn xộn) của 5 video này đưa vào khóa học. Giao đề bài: "Anh em hãy tải đống file này về, dùng thần chú Băng chuyền và cắt cho tôi một cái Action Cut mượt như bài mẫu!". Khóa học của bạn chắc chắn sẽ tạo ra sự cuồng nhiệt và khác biệt hoàn toàn trên thị trường!</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONCEPT FAST-PACED -->
+        <section class="space-y-16 pt-10 border-t border-zinc-800">
+            <div class="prose prose-invert max-w-none">
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Ý tưởng dùng Match-cut (Cùng một cú máy áp dụng cho hàng loạt bối cảnh khác nhau) và Fast Montage (Xếp lớp cảnh nhanh) của bạn là một tư duy dựng video cực kỳ xuất sắc! Nó mang đậm phong cách Fast-paced (nhịp độ nhanh), giúp "nhồi nhét" một lượng thông tin khổng lồ vào 1 phút mà khán giả không bị ngợp, ngược lại còn thấy rất "đã mắt" và cuốn hút.
+                </p>
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Với kho dữ liệu thực tế và cảm nhận chân thực bạn vừa cung cấp (sự sầm uất, hàng quán, mảng xanh, văn minh), Times City đúng nghĩa là một "phim trường" hoàn hảo.
+                </p>
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Dưới đây là 7 phương án kịch bản (mỗi video ~60 giây), truyền tải cảm xúc vui vẻ, tự hào và nhộn nhịp. Mỗi kịch bản là một "Concept Kỹ Thuật" riêng biệt để bạn demo trên CapCut cho học viên:
+                </p>
+            </div>
+
+            <!-- List of Concepts 1-7 -->
+            <div class="grid gap-12">
+                <!-- KB 1 -->
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 1:</span> CONCEPT "MATCH-CUT SIÊU TỐC" (Khoe Vũ trụ Thương hiệu)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Tập trung 100% vào ý tưởng lặp cú máy của bạn. Nhịp điệu dồn dập như MV ca nhạc.<br><strong>Kỹ năng CapCut demo:</strong> Match-cut (Cắt ghép đồng dạng), Beat-sync (Bắt beat nhạc).</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800"><th class="pb-3 text-neon">Giây</th><th class="pb-3 text-neon">Hình ảnh & B-roll</th><th class="pb-3 text-neon">Lời thoại / Nhạc</th></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">0-5s</td><td class="py-3 pr-4">A-roll: Bạn đứng trước Quảng trường, búng tay 1 cái.</td><td class="py-3">"Ở Times City, cẩn thận... vì bạn sẽ mắc bệnh lười đi xa!"</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">5-15s</td><td class="py-3 pr-4">B-roll Match-cut (Vẩy máy ngang): Cầm máy vẩy nhanh từ trái sang phải với tốc độ bằng nhau qua các biển hiệu: Highland -> Starbucks -> Mixue -> Phúc Long -> Phê La.</td><td class="py-3">"Sáng ra thèm đồ uống? Vẩy tay một cái là đi qua cả chục thương hiệu lớn."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">15-25s</td><td class="py-3 pr-4">B-roll Match-cut (Máy chúi xuống): Cú máy từ ngang ngực chúi xuống giỏ đồ/cửa hàng: FujiMart -> Winmart -> Dalat Mart -> TH True Mart.</td><td class="py-3">"Lười xuống hầm gửi xe? Đã có FujiMart, Winmart ngay chân đế shophouse đi thẳng vào. Đồ tươi có Dalat, sữa có TH true milk phủ sóng."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">25-40s</td><td class="py-3 pr-4">B-roll (Action & Reveal): Cận cảnh đưa mặt quét FaceID (tít). Mở cửa hé lộ bể bơi. Cảnh toàn Tháp đồng hồ rực sáng, nhạc nước vọt lên lúc 7h tối.</td><td class="py-3">"Bơi lội xịn sò quét FaceID. Tối 7h dạo bước ra quảng trường xem nhạc nước mát rượi."</td></tr>
+                            <tr><td class="py-3 pr-4">40-60s</td><td class="py-3 pr-4">A-roll: Bạn đang cầm xiên thịt nướng, đồng hồ hiện 2h sáng.</td><td class="py-3">"Đói đêm có hàng ăn vặt Leng Keng đến 2h sáng. Dựng một video lướt Match-cut mượt mà thế này bằng CapCut cực dễ, học ngay nào!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- KB 2 -->
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 2:</span> CONCEPT "MA TRẬN ẨM THỰC" (Kỹ thuật Xếp lớp siêu nhanh)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Đánh mạnh vào "chiếc bụng đói", dùng hình ảnh đồ ăn đập liên tục vào mắt.<br><strong>Kỹ năng CapCut demo:</strong> Fast Layering (Xếp lớp ảnh/video 0.5s), Keyframe Zoom In.</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">B-roll (Góc thấp POV): Bước chân đi từ thang cuốn TTTM đi xuống.</td><td class="py-3 w-[45%]">"Câu hỏi đau đầu nhất của cư dân ở đây không phải là kiếm bao nhiêu tiền, mà là..."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-30s</td><td class="py-3 pr-4">B-roll Xếp lớp nhanh (Layering): Mỗi nhịp trống đập, màn hình giật (Zoom) và chuyển cảnh chớp nhoáng: Haidilao -> Pizza Company -> SushiX -> Gogi -> KichiKichi -> Nét Huế -> KFC -> McDonald's.</td><td class="py-3">"...Hôm nay ăn gì? Xuyên thẳng xuống hầm MegaMall là một ma trận ẩm thực khổng lồ. Á, Âu, Lẩu, Nướng, Fastfood bủa vây."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">30-45s</td><td class="py-3 pr-4">B-roll Detail: Cận cảnh gắp miếng thịt nướng BBQ, ly The Coffee House, ánh đèn lồng quán vỉa hè.</td><td class="py-3">"Hoặc chỉ vài bước chân trên mặt đất là có The Coffee House tĩnh lặng, hay gà nướng BBQ xèo xèo."</td></tr>
+                            <tr><td class="py-3 pr-4">45-60s</td><td class="py-3 pr-4">A-roll: Khung hình chia đôi: Một bên là bạn ăn, một bên là timeline CapCut đang cắt các đoạn clip tí hon xếp sát nhau.</td><td class="py-3">"Bạn bè rủ đi ăn không bao giờ chán. Để tạo cảm giác 'ngợp' như video này, hãy dùng kỹ thuật Xếp lớp nhanh trên CapCut. Link khóa học ở bio nhé!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- KB 3, 4, 5, 6, 7 summaries in same format -->
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 3:</span> CONCEPT "ỐC ĐẢO XANH" (Tương phản Cảm xúc)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Bán không gian sống chữa lành, khác biệt hoàn toàn với sự ồn ào ngoài phố.<br><strong>Kỹ năng CapCut demo:</strong> Masking (Mặt nạ chuyển cảnh bằng tay che), Color Grading (Kéo màu tươi mát).</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">B-roll ngoài đường: Cảnh đường phố đông đúc, khói bụi (chỉnh màu hơi ám vàng). Lấy tay vuốt che kín ống kính.</td><td class="py-3 w-[45%]">(Tiếng còi xe ồn ào). "Ngoài kia khói bụi và ngột ngạt quá đúng không?"</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-25s</td><td class="py-3 pr-4">B-roll Reveal (Hé lộ): Mở tay ra (chuyển cảnh). Khung hình trong vắt. Máy quay lướt qua tán lá cây hé lộ hồ nước, quảng trường ngập nắng.</td><td class="py-3">(Nhạc Lofi/Acoustic êm ái). "Nhưng bước qua cổng Times City, bạn sẽ thấy mình đang ở một vùng vi khí hậu hoàn toàn khác."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">25-40s</td><td class="py-3 pr-4">B-roll Tracking: Máy đi ngang theo những vòm cây xanh ngắt, khu vui chơi trẻ em nhiều màu, đường nhựa sạch không cọng rác. Cận cảnh một góc ghế đá vắng người.</td><td class="py-3">"Bên dưới những tòa nhà sầm uất là những góc ngập cây xanh được chăm sóc kỹ lưỡng, đường nội khu sạch sẽ. Dân cư cực kỳ văn minh."</td></tr>
+                            <tr><td class="py-3 pr-4">40-60s</td><td class="py-3 pr-4">A-roll: Bạn ngồi trên ghế đá, vươn vai hít thở sâu.</td><td class="py-3">"Xung quanh bụi bặm, nhưng vào đây là một cảm giác khác hẳn. Học cách chỉnh màu trong trẻo và lồng tiếng chim hót trên CapCut cùng tôi nhé!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 4:</span> CONCEPT "GÓC NHÌN KẺ LƯỜI" (POV Nhập vai 24h)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Góc nhìn thứ nhất 100%. Khán giả như đang chơi game, cảm nhận sự tiện lợi "tới tận răng".<br><strong>Kỹ năng CapCut demo:</strong> Chống rung (Stabilizer), Speed Curve (Uốn tốc độ Nhanh - Chậm).</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">POV: Mở cửa nhà, ném chìa khóa xe máy lên bàn. Bấm thang máy.</td><td class="py-3 w-[45%]">"Ngày nghỉ ở Times City, mình thề không đụng đến chiếc xe máy. Vì mọi thứ nằm ngay dưới chân bạn."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-25s</td><td class="py-3 pr-4">POV Action: Tít FaceID mở cửa bể bơi. Cảnh đẩy cửa kính bước thẳng vào FujiMart nhặt bó rau, khay thịt.</td><td class="py-3">"Sáng tít Face ID bơi lội vài vòng. Trưa đẩy cửa vào FujiMart mặt đất, không cần vòng vèo xuống hầm gửi xe cực nhọc."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">25-45s</td><td class="py-3 pr-4">POV Hyper-lapse: Cầm máy đi nhanh ngang qua trường học lướt ra quảng trường trung tâm. Nhìn lên đồng hồ.</td><td class="py-3">"Khu này nhộn nhịp, trẻ trung và cái gì cũng có. Tối dạo bộ ra ngay quảng trường nhạc nước lớn nhất khu, gió thổi lồng lộng."</td></tr>
+                            <tr><td class="py-3 pr-4">45-60s</td><td class="py-3 pr-4">A-roll lật cam: Bạn lật camera trước, mỉm cười cầm ly trà sữa.</td><td class="py-3">"Góc quay thứ nhất chống rung siêu mượt này sẽ khiến khán giả xem không thể rời mắt. Kỹ thuật này tôi dạy chi tiết trong khóa học, click ngay nhé!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 5:</span> CONCEPT "MÔI GIỚI BĐS GEN Z" (Năng lượng, Hiện đại)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Phù hợp để target chạy Ads tới tệp Sale Bất động sản muốn học làm video chốt khách.<br><strong>Kỹ năng CapCut demo:</strong> Text Tracking 3D (Chữ nổi bám theo bối cảnh), Auto Captions động.</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">A-roll: Bạn vừa đi lùi vừa nói cực kỳ tự tin, đằng sau là sự sầm uất của chung cư.</td><td class="py-3 w-[45%]">"Nếu khách hỏi tôi: Mua nhà Hà Nội khu nào nhịp sống sướng nhất? Tôi dẫn thẳng đến Times City!"</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-25s</td><td class="py-3 pr-4">B-roll Tracking: Lướt qua các mảng xanh, sân chơi. Chữ 3D "QUY HOẠCH SẠCH SẼ" bám theo gốc cây.</td><td class="py-3">"Lý do đầu tiên: Cảm giác cực kỳ sạch sẽ và văn minh. Trường học nội khu, mảng xanh bạt ngàn bao phủ."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">25-45s</td><td class="py-3 pr-4">B-roll Split Screen: Khung hình chia 3 (Trái: Bể bơi / Giữa: Highland, Starbucks / Phải: TTTM MegaMall).</td><td class="py-3">"Lý do hai: Hệ sinh thái tiện ích khổng lồ. Từ bơi lội nhận diện khuôn mặt, bạt ngàn siêu thị shophouse, đến hàng chục brand ăn uống sừng sỏ hội tụ đủ."</td></tr>
+                            <tr><td class="py-3 pr-4">45-60s</td><td class="py-3 pr-4">A-roll: Bạn chỉ tay vào màn hình đt đang mở CapCut.</td><td class="py-3">"Anh chị em BĐS muốn tự tay dựng được video review uy tín, chèn chữ 3D xịn xò như này để gửi khách? Khóa học CapCut của tôi là dành cho bạn!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 6:</span> CONCEPT "SỰ GIAO THOA" (Khoe kỹ năng chia đôi màn hình)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Thể hiện sự cân bằng giữa nhộn nhịp và tĩnh lặng. Rất có gu thẩm mỹ.<br><strong>Kỹ năng CapCut demo:</strong> Split Screen (Chia đôi màn hình trái phải), Sound Mixing (Trộn âm thanh).</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">A-roll: Bạn đứng giữa ranh giới 1 bên là TTTM, 1 bên là vườn cây.</td><td class="py-3 w-[45%]">"Nơi nào vừa có sự sầm uất bậc nhất, lại vừa có sự tĩnh lặng chữa lành? Để tôi chứng minh cho bạn."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-35s</td><td class="py-3 pr-4">B-roll Split Screen: Chia đôi màn hình.<br>- Trái: Lẩu nướng xèo xèo, nhạc nước hoành tráng, Starbucks tấp nập.<br>- Phải: Cành lá rung rinh, mặt nước bể bơi phẳng lặng, ghế đá vắng người.</td><td class="py-3">"Một nửa là sức sống mãnh liệt của cộng đồng trẻ, những thương hiệu lớn bận rộn. Một nửa là những mảng xanh được chăm chút tỉ mỉ, để ta hít thở chậm lại."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">35-45s</td><td class="py-3 pr-4">B-roll Toàn cảnh: 2 nửa màn hình hòa làm 1. Toàn cảnh tháp đồng hồ rực rỡ buổi chiều tà.</td><td class="py-3">"Đó chính là sự giao thoa hoàn hảo tạo nên Times City."</td></tr>
+                            <tr><td class="py-3 pr-4">45-60s</td><td class="py-3 pr-4">A-roll: Màn hình thu nhỏ lại vào giao diện CapCut.</td><td class="py-3">"Kỹ thuật chia màn hình và trộn âm thanh song song này chỉ mất 3 thao tác trên CapCut. Trong khóa học, tôi có sẵn file quay thô cho bạn tự tay ghép nhé!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-zinc-800 rounded-xl overflow-hidden">
+                    <div class="bg-zinc-900 p-4 border-b border-zinc-800">
+                        <h3 class="text-xl font-bold text-white"><span class="text-brand">KỊCH BẢN 7:</span> CONCEPT "BÓC BỆNH QUAY PHÈN" (Meta-Video cực cuốn)</h3>
+                        <p class="text-zinc-400 mt-1">👉 Trực tiếp lấy bối cảnh làm giáo cụ chữa lỗi sai cho học viên. Tỉ lệ chuyển đổi mua khóa học rất cao.<br><strong>Kỹ năng CapCut demo:</strong> Freeze Frame (Đóng băng khung hình), Lồng SFX.</p>
+                    </div>
+                    <div class="p-6">
+                        <table class="w-full text-left text-zinc-300">
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4 w-[10%]">0-10s</td><td class="py-3 pr-4 w-[45%]">B-roll (Cố tình quay xấu): Cầm máy lóng ngóng lia cực chậm qua dãy Highland, Starbucks. Hình ảnh rung lắc.</td><td class="py-3 w-[45%]">"Rất nhiều bạn đi quay không gian sầm uất mà lia máy buồn ngủ và rung lắc thế này. Cực kỳ chán!"</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">10-30s</td><td class="py-3 pr-4">B-roll (Đỉnh cao): Nhạc giật bốc lên. Đóng băng hình, chỉ mũi tên vào. Sau đó chuyển sang B-roll vẩy ngang (Match-cut) cực gắt qua 5 tiệm cafe.</td><td class="py-3">"Sửa ngay bằng B-roll Match-cut! Vẩy máy dứt khoát qua các brand lớn, vào CapCut cắt bỏ phần rung. Boom! Ra video tốc độ bàn thờ."</td></tr>
+                            <tr class="border-b border-zinc-800/50"><td class="py-3 pr-4">30-45s</td><td class="py-3 pr-4">B-roll Detail + Action: Cảnh giọt nước rơi ở bể bơi, cảnh vuốt lá cây. Lồng tiếng chim hót to.</td><td class="py-3">"Muốn khoe sự tĩnh lặng, trong lành? Bỏ quay toàn cảnh đi, hãy dùng B-roll Đặc Tả lồng âm thanh thật."</td></tr>
+                            <tr><td class="py-3 pr-4">45-60s</td><td class="py-3 pr-4">A-roll: Bạn khoanh tay tự tin.</td><td class="py-3">"Tiện ích Times City xịn rồi, tay nghề Edit của bạn cũng phải xịn tương xứng. Tôi đóng gói 8 loại B-roll này vào khóa học dưới link rồi, vào chiến thôi!"</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS Art 4 -->
+            <div class="art-container css-art-4">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+            </div>
+
+            <!-- Bí kíp đi quay & dựng Match Cut -->
+            <div class="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-2xl border border-brand/30 shadow-[0_0_30px_rgba(59,130,246,0.1)]">
+                <h3 class="text-xl font-bold text-brand flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> BÍ KÍP ĐI QUAY & DỰNG "MATCH-CUT" CHO KHÓA HỌC:
+                </h3>
+                <p class="text-zinc-300 mb-4">Để thực hiện cú Match-cut (Kịch bản 1) thành công nhất:</p>
+                <ul class="space-y-3 text-zinc-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-play text-brand text-xs mt-1.5"></i><span>Bạn hãy thiết lập lưới (Grid) trên camera điện thoại.</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-play text-brand text-xs mt-1.5"></i><span>Tại mỗi quán (ví dụ Starbucks), bạn đứng canh sao cho biển hiệu nằm giữa khung hình. Bấm quay và vẩy máy từ Trái sang Phải.</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-play text-brand text-xs mt-1.5"></i><span>Đi sang Highlands, Mixue, FujiMart... lặp lại Y HỆT thao tác: Bấm quay -> Vẩy từ Trái sang Phải với cùng 1 tốc độ.</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-play text-brand text-xs mt-1.5"></i><span>Khi đưa vào CapCut, dạy học viên dùng tính năng Split (Tách) để cắt lấy đúng 1 giây ở giữa (lúc hình ảnh biển hiệu lướt qua rõ nhất) của mỗi clip, bỏ đi phần đầu/đuôi bị rung. Nối chúng lại, lồng thêm hiệu ứng âm thanh "Whoosh" ở mỗi điểm cắt là tạo ra "Ma thuật"!</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- KỸ NĂNG B-ROLL -->
+        <section class="space-y-16 pt-10 border-t border-zinc-800">
+            <div class="prose prose-invert max-w-none">
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Chào bạn, ý tưởng nâng cấp từ dạng "Talking Head (ngồi nói) + Trám cảnh cơ bản" lên "Video Storytelling kết hợp 8 loại B-roll có chủ đích" là một bước đi cực kỳ xuất sắc cho một khóa học Edit Video.
+                </p>
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Cách làm này tuân thủ đúng nguyên tắc "Show, don't just tell" (Hãy cho họ thấy, đừng chỉ nói). Khi khách vãng lai lướt Facebook thấy video quá "cuốn" và chuyên nghiệp, họ sẽ lập tức bị thuyết phục: "Chỉ dùng điện thoại mà làm được thế này sao? Mình phải học khóa này!". Đồng thời, học viên trong khóa cũng có ngay một hệ thống bài tập thực hành (Case Study) trực quan, có độ khó từ thấp đến cao để luyện tập trên CapCut.
+                </p>
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Do link bài viết của bạn hiện không truy cập được, dựa trên tiêu chuẩn Video Marketing hiện đại và độ phù hợp để dạy thực hành trên CapCut cho 1 người tự quay bằng điện thoại, tôi hệ thống lại 8 loại B-roll cực kỳ hiệu quả sau:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 my-8">
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Establishing (Toàn cảnh):</strong> Định vị không gian rộng (Tháp đồng hồ, toàn khu).</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Detail/Macro (Đặc tả):</strong> Quay cực cận chi tiết (Tay bấm thang máy, giọt nước, ly cafe).</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Action (Hành động):</strong> Chủ thể tương tác với môi trường (Quẹt thẻ, bước đi, mở cửa).</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">POV (Góc nhìn thứ nhất):</strong> Đặt khán giả vào mắt người quay (Góc nhìn từ mắt bạn khi mở cửa, đi dạo).</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Tracking/Movement (Chuyển động):</strong> Bám theo chủ thể hoặc máy quay di chuyển (Tiến/lùi, trượt ngang).</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Reveal (Hé lộ):</strong> Giấu máy sau vật cản (gốc cây/cột) rồi đưa dần ra để hé lộ cảnh đẹp.</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">Hyper-lapse/Timelapse (Tua nhanh):</strong> Cầm máy đi bộ quay tua nhanh để thấy nhịp sống.</div>
+                    <div class="bg-card p-4 rounded-lg border border-zinc-800"><strong class="text-neon">In-camera Transition (Chuyển cảnh ngay lúc quay):</strong> Vẩy máy (Whip pan), lấy tay che ống kính.</div>
+                </div>
+                
+                <p class="text-lg text-zinc-300 leading-relaxed">
+                    Dưới đây là 3 phương án kịch bản chi tiết, kết hợp linh hoạt các loại B-roll này. Mỗi phương án mang một "Vibe" khác nhau và giúp bạn demo được những kỹ năng CapCut đỉnh cao khác nhau. (Để quay 1 mình, bạn chỉ cần 1 chiếc Tripod điện thoại).
+                </p>
+            </div>
+
+            <!-- PHƯƠNG ÁN 1 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">PHƯƠNG ÁN 1:</span> GÓC NHÌN MÔI GIỚI BẤT ĐỘNG SẢN (Như bạn yêu cầu)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Mục tiêu:</strong> Thể hiện sự chuyên nghiệp, nhịp độ nhanh, dứt khoát. Cực kỳ thu hút tệp khách hàng làm kinh doanh, sale BĐS muốn học làm video.<br><strong>Kỹ thuật CapCut sẽ demo:</strong> Masking (Mặt nạ chuyển cảnh), Speed Ramp (Uốn tốc độ Nhanh - Chậm), Sound Effects (SFX), Text Tracking (Chữ bám vật thể).</p>
+                <table class="script-table">
+                    <thead>
+                        <tr><th width="10%">Giây</th><th width="30%">Hình ảnh & Loại B-roll</th><th width="30%">Lời thoại (Voiceover)</th><th width="30%">Kỹ thuật Edit</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0-3s</td><td>8. Transition + 1. Establishing: Bạn đứng A-roll nói câu Hook. Nói xong, lấy tay che kín ống kính. Cảnh mở ra là toàn cảnh Tháp đồng hồ Times City rực rỡ.</td><td>Hook: "Đừng chốt nhà ở Hà Nội, nếu bạn chưa xem hết video này!" (Âm thanh: Tiếng Whoosh mạnh khi che tay)</td><td>Dùng công cụ Mặt nạ (Masking) để nối cảnh lúc vuốt tay mượt mà.</td></tr>
+                        <tr><td>3-8s</td><td>3. Action + 5. Movement: (Đặt Tripod góc thấp). Quay cảnh bạn mặc đồ lịch sự, bước đi dứt khoát lướt ngang qua khung hình tại quảng trường.</td><td>"Nhiều người nói Times City đã cũ? Nhầm to! Sống ở đây là sở hữu cả một hệ sinh thái trọn vẹn."</td><td>Ghép nhạc có nhịp Beat mạnh. Cắt cảnh theo nhịp bước chân (Beat-sync).</td></tr>
+                        <tr><td>8-14s</td><td>2. Detail + 7. Hyper-lapse: Chuỗi cắt nhanh: Cận cảnh ngón tay quẹt thẻ thang máy (tít). Nối sang cảnh tua nhanh bạn đi dọc TTTM sầm uất.</td><td>"An ninh thẻ từ tuyệt đối. Và chỉ mất 1 lần quẹt thẻ, siêu thị, bệnh viện, trường học nằm ngay dưới chân bạn."</td><td>Speed Curve (Đường cong tốc độ): Nhanh - Chậm - Nhanh. Lồng thêm SFX tiếng thang máy.</td></tr>
+                        <tr><td>14-20s</td><td>6. Reveal + 4. POV: Máy quay giấu sau rèm cửa, kéo rèm sang hé lộ ban công. Đổi sang góc nhìn POV đẩy cửa nhìn xuống hồ nước nội khu mát mẻ.</td><td>"Không gian xanh bao phủ và một tầm view chào buổi sáng không thể chê vào đâu được."</td><td>Thêm Text 3D tiêu đề bám theo (Tracking) nổi trên mặt hồ nước.</td></tr>
+                        <tr><td>20-25s</td><td>A-roll (Kết): Khung hình chia đôi: Một bên là bạn, một bên là màn hình đang edit CapCut chính video này.</td><td>CTA: "Muốn biết giá căn hộ ở đây, hoặc muốn học cách dùng điện thoại edit video xịn như này? Click link bên dưới!"</td><td>Hiệu ứng Picture-in-Picture. Auto Captions động.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PHƯƠNG ÁN 2 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">PHƯƠNG ÁN 2:</span> "META VIDEO" BÓC TRẦN SỰ THẬT (Hiệu quả chạy Ads cao nhất)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Mục tiêu:</strong> "Phá vỡ bức tường thứ 4". Đi thẳng vào nỗi đau của những người quay video rung lắc, phèn. Dùng chính việc "Hướng dẫn kỹ thuật B-roll" làm mồi nhử quảng cáo.<br><strong>Kỹ thuật CapCut sẽ demo:</strong> Split Screen (Chia đôi màn hình so sánh), Freeze Frame (Đóng băng khung hình), Chống rung.</p>
+                <table class="script-table">
+                    <thead>
+                        <tr><th width="10%">Giây</th><th width="30%">Hình ảnh & Loại B-roll</th><th width="30%">Lời thoại (Voiceover)</th><th width="30%">Kỹ thuật Edit</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0-5s</td><td>A-roll tương phản:<br>Cảnh 1: Bạn cầm máy quay lia lịa, rung lắc, đi bộ lù đù ngó nghiêng chung cư.<br>Cảnh 2: Đổi sang khung hình góc quay Cinematic siêu mượt.</td><td>Hook: "90% mọi người đi quay review nhà đất, cơ sở kinh doanh đều cầm máy loạn xạ thế này. Nhìn rất thiếu chuyên nghiệp!"</td><td>Thêm âm thanh hài hước (fail) ở cảnh 1. Chuyển cảnh Flash chớp nháy sang cảnh 2.</td></tr>
+                        <tr><td>5-12s</td><td>A-roll: Bạn đứng cạnh đài phun nước Times City, tự tự tin chỉ tay.</td><td>"Thay vì thế, hôm nay tôi mượn bối cảnh Times City để chỉ bạn sức mạnh của kỹ thuật B-roll quay bằng điện thoại."</td><td>Phóng to mặt (Keyframe Zoom) ở chữ "sức mạnh" để nhấn mạnh.</td></tr>
+                        <tr><td>12-18s</td><td>6. Reveal + 8. Transition: Máy quay từ dưới ghế đá lướt lên hé lộ mặt hồ. Cuối cú quay vẩy mạnh máy (Whip pan) nối sang cảnh cây xanh.</td><td>"Muốn tạo bất ngờ? Dùng B-roll Hé Lộ và Chuyển cảnh vẩy máy..."</td><td>Match-cut: Nối 2 cú vẩy máy với nhau siêu mượt. Freeze frame (Đóng băng hình) để hiện chữ giải thích.</td></tr>
+                        <tr><td>18-24s</td><td>2. Detail + 4. POV: Cận cảnh một ly cafe sương lạnh tại quán chân đế. Góc nhìn thứ nhất (POV) đang dạo bước dưới vòm cây ánh nắng lọt qua.</td><td>"...Muốn lấy cảm xúc khách hàng? Dùng ngay B-roll Đặc tả chi tiết và Góc nhìn thứ nhất."</td><td>Dùng công cụ Stabilize (Chống rung) để cảnh đi bộ mượt như dùng Gimbal.</td></tr>
+                        <tr><td>24-30s</td><td>A-roll: Bạn khoanh tay mỉm cười. Màn hình CapCut hiện lên xung quanh.</td><td>CTA: "Ném tất cả vào CapCut, chỉnh màu, thêm nhạc, và bạn có 1 TVC quảng cáo. Khóa học Edit Video của tôi đang chờ bạn, click ngay!"</td><td>Thêm Lớp phủ (Overlay) đồ họa sống động để chốt sale.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PHƯƠNG ÁN 3 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-2"><span class="text-brand">PHƯƠNG ÁN 3:</span> LIFESTYLE VLOG "CHỮA LÀNH" (Kể chuyện cảm xúc)</h2>
+                <p class="text-zinc-400 mb-6">👉 <strong class="text-neon">Mục tiêu:</strong> Tập trung vào cái đẹp, âm thanh môi trường (ASMR) và nhịp điệu từ tốn. Thể hiện khả năng làm video thẩm mỹ cao, hút tệp khách thích xây kênh Vlog cá nhân, thương hiệu cá nhân.<br><strong>Kỹ thuật CapCut sẽ demo:</strong> Optical Flow (Slow motion siêu mượt), Lồng ghép âm thanh môi trường (Sound Design/Foley), Color Grading (Chỉnh màu xịn).</p>
+                <table class="script-table">
+                    <thead>
+                        <tr><th width="10%">Giây</th><th width="30%">Hình ảnh & Loại B-roll</th><th width="30%">Lời thoại & Âm thanh</th><th width="30%">Kỹ thuật Edit</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0-6s</td><td>2. Detail + 3. Action: Góc cực cận kéo rèm cửa. Cảnh xỏ chân vào đôi giày thể thao chạy bộ. Cảnh bấm thang máy.</td><td>(Không có lời thoại đầu, chỉ có nhạc Lofi Chill và tiếng sột soạt ASMR lớn).</td><td>Hướng dẫn trích xuất âm thanh, tăng âm lượng tiếng động thật (Foley sound), giảm tạp âm.</td></tr>
+                        <tr><td>6-14s</td><td>5. Movement + 4. POV: (Đặt tripod góc thấp bãi cỏ). Bạn chạy bộ lướt ngang qua khung hình (quay 60fps). Cảnh góc nhìn ngước lên tán cây xanh.</td><td>(Giọng trầm ấm) "Người ta bảo chung cư ngột ngạt lắm... Nhưng đó là vì họ chưa sống ở đây."</td><td>Dùng tính năng Dòng quang học (Optical Flow) để làm Slow-motion 0.5x cảnh chạy bộ mượt như phim rạp.</td></tr>
+                        <tr><td>14-22s</td><td>6. Reveal + 1. Establishing: Máy quay lướt ngang qua một tán lá, hé lộ đài phun nước rực rỡ nắng và những người đang thong thả dạo bộ.</td><td>"Nhịp sống ở Times City vừa đủ nhanh để không bị tụt hậu, nhưng cũng đủ mảng xanh để bạn hít thở chậm lại."</td><td>Color Grading: Kéo màu theo phong cách Aesthetic (trong trẻo, xanh mát). Thêm viền đen Cinematic.</td></tr>
+                        <tr><td>22-30s</td><td>A-roll: Bạn ngồi ghế đá đọc sách, ngước lên nhìn thẳng vào camera mỉm cười.</td><td>CTA: "Những video đậm chất điện ảnh thế này, bạn hoàn toàn có thể tự dựng trên CapCut. Tham gia lớp học của tôi để lấy file thực hành nhé. Link ở dưới!"</td><td>Chuyển cảnh Fade out mờ dần.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bí kíp 1 mình -->
+            <div class="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-2xl border border-neon/30 shadow-[0_0_30px_rgba(190,242,100,0.1)]">
+                <h3 class="text-xl font-bold text-neon flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-user-astronaut"></i> BÍ KÍP ĐI QUAY 1 MÌNH VÀ TỐI ƯU KHÓA HỌC:
+                </h3>
+                <ul class="space-y-4 text-zinc-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-neon mt-1"></i>
+                        <span><strong>Quy tắc 5 giây cho người tự quay:</strong> Vì bạn quay 1 mình (Solo creator), khi quay cảnh Action/Movement, hãy đặt Tripod cẩn thận, bấm quay, sau đó đi vào khung hình (ví dụ cảnh đẩy cửa kính, cảnh đi dạo qua cam). Thực hiện hành động lặp lại 2-3 lần. Khi về mở CapCut, hãy chỉ dạy học viên cắt lấy đúng 1.5 - 2 giây có chuyển động đẹp nhất. Khán giả xem sẽ không hề biết bạn tự quay.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-neon mt-1"></i>
+                        <span><strong>Luôn quay 4K - 60fps cho B-roll:</strong> Nhắc cả bạn và học viên luôn setup máy quay B-roll ở 60fps. Tại sao? Để khi đưa vào CapCut làm hiệu ứng uốn tốc độ (Speed Curve) hay làm chậm (Slow-mo) nó không bị vỡ hay giật hình.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-neon mt-1"></i>
+                        <span><strong>Tuyệt chiêu "Bài tập thực chiến" trong khóa học:</strong><br>
+                        - Bạn hãy chọn Phương án 1 hoặc 2 để làm video chạy Ads Facebook.<br>
+                        - Bên trong khóa học, thay vì bắt học viên đi quay, hãy cung cấp cho họ 1 thư mục Google Drive chứa toàn bộ file quay thô (Raw Footage) lộn xộn của video Ads đó.<br>
+                        - Hãy nói với học viên: "Các bạn vừa xem video quảng cáo của tôi trên Facebook đúng không? Bài tập hôm nay: Tải đống source này về, áp dụng tư duy 8 loại B-roll và dùng CapCut tự dựng lại video quảng cáo đó xem ai làm mượt hơn tôi!". Cách dạy này sẽ khiến học viên sướng rùng mình vì tính thực tế cực cao.</span>
+                    </li>
+                </ul>
+                <p class="mt-6 text-brand font-semibold text-lg text-center">Với kịch bản này, bạn vừa làm ra một video quảng cáo xuất sắc, vừa có giáo án thực hành vô giá cho học viên. Chúc khóa học của bạn thành công rực rỡ!</p>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS SECTION -->
+        <section class="pt-16 pb-10 border-t border-zinc-800">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-white mb-4">25 Câu Hỏi Ôn Tập</h2>
+                <p class="text-zinc-400">Xem lại ngay kiến thức với các thẻ nhớ trực quan bên dưới.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 25 Flashcards extracted from text -->
+                <!-- 1-5 -->
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>"Ngôn ngữ Đạo diễn" giúp ích gì?</p><p class="text-zinc-400 text-sm pl-6">Biến lớp học thành Khóa đào tạo Tư duy, học viên thấy "Pro", dễ nhớ, áp dụng 100% ý đồ.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Kỹ thuật Action Cut là gì?</p><p class="text-zinc-400 text-sm pl-6">Cắt nối trên hành động liên tục, mượn quán tính từ cảnh A sang cảnh B tạo sự trơn tru.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Ứng dụng Action Cut ở Times City?</p><p class="text-zinc-400 text-sm pl-6">Tả sự tiện lợi, bước một bước là tới (đi chợ, cafe nối tiếp nhau không một giây ngắt quãng).</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Match Cut là kỹ thuật gì?</p><p class="text-zinc-400 text-sm pl-6">Chuyển cảnh đồng dạng, "Hack não" thị giác bằng cách lợi dụng sự tương đồng hình dáng vật ở trung tâm khung hình.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Ví dụ về Match Cut hình tròn?</p><p class="text-zinc-400 text-sm pl-6">Mặt đồng hồ tròn -> Tháp đồng hồ -> chiếc Pizza -> miệng cốc cafe.</p></div>
+                
+                <!-- 6-10 -->
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Wipe Masking (Invisible Wipe) là gì?</p><p class="text-zinc-400 text-sm pl-6">Lợi dụng lúc máy quay lướt qua vật cản (gốc cây/vùng tối) để gạt cảnh cũ, xuyên không sang cảnh mới.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Hiệu ứng tâm lý của Wipe Masking?</p><p class="text-zinc-400 text-sm pl-6">Xóa nhòa không gian, đưa khán giả đi từ sự ồn ào bụi bặm sang sự tĩnh lặng chữa lành.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Whip Pan là gì?</p><p class="text-zinc-400 text-sm pl-6">Vẩy gắt máy quay sang một bên để tạo độ mờ (Motion Blur), tạo năng lượng bùng nổ dồn dập.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Quy tắc quay Whip Pan?</p><p class="text-zinc-400 text-sm pl-6">Luật: Cảnh trước vẩy ra hướng nào, cảnh sau phải hất từ hướng đó đi vào.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>J-Cut là gì?</p><p class="text-zinc-400 text-sm pl-6">Âm thanh của cảnh mới xuất hiện TRƯỚC khi hình ảnh chuyển tới.</p></div>
+
+                <!-- 11-15 -->
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>L-Cut là gì?</p><p class="text-zinc-400 text-sm pl-6">Hình ảnh đã qua cảnh mới nhưng âm thanh cũ VẪN đọng lại.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Tác dụng của J-Cut/L-Cut?</p><p class="text-zinc-400 text-sm pl-6">Thao túng cảm xúc khán giả, tạo sự tò mò, mang đậm phong cách phim điện ảnh, tài liệu.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Establishing là gì?</p><p class="text-zinc-400 text-sm pl-6">Quay toàn cảnh, định vị không gian rộng (Tháp đồng hồ, toàn khu).</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Detail/Macro là gì?</p><p class="text-zinc-400 text-sm pl-6">Quay cực cận chi tiết (ngón tay quẹt thẻ, giọt nước, ly cafe) để lấy cảm xúc.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Action là gì?</p><p class="text-zinc-400 text-sm pl-6">Chủ thể tương tác với môi trường (quẹt thẻ, bước đi, mở cửa).</p></div>
+
+                <!-- 16-20 -->
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll POV là gì?</p><p class="text-zinc-400 text-sm pl-6">Góc nhìn thứ nhất, đặt khán giả vào mắt người quay, tăng tính nhập vai.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Tracking/Movement là gì?</p><p class="text-zinc-400 text-sm pl-6">Bám theo chủ thể hoặc máy quay di chuyển (tiến/lùi, trượt ngang).</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Reveal là gì?</p><p class="text-zinc-400 text-sm pl-6">Giấu máy sau vật cản (gốc cây/cột) rồi đưa dần ra để hé lộ cảnh đẹp bất ngờ.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>B-roll Hyper-lapse là gì?</p><p class="text-zinc-400 text-sm pl-6">Cầm máy đi bộ quay tua nhanh để thấy nhịp sống dồn dập.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>In-camera Transition là gì?</p><p class="text-zinc-400 text-sm pl-6">Chuyển cảnh ngay lúc quay bằng thao tác vật lý (vẩy máy Whip pan, lấy tay che ống kính).</p></div>
+
+                <!-- 21-25 -->
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Tại sao cần quay B-roll ở 4K - 60fps?</p><p class="text-zinc-400 text-sm pl-6">Để khi đưa vào CapCut làm hiệu ứng Speed Curve hoặc Slow-mo nó không bị vỡ hay giật hình.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Quy tắc 5 giây tự quay 1 mình là gì?</p><p class="text-zinc-400 text-sm pl-6">Đặt Tripod, đi vào khung hình làm hành động 2-3 lần, về cắt lấy 1.5-2s mượt nhất trên CapCut.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Bài tập thực chiến đỉnh cao?</p><p class="text-zinc-400 text-sm pl-6">Giao Raw Footage lộn xộn để học viên tự áp dụng tư duy 8 loại B-roll dựng lại video mẫu.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-neon border-y border-r border-zinc-800"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-q text-brand mt-1"></i>Tác dụng của Optical Flow?</p><p class="text-zinc-400 text-sm pl-6">Giúp làm Slow-motion mượt như phim rạp, đặc biệt hiệu quả khi áp dụng cho các cảnh di chuyển.</p></div>
+                <div class="bg-card p-5 rounded-xl border-l-4 border-brand border-y border-r border-zinc-800 bg-zinc-900"><p class="font-bold text-white mb-2 flex gap-2"><i class="fa-solid fa-check-circle text-brand mt-1"></i>Nguyên tắc "Show, don't just tell"?</p><p class="text-zinc-400 text-sm pl-6">Hãy cho họ thấy, đừng chỉ nói. Dùng video thực tế cuốn hút để khách tự bị thuyết phục.</p></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Exact 128px height) -->
+    <footer class="h-[128px] w-full bg-[#020617] border-t-2 border-neon flex flex-col justify-center items-center px-6">
+        <p class="text-zinc-400 text-sm text-center mb-4 max-w-4xl font-medium">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex gap-6 md:gap-10">
+            <a href="https://youtube.com/@vietndonline" target="_blank" class="flex items-center gap-2 text-white hover:text-neon transition-colors bg-zinc-800/50 px-4 py-2 rounded-full border border-zinc-700 hover:border-neon">
+                <i class="fa-brands fa-youtube text-xl text-neon"></i>
+                <span class="text-sm font-semibold">Youtube</span>
+            </a>
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="flex items-center gap-2 text-white hover:text-neon transition-colors bg-zinc-800/50 px-4 py-2 rounded-full border border-zinc-700 hover:border-neon">
+                <i class="fa-brands fa-tiktok text-xl text-neon"></i>
+                <span class="text-sm font-semibold">Tiktok</span>
+            </a>
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="flex items-center gap-2 text-white hover:text-neon transition-colors bg-zinc-800/50 px-4 py-2 rounded-full border border-zinc-700 hover:border-neon">
+                <i class="fa-brands fa-facebook text-xl text-neon"></i>
+                <span class="text-sm font-semibold">Facebook Page</span>
+            </a>
+        </div>
+    </footer>
+
+
+
+<script id="cms-pin-widget">
+  if(localStorage.getItem("cms_auth") === "granted") {
+    const path = window.location.pathname.split("/").filter(Boolean);
+    let repo = "vietndj.github.io", file = "index.html";
+    if (path.length > 1) { repo = path[0]; file = path.pop(); }
+    else if (path.length === 1) { if (path[0].endsWith(".html")) file = path[0]; else repo = path[0]; }
+    const fileKey = repo + "/" + decodeURIComponent(file);
+    let isPinned = false;
+    try { const dbStr = localStorage.getItem("cms_repo_data"); if(dbStr){ const db = JSON.parse(dbStr); if(Array.isArray(db.pinnedDataCache) && db.pinnedDataCache.includes(fileKey)) isPinned = true; } } catch(e){}
+    const btn = document.createElement("a");
+    btn.href = "https://vietndj.github.io/?" + (isPinned ? "unpin=" : "pin=") + encodeURIComponent(fileKey);
+    btn.innerHTML = isPinned ? "❌ Bỏ ghim" : "📌 Ghim bài";
+    btn.style.cssText = "position:fixed;top:15px;right:15px;background:" + (isPinned ? "#FF3B30" : "#FF9500") + ";color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;";
+    btn.onmouseover = () => btn.style.transform = "scale(1.05)";
+    btn.onmouseout = () => btn.style.transform = "scale(1)";
+    btn.onclick = function(e) {
+      e.preventDefault();
+      window.open(this.href, "_blank");
+      isPinned = !isPinned;
+      this.innerHTML = isPinned ? "❌ Bỏ ghim" : "📌 Ghim bài";
+      this.style.background = isPinned ? "#FF3B30" : "#FF9500";
+      this.href = "https://vietndj.github.io/?" + (isPinned ? "unpin=" : "pin=") + encodeURIComponent(fileKey);
+    };
+    document.body.appendChild(btn);
+  }
+</script>
+
+</body>
+</html>
+```
