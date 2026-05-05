@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Loại Chuyển Cảnh In-Camera Thực Chiến</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        
+        /* CSS Abstract Art Classes */
+        .art-container { width: 100%; height: 160px; position: relative; overflow: hidden; background: #e2e8f0; display: flex; align-items: center; justify-content: center;}
+        
+        /* 1. Hand Swipe */
+        .art-swipe { width: 100%; height: 100%; background: linear-gradient(90deg, #1e293b 50%, #3b82f6 50%); background-size: 200% 100%; animation: swipeAnim 3s infinite alternate ease-in-out; }
+        @keyframes swipeAnim { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+        
+        /* 2. Punch */
+        .art-punch { width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #ef4444 0%, #7f1d1d 100%); transform: scale(0.5); animation: punchAnim 1s infinite alternate cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+        @keyframes punchAnim { to { transform: scale(2.5); opacity: 0; } }
+
+        /* 3. Push to Black */
+        .art-push-black { width: 100%; height: 100%; background: #0f172a; position: relative; }
+        .art-push-black::after { content:''; position: absolute; inset: 20px; border: 2px solid rgba(255,255,255,0.2); transition: all 1s; animation: zoomIn 2s infinite alternate; }
+        @keyframes zoomIn { 0% { transform: scale(1); opacity: 1; border-width: 2px; } 100% { transform: scale(5); opacity: 0; border-width: 10px; } }
+
+        /* 4. Wipe */
+        .art-wipe { width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #10b981, #10b981 20px, #047857 20px, #047857 40px); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); animation: wipeClip 2s infinite alternate ease-in-out;}
+        @keyframes wipeClip { 0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); } 100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } }
+
+        /* 5. Shirt Pull */
+        .art-shirt { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid #6366f1; animation: pullUp 1.5s infinite alternate ease-in;}
+        @keyframes pullUp { 0% { transform: translateY(80px) scaleY(0.1); } 100% { transform: translateY(-20px) scaleY(2); } }
+
+        /* 6. Snap/Clap */
+        .art-snap { display: flex; gap: 10px; }
+        .art-snap div { width: 20px; height: 60px; background: #f59e0b; border-radius: 10px; animation: clapAnim 0.5s infinite alternate; }
+        .art-snap div:nth-child(1) { transform: rotate(15deg); }
+        .art-snap div:nth-child(2) { transform: rotate(-15deg); }
+        @keyframes clapAnim { to { transform: rotate(0deg); background: #fbbf24; box-shadow: 0 0 15px #fcd34d; } }
+
+        /* 7. Jump Cut */
+        .art-jump { width: 40px; height: 40px; background: #ec4899; border-radius: 8px; animation: jumpAnim 1s infinite cubic-bezier(0.5, 0, 0.5, 1); }
+        @keyframes jumpAnim { 0%, 100% { transform: translateY(40px); } 50% { transform: translateY(-40px) rotate(180deg); } }
+
+        /* 8. Whip Spin */
+        .art-spin { width: 80px; height: 80px; background: conic-gradient(from 0deg, #8b5cf6, #d946ef, #8b5cf6); border-radius: 50%; animation: spinAnim 0.5s infinite linear; filter: blur(2px); }
+        @keyframes spinAnim { to { transform: rotate(360deg); } }
+
+        /* 9. Whip Look */
+        .art-look { width: 100%; height: 100%; background: #0ea5e9; display: flex; align-items: center; padding: 20px; }
+        .art-look div { width: 30px; height: 30px; background: white; border-radius: 50%; animation: lookAnim 1.5s infinite alternate ease-in-out; }
+        @keyframes lookAnim { 0%, 30% { transform: translateX(0); } 70%, 100% { transform: translateX(200px) scale(1.5); } }
+
+        /* 10. Step Over */
+        .art-step { width: 100%; height: 20px; background: #334155; position: absolute; bottom: 0; animation: stepAnim 2s infinite linear; }
+        @keyframes stepAnim { 0% { top: 160px; height: 0; } 50% { top: 0; height: 160px; background: #0f172a; } 100% { top: -160px; height: 0; } }
+
+        /* 11. Foreground Wipe */
+        .art-fg-wipe { width: 100%; height: 100%; background: #fca5a5; position: relative; overflow: hidden; }
+        .art-fg-wipe::before { content: ''; position: absolute; top: 0; left: -100px; width: 80px; height: 100%; background: #7f1d1d; transform: skewX(-15deg); animation: fgWipe 2s infinite linear; }
+        @keyframes fgWipe { 100% { left: 120%; } }
+
+        /* 12. Drop */
+        .art-drop { width: 50px; height: 80px; background: #14b8a6; border-radius: 5px; animation: dropAnim 1.5s infinite ease-in; }
+        @keyframes dropAnim { 0% { transform: translateY(-100px); opacity: 1;} 40% { transform: translateY(60px); opacity: 0.2;} 50%, 100% { transform: translateY(60px) scale(1.5); opacity: 0; background: #000; } }
+
+        /* 13. Toss */
+        .art-toss { width: 30px; height: 30px; background: #f43f5e; border-radius: 50%; position: absolute; animation: tossAnim 2s infinite cubic-bezier(.25,.1,.25,1); }
+        @keyframes tossAnim { 0% { left: -20px; top: 100px; transform: scale(0.5); } 50% { left: 50%; top: 20px; transform: scale(1); } 100% { left: 120%; top: 100px; transform: scale(0.5); } }
+
+        /* 14. Object Boop */
+        .art-boop { width: 60px; height: 60px; background: #84cc16; border-radius: 10px; animation: boopAnim 1.5s infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        @keyframes boopAnim { 0% { transform: scale(0.2) translateZ(0); } 100% { transform: scale(3) translateZ(50px); opacity: 0; } }
+
+        /* 15. Doorway Match */
+        .art-door { width: 60px; height: 100px; border: 4px solid #475569; background: #cbd5e1; transform: perspective(200px) rotateY(0deg); transform-origin: left; animation: doorOpen 2s infinite alternate ease-in-out; }
+        @keyframes doorOpen { to { transform: perspective(200px) rotateY(-80deg); background: #e2e8f0; } }
+
+        /* 16. Frame In / Out */
+        .art-frame-inout { display: flex; width: 100%; height: 100%; }
+        .art-frame-inout div { flex: 1; background: #c084fc; opacity: 0; animation: frameInOut 3s infinite; }
+        .art-frame-inout div:nth-child(2) { background: #f472b6; animation-delay: 1.5s; }
+        @keyframes frameInOut { 0% { transform: translateX(-100%); opacity: 1; } 40%, 60% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(100%); opacity: 1; } }
+
+        /* 17. Shape Match */
+        .art-shape { animation: shapeChange 2s infinite alternate; background: #3b82f6; }
+        @keyframes shapeChange { 0% { width: 60px; height: 60px; border-radius: 0; transform: rotate(0deg); } 100% { width: 60px; height: 60px; border-radius: 50%; transform: rotate(180deg); background: #f59e0b; } }
+
+        /* 18. Focus Pull */
+        .art-focus { width: 80px; height: 80px; background: #10b981; border-radius: 50%; animation: focusPull 2s infinite alternate; }
+        @keyframes focusPull { 0% { filter: blur(15px); transform: scale(1.5); } 100% { filter: blur(0); transform: scale(1); } }
+
+        /* 19. Light Flare */
+        .art-flare { width: 100%; height: 100%; background: radial-gradient(circle at center, #ffffff 0%, #fef08a 20%, #000000 100%); animation: flareAnim 2s infinite alternate ease-in; opacity: 0.8; }
+        @keyframes flareAnim { 0% { transform: scale(1); filter: brightness(1); } 100% { transform: scale(3); filter: brightness(2); } }
+
+        /* 20. Object Wipe */
+        .art-obj-wipe { width: 100px; height: 120%; background: #0f172a; position: absolute; transform: rotate(15deg); animation: objWipe 2.5s infinite linear; }
+        @keyframes objWipe { 0% { left: -150px; } 100% { left: calc(100% + 150px); } }
+
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pt-10">
+
+    <!-- Header / Hero Section -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
+            20 Kỹ Thuật Chuyển Cảnh In-Camera
+        </h1>
+        <p class="text-xl text-slate-500 max-w-3xl mx-auto">
+            Giải pháp tối ưu "RAM não", tiết kiệm thời gian hậu kỳ. Tạo ra những đoạn video mượt mà, cuốn hút chỉ bằng cách điều khiển cú máy và hành động ngay trên set quay.
+        </p>
+    </header>
+
+    <!-- Main Content: Techniques Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Item 1 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-swipe"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">1. Che ống kính (Hand Swipe)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Úp lòng bàn tay thẳng vào ống kính cho đến khi khung hình tối đen. Cảnh sau rút tay ra từ sát ống kính.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Che cam ở văn phòng -> Mở tay ra đang ở bãi biển.</li>
+                        <li><strong>VD2:</strong> Đang mặc đồ ngủ che cam -> Mở ra đang mặc vest.</li>
+                        <li><strong>VD3:</strong> Che cam lúc trời sáng -> Mở tay ra trời đã tối đen (Nightlife).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-punch"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">2. Đấm/Chạm (The Punch)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Đưa nắm đấm lao thẳng vào ống kính. Cảnh sau bắt đầu bằng việc rút tay ra với tốc độ tương đương.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Đấm cam khi đang ở góc phòng A -> Rút tay ra ở góc phòng B.</li>
+                        <li><strong>VD2:</strong> Đấm vào cam, rút tay ra trên tay cầm một sản phẩm mới.</li>
+                        <li><strong>VD3:</strong> Hai người đấu võ, người A đấm vào cam, người B văng ra ở cảnh sau.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-push-black"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">3. Đẩy vào bóng tối (Push to Black)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Cầm máy tiến sát vào một bề mặt tối màu. Cảnh sau kéo máy ra từ một bề mặt tối tương tự.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Đẩy cam vào lưng áo đen -> Kéo ra từ một chiếc ghế da đen.</li>
+                        <li><strong>VD2:</strong> Tiến sát vào cốc cafe đen -> Kéo ra từ một hố loa sẫm màu.</li>
+                        <li><strong>VD3:</strong> Đẩy sát vào lòng bàn tay -> Kéo ra từ một bức tường rêu tối.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-wipe"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">4. Lau ống kính (The Wipe)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Dùng một chiếc khăn, áo hoặc tay gạt nhanh qua trước ống kính từ trái sang phải hoặc ngược lại.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Dùng khăn lau cam chiếc xe máy bẩn -> Khung hình lau xong xe đã sạch bóng.</li>
+                        <li><strong>VD2:</strong> Quẹt tay ngang cam để biến đổi makeup từ mặt mộc sang lộng lẫy.</li>
+                        <li><strong>VD3:</strong> Cầm chổi quét ngang cam để dọn dẹp căn phòng bừa bộn trong nháy mắt.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-shirt"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">5. Nắm cổ áo (The Shirt Pull)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Cúi đầu, túm lấy cổ áo đang mặc kéo trùm qua che kín camera. Cảnh sau kéo áo xuống.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Kéo áo thun trùm cam -> Hạ xuống đã mặc áo sơ mi công sở.</li>
+                        <li><strong>VD2:</strong> Kéo áo che lúc đang ở nhà -> Hạ xuống đang ở phòng gym tập luyện.</li>
+                        <li><strong>VD3:</strong> Kéo áo để thay đổi kiểu tóc (từ bù xù sang vuốt keo gọn gàng).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-snap"><div></div><div></div></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">6. Búng tay / Vỗ tay (Snap/Clap)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Tạo một hành động dứt khoát. Cắt clip đúng khoảnh khắc ngón tay chạm nhau hoặc vỗ tay.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Búng tay một cái, đèn phòng từ tắt chuyển sang bật sáng trưng.</li>
+                        <li><strong>VD2:</strong> Vỗ tay để các món ăn tự động xuất hiện đầy trên bàn tiệc trống.</li>
+                        <li><strong>VD3:</strong> Búng tay để đổi ngay background phông xanh sang một bối cảnh khác.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-jump"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">7. Nhảy lơ lửng (The Jump Cut)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Nhảy lên không trung, cắt clip ở điểm cao nhất. Cảnh sau bắt đầu đúng ở tư thế lơ lửng đó.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Nhảy lên ở TP.HCM, đáp xuống đất ở Đà Lạt.</li>
+                        <li><strong>VD2:</strong> Nhảy lên khi đang đi chân trần, đáp xuống đã mang đôi Sneaker mới.</li>
+                        <li><strong>VD3:</strong> Nhảy qua một vũng nước nhỏ, đáp xuống ở hồ bơi rộng lớn.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-spin"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">8. Xoay 360 độ (Whip Spin)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Tự cầm máy xoay vòng cơ thể. Cắt clip ở giữa vòng xoay khi cảnh vật nhòe đi (motion blur).</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Xoay ở hành lang, nửa vòng sau đang đứng giữa sân vận động.</li>
+                        <li><strong>VD2:</strong> Xoay camera biến đổi các mùa trong năm (quay cùng 1 góc ở 4 thời điểm).</li>
+                        <li><strong>VD3:</strong> Dùng gimbal xoay vòng quanh sản phẩm, chuyển cảnh sang sản phẩm khác cùng kích cỡ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-look"><div></div></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">9. Ngoái nhìn nhanh (Whip Look)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Ngoái đầu thật nhanh sang một bên. Cảnh sau lia máy thật nhanh vào thứ bạn vừa nhìn.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Đang nói thì giật mình nhìn lên trời -> Máy lia nhanh bắt được đàn chim bay.</li>
+                        <li><strong>VD2:</strong> Nhìn ngoắt sang phải -> Cảnh sau lia nhanh vào màn hình laptop đang báo lỗi.</li>
+                        <li><strong>VD3:</strong> Nghe tiếng động nhìn xuống đất -> Lia thẳng vào một tờ tiền vừa rơi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-step"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">10. Bước qua máy (Step Over)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Đặt máy dưới đất ngửa lên. Bước chân qua thẳng phía trên ống kính để làm tối khung hình.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Bước qua ở vỉa hè, mặt đất biến thành sàn gỗ trong nhà ở cảnh sau.</li>
+                        <li><strong>VD2:</strong> Cảnh 1 đi giày tây bước qua, Cảnh 2 đi dép lê bước tiếp.</li>
+                        <li><strong>VD3:</strong> Chó cưng chạy ngang qua camera đặt sát đất, chuyển sang cảnh chó đang ngậm đồ chơi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 11 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-fg-wipe"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">11. Quét qua vật cản (Foreground Wipe)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Lia máy lướt ngang qua một vật thể to (cột nhà, thân cây). Cắt clip lúc khung hình bị che khuất.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Lia cam qua cái cột màu xám -> Kéo ra khỏi bức tường xám ở nơi khác.</li>
+                        <li><strong>VD2:</strong> Lướt qua lưng một người đang đứng -> Hiện ra trước mặt là một ca sĩ trên sân khấu.</li>
+                        <li><strong>VD3:</strong> Lia cam qua một thân cây to trong rừng -> Khung cảnh sau thân cây là bãi biển.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 12 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-drop"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">12. Thả rơi tự do (The Drop)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Quay từ trên cao, buông tay thả rơi máy xuống một bề mặt êm. Cảnh sau nhấc máy lên từ bề mặt đó.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Thả máy rơi xuống nệm giường -> Nhấc lên bạn đang nằm trên thảm cỏ.</li>
+                        <li><strong>VD2:</strong> Thả máy rơi vào giỏ quần áo -> Nhấc lên cảnh lồng máy giặt đang quay.</li>
+                        <li><strong>VD3:</strong> Rơi từ tay xuống đống tuyết -> Nhấc lên ở một đồi cát sa mạc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 13 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-toss"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">13. Chuyền tay (The Toss)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Vung tay ném điện thoại sang mép màn hình. Cảnh sau, một người khác vươn tay chụp lấy máy.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Bạn ném cam, bạn thân của bạn ở thành phố khác đưa tay bắt lấy để tiếp tục Vlog.</li>
+                        <li><strong>VD2:</strong> Tung điện thoại lên trời -> Cảnh sau đón điện thoại khi đang cưỡi ngựa.</li>
+                        <li><strong>VD3:</strong> Ném cam sang phải -> Người cùng phòng bắt lấy để quay góc reaction.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 14 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-boop"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">14. Chạm đồ vật (Object Boop)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Cầm một đồ vật cụng thẳng che kín ống kính. Cảnh sau kéo một đồ vật tương tự từ ống kính ra.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Cụng cốc cafe đen vào cam -> Kéo ra là một ly cocktail ở quán Bar.</li>
+                        <li><strong>VD2:</strong> Cụng một bông hoa hồng chưa nở -> Kéo ra thành một bó hoa rực rỡ.</li>
+                        <li><strong>VD3:</strong> Đưa quyển sách sát cam -> Kéo ra đang ở trong thư viện khổng lồ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 15 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-door"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">15. Đi qua cửa (Doorway Match Cut)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Tiến tới mở cửa và bước qua. Cảnh sau tiếp nối đúng đà bước chân nhưng bước ra từ một cửa khác.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Mở cửa phòng ngủ bước vào -> Cảnh tiếp theo bước ra ngoài ban công khách sạn.</li>
+                        <li><strong>VD2:</strong> Bước qua cửa xoay trung tâm thương mại -> Bước ra cửa văn phòng làm việc.</li>
+                        <li><strong>VD3:</strong> Mở tủ lạnh lấy đồ -> Cảnh sau bước ra từ cánh cửa phòng đông lạnh siêu thị.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 16 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-frame-inout"><div></div><div></div></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">16. Frame In / Out</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Đặt máy cố định. Cảnh 1 chủ thể bước ra khỏi khung hình. Cảnh 2 bước vào từ hướng ngược lại.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Rời khỏi bàn làm việc -> Bước vào khung hình lớp học đang giảng bài.</li>
+                        <li><strong>VD2:</strong> Chạy ra khỏi khung hình bên trái -> Chạy vào khung hình bên phải ở phòng gym.</li>
+                        <li><strong>VD3:</strong> Xe máy chạy vút qua biến mất -> Xe chạy vào khung cảnh đường đèo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 17 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-shape"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">17. Tương đồng khối (Shape Match)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Kết thúc cảnh 1 bằng vật thể có hình dáng/màu sắc nổi bật. Mở đầu cảnh 2 bằng vật thể tương tự.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Mặt trời tròn lặn xuống biển -> Bánh xe đạp tròn đang quay.</li>
+                        <li><strong>VD2:</strong> Con ngươi mắt người -> Ống kính máy ảnh đang focus.</li>
+                        <li><strong>VD3:</strong> Đĩa Pizza hình tròn cắt lát -> Chiếc đồng hồ treo tường điểm 12h.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 18 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-focus"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">18. Focus Pull (Lấy nét/Mờ)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Dùng AF Lock. Cảnh 1 đưa vật che sát để nền mờ ảo. Cảnh 2 bắt đầu mờ tương tự rồi lấy nét rõ ra.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Mờ phông do che ngón tay -> Rút tay tự động nét vào sản phẩm đằng sau.</li>
+                        <li><strong>VD2:</strong> Quay đèn giao thông bị mờ nhòe (bokeh) -> Rõ nét lại thành đèn trang trí Giáng sinh.</li>
+                        <li><strong>VD3:</strong> Tờ giấy mờ ảo che cam -> Lấy nét lại lộ ra bản vẽ thiết kế chi tiết.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 19 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-flare"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">19. Lóa sáng (Light Flare)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Lia máy thẳng lên nguồn sáng để khung hình cháy sáng. Cảnh 2 từ nguồn sáng tương tự hạ máy xuống.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Lia máy lên mặt trời chói chang -> Cảnh sau hạ xuống từ đèn trần studio.</li>
+                        <li><strong>VD2:</strong> Đưa cam sát vào đèn xe máy -> Kéo ra từ đèn pin đang bật.</li>
+                        <li><strong>VD3:</strong> Pháo hoa nổ sáng rực bầu trời -> Ngọn nến lung linh trên bánh sinh nhật.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 20 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden card-hover">
+                <div class="art-container"><div class="art-obj-wipe"></div></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">20. Vật thể lướt ngang (Object Wipe)</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Đợi một vật thể lớn lướt qua che kín ống kính rồi cắt. Ghép với cảnh sau bắt đầu quét ra từ mép.</p>
+                    <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+                        <li><strong>VD1:</strong> Xe buýt chạy ngang che người -> Xe đi qua, người đã ở địa điểm khác.</li>
+                        <li><strong>VD2:</strong> Ai đó bưng thùng hàng đi ngang camera -> Mở ra cảnh mới.</li>
+                        <li><strong>VD3:</strong> Kéo rèm cửa qua che màn hình -> Rèm mở ra là khung cảnh bình minh.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Flashcards Section -->
+    <section class="bg-slate-100 py-16 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-800 mb-10"><i class="fa-solid fa-layer-group text-blue-500 mr-2"></i> Ôn Tập Ghi Nhớ (25 Câu Hỏi)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Generating 25 static cards -->
+                <script>
+                    const qaData = [
+                        {q: "Kỹ thuật dùng lòng bàn tay che ống kính gọi là gì?", a: "Hand Swipe (Che ống kính)"},
+                        {q: "Chuyển cảnh bằng cách đấm vào camera phù hợp video gì?", a: "Hành động mạnh, đổi đồ nhanh, tạo năng lượng."},
+                        {q: "Push to Black cần điều kiện gì để thành công?", a: "Bề mặt cảnh 1 và cảnh 2 phải tối màu giống nhau."},
+                        {q: "Wipe transition thường dùng đạo cụ gì?", a: "Khăn, áo, cánh tay, chổi... lướt ngang màn hình."},
+                        {q: "Shirt Pull hợp nhất để quay dạng content nào?", a: "Video biến hình, thời trang (OOTD), thay đồ."},
+                        {q: "Snap/Clap lợi dụng yếu tố gì để đánh lừa thị giác?", a: "Âm thanh và động tác dứt khoát che lấp điểm cắt."},
+                        {q: "Cắt clip ở điểm nào trong kỹ thuật Jump Cut?", a: "Điểm cơ thể lơ lửng cao nhất trên không."},
+                        {q: "Whip Spin tạo ra hiệu ứng thị giác gì?", a: "Motion Blur (Độ mờ chuyển động) quanh người."},
+                        {q: "Whip Look bao gồm mấy giai đoạn chuyển động?", a: "2: Ngoái đầu nhìn -> Lia máy POV thật nhanh."},
+                        {q: "Step Over cần đặt góc máy ở đâu?", a: "Đặt máy dưới đất ngửa lên trên."},
+                        {q: "Foreground Wipe khác Wipe ở điểm nào?", a: "Máy lia qua vật cản cố định, thay vì vật cản quẹt qua máy."},
+                        {q: "Cần lưu ý gì khi làm The Drop?", a: "Phải có đệm/nệm êm để bảo vệ thiết bị."},
+                        {q: "The Toss dùng để đổi góc máy cho mấy người?", a: "Thường là 2 người (đổi vai trò người nói)."},
+                        {q: "Object Boop cần đảm bảo điều gì?", a: "2 vật thể phải che kín toàn bộ ống kính."},
+                        {q: "Doorway Match Cut yêu cầu giữ nguyên yếu tố nào?", a: "Tốc độ bước chân và góc máy ngang tầm mắt."},
+                        {q: "Frame In/Out có cần di chuyển máy quay không?", a: "Không, cắm tripod cố định."},
+                        {q: "Shape Match Cut dựa trên sự tương đồng về gì?", a: "Hình khối (tròn, vuông) hoặc màu sắc của vật thể."},
+                        {q: "Tính năng điện thoại nào hỗ trợ tốt Focus Pull?", a: "AE/AF Lock (Khóa sáng/Khóa nét)."},
+                        {q: "Light Flare cần hướng máy quay vào đâu?", a: "Nguồn sáng mạnh (mặt trời, đèn LED, Flash)."},
+                        {q: "Object Wipe (xe lướt ngang) lợi dụng yếu tố gì?", a: "Sự che khuất toàn phần tạm thời của màn hình."},
+                        {q: "Yếu tố sống còn để in-camera transition mượt là gì?", a: "Tốc độ lia máy ở điểm cắt phải khớp nhau."},
+                        {q: "Tại sao nên quay dư 1-2 giây ở đầu/cuối clip?", a: "Để dễ dàng căn chỉnh frame khi hậu kỳ phần mềm."},
+                        {q: "Âm thanh (Sound Effect) có quan trọng không?", a: "Rất quan trọng, nó là cầu nối 'keo dính' 2 cảnh."},
+                        {q: "Nếu ánh sáng 2 cảnh quá khác biệt thì sao?", a: "Dễ bị lộ điểm cắt, nên dùng color grade nhẹ để đồng bộ."},
+                        {q: "In-camera transition giúp tiết kiệm cái gì nhất?", a: "Thời gian chỉnh sửa (edit) và 'RAM não' suy nghĩ hiệu ứng."}
+                    ];
+
+                    qaData.forEach((item, index) => {
+                        document.write(`
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                                <div class="mb-3">
+                                    <span class="text-xs font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded mb-2 inline-block">Câu ${index + 1}</span>
+                                    <p class="font-semibold text-slate-800 text-sm leading-snug">${item.q}</p>
+                                </div>
+                                <div class="pt-3 border-t border-slate-100">
+                                    <p class="text-sm text-emerald-600 font-medium leading-tight"><i class="fa-solid fa-check-circle mr-1"></i> ${item.a}</p>
+                                </div>
+                            </div>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Footer Height 128px -->
+    <footer class="bg-slate-900 text-white h-[128px] w-full flex items-center justify-center px-4">
+        <div class="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between">
+            
+            <div class="max-w-2xl text-center md:text-left mb-4 md:mb-0">
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-slate-400 hover:text-red-500 transition-colors text-2xl" title="Kênh YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-slate-400 hover:text-white transition-colors text-2xl" title="Kênh TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors text-2xl" title="Facebook Page">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+
+<script id="cms-pin-widget">if(localStorage.getItem("cms_auth")==="granted"){const p=window.location.pathname.split("/").filter(Boolean);let r="vietndj.github.io",f="index.html";if(p.length>1){r=p[0];f=p.pop()}else if(p.length===1){if(p[0].endsWith(".html"))f=p[0];else r=p[0]}const k=r+"/"+decodeURIComponent(f);let isP=false;try{const d=JSON.parse(localStorage.getItem("cms_repo_data"));if(d&&d.pinned&&d.pinned.includes(k))isP=true;}catch(e){}const b=document.createElement("a");b.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k);b.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";b.style.cssText="position:fixed;top:15px;right:15px;background:"+(isP?"#FF3B30":"#FF9500")+";color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;";b.onclick=function(e){e.preventDefault();window.open(this.href,"_blank");isP=!isP;this.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";this.style.background=isP?"#FF3B30":"#FF9500";this.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k)};document.body.appendChild(b);}</script>
+</body>
+</html>
