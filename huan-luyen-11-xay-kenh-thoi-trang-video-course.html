@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huấn Luyện 1:1 Xây Kênh Thời Trang Thực Chiến</title>
+    
+    <!-- Google Fonts: Playfair Display for headings (Fashion vibe) & Montserrat for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        fashion: {
+                            dark: '#111111',
+                            light: '#f9f9f6',
+                            accent: '#c8a97e', // Muted gold/beige
+                            gray: '#666666'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom CSS cho các khối Nghệ thuật trừu tượng (CSS Abstract Art) */
+        
+        .abstract-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: #f9f9f6;
+            border-radius: 0.5rem;
+        }
+
+        /* Vấn đề 1: Rối rắm, ngợp (Nhiều đường chéo cắt nhau, mờ ảo) */
+        .art-chaos .shape1 { position: absolute; width: 150%; height: 2px; background: #111; transform: rotate(45deg); top: 50%; left: -25%; opacity: 0.2; }
+        .art-chaos .shape2 { position: absolute; width: 150%; height: 2px; background: #111; transform: rotate(-30deg); top: 30%; left: -25%; opacity: 0.3; }
+        .art-chaos .shape3 { position: absolute; width: 80px; height: 80px; border: 2px dashed #c8a97e; border-radius: 50%; top: 20%; right: 10%; animation: spin 10s linear infinite; }
+        .art-chaos .shape4 { position: absolute; width: 100px; height: 100px; background: radial-gradient(circle, #c8a97e 0%, transparent 70%); bottom: -20px; left: -20px; opacity: 0.5; filter: blur(10px); }
+
+        /* Vấn đề 2: Bí ý tưởng, trống rỗng (Khoảng không, vòng tròn mờ phai) */
+        .art-empty .shape1 { position: absolute; width: 120px; height: 120px; border: 1px solid #ddd; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.5; }
+        .art-empty .shape2 { position: absolute; width: 80px; height: 80px; border: 1px solid #ccc; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.3; }
+        .art-empty .shape3 { position: absolute; width: 40px; height: 40px; background: #f0f0f0; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .art-empty .shape4 { position: absolute; top: 20%; right: 20%; width: 5px; height: 5px; background: #111; border-radius: 50%; }
+
+        /* Vấn đề 3: Thiếu quy chuẩn (Các khối vuông rời rạc, không thẳng hàng) */
+        .art-blocks .shape1 { position: absolute; width: 60px; height: 60px; background: #e5e5e5; top: 20%; left: 20%; transform: rotate(15deg); }
+        .art-blocks .shape2 { position: absolute; width: 70px; height: 70px; border: 2px solid #111; top: 40%; right: 20%; transform: rotate(-10deg); }
+        .art-blocks .shape3 { position: absolute; width: 50px; height: 50px; background: #c8a97e; bottom: 20%; left: 40%; opacity: 0.8; transform: rotate(5deg); }
+
+        /* Lộ trình 1: Camera/Focus (Các vòng tròn đồng tâm, điểm nhấn) */
+        .art-focus .shape1 { position: absolute; width: 80%; height: 80%; border: 1px solid #111; border-radius: 50%; top: 10%; left: 10%; opacity: 0.1; }
+        .art-focus .shape2 { position: absolute; width: 60%; height: 60%; border: 1px solid #111; border-radius: 50%; top: 20%; left: 20%; opacity: 0.2; border-top-color: #c8a97e; transform: rotate(45deg); }
+        .art-focus .shape3 { position: absolute; width: 40%; height: 40%; background: #111; border-radius: 50%; top: 30%; left: 30%; }
+        .art-focus .shape4 { position: absolute; width: 10%; height: 10%; background: #c8a97e; border-radius: 50%; top: 45%; left: 45%; }
+
+        /* Lộ trình 2: Xu hướng/Trend (Mũi tên đi lên, sóng âm) */
+        .art-trend .shape1 { position: absolute; width: 150%; height: 50%; background: linear-gradient(90deg, transparent, rgba(200,169,126,0.3), transparent); top: 25%; left: -25%; transform: rotate(-20deg); }
+        .art-trend .shape2 { position: absolute; width: 60%; height: 2px; background: #111; bottom: 30%; left: 20%; }
+        .art-trend .shape3 { position: absolute; width: 40%; height: 2px; background: #111; bottom: 40%; left: 40%; transform: rotate(-30deg); transform-origin: left; }
+        .art-trend .shape4 { position: absolute; width: 20px; height: 20px; background: #c8a97e; border-radius: 50%; bottom: calc(40% + 40% * 0.57); left: calc(40% + 40% * 0.86 - 10px); }
+
+        /* Lộ trình 3: Storytelling (Dấu phẩy, trích dẫn, gợn sóng) */
+        .art-story .shape1 { position: absolute; font-family: serif; font-size: 150px; color: #f0f0f0; top: -30px; left: 10px; line-height: 1; }
+        .art-story .shape2 { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(17,17,17,0.05) 0%, transparent 60%); top: 40%; right: 10%; }
+        .art-story .shape3 { position: absolute; width: 50%; height: 1px; background: #111; bottom: 30%; left: 25%; }
+        .art-story .shape4 { position: absolute; width: 30%; height: 1px; background: #111; bottom: 20%; left: 35%; }
+
+        /* Lộ trình 4: AI/Công nghệ (Ma trận điểm, kết nối lưới) */
+        .art-ai .shape1 { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 15px 15px; opacity: 0.5; }
+        .art-ai .shape2 { position: absolute; width: 80px; height: 80px; border: 1px solid #c8a97e; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); }
+        .art-ai .shape3 { position: absolute; width: 40px; height: 40px; background: #111; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .art-ai .shape4 { position: absolute; top: 20%; left: 20%; width: 60%; height: 60%; border: 1px dashed rgba(17,17,17,0.2); border-radius: 50%; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        /* Utility styles */
+        .text-balance { text-wrap: balance; }
+        
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans text-fashion-dark bg-white antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="relative bg-fashion-light pt-20 pb-24 lg:pt-32 lg:pb-40 overflow-hidden">
+        <!-- Abstract Background elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#ebebeb] to-transparent opacity-50 pointer-events-none"></div>
+        <div class="absolute -top-20 -left-20 w-96 h-96 bg-fashion-accent opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <span class="tracking-[0.2em] uppercase text-xs font-semibold text-fashion-accent mb-4 block">
+                Chương trình thiết kế riêng
+            </span>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-balance">
+                LỘ TRÌNH HUẤN LUYỆN 1:1 <br>
+                <span class="italic font-light">Xây Dựng Kênh Thời Trang Thực Chiến</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-base md:text-lg text-fashion-gray leading-relaxed mb-6">
+                <strong class="text-fashion-dark">Mục tiêu cốt lõi:</strong> Đồng hành 21 ngày cùng chủ shop xây dựng kênh TikTok và Fanpage bài bản, tạo điểm chạm chuyên nghiệp để hứng phễu khách hàng, tăng niềm tin và tối ưu tỷ lệ chốt đơn.
+            </p>
+            
+            <!-- Bổ sung thông tin lịch học nổi bật -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 mb-10 text-sm font-medium text-fashion-dark bg-white/50 py-3 px-6 rounded-lg inline-flex">
+                <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-fashion-accent"></i> <span>21 ngày thực chiến</span></div>
+                <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-fashion-accent/50"></div>
+                <div class="flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-fashion-accent"></i> <span>6 buổi Offline (2 buổi/tuần)</span></div>
+                <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-fashion-accent/50"></div>
+                <div class="flex items-center gap-2"><i data-lucide="monitor-play" class="w-5 h-5 text-fashion-accent"></i> <span>Online chữa bài trong tuần</span></div>
+            </div>
+            <br>
+
+            <a href="https://zalo.me/0934688632" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 bg-fashion-dark text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-fashion-accent hover:shadow-lg hover:-translate-y-1">
+                Chat Zalo
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- PAIN POINTS SECTION -->
+    <section class="py-20 lg:py-32">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Những Vấn Đề Bạn Đang Gặp Phải</h2>
+                <div class="w-16 h-1 bg-fashion-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Vấn đề 1 -->
+                <div class="group">
+                    <div class="w-full aspect-square mb-6">
+                        <div class="abstract-container art-chaos transition-transform duration-700 group-hover:scale-105">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Ngợp trước rào cản kỹ thuật</h3>
+                    <p class="text-fashion-gray text-sm leading-relaxed">
+                        Nhìn thấy nhiều trend và hiệu ứng bắt mắt trên mạng, nhưng khi tự mày mò lại tốn quá nhiều thời gian (chỉ làm được 1-2 video rồi nản). Việc quay chụp bị đình trệ vì tốn sức mà chưa thấy rõ hiệu quả mang lại.
+                    </p>
+                </div>
+                <!-- Vấn đề 2 -->
+                <div class="group">
+                    <div class="w-full aspect-square mb-6">
+                        <div class="abstract-container art-empty transition-transform duration-700 group-hover:scale-105">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Bí ý tưởng & Bỏ lỡ khách hàng</h3>
+                    <p class="text-fashion-gray text-sm leading-relaxed">
+                        Thấy đối thủ phát triển mạnh nhưng bản thân chưa biết cách bước chân vào thị trường nội dung ngắn. Chi phí chạy quảng cáo ngày càng đắt đỏ, nhưng lại thiếu một Fanpage/kênh TikTok bài bản để "hứng" luồng dữ liệu khách hàng, tương tác và tạo đủ niềm tin để chốt đơn.
+                    </p>
+                </div>
+                <!-- Vấn đề 3 -->
+                <div class="group">
+                    <div class="w-full aspect-square mb-6">
+                        <div class="abstract-container art-blocks transition-transform duration-700 group-hover:scale-105">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Thiếu quy chuẩn & Ngẫu hứng</h3>
+                    <p class="text-fashion-gray text-sm leading-relaxed">
+                        Nội dung và hình ảnh sản phẩm làm theo bản năng, thiếu sự đồng nhất khiến thương hiệu khó có thể up-sell (bán sản phẩm giá cao hơn). Mô hình xây dựng nhân hiệu đang bị phụ thuộc vào cảm xúc, không có công thức lặp lại ổn định.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP SECTION -->
+    <section class="py-20 lg:py-32 bg-fashion-light">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="tracking-[0.2em] uppercase text-xs font-semibold text-fashion-accent mb-2 block">Học là ra video</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-balance">Lộ Trình Thực Chiến 4 Giai Đoạn</h2>
+                <p class="max-w-2xl mx-auto text-fashion-gray text-sm mt-4">
+                    Thiết kế tinh gọn, tập trung thực hành để bạn ra sản phẩm ngay trong khóa học, hoàn thiện hệ thống nội dung đa nền tảng.
+                </p>
+            </div>
+
+            <div class="space-y-20 lg:space-y-32">
+                <!-- Giai đoạn 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 md:order-1">
+                        <span class="text-fashion-accent font-serif text-6xl font-bold opacity-30 block mb-2">01</span>
+                        <h3 class="font-serif text-2xl font-bold mb-4">Chuẩn hóa Công cụ & Kỹ thuật quay <span class="block text-lg text-fashion-accent mt-1">(Xóa mù công nghệ)</span></h3>
+                        <p class="text-fashion-gray leading-relaxed mb-4">
+                            Tinh gọn luồng công việc để tiết kiệm thời gian nhất. Bạn sẽ nắm vững cách thiết lập góc quay, ánh sáng tại shop và quy trình sử dụng phần mềm chỉnh sửa (như CapCut) nhanh gọn, hiệu quả mà không cần đến kỹ năng phức tạp.
+                        </p>
+                        <ul class="space-y-2 text-fashion-gray text-sm font-medium">
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Setup góc quay & ánh sáng tôn dáng sản phẩm</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Quy trình edit CapCut tốc độ cao</li>
+                        </ul>
+                    </div>
+                    <div class="order-1 md:order-2 w-full aspect-[4/3] md:aspect-square md:w-4/5 mx-auto">
+                        <div class="abstract-container art-focus shadow-lg">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giai đoạn 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="w-full aspect-[4/3] md:aspect-square md:w-4/5 mx-auto">
+                        <div class="abstract-container art-trend shadow-lg">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-fashion-accent font-serif text-6xl font-bold opacity-30 block mb-2">02</span>
+                        <h3 class="font-serif text-2xl font-bold mb-4">Bẻ khóa & Nhân bản Xu hướng</h3>
+                        <p class="text-fashion-gray leading-relaxed mb-4">
+                            Chúng ta sẽ cùng thực hành làm lại 10 đến 20 video đang thịnh hành trong ngách thời trang. Mục tiêu của giai đoạn này là giúp bạn hiểu thuật toán và tích lũy đủ "giờ bay", rèn luyện để việc quay/dựng trở thành một kỹ năng phản xạ tự nhiên.
+                        </p>
+                        <ul class="space-y-2 text-fashion-gray text-sm font-medium">
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Phân tích bóc tách video triệu view</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Hiểu thuật toán phân phối của TikTok & Reels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Giai đoạn 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 md:order-1">
+                        <span class="text-fashion-accent font-serif text-6xl font-bold opacity-30 block mb-2">03</span>
+                        <h3 class="font-serif text-2xl font-bold mb-4">Storytelling & Kịch bản thôi miên <span class="block text-lg text-fashion-accent mt-1">(Giữ chân & Chốt đơn)</span></h3>
+                        <p class="text-fashion-gray leading-relaxed mb-4">
+                            Khi kỹ năng làm video đã thành thạo, bạn sẽ chuyển sang sản xuất nội dung có chiều sâu. Đóng gói sẵn 3 định dạng video chủ lực để bạn áp dụng hàng ngày: <strong class="text-fashion-dark">Sửa lỗi form dáng - Hướng dẫn phối đồ đa năng - Bóc trần chất liệu vải.</strong>
+                        </p>
+                        <ul class="space-y-3 text-fashion-gray text-sm">
+                            <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-fashion-accent shrink-0"></i> <span class="leading-relaxed">Nắm bắt tuyệt chiêu tạo Hook (3 giây đầu tiên) để giữ chân người xem lướt qua video.</span></li>
+                            <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-fashion-accent shrink-0"></i> <span class="leading-relaxed">Áp dụng các công thức kịch bản hiệu quả cao vào bán hàng: <strong>P.A.S</strong> (Chỉ ra Nỗi đau - Xát muối - Cung cấp Giải pháp).</span></li>
+                            <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-fashion-accent shrink-0"></i> <span class="leading-relaxed">Công thức <strong>B.A.B</strong> (Hình ảnh Trước - Sau - Cầu nối) giúp tăng tỷ lệ chuyển đổi.</span></li>
+                        </ul>
+                    </div>
+                    <div class="order-1 md:order-2 w-full aspect-[4/3] md:aspect-square md:w-4/5 mx-auto">
+                        <div class="abstract-container art-story shadow-lg">
+                            <div class="shape1">"</div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giai đoạn 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="w-full aspect-[4/3] md:aspect-square md:w-4/5 mx-auto">
+                        <div class="abstract-container art-ai shadow-lg">
+                            <div class="shape1"></div><div class="shape2"></div><div class="shape3"></div><div class="shape4"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-fashion-accent font-serif text-6xl font-bold opacity-30 block mb-2">04</span>
+                        <h3 class="font-serif text-2xl font-bold mb-4">Ứng dụng AI trong Thời trang <span class="block text-lg text-fashion-accent mt-1">(Tối ưu chi phí, Dẫn đầu)</span></h3>
+                        <p class="text-fashion-gray leading-relaxed mb-4">
+                            Hướng dẫn bạn cách sử dụng Trí tuệ nhân tạo (AI) để tạo ra các bộ lookbook, hình ảnh thời trang khớp 100% với mẫu quần áo thực tế đang bán.
+                        </p>
+                        <p class="text-fashion-gray leading-relaxed mb-4">
+                            Kỹ thuật này giúp giữ tính đồng nhất cho nhân vật AI, tiết kiệm cho shop hàng chục triệu đồng tiền thuê người mẫu ảnh mỗi tháng.
+                        </p>
+                        <ul class="space-y-2 text-fashion-gray text-sm font-medium">
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Prompt tạo người mẫu ảo chuẩn phong cách brand</li>
+                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-fashion-accent"></div> Thay thế bối cảnh chụp chuyên nghiệp trong 1 click</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTOR SECTION -->
+    <section class="py-20 lg:py-32 bg-fashion-dark text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-2">Nguyễn Đức Việt</h2>
+                    <p class="text-fashion-accent uppercase tracking-widest text-sm mb-8">Người Đồng Hành</p>
+                    
+                    <div class="space-y-6 mb-10 text-gray-300 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center shrink-0">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-fashion-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-base mb-1">15 năm kinh nghiệm</h4>
+                                <p>Giảng viên giảng dạy Adobe & Video Editing tại FPT Arena (FPoly). Chuyên đào tạo phần mềm xử lý hình ảnh/video phức tạp.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center shrink-0">
+                                <i data-lucide="briefcase" class="w-6 h-6 text-fashion-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-base mb-1">8 năm kinh nghiệm</h4>
+                                <p>Kinh doanh khóa học, thiết lập và tối ưu hệ thống vận hành tự động.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg">
+                        <h4 class="font-serif text-lg font-bold mb-4 text-white">Cộng đồng thực chứng:</h4>
+                        <div class="grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
+                            <div>
+                                <div class="text-2xl font-bold text-fashion-accent mb-1">23K+</div>
+                                <div class="text-xs text-gray-400">Followers<br>Page Facebook</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-fashion-accent mb-1">8.7K+</div>
+                                <div class="text-xs text-gray-400">Subscribers<br>YouTube</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-fashion-accent mb-1">8.8K+</div>
+                                <div class="text-xs text-gray-400">Followers<br>TikTok</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Placeholders -->
+                <div class="lg:col-span-7 order-1 lg:order-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Chân dung (To, bên trái) -->
+                        <div class="col-span-1 row-span-2 relative group cursor-pointer">
+                            <div class="w-full h-full min-h-[400px] bg-[#1a1a1a] border-2 border-dashed border-white/20 flex flex-col items-center justify-center text-center p-4 transition-colors group-hover:border-fashion-accent">
+                                <i data-lucide="image-plus" class="w-10 h-10 text-white/30 mb-3 group-hover:text-fashion-accent transition-colors"></i>
+                                <span class="text-sm text-white/50 uppercase tracking-widest">[ Ảnh chân dung chuyên nghiệp ]</span>
+                            </div>
+                        </div>
+                        <!-- Lớp FPT (Trên phải) -->
+                        <div class="col-span-1 relative group cursor-pointer">
+                            <div class="w-full h-full min-h-[190px] bg-[#1a1a1a] border-2 border-dashed border-white/20 flex flex-col items-center justify-center text-center p-4 transition-colors group-hover:border-fashion-accent">
+                                <i data-lucide="users" class="w-8 h-8 text-white/30 mb-2 group-hover:text-fashion-accent transition-colors"></i>
+                                <span class="text-xs text-white/50 uppercase tracking-widest">[ Ảnh đứng lớp FPT ]</span>
+                            </div>
+                        </div>
+                        <!-- Chỉ số (Dưới phải) -->
+                        <div class="col-span-1 relative group cursor-pointer">
+                            <div class="w-full h-full min-h-[190px] bg-[#1a1a1a] border-2 border-dashed border-white/20 flex flex-col items-center justify-center text-center p-4 transition-colors group-hover:border-fashion-accent">
+                                <i data-lucide="bar-chart-3" class="w-8 h-8 text-white/30 mb-2 group-hover:text-fashion-accent transition-colors"></i>
+                                <span class="text-xs text-white/50 uppercase tracking-widest">[ Ảnh chỉ số MXH ]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING & CTA SECTION -->
+    <section class="py-20 lg:py-32 relative">
+        <!-- Decoration -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10 opacity-50"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Thông Tin Đầu Tư</h2>
+            
+            <div class="text-fashion-gray mb-12 space-y-3">
+                <p class="font-bold text-lg text-fashion-dark uppercase tracking-wide">Huấn Luyện 1:1 Thực Chiến 21 Ngày</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-sm">
+                    <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-fashion-accent"></i> 6 buổi Offline (2 buổi/tuần)</span>
+                    <span class="hidden md:block text-gray-300">|</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-fashion-accent"></i> Các buổi Online chữa bài thực hành trong tuần</span>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-2xl relative overflow-hidden">
+                <!-- Vạch trang trí -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-fashion-dark via-fashion-accent to-fashion-dark"></div>
+
+                <div class="mb-8">
+                    <span class="text-gray-500 uppercase tracking-widest text-xs font-semibold">Mức đầu tư</span>
+                    <div class="text-4xl md:text-5xl font-serif font-bold text-fashion-dark mt-2 mb-2">9.000.000 <span class="text-xl md:text-2xl font-sans">VNĐ</span></div>
+                </div>
+
+                <div class="text-left bg-fashion-light p-6 rounded-lg mb-10 text-sm">
+                    <h4 class="font-bold text-fashion-dark mb-4 flex items-center gap-2">
+                        <i data-lucide="credit-card" class="w-5 h-5 text-fashion-accent"></i> Quy trình thanh toán (Chia 2 đợt)
+                    </h4>
+                    <ul class="space-y-4 text-fashion-gray">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold text-fashion-dark">1</div>
+                            <div>
+                                <strong class="text-fashion-dark">Đợt 1:</strong> Chuyển khoản 50% (4.500.000 VNĐ) để xác nhận giữ lịch trình và bắt đầu ngay Giai đoạn 1.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold text-fashion-dark">2</div>
+                            <div>
+                                <strong class="text-fashion-dark">Đợt 2:</strong> Thanh toán 50% còn lại vào buổi học thứ 3.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://zalo.me/0934688632" target="_blank" rel="noopener noreferrer" 
+                   class="flex w-full md:w-auto md:inline-flex items-center justify-center gap-3 bg-[#0068FF] text-white px-10 py-5 rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-blue-700 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1024px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-6 h-6 filter brightness-0 invert">
+                    Đăng ký & Nhận tư vấn qua Zalo
+                </a>
+                <p class="text-xs text-gray-400 mt-4">Cam kết đồng hành 1:1 trong suốt quá trình.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <!-- Max height ~128px on desktop, flexbox used to keep it compact -->
+    <footer class="bg-fashion-dark text-white border-t border-white/10 h-auto md:h-[128px] py-6 md:py-0">
+        <div class="max-w-6xl mx-auto px-6 h-full flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Info -->
+            <div class="text-center md:text-left flex-1 max-w-xl">
+                <h3 class="font-serif font-bold text-lg mb-1">Nguyễn Đức Việt</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-4 shrink-0">
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-colors text-gray-400" title="YouTube">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors text-gray-400" title="TikTok">
+                    <!-- Custom SVG for TikTok as Lucide doesn't have a perfect one -->
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-colors text-gray-400" title="Facebook Page">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+<script id="cms-pin-widget">if(localStorage.getItem("cms_auth")==="granted"){const p=window.location.pathname.split("/").filter(Boolean);let r="vietndj.github.io",f="index.html";if(p.length>1){r=p[0];f=p.pop()}else if(p.length===1){if(p[0].endsWith(".html"))f=p[0];else r=p[0]}const k=r+"/"+decodeURIComponent(f);let isP=false;try{const d=JSON.parse(localStorage.getItem("cms_repo_data"));if(d&&d.pinned&&d.pinned.includes(k))isP=true;}catch(e){}const b=document.createElement("a");b.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k);b.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";b.style.cssText="position:fixed;top:15px;right:15px;background:"+(isP?"#FF3B30":"#FF9500")+";color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;";b.onclick=function(e){e.preventDefault();window.open(this.href,"_blank");isP=!isP;this.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";this.style.background=isP?"#FF3B30":"#FF9500";this.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k)};document.body.appendChild(b);}</script>
+</body>
+</html>
