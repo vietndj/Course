@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Nâng Cấp Kịch Bản & Góc Máy Video Spa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* =========================================
+           CSS ABSTRACT ART BLOCKS
+           ========================================= */
+        
+        /* 1. Abstract Art: Sự thất thường & Lộn xộn (Minh họa Kịch bản gốc) */
+        .art-chaos {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #1e293b;
+            overflow: hidden;
+        }
+        .art-chaos::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 40px;
+            background: #ef4444; /* Red */
+            top: 30%;
+            left: -10%;
+            transform: rotate(-15deg);
+            opacity: 0.8;
+            mix-blend-mode: multiply;
+        }
+        .art-chaos::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #64748b;
+            bottom: -50px;
+            right: -50px;
+            transform: rotate(45deg);
+        }
+        .chaos-box {
+            position: absolute;
+            border: 4px solid #f59e0b;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 20%;
+            transform: translateY(-50%) rotate(10deg);
+        }
+
+        /* 2. Abstract Art: Phương án 1 - Cắt gọt (Jump Cuts) */
+        .art-cut {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-cut .blade {
+            width: 150%;
+            height: 50%;
+            background: linear-gradient(90deg, #ec4899, #8b5cf6);
+            transform-origin: center;
+            animation: scissor 3s infinite ease-in-out alternate;
+            clip-path: polygon(0 40%, 100% 0%, 100% 10%, 0 50%);
+            position: absolute;
+        }
+        .art-cut .blade:nth-child(2) {
+            background: linear-gradient(90deg, #3b82f6, #14b8a6);
+            animation: scissor-reverse 3s infinite ease-in-out alternate;
+            clip-path: polygon(0 60%, 100% 100%, 100% 90%, 0 50%);
+        }
+        @keyframes scissor { 0% { transform: rotate(-5deg); } 100% { transform: rotate(15deg); } }
+        @keyframes scissor-reverse { 0% { transform: rotate(5deg); } 100% { transform: rotate(-15deg); } }
+
+        /* 3. Abstract Art: Phương án 2 - Setup ánh sáng 3 điểm */
+        .art-light {
+            background: #0f172a;
+            position: relative;
+            overflow: hidden;
+        }
+        .orb-key {
+            position: absolute;
+            top: -20%; left: -20%;
+            width: 70%; height: 70%;
+            background: radial-gradient(circle, rgba(253,186,116,0.6) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(20px);
+        }
+        .orb-fill {
+            position: absolute;
+            top: 20%; right: -20%;
+            width: 60%; height: 60%;
+            background: radial-gradient(circle, rgba(147,197,253,0.4) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(20px);
+        }
+        .orb-back {
+            position: absolute;
+            bottom: -30%; left: 20%;
+            width: 80%; height: 80%;
+            background: radial-gradient(circle, rgba(192,132,252,0.5) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(30px);
+        }
+
+        /* 4. Abstract Art: Phương án 3 - Pro Storytelling (Dải phim trôi) */
+        .art-pro {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .film-strip {
+            position: absolute;
+            width: 200%;
+            height: 40px;
+            background: repeating-linear-gradient(90deg, transparent, transparent 10px, #333 10px, #333 20px), #111;
+            top: 30%;
+            transform: rotate(-20deg);
+            animation: roll 10s linear infinite;
+        }
+        .film-strip:nth-child(2) {
+            top: 60%;
+            transform: rotate(15deg);
+            background: repeating-linear-gradient(90deg, transparent, transparent 10px, #eab308 10px, #eab308 20px), #854d0e;
+            animation: roll-reverse 12s linear infinite;
+        }
+        @keyframes roll { from { background-position: 0 0; } to { background-position: 200px 0; } }
+        @keyframes roll-reverse { from { background-position: 0 0; } to { background-position: -200px 0; } }
+
+        /* 5. Abstract Art: Kịch Bản Đạo Diễn (Flow & Động năng) */
+        .art-flow {
+            background: linear-gradient(-45deg, #0ea5e9, #6366f1, #8b5cf6, #ec4899);
+            background-size: 400% 400%;
+            animation: gradientFlow 10s ease infinite;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .mesh-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
+            50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; transform: rotate(180deg); }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(360deg); }
+        }
+
+        /* Utilities */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[100px]"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sm font-semibold tracking-wider text-pink-400 mb-6">CASE STUDY ĐÀO TẠO</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Nâng Cấp Kịch Bản <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">& Góc Máy Video</span></h1>
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light">Từ một kịch bản đọc thoại nhàm chán đến Vlog vận hành Spa thực chiến chuẩn tư duy Đạo diễn.</p>
+        </div>
+    </header>
+
+    <!-- Phần 1: Kịch bản cũ & Vấn đề -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="space-y-6">
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="w-12 h-1 bg-red-500"></div>
+                    <h2 class="text-3xl font-bold">Phần 1: Kịch bản cũ & Vấn đề</h2>
+                </div>
+                <div class="glass-card p-8 rounded-2xl relative">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-slate-800 border border-slate-600 rounded-full flex items-center justify-center text-red-400 font-bold">!</div>
+                    <h3 class="text-xl font-semibold mb-4 text-slate-200">Kịch bản nguyên bản (Đọc máy nhắc chữ)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4 italic border-l-2 border-slate-600 pl-4">
+                        "10 việc chủ spa cần làm mỗi tuần để doanh thu ổn định. Nhiều chủ spa doanh thu lên xuống thất thường không phải vì thiếu may mắn, mà là vì thiếu đi thói quen vận hành đều mỗi tuần. Vấn đề là bạn chỉ tập trung vào làm dịch vụ... Đây là 10 việc làm đều mỗi tuần:
+                    </p>
+                    <ul class="text-slate-400 text-sm leading-relaxed space-y-2 list-decimal list-inside opacity-80">
+                        <li>Chốt mục tiêu tuần: doanh thu, số khách mới...</li>
+                        <li>Kiểm tra lịch hẹn: lấp slot trống...</li>
+                        <li>Gọi, nhắn tin chăm sóc khách cũ...</li>
+                        <li>Đăng tối thiểu 3 nội dung: kiến thức...</li>
+                        <li>Tổng hợp ảnh trước và sau...</li>
+                        <li>Rà lại kịch bản tư vấn: xử lý đắt, bận...</li>
+                        <li>Kiểm tra tỷ lệ chốt...</li>
+                        <li>Đào tạo nhanh nhân sự trong vòng 30 phút...</li>
+                        <li>Kiểm tra chi phí và tồn kho...</li>
+                        <li>Lên kế hoạch tuần tới...</li>
+                    </ul>
+                    <p class="text-slate-400 text-sm mt-4 italic">Chỉ cần làm đều 10 việc này... Comment ngay '10 việc' để nhận checklist... Và mình là Huyền My Spa."</p>
+                </div>
+            </div>
+            
+            <!-- Abstract Art -->
+            <div class="h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-slate-700 relative group">
+                <div class="art-chaos transition-transform duration-700 group-hover:scale-105">
+                    <div class="chaos-box"></div>
+                </div>
+                <div class="absolute bottom-6 left-6 right-6 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                    <p class="text-sm font-semibold text-white">Chẩn đoán hình ảnh</p>
+                    <p class="text-xs text-slate-300 mt-1">Khung hình tĩnh, mắt đọc máy nhắc chữ, thiếu điểm nhấn thị giác (Pattern Interrupt), bố cục lộn xộn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần 2: 3 Phương Án Khắc Phục -->
+    <section class="bg-slate-900/50 border-y border-slate-800 py-20 mt-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">3 Phương Án Nâng Cấp Video</h2>
+                <p class="text-slate-400">Giải pháp từ dễ đến khó tùy thuộc vào thiết bị và nguồn lực.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- PA 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 w-full art-cut">
+                        <div class="blade"></div>
+                        <div class="blade"></div>
+                    </div>
+                    <div class="p-8 flex-1">
+                        <span class="text-xs font-bold uppercase tracking-wider text-green-400 mb-2 block">Cấp độ: Dễ</span>
+                        <h3 class="text-2xl font-bold mb-4">Chữa cháy bằng Hậu kỳ</h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-start"><span class="text-pink-500 mr-2">✦</span> <b>Cắt gọt nhịp độ (Jump Cuts):</b> Xóa khoảng nghỉ, đẩy tốc độ 1.1x tạo khẩn trương.</li>
+                            <li class="flex items-start"><span class="text-pink-500 mr-2">✦</span> <b>Zoom in/out:</b> Phóng to mặt ở câu nhấn mạnh để che lấp mắt đọc chữ.</li>
+                            <li class="flex items-start"><span class="text-pink-500 mr-2">✦</span> <b>Typography & SFX:</b> Text pop-up tối giản kèm âm thanh (whoosh, pop).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PA 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 w-full art-light">
+                        <div class="orb-key"></div>
+                        <div class="orb-fill"></div>
+                        <div class="orb-back"></div>
+                    </div>
+                    <div class="p-8 flex-1">
+                        <span class="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2 block">Cấp độ: Trung bình</span>
+                        <h3 class="text-2xl font-bold mb-4">Setup lại Set & Diễn xuất</h3>
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-cyan-400 mr-2">✦</span> <b class="text-white">Bối cảnh Zen (Bỏ ghế & cờ):</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Thay chiếc ghế giám đốc to bản và cờ phía sau bằng sofa mềm hoặc một góc có cây xanh. <i>Vì sao:</i> Khung cảnh giống hành chính gây "ma sát nhận thức", tệp khách ngành làm đẹp cần sự nhẹ nhàng, tinh tế để dọn dẹp "Brain RAM" khi xem.</span>
+                            </li>
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-cyan-400 mr-2">✦</span> <b class="text-white">Ánh sáng 3 điểm (Fix sáng phẳng):</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Đặt Key light góc 45 độ làm mịn da, Fill light bù bóng, và bắt buộc có Backlight đánh vào tóc/vai. <i>Vì sao:</i> Ánh sáng gốc làm da bị xỉn, dính liền vào phông nền. Đánh ven tách nền giúp chủ thể nổi khối, tạo cảm giác sang trọng.</span>
+                            </li>
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-cyan-400 mr-2">✦</span> <b class="text-white">Ngắt kịch bản (Bỏ nhắc chữ):</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Quay từng cụm 2-3 câu, mắt nhìn thẳng, kết hợp ngôn ngữ hình thể (tay). <i>Vì sao:</i> Mắt đảo liên tục đọc chữ làm mất kết nối. Cắt ngắn giúp học viên tự tin đẩy năng lượng lên và giữ Voice tone không bị đều đều (như trả bài).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PA 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 w-full art-pro">
+                        <div class="film-strip"></div>
+                        <div class="film-strip"></div>
+                    </div>
+                    <div class="p-8 flex-1">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 mb-2 block">Cấp độ: Khó</span>
+                        <h3 class="text-2xl font-bold mb-4">Sản xuất chuyên nghiệp</h3>
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-purple-400 mr-2">✦</span> <b class="text-white">Profile Log & Color Grading:</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Quay định dạng Log (với dải nhạy sáng cao), hậu kỳ kéo màu tone ấm (Warm Cinematic). <i>Vì sao:</i> Màu video gốc quá sáng trắng giống văn phòng. Tone màu ấm kích thích cảm giác thư giãn, định vị dịch vụ Spa ở phân khúc cao cấp hơn.</span>
+                            </li>
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-purple-400 mr-2">✦</span> <b class="text-white">A-roll & B-roll Thực chiến:</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Đừng chỉ đứng nói. Chèn xen kẽ video quay cận cảnh thao tác tay, quay lén cảnh họp stand-up. <i>Vì sao:</i> Khán giả tin vào thứ họ "thấy" hơn thứ họ "nghe". B-roll giữ chân người xem bằng các Pattern Interrupt liên tục tránh buồn ngủ.</span>
+                            </li>
+                            <li class="flex items-start flex-col">
+                                <div class="flex"><span class="text-purple-400 mr-2">✦</span> <b class="text-white">Storytelling & Audio Ducking:</b></div> 
+                                <span class="pl-5 mt-1 text-slate-400">Áp dụng kỹ thuật Ducking: hạ âm lượng nhạc nền khi nói và tăng lên khi ngắt nhịp. <i>Vì sao:</i> Tôn lên giọng nói, biến một video liệt kê đầu việc thành một Vlog mang tính dẫn dắt, tạo nhịp điệu (Pacing) lôi cuốn thị giác lẫn thính giác.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần 3: Kịch Bản Đạo Diễn 6 Bước -->
+    <section class="max-w-5xl mx-auto px-6 py-20">
+        <div class="text-center mb-16 relative">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">CẤP ĐỘ CHUYÊN NGHIỆP: Kịch Bản 6 Bước<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Tối ưu cho Thuật Toán</span></h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">Tinh gọn từ 10 xuống 6 ý, kết hợp ngôn ngữ góc máy để thao túng tâm lý người xem, tối đa hóa tỷ lệ giữ chân (Retention Rate) và kích thích tương tác để hack thuật toán.</p>
+        </div>
+
+        <!-- Hero Art cho phần Kịch bản -->
+        <div class="w-full h-40 md:h-64 mb-16 shadow-2xl art-flow flex items-center justify-center">
+            <div class="mesh-shape w-64 h-64 mix-blend-overlay"></div>
+            <div class="mesh-shape w-48 h-48 bg-pink-500/30 -ml-32 mix-blend-screen" style="animation-duration: 12s; animation-direction: reverse;"></div>
+            <h3 class="relative z-10 text-3xl font-black tracking-widest uppercase text-white drop-shadow-lg">ACTION SEQUENCE</h3>
+        </div>
+
+        <!-- Các Bước Kịch Bản -->
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
+            
+            <!-- Bước 1 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-cyan-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">1</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-cyan-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-cyan-400">Hook (Mở đầu)</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"6 việc chủ spa cần làm mỗi tuần để doanh thu không thất thường. Đừng chỉ cắm đầu làm dịch vụ mà bỏ quên vận hành."</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Mở đầu bằng <strong class="text-white">Cutaway</strong> (đặc tả) cận cảnh ngòi bút lướt nhanh gạch đầu dòng trên sổ tay. Nghe tiếng camera, ngẩng lên thoại <strong class="text-white">In-situ</strong>. Khi đọc đến 'cắm đầu...', gấp sổ đứng phắt dậy ra khỏi khung hình.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Lời nói suông khó giữ người xem. Tay viết sổ báo hiệu kỷ luật. Cú đứng phắt dậy (Pattern Interrupt) báo hiệu nhịp video dứt khoát.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 2 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-pink-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">2</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-pink-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-pink-400">Mục tiêu & Lịch hẹn</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"Một, Chốt mục tiêu số má rõ ràng. Hai, Lấp ngay slot lịch hẹn trống bằng ưu đãi."</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Tạo thành <strong class="text-white">Sequence</strong> (chuỗi hành động). Cầm sổ bước nhanh dọc hành lang. Ý hai: dừng phắt ở lễ tân, đập tay xuống bàn, dùng <strong class="text-white">Cutaway</strong> liếc nhanh màn hình rồi ngước lên chốt.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Dùng nhịp đi bộ ép nhịp video. Cú đập tay là điểm neo thị giác (Visual Anchor) reset sự tập trung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 3 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-blue-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">3</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-blue-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-blue-400">Khách cũ & Bằng chứng</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"Ba, Gọi điện, nhắn tin kéo khách cũ quay lại. Bốn, Đăng content Before/After kèm feedback."</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Ngồi uống trà. Đặt mạnh cốc xuống bàn (Foley 'cạch'). Ý bốn: tay cầm điện thoại lướt, sau đó ập thẳng màn hình che kín máy quay làm <strong class="text-white">Match Cut</strong>.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Tiếng đập cốc kéo lại sự chú ý. Match Cut ập màn hình vào ống kính giấu đường cắt mượt mà.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 4 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-amber-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">4</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-amber-400">Kịch bản & Tỷ lệ chốt</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"Năm, Rà lại kịch bản, xử lý triệt để 3 từ: đắt - bận - để suy nghĩ."</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Bối cảnh phòng tư vấn. Khoanh tay, nghiêng đầu. Khẩu hình dứt khoát chữ 'đắt-bận-suy nghĩ', kết hợp <strong class="text-white">Cutaway</strong> zoom giật cục vào mặt theo nhịp từ khóa.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Cú zoom giật cục vào biểu cảm khoanh tay kiên quyết thể hiện bản lĩnh chuyên gia không ngán từ chối.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 5 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-indigo-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">5</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-indigo-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-indigo-400">Đào tạo thực chiến</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"Sáu, Đào tạo nhân sự 30 phút thực chiến để chuẩn hóa up-sale."</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Dùng <strong class="text-white">Intercut</strong> (cắt luân phiên) tay đang trực tiếp thao tác đắp mặt nạ cho nhân viên. Đến lúc thoại, quay ngoắt mặt ra sau nhìn thẳng camera nói <strong class="text-white">In-situ</strong>.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Quay cảnh làm việc thật rồi bất ngờ quay ra tương tác tạo uy tín tuyệt đối (như đang xuống tay chỉ đạo).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 6 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-green-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">6</div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl hover:border-green-500/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-3 text-green-400">Chốt (Call To Action)</h4>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-slate-800 rounded text-slate-300 font-semibold mb-1">🎙️ Thoại:</span>
+                            <p class="text-slate-300">"Làm đều 6 việc này, tiền tự về. Comment 'Vận hành' để nhận checklist nhé!"</p>
+                        </div>
+                        <div>
+                            <span class="inline-block px-2 py-1 bg-purple-900/50 text-purple-300 rounded font-semibold mb-1">🎥 Hành động & Góc máy:</span>
+                            <p class="text-slate-300">Vòng lặp về sofa ban đầu. Trả lại 2 giây <strong class="text-white">Negative Space</strong> quay không gian tĩnh lặng. Rồi xuất hiện, vắt chéo chân thư thái, chốt CTA.</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border-l-2 border-emerald-500">
+                            <span class="text-emerald-400 font-semibold text-xs uppercase block mb-1">🧠 Logic của cảnh:</span>
+                            <p class="text-slate-400">Cấu trúc vòng tròn (Full circle). Khoảng lặng 2s để não khán giả nghỉ ngơi tiêu hóa thông tin trước khi hành động.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-800 bg-slate-900/50 h-32 flex flex-col justify-center items-center px-4 text-center">
+        <p class="text-slate-400 text-sm max-w-3xl mb-4 px-2">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex items-center space-x-6">
+            <!-- YouTube Icon -->
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-500 transition-colors duration-300" title="Kênh YouTube">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.418-4.814a2.507 2.507 0 0 1 1.768-1.768C5.746 5 12 5 12 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <!-- TikTok Icon -->
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors duration-300" title="Kênh TikTok">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+            </a>
+            <!-- Facebook Icon -->
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 transition-colors duration-300" title="Facebook Page">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+
+<script id="cms-pin-widget">if(localStorage.getItem("cms_auth")==="granted"){const p=window.location.pathname.split("/").filter(Boolean);let r="vietndj.github.io",f="index.html";if(p.length>1){r=p[0];f=p.pop()}else if(p.length===1){if(p[0].endsWith(".html"))f=p[0];else r=p[0]}const k=r+"/"+decodeURIComponent(f);let isP=false;try{const d=JSON.parse(localStorage.getItem("cms_repo_data"));if(d&&d.pinned&&d.pinned.includes(k))isP=true;}catch(e){}const b=document.createElement("a");b.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k);b.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";b.style.cssText="position:fixed;top:15px;right:15px;background:"+(isP?"#FF3B30":"#FF9500")+";color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;";b.onclick=function(e){e.preventDefault();window.open(this.href,"_blank");isP=!isP;this.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";this.style.background=isP?"#FF3B30":"#FF9500";this.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k)};document.body.appendChild(b);}</script>
+</body>
+</html>
