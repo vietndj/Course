@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Của Chuyển Cảnh - Video Neuroscience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            overflow-x: hidden;
+        }
+
+        /* Tùy chỉnh thanh cuộn */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* =========================================
+           CSS ABSTRACT ART (NGHỆ THUẬT TRỪU TƯỢNG)
+           ========================================= */
+        
+        .art-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-width: 300px;
+            margin: 0 auto;
+            position: relative;
+            background: #1e293b;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        /* 1. The Cut (Nhịp điệu thị giác) */
+        .art-cut {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+        .art-cut-box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            animation: pulse-glow 3s infinite alternate;
+        }
+        .art-cut-slice {
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            width: 4px;
+            height: 140%;
+            background: #fff;
+            transform: rotate(25deg);
+            box-shadow: 0 0 15px #fff, 0 0 30px #f43f5e;
+            animation: slice-move 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .art-cut-shift {
+            position: absolute;
+            top: 0; left: 0; right: 50%; bottom: 0;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(4px);
+            transform: translateY(-10px) translateX(-5px);
+            clip-path: polygon(0 0, 100% 0, 60% 100%, 0% 100%);
+            animation: glitch-shift 4s infinite step-end;
+        }
+
+        /* 2. Evolutionary Eye (Sinh học tiến hóa - Quy tắc 4s) */
+        .art-evo {
+            width: 200px; height: 200px;
+            position: relative;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .art-evo-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            animation: radar-ping 4s infinite ease-out;
+        }
+        .art-evo-ring:nth-child(2) { animation-delay: 1s; }
+        .art-evo-ring:nth-child(3) { animation-delay: 2s; }
+        .art-evo-core {
+            width: 40px; height: 40px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ef4444;
+            animation: core-beat 0.5s infinite alternate;
+        }
+
+        /* 3. Neural Network (Khoa học thần kinh - Dopamine) */
+        .art-neuro {
+            width: 200px; height: 200px;
+            position: relative;
+        }
+        .node {
+            position: absolute;
+            width: 12px; height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #10b981;
+        }
+        .n1 { top: 20%; left: 50%; animation: flash 2s infinite; }
+        .n2 { top: 50%; left: 20%; animation: flash 2s 0.5s infinite; }
+        .n3 { top: 50%; right: 20%; animation: flash 2s 1s infinite; }
+        .n4 { top: 80%; left: 50%; animation: flash 2s 1.5s infinite; }
+        .line {
+            position: absolute;
+            background: rgba(16, 185, 129, 0.3);
+            transform-origin: 0 50%;
+        }
+        .l1 { top: 26%; left: 50%; width: 60px; height: 2px; transform: rotate(135deg); }
+        .l2 { top: 26%; left: 50%; width: 60px; height: 2px; transform: rotate(45deg); }
+        .l3 { top: 56%; left: 20%; width: 70px; height: 2px; transform: rotate(45deg); }
+        .l4 { top: 56%; right: 20%; width: 70px; height: 2px; transform: rotate(135deg) translateX(-100%); }
+        .dopamine {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: #eab308;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #eab308;
+            animation: travel 2s infinite linear;
+        }
+
+        /* 4. Algorithm Graph (Logic thuật toán - Tipping Point 75%) */
+        .art-algo {
+            width: 220px; height: 160px;
+            border-left: 2px solid #475569;
+            border-bottom: 2px solid #475569;
+            position: relative;
+        }
+        .algo-target-line {
+            position: absolute;
+            bottom: 75%; width: 100%; height: 1px;
+            border-top: 2px dashed #f59e0b;
+        }
+        .algo-graph {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(14, 165, 233, 0.2), transparent);
+            clip-path: polygon(0 100%, 0 80%, 20% 70%, 40% 60%, 60% 80%, 80% 30%, 100% 10%, 100% 100%);
+        }
+        .algo-line {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 100%;
+            border-bottom: 4px solid #0ea5e9;
+            clip-path: polygon(0 80%, 20% 70%, 40% 60%, 60% 80%, 80% 30%, 100% 10%, 100% 0, 0 0);
+            filter: drop-shadow(0 -5px 10px rgba(14, 165, 233, 0.5));
+            animation: draw-graph 3s ease-out forwards;
+        }
+        .algo-point {
+            position: absolute;
+            width: 14px; height: 14px;
+            background: #fff; border: 3px solid #0ea5e9; border-radius: 50%;
+            right: -7px; top: 10%;
+            box-shadow: 0 0 20px #0ea5e9;
+            animation: pulse-point 2s infinite;
+        }
+
+        /* 5. Logic 3 Cảnh (Focus/Lens) */
+        .art-lens {
+            width: 180px; height: 180px;
+            position: relative;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .lens-wide {
+            position: absolute; width: 100%; height: 100%;
+            border: 2px solid #64748b; border-radius: 8px;
+        }
+        .lens-medium {
+            position: absolute; width: 60%; height: 60%;
+            border: 2px dashed #94a3b8; border-radius: 4px;
+        }
+        .lens-close {
+            position: absolute; width: 25%; height: 25%;
+            background: rgba(236, 72, 153, 0.2);
+            border: 2px solid #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+            animation: focus-snap 3s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .lens-crosshair {
+            position: absolute; width: 100%; height: 100%;
+        }
+        .lens-crosshair::before { content:''; position:absolute; top:50%; left:0; width:100%; height:1px; background: rgba(255,255,255,0.1); }
+        .lens-crosshair::after { content:''; position:absolute; top:0; left:50%; width:1px; height:100%; background: rgba(255,255,255,0.1); }
+
+        /* Keyframes */
+        @keyframes slice-move { 0%, 20% { transform: translate(-50px, -50px) rotate(25deg); opacity: 0; } 30% { opacity: 1; } 50%, 100% { transform: translate(50px, 50px) rotate(25deg); opacity: 0; } }
+        @keyframes glitch-shift { 0%, 28% { transform: translate(0,0); } 30% { transform: translate(10px, -5px); } 32%, 100% { transform: translate(0,0); } }
+        @keyframes pulse-glow { from { box-shadow: 0 0 10px rgba(139, 92, 246, 0.2); } to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); } }
+        @keyframes radar-ping { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 200px; height: 200px; opacity: 0; } }
+        @keyframes core-beat { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+        @keyframes flash { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 25px #10b981; } }
+        @keyframes travel { 0% { top: 20%; left: 50%; opacity: 1;} 50% { top: 50%; left: 20%; opacity: 1;} 100% { top: 50%; left: 20%; opacity: 0;} }
+        @keyframes pulse-point { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        @keyframes focus-snap { 0%, 20% { transform: scale(1) translate(0,0); } 30%, 70% { transform: scale(1.5) translate(10px, -10px); } 80%, 100% { transform: scale(1) translate(0,0); } }
+
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen selection:bg-pink-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="relative pt-24 pb-16 px-6 lg:px-8 border-b border-gray-800 bg-gradient-to-b from-gray-900 to-[#0f172a]">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50 z-0"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-xs md:text-sm font-bold tracking-widest text-pink-500 uppercase mb-4">Handout & Research Data</h1>
+            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 leading-tight">
+                LOGIC CỦA CHUYỂN CẢNH
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-400 font-light">
+                Khi Khoa Học Thần Kinh Đạo Diễn Nhịp Điệu Video
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-6 py-12 space-y-24">
+
+        <!-- Lời dẫn -->
+        <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 md:p-8 italic text-gray-300 text-center text-sm md:text-base">
+            (Bạn có thể dùng nội dung này làm bài viết trên Landing Page, Blog hoặc in ra cho sinh viên đọc trước để định hình lại hệ thống niềm tin).
+        </div>
+
+        <!-- Section 1: WHAT -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 order-2 md:order-1">
+                <h3 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4">1. WHAT - Sự thật phũ phàng về "Chuyển cảnh"</h3>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Bạn có một kịch bản xuất sắc. Bạn nói trôi chảy trước ống kính. Bạn thuộc lòng các phím tắt của Premiere và CapCut. Nhưng tại sao video của bạn vẫn "flop"? Tại sao người xem lướt qua chỉ sau 3 giây? Lỗi không nằm ở nội dung, mà nằm ở sự thiếu hụt <strong class="text-blue-400">Nhịp điệu thị giác (Visual Rhythm)</strong>.
+                </p>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Phần lớn Editor lầm tưởng chuyển cảnh (Transition) là các hiệu ứng xoay vòng, lật trang hay làm mờ. Thực tế, trong kỷ nguyên video ngắn: <strong class="text-pink-400">Chuyển cảnh là MỌI SỰ THAY ĐỔI VỀ MẶT THỊ GIÁC.</strong> Một cú cắt giật (jump cut) bỏ đi phần lấy hơi, một cái zoom nhẹ 15% vào khuôn mặt, một dòng chữ nảy lên, hay một cảnh B-roll xen ngang – tất cả đều là chuyển cảnh.
+                </p>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Mục đích của chuyển cảnh không phải để video "trông có vẻ nguy hiểm", mà để <strong class="text-white">hack vào hệ thống sinh học của con người.</strong> Tại sao? Hãy nhìn qua 3 lăng kính khoa học dưới đây:
+                </p>
+            </div>
+            <div class="order-1 md:order-2">
+                <!-- Art: The Cut -->
+                <div class="art-container">
+                    <div class="art-cut">
+                        <div class="art-cut-box"></div>
+                        <div class="art-cut-shift"></div>
+                        <div class="art-cut-slice"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TITLE: WHY -->
+        <div class="text-center pb-4 border-b border-gray-800">
+            <h3 class="text-4xl font-black text-gray-100">2. WHY - 3 Lăng Kính Khoa Học Giải Mã Sự Chú Ý</h3>
+        </div>
+
+        <!-- Section 2.1: Evo Bio -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <!-- Art: Evolutionary Eye -->
+                <div class="art-container">
+                    <div class="art-evo">
+                        <div class="art-evo-ring"></div>
+                        <div class="art-evo-ring"></div>
+                        <div class="art-evo-ring"></div>
+                        <div class="art-evo-core"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-2xl font-bold text-red-400">Góc nhìn 1: Sinh học Tiến hóa (Evolutionary Biology) - Bản năng sinh tồn</h4>
+                <p class="text-gray-300">Tổ tiên chúng ta sinh tồn trên thảo nguyên nhờ việc phát hiện nhanh nhất những thay đổi nhỏ trong môi trường. Não bộ chúng ta được lập trình để ưu tiên sự chuyển động.</p>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex gap-3">
+                        <span class="text-red-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 1: Phản xạ định hướng (Orienting Response):</strong> Hàng triệu năm trước, một tiếng động đột ngột hay lùm cây rung rinh có nghĩa là: Hoặc là con mồi, hoặc là thú dữ. Não bộ bị ép phải định hướng sự chú ý NGAY LẬP TỨC trong chưa tới 100 mili-giây. Bất kỳ một cú "Cut" (đổi góc, đổi cảnh) nào trong video cũng giả lập lại sự thay đổi này, ép khán giả phải bừng tỉnh và dán mắt vào màn hình.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 2: Sự mù lòa tĩnh lặng (Habituation) & Luật 4 Giây:</strong> Nếu nhìn chằm chằm một lùm cây không rung động, não sẽ tự đánh giá "môi trường an toàn" và "tắt" sự tập trung để tiết kiệm năng lượng. Khoa học chứng minh não bộ bắt đầu phân tâm sau <strong class="text-red-400">4 giây</strong> nhìn một khung hình tĩnh. Chuyển cảnh chính là nút "Reset" lại 4 giây sự sống đó.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 3: Hiệu ứng tiệm cận (Looming Effect):</strong> Khi một vật thể đột ngột to lên, não bộ nhận tín hiệu rằng vật đó đang lao về phía mình. Một cú <strong class="text-red-400">Zoom-in</strong> (phóng to) bất ngờ vào khuôn mặt bạn khi nói một từ khóa quan trọng sẽ kích hoạt nhịp tim của khán giả tăng nhẹ, ép họ phải tập trung cao độ 100%.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2.2: Neuroscience -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 order-2 md:order-1">
+                <h4 class="text-2xl font-bold text-emerald-400">Góc nhìn 2: Khoa học Thần kinh & Tâm lý học (Neuroscience)</h4>
+                <p class="text-gray-300">Chuyển cảnh là cách bạn kiểm soát dòng chảy hóa học trong não người xem.</p>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex gap-3">
+                        <span class="text-emerald-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 1: Cú lừa Dopamine:</strong> Khoa học chứng minh Dopamine không tiết ra mạnh nhất khi chúng ta ĐẠT ĐƯỢC thỏa mãn, mà tiết ra khi chúng ta MONG ĐỢI nó. Sự thay đổi hình ảnh liên tục khiến não bộ kỳ vọng: <em>"Sắp có gì tiếp theo?"</em>. Nó giữ khán giả lại trong một vòng lặp tò mò vô tận (giống hệt cơ chế nghiện máy đánh bạc).</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-emerald-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 2: Tốc độ xử lý đa phương thức:</strong> Não bộ xử lý hình ảnh nhanh hơn văn bản <strong class="text-emerald-400">60.000 lần</strong>. Đồng thời, <strong class="text-emerald-400">85%</strong> người dùng MXH xem video ở chế độ <strong class="text-emerald-400">TẮT TIẾNG</strong>. Việc chèn các Text pop-up (chữ nhảy ra) hay B-roll đóng vai trò như những "điểm neo thị giác" thay thế cho âm thanh, cứu sống video của bạn khỏi việc trở thành một bức ảnh tĩnh câm điếc.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-emerald-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 3: Thỏa mãn bởi nhịp điệu (Predictable Pattern):</strong> Khi bạn cắt cảnh chuẩn xác theo nhịp bass của nhạc (Cut on beat) kèm hiệu ứng âm thanh (Whoosh/Pop), não bộ đoán được quy luật và tự thưởng cho nó một luồng dopamine cực mạnh vì đã "dự đoán đúng".</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="order-1 md:order-2">
+                <!-- Art: Neural Network -->
+                <div class="art-container">
+                    <div class="art-neuro">
+                        <div class="node n1"></div>
+                        <div class="node n2"></div>
+                        <div class="node n3"></div>
+                        <div class="node n4"></div>
+                        <div class="line l1"></div>
+                        <div class="line l2"></div>
+                        <div class="line l3"></div>
+                        <div class="line l4"></div>
+                        <div class="dopamine"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2.3: Algorithm -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <!-- Art: Algorithm Graph -->
+                <div class="art-container">
+                    <div class="art-algo">
+                        <div class="algo-target-line"></div>
+                        <div class="algo-graph"></div>
+                        <div class="algo-line"></div>
+                        <div class="algo-point"></div>
+                        <!-- Labels -->
+                        <span class="absolute -left-6 bottom-[70%] text-[10px] text-amber-500">75%</span>
+                        <span class="absolute right-0 -bottom-6 text-[10px] text-gray-400">Watch Time</span>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-2xl font-bold text-sky-400">Góc nhìn 3: Logic Thuật toán (The Algorithm)</h4>
+                <p class="text-gray-300">Thuật toán (TikTok, Shorts, Reels) không có cảm xúc, nó chỉ là tấm gương phản chiếu tâm lý sinh học ở trên thông qua các con số.</p>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex gap-3">
+                        <span class="text-sky-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 1: Phễu lọc 3 Giây:</strong> Dữ liệu chỉ ra <strong class="text-sky-400">50-60%</strong> khán giả sẽ lướt đi trong 3 giây đầu nếu không có sự biến đổi cuốn hút nào. Cú jump cut hoặc zoom ngay giây thứ 1.5 là yếu tố sống còn để video không bị AI đánh giá là "rác".</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-sky-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 2: Điểm bùng phát 75%:</strong> Nếu bạn dùng chuyển cảnh giữ được tỷ lệ người xem (Retention Rate) ở những giây quan trọng (vd: giây thứ 10) <strong class="text-sky-400">> 75%</strong>, thuật toán sẽ đánh giá đây là "mồi ngon" và tự động <strong class="text-sky-400">đẩy phân phối x3 lần</strong>.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-sky-500 mt-1">●</span>
+                        <span><strong class="text-white">Ví dụ 3: Khoảng cách tàn khốc giữa Động và Tĩnh:</strong> Dữ liệu A/B Test chỉ ra, một video tĩnh (không chuyển cảnh) chỉ đạt Watch Time <strong class="text-sky-400">8-12 giây</strong> (Retention 20-30%). Cùng nội dung đó, nếu có "Visual Variety" (Chuyển cảnh, B-roll, Text), Watch Time tăng vọt lên <strong class="text-sky-400">35-45 giây</strong> (Retention 70-80%), kéo theo lượng tương tác (Like/Share) cao gấp <strong class="text-sky-400">3-5 lần</strong>.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: HOW -->
+        <section class="grid md:grid-cols-2 gap-12 items-center bg-gray-800/30 p-8 rounded-2xl border border-gray-700/50">
+            <div class="space-y-6 order-2 md:order-1">
+                <h3 class="text-3xl font-bold text-white border-l-4 border-pink-500 pl-4">3. HOW - Thực thi: Trở thành Đạo diễn Nhịp điệu</h3>
+                <p class="text-gray-300 text-lg">Sự lạm dụng chuyển cảnh sẽ gây chóng mặt (Motion sickness). Một Master Editor luôn cắt cảnh có mục đích dựa trên "Logic 3 Cảnh":</p>
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-gray-500">
+                        <h5 class="font-bold text-white mb-1">1. Toàn cảnh (Wide Shot)</h5>
+                        <p class="text-gray-400 text-sm">Trả lời <em>"Ở đâu?"</em>. Dùng để định vị không gian, bối cảnh. Tạo cảm giác tổng quan, cho não bộ "nghỉ ngơi".</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-gray-400">
+                        <h5 class="font-bold text-white mb-1">2. Trung cảnh (Medium Shot)</h5>
+                        <p class="text-gray-400 text-sm">Trả lời <em>"Ai đang làm gì?"</em>. Cắt từ ngực/eo trở lên. Giao tiếp tiêu chuẩn, kết nối người xem với thông điệp.</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-2 border-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.2)]">
+                        <h5 class="font-bold text-pink-400 mb-1">3. Cận cảnh (Close-up)</h5>
+                        <p class="text-gray-300 text-sm">Trả lời <em>"Chi tiết nào quan trọng nhất?"</em>. Nhấn mạnh điểm cốt lõi, ép buộc sự chú ý cao độ vào ánh mắt/đôi tay.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <!-- Art: 3 Lenses -->
+                <div class="art-container">
+                    <div class="art-lens">
+                        <div class="lens-crosshair"></div>
+                        <div class="lens-wide"></div>
+                        <div class="lens-medium"></div>
+                        <div class="lens-close"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BỘ SLIDE THUYẾT TRÌNH -->
+        <section class="mt-24 pt-16 border-t border-dashed border-gray-700">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">PHẦN 2: CẤU TRÚC BỘ SLIDE THUYẾT TRÌNH (20 SLIDES)</h2>
+                <p class="text-gray-400 max-w-3xl mx-auto italic bg-blue-900/20 p-4 rounded border border-blue-900/50">
+                    *Lưu ý cho giảng viên: Ở các slide nói về Thuật toán & Dữ liệu (Slide 10, Slide 20), bạn hãy sử dụng hình ảnh chụp màn hình biểu đồ Retention/Analytics từ chính <strong>Facebook Page/Kênh</strong> của bạn. Việc dùng "Data thực tế của giảng viên" sẽ đập tan mọi sự hoài nghi và tạo Social Proof tuyệt đối với sinh viên DAV.*
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Mô đun 1 -->
+                <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-blue-400 mb-6 uppercase tracking-wider">Mô-đun 1: Phá vỡ niềm tin cũ (Slide 1-4)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-900 p-5 rounded-lg">
+                            <h4 class="font-bold text-white mb-2">Slide 1: Tiêu đề - Vượt qua ranh giới "Thợ bấm nút"</h4>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Tiêu đề:</strong> LOGIC CỦA CHUYỂN CẢNH: Nghệ Thuật Thao Túng Sự Chú Ý Bằng Khoa Học.</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Visual minh hoạ:</strong> Hình ảnh não bộ con người phát sáng, đang kết nối trực tiếp với timeline phần mềm dựng phim đầy các vết cắt.</p>
+                            <p class="text-sm text-gray-500 italic mt-3 border-l-2 border-gray-600 pl-2"><strong>Speaker Note:</strong> "Chào các bạn sinh viên DAV. Tôi biết nhiều bạn ở đây dùng CapCut rất giỏi. Nhưng bao nhiêu người hiểu rõ TẠI SAO video của mình bị lướt qua? Hôm nay, chúng ta không học cách dùng tool. Chúng ta học cách thao túng sự chú ý của não bộ bằng dữ liệu."</p>
+                        </div>
+                        <div class="bg-gray-900 p-5 rounded-lg">
+                            <h4 class="font-bold text-white mb-2">Slide 2: Căn bệnh "Video Trôi Tuột"</h4>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Tiêu đề:</strong> Kịch bản hay + Quay đẹp ≠ Khán giả xem hết.</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Nội dung:</strong> Bạn nói hay, nhưng video thiếu "Nhịp thở". Khán giả chán và thoát ra ở ngay giây thứ 3.</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Visual minh hoạ:</strong> Meme so sánh sự kỳ vọng "Triệu view" và thực tế biểu đồ Retention cắm đầu xuống đất.</p>
+                            <p class="text-sm text-gray-500 italic mt-3 border-l-2 border-gray-600 pl-2"><strong>Speaker Note:</strong> "Các bạn dựng video rất hời hợt. Quẳng một cái video dài 1 phút lên, thêm vài cái chữ rồi xuất file. Việc này giống như viết một bài văn không có dấu chấm, dấu phẩy. Khán giả bị ngộp thở và họ lướt."</p>
+                        </div>
+                        <div class="bg-gray-900 p-5 rounded-lg">
+                            <h4 class="font-bold text-white mb-2">Slide 3: Dữ liệu không biết nói dối (The Data)</h4>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Tiêu đề:</strong> Cuộc chiến của sự chú ý: Chúng ta đang thua!</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Nội dung:</strong> Attention span giảm 69%: 150s (2004) -> 47s (2024). 50-60% khán giả rời đi trong 3 giây đầu tiên.</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Visual minh hoạ:</strong> Đồ thị đường line màu đỏ lao dốc mạnh.</p>
+                            <p class="text-sm text-gray-500 italic mt-3 border-l-2 border-gray-600 pl-2"><strong>Speaker Note:</strong> "Khán giả Gen Z của các bạn có thời lượng tập trung còn thấp hơn một con cá vàng. Nếu trong 3 giây đầu màn hình không có gì biến động, video của bạn coi như bỏ đi."</p>
+                        </div>
+                        <div class="bg-gray-900 p-5 rounded-lg">
+                            <h4 class="font-bold text-white mb-2">Slide 4: Tái định nghĩa "Chuyển cảnh"</h4>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Tiêu đề:</strong> Xóa bỏ định kiến: Chuyển cảnh KHÔNG PHẢI là Hiệu ứng.</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Nội dung:</strong> Chuyển cảnh là MỌI SỰ THAY ĐỔI VỀ MẶT THỊ GIÁC (Jump Cut, Zoom, B-roll, Text Pop-up).</p>
+                            <p class="text-sm text-gray-400 mb-1"><strong>Visual minh hoạ:</strong> Dấu X đỏ chót đè lên icon transition nhấp nháy 3D sến súa. Dấu Tick xanh cho hình ảnh một chữ được bôi vàng nảy lên màn hình.</p>
+                            <p class="text-sm text-gray-500 italic mt-3 border-l-2 border-gray-600 pl-2"><strong>Speaker Note:</strong> "Hãy xóa ngay tư duy dùng các hiệu ứng lật trang, xoay vòng mờ ảo. Chuyển cảnh đích thực là bất cứ thứ gì làm thay đổi võng mạc của người xem. Chỉ một cái Zoom nhẹ cũng là chuyển cảnh."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mô đun 2 -->
+                <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-6 uppercase tracking-wider">Mô-đun 2: Khoa học & Thuật toán (Slide 5-10)</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold text-white text-sm mb-2">Slide 5: Góc nhìn 1 - Sinh học tiến hóa</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Bản năng sinh tồn & Phản xạ định hướng.<br><strong>Nội dung:</strong> Não bộ ưu tiên sự sống sót -> Ép mắt phải chú ý vào mọi sự thay đổi đột ngột.<br><strong>Visual:</strong> Người tiền sử giật mình nhìn bụi rậm.</p>
+                            <p class="text-xs text-gray-500 italic mt-2 border-l-2 border-gray-600 pl-2"><strong>Note:</strong> "...mỗi lần đổi khung hình, bạn tạo ra 'tiếng lá rung' ép bản năng sinh tồn giật mình chú ý lại..."</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold text-white text-sm mb-2">Slide 6: Giới hạn của bộ não</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Quy tắc 4 Giây.<br><strong>Nội dung:</strong> Não tắt tập trung sau 4s nhìn khung hình tĩnh.<br><strong>Visual:</strong> Đồng hồ đếm ngược 4s đỏ rực. Text: "Mỗi cú cắt = Mua thêm 4 giây".</p>
+                            <p class="text-xs text-gray-500 italic mt-2 border-l-2 border-gray-600 pl-2"><strong>Note:</strong> "Đừng bắt khán giả nhìn mặt đứng im quá 4s. Hãy nhấn nút F5 liên tục..."</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold text-white text-sm mb-2">Slide 7: Góc nhìn 2 - Khoa học Thần kinh</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Chuyển cảnh = Liều "Dopamine Hit".<br><strong>Nội dung:</strong> Dopamine tiết ra khi MONG ĐỢI phần thưởng. Chuyển cảnh hứa hẹn "Sắp có thông tin mới".<br><strong>Visual:</strong> Sơ đồ vòng lặp tò mò, máy đánh bạc.</p>
+                            <p class="text-xs text-gray-500 italic mt-2 border-l-2 border-gray-600 pl-2"><strong>Note:</strong> "Người ta lướt vì kỳ vọng video sau hay hơn. Hãy mang sự kỳ vọng đó vào tế bào video..."</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold text-white text-sm mb-2">Slide 8: Kỷ nguyên tĩnh lặng</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Làm video cho những người "Điếc".<br><strong>Nội dung:</strong> 85% người xem tắt tiếng. Tốc độ xử lý ảnh nhanh hơn 60k lần.<br><strong>Visual:</strong> Loa gạch chéo + Tia chớp.</p>
+                            <p class="text-xs text-gray-500 italic mt-2 border-l-2 border-gray-600 pl-2"><strong>Note:</strong> "Cứu cánh duy nhất là điểm neo thị giác: Text nảy lên, hình B-roll..."</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold text-white text-sm mb-2">Slide 9: Góc nhìn 3 - Logic Thuật toán</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Cỗ máy đọc vị hành vi.<br><strong>Nội dung:</strong> Thuật toán AI chỉ đọc chỉ số sinh học: Watch Time, Completion Rate.<br><strong>Visual:</strong> Robot phân tích biểu đồ.</p>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded-lg border border-pink-500/30">
+                            <h4 class="font-bold text-pink-400 text-sm mb-2">Slide 10: Sự chênh lệch đáng sợ</h4>
+                            <p class="text-xs text-gray-400"><strong>Tiêu đề:</strong> Hậu quả của lười Edit.<br><strong>Nội dung:</strong> Retention >75% ở 10s đầu = Phân phối x3. Tĩnh vs Động.<br><strong>Visual:</strong> [ẢNH CHỤP BIỂU ĐỒ RETENTION TỪ KÊNH BẠN]</p>
+                            <p class="text-xs text-pink-500/80 italic mt-2 border-l-2 border-pink-500/50 pl-2"><strong>Note:</strong> "Data thật từ kênh tôi. Vượt 75% ở 10s đầu, video sống. Cắm đầu, video chết."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mô đun 3, 4, 5 Stacked Grid -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Mô đun 3 -->
+                    <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-5">
+                        <h3 class="text-lg font-bold text-purple-400 mb-4 uppercase tracking-wider">Mô-đun 3: Logic 3 Cảnh (11-14)</h3>
+                        <div class="space-y-4 text-sm text-gray-400">
+                            <p><strong>S11: Ngữ pháp thị giác:</strong> Không bao giờ cắt bừa. Wide - Medium - Close-up.</p>
+                            <p><strong>S12: Cảnh Toàn (Wide):</strong> "Ở đâu?". Định vị không gian.</p>
+                            <p><strong>S13: Cảnh Trung (Medium):</strong> "Ai đang làm gì?". Giao tiếp tiêu chuẩn.</p>
+                            <p><strong>S14: Cảnh Cận (Close-up):</strong> "Điều gì quan trọng?". Ép sự chú ý tuyệt đối.</p>
+                        </div>
+                    </div>
+                    <!-- Mô đun 4 -->
+                    <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-5">
+                        <h3 class="text-lg font-bold text-orange-400 mb-4 uppercase tracking-wider">Mô-đun 4: Thực chiến (15-18)</h3>
+                        <div class="space-y-4 text-sm text-gray-400">
+                            <p><strong>S15: Jump Cuts:</strong> Sát thủ diệt thời gian chết. Cắt sạch khoảng lặng, ờ, à.</p>
+                            <p><strong>S16: Đa dạng thị giác:</strong> Zoom in nhấn mạnh. B-roll cứu cánh nhàm chán.</p>
+                            <p><strong>S17: Text & Sound:</strong> Highlight từ khóa. Thêm SFX "Whoosh", "Pop" vào điểm cắt.</p>
+                            <p><strong>S18: Cut On Beat:</strong> Đồng bộ điểm cắt với nhịp nhạc. Kích hoạt thỏa mãn dự đoán.</p>
+                        </div>
+                    </div>
+                    <!-- Mô đun 5 -->
+                    <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-5">
+                        <h3 class="text-lg font-bold text-red-400 mb-4 uppercase tracking-wider">Mô-đun 5: Kết luận (19-20)</h3>
+                        <div class="space-y-4 text-sm text-gray-400">
+                            <p><strong>S19: Over-Edit:</strong> Cắt ngẫu nhiên phá nhịp. Quá nhiều hiệu ứng gây chóng mặt. Simple is best.</p>
+                            <div class="border-t border-gray-600 pt-3 mt-3">
+                                <p class="text-pink-400 font-bold mb-1">S20: Tối ưu bằng Dữ liệu</p>
+                                <p><strong>Nội dung:</strong> Đừng up xong vứt đó. Xem Retention Graph. Chỗ nào tụt -> Mắc lỗi 4s tĩnh.</p>
+                                <p><strong>Visual:</strong> [ẢNH RETENTION GRAPH] khoanh đỏ. QR code nhận tài liệu.</p>
+                                <p class="text-xs italic mt-2"><strong>Bài tập:</strong> Mở video kém nhất, tìm đoạn tụt nhiều nhất, chèn Zoom/Text/Whoosh vào.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARD SECTION -->
+        <section class="mt-24 pt-16 border-t-2 border-gray-800">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">
+                    25 CÂU HỎI ÔN TẬP NHANH (FLASHCARDS)
+                </h2>
+                <p class="text-gray-400">Hệ thống hóa kiến thức trọng tâm (đọc không cần tương tác).</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Tạo bằng JS hoặc tĩnh. Ở đây yêu cầu tĩnh theo file HTML -->
+                <!-- Flashcard Template x 25 -->
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">1. Tại sao video bị lướt qua sau 3 giây?</p>
+                    <p class="text-xs text-blue-300">Vì thiếu hụt Nhịp điệu thị giác (Visual Rhythm).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">2. Chuyển cảnh thực chất là gì?</p>
+                    <p class="text-xs text-blue-300">Là mọi sự thay đổi về mặt thị giác (Zoom, text, cắt...).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">3. Mục đích cốt lõi của chuyển cảnh?</p>
+                    <p class="text-xs text-blue-300">Hack vào hệ thống sinh học/tâm lý của con người.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">4. Phản xạ định hướng là gì?</p>
+                    <p class="text-xs text-blue-300">Bản năng sinh tồn ép não chú ý ngay lập tức vào thay đổi của môi trường.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">5. Quy tắc 4 giây trong video?</p>
+                    <p class="text-xs text-blue-300">Não tự "tắt" sự tập trung sau 4s nhìn một khung hình tĩnh.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">6. Hiệu ứng tiệm cận (Looming Effect) tạo cảm giác gì?</p>
+                    <p class="text-xs text-blue-300">Vật thể lao tới ép nhịp tim tăng, ép tập trung 100%.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">7. Dopamine tiết ra mạnh nhất khi nào?</p>
+                    <p class="text-xs text-blue-300">Khi ta MONG ĐỢI phần thưởng, không phải lúc đạt được.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">8. Não bộ xử lý hình ảnh nhanh hơn văn bản bao nhiêu?</p>
+                    <p class="text-xs text-blue-300">Khoảng 60.000 lần.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">9. Tỷ lệ người dùng xem video tắt tiếng?</p>
+                    <p class="text-xs text-blue-300">Khoảng 85% người dùng MXH.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">10. Cut on beat kích hoạt điều gì trong não?</p>
+                    <p class="text-xs text-blue-300">Sự thỏa mãn vì "dự đoán đúng quy luật" (Predictable Pattern).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">11. Theo phễu lọc thuật toán, bao nhiêu % thoát trong 3s?</p>
+                    <p class="text-xs text-blue-300">Khoảng 50-60% nếu không có thay đổi cuốn hút.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">12. Điểm bùng phát (Tipping point) ở giây thứ 10 là mức nào?</p>
+                    <p class="text-xs text-blue-300">Giữ được tỷ lệ người xem (Retention) > 75%.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">13. Watch time video có "Visual Variety" so với video tĩnh?</p>
+                    <p class="text-xs text-blue-300">Tăng vọt lên 35-45 giây (so với 8-12 giây của video tĩnh).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">14. Hậu quả của việc lạm dụng chuyển cảnh?</p>
+                    <p class="text-xs text-blue-300">Gây chóng mặt (Motion sickness), quá tải giác quan.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">15. Logic 3 Cảnh là gì?</p>
+                    <p class="text-xs text-blue-300">Toàn cảnh (Wide) - Trung cảnh (Medium) - Cận cảnh (Close-up).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">16. Cảnh toàn (Wide Shot) trả lời câu hỏi gì?</p>
+                    <p class="text-xs text-blue-300">"Ở đâu?" - Dùng định vị không gian, bối cảnh.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">17. Cảnh trung (Medium Shot) thường cắt từ đâu?</p>
+                    <p class="text-xs text-blue-300">Từ ngực/eo trở lên. Dành cho giao tiếp tiêu chuẩn.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">18. Chức năng chính của Cận cảnh (Close-up)?</p>
+                    <p class="text-xs text-blue-300">Nhấn mạnh chi tiết, ép buộc sự chú ý cao độ.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">19. Kỹ thuật "Jump Cut" dùng để làm gì?</p>
+                    <p class="text-xs text-blue-300">Cắt bỏ sạch sẽ mọi khoảng lặng, ngập ngừng, "ờ à".</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">20. B-Roll được sử dụng với mục đích gì?</p>
+                    <p class="text-xs text-blue-300">Cảnh minh họa xen ngang giúp cứu vãn sự nhàm chán.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">21. Tại sao cần thêm Sound Design (Whoosh/Pop) vào Text?</p>
+                    <p class="text-xs text-blue-300">Tạo điểm neo thị giác thay thế âm thanh, tăng sự thỏa mãn cho não.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">22. Cạm bẫy "Over-edit" khiến khán giả cảm thấy thế nào?</p>
+                    <p class="text-xs text-blue-300">Phá nát nhịp điệu gốc, gây choáng váng do hiệu ứng.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">23. Công cụ nào đóng vai trò là "Bác sĩ của Video"?</p>
+                    <p class="text-xs text-blue-300">Biểu đồ giữ chân người xem (Retention Graph).</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">24. Khi đồ thị cắm đầu dốc mạnh, lỗi thường là gì?</p>
+                    <p class="text-xs text-blue-300">Mắc lỗi 4 giây tĩnh lặng khiến não người xem phân tâm.</p>
+                </div>
+                <div class="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-lg border border-gray-700">
+                    <p class="font-bold text-white text-sm mb-2">25. Bài tập thực hành cải thiện video kém là gì?</p>
+                    <p class="text-xs text-blue-300">Tìm đoạn thoát nhiều nhất -> chèn 1 Zoom, 1 Text Pop-up, 1 SFX Whoosh.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER CHUẨN XÁC YÊU CẦU: Cao 128px, nội dung & icon -->
+    <footer class="h-[128px] w-full bg-[#0b1120] border-t border-gray-800 flex flex-col justify-center items-center px-4 text-center">
+        <p class="text-gray-300 text-xs md:text-sm max-w-3xl mb-3 font-light leading-snug">
+            Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+        </p>
+        <div class="flex space-x-6 items-center">
+            <!-- YouTube Icon -->
+            <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <!-- TikTok Icon -->
+            <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path>
+                </svg>
+            </a>
+            <!-- Facebook Icon -->
+            <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+
+<script id="cms-pin-widget">if(localStorage.getItem("cms_auth")==="granted"){const p=window.location.pathname.split("/").filter(Boolean);let r="vietndj.github.io",f="index.html";if(p.length>1){r=p[0];f=p.pop()}else if(p.length===1){if(p[0].endsWith(".html"))f=p[0];else r=p[0]}const k=r+"/"+decodeURIComponent(f);let isP=false;try{const d=JSON.parse(localStorage.getItem("cms_repo_data"));if(d&&d.pinned&&d.pinned.includes(k))isP=true;}catch(e){}const b=document.createElement("a");b.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k);b.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";b.style.cssText="position:fixed;top:15px;right:15px;background:"+(isP?"#FF3B30":"#FF9500")+";color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;";b.onclick=function(e){e.preventDefault();window.open(this.href,"_blank");isP=!isP;this.innerHTML=isP?"❌ Bỏ ghim":"📌 Ghim bài";this.style.background=isP?"#FF3B30":"#FF9500";this.href="https://vietndj.github.io/?"+(isP?"unpin=":"pin=")+encodeURIComponent(k)};document.body.appendChild(b);}</script>
+</body>
+</html>
