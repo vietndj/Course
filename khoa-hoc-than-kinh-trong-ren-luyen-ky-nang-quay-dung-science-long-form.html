@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHOA HỌC THẦN KINH TRONG RÈN LUYỆN KỸ NĂNG QUAY DỰNG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #b026ff;
+            --neon-green: #00ff88;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #cbd5e1; /* slate-300 */
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- CSS ABSTRACT ART & ANIMATIONS --- */
+        .art-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #1e293b;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @keyframes pulse-slow { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+        @keyframes flow { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+        /* Art 1: RAM (Overflowing tabs) */
+        .art-ram .tab {
+            position: absolute;
+            background: linear-gradient(90deg, var(--neon-blue), transparent);
+            height: 20px;
+            border-radius: 10px;
+            animation: flow 2s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        /* Art 2: Odysseus (Restraint) */
+        .art-odysseus .core {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80px; height: 80px; background: var(--neon-purple); border-radius: 50%;
+            box-shadow: 0 0 50px var(--neon-purple);
+        }
+        .art-odysseus .bind {
+            position: absolute; top: 50%; left: 50%;
+            width: 150px; height: 150px; border: 10px solid #ef4444; border-radius: 10px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        /* Art 3: Friction (Sparks/Gears) */
+        .art-friction {
+            background: radial-gradient(circle at center, #334155, #0f172a);
+        }
+        .art-friction .gear {
+            position: absolute; border: 8px dashed #f59e0b; border-radius: 50%;
+            animation: spin-slow 10s linear infinite;
+        }
+
+        /* Art 4: Momentum (Kinetic energy) */
+        .art-momentum {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+        }
+        .art-momentum .sphere {
+            position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px;
+            background: var(--neon-green); border-radius: 50%;
+            box-shadow: 0 0 40px var(--neon-green);
+            transition: all 0.5s ease;
+        }
+        .art-momentum .trail {
+            position: absolute; bottom: 45px; left: 50px; width: 200px; height: 10px;
+            background: linear-gradient(90deg, var(--neon-green), transparent);
+            transform-origin: left; transform: rotate(-30deg); opacity: 0.7;
+        }
+
+        /* Art 5: Myelin (Nerve wrapping) */
+        .art-myelin .nerve {
+            position: absolute; top: 50%; left: 0; right: 0; height: 4px;
+            background: #fff; box-shadow: 0 0 10px #fff; transform: translateY(-50%);
+        }
+        .art-myelin .sheath {
+            position: absolute; top: 50%; width: 40px; height: 30px;
+            background: rgba(234, 179, 8, 0.8); border-radius: 15px;
+            transform: translateY(-50%);
+            box-shadow: inset 0 0 10px #ca8a04;
+        }
+
+        /* Art 6: Calo (Big brain vs small action) */
+        .art-calo .big-circle {
+            position: absolute; top: 20%; left: 20%; width: 200px; height: 200px;
+            border: 2px solid rgba(255,255,255,0.1); border-radius: 50%;
+        }
+        .art-calo .small-dot {
+            position: absolute; bottom: 30%; right: 30%; width: 20px; height: 20px;
+            background: var(--neon-blue); border-radius: 50%;
+            box-shadow: 0 0 30px var(--neon-blue);
+            animation: pulse-slow 2s infinite;
+        }
+
+        /* Art 7: Zeigarnik (Progress bar to wave) */
+        .art-zeigarnik .bar-bg {
+            position: absolute; top: 50%; left: 10%; right: 10%; height: 20px;
+            background: rgba(255,255,255,0.1); border-radius: 10px; transform: translateY(-50%);
+        }
+        .art-zeigarnik .bar-fill {
+            position: absolute; top: 50%; left: 10%; width: 80%; height: 20px;
+            background: var(--neon-green); border-radius: 10px; transform: translateY(-50%);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        .art-zeigarnik .wave {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 136, 0.2));
+            clip-path: polygon(0 50%, 20% 40%, 40% 60%, 60% 30%, 80% 50%, 100% 40%, 100% 100%, 0 100%);
+        }
+
+        /* Art 8: Dopamine (Bubbles) */
+        .art-dopamine { background: #0f172a; }
+        .art-dopamine .bubble {
+            position: absolute; bottom: -20px;
+            background: radial-gradient(circle at 30% 30%, var(--neon-purple), transparent);
+            border-radius: 50%;
+            animation: float 4s infinite ease-in-out alternate;
+        }
+
+        /* Text formatting */
+        .exact-text {
+            line-height: 1.8;
+            font-size: 1.125rem;
+        }
+        .stray-word {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #334155;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Flashcards */
+        .fc-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .fc-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #00f3ff, #b026ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzMzNDE1NSIvPjwvc3ZnPg==')] opacity-30"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                KHOA HỌC THẦN KINH TRONG <br/>
+                <span class="text-gradient">RÈN LUYỆN KỸ NĂNG QUAY DỰNG</span>
+            </h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+        </div>
+    </header>
+
+    <!-- CONTENT SECTIONS -->
+    <main class="container mx-auto px-6 max-w-7xl space-y-32 pb-32">
+
+        <!-- GIAI ĐOẠN 1 -->
+        <section>
+            <div class="mb-12 border-l-4 border-cyan-400 pl-6">
+                <h2 class="text-3xl font-bold text-white tracking-wide">GIAI ĐOẠN 1: CẠM BẪY CỦA "INPUT" (Quản lý Đầu vào)</h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Mục 1 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">1. Cơ chế RAM & Ghi đè dữ liệu (Luận điểm 6 & 8)</h3>
+                        <p class="text-slate-300">Giải thích: Trí nhớ làm việc (RAM não) cực kỳ hẹp (chỉ xử lý 4-7 luồng thông tin). Nếu bạn xem liên tục 10 video tutorial, bạn đang mở 10 "tab chạy ngầm". Khi RAM đầy, não sẽ tự động xóa/ghi đè kỹ thuật số 1 để nhét kỹ thuật số 10 vào. Bạn sẽ quên sạch. Hơn nữa, việc giữ các tab này sinh ra Cortisol (hormone căng thẳng), làm bạn kiệt sức vào cuối ngày.</p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="art-container art-ram p-8 relative">
+                            <!-- CSS Art cho RAM -->
+                            <div class="tab w-3/4 top-10 left-10 opacity-40"></div>
+                            <div class="tab w-1/2 top-20 left-20 opacity-60"></div>
+                            <div class="tab w-full top-32 left-5 opacity-80" style="animation-delay: 0.5s"></div>
+                            <div class="tab w-2/3 top-44 left-15 opacity-100" style="background: linear-gradient(90deg, #ef4444, transparent); animation-duration: 1s;"></div>
+                            <div class="tab w-1/3 top-56 left-30 opacity-30"></div>
+                            <div class="absolute bottom-5 right-5 text-xs text-red-400 font-mono">ERROR: RAM OVERFLOW // CORTISOL++</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mục 2 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="art-container art-odysseus">
+                            <!-- CSS Art cho Ràng buộc -->
+                            <div class="core"></div>
+                            <div class="bind"></div>
+                            <div class="bind" style="transform: translate(-50%, -50%) rotate(0deg); width: 120px; height: 120px; border-color: #64748b;"></div>
+                            <div class="absolute inset-0 bg-radial-gradient from-transparent to-slate-900 opacity-50"></div>
+                        </div>
+                    </div>
+                    <div class="exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">2. Ảo giác năng lực & Ràng buộc Odysseus (Luận điểm 5)</h3>
+                        <p class="text-slate-300">Giải thích: Chỉ xem và gật gù khiến não tiết Dopamine rẻ tiền, lầm tưởng "mình đã sở hữu kỹ năng này". Hard-stop (Luật dừng cứng: Học tối đa 3 kỹ thuật rồi cấm xem tiếp) chính là trói mình vào cột buồm như Odysseus. Nó chặn đứng Dopamine ảo, đưa bạn về thực tế tàn nhẫn: Chưa xuất file nghĩa là chưa có gì cả.</p>
+                    </div>
+                </div>
+
+                <!-- Mục 3 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">3. (Bổ sung điểm bạn quên) Ma sát tư duy khi Note</h3>
+                        <p class="text-slate-300">Giải thích: Tuyệt đối không chép vẹt lý thuyết. Phải ép não chẻ nhỏ kỹ thuật bằng 1 câu hỏi sinh tử: "Luật chơi cốt lõi của cú máy này là gì, và tôi sẽ dùng nó quay cái gì vào NGÀY MAI?". Xóa bỏ tư duy "lưu dự phòng".</p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="art-container art-friction relative overflow-hidden flex items-center justify-center">
+                            <!-- CSS Art cho Ma sát -->
+                            <div class="gear w-48 h-48"></div>
+                            <div class="gear w-32 h-32" style="animation-direction: reverse; border-color: #ef4444;"></div>
+                            <div class="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_20px_10px_rgba(255,255,255,0.5)]"></div>
+                            <div class="absolute top-1/4 left-1/4 w-1 h-20 bg-gradient-to-b from-transparent to-amber-500 transform rotate-45"></div>
+                            <div class="absolute bottom-1/4 right-1/4 w-1 h-20 bg-gradient-to-t from-transparent to-amber-500 transform rotate-45"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GIAI ĐOẠN 2 -->
+        <section>
+            <div class="mb-12 border-l-4 border-amber-400 pl-6">
+                <h2 class="text-3xl font-bold text-white tracking-wide">GIAI ĐOẠN 2: CÂY CẦU VẬT LÝ (Chuyển hóa Lý thuyết thành Kỹ năng)</h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Mục 4 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="art-container art-momentum relative">
+                            <!-- CSS Art cho Đà tâm lý -->
+                            <div class="trail"></div>
+                            <div class="sphere" style="animation: bounce-right 2s infinite alternate ease-in-out;"></div>
+                            <style>
+                                @keyframes bounce-right {
+                                    0% { left: 20px; }
+                                    100% { left: 70%; transform: scale(1.2); box-shadow: 0 0 80px var(--neon-green); background: #fff;}
+                                }
+                            </style>
+                        </div>
+                    </div>
+                    <div class="exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">4. Phá vỡ Ma sát tĩnh & Nắm bắt Đà tâm lý (Luận điểm 2 & 7)</h3>
+                        <p class="text-slate-300">Giải thích: Định luật 1 Newton áp dụng cho cả tâm lý: "Lực cản lớn nhất là từ Đứng im sang Chuyển động". Khi bạn Note xong và thấy "cần quay luôn", đó là khoảnh khắc đà tâm lý (Momentum) xuất hiện. Nếu không bấm máy ngay lập tức (phá vỡ ma sát tĩnh) mà tặc lưỡi xem tiếp, đà này sẽ chết lâm sàng.</p>
+                    </div>
+                </div>
+
+                <!-- Mục 5 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">5. Cơ chế Myelin & Trí nhớ cơ bắp (Luận điểm 9)</h3>
+                        
+                        <span class="stray-word">Shutterstock</span>
+                        
+                        <p class="text-slate-300 mt-2">Giải thích: Bạn muốn biết Myelin từ đâu ra? Khi tín hiệu điện (suy nghĩ) truyền từ não xuống ngón tay để thao tác cầm máy/cắt ghép, nó chạy trên một sợi dây thần kinh.<br><br>
+                        Nếu bạn chỉ Nghĩ hoặc Xem, sợi dây này trần trụi, điện truyền đi rất chậm và dễ rò rỉ (lóng ngóng, quên bài).<br><br>
+                        Nhưng mỗi lần bạn có một hành động vật lý thực tế, một tế bào thần kinh đệm sẽ bọc một lớp mỡ gọi là Myelin quanh sợi dây đó. Bạn lặp lại càng nhiều (Làm -> Sai -> Sửa), lớp Myelin càng dày. Tín hiệu điện sẽ trượt đi với tốc độ ánh sáng. Lúc này, thao tác trở thành "Trí nhớ cơ bắp" (Vô thức), bạn sẽ không cần dùng não để nghĩ về kỹ thuật nữa.</p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="art-container art-myelin relative">
+                            <!-- CSS Art cho Myelin -->
+                            <div class="nerve"></div>
+                            <div class="sheath" style="left: 10%;"></div>
+                            <div class="sheath" style="left: 30%;"></div>
+                            <div class="sheath" style="left: 50%;"></div>
+                            <div class="sheath" style="left: 70%;"></div>
+                            <div class="absolute top-1/2 left-0 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_10px_rgba(255,255,255,0.8)] z-10" style="animation: signal-run 1.5s infinite linear; transform: translateY(-50%);"></div>
+                            <style>
+                                @keyframes signal-run { 0% { left: 0; opacity: 1; } 100% { left: 100%; opacity: 0; } }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GIAI ĐOẠN 3 -->
+        <section>
+            <div class="mb-12 border-l-4 border-purple-400 pl-6">
+                <h2 class="text-3xl font-bold text-white tracking-wide">GIAI ĐOẠN 3: THAO TÚNG HÓA CHẤT (Hệ thống Khen thưởng)</h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Mục 6 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="art-container art-calo relative">
+                            <!-- CSS Art cho Calo -->
+                            <div class="big-circle flex items-center justify-center text-xs text-slate-600 font-mono text-center p-4">10 MIN VIDEO<br/>HIGH CALORIE<br/>LOW ENERGY</div>
+                            <div class="small-dot"></div>
+                            <div class="absolute bottom-20 right-20 text-xs text-cyan-300 font-mono font-bold">5s DRAFT<br/>LOW COST</div>
+                        </div>
+                    </div>
+                    <div class="exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">6. Chi phí Calo sinh tồn & Sai số dự đoán (Luận điểm 1)</h3>
+                        <p class="text-slate-300">Giải thích: Não bò sát luôn bủn xỉn Calo. Nghĩ đến video 10 phút -> Não thấy tốn năng lượng -> Tiết hóa chất gây lười. Nhưng với bản nháp 5 giây, chi phí calo cực thấp. Khi làm xong, kết quả nhận được (file video) lớn hơn sự kỳ vọng mệt mỏi ban đầu. Não ngạc nhiên (Sai số dự đoán dương) và lầm tưởng bạn vừa "săn được mồi ngon giá hời" -> Mở van phần thưởng.</p>
+                    </div>
+                </div>
+
+                <!-- Mục 7 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">7. Đóng vòng lặp Zeigarnik - Xả RAM (Luận điểm 3)</h3>
+                        <p class="text-slate-300">Giải thích: Não cực kỳ đa nghi, nó không tin việc "nghĩ là xong", nó cần bằng chứng thị giác. Khoảnh khắc mắt bạn nhìn thấy thanh Render chạy 100% hoặc file MP4 xuất hiện, Vỏ não trước trán đánh lệnh "End Task". Các tab chạy ngầm (sự dang dở Zeigarnik) bị tắt phụt. Cơ bắp bạn lập tức giãn ra, bạn sẽ vô thức thở hắt ra một hơi (tiếng thở dài sinh lý).</p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="art-container art-zeigarnik relative bg-slate-800">
+                            <!-- CSS Art cho Render/Zeigarnik -->
+                            <div class="bar-bg"></div>
+                            <div class="bar-fill" style="animation: render-fill 3s infinite ease-out;"></div>
+                            <div class="wave"></div>
+                            <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-green-400 font-mono font-bold text-lg" style="animation: render-text 3s infinite ease-out;">100% EXPORTED</div>
+                            <style>
+                                @keyframes render-fill { 0% { width: 0%; opacity: 1; } 80% { width: 80%; opacity: 1;} 90%, 100% { width: 80%; opacity: 0; } }
+                                @keyframes render-text { 0%, 79% { opacity: 0; } 80%, 100% { opacity: 1; } }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mục 8 -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="art-container art-dopamine relative">
+                            <!-- CSS Art cho Dopamine -->
+                            <div class="bubble w-16 h-16 left-1/4" style="animation-duration: 3s; animation-delay: 0s;"></div>
+                            <div class="bubble w-24 h-24 left-1/2" style="animation-duration: 5s; animation-delay: 1s; background: radial-gradient(circle at 30% 30%, var(--neon-blue), transparent);"></div>
+                            <div class="bubble w-12 h-12 right-1/4" style="animation-duration: 4s; animation-delay: 0.5s; background: radial-gradient(circle at 30% 30%, var(--neon-green), transparent);"></div>
+                            <div class="bubble w-20 h-20 left-10" style="animation-duration: 6s; animation-delay: 2s;"></div>
+                            <div class="absolute top-10 left-0 w-full text-center text-white/20 font-bold text-8xl tracking-widest font-display">SAVE</div>
+                        </div>
+                    </div>
+                    <div class="exact-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">8. Dopamine làm Nút Lưu & Mồi lửa (Luận điểm 4)</h3>
+                        
+                        <div class="flex gap-2">
+                            <span class="stray-word">Shutterstock</span>
+                            <span class="stray-word">Khám phá</span>
+                        </div>
+                        
+                        <p class="text-slate-300 mt-2">Giải thích: Cú dội Dopamine lúc hoàn thành video 5 giây có 2 nhiệm vụ:<br>
+                        Nó hoạt động như Nút Save (Lưu): Đóng dấu nếp nhăn thần kinh vừa tạo.<br>
+                        Nó tạo ra Cơn khát: Ép cơ thể "ngứa ngáy" muốn làm thêm một video 15 giây nữa. Bạn dùng chính hệ thống sinh hóa của cơ thể để làm động lực, thay vì phải cắn răng dùng "Ý chí" (thứ rất mau cạn).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- KHỐI FLASHCARD 25 CÂU HỎI HỌC TẬP -->
+    <section class="bg-[#0b1121] py-16 border-t border-slate-800">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <h2 class="text-2xl font-bold text-center text-white mb-10 tracking-wide uppercase">
+                <span class="inline-block pb-2 border-b-2 border-purple-500">25 Câu hỏi Flashcard ôn tập nhanh</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <!-- Generate 25 cards based exactly on the text content -->
+                <!-- Card 1-5 (Giai đoạn 1) -->
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q1: Trí nhớ làm việc (RAM não) xử lý được bao nhiêu luồng thông tin?</p>
+                    <p class="text-slate-300 text-sm">A: Cực kỳ hẹp, chỉ xử lý 4-7 luồng thông tin.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q2: Mở 10 "tab chạy ngầm" (xem 10 video) gây ra điều gì?</p>
+                    <p class="text-slate-300 text-sm">A: Sinh ra Cortisol (hormone căng thẳng), làm bạn kiệt sức vào cuối ngày.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q3: Não làm gì khi RAM đầy?</p>
+                    <p class="text-slate-300 text-sm">A: Tự động xóa/ghi đè kỹ thuật số 1 để nhét kỹ thuật số 10 vào. Bạn sẽ quên sạch.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q4: Việc chỉ xem và gật gù khiến não lầm tưởng điều gì?</p>
+                    <p class="text-slate-300 text-sm">A: Lầm tưởng "mình đã sở hữu kỹ năng này" do não tiết Dopamine rẻ tiền.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q5: Luật "Hard-stop" (Dừng cứng) là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Học tối đa 3 kỹ thuật rồi cấm xem tiếp, chặn đứng Dopamine ảo.</p>
+                </div>
+
+                <!-- Card 6-10 (Giai đoạn 1 tiếp & Giai đoạn 2) -->
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q6: Thực tế tàn nhẫn khi học quay dựng là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Chưa xuất file nghĩa là chưa có gì cả.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q7: Nguyên tắc số 1 khi Note lý thuyết là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Tuyệt đối không chép vẹt lý thuyết.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-cyan-400 font-semibold text-sm mb-2">Q8: Câu hỏi sinh tử để chẻ nhỏ kỹ thuật là gì?</p>
+                    <p class="text-slate-300 text-sm">A: "Luật chơi cốt lõi của cú máy này là gì, và tôi sẽ dùng nó quay cái gì vào NGÀY MAI?".</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q9: Lực cản lớn nhất trong tâm lý học theo định luật Newton là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Là từ Đứng im sang Chuyển động.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q10: "Đà tâm lý" (Momentum) xuất hiện khi nào?</p>
+                    <p class="text-slate-300 text-sm">A: Khi bạn Note xong và thấy "cần quay luôn".</p>
+                </div>
+
+                <!-- Card 11-15 (Giai đoạn 2) -->
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q11: Điều gì xảy ra nếu không bấm máy ngay sau khi Note?</p>
+                    <p class="text-slate-300 text-sm">A: Đà tâm lý (Momentum) sẽ chết lâm sàng.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q12: Tín hiệu điện (suy nghĩ) chạy trên đâu?</p>
+                    <p class="text-slate-300 text-sm">A: Chạy trên một sợi dây thần kinh từ não xuống ngón tay.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q13: Nếu chỉ Nghĩ hoặc Xem, tình trạng sợi dây thần kinh ra sao?</p>
+                    <p class="text-slate-300 text-sm">A: Sợi dây trần trụi, điện truyền đi rất chậm và dễ rò rỉ (lóng ngóng, quên bài).</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q14: Lớp mỡ Myelin được hình thành khi nào?</p>
+                    <p class="text-slate-300 text-sm">A: Mỗi lần bạn có một hành động vật lý thực tế.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q15: Quá trình lặp lại (Làm -> Sai -> Sửa) có tác dụng gì?</p>
+                    <p class="text-slate-300 text-sm">A: Lớp Myelin càng dày, tín hiệu điện trượt đi với tốc độ ánh sáng.</p>
+                </div>
+
+                <!-- Card 16-20 (Giai đoạn 2 & 3) -->
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-amber-400 font-semibold text-sm mb-2">Q16: "Trí nhớ cơ bắp" (Vô thức) đạt được khi nào?</p>
+                    <p class="text-slate-300 text-sm">A: Khi lớp Myelin đủ dày, bạn không cần dùng não để nghĩ về kỹ thuật nữa.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q17: Đặc tính của Não bò sát đối với năng lượng là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Luôn bủn xỉn Calo.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q18: Tại sao não tiết hóa chất gây lười khi nghĩ đến video 10 phút?</p>
+                    <p class="text-slate-300 text-sm">A: Vì não thấy tốn năng lượng (chi phí calo cao).</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q19: Vì sao làm bản nháp 5 giây lại hiệu quả?</p>
+                    <p class="text-slate-300 text-sm">A: Chi phí calo cực thấp, kết quả nhận được lớn hơn sự kỳ vọng mệt mỏi ban đầu.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q20: "Sai số dự đoán dương" khiến não lầm tưởng điều gì?</p>
+                    <p class="text-slate-300 text-sm">A: Lầm tưởng bạn vừa "săn được mồi ngon giá hời" -> Mở van phần thưởng.</p>
+                </div>
+
+                <!-- Card 21-25 (Giai đoạn 3) -->
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q21: Sự đa nghi của não thể hiện như thế nào?</p>
+                    <p class="text-slate-300 text-sm">A: Nó không tin việc "nghĩ là xong", nó cần bằng chứng thị giác.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q22: Vỏ não trước trán đánh lệnh "End Task" khi nào?</p>
+                    <p class="text-slate-300 text-sm">A: Khoảnh khắc mắt nhìn thấy thanh Render chạy 100% hoặc file MP4 xuất hiện.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q23: Biểu hiện sinh lý khi "sự dang dở Zeigarnik" bị tắt là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Cơ bắp giãn ra, vô thức thở hắt ra một hơi (tiếng thở dài sinh lý).</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q24: Nhiệm vụ thứ nhất của Dopamine lúc hoàn thành video là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Hoạt động như Nút Save (Lưu): Đóng dấu nếp nhăn thần kinh vừa tạo.</p>
+                </div>
+                <div class="fc-card p-4 rounded-lg">
+                    <p class="text-purple-400 font-semibold text-sm mb-2">Q25: Tác dụng "Mồi lửa" của Dopamine là gì?</p>
+                    <p class="text-slate-300 text-sm">A: Tạo Cơn khát: Ép cơ thể "ngứa ngáy" làm thêm video, dùng hệ thống sinh hóa làm động lực thay vì "Ý chí".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER YÊU CẦU: Cao exactly 128px, nội dung đầy đủ, icon -->
+    <footer class="bg-[#040814] w-full h-[128px] border-t border-slate-800 flex items-center">
+        <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row justify-between items-center h-full">
+            
+            <div class="text-slate-400 text-xs md:text-sm max-w-2xl">
+                <p class="font-semibold text-white mb-1">Các kênh hiện tại .</p>
+                <p>Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.</p>
+            </div>
+
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <!-- YouTube Icon -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="text-slate-400 hover:text-[#FF0000] transition-colors" title="Youtube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <!-- TikTok Icon -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="Tiktok">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-.9 4.4-2.4 6.03-1.62 1.76-4 2.87-6.4 3-2.73.14-5.56-.7-7.55-2.58-1.92-1.83-2.93-4.51-2.65-7.15.22-2.07 1.15-4.04 2.66-5.46 1.73-1.62 4.2-2.32 6.55-1.95v4.06c-1.3-.12-2.67.06-3.79.79-1.02.66-1.72 1.73-1.91 2.9-.18 1.1.1 2.25.79 3.12.7.87 1.8 1.41 2.9 1.5 1.12.09 2.27-.2 3.12-.91.86-.7 1.34-1.78 1.41-2.9.06-3.8.03-7.59.03-11.39V.02h3.18z"/></svg>
+                </a>
+                <!-- Facebook Icon -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="text-slate-400 hover:text-[#1877F2] transition-colors" title="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
