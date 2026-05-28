@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sổ Tay Kịch Bản Quay Thực Chiến - Khóa Học Video Ngắn</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                            darkBg: '#0b0f19',
+                            darkCard: '#151c2c',
+                            neonYellow: '#facc15',
+                            neonPink: '#ec4899',
+                            neonCyan: '#06b6d4'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        /* Custom scrollbar for mobile prompter */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #151c2c;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 3px;
+        }
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-ring {
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-blue-500 selection:text-white pb-20">
+
+    <!-- HEADER & HERO BANNER -->
+    <header class="border-b border-gray-800 bg-brand-darkBg/80 backdrop-blur-md sticky top-0 z-40 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <i class="fa-solid fa-clapperboard text-white text-sm"></i>
+                </div>
+                <div>
+                    <h1 class="text-xs font-bold uppercase tracking-widest text-blue-400">Học Viện Edit</h1>
+                    <p class="text-[9px] text-gray-400">TƯ DUY MẠNG XÃ HỘI THỰC CHIẾN</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                    <span class="w-1.5 h-1.5 mr-1 bg-green-500 rounded-full animate-ping"></span> Live On Set
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pt-6">
+        <!-- HERO TITLES -->
+        <section class="text-center mb-8">
+            <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                Tài Liệu Độc Quyền Dành Cho Lớp Thực Hành
+            </span>
+            <h2 class="text-2xl md:text-4xl font-extrabold mt-3 tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                6 Kịch Bản Thực Chiến Lớp Học
+            </h2>
+            <p class="text-xs text-gray-400 mt-2 max-w-lg mx-auto leading-relaxed">
+                Tối ưu hóa góc quay bằng 1 điện thoại + chân máy di động. Thiết kế theo quy tắc "Cảnh chính (A-Roll) dẫn dắt, Cảnh trám (B-Roll) tương tác".
+            </p>
+        </section>
+
+        <!-- QUICK CHECKLIST ON SET FOR STUDENTS -->
+        <section class="mb-8 bg-gradient-to-br from-brand-darkCard to-slate-900 border border-gray-800 rounded-2xl p-4 shadow-xl">
+            <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3 flex items-center">
+                <i class="fa-solid fa-circle-check text-green-400 mr-2 text-sm"></i> 3 Nguyên Tắc Sống Còn Trước Khi Bấm Máy:
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                <div class="flex items-start p-2.5 rounded-xl bg-slate-950/50 border border-gray-800/80">
+                    <div class="bg-blue-500/10 text-blue-400 p-1.5 rounded-lg mr-2.5 flex-shrink-0">1</div>
+                    <div>
+                        <strong class="text-gray-200 block">Lau Sạch Kính Camera</strong>
+                        <span class="text-gray-400 text-[11px]">Tuyệt đối không để bám mồ hôi tay làm mờ nhoè tia sáng phản chiếu.</span>
+                    </div>
+                </div>
+                <div class="flex items-start p-2.5 rounded-xl bg-slate-950/50 border border-gray-800/80">
+                    <div class="bg-blue-500/10 text-blue-400 p-1.5 rounded-lg mr-2.5 flex-shrink-0">2</div>
+                    <div>
+                        <strong class="text-gray-200 block">Khóa AE/AF Lock</strong>
+                        <span class="text-gray-400 text-[11px]">Chạm giữ màn hình để khóa sáng. Không để ánh sáng vách kính làm đổi màu mặt nhân vật.</span>
+                    </div>
+                </div>
+                <div class="flex items-start p-2.5 rounded-xl bg-slate-950/50 border border-gray-800/80">
+                    <div class="bg-blue-500/10 text-blue-400 p-1.5 rounded-lg mr-2.5 flex-shrink-0">3</div>
+                    <div>
+                        <strong class="text-gray-200 block">Nguyên Tắc 10 Giây B-Roll</strong>
+                        <span class="text-gray-400 text-[11px]">Đặt máy tĩnh, bấm quay, đếm thầm đủ 10s rồi mới dừng. Không lia máy tự do khi chưa vững tay.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="flex overflow-x-auto pb-3 mb-6 gap-2 no-scrollbar scroll-smooth">
+            <button onclick="filterScripts('all')" id="btn-all" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-blue-600 text-white transition-all duration-200">
+                Tất cả kịch bản (6)
+            </button>
+            <button onclick="filterScripts('basic')" id="btn-basic" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700 transition-all duration-200">
+                <i class="fa-solid fa-graduation-cap mr-1"></i> Nhập Môn Cơ Bản (3)
+            </button>
+            <button onclick="filterScripts('advanced')" id="btn-advanced" class="category-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700 transition-all duration-200">
+                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tối Ưu Triệu View (3)
+            </button>
+        </div>
+
+        <!-- SCRIPTS WRAPPER -->
+        <div id="scripts-container" class="space-y-8">
+
+            <!-- KỊCH BẢN 1 (Tour Guide) -->
+            <div class="script-card card-basic bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-gray-700/80">
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-indigo-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-24 h-24 rounded-full border-2 border-dashed border-blue-500/40 -top-5 -left-5 animate-spin" style="animation-duration: 40s;"></div>
+                        <div class="absolute w-12 h-12 rounded-full border border-pink-500/30 bottom-2 right-12 animate-pulse"></div>
+                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20,40 Q 150,110 250,20 T 450,80" fill="none" stroke="rgba(59, 130, 246, 0.4)" stroke-width="2" stroke-dasharray="8 4"/>
+                            <circle cx="20" cy="40" r="4" fill="#06b6d4" />
+                            <circle cx="250" cy="20" r="5" fill="#ec4899" />
+                            <circle cx="450" cy="80" r="4" fill="#facc15" />
+                        </svg>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">KỊCH BẢN 1 • NHẬP MÔN</span>
+                        <h4 class="text-base font-bold text-white mt-1">Tour Guide Cổ Điển: "Chỉ Gì Quay Nấy"</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Dành cho nhóm rèn luyện tư duy khớp từ khóa thoại với cảnh trám tĩnh.</p>
+                    </div>
+                    <button onclick="openPrompter(1)" class="relative z-10 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-blue-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-blue-400"></i> Mục tiêu sư phạm:</strong>
+                        Sinh viên học cách dùng B-roll để minh họa trực tiếp cho danh từ vừa nhắc đến, rèn luyện cỡ cảnh Toàn và Trung, nhịp độ cắt đều đặn.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-blue-400"></i> Setup A-roll:</strong>
+                        Tripod ngang tầm mắt ở đầu hành lang kề bên quầy. Cỡ cảnh Trung. Diễn viên đứng chính giữa khung hình hướng mắt vào ống kính.
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Nói)</th>
+                                <th class="p-3 w-1/4">Cảnh trám B-Roll (Trám)</th>
+                                <th class="p-3 w-1/4">Góc máy & Cỡ cảnh</th>
+                                <th class="p-3 w-1/4">Tư duy cắt dựng / Logic</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-blue-500/5">"Chào mọi người! Hôm nay cùng mình đi một vòng khám phá không gian sinh hoạt chung siêu xịn của tụi mình nhé."</td>
+                                <td class="p-3 text-gray-300">Giữ nguyên hình ảnh diễn viên đang nói chuyện trước camera.</td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Trung cảnh (Medium shot). Đặt điện thoại tĩnh trên chân máy.</td>
+                                <td class="p-3 text-[11px]">Bắt đầu video bằng hình ảnh nhân vật dẫn trực tiếp để tạo sự tin cậy, kết nối cảm xúc người xem.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Ngay từ ngoài bước vào là phòng lễ tân cực kỳ sáng sủa..."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh trám khu vực lễ tân có logo Arena Multimedia / Skillking. <strong class="text-xs text-blue-400 block mt-1">(Dựa trên image_5.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Toàn cảnh (Wide Shot). Đặt chân máy tĩnh hướng thẳng quầy lễ tân.</td>
+                                <td class="p-3 text-[11px]">Cảnh thiết lập không gian (Establishing shot), định hình địa điểm cho khán giả không bị bối rối.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"...đi thẳng vào trong là dãy hành lang siêu dài với hàng ghế gỗ để tụi mình nghỉ ngơi."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh hành lang chạy dài với các bục ghế gỗ xếp liền kề. <strong class="text-xs text-blue-400 block mt-1">(Dựa trên image_2.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Toàn cảnh sâu. Chân máy khóa chặt, thực hiện cú quay lia ngang (Pan) mượt từ trái sang phải.</td>
+                                <td class="p-3 text-[11px]">Cú Pan thể hiện được chiều sâu của căn phòng dài, tăng sự sống động so với cảnh tĩnh góc trước.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Dọc vách kính là một triển lãm ảnh thu nhỏ, nhìn cực kỳ nghệ thuật luôn."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh cận một số bức tranh nghệ thuật treo dọc hệ thống vách kính trong lớp. <strong class="text-xs text-blue-400 block mt-1">(Dựa trên image_3.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Cận cảnh (Close-up). Đặt máy góc hơi xiên, hướng từ dưới chếch lên.</td>
+                                <td class="p-3 text-[11px]">Đổi cỡ cảnh từ Toàn sang Cận để tăng nhịp độ mắt nhìn, tôn vinh độ nét nghệ thuật của tranh.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-blue-500/5">"Học ở một nơi đầy cảm hứng thế này thì bao nhiêu deadline cũng cân hết. Hẹn gặp lại các bạn!"</td>
+                                <td class="p-3 text-gray-300">Trở lại hình ảnh diễn viên đang nói trực tiếp, mỉm cười tươi vui và vẫy tay chào.</td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Giữ nguyên setup như câu đầu tiên.</td>
+                                <td class="p-3 text-[11px]">Cắt trả về người nói để kết thúc trọn vẹn mạch chuyện và kêu gọi tương tác.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KỊCH BẢN 2 (POV Student Life) -->
+            <div class="script-card card-basic bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-gray-700/80">
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-emerald-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-20 h-20 rounded-full bg-emerald-500/20 blur-xl top-4 left-10 animate-pulse"></div>
+                        <div class="absolute w-16 h-16 rounded-3xl bg-teal-500/20 rotate-45 top-6 right-20 animate-float" style="animation-duration: 8s;"></div>
+                        <div class="absolute bottom-2 left-1/3 w-32 h-6 bg-gradient-to-r from-emerald-500/30 to-teal-500/0 rounded-full"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">KỊCH BẢN 2 • TƯƠNG TÁC NGƯỜI</span>
+                        <h4 class="text-base font-bold text-white mt-1">Góc Nhìn Sinh Viên - POV Trải Nghiệm Thật</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Bài tập đưa con người vào cảnh trám làm nhân tố chuyển động sống động.</p>
+                    </div>
+                    <button onclick="openPrompter(2)" class="relative z-10 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-emerald-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-emerald-400"></i> Mục tiêu sư phạm:</strong>
+                        Thực hành tương tác vật lý (Show, Don't Tell). Giúp video tăng tính trải nghiệm thực tế thay vì chỉ chụp ảnh cảnh vật tĩnh.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-emerald-400"></i> Setup A-roll:</strong>
+                        Talent ngồi thư giãn tại cụm bàn ghế tròn xám, đặt chân máy thấp hơn một chút để tạo sự gần gũi như trò chuyện đôi bạn. Cỡ Trung cận.
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Nói)</th>
+                                <th class="p-3 w-1/4">Cảnh trám B-Roll (Trám)</th>
+                                <th class="p-3 w-1/4">Góc máy & Cỡ cảnh</th>
+                                <th class="p-3 w-1/4">Tư duy cắt dựng / Logic</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-emerald-500/5">"Học Edit mà bí ý tưởng, nhức đầu mỏi mắt thì làm gì? Đi theo mình tìm trạm sạc năng lượng nhé!"</td>
+                                <td class="p-3 text-gray-300">Diễn viên ngồi tại bàn tròn xám, nói chuyện tự nhiên thoải mái. <strong class="text-xs text-emerald-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Trung cận cảnh (Medium Close-up). Điện thoại đặt ngang tầm mắt người ngồi.</td>
+                                <td class="p-3 text-[11px]">Mở đầu bằng câu hỏi khơi gợi tò mò và trực tiếp dẫn nhập hành động di chuyển.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Đầu tiên là góc 'cứu đói' thần thánh này. Có sẵn cả lò vi sóng để hâm nóng đồ ăn luôn nha."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh trám tại khu pantry màu vàng-xanh, tay diễn viên đặt chiếc đĩa hoặc mở cửa lò vi sóng bấm nút. <strong class="text-xs text-emerald-400 block mt-1">(Dựa trên image_6.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Trung cảnh góc nghiêng. Đặt máy tĩnh trên bàn bếp đen kề bên.</td>
+                                <td class="p-3 text-[11px]">Đưa bàn tay/con người trực tiếp thao tác (Action) giúp người xem hình dung rõ ràng công năng sử dụng thực tế.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Ăn xong thì ra dãy ghế đệm êm ái này nằm lướt điện thoại là chuẩn bài luôn."</td>
+                                <td class="p-3 text-gray-300">Cảnh diễn viên ngồi ngả lưng thư thả trên nệm ghế nhiều màu, mỉm cười bấm điện thoại giải trí. <strong class="text-xs text-emerald-400 block mt-1">(Dựa trên image_2.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Trung cảnh góc chéo rộng dọc hành lang kính. Máy tĩnh trên tripod.</td>
+                                <td class="p-3 text-[11px]">Bổ sung yếu tố "độ êm ái" và "màu sắc" bằng hình ảnh thực tế của sinh viên đang thoải mái sử dụng nó.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Vừa nghỉ ngơi vừa ngắm đường phố qua mảng kính lớn thế này thì bao nhiêu áp lực cũng bay sạch."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh quay từ phía sau bả vai diễn viên nhìn ngắm ra ngoài cửa sổ kính lớn bao quát view phố xá bên ngoài. <strong class="text-xs text-emerald-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Góc máy qua vai (Over-the-shoulder). Điện thoại đứng yên đặt ngay sau lưng nhân vật.</td>
+                                <td class="p-3 text-[11px]">Góc qua vai mang đậm ngôn ngữ điện ảnh, dẫn dụ ánh nhìn người xem cùng hướng về không gian mênh mông như nhân vật.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-emerald-500/5">"Sạc pin đầy rồi, mình vào phòng máy học tiếp đây. Bye bye các bạn nha!"</td>
+                                <td class="p-3 text-gray-300">Quay lại cảnh A-Roll chính, diễn viên nói câu cuối, đứng dậy khỏi ghế tròn, cầm điện thoại bước đi khuất dần khỏi khung hình.</td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Giữ nguyên setup lúc ngồi. Nhờ diễn viên di chuyển dần ra ngoài khung hình (Empty Frame).</td>
+                                <td class="p-3 text-[11px]">Hiệu ứng bỏ trống khung hình (Empty Frame) ở cuối video tạo nên nhịp chuyển cảnh mượt mà tự nhiên, hướng người xem tò mò tập tiếp theo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KỊCH BẢN 3 (Cinematic Lofi Chill ASMR) -->
+            <div class="script-card card-basic bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-gray-700/80">
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-rose-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-20 h-28 bg-gradient-to-tr from-rose-500/20 to-orange-500/10 rounded-2xl rotate-12 -top-5 left-12 backdrop-blur-sm border border-white/10"></div>
+                        <div class="absolute w-36 h-36 rounded-full border border-rose-500/20 top-2 -right-10"></div>
+                        <div class="absolute w-2 h-2 rounded-full bg-yellow-400 left-1/2 top-12 animate-ping"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">KỊCH BẢN 3 • CHILL ASMR</span>
+                        <h4 class="text-base font-bold text-white mt-1">Cinematic Chill ASMR: "Góc Trốn Deadline"</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Dễ diễn xuất với các hành động mộc mạc đời thường, luyện góc máy tĩnh và chuyển nét tay mượt mà.</p>
+                    </div>
+                    <button onclick="openPrompter(3)" class="relative z-10 px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-rose-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-rose-400"></i> Ý đồ Sư phạm:</strong>
+                        Sinh viên tập trung làm chủ chuyển động máy siêu chậm, bố cục ánh sáng xiên tự nhiên từ vách kính, và kỹ thuật lấy nét chuyển đổi (Focus Shift) tạo xúc cảm điện ảnh sâu sắc.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-rose-400"></i> Setup A-roll:</strong>
+                        Diễn viên ngồi nghiêng 90 độ tại bục ghế gỗ, đeo tai nghe, mắt nhìn ra vách kính ngoài phố. Nói thầm nhẹ nhàng (ASMR) tự nhiên vào mic.
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Giọng trầm ấm, thầm thì)</th>
+                                <th class="p-3 w-1/4">Cảnh trám B-Roll (Trám)</th>
+                                <th class="p-3 w-1/4">Góc máy & Cỡ cảnh</th>
+                                <th class="p-3 w-1/4">Tư duy cắt dựng / Logic</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-rose-500/5">"Có những ngày áp lực đến mức... chỉ muốn tìm một góc thật yên tĩnh để trốn deadline một lát."</td>
+                                <td class="p-3 text-gray-300">Diễn viên đeo tai nghe lớn, tựa đầu nhẹ vào thành bục gỗ, mắt nhắm nhẹ thư giãn, sau đó mở mắt ra nhìn bâng quơ. <strong class="text-xs text-rose-400 block mt-1">(Dựa trên image_2.png)</strong></td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Trung cảnh nghiêng (Profile shot). Đặt máy tĩnh lấy trọn ánh sáng tự nhiên từ vách kính hắt ngang mặt.</td>
+                                <td class="p-3 text-[11px]"><strong>Hook cảm xúc:</strong> Đánh trúng nỗi lo chung của sinh viên. Diễn xuất "tĩnh" bằng cách nhắm mắt giúp học viên không bị đơ trước ống kính.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Tắt hết thông báo, bật một bản nhạc lofi chill chill và ngắm nhìn đường phố trôi chậm qua ô kính..."</td>
+                                <td class="p-3 text-gray-300">Góc nhìn qua vách kính hẹp ra cảnh đường phố bên ngoài. Diễn viên ngồi xa mờ nhạt. <strong class="text-xs text-rose-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Cận cảnh kính. Điện thoại lấy nét vào vân kính, sau đó chạm màn hình chuyển nét (Rack Focus) ra dòng người đi đường.</td>
+                                <td class="p-3 text-[11px]"><strong>Rack Focus (Chuyển nét):</strong> Kỹ thuật mô phỏng ánh nhìn mông lung của nhân vật, tạo chất thơ mộng của MV ca nhạc lofi chill.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Dành vài phút ngắm nghía những mô hình gỗ nhỏ xinh, chợt nhận ra cảm hứng sáng tạo vẫn luôn ở đó."</td>
+                                <td class="p-3 text-gray-300">Chèn cảnh cận ngón tay diễn viên khẽ chạm nhẹ vào một chiếc nón lá lưu niệm trên kệ gỗ. <strong class="text-xs text-rose-400 block mt-1">(Dựa trên image.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Đặc tả cực cận (Extreme Close-up). Khóa chặt chân máy kề sát ô tủ gỗ, mở khẩu độ tối đa xóa phông mịn màng.</td>
+                                <td class="p-3 text-[11px]"><strong>Đặc tả hành động chạm:</strong> Chuyển từ cảnh động mông lung sang cảnh tiếp xúc vật lý cụ thể, tạo kết nối tinh thần dễ chịu.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Uống một ngụm nước ấm, hít thở thật sâu..."</td>
+                                <td class="p-3 text-gray-300">Diễn viên đứng ở góc quầy pantry đen mờ, hai tay ôm chiếc cốc giấy, đưa lên môi cười mỉm. <strong class="text-xs text-rose-400 block mt-1">(Dựa trên image_6.png)</strong></td>
+                                <td class="p-3"><strong>B-Roll:</strong> Trung cận cảnh. Máy đặt tĩnh trên quầy bếp.</td>
+                                <td class="p-3 text-[11px]">Sử dụng không gian bếp pantry sang trọng mộc mạc để nhấn mạnh sự tự phục vụ, sạc pin thư giãn của không gian tự học.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-rose-500/5">"Sạc đủ 100% pin tinh thần rồi. Quay lại chiến đấu tiếp thôi!"</td>
+                                <td class="p-3 text-gray-300">Trở lại cảnh chính ngồi ghế bục gỗ, diễn viên tháo một bên tai nghe ra, nở một nụ cười nhẹ nhàng đầy tự tin hướng thẳng vào máy ảnh gật đầu.</td>
+                                <td class="p-3"><strong>A-Roll Cảnh Chính:</strong> Đồng bộ cỡ cảnh và vị trí của câu thoại mở đầu.</td>
+                                <td class="p-3 text-[11px]">Cắt trả về cảnh chính với nụ cười tự nhiên để tạo kết cấu vòng tròn hoàn chỉnh cho câu chuyện, sạc lại năng lượng tích cực.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KỊCH BẢN 4 (Clickbait "Bóc Phốt" Hài Hước - MỚI CẬP NHẬT) -->
+            <div class="script-card card-advanced bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-purple-500/40">
+                <!-- Abstract Art Card Cover -->
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-purple-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <!-- CSS Abstract Art: Warning alert and dynamic magnifying grid -->
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-24 h-24 rounded-full border border-purple-500/30 -top-5 -left-5 animate-ping"></div>
+                        <div class="absolute w-20 h-20 border-2 border-dashed border-purple-500/20 top-6 right-20 animate-spin" style="animation-duration: 20s;"></div>
+                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="30" x2="100%" y2="30" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="10 5" />
+                            <circle cx="70%" cy="40%" r="15" fill="none" stroke="#ec4899" stroke-width="2" class="animate-pulse" />
+                            <text x="70%" y="45%" fill="#ec4899" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">!</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30">KỊCH BẢN 4 • CLICKBAIT HÀI HƯỚC</span>
+                        <h4 class="text-base font-bold text-white mt-1">Sự Thật Kinh Hoàng: "Bóc Phốt" Arena Lương Yên</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Phương pháp giật tít nghịch lý thịnh hành nhất TikTok. Diễn xuất "lầy lội" tự nhiên, 100% không lo bị đơ.</p>
+                    </div>
+                    <button onclick="openPrompter(4)" class="relative z-10 px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-purple-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <!-- Script Metadata & Instructions -->
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-purple-400"></i> Sức hút Marketing:</strong>
+                        Cách đánh lừa tâm lý cực mạnh (Clickbait). Ban đầu giả vờ bóc phốt tiêu cực để thu hút sự tò mò, sau đó lật ngược vấn đề để khen ngợi khéo léo.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-purple-400"></i> Cách quay thực tế:</strong>
+                        Quay kiểu cầm tay đời thường (Handheld look). Có những cú lia giật (Whip-pan) bằng cách gom chân tripod lại để di chuyển nhanh, tạo sự chân thực.
+                    </div>
+                </div>
+
+                <!-- Table Content -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Băm ngắn, diễn thần bí)</th>
+                                <th class="p-3 w-1/4">Cách quay bằng 1 Điện thoại + Tripod</th>
+                                <th class="p-3 w-1/4">Bối cảnh áp dụng</th>
+                                <th class="p-3 w-1/4">Ý đồ Đạo diễn & Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-purple-500/5">"Bí mật kinh hoàng về cơ sở Arena Lương Yên mà nhà trường luôn tìm cách che giấu... Đứng lại nghe mình phốt nè!"</td>
+                                <td class="p-3 text-gray-300">Diễn viên đứng gần quầy lễ tân, ghé sát mặt vào ống kính nói thầm cực kỳ nghiêm trọng, mắt đảo liên tục thăm dò.</td>
+                                <td class="p-3">Sảnh lễ tân bên ngoài. <strong class="text-xs text-purple-400 block mt-1">(Dựa trên image_5.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Hook kịch tính lôi cuốn:</strong> Cách đặt vấn đề "bóc phốt" giật gân, khơi gợi trí tò mò cực hạn của người xem trong 3 giây đầu.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Thứ nhất: Cái hành lang vách kính thiết kế sâu hun hút, đi bộ mỏi cả chân chỉ để sang phòng sinh hoạt chung!"</td>
+                                <td class="p-3 text-gray-300">Cameraman cầm tripod đi lùi, quay cảnh diễn viên kéo lê chân uể oải, mặt tỏ vẻ "mệt mỏi" đi dọc hành lang vách kính sâu.</td>
+                                <td class="p-3">Hành lang vách kính sâu. <strong class="text-xs text-purple-400 block mt-1">(Dựa trên image_4.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Nghệ thuật tương phản:</strong> Lời chê vô lý hài hước làm giảm bớt tính căng thẳng, chuyển dịch video sang tông giải trí.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Thứ hai: Treo đầy tranh nghệ thuật với bày đủ loại mô hình tinh xảo dọc đường đi để... phân tâm, bắt sinh viên phải ngắm!"</td>
+                                <td class="p-3 text-gray-300">Góc máy cận quay lén từ sau kệ sắt, bắt trọn cảnh diễn viên đang đứng "đơ người" há hốc mồm ngắm nghía tranh ảnh và mô hình nón lá một cách ngô nghê.</td>
+                                <td class="p-3">Vách tranh hành lang hoặc tủ mô hình. <strong class="text-xs text-purple-400 block mt-1">(Dựa trên image_3.png hoặc image.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Quay lén (Exposé look):</strong> Góc máy giấu kín sau chướng ngại vật giúp tăng tính chân thật và hài hước cho video phốt.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Tệ nhất là khu pantry, bày lò vi sóng với quầy bar đen bóng sang chảnh làm tụi mình chỉ muốn ăn với ngủ, béo lên không phanh!"</td>
+                                <td class="p-3 text-gray-300">Máy đặt tĩnh tại góc bếp, diễn viên đang mở lò vi sóng, tay ôm đống bánh kẹo giả vờ nhai nhồm nhoàm, mặt cười khoái chí đắc ý.</td>
+                                <td class="p-3">Khu Pantry bếp sinh hoạt. <strong class="text-xs text-purple-400 block mt-1">(Dựa trên image_6.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Khoe ngầm tiện ích:</strong> "Phốt" nhưng thực chất là đang làm nổi bật góc pantry cực xịn của cơ sở bằng hành động trực quan của sinh viên.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-purple-500/5">"Tóm lại là cực kỳ dính nha! Bạn nào muốn bị 'thao túng' giống mình thì đăng ký gấp vào đây nha!"</td>
+                                <td class="p-3 text-gray-300">Trở lại góc phòng sinh hoạt chung rộng, diễn viên cười tươi bẻ lái ngoạn mục, ngoắc tay rủ thêm các bạn đồng đội nhảy vào khung hình vẫy chào.</td>
+                                <td class="p-3">Sảnh phòng sinh hoạt chung rộng. <strong class="text-xs text-purple-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Cú bẻ lái ngoạn mục (Plot Twist):</strong> Đưa ra lời khuyên lật ngược tình thế đầy bất ngờ, đồng thời lồng ghép lời kêu gọi đăng ký học một cách tự nhiên.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KỊCH BẢN 5 (Review Penthouse Triệu Đô) -->
+            <div class="script-card card-advanced bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-yellow-500/40">
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-amber-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-24 h-40 border border-amber-500/20 top-4 left-10 rotate-12 flex flex-wrap gap-1 p-1">
+                            <div class="w-6 h-6 border border-amber-500/10"></div>
+                            <div class="w-6 h-6 border border-amber-500/10"></div>
+                            <div class="w-6 h-6 border border-amber-500/10"></div>
+                            <div class="w-6 h-6 border border-amber-500/10"></div>
+                        </div>
+                        <div class="absolute w-32 h-32 rounded-full border border-yellow-500/10 -right-5 -bottom-5 animate-pulse"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">KỊCH BẢN 5 • REVIEW BẤT ĐỘNG SẢN</span>
+                        <h4 class="text-base font-bold text-white mt-1">Review Penthouse Triệu Đô: "Đặc Quyền Editor"</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Lối review bất động sản sang chảnh đầy hài hước và phóng đại.</p>
+                    </div>
+                    <button onclick="openPrompter(5)" class="relative z-10 px-3 py-1.5 rounded-xl bg-yellow-600 hover:bg-yellow-500 text-slate-900 text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-yellow-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-yellow-400"></i> Ý tưởng Content:</strong>
+                        Sử dụng phong cách review nhà xa hoa (sang trọng, từ ngữ chuyên môn BĐS cao cấp) để giới thiệu từng góc lớp học đầy dí nhóc.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-yellow-400"></i> Kỹ thuật quay chính:</strong>
+                        Các cú máy lia chậm (Slow Pan), trượt ngang (Slide) hoặc nâng/hạ máy nhẹ nhàng như máy quay cơ chuyên nghiệp của môi giới BĐS.
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Băm nhỏ)</th>
+                                <th class="p-3 w-1/4">Cách quay bằng 1 Điện thoại + Tripod</th>
+                                <th class="p-3 w-1/4">Bối cảnh áp dụng</th>
+                                <th class="p-3 w-1/4">Ý đồ Đạo diễn & Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-yellow-500/5">"Hôm nay cùng mình giải mã căn Penthouse triệu đô tọa lạc ngay tháp Lương Yên, nghe đồn chỉ dành riêng cho giới thượng lưu... ý mình là sinh viên Edit!"</td>
+                                <td class="p-3 text-gray-300">Diễn viên đứng tự tin trước quầy lễ tân sang trọng. Điện thoại đặt tĩnh trên tripod ngang tầm mắt, khung hình góc rộng sang chảnh.</td>
+                                <td class="p-3">Sảnh lễ tân bên ngoài. <strong class="text-xs text-yellow-400 block mt-1">(Dựa trên image_5.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Hook sang trọng pha hài hước:</strong> Cách mở đầu giả giọng reviewer chuyên nghiệp đầy trịnh trọng ngay lập tức thu hút sự chú ý.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Sở hữu hệ thống vách kính Low-E tràn viền Panorama siêu đắt đỏ, view trọn nhịp sống phố xá náo nhiệt."</td>
+                                <td class="p-3 text-gray-300">Quay góc rộng từ trong phòng nhìn ra, lia máy chậm (Pan) từ vách kính sang view đường phố sôi động bên ngoài. Diễn viên đứng tựa kính cười nhẹ.</td>
+                                <td class="p-3">Góc bàn tròn xám kề vách kính. <strong class="text-xs text-yellow-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Tận dụng góc kính lớn:</strong> Tôn vinh không gian ngập tràn ánh sáng tự nhiên tuyệt vời của phòng sinh hoạt chung.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Tiện ích nội khu đẳng cấp với khu Pantry Lounge tích hợp hệ tủ thông minh và lò vi sóng hâm nóng cảm xúc sáng tạo."</td>
+                                <td class="p-3 text-gray-300">Cận cảnh bàn bếp pantry đen sang bóng. Diễn viên lấy một chiếc cốc sang trọng từ kệ hoặc chạm nhẹ vào lò vi sóng.</td>
+                                <td class="p-3">Khu pantry bếp sinh hoạt. <strong class="text-xs text-yellow-400 block mt-1">(Dựa trên image_6.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Đặc tả chi tiết (Detail Shot):</strong> Tông màu gỗ đen mờ cực sang giúp góc pantry hiện lên như quầy bar cao cấp.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-yellow-500/5">"Nội thất bàn giao cơ bản gồm dãy sofa gỗ công nghiệp nhập khẩu, bọc đệm foam đa phân khu nâng đỡ cột sống mệt mỏi."</td>
+                                <td class="p-3 text-gray-300">Góc máy đặt thấp từ dưới sàn nhà hất nhẹ lên dọc theo dãy bục ghế đệm gỗ. Diễn viên đang ngồi dựa lưng thư giãn bấm điện thoại.</td>
+                                <td class="p-3">Dãy bục ghế đệm đa màu dọc hành lang. <strong class="text-xs text-yellow-400 block mt-1">(Dựa trên image_2.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Góc máy thấp nghệ thuật:</strong> Kéo dài trục sâu không gian, tăng vẻ cao cấp cho nội thất bục gỗ học tập.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-yellow-500/5">"Căn hộ này không bán, chỉ tuyển cư dân đam mê làm video ngắn. Click ngay để nhận vé tham quan miễn phí nhé!"</td>
+                                <td class="p-3 text-gray-300">Diễn viên đứng ở cửa kính, nở nụ cười doanh nhân gật đầu chào đẳng cấp rồi trượt khép nhẹ cánh cửa kính lại.</td>
+                                <td class="p-3">Vách cửa kính trượt sảnh. <strong class="text-xs text-yellow-400 block mt-1">(Dựa trên image_3.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Nút thắt kêu gọi hành động (CTA):</strong> Thao tác đóng cửa kính vừa khớp âm thanh kết thúc video tạo cảm giác dứt khoát, chuyên nghiệp.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KỊCH BẢN 6 (Nhật Ký Sống Sót) -->
+            <div class="script-card card-advanced bg-brand-darkCard border border-gray-800/60 rounded-3xl overflow-hidden transition-all duration-300 hover:border-pink-500/40">
+                <div class="relative h-32 w-full overflow-hidden bg-gradient-to-r from-slate-900 to-pink-950 p-4 flex items-center justify-between border-b border-gray-800">
+                    <div class="absolute inset-0 opacity-40">
+                        <div class="absolute w-16 h-16 bg-pink-500/10 rounded-full top-2 left-6 animate-float" style="animation-duration: 5s;"></div>
+                        <div class="absolute w-20 h-20 border-2 border-dashed border-pink-400/20 rounded-xl right-10 bottom-2 rotate-45 animate-spin" style="animation-duration: 30s;"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30">KỊCH BẢN 6 • VLOG ĐỜI SỐNG</span>
+                        <h4 class="text-base font-bold text-white mt-1">Nhật Ký Sống Sót: "Một Ngày Học Edit"</h4>
+                        <p class="text-[10px] text-gray-400 mt-0.5">Phong cách Daily Vlog / Behind the Scenes đầy trẻ trung và vui nhộn.</p>
+                    </div>
+                    <button onclick="openPrompter(6)" class="relative z-10 px-3 py-1.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white text-[10px] font-bold flex items-center space-x-1 shadow-lg shadow-pink-500/15">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Bắt đầu quay</span>
+                    </button>
+                </div>
+
+                <div class="p-4 bg-slate-950/30 border-b border-gray-800/40 text-[11px] grid grid-cols-2 gap-3 text-gray-400">
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-bullseye text-pink-400"></i> Mục tiêu Marketing:</strong>
+                        Tạo cảm giác chân thực, mộc mạc và năng động qua cuộc sống hàng ngày của một học viên để thu hút các bạn trẻ có cùng sở thích.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block mb-0.5"><i class="fa-solid fa-video text-pink-400"></i> Yêu cầu góc máy:</strong>
+                        Máy cầm tay linh hoạt (Handheld look), góc máy ngang tầm mắt, tạo cảm giác gần gũi như người xem đang cùng trải nghiệm trực tiếp.
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-400 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/50 text-gray-300 border-b border-gray-800 text-[10px] uppercase">
+                                <th class="p-3 w-1/4">Thoại A-Roll (Băm nhỏ)</th>
+                                <th class="p-3 w-1/4">Cách quay bằng 1 Điện thoại + Tripod</th>
+                                <th class="p-3 w-1/4">Bối cảnh áp dụng</th>
+                                <th class="p-3 w-1/4">Ý đồ Đạo diễn & Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50">
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-pink-500/5">"Thử thách một ngày làm học viên lớp Video Ngắn tại cơ sở Lương Yên xem có 'bất ổn' như lời đồn không nha!"</td>
+                                <td class="p-3 text-gray-300">Gõ cửa kính đi vào quầy lễ tân, cười tươi vẫy tay chào camera. Máy cầm tay hơi rung nhẹ tạo cảm giác vlog tự nhiên đời thường.</td>
+                                <td class="p-3">Lối vào quầy lễ tân chính. <strong class="text-xs text-pink-400 block mt-1">(Dựa trên image_5.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Cú Hook gần gũi:</strong> Đánh thẳng vào tâm lý tò mò về cuộc sống thực tế của học viên trường Multimedia.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Sáng ra vừa bước chân vào đã bị choáng ngợp bởi 'vũ trụ triển lãm' tranh ảnh đồ án đỉnh của chóp."</td>
+                                <td class="p-3 text-gray-300">Cameraman cầm điện thoại đi bộ song song với nhân vật dọc hàng tranh kính, góc máy nghiêng nhẹ (Dutch Angle) tạo vẻ trẻ trung phá cách.</td>
+                                <td class="p-3">Hành lang vách tranh nghệ thuật. <strong class="text-xs text-pink-400 block mt-1">(Dựa trên image_2.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Dynamic Motion:</strong> Vừa di chuyển vừa nói tạo nhịp độ vlog nhanh, cuốn hút không bị nhàm chán.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Đến giờ tự học thì lủi ngay vào góc kệ trưng bày mô hình để 'xin vía' ý tưởng nghệ thuật từ các bậc tiền bối."</td>
+                                <td class="p-3 text-gray-300">Cận cảnh đặc tả tủ trưng bày mô hình, nón lá đồ lưu niệm. Diễn viên đứng cạnh chỉ tay thích thú chăm chú ngắm nghía.</td>
+                                <td class="p-3">Khu vực kệ sắt trưng bày lưu niệm. <strong class="text-xs text-pink-400 block mt-1">(Dựa trên image.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Khai thác chiều sâu chi tiết:</strong> Làm nổi bật các góc decor sáng tạo của trường, khẳng định môi trường học đầy cảm hứng.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-gray-300">"Bí quá thì lôi đồng đội ra bàn tròn ngồi mổ xẻ kịch bản, cùng nhau gánh deadline qua ngày."</td>
+                                <td class="p-3 text-gray-300">Góc máy rộng qua vai (Over-the-shoulder), hai bạn sinh viên đang ngồi thảo luận kịch bản sôi nổi trên bàn tròn xám, chỉ tay vào sổ ghi chép.</td>
+                                <td class="p-3">Góc bàn tròn xám kề vách kính. <strong class="text-xs text-pink-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Xây dựng yếu tố đội nhóm:</strong> Thể hiện văn hóa học tập teamwork vui vẻ, tương tác thực tế giữa các học viên với nhau.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white bg-pink-500/5">"Học mệt nhưng cuốn cực kỳ! Muốn trải nghiệm cảm giác này thì đăng ký làm đồng đội của mình ngay đi!"</td>
+                                <td class="p-3 text-gray-300">Diễn viên đứng dậy, khoác vai đồng đội cười tươi hướng về camera vẫy tay chào tạm biệt cực kỳ sảng khoái và tự nhiên.</td>
+                                <td class="p-3">Góc phòng sinh hoạt chung rộng. <strong class="text-xs text-pink-400 block mt-1">(Dựa trên image_7.png)</strong></td>
+                                <td class="p-3 text-[11px]"><strong>Lời kêu gọi tự nhiên (CTA):</strong> Kết nối cảm xúc sảng khoái của tình bạn và đồng đội để kích thích người xem đăng ký khóa học.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- INTERACTIVE PROMPTER MODAL FOR SMARTPHONES -->
+    <div id="prompter-modal" class="fixed inset-0 bg-slate-950/95 z-50 hidden flex-col justify-between p-4">
+        <!-- Prompter Header -->
+        <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+            <div>
+                <span id="prompter-tag" class="text-[9px] font-bold px-2 py-0.5 rounded uppercase"></span>
+                <h3 id="prompter-title" class="text-sm font-bold text-white mt-1">Máy Nhắc Chữ Học Viên</h3>
+            </div>
+            <button onclick="closePrompter()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Prompter Central Scrolling Text Area -->
+        <div id="prompter-scroll-area" class="flex-1 overflow-y-auto my-4 px-2 py-6 custom-scroll scroll-smooth flex flex-col space-y-8 justify-start">
+            <!-- Dynamic sentences go here -->
+        </div>
+
+        <!-- Prompter Control Panel -->
+        <div class="bg-brand-darkCard border border-gray-800 rounded-2xl p-3 space-y-3">
+            <div class="flex items-center justify-between text-xs text-gray-400">
+                <span class="flex items-center"><i class="fa-solid fa-text-height mr-1.5"></i> Cỡ chữ:</span>
+                <div class="flex items-center space-x-2">
+                    <button onclick="adjustFontSize(-2)" class="w-7 h-7 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-white active:bg-blue-600">-</button>
+                    <span id="font-size-indicator" class="font-mono text-white text-xs">22px</span>
+                    <button onclick="adjustFontSize(2)" class="w-7 h-7 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-white active:bg-blue-600">+</button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-gray-400">
+                <span class="flex items-center"><i class="fa-solid fa-gauge mr-1.5"></i> Tự cuộn thoại:</span>
+                <div class="flex items-center space-x-2">
+                    <button onclick="adjustScrollSpeed(-5)" class="w-7 h-7 bg-slate-800 rounded-lg flex items-center justify-center text-white active:bg-blue-600"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                    <span id="speed-indicator" class="font-mono text-white text-xs">15s</span>
+                    <button onclick="adjustScrollSpeed(5)" class="w-7 h-7 bg-slate-800 rounded-lg flex items-center justify-center text-white active:bg-blue-600"><i class="fa-solid fa-plus text-[10px]"></i></button>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 pt-1">
+                <button id="btn-play-scroll" onclick="toggleAutoScroll()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center space-x-1 shadow-lg shadow-blue-500/20">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Tự động cuộn thoại</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPACT PREMIUM FOOTER -->
+    <footer class="fixed bottom-0 left-0 right-0 border-t border-gray-800/80 bg-brand-darkBg/95 backdrop-blur-md py-2 px-4 z-30">
+        <div class="max-w-6xl mx-auto flex items-center justify-between text-gray-400">
+            <!-- Small and dim left text -->
+            <div class="text-[9px] leading-tight text-gray-500 font-light max-w-[240px] md:max-w-md">
+                Cập nhật kiến thức thực chiến nhất về Tư duy Thuật toán Mạng xã hội kỷ nguyên mới.
+            </div>
+            
+            <!-- Horizontal Social Link Icons -->
+            <div class="flex items-center space-x-3">
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-lg bg-red-600/10 hover:bg-red-600/20 text-red-500 flex items-center justify-center transition-all duration-200" title="YouTube Chanel">
+                    <i class="fa-brands fa-youtube text-sm"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center transition-all duration-200" title="TikTok Profile">
+                    <i class="fa-brands fa-tiktok text-xs"></i>
+                </a>
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-lg bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 flex items-center justify-center transition-all duration-200" title="Facebook Page">
+                    <i class="fa-brands fa-facebook-f text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- APPLICATION INTERACTIVE SCRIPTS -->
+    <script>
+        // Kịch bản nguồn dữ liệu cho Teleprompter - Cập nhật Kịch bản 4 mới nhất
+        const scriptsData = {
+            1: {
+                title: 'Tour Guide Cổ Điển: "Chỉ Gì Quay Nấy"',
+                tag: 'Cơ bản',
+                color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+                sentences: [
+                    { txt: "Chào mọi người! Hôm nay cùng mình đi một vòng khám phá không gian sinh hoạt chung siêu xịn của tụi mình nhé.", cue: "A-Roll: Cảnh chính quay trung diện, đứng tĩnh" },
+                    { txt: "Ngay từ ngoài bước vào là phòng lễ tân cực kỳ sáng sủa...", cue: "B-Roll: Quay toàn cảnh quầy lễ tân (image_5.png)" },
+                    { txt: "...đi thẳng vào trong là dãy hành lang siêu dài với hàng ghế gỗ để tụi mình nghỉ ngơi.", cue: "B-Roll: Lia máy mượt ngang dãy ghế (image_2.png)" },
+                    { txt: "Dọc vách kính là một triển lãm ảnh thu nhỏ, nhìn cực kỳ nghệ thuật luôn.", cue: "B-Roll: Quay cận cảnh góc nghiêng vách tranh (image_3.png)" },
+                    { txt: "Học ở một nơi đầy cảm hứng thế này thì bao nhiêu deadline cũng cân hết. Hẹn gặp lại các bạn!", cue: "A-Roll: Quay lại cảnh chính, vẫy tay tươi cười" }
+                ]
+            },
+            2: {
+                title: 'Góc Nhìn Sinh Viên - POV Trải Nghiệm Thật',
+                tag: 'POV',
+                color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+                sentences: [
+                    { txt: "Học Edit mà bí ý tưởng, nhức đầu mỏi mắt thì làm gì? Đi theo mình tìm trạm sạc năng lượng nhé!", cue: "A-Roll: Ngồi nói tại ghế bàn tròn xám (image_7.png)" },
+                    { txt: "Đầu tiên là góc 'cứu đói' thần thánh này. Có sẵn cả lò vi sóng để hâm nóng đồ ăn luôn nha.", cue: "B-Roll: Tay thao tác mở lò vi sóng bếp (image_6.png)" },
+                    { txt: "Ăn xong thì ra dãy ghế đệm êm ái này nằm lướt điện thoại là chuẩn bài luôn.", cue: "B-Roll: Ngồi ngả lưng bấm điện thoại thư giãn (image_2.png)" },
+                    { txt: "Vừa nghỉ ngơi vừa ngắm đường phố qua mảng kính lớn thế này thì bao nhiêu áp lực cũng bay sạch.", cue: "B-Roll: Quay qua vai ngắm view kính lớn (image_7.png)" },
+                    { txt: "Sạc pin đầy rồi, mình vào phòng máy học tiếp đây. Bye bye các bạn nha!", cue: "A-Roll: Đứng dậy đi ra khỏi góc máy trống" }
+                ]
+            },
+            3: {
+                title: 'Cinematic Chill ASMR: "Góc Trốn Deadline"',
+                tag: 'Cinematic',
+                color: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
+                sentences: [
+                    { txt: "Có những ngày áp lực đến mức... chỉ muốn tìm một góc thật yên tĩnh để trốn deadline một lát.", cue: "A-Roll: Ngồi tựa ghế đệm đeo tai nghe nói giọng nhỏ nhẹ (image_2.png)" },
+                    { txt: "Tắt hết thông báo, bật một bản nhạc lofi chill chill và ngắm nhìn đường phố trôi chậm qua ô kính...", cue: "B-Roll: Chuyển nét từ kính ra đường phố bên ngoài (image_7.png)" },
+                    { txt: "Dành vài phút ngắm nghía những mô hình gỗ nhỏ xinh, chợt nhận ra cảm hứng sáng tạo vẫn luôn ở đó.", cue: "B-Roll: Cận cảnh ngón tay khẽ chạm đồ gỗ trên kệ (image.png)" },
+                    { txt: "Uống một ngụm nước ấm, hít thở thật sâu...", cue: "B-Roll: Hai tay ôm cốc nước mỉm cười nhẹ tại pantry (image_6.png)" },
+                    { txt: "Sạc đủ 100% pin tinh thần rồi. Quay lại chiến đấu tiếp thôi!", cue: "A-Roll: Tháo một bên tai nghe, nhìn camera cười tự tin" }
+                ]
+            },
+            4: {
+                title: 'Sự Thật Kinh Hoàng: "Bóc Phốt" Arena Lương Yên',
+                tag: 'Bóc Phốt',
+                color: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+                sentences: [
+                    { txt: "Bí mật kinh hoàng về cơ sở Arena Lương Yên mà nhà trường luôn tìm cách che giấu... Đứng lại nghe mình phốt nè!", cue: "A-Roll: Đứng gần lễ tân, ghé sát mặt nói nhỏ nghiêm trọng (image_5.png)" },
+                    { txt: "Thứ nhất: Cái hành lang vách kính thiết kế sâu hun hút, đi bộ mỏi cả chân chỉ để sang phòng sinh hoạt chung!", cue: "B-Roll: Diễn viên đi bộ lê lết mệt mỏi dọc hành lang kính sâu (image_4.png)" },
+                    { txt: "Thứ hai: Treo đầy tranh nghệ thuật với bày đủ loại mô hình tinh xảo dọc đường đi để... phân tâm, bắt sinh viên phải ngắm!", cue: "B-Roll: Quay lén diễn viên đứng đơ người há hốc mồm ngắm nghía tranh ảnh/nón lá (image_3.png hoặc image.png)" },
+                    { txt: "Tệ nhất là khu pantry, bày lò vi sóng với quầy bar đen bóng sang chảnh làm tụi mình chỉ muốn ăn với ngủ, béo lên không phanh!", cue: "B-Roll: Diễn viên mở lò vi sóng, ôm đống đồ ăn nhai nhồm nhoàm khoái chí (image_6.png)" },
+                    { txt: "Tóm lại là cực kỳ dính nha! Bạn nào muốn bị 'thao túng' giống mình thì đăng ký gấp vào đây nha!", cue: "A-Roll: Đứng ở sảnh rộng, cười tươi ngoắc rủ đồng đội nhảy vào khung hình vẫy chào (image_7.png)" }
+                ]
+            },
+            5: {
+                title: 'Review Penthouse Triệu Đô: "Đặc Quyền Editor"',
+                tag: 'Review BĐS',
+                color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+                sentences: [
+                    { txt: "Hôm nay cùng mình giải mã căn Penthouse triệu đô tọa lạc ngay tháp Lương Yên, nghe đồn chỉ dành riêng cho giới thượng lưu... ý mình là sinh viên Edit!", cue: "A-Roll: Đứng tự tin tại quầy lễ tân sang trọng (image_5.png)" },
+                    { txt: "Sở hữu hệ thống vách kính Low-E tràn viền Panorama siêu đắt đỏ, view trọn nhịp sống phố xá náo nhiệt.", cue: "B-Roll: Lia máy chậm ngắm view kính lớn (image_7.png)" },
+                    { txt: "Tiện ích nội khu đẳng cấp với khu Pantry Lounge tích hợp hệ tủ thông minh và lò vi sóng hâm nóng cảm xúc sáng tạo.", cue: "B-Roll: Cận cảnh đặc tả mặt pantry gỗ đen mờ (image_6.png)" },
+                    { txt: "Nội thất bàn giao cơ bản gồm dãy sofa gỗ công nghiệp nhập khẩu, bọc đệm foam đa phân khu nâng đỡ cột sống mệt mỏi.", cue: "B-Roll: Góc sát đất hất dọc theo bục đệm gỗ (image_2.png)" },
+                    { txt: "Căn hộ này không bán, chỉ tuyển cư dân đam mê làm video ngắn. Click ngay để nhận vé tham quan miễn phí nhé!", cue: "Hành động: Cười doanh nhân và đóng nhẹ sập cửa kính (image_3.png)" }
+                ]
+            },
+            6: {
+                title: 'Nhật Ký Sống Sót: "Một Ngày Học Edit"',
+                tag: 'Vlog Đời Sống',
+                color: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
+                sentences: [
+                    { txt: "Thử thách một ngày làm học viên lớp Video Ngắn tại cơ sở Lương Yên xem có 'bất ổn' như lời đồn không nha!", cue: "Hành động: Gõ cửa đi vào quầy lễ tân cười tươi (image_5.png)" },
+                    { txt: "Sáng ra vừa bước chân vào đã bị choáng ngợp bởi 'vũ trụ triển lãm' tranh ảnh đồ án đỉnh của chóp.", cue: "Hành động: Máy cầm tay đi bộ song song vách tranh (image_2.png)" },
+                    { txt: "Đến giờ tự học thì lủi ngay vào góc kệ trưng bày mô hình để 'xin vía' ý tưởng nghệ thuật từ các bậc tiền bối.", cue: "B-Roll: Đặc tả mô hình nón lá đồ lưu niệm kệ sắt (image.png)" },
+                    { txt: "Bí quá thì lôi đồng đội ra bàn tròn ngồi mổ xẻ kịch bản, cùng nhau gánh deadline qua ngày.", cue: "Hành động: Đứng ngồi thảo luận kịch bản tại bàn tròn (image_7.png)" },
+                    { txt: "Học mệt nhưng cuốn cực kỳ! Muốn trải nghiệm cảm giác này thì đăng ký làm đồng đội của mình ngay đi!", cue: "Hành động: Khoác vai đồng đội vẫy chào camera (image_7.png)" }
+                ]
+            }
+        };
+
+        // Trạng thái ứng dụng Prompter
+        let currentScriptId = null;
+        let fontSize = 22;
+        let scrollSpeed = 15; // giây để cuộn hết danh sách
+        let scrollInterval = null;
+        let isScrolling = false;
+        let highlightedIndex = 0;
+
+        // Bộ lọc kịch bản trên trang chính
+        function filterScripts(category) {
+            // Đổi phong cách các nút bấm filter
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-gray-400');
+            });
+            document.getElementById('btn-' + category).classList.add('bg-blue-600', 'text-white');
+            document.getElementById('btn-' + category).classList.remove('bg-slate-800', 'text-gray-400');
+
+            // Ẩn hiện thẻ kịch bản tương ứng
+            const cards = document.querySelectorAll('.script-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else if (category === 'basic') {
+                    if (card.classList.contains('card-basic')) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                } else if (category === 'advanced') {
+                    if (card.classList.contains('card-advanced')) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Mở máy nhắc chữ (Teleprompter Modal)
+        function openPrompter(id) {
+            currentScriptId = id;
+            const data = scriptsData[id];
+            
+            // Cập nhật tiêu đề và phong cách màu
+            const titleEl = document.getElementById('prompter-title');
+            const tagEl = document.getElementById('prompter-tag');
+            
+            titleEl.innerText = data.title;
+            tagEl.innerText = data.tag;
+            tagEl.className = `text-[9px] font-bold px-2 py-0.5 rounded uppercase ${data.color}`;
+
+            // Reset vùng nội dung text cuộn
+            const area = document.getElementById('prompter-scroll-area');
+            area.innerHTML = '';
+            highlightedIndex = 0;
+
+            // Xây dựng giao diện thoại lớn cho di động
+            data.sentences.forEach((s, idx) => {
+                const sentenceBlock = document.createElement('div');
+                sentenceBlock.id = `sentence-block-${idx}`;
+                sentenceBlock.onclick = () => highlightSentence(idx);
+                sentenceBlock.className = `p-4 rounded-2xl cursor-pointer transition-all duration-300 border border-transparent ${idx === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'opacity-40'}`;
+                
+                sentenceBlock.innerHTML = `
+                    <span class="text-[10px] uppercase font-bold text-blue-400 block mb-1 tracking-wider"><i class="fa-solid fa-camera-retro mr-1"></i> ${s.cue}</span>
+                    <p class="font-bold leading-relaxed tracking-tight text-white prompter-text" style="font-size: ${fontSize}px;">${s.txt}</p>
+                `;
+                area.appendChild(sentenceBlock);
+            });
+
+            // Hiển thị Modal
+            document.getElementById('prompter-modal').classList.remove('hidden');
+            document.getElementById('prompter-modal').classList.add('flex');
+            document.body.classList.add('overflow-hidden'); // Chặn cuộn trang nền
+
+            // Dừng hoạt động cuộn trước đó nếu có
+            stopAutoScroll();
+        }
+
+        // Tắt máy nhắc chữ
+        function closePrompter() {
+            stopAutoScroll();
+            document.getElementById('prompter-modal').classList.add('hidden');
+            document.getElementById('prompter-modal').classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Đánh dấu câu thoại đang đọc
+        function highlightSentence(index) {
+            highlightedIndex = index;
+            const data = scriptsData[currentScriptId];
+            
+            for (let i = 0; i < data.sentences.length; i++) {
+                const block = document.getElementById(`sentence-block-${i}`);
+                if (block) {
+                    if (i === index) {
+                        block.className = 'p-4 rounded-2xl cursor-pointer transition-all duration-300 border border-blue-500/30 bg-blue-600/10 opacity-100 scale-[1.02] shadow-lg shadow-blue-500/5';
+                        // Cuộn mượt màn hình tới đúng câu thoại đang chọn
+                        block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        block.className = 'p-4 rounded-2xl cursor-pointer transition-all duration-300 border border-transparent opacity-30 scale-100';
+                    }
+                }
+            }
+        }
+
+        // Điều chỉnh cỡ chữ thoại nhắc chữ
+        function adjustFontSize(delta) {
+            fontSize = Math.max(16, Math.min(36, fontSize + delta));
+            document.getElementById('font-size-indicator').innerText = fontSize + 'px';
+            
+            // Áp dụng cỡ chữ mới tức thì
+            document.querySelectorAll('.prompter-text').forEach(p => {
+                p.style.fontSize = fontSize + 'px';
+            });
+        }
+
+        // Thay đổi cài đặt thời gian tốc độ tự động cuộn
+        function adjustScrollSpeed(delta) {
+            scrollSpeed = Math.max(5, Math.min(45, scrollSpeed + delta));
+            document.getElementById('speed-indicator').innerText = scrollSpeed + 's';
+            if (isScrolling) {
+                // Khởi động lại cuộn với tốc độ mới cập nhật
+                stopAutoScroll();
+                startAutoScroll();
+            }
+        }
+
+        // Quản lý Bật/Tắt tính năng tự động cuộn
+        function toggleAutoScroll() {
+            if (isScrolling) {
+                stopAutoScroll();
+            } else {
+                startAutoScroll();
+            }
+        }
+
+        function startAutoScroll() {
+            isScrolling = true;
+            const playBtn = document.getElementById('btn-play-scroll');
+            playBtn.innerHTML = `<i class="fa-solid fa-pause"></i> <span>Tạm dừng cuộn</span>`;
+            playBtn.classList.remove('bg-blue-600');
+            playBtn.classList.add('bg-red-600');
+
+            const scrollArea = document.getElementById('prompter-scroll-area');
+            const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
+            const stepTime = 50; // Milliseconds cho mỗi bước nhảy cuộn
+            
+            // Tính số pixel dịch chuyển cho mỗi bước nhảy dựa theo tốc độ giây người dùng set
+            const stepPixel = (maxScroll / (scrollSpeed * 1000)) * stepTime;
+
+            scrollInterval = setInterval(() => {
+                if (scrollArea.scrollTop < maxScroll) {
+                    scrollArea.scrollTop += stepPixel;
+                    
+                    // Logic tự động bắt câu thoại khi cuộn qua vùng tâm màn hình
+                    const areaRect = scrollArea.getBoundingClientRect();
+                    const centerPoint = areaRect.top + areaRect.height / 2;
+                    
+                    const data = scriptsData[currentScriptId];
+                    for (let i = 0; i < data.sentences.length; i++) {
+                        const block = document.getElementById(`sentence-block-${i}`);
+                        if (block) {
+                            const rect = block.getBoundingClientRect();
+                            if (rect.top <= centerPoint && rect.bottom >= centerPoint) {
+                                if (highlightedIndex !== i) {
+                                    highlightSentence(i);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    stopAutoScroll();
+                }
+            }, stepTime);
+        }
+
+        function stopAutoScroll() {
+            isScrolling = false;
+            if (scrollInterval) {
+                clearInterval(scrollInterval);
+                scrollInterval = null;
+            }
+            const playBtn = document.getElementById('btn-play-scroll');
+            if (playBtn) {
+                playBtn.innerHTML = `<i class="fa-solid fa-play"></i> <span>Tự động cuộn thoại</span>`;
+                playBtn.classList.add('bg-blue-600');
+                playBtn.classList.remove('bg-red-600');
+            }
+        }
+    </script>
+</body>
+</html>
