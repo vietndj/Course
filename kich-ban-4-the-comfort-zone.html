@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch bản 4: The Comfort Zone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #f8fafc;
+        }
+
+        /* 1. Abstract: Sự thoải mái (The Comfort Orb) */
+        @keyframes breathe-orb {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(45, 212, 191, 0.4); border-radius: 50%; }
+            50% { transform: scale(1.15); box-shadow: 0 0 40px rgba(45, 212, 191, 0.8); border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+        }
+        .art-comfort { width: 45px; height: 45px; background: linear-gradient(135deg, #2dd4bf, #0284c7); animation: breathe-orb 5s ease-in-out infinite; position: relative; margin: 0 auto;}
+
+        /* 2. Abstract: Thông tin khô khan sang Mượt mà (Rigid to Fluid) */
+        @keyframes rigid-fluid {
+            0%, 100% { border-radius: 4px; transform: rotate(0deg); background: #334155; border: 2px solid #64748b; }
+            50% { border-radius: 50%; transform: rotate(180deg); background: rgba(56, 189, 248, 0.2); border: 2px solid #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        }
+        .art-fluid { width: 35px; height: 35px; animation: rigid-fluid 4s infinite ease-in-out; position: relative; display: flex; align-items: center; justify-content: center;}
+
+        /* 3. Abstract: Khoảng cách xa lạ (Distance to Intimacy) */
+        @keyframes zoom-intimate {
+            0%, 100% { transform: scale(0.5); opacity: 0.5; border: 1px dashed #94a3b8; }
+            50% { transform: scale(1.2); opacity: 1; border: 2px solid #60a5fa; box-shadow: 0 0 20px rgba(96, 165, 250, 0.4); background: rgba(96, 165, 250, 0.1); }
+        }
+        .art-zoom { width: 40px; height: 40px; border-radius: 50%; animation: zoom-intimate 3.5s infinite ease-in-out; position: relative; display: flex; align-items: center; justify-content: center; }
+        .art-zoom::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #60a5fa; }
+
+        /* 4. Abstract: Mệt mỏi thầm lặng (The 3-Second Pulse) */
+        @keyframes pulse-3s {
+            0%, 25%, 50% { border-color: #64748b; transform: scale(1); }
+            75% { border-color: #f43f5e; transform: scale(1.2); box-shadow: 0 0 15px rgba(244, 63, 94, 0.6); }
+            100% { border-color: #64748b; transform: scale(1); }
+        }
+        .art-pulse { width: 35px; height: 35px; border: 3px solid #64748b; border-radius: 8px; animation: pulse-3s 3s linear infinite; position: relative; }
+
+        /* 5. Abstract: Đứt đoạn cảm xúc (Smooth Sine Wave) */
+        @keyframes wave-flow {
+            0% { transform: translateX(-10px) translateY(5px); opacity: 0.3; }
+            50% { transform: translateX(0px) translateY(-5px); opacity: 1; border-bottom-color: #34d399; }
+            100% { transform: translateX(10px) translateY(5px); opacity: 0.3; }
+        }
+        .art-wave { width: 40px; height: 20px; border-bottom: 3px solid #059669; border-radius: 50%; animation: wave-flow 2s infinite ease-in-out; }
+
+        /* 6. Abstract: Minh họa lạc lõng (Syncing Shapes) */
+        @keyframes sync-shapes {
+            0%, 100% { transform: translateX(-10px); background: rgba(244, 63, 94, 0.5); }
+            50% { transform: translateX(10px); background: rgba(56, 189, 248, 0.5); mix-blend-mode: screen; }
+        }
+        .art-sync { width: 25px; height: 25px; border-radius: 50%; animation: sync-shapes 2.5s infinite ease-in-out alternate; position: relative; }
+        .art-sync::before { content: ''; position: absolute; width: 25px; height: 25px; border-radius: 50%; background: rgba(56, 189, 248, 0.5); right: -15px; animation: sync-shapes 2.5s infinite ease-in-out alternate-reverse; }
+
+        /* 7. Abstract: Biểu đạt gò bó (Breaking the Wall) */
+        @keyframes break-wall {
+            0%, 100% { border: 2px solid #94a3b8; transform: scale(0.9); }
+            50% { border: 2px solid transparent; border-top: 2px solid #a78bfa; border-bottom: 2px solid #a78bfa; transform: scale(1.1); padding: 5px; }
+        }
+        .art-wall { width: 30px; height: 30px; animation: break-wall 3s infinite ease-in-out; position: relative; display: flex; align-items: center; justify-content: center; }
+        .art-wall::after { content: ''; width: 4px; height: 20px; background: #a78bfa; border-radius: 2px; }
+
+        /* 8. Abstract: Thời điểm vàng (Golden Spark) */
+        @keyframes spark-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .art-spark { width: 35px; height: 35px; border-radius: 50%; border: 1px dashed rgba(250, 204, 21, 0.3); position: relative; animation: spark-spin 4s linear infinite; }
+        .art-spark::before { content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: #facc15; border-radius: 50%; box-shadow: 0 0 10px #facc15; }
+
+        /* 9. Abstract: Luân chuyển tự nhiên (The Flow) */
+        @keyframes flow-cta {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .art-flow { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(270deg, #0284c7, #2dd4bf, #818cf8); background-size: 200% 200%; animation: flow-cta 3s ease infinite; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 30px rgba(45, 212, 191, 0.4); }
+        .art-flow i { color: white; font-size: 24px; }
+
+        .glass-panel { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.4); }
+        .cam-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); letter-spacing: 0.5px; z-index: 10; display: inline-block; }
+        .cam-a { background-color: #ef4444; color: white; }
+        .cam-b { background-color: #3b82f6; color: white; }
+        .b-roll-badge { background-color: #f8fafc; color: #0f172a; font-style: italic; border: 1px solid #cbd5e1; }
+        
+        .grid-item-hover:hover { transform: translateY(-5px); border-color: rgba(45, 212, 191, 0.4); box-shadow: 0 10px 30px -10px rgba(45, 212, 191, 0.2); background: rgba(30, 41, 59, 0.8); }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="pt-16 pb-12 px-6 md:px-12 text-center bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-teal-500/5 blur-[120px] pointer-events-none"></div>
+        <span class="text-teal-400 font-bold tracking-widest uppercase text-xs mb-4 inline-flex items-center bg-teal-500/10 px-4 py-1.5 rounded-full border border-teal-500/20">
+            <i class="fas fa-wind mr-2"></i>Kịch bản 4: Trải nghiệm người xem
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 text-white leading-tight">
+            THE COMFORT <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">ZONE</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg">
+            Vì sao nội dung rõ ràng, kiến thức hay nhưng khán giả xem rất mệt mỏi và lướt đi? Bí mật nằm ở <strong class="text-teal-400 font-medium">"Sự thoải mái Thị giác"</strong>.
+        </p>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 md:px-8 py-10 space-y-12">
+
+        <section class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl relative border-teal-500/20">
+                <div class="inline-block bg-slate-800 text-teal-400 text-xs px-3 py-1 rounded-full font-bold border border-slate-600 mb-6 uppercase tracking-wider">The Hook: Bắt bệnh thị giác</div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Hook 1 (Cam A) -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="cam-badge cam-a">CAM A (Trực diện)</span>
+                        </div>
+                        <h2 class="text-xl md:text-2xl font-medium text-slate-300 leading-relaxed">
+                            "Bạn dành hàng giờ để quay dựng... nhưng khách hàng <span class="text-white font-bold border-b-2 border-red-500/50">chỉ xem vài giây</span> rồi lướt qua."
+                        </h2>
+                        <div class="bg-slate-900/80 p-4 rounded-lg text-sm text-slate-400 border border-slate-800">
+                            <strong class="text-teal-500"><i class="fas fa-theater-masks mr-1"></i>Biên đạo:</strong> Thở hắt ra nhẹ nhàng (The Reset), vai hơi chùng xuống. Ánh mắt thể hiện sự đồng cảm với sự mệt mỏi và bế tắc của người làm video.<br>
+                            <span class="text-xs text-slate-500 mt-2 block italic">Logic tâm lý: Phản chiếu lại chính nỗi đau và sự thất vọng của học viên để tạo sự kết nối tức thì.</span>
+                        </div>
+                    </div>
+
+                    <!-- Hook 2 (Cam B) -->
+                    <div class="space-y-4 pl-0 md:pl-8 md:border-l border-slate-800 relative">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="cam-badge cam-b">CAM B (Góc nghiêng)</span>
+                            <div class="art-comfort absolute top-0 right-4 opacity-50"></div>
+                        </div>
+                        <h2 class="text-xl md:text-2xl font-medium text-white leading-relaxed">
+                            "Đó là vì video của bạn... chưa tạo ra được <span class="text-teal-400 font-bold">'Sự thoải mái thị giác'</span>. Hãy kiểm tra 7 điểm nghẽn này."
+                        </h2>
+                        <div class="bg-teal-950/20 p-4 rounded-lg text-sm text-slate-400 border border-teal-900/30">
+                            <strong class="text-blue-400"><i class="fas fa-lightbulb mr-1"></i>Biên đạo:</strong> Thẳng lưng lên, ánh mắt sáng (Eyebrow flash). Lòng bàn tay mở ngửa (Open Palm) hướng về camera.<br>
+                            <span class="text-xs text-slate-500 mt-2 block italic">Logic tâm lý: Tư thế mở giải phóng sự căng thẳng. Việc gọi tên căn bệnh ("Sự thoải mái thị giác") giúp học viên thấy lóe lên hy vọng.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mt-16 mb-8">
+            <h3 class="text-xl text-slate-300 font-bold uppercase tracking-widest"><i class="fas fa-eye-slash mr-2 text-teal-500"></i>7 Điểm nghẽn phá vỡ Sự thoải mái</h3>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- Lỗi 1 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col space-y-2">
+                        <span class="cam-badge cam-a w-max">CAM A</span>
+                        <span class="cam-badge b-roll-badge w-max"><i class="fas fa-film mr-1"></i>B-Roll Thực tế</span>
+                    </div>
+                    <div class="art-fluid"></div>
+                </div>
+                <h4 class="text-cyan-400 font-bold mb-2">1. Thông tin khô khan</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Khán giả khao khát những câu chuyện thực tế, không phải những văn bản vô hồn được đọc thuộc lòng.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Bàn tay xua nhẹ (loại bỏ sự khô khan), sau đó đặt tay lên ngực trái khi nói "câu chuyện thực tế".</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 2 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col space-y-2">
+                        <span class="cam-badge cam-b w-max">CAM B</span>
+                        <span class="cam-badge b-roll-badge w-max"><i class="fas fa-search-plus mr-1"></i>B-Roll Tiến gần</span>
+                    </div>
+                    <div class="art-zoom"></div>
+                </div>
+                <h4 class="text-blue-400 font-bold mb-2">2. Khoảng cách xa lạ</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Thiếu linh hoạt trong cỡ cảnh... bạn đánh mất cơ hội kéo khách hàng lại gần để tạo sự thân mật.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Hai bàn tay từ xa từ từ kéo lại gần nhau (The Zoom-in Gesture), rướn nhẹ người tới (Lean in).</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 3 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col space-y-2">
+                        <span class="cam-badge cam-a w-max">CAM A</span>
+                        <span class="cam-badge b-roll-badge w-max"><i class="fas fa-chart-line mr-1"></i>B-Roll Đồ thị</span>
+                    </div>
+                    <div class="art-pulse flex items-center justify-center text-[10px] font-bold text-slate-500">3s</div>
+                </div>
+                <h4 class="text-rose-400 font-bold mb-2">3. Sự mệt mỏi thầm lặng</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Giữ nguyên một góc máy quá 3 giây sẽ làm suy giảm sự tập trung của bộ não.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Ngón trỏ gõ nhẹ và dứt khoát 3 nhịp lên bàn/không khí. Giọng nói mang tính cảnh báo.</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 4 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col space-y-2">
+                        <span class="cam-badge cam-b w-max">CAM B</span>
+                        <span class="cam-badge b-roll-badge w-max"><i class="fas fa-exchange-alt mr-1"></i>B-Roll Lia máy</span>
+                    </div>
+                    <div class="art-wave"></div>
+                </div>
+                <h4 class="text-emerald-400 font-bold mb-2">4. Đứt đoạn cảm xúc</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Hãy thay thế các hiệu ứng chuyển cảnh có sẵn bằng chuyển động mượt mà để mắt khán giả được nghỉ ngơi.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Bàn tay vuốt một đường cong mềm mại trong không khí (Fluid motion). Chậm nhịp giọng nói lại.</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 5 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col space-y-2">
+                        <span class="cam-badge cam-a w-max">CAM A</span>
+                        <span class="cam-badge b-roll-badge w-max"><i class="fas fa-object-group mr-1"></i>B-Roll Khớp khít</span>
+                    </div>
+                    <div class="art-sync pl-4"></div>
+                </div>
+                <h4 class="text-violet-400 font-bold mb-2">5. Minh họa lạc lõng</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Cảnh trám cần xuất hiện đúng lúc để bổ trợ cho lời nói, giúp người xem dễ dàng hình dung vấn đề.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Hai bàn tay đan khớp vào nhau (The Lock) ở chữ "đúng lúc". Thể hiện sự đồng bộ hoàn hảo.</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 6 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 grid-item-hover transition-all duration-300 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-b w-max">CAM B</span>
+                    <div class="art-wall flex justify-center w-full"></div>
+                </div>
+                <h4 class="text-fuchsia-400 font-bold mb-2">6. Biểu đạt gò bó</h4>
+                <p class="text-sm text-slate-300 mb-4 flex-grow">Sự căng thẳng của cơ thể tạo ra một bức tường vô hình, ngăn cách sự tin cậy giữa bạn với người mua hàng.</p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-slate-200">Action:</strong> Đang co rụt vai, thả lỏng bừng ra (The Reset). Hai tay rẽ ra hai bên như phá vỡ bức tường.</p>
+                </div>
+            </div>
+
+            <!-- Lỗi 7 (Span Full) -->
+            <div class="glass-panel p-5 rounded-xl border border-amber-900/30 bg-amber-950/10 grid-item-hover transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-3 lg:flex-row lg:items-center">
+                <div class="flex-grow">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="cam-badge cam-a w-max">CAM A</span>
+                        <h4 class="text-amber-400 font-bold text-lg">7. Lãng phí thời điểm vàng</h4>
+                    </div>
+                    <p class="text-base text-slate-200 mb-4 lg:mb-0 max-w-3xl">Nếu 3 giây đầu không mang lại giá trị tức thì, não bộ sẽ tự động bỏ qua dù phần sau có hay đến mấy.</p>
+                </div>
+                <div class="lg:w-1/3 flex flex-col items-center lg:items-end justify-center lg:border-l border-slate-800 lg:pl-6">
+                    <div class="art-spark mb-3"></div>
+                    <p class="text-xs text-slate-400 text-center lg:text-right"><strong class="text-amber-400">Action:</strong> Búng tay nhẹ một tiếng "Tách" hoặc giơ 3 ngón tay dứt khoát. Khóa mắt hoàn toàn.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="bg-gradient-to-br from-teal-900/40 to-slate-900 rounded-2xl p-8 md:p-12 shadow-[0_0_50px_rgba(45,212,191,0.1)] border border-teal-500/30 relative text-center mt-12">
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="art-flow mb-8">
+                    <i class="fas fa-water"></i>
+                </div>
+                
+                <div class="mb-8 border-b border-teal-500/20 pb-8 relative">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 cam-badge cam-b">CAM B (Góc nghiêng)</span>
+                    <p class="text-lg md:text-xl text-slate-300 italic mb-4 mt-6">
+                        <span class="text-teal-500 font-bold text-2xl">...</span> <br>
+                        (Dừng 1.5 giây tĩnh lặng)
+                    </p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug">
+                        "Sự lôi cuốn không sinh ra từ việc chèo kéo ép buộc.<br>
+                        Hệ thống hóa sự lôi cuốn... là <span class="text-teal-400">kiến tạo niềm tin từ sự thoải mái.</span>"
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-4"><i class="fas fa-brain text-teal-500 mr-1"></i> <strong class="text-slate-200">Bí kíp "The Freeze":</strong> 1.5s im lặng tuyệt đối giúp reset lại não bộ người nghe. Khi âm thanh cất lên lại, tông giọng phải cực kỳ trầm ấm, mang tính triết lý, không vội vã.</p>
+                </div>
+
+                <div class="relative pt-4">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 cam-badge cam-a">CAM A (Trực diện)</span>
+                    <h2 class="text-xl md:text-2xl font-bold text-white leading-snug mt-6">
+                        "Và chuyển đổi tự nhiên sẽ là <span class="bg-teal-500 text-slate-950 px-2 py-0.5 rounded">kết quả tất yếu.</span><br>
+                        Sở hữu tư duy quay dựng bài bản... tại đường link này."
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-6 max-w-xl mx-auto">
+                        <strong class="text-teal-500"><i class="fas fa-smile-beam mr-1"></i>Choreography:</strong> Ánh mắt chuyển về Cam A. Cười tươi đĩnh đạc (Nụ cười Duchenne). Lòng bàn tay mở, chỉ nhẹ nhàng xuống phía dưới (Call to Action) một cách lịch thiệp, không hối thúc.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="h-[128px] w-full bg-slate-950 border-t border-slate-800 flex flex-col justify-center px-6 md:px-12 mt-12 flex-shrink-0 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between">
+            
+            <div class="flex-1 text-center md:text-left mb-4 md:mb-0">
+                <h4 class="text-slate-200 font-semibold text-sm uppercase tracking-wide mb-1.5 flex items-center justify-center md:justify-start">
+                    <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>Các kênh hiện tại
+                </h4>
+                <p class="text-slate-500 text-xs leading-relaxed max-w-2xl">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center space-x-5">
+                <!-- Youtube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
+                    <i class="fab fa-youtube text-slate-400 group-hover:text-red-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+                
+                <!-- Tiktok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyan-400/20 relative overflow-hidden">
+                    <i class="fab fa-tiktok text-slate-400 group-hover:text-white text-lg md:text-xl transition-colors duration-300 relative z-10"></i>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/nguyenducviet.video" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/20">
+                    <i class="fab fa-facebook-f text-slate-400 group-hover:text-blue-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
