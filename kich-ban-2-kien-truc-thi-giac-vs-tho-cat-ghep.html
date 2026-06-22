@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch bản 2: Kiến Trúc Thị Giác vs Thợ Cắt Ghép</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Slate 950 - Tối hơn để tôn lên màu sắc */
+            color: #f8fafc;
+        }
+
+        /* 1. Abstract: Ống kính & Nút bấm (Cho phần Hook) */
+        @keyframes lens-focus {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2), inset 0 0 20px rgba(99, 102, 241, 0.1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.5), inset 0 0 40px rgba(99, 102, 241, 0.3); border-color: #818cf8; }
+        }
+        .abstract-lens {
+            width: 80px; height: 80px; border-radius: 50%; border: 2px solid #4f46e5;
+            position: relative; animation: lens-focus 3s infinite ease-in-out;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .abstract-lens::after {
+            content: ''; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle, #818cf8 0%, transparent 70%);
+        }
+
+        /* 2. Abstract: Lõi rỗng (Empty Core) */
+        @keyframes pulse-hollow {
+            0% { border-width: 2px; opacity: 1; transform: scale(0.8); }
+            100% { border-width: 15px; opacity: 0; transform: scale(1.5); }
+        }
+        .art-empty-core { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ef4444; position: relative; }
+        .art-empty-core::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #fca5a5; animation: pulse-hollow 2s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* 3. Abstract: Không gian phẳng (Flat Space / 3D Planes) */
+        @keyframes plane-shift {
+            0%, 100% { transform: perspective(200px) rotateY(0deg) rotateX(0deg); }
+            50% { transform: perspective(200px) rotateY(30deg) rotateX(15deg); }
+        }
+        .art-flat-space { width: 40px; height: 40px; background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; animation: plane-shift 3s infinite ease-in-out; position: relative; }
+        .art-flat-space::after { content: ''; position: absolute; top: 10px; left: 10px; width: 40px; height: 40px; background: rgba(14, 165, 233, 0.4); border: 1px solid #0ea5e9; z-index: -1; }
+
+        /* 4. Abstract: 3 Giây (3s Timer) */
+        @keyframes tick-tock {
+            0% { transform: rotate(0deg); }
+            33% { transform: rotate(120deg); }
+            66% { transform: rotate(240deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .art-timer { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #f59e0b; border-top-color: transparent; animation: tick-tock 3s infinite steps(3); }
+
+        /* 5. Abstract: Đứt gãy nhịp điệu (Broken Rhythm) */
+        @keyframes wave-flow {
+            0% { clip-path: polygon(0 50%, 10% 20%, 30% 80%, 50% 50%, 70% 20%, 90% 80%, 100% 50%, 100% 100%, 0 100%); background: #10b981; }
+            50% { clip-path: polygon(0 50%, 20% 80%, 40% 20%, 60% 80%, 80% 20%, 100% 50%, 100% 100%, 0 100%); background: #34d399; }
+            100% { clip-path: polygon(0 50%, 10% 20%, 30% 80%, 50% 50%, 70% 20%, 90% 80%, 100% 50%, 100% 100%, 0 100%); background: #10b981; }
+        }
+        .art-rhythm { width: 40px; height: 30px; animation: wave-flow 2s infinite alternate ease-in-out; border-radius: 4px; }
+
+        /* 6. Abstract: Neo thị giác (Visual Anchor) */
+        @keyframes anchor-drop {
+            0%, 100% { transform: translateY(0); box-shadow: 0 10px 10px -5px rgba(168, 85, 247, 0.5); }
+            50% { transform: translateY(-10px); box-shadow: 0 20px 20px -10px rgba(168, 85, 247, 0.2); }
+        }
+        .art-anchor { width: 30px; height: 30px; background: #a855f7; border-radius: 4px; position: relative; animation: anchor-drop 2s infinite ease-in-out; }
+        .art-anchor::before { content: ''; position: absolute; bottom: -10px; left: 10px; width: 10px; height: 3px; background: #d8b4fe; border-radius: 2px; }
+
+        /* 7. Abstract: Biểu đạt gượng ép (Organic vs Rigid) */
+        @keyframes morphing {
+            0% { border-radius: 4px; transform: rotate(0deg); background: #64748b; }
+            50% { border-radius: 50% 30% 60% 40%; transform: rotate(90deg); background: #ec4899; }
+            100% { border-radius: 4px; transform: rotate(180deg); background: #64748b; }
+        }
+        .art-morph { width: 35px; height: 35px; animation: morphing 4s infinite ease-in-out; }
+
+        /* 8. Abstract: Hook (Lưỡi câu) */
+        @keyframes hook-strike {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(10px) rotate(-15deg); }
+        }
+        .art-hook { font-size: 32px; color: #f43f5e; animation: hook-strike 1.5s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        /* 9. Abstract: Kiến trúc xếp hình (CTA Architecture) */
+        @keyframes build-up {
+            0%, 100% { transform: translateY(10px); opacity: 0.5; }
+            50% { transform: translateY(0); opacity: 1; }
+        }
+        .arch-block { width: 20px; height: 20px; background: #fbbf24; border-radius: 4px; display: inline-block; animation: build-up 2s infinite ease-in-out; }
+        .arch-block:nth-child(2) { animation-delay: 0.2s; background: #f59e0b; transform: translateY(-10px);}
+        .arch-block:nth-child(3) { animation-delay: 0.4s; background: #d97706; transform: translateY(-20px);}
+
+        /* Tiện ích chung */
+        .glass-panel { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
+        .cam-badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .cam-a { background-color: #ef4444; color: white; }
+        .cam-b { background-color: #3b82f6; color: white; }
+        .b-roll-badge { background-color: #10b981; color: white; }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="pt-16 pb-12 px-6 md:px-12 text-center bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800">
+        <span class="text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-4 inline-flex items-center bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/30">
+            <i class="fas fa-layer-group mr-2"></i>Kịch bản 2: Bẻ gãy lầm tưởng
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 text-white leading-tight">
+            BIẾT EDIT NHƯNG <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">KHÔNG LÀM ĐẸP</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg">
+            Sự khác biệt cốt lõi giữa một người thợ sử dụng công cụ (CapCut) và một Kiến trúc sư kiểm soát hình ảnh & tâm lý người xem.
+        </p>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 md:px-8 py-10 space-y-10">
+
+        <!-- THE HOOK -->
+        <section class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl relative overflow-hidden group border-indigo-500/30">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-4">
+                    <div class="abstract-lens"></div>
+                    <span class="text-[10px] text-indigo-400 uppercase tracking-widest font-bold bg-indigo-500/10 px-3 py-1 rounded">Công cụ vs Tư duy</span>
+                </div>
+
+                <div class="md:col-span-9 space-y-4">
+                    <div class="inline-block bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded-full font-semibold border border-slate-600 mb-2">The Hook: Tạo sự đối lập</div>
+                    
+                    <div class="p-6 bg-slate-900/80 rounded-xl border border-slate-700 relative">
+                        <span class="absolute -top-3 -left-2 cam-badge cam-a">CAM A (Trực diện)</span>
+                        <h2 class="text-xl md:text-2xl font-medium text-slate-200 leading-relaxed">
+                            "Đưa cho một chuyên gia Capcut một chiếc máy quay xịn... <span class="text-slate-400">anh ta vẫn tạo ra sự nhàm chán.</span>"
+                        </h2>
+                        <h2 class="text-lg md:text-xl font-medium text-indigo-300 mt-2">
+                            "Bởi vì... Sự lôi cuốn không nằm ở nút bấm Capcut. Nó nằm ở việc bạn có phá vỡ <strong class="text-white">7 giới hạn</strong> sau đây không."
+                        </h2>
+                        
+                        <div class="mt-5 flex items-start space-x-3 text-sm bg-indigo-950/30 p-4 rounded-lg border border-indigo-500/20">
+                            <i class="fas fa-street-view text-indigo-400 mt-1"></i>
+                            <div>
+                                <p><strong class="text-indigo-400">Biên đạo & Tâm lý:</strong> Đưa một tay ra phía trước như đang trao một đồ vật vô hình (chiếc máy quay), sau đó lắc đầu nhẹ ngậm ngùi ở chữ "nhàm chán".</p>
+                                <p class="text-xs text-slate-400 mt-1">Logic: Phá vỡ ngay lập tức chiếc phao cứu sinh của người mới (ảo tưởng rằng app xịn, máy xịn là video sẽ hay). Việc lắc đầu thể hiện sự tiếc nuối, đặt bạn vào vị thế của một người quan sát cấp cao.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE BODY: 7 LỖ HỔNG (Grid Layout) -->
+        <div class="text-center mt-12 mb-6">
+            <h3 class="text-xl text-slate-300 font-bold uppercase tracking-widest"><i class="fas fa-border-all mr-2 text-slate-500"></i>Bảng Phân Cảnh: 7 Giới Hạn</h3>
+            <p class="text-xs text-slate-500 mt-1">Ghi chú chi tiết cách điều hướng cơ thể, ánh mắt và nhịp điệu cho từng khung hình.</p>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Lỗi 1 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-red-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-empty-core"></div>
+                </div>
+                <h4 class="text-red-400 font-bold mb-2">1. Lõi thông điệp rỗng</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Bạn coi video là nơi ghép ảnh, thay vì một bài thuyết trình chứa đựng kiến thức thực chiến của chính mình."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <span class="b-roll-badge px-1.5 py-0.5 rounded mr-1"><i class="fas fa-film text-[8px]"></i> B-roll</span> Người vắt óc viết kịch bản.<br><br>
+                    <strong class="text-red-400"><i class="fas fa-hand-pointer mr-1"></i>Action:</strong> Ngón trỏ gõ nhẹ vào thái dương. (Chỉ ra vấn đề nằm ở tư duy não bộ, không phải công cụ).
+                </div>
+            </div>
+
+            <!-- Lỗi 2 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-blue-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-b">CAM B</span>
+                    <div class="art-flat-space"></div>
+                </div>
+                <h4 class="text-blue-400 font-bold mb-2">2. Không gian phẳng</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Đặt máy chết một chỗ, bạn bỏ quên sức mạnh của Cảnh Cận trong việc ghim chặt sự chú ý vào điểm nhấn cốt lõi."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <span class="b-roll-badge px-1.5 py-0.5 rounded mr-1"><i class="fas fa-film text-[8px]"></i> B-roll</span> Máy quay tiến sát chủ thể.<br><br>
+                    <strong class="text-blue-400"><i class="fas fa-expand mr-1"></i>Action:</strong> Hai tay tạo khung hình vuông, từ từ đẩy về phía trước mặt. (Mô phỏng sức mạnh zoom cận cảnh).
+                </div>
+            </div>
+
+            <!-- Lỗi 3 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-amber-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-timer"></div>
+                </div>
+                <h4 class="text-amber-400 font-bold mb-2">3. Điểm mù thị giác</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Khi hình ảnh thiếu sự luân chuyển sau mỗi 3 giây, người xem sẽ vô thức lướt qua để tìm kiếm sự mới mẻ."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <strong class="text-amber-400"><i class="fas fa-tachometer-alt mr-1"></i>Action:</strong> Tăng tốc độ nói (Tempo nhanh). Búng tay hoặc chém nhẹ dứt khoát ở chữ "3 giây". (Thể hiện sự tàn nhẫn của sự chú ý ngắn hạn).
+                </div>
+            </div>
+
+            <!-- Lỗi 4 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-emerald-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-b">CAM B</span>
+                    <div class="art-rhythm"></div>
+                </div>
+                <h4 class="text-emerald-400 font-bold mb-2">4. Đứt gãy nhịp điệu</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Sự lôi cuốn nằm ở những điểm nối cảnh êm ái, giúp dòng chảy thông tin không bị gián đoạn."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <span class="b-roll-badge px-1.5 py-0.5 rounded mr-1"><i class="fas fa-film text-[8px]"></i> B-roll</span> Nối cảnh bằng tay.<br><br>
+                    <strong class="text-emerald-400"><i class="fas fa-water mr-1"></i>Action:</strong> Hai tay vuốt nhẹ, đan chéo mượt mà trong không khí. (Nhấn mạnh sự fluid/trơn tru của video chuyên nghiệp).
+                </div>
+            </div>
+
+            <!-- Lỗi 5 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-purple-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-anchor"></div>
+                </div>
+                <h4 class="text-purple-400 font-bold mb-2">5. Lãng phí điểm neo</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Đa số khán giả lướt mạng tắt tiếng, cảnh trám minh họa chính là ngôn ngữ thứ hai để thuyết phục họ."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <span class="b-roll-badge px-1.5 py-0.5 rounded mr-1"><i class="fas fa-film text-[8px]"></i> B-roll</span> Video tắt tiếng + phụ đề.<br><br>
+                    <strong class="text-purple-400"><i class="fas fa-anchor mr-1"></i>Action:</strong> Ngón trỏ chỉ cắm thẳng xuống mặt bàn 1 nhịp. (Đóng đinh điểm neo, khẳng định tầm quan trọng của thị giác).
+                </div>
+            </div>
+
+            <!-- Lỗi 6 -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-pink-500/50 transition-colors flex flex-col h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-b">CAM B</span>
+                    <div class="art-morph"></div>
+                </div>
+                <h4 class="text-pink-400 font-bold mb-2">6. Biểu đạt gượng ép</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow">"Cố nhớ kịch bản làm mất sự tự nhiên. Cần giải phóng hình thể để cơ thể kể chuyện cùng lời nói."</p>
+                <div class="bg-slate-900/80 p-3 rounded text-xs text-slate-400 border border-slate-700 mt-auto">
+                    <strong class="text-pink-400"><i class="fas fa-wind mr-1"></i>Action:</strong> Thở hắt ra nhẹ nhàng, thả lỏng hai vai rớt xuống (The Reset). (Trực tiếp làm mẫu cho việc giải phóng cơ thể ngay trên khung hình).
+                </div>
+            </div>
+
+            <!-- Lỗi 7 (Full width for emphasis) -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-700/60 hover:border-rose-500/50 transition-colors flex flex-col h-full md:col-span-2 lg:col-span-3">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <i class="fas fa-fish art-hook"></i>
+                </div>
+                <h4 class="text-rose-400 font-bold mb-2 text-lg">7. Cấu trúc mờ nhạt</h4>
+                <p class="text-sm text-slate-300 mb-3 flex-grow max-w-3xl">"Thiếu đi một móc câu đánh trúng tâm lý ngay từ mở đầu, video sẽ không thể tạo ra kết quả kinh doanh."</p>
+                <div class="bg-slate-900/80 p-4 rounded text-sm text-slate-400 border border-slate-700 mt-auto">
+                    <strong class="text-rose-400"><i class="fas fa-hand-rock mr-1"></i>Action:</strong> Bàn tay làm động tác móc câu, giật nhẹ nhưng dứt khoát về phía lồng ngực mình. Mắt khóa chặt ống kính. (Thể hiện lực hút mãnh liệt, thâu tóm sự chú ý).
+                </div>
+            </div>
+
+        </section>
+
+        <!-- THE CTA -->
+        <section class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-yellow-500/30 relative overflow-hidden text-center group transition-all duration-500">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/10 via-slate-900/0 to-slate-900/0"></div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                <div class="flex space-x-1 mb-6">
+                    <div class="arch-block"></div><div class="arch-block"></div><div class="arch-block"></div>
+                </div>
+                
+                <div class="inline-block bg-yellow-500/10 text-yellow-400 text-xs px-3 py-1 rounded-full font-semibold border border-yellow-500/30 mb-4 uppercase tracking-wider">The CTA: Uy quyền & Giải pháp</div>
+                
+                <!-- Nhịp Pause đắt giá -->
+                <div class="mb-6 p-4 border-l-4 border-slate-500 bg-slate-900/50 text-left w-full rounded-r">
+                    <span class="cam-badge cam-b mb-2 inline-block">CAM B</span>
+                    <p class="text-slate-400 italic text-sm">*(Ngừng 1.5 giây - <strong>The Power of Pause</strong>. Giữ cơ thể bất động hoàn toàn, ánh mắt sâu thẳm. Kích hoạt sự tò mò tối đa).*</p>
+                    <h2 class="text-xl md:text-2xl font-medium text-slate-200 mt-2">
+                        "...Sự chuyên nghiệp của hình ảnh chính là vũ khí chốt sale mạnh nhất... mà không cần gào thét chèo kéo."
+                    </h2>
+                </div>
+
+                <!-- Chốt Hạ -->
+                <div class="w-full relative">
+                    <span class="absolute -top-3 -left-2 cam-badge cam-a">CAM A</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 leading-snug mt-4">
+                        "Dựng video là một hệ thống Kiến trúc thị giác."
+                    </h2>
+                    <h2 class="text-xl text-slate-300 mt-3">
+                        "Tái định vị lại cách làm nội dung của bạn... ngay tại đường link này."
+                    </h2>
+                </div>
+                
+                <div class="bg-slate-950/80 p-5 rounded-xl text-left inline-block mt-8 border border-slate-700 w-full md:w-3/4 mx-auto backdrop-blur-sm shadow-inner">
+                    <div class="flex items-start space-x-3 text-sm text-slate-300">
+                        <i class="fas fa-street-view text-yellow-400 mt-1"></i>
+                        <p>
+                            <span class="text-yellow-400 font-bold block mb-1">Biên đạo chốt hạ (The Final Touch):</span> 
+                            Ở chữ "Kiến trúc thị giác", hai bàn tay đan nhẹ vào nhau tạo thành khối vững chắc (Steeple). Ánh mắt chuyển từ tĩnh lặng (Cam B) sang tự tin, rực sáng (Cam A). Một nụ cười Duchenne (cười bằng mắt) xuất hiện ở câu cuối cùng để tạo sự chào đón nồng nhiệt thay vì ép buộc mua hàng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="h-[128px] w-full bg-slate-950 border-t border-slate-800 flex flex-col justify-center px-6 md:px-12 mt-12 flex-shrink-0 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between">
+            
+            <div class="flex-1 text-center md:text-left mb-4 md:mb-0">
+                <h4 class="text-slate-200 font-semibold text-sm uppercase tracking-wide mb-1.5 flex items-center justify-center md:justify-start">
+                    <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>Các kênh hiện tại
+                </h4>
+                <p class="text-slate-500 text-xs leading-relaxed max-w-2xl">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center space-x-5">
+                <!-- Youtube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
+                    <i class="fab fa-youtube text-slate-400 group-hover:text-red-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+                
+                <!-- Tiktok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyan-400/20 relative overflow-hidden">
+                    <i class="fab fa-tiktok text-slate-400 group-hover:text-white text-lg md:text-xl transition-colors duration-300 relative z-10"></i>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/nguyenducviet.video" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/20">
+                    <i class="fab fa-facebook-f text-slate-400 group-hover:text-blue-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
