@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch bản 13: Bảo vệ Ngân sách Quảng cáo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #f8fafc;
+        }
+
+        /* Abstract Art CSS cho chủ đề "Bảo vệ & Ngân sách" */
+        
+        /* 1. Hook: Chiếc điện thoại (The Scroll) */
+        @keyframes scroll-feed {
+            0% { transform: translateY(10px); opacity: 0; }
+            50% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-10px); opacity: 0; }
+        }
+        .art-phone { width: 30px; height: 50px; border: 2px solid #10b981; border-radius: 6px; position: relative; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 4px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+        .art-phone::before { content: ''; width: 16px; height: 4px; background: #34d399; border-radius: 2px; animation: scroll-feed 1.5s infinite linear; margin-bottom: 4px; }
+        .art-phone::after { content: ''; width: 16px; height: 4px; background: rgba(52, 211, 153, 0.4); border-radius: 2px; animation: scroll-feed 1.5s infinite linear; animation-delay: 0.75s; }
+
+        /* 2. Ánh mắt khắt khe (The Critical Eye) */
+        @keyframes eye-scan {
+            0%, 100% { transform: scaleX(1); border-color: #475569; }
+            50% { transform: scaleX(0.7) scaleY(1.2); border-color: #f43f5e; box-shadow: 0 0 20px rgba(244, 63, 94, 0.4); }
+        }
+        .art-eye { width: 40px; height: 25px; border: 2px solid #64748b; border-radius: 50% 0 50% 0; transform: rotate(45deg); margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: center; animation: eye-scan 3s infinite ease-in-out; }
+        .art-eye::after { content: ''; width: 10px; height: 10px; background: #f43f5e; border-radius: 50%; transform: rotate(-45deg); }
+
+        /* 3. Đếm ngược 3 giây (The 3-Sec Rule) */
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 1; background: #f59e0b; box-shadow: 0 0 10px #f59e0b; }
+        }
+        .art-countdown { display: flex; gap: 6px; justify-content: center; height: 35px; align-items: center; }
+        .art-countdown-dot { width: 8px; height: 8px; border-radius: 50%; background: #64748b; animation: pulse-dot 1.5s infinite; }
+        .art-countdown-dot:nth-child(2) { animation-delay: 0.5s; }
+        .art-countdown-dot:nth-child(3) { animation-delay: 1s; }
+
+        /* 4. Ngân sách bốc hơi (Evaporating Budget) */
+        @keyframes float-up {
+            0% { transform: translateY(10px) scale(1); opacity: 1; }
+            100% { transform: translateY(-20px) scale(0.5); opacity: 0; }
+        }
+        .art-burn { position: relative; width: 40px; height: 40px; margin: 0 auto; border-bottom: 2px solid #f43f5e; display: flex; justify-content: center; }
+        .art-burn-coin { position: absolute; width: 12px; height: 12px; border: 2px solid #fbbf24; border-radius: 50%; bottom: 0; animation: float-up 2s infinite ease-out; }
+        .art-burn-coin:nth-child(2) { animation-delay: 0.6s; left: 5px; width: 8px; height: 8px; }
+        .art-burn-coin:nth-child(3) { animation-delay: 1.2s; right: 5px; width: 10px; height: 10px; }
+
+        /* 5. Niềm tin thị giác (The Visual Trust Shield) */
+        @keyframes shield-glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.2)); transform: scale(0.95); }
+            50% { filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.8)); transform: scale(1.05); }
+        }
+        .art-shield { width: 30px; height: 35px; border: 2px solid #10b981; border-radius: 4px 4px 15px 15px; margin: 0 auto; display: flex; align-items: center; justify-content: center; animation: shield-glow 3s infinite ease-in-out; position: relative; }
+        .art-shield::after { content: '✓'; color: #34d399; font-size: 16px; font-weight: bold; }
+
+        /* 6. Setup Ánh sáng 3 điểm (3-Point Lighting) */
+        @keyframes light-beam {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .art-lighting { position: relative; width: 40px; height: 40px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+        .art-core-obj { width: 14px; height: 14px; background: #fff; border-radius: 2px; box-shadow: 0 0 10px #fff; z-index: 10; }
+        .art-light-src { position: absolute; width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: light-beam 2s infinite alternate; }
+        .art-light-src.key { top: 0; left: 0; box-shadow: 0 0 15px #10b981; }
+        .art-light-src.fill { top: 50%; right: -5px; background: #3b82f6; box-shadow: 0 0 15px #3b82f6; animation-delay: 0.5s; }
+        .art-light-src.back { bottom: 0; left: 50%; background: #f59e0b; box-shadow: 0 0 15px #f59e0b; animation-delay: 1s; }
+
+        /* 7. Chuyển cảnh mượt mà (Fluid Transition) */
+        @keyframes wave-flow {
+            0% { transform: translateX(-10px); }
+            100% { transform: translateX(10px); }
+        }
+        .art-wave { width: 40px; height: 20px; border-top: 2px solid #10b981; border-bottom: 2px solid #3b82f6; border-radius: 50%; margin: 10px auto; animation: wave-flow 1.5s infinite alternate ease-in-out; }
+
+        /* 8. Nhân viên chốt sale (The Closer Star) */
+        @keyframes spin-star {
+            0% { transform: rotate(0deg) scale(0.9); }
+            50% { transform: rotate(180deg) scale(1.2); filter: drop-shadow(0 0 10px #10b981); }
+            100% { transform: rotate(360deg) scale(0.9); }
+        }
+        .art-star { width: 20px; height: 20px; border: 2px solid #10b981; margin: 0 auto; transform: rotate(45deg); animation: spin-star 4s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55); position: relative; }
+        .art-star::after { content: ''; position: absolute; width: 10px; height: 10px; background: #020617; top: 3px; left: 3px; }
+
+        /* 9. Lệnh dừng khẩn cấp (The Stop CTA) */
+        @keyframes stop-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+        }
+        .art-stop { width: 40px; height: 40px; background: rgba(244, 63, 94, 0.2); border: 2px solid #f43f5e; border-radius: 8px; margin: 0 auto; display: flex; align-items: center; justify-content: center; animation: stop-pulse 2s infinite; }
+        .art-stop::before { content: ''; width: 20px; height: 6px; background: #f43f5e; border-radius: 3px; }
+
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(16, 185, 129, 0.15); transition: all 0.4s ease; }
+        .glass-card:hover { transform: translateY(-4px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 25px -10px rgba(16, 185, 129, 0.2); background: rgba(15, 23, 42, 0.9); }
+        .glass-card-warning { border-color: rgba(244, 63, 94, 0.3); background: rgba(244, 63, 94, 0.05); }
+        .glass-card-warning:hover { border-color: rgba(244, 63, 94, 0.6); box-shadow: 0 10px 25px -10px rgba(244, 63, 94, 0.2); }
+        
+        .cam-badge { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px; display: inline-flex; align-items: center; z-index: 10; border: 1px solid transparent;}
+        .cam-a { background: rgba(16, 185, 129, 0.1); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+        .cam-b { background: rgba(244, 63, 94, 0.1); color: #fb7185; border-color: rgba(244, 63, 94, 0.3); }
+        .b-roll-badge { background: rgba(248, 250, 252, 0.1); color: #e2e8f0; font-style: italic; border-color: rgba(248, 250, 252, 0.2); }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="pt-16 pb-12 px-6 md:px-12 text-center bg-slate-950 border-b border-slate-900 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-emerald-600/10 blur-[120px] pointer-events-none rounded-full"></div>
+        <span class="text-emerald-400 font-bold tracking-widest uppercase text-xs mb-4 inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-900/30">
+            <i class="fas fa-shield-alt mr-2"></i>Kịch bản 13: Bài tập kiểm soát khung hình 01
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-white leading-tight">
+            BẢO VỆ <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">NGÂN SÁCH QUẢNG CÁO</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-base md:text-lg">
+            Tư duy: <strong class="text-emerald-400 font-medium">Sự chân thành của người đi trước.</strong><br>
+            Cảnh tỉnh học viên khỏi việc ném tiền qua cửa sổ vì video thiếu chuyên nghiệp.
+        </p>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 md:px-8 py-10 space-y-8">
+
+        <section class="relative mb-12">
+            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600/20 to-rose-500/20 rounded-2xl blur opacity-70"></div>
+            <div class="glass-card rounded-2xl p-6 md:p-10 shadow-2xl relative flex flex-col md:flex-row items-center gap-8">
+                <div class="w-24 h-24 flex-shrink-0 bg-slate-900 rounded-full border-2 border-slate-800 flex items-center justify-center">
+                    <div class="art-phone"></div>
+                </div>
+                <div class="flex-grow">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="cam-badge cam-a">CAM A (Trực diện)</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-wider font-bold">The Hook</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+                        "Bạn đang định dùng video tự quay, cắt ghép cơ bản... để <span class="text-rose-400 font-bold border-b-2 border-rose-500/50">nạp tiền chạy quảng cáo?</span>"
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-4 border-l-2 border-emerald-500 pl-3">
+                        <strong class="text-emerald-400"><i class="fas fa-magic mr-1"></i>Biên đạo:</strong> Cầm điện thoại lướt lướt, sau đó ngước mắt lên nhìn thẳng ống kính, nhướng mày nhẹ. (Thể hiện sự thấu hiểu hành vi thực tế, đóng vai người đang "bắt bài" học viên).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex items-center justify-center space-x-4 mb-8">
+            <div class="h-px bg-slate-800 flex-grow"></div>
+            <h3 class="text-lg text-slate-300 font-bold uppercase tracking-widest"><i class="fas fa-exclamation-triangle mr-2 text-rose-500"></i>Sự thật phũ phàng</h3>
+            <div class="h-px bg-slate-800 flex-grow"></div>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+            <!-- Body 1 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-b">CAM B</span>
+                    <div class="art-eye"></div>
+                </div>
+                <p class="text-base text-slate-200 mb-4 flex-grow italic">
+                    "Sự thật là... khách hàng trên mạng xã hội hiện nay vô cùng khắt khe."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-rose-400">Tâm lý:</strong> Bỏ điện thoại xuống, mắt nghiêm túc. (Chuyển trạng thái từ gần gũi sang cảnh tỉnh - The Pivot).</p>
+                </div>
+            </div>
+
+            <!-- Body 2 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-countdown">
+                        <div class="art-countdown-dot"></div><div class="art-countdown-dot"></div><div class="art-countdown-dot"></div>
+                    </div>
+                </div>
+                <p class="text-base text-slate-200 mb-4 flex-grow">
+                    "Nếu hình ảnh thiếu sắc nét và bối cảnh lộn xộn, niềm tin của họ sẽ tụt giảm ngay trong <strong class="text-amber-400">3 giây đầu</strong>."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-emerald-400">Biên đạo:</strong> Giơ dứt khoát 3 ngón tay. (Kỹ thuật Anchor - Neo sự chú ý vào con số rủi ro).</p>
+                </div>
+            </div>
+
+            <!-- Body 3 -->
+            <div class="glass-card glass-card-warning p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-burn">
+                        <div class="art-burn-coin"></div><div class="art-burn-coin"></div><div class="art-burn-coin"></div>
+                    </div>
+                </div>
+                <p class="text-base text-rose-200 mb-4 flex-grow font-medium">
+                    "Đó là cách nhanh nhất khiến ngân sách của bạn bốc hơi mà không có chuyển đổi."
+                </p>
+                <div class="mt-auto border-t border-rose-900/50 pt-3">
+                    <p class="text-xs text-rose-300/80"><strong class="text-rose-400">Tâm lý:</strong> Lắc đầu khẽ, thở dài đồng cảm. (Không phán xét, mà là sự xót xa cho túi tiền của họ).</p>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="flex items-center justify-center space-x-4 my-8">
+            <div class="h-px bg-slate-800 flex-grow"></div>
+            <h3 class="text-lg text-emerald-400 font-bold uppercase tracking-widest"><i class="fas fa-shield-check mr-2"></i>Giải pháp thị giác</h3>
+            <div class="h-px bg-slate-800 flex-grow"></div>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <!-- Body 4 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-b">CAM B</span>
+                    <div class="art-shield"></div>
+                </div>
+                <p class="text-sm text-slate-200 mb-4 flex-grow">
+                    "Để khách hàng yên tâm rút ví, video của bạn cần một thứ gọi là <strong class="text-emerald-400">'Niềm tin thị giác'</strong>."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-emerald-400">Biên đạo:</strong> Chạm ngón cái và ngón trỏ vào nhau (The Micro-Cue). Nhấn mạnh một khái niệm tinh tế.</p>
+                </div>
+            </div>
+
+            <!-- Body 5 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge b-roll-badge w-max"><i class="fas fa-lightbulb mr-1"></i>Setup Đèn</span>
+                    <div class="art-lighting">
+                        <div class="art-core-obj"></div>
+                        <div class="art-light-src key"></div>
+                        <div class="art-light-src fill"></div>
+                        <div class="art-light-src back"></div>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-200 mb-4 flex-grow">
+                    "Chỉ cần một hệ thống ánh sáng nổi khối, sản phẩm của bạn đã hoàn toàn lột xác."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-emerald-400">Hình ảnh:</strong> B-Roll quay quá trình bật từng cây đèn, sản phẩm từ tối mờ sang sáng rực rỡ.</p>
+                </div>
+            </div>
+
+            <!-- Body 6 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge b-roll-badge w-max"><i class="fas fa-exchange-alt mr-1"></i>Chuyển cảnh</span>
+                    <div class="art-wave"></div>
+                </div>
+                <p class="text-sm text-slate-200 mb-4 flex-grow">
+                    "Kết hợp với những nhịp chuyển cảnh mượt mà, bạn sẽ bẻ gãy sự phòng thủ của người xem."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-emerald-400">Hình ảnh:</strong> B-Roll khung hình chuyển động êm ái, trượt mượt mà để vuốt ve thị giác.</p>
+                </div>
+            </div>
+
+            <!-- Body 7 -->
+            <div class="glass-card p-5 rounded-xl flex flex-col relative overflow-hidden group border-emerald-500/30">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="cam-badge cam-a">CAM A</span>
+                    <div class="art-star"></div>
+                </div>
+                <p class="text-sm text-slate-200 mb-4 flex-grow font-bold">
+                    "Sự chuyên nghiệp của hình ảnh chính là nhân viên chốt sale xuất sắc nhất."
+                </p>
+                <div class="mt-auto border-t border-slate-800 pt-3">
+                    <p class="text-xs text-slate-400"><strong class="text-emerald-400">Biên đạo:</strong> Hai tay đan vào nhau đặt trên bàn, ánh mắt kiên định (The Expert Stance). Khẳng định chân lý.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 relative text-center mt-12 overflow-hidden shadow-2xl">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_70%)] pointer-events-none"></div>
+            
+            <div class="max-w-2xl mx-auto relative z-10">
+                <div class="flex justify-center mb-6">
+                    <div class="art-stop"></div>
+                </div>
+                
+                <div class="mb-6 relative">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 cam-badge cam-b">CAM B (Góc nghiêng)</span>
+                    <h2 class="text-xl md:text-2xl font-bold text-rose-400 leading-snug mt-6">
+                        "Đừng lãng phí tiền quảng cáo một cách mù quáng nữa."
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-3"><i class="fas fa-hand-paper text-rose-500 mr-1"></i> <strong class="text-slate-200">Biên đạo:</strong> Đưa một tay ra trước ngực như cản lại (The Halt). Lệnh dừng khẩn cấp để bảo vệ người xem.</p>
+                </div>
+
+                <div class="h-px w-24 bg-slate-800 mx-auto my-6"></div>
+
+                <div class="relative pt-2">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 cam-badge cam-a">CAM A (Trực diện)</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug mt-6">
+                        "Hãy trang bị ngay tư duy sản xuất <span class="text-emerald-400 border-b-2 border-emerald-500/50">video thương mại</span> cùng tôi tại đường link này."
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-6 max-w-xl mx-auto">
+                        <strong class="text-emerald-400"><i class="fas fa-smile mr-1"></i>Tâm lý:</strong> Mỉm cười đĩnh đạc. Gương mặt toát lên sự an tâm, xoa dịu đi nỗi lo mất tiền ở đoạn trước.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="h-[128px] w-full bg-slate-950 border-t border-slate-900 flex flex-col justify-center px-6 md:px-12 mt-12 flex-shrink-0 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between">
+            
+            <div class="flex-1 text-center md:text-left mb-4 md:mb-0">
+                <h4 class="text-slate-200 font-semibold text-sm uppercase tracking-wide mb-1.5 flex items-center justify-center md:justify-start">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse shadow-[0_0_8px_#10b981]"></span>Các kênh hiện tại
+                </h4>
+                <p class="text-slate-500 text-xs leading-relaxed max-w-2xl">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center space-x-5">
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-800 hover:border-red-500 hover:bg-red-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-red-500/20">
+                    <i class="fab fa-youtube text-slate-400 group-hover:text-red-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+                
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-800 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-cyan-400/20 relative overflow-hidden">
+                    <i class="fab fa-tiktok text-slate-400 group-hover:text-white text-lg md:text-xl transition-colors duration-300 relative z-10"></i>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+
+                <a href="https://www.facebook.com/nguyenducviet.video" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-900 border border-slate-800 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-blue-500/20">
+                    <i class="fab fa-facebook-f text-slate-400 group-hover:text-blue-500 text-lg md:text-xl transition-colors duration-300"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
