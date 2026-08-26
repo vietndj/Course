@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kịch Bản Quay Thực Chiến • Bắt Đầu Với Thứ Vớ Vẩn 2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neon: '#bef264',
+                        brand: '#3b82f6',
+                        dark: '#090d16',
+                        card: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f1f5f9;
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-highlight {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(190, 242, 100, 0.3);
+        }
+        .badge-aoe {
+            background: linear-gradient(90deg, #d97706, #f59e0b);
+        }
+        .badge-times {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+        .badge-home {
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+        }
+        .loc-img {
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: transform 0.3s ease;
+        }
+        .loc-img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-neon selection:text-slate-950 pb-24">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neon text-slate-950 font-mono">Video Course Production</span>
+                    <span class="text-xs text-slate-400 font-mono">batdauvoithuvovan - 2.0.mp4 (4:02)</span>
+                </div>
+                <h1 class="text-xl md:text-2xl font-extrabold text-white mt-1">Kịch Bản Quay Thực Chiến & Ảnh Tham Chiếu Bối Cảnh</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/reports/Bao_Cao_Boi_Canh_Thuc_Chien_R2.html" target="_blank" class="px-3 py-1.5 bg-slate-900 border border-slate-700 hover:border-neon rounded-xl text-xs font-mono text-neon transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-map-location-dot"></i> Kho 124 Bối Cảnh R2
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-10 space-y-12">
+
+        <!-- LỜI DẶN ĐẠO DIỄN: CHIẾN THUẬT QUAY MÁY TĨNH ĐỔI CẢNH -->
+        <section class="glass-highlight rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 bg-neon/10 text-neon rounded-2xl border border-neon/30">
+                    <i class="fa-solid fa-video text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">Chiến Thuật Góc Máy Tĩnh (Tripod Jump-Cut)</h2>
+                    <p class="text-sm text-slate-400">Tự đặt chân máy quay từng shot dứt khoát • Đổi tư thế & góc máy liên tục</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-300">
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800 space-y-2">
+                    <strong class="text-neon block font-mono text-xs uppercase"><i class="fa-solid fa-house"></i> 1. Khu Vực Tại Nhà (Bàn Gỗ):</strong>
+                    <p class="leading-relaxed">Quay 4 shot B-roll cận cảnh đặc tả tâm lý: Thuế thể diện, đóng gói chuyên môn, và cú diễn tương phản <em>"Nói với khách mượt mà vs Bật máy lên đông cứng"</em>.</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800 space-y-2">
+                    <strong class="text-emerald-400 block font-mono text-xs uppercase"><i class="fa-solid fa-tree"></i> 2. Ngoại Cảnh Times City:</strong>
+                    <p class="leading-relaxed">Đặt chân máy tại 7 vị trí xanh mát, mỗi góc đổi 1 tư thế diễn (tựa kính, bước dừng, tựa cột, xoay 45°, ngồi bệ đá, chém tay, quay lưng đi) và nói 1-2 câu nguyên văn.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KHU VỰC 1: QUAY TẠI NHÀ (BÀN GỖ) -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-white flex items-center gap-3">
+                        <span class="w-2.5 h-8 bg-blue-500 rounded-full inline-block"></span>
+                        Phần 1: Cảnh Quay Tại Nhà (Bàn Gỗ) • B-Roll Tâm Lý
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">4 shot cận cảnh đặc tả chi tiết và cú diễn tương phản hài hước</p>
+                </div>
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-xs font-bold rounded-xl border border-blue-500/30 font-mono">Bàn Gỗ • Lens 85mm / 35mm</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Shot 1: Thuế thể diện -->
+                <div class="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-blue-600/30 text-blue-300 font-mono text-xs font-bold rounded-lg border border-blue-500/30">SHOT 1 • 00:20 - 00:35</span>
+                        <span class="text-xs text-slate-400 font-mono">Cận Tay / Bàn Gỗ</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Thuế Thể Diện: Chần Chừ & Sợ Mất Hình Tượng</h3>
+                    <div class="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 text-sm text-slate-200 italic space-y-1">
+                        <span class="text-xs text-blue-400 font-bold font-mono uppercase block mb-1">Lời thoại khớp video 2.0:</span>
+                        <p>"Càng có tri thức, vị thế thì lại càng sợ... Sợ nói dở, sợ mất hình tượng... Thế là phải đóng khoản thuế thể diện rất đắt đỏ bằng tiền quảng cáo..."</p>
+                    </div>
+                    <div class="text-xs text-slate-300 leading-relaxed bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+                        <strong class="text-amber-400 block mb-1">🎬 Hành động diễn:</strong>
+                        Ngón tay lơ lửng trên màn hình điện thoại nút "Đăng video", đắn đo 2 giây rồi bấm khóa màn hình, <strong>úp điện thoại xuống mặt bàn gỗ cái cạch</strong>, ngửa người ra ghế thở dài.
+                    </div>
+                </div>
+
+                <!-- Shot 2: Đóng gói chuyên môn -->
+                <div class="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-blue-600/30 text-blue-300 font-mono text-xs font-bold rounded-lg border border-blue-500/30">SHOT 2 • 00:53 - 01:26</span>
+                        <span class="text-xs text-slate-400 font-mono">Top-Down / Sổ Tay</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Đóng Gói Chuyên Môn: Giá Trị Thật Gây Dựng Niềm Tin</h3>
+                    <div class="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 text-sm text-slate-200 italic space-y-1">
+                        <span class="text-xs text-blue-400 font-bold font-mono uppercase block mb-1">Lời thoại khớp video 2.0:</span>
+                        <p>"Nếu bán giải pháp chuyên môn, khách chỉ chi tiền khi có niềm tin... Video được đóng gói giá trị và trải nghiệm để gây dựng niềm tin..."</p>
+                    </div>
+                    <div class="text-xs text-slate-300 leading-relaxed bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+                        <strong class="text-amber-400 block mb-1">🎬 Hành động diễn:</strong>
+                        Góc Top-down nhìn thẳng xuống bàn: Tay cầm bút viết phác thảo sơ đồ Mindmap / cấu trúc giải pháp bài bản vào sổ tay bìa da hoặc gõ phím mượt mà.
+                    </div>
+                </div>
+
+                <!-- Shot 3 & 4 (Trọng tâm tương phản) -->
+                <div class="glass-panel rounded-3xl p-6 border border-rose-500/40 space-y-4 md:col-span-2 bg-gradient-to-br from-slate-900/90 to-rose-950/20">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-rose-600 text-white font-mono text-xs font-bold rounded-lg">SHOT 3 & 4 (SIÊU PHẨM TƯƠNG PHẢN) • 01:52 - 02:25</span>
+                        <span class="text-xs text-rose-300 font-mono font-bold">Điểm Nhấn Hài Hước Nhất Video</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-rose-300">Cú Tương Phản: Nói Với Khách (Rót Mật) vs Bật Máy Lên (Đông Cứng)</h3>
+                    <div class="p-4 bg-slate-950/80 rounded-2xl border border-rose-500/20 text-sm text-slate-200 italic space-y-1">
+                        <span class="text-xs text-rose-400 font-bold font-mono uppercase block mb-1">Lời thoại khớp video 2.0:</span>
+                        <p>"Đến lúc bấm nút quay: Mặt bị cứng, tay không thoải mái... Bình thường tư vấn cho khách nói như rót mật vào tai, nhưng khi bật máy quay bao nhiêu tự nhiên thoải mái biến mất hết! Cảm giác quay không ổn, hụt hẫng vô cùng! Thấy xấu hổ vì sự non nớt... Tiêu chuẩn trên mây, kỹ năng dưới đất!"</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-emerald-950/30 rounded-2xl border border-emerald-500/30">
+                            <strong class="text-emerald-400 block mb-1 text-sm"><i class="fa-solid fa-phone"></i> Cảnh A (Tư vấn cho khách):</strong>
+                            <p class="text-xs text-slate-300 leading-relaxed">Anh cầm điện thoại kẹp tai nói chuyện, nét mặt cực kỳ tươi tắn, tự tin, tay chém gió thoăn thoắt, cười duyên nói chuyện cuốn hút.</p>
+                        </div>
+                        <div class="p-4 bg-rose-950/30 rounded-2xl border border-rose-500/30">
+                            <strong class="text-rose-400 block mb-1 text-sm"><i class="fa-solid fa-circle-dot"></i> Cảnh B (Bật máy lên quay):</strong>
+                            <p class="text-xs text-slate-300 leading-relaxed">Máy quay chiếu thẳng mặt. Anh giơ tay bấm nút REC đỏ ➔ <strong>Mặt lập tức đông cứng như tượng, miệng mấp máy không ra chữ, chớp mắt loạn xạ rồi lắc đầu tắt máy.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KHU VỰC 2: 7 GÓC MÁY TĨNH TẠI TIMES CITY KÈM ẢNH R2 -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-white flex items-center gap-3">
+                        <span class="w-2.5 h-8 bg-neon rounded-full inline-block"></span>
+                        Phần 2: 7 Góc Máy Tĩnh Tại Times City (Kèm Ảnh Tham Chiếu R2)
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Đổi cảnh & đổi tư thế liên tục: Tựa sảnh ➔ Bước dừng ➔ Tựa cột ➔ Xoay 45° ➔ Ngồi bệ đá ➔ Chém tay ➔ Quay lưng đi</p>
+                </div>
+                <span class="px-3 py-1 bg-neon/20 text-neon text-xs font-bold rounded-xl border border-neon/30 font-mono">7 Locations R2</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- GÓC 1 -->
+                <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_85.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_85.jpg" alt="LOC_085" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-mono text-xs font-bold">GÓC 1 • LOC_085</span>
+                            <span class="text-xs text-slate-400 font-mono">Sảnh Park Hill</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Đứng tựa nhẹ vào lan can kính sảnh, tay cầm cốc cà phê.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-sm text-slate-200 italic space-y-1.5">
+                            <p>• "Kỹ năng tăng theo thời gian thực, không phải thời gian lướt xem."</p>
+                            <p>• "Người ta mất 5 năm luyện tập, nói tự nhiên như thở."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 2 -->
+                <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_78.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_78.jpg" alt="LOC_078" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-mono text-xs font-bold">GÓC 2 • LOC_078</span>
+                            <span class="text-xs text-slate-400 font-mono">Lối Đá Bãi Cỏ</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Đang bước đi 2 bước ➔ Dừng lại ngay giữa tâm máy, giơ ngón tay.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-sm text-slate-200 italic space-y-1.5">
+                            <p>• "Mình xem video có 1 phút, lại muốn bật máy làm được ngay? Không thể nào!"</p>
+                            <p>• "Não thì hiểu ngay, thấy rất đơn giản: Làm gì, tay chân thế nào..."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 3 -->
+                <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_69.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_69.jpg" alt="LOC_069" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-mono text-xs font-bold">GÓC 3 • LOC_069</span>
+                            <span class="text-xs text-slate-400 font-mono">Khung Pergola Gỗ</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Một tay vịn nhẹ cột Pergola gỗ, người hơi nghiêng đón nắng.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-sm text-slate-200 italic">
+                            <p>• "Nhưng cái miệng, độ cứng cơ thể, biểu cảm mượt mà, biểu cảm tự nhiên... <strong>phải trả giá bằng thời gian thực!</strong>"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 4 -->
+                <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_01.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_01.jpg" alt="LOC_001" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30">GÓC 4 • LOC_001</span>
+                            <span class="text-xs text-slate-400 font-mono">Đường Cây Xanh</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Đang nhìn sang hàng cây ➔ Xoay người 45° về phía camera.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-sm text-slate-200 italic space-y-1.5">
+                            <p class="text-amber-300 font-semibold">• "Cách bạn bắt đầu với thứ vớ vẩn - Đó là hack não!"</p>
+                            <p>• "Não chỉ sửa được thứ đã hoạt động, chứ không thể tối ưu thứ chưa tồn tại."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 5 (ĐÈ B-ROLL ĐẾ CHẾ) -->
+                <div class="glass-panel rounded-3xl p-5 border border-amber-500/40 space-y-4 flex flex-col justify-between bg-slate-900/95">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_80.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_80.jpg" alt="LOC_080" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30">GÓC 5 • LOC_080</span>
+                            <span class="text-xs text-slate-400 font-mono">Giàn Hoa Pergola</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Ngồi thư thái trên gờ bệ đá, chồm người về trước kể chuyện game.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/90 rounded-xl border border-amber-500/30 text-sm text-slate-200 italic space-y-2">
+                            <p>• "Giống như trong game Đế Chế: Ban đầu bản đồ đen xì, phải đem dân đi dò đường sương mù mới tan."</p>
+                            <div class="text-xs text-amber-300 font-mono bg-amber-950/40 p-2 rounded-lg">
+                                🎮 [03:27] Đè clip 4s: AoE_Do_Duong_Suong_Mu_Tan_4s_9x16.mp4
+                            </div>
+                            <p>• "Khi dò đường, có thể gặp sư tử, mất máu... nhưng cũng có thể gặp mỏ quả, mỏ vàng."</p>
+                            <div class="text-xs text-rose-300 font-mono bg-rose-950/40 p-2 rounded-lg">
+                                🦁 [03:34] Đè clip 5s: AoE_Nong_Dan_Bi_Su_Tu_Can_9x16.mp4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 6 -->
+                <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_121.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_121.jpg" alt="LOC_121" class="loc-img w-full mb-3 shadow-lg">
+                        </a>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/30">GÓC 6 • LOC_121</span>
+                            <span class="text-xs text-slate-400 font-mono">Hoa Viên Lối Đi</span>
+                        </div>
+                        <div class="p-2.5 bg-pink-950/30 rounded-xl border border-pink-500/30 text-xs text-pink-300 font-medium mb-3">
+                            🎭 <strong>Tư thế:</strong> Đứng thẳng vững chãi, hai tay chém dứt khoát khẳng định.
+                        </div>
+                        <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 text-sm text-slate-200 italic space-y-1.5">
+                            <p>• "Nhưng chắc chắn một điều: <strong>Không mở rộng bản đồ, sẽ không bao giờ lên đời!</strong>"</p>
+                            <p>• "Muốn lên đời Video Marketing, phải bắt đầu với thứ vớ vẩn. Phải vớ vẩn mới được!"</p>
+                            <p>• "Nếu không, não không cấp năng lượng để làm."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÓC 7 (KẾT BÀI - WALK OFF) -->
+                <div class="glass-panel rounded-3xl p-6 border border-neon/40 space-y-4 md:col-span-3 bg-gradient-to-r from-slate-900/90 to-emerald-950/30">
+                    <div class="grid md:grid-cols-3 gap-6 items-center">
+                        <a href="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_122.jpg" target="_blank">
+                            <img src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/locations/raw/loc_122.jpg" alt="LOC_122" class="loc-img w-full shadow-lg">
+                        </a>
+                        <div class="md:col-span-2 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-lg bg-neon text-slate-950 font-mono text-xs font-extrabold">GÓC 7 (KẾT THÚC CHỮ KÝ) • LOC_122</span>
+                                <span class="text-xs text-neon font-mono font-bold">Walk-Off Signature</span>
+                            </div>
+                            <div class="p-2.5 bg-neon/10 rounded-xl border border-neon/30 text-xs text-neon font-medium">
+                                🎭 <strong>Hành động diễn xuất sắc:</strong> Mỉm cười nói câu chốt ➔ <strong>Dứt câu "Mọi thứ mới bắt đầu!", anh khẽ gật đầu mỉm cười rồi quay lưng thong thả bước tiếp theo con đường cây xanh</strong>.
+                            </div>
+                            <div class="p-4 bg-slate-950/90 rounded-2xl border border-neon/30 text-slate-100 italic space-y-2">
+                                <p class="text-neon font-bold text-lg">• "Cứ bắt đầu với thứ vớ vẩn, não sẽ thấy thoải mái, chill và enjoy..."</p>
+                                <p class="text-white font-extrabold text-2xl">• "Từ đó mọi thứ mới bắt đầu!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KHO VIDEO B-ROLL CÓ SẴN TRONG MÁY -->
+        <section class="glass-panel rounded-3xl p-6 md:p-8 border border-slate-800 space-y-4">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>📁</span> Đường Dẫn File B-roll Game Đế Chế Đã Cắt Sẵn Trên Máy
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4 text-xs font-mono">
+                <div class="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 space-y-1.5">
+                    <strong class="text-amber-400 block text-sm">1. Clip Dò Sương Mù 4s (Dọc 9:16):</strong>
+                    <p class="text-slate-400">Documents/RENDER THANG 7/batdauvoithuvovan/broll_aoe/AoE_Do_Duong_Suong_Mu_Tan_4s_9x16.mp4</p>
+                </div>
+                <div class="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 space-y-1.5">
+                    <strong class="text-rose-400 block text-sm">2. Clip Sư Tử Cắn Mất Máu 5s (Dọc 9:16):</strong>
+                    <p class="text-slate-400">Documents/RENDER THANG 7/batdauvoithuvovan/broll_aoe/AoE_Nong_Dan_Bi_Su_Tu_Can_9x16.mp4</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 text-center py-8 text-xs text-slate-500 font-mono">
+        Video Course Production • VietMac 2026 • Published to vietndj.github.io/course
+    </footer>
+
+    <!-- CMS Pin Widget -->
+    <script id="cms-pin-widget">
+      if(localStorage.getItem('cms_auth') === 'granted') {
+        const path = window.location.pathname.split('/').filter(Boolean);
+        let repo = 'vietndj.github.io', file = 'index.html';
+        if (path.length > 1) { repo = path[0]; file = path.pop(); }
+        else if (path.length === 1) { if (path[0].endsWith('.html')) file = path[0]; else repo = path[0]; }
+        const fileKey = repo + '/' + decodeURIComponent(file);
+        let isPinned = false;
+        try { const dbStr = localStorage.getItem('cms_repo_data'); if(dbStr){ const db = JSON.parse(dbStr); if(Array.isArray(db.pinnedDataCache) && db.pinnedDataCache.includes(fileKey)) isPinned = true; } } catch(e){}
+        const btn = document.createElement('a');
+        btn.href = 'https://vietndj.github.io/?' + (isPinned ? 'unpin=' : 'pin=') + encodeURIComponent(fileKey);
+        btn.innerHTML = isPinned ? '❌ Bỏ ghim' : '📌 Ghim bài';
+        btn.style.cssText = 'position:fixed;top:15px;right:15px;background:' + (isPinned ? '#FF3B30' : '#FF9500') + ';color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;';
+        btn.onmouseover = () => btn.style.transform = 'scale(1.05)';
+        btn.onmouseout = () => btn.style.transform = 'scale(1)';
+        btn.onclick = function(e) {
+          e.preventDefault();
+          window.open(this.href, '_blank');
+          isPinned = !isPinned;
+          this.innerHTML = isPinned ? '❌ Bỏ ghim' : '📌 Ghim bài';
+          this.style.background = isPinned ? '#FF3B30' : '#FF9500';
+          this.href = 'https://vietndj.github.io/?' + (isPinned ? 'unpin=' : 'pin=') + encodeURIComponent(fileKey);
+        };
+        document.body.appendChild(btn);
+      }
+    </script>
+
+</body>
+</html>
