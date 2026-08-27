@@ -3,399 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Feed | Kho Lưu Trữ</title>
+    <title>FEDU COURSE • Kho Kịch Bản & Kiến Trúc Thị Giác</title>
+    <meta name="description" content="Kho lưu trữ kịch bản quay, ma trận B-roll, tư duy thị giác và bài giảng video ngắn thực chiến của anh Việt.">
     
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    typography: {
-                        DEFAULT: {
-                            css: {
-                                color: '#242424', // Xám than giảm mỏi mắt (không dùng đen tuyền)
-                                fontFamily: 'Lora, serif',
-                                fontSize: '1.125rem', // ~18px
-                                lineHeight: '1.8',
-                                h1: { fontFamily: 'Inter, sans-serif', fontWeight: '800', color: '#111827', letterSpacing: '-0.02em' },
-                                h2: { fontFamily: 'Inter, sans-serif', fontWeight: '700', color: '#111827', letterSpacing: '-0.02em', marginTop: '2em' },
-                                h3: { fontFamily: 'Inter, sans-serif', fontWeight: '600', color: '#111827' },
-                                h4: { fontFamily: 'Inter, sans-serif', fontWeight: '600', color: '#111827' },
-                                a: { color: '#1a8917', textDecoration: 'none', borderBottom: '1px solid #1a8917', fontWeight: '500' }, // Xanh Medium
-                                'a:hover': { color: '#115c0e', borderBottomColor: '#115c0e' },
-                                blockquote: { fontStyle: 'italic', borderLeftWidth: '3px', borderLeftColor: '#111827', color: '#6b7280', quotes: 'none' },
-                                code: { color: '#ef4444', backgroundColor: '#fee2e2', padding: '0.2rem 0.4rem', borderRadius: '0.25rem', fontWeight: '400' },
-                                'code::before': { content: '""' },
-                                'code::after': { content: '""' },
-                            }
+                    colors: {
+                        medium: {
+                            green: '#1a8917',
+                            greenHover: '#156d12',
+                            dark: '#242424',
+                            heading: '#191919',
+                            muted: '#6b6b6b',
+                            lightBg: '#fbfbfb',
+                            border: '#f2f2f2',
+                            pill: '#f2f2f2'
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        serif: ['Lora', 'Newsreader', 'Georgia', 'serif'],
+                        display: ['Newsreader', 'Lora', 'Georgia', 'serif']
                     }
                 }
             }
         }
     </script>
-
+    
     <style>
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: #000; 
-            margin: 0;
-            overflow: hidden; 
-        }
-
-        .feed-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
-        }
-        .feed-container::-webkit-scrollbar { display: none; }
-
-        .feed-item {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* THẺ CARD MỞ RỘNG TỪ 800PX LÊN 1000PX */
-        .feed-card {
-            width: 100%;
-            max-width: 1000px;
-            height: 90vh; 
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(255, 255, 255, 0.15);
-            display: flex;
-            flex-direction: column; 
-            overflow: hidden;
-            position: relative;
-            margin: 0 16px;
-        }
-
-        .post-content-wrapper {
-            flex-grow: 1; 
-            overflow-y: hidden;
-            overflow-x: hidden;
-            position: relative;
             background-color: #ffffff;
-            scroll-behavior: smooth;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Căn giữa cột chữ */
+            color: #242424;
+            font-family: 'Inter', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .post-content-wrapper.is-expanded { overflow-y: auto; }
-        .post-content-wrapper.is-expanded::-webkit-scrollbar { width: 6px; }
-        .post-content-wrapper.is-expanded::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 10px;
+        /* Medium Underline Links & Titles */
+        .story-title {
+            font-family: 'Newsreader', 'Lora', serif;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            transition: color 0.15s ease;
+        }
+        .story-card:hover .story-title {
+            color: #1a8917;
         }
 
-        /* GIỚI HẠN VÙNG CHỮ Ở TỈ LỆ VÀNG 720PX */
-        .prose-container {
-            width: 100%;
-            max-width: 720px;
-            padding: 2.5rem 1.5rem 6rem 1.5rem;
-            margin: 0 auto;
+        /* Image hover zoom */
+        .img-zoom-box {
+            overflow: hidden;
+        }
+        .img-zoom-box img {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .story-card:hover .img-zoom-box img {
+            transform: scale(1.035);
         }
 
-        /* 
-           BẢO VỆ DOM KỶ LUẬT THÉP (NUCLEAR CSS)
-           Ép mọi phần tử nhúng vào phải ngoan ngoãn nằm tĩnh 
-        */
-        .raw-content-inject * {
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-            position: static !important; /* TRỊ DỨT ĐIỂM BÓNG ĐEN LƠ LỬNG */
-            float: none !important;
-            transform: none !important;
-            clip-path: none !important;
+        /* Custom Scrollbar for topic tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        
-        .raw-content-inject img, 
-        .raw-content-inject video {
-            height: auto !important;
-            max-height: 70vh !important;
-            border-radius: 8px;
-            margin: 2rem auto !important;
-            display: block !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        /* Ẩn các khối div rỗng vô tri do Notion/Webflow sinh ra */
-        .raw-content-inject div:empty { display: none !important; }
-
-        .content-fade-mask {
+        /* Shimmer effect for skeleton */
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        .shimmer-anim {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-anim::after {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 40vh; 
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,1) 100%);
-            z-index: 10;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 2.5rem;
-            transition: opacity 0.3s ease;
+            top: 0; right: 0; bottom: 0; left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 255, 255, 0.4) 20%,
+                rgba(255, 255, 255, 0.7) 60%,
+                rgba(255, 255, 255, 0)
+            );
+            animation: shimmer 1.6s infinite;
+            content: '';
         }
-
-        /* Nút Đọc tiếp chuẩn Medium */
-        .read-more-btn {
-            background-color: #1a8917;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.75rem 2rem;
-            border-radius: 9999px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 14px 0 rgba(26, 137, 23, 0.39);
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-        .read-more-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 137, 23, 0.23);
-        }
-
-        #dev-tools { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
-        .dev-btn {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
-            color: white; border-radius: 50%; width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(255,255,255,0.2);
-        }
-        .dev-btn:hover { transform: scale(1.05); }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col selection:bg-green-100 selection:text-green-900">
 
-    <div id="feed-container" class="feed-container">
-        <div id="initial-loader" class="feed-item flex-col text-gray-400">
-            <svg class="animate-spin h-10 w-10 text-gray-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-            <p class="font-medium font-['Inter']">Đang đồng bộ không gian đọc...</p>
+    <!-- Top Announcement / Top Bar -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                
+                <!-- Logo & Brand -->
+                <div class="flex items-center space-x-3">
+                    <a href="https://fedu.vn" target="_blank" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-serif font-black text-xl tracking-tighter shadow-sm group-hover:bg-emerald-600 transition-colors">
+                            F
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-display font-bold text-xl sm:text-2xl text-gray-900 tracking-tight">FEDU COURSE</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">Archive</span>
+                            </div>
+                            <p class="text-xs text-gray-500 hidden sm:block font-sans">Kho Kịch Bản & Kiến Trúc Thị Giác • Anh Việt</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Search & Actions -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <!-- Live Search Input -->
+                    <div class="relative w-44 sm:w-72">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <input type="text" id="search-input" placeholder="Tìm kịch bản, b-roll, tâm lý..." 
+                            class="w-full pl-9 pr-8 py-2 text-sm bg-gray-50 border border-gray-200 rounded-full focus:bg-white focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-gray-400 transition-all">
+                        <button id="clear-search-btn" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 hidden">
+                            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+
+                    <!-- Layout Switcher (Medium Feed vs Visual Grid) -->
+                    <div class="flex items-center bg-gray-100 p-1 rounded-full border border-gray-200 text-xs font-medium">
+                        <button id="view-feed-btn" title="Dạng danh sách Medium" class="px-2.5 py-1.5 rounded-full transition bg-white text-black shadow-sm flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                            <span class="hidden md:inline">Medium</span>
+                        </button>
+                        <button id="view-grid-btn" title="Dạng lưới thẻ hình ảnh" class="px-2.5 py-1.5 rounded-full transition text-gray-500 hover:text-black flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                            <span class="hidden md:inline">Grid Ảnh</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Topic Tabs (Horizontal Scroll) -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2.5 border-t border-gray-100 text-sm">
+                <button class="topic-filter-btn active shrink-0 px-3.5 py-1 rounded-full text-xs font-semibold bg-black text-white transition-all shadow-sm" data-category="all">
+                    Tất cả (<span id="count-all">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="broll">
+                    🎬 B-Roll & Cảnh Trám (<span id="count-broll">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="script">
+                    📝 Kịch Bản Thực Chiến (<span id="count-script">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="science">
+                    🧠 Tâm Lý & Não Bộ (<span id="count-science">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="camera">
+                    🎥 Góc Máy & Chuyển Cảnh (<span id="count-camera">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="storytelling">
+                    🚀 Xây Kênh & Story (<span id="count-storytelling">0</span>)
+                </button>
+                <button class="topic-filter-btn shrink-0 px-3.5 py-1 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all" data-category="growth">
+                    💎 Landing & Kinh Doanh (<span id="count-growth">0</span>)
+                </button>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div id="dev-tools">
-        <button onclick="promptForToken()" class="dev-btn" id="token-btn">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-        </button>
-    </div>
-
-    <script>
-        const CONFIG = {
-            owner: 'vietndj',
-            repo: 'course',
-            ignoredFiles: ['index.html', 'fix-url.html', '404.html']
-        };
-
-        const TOKEN_KEY = 'vietndj_dev_pat';
-        if(localStorage.getItem(TOKEN_KEY)) document.getElementById('token-btn').style.background = '#34c759';
-
-        function promptForToken() {
-            const currentToken = localStorage.getItem(TOKEN_KEY) || '';
-            const action = prompt("Nhập GitHub PAT để test (Để trống để xoá):", currentToken);
-            if (action !== null) {
-                if (action.trim() === '') localStorage.removeItem(TOKEN_KEY);
-                else localStorage.setItem(TOKEN_KEY, action.trim());
-                location.reload();
-            }
-        }
-
-        function formatTitle(filename) {
-            try {
-                let decoded = decodeURIComponent(filename.replace(/\.html$/, ''));
-                let readable = decoded.replace(/-/g, ' ');
-                return readable.charAt(0).toUpperCase() + readable.slice(1);
-            } catch (e) { return filename.replace(/\.html$/, ''); }
-        }
-
-        function expandContent(btnElement) {
-            const wrapper = btnElement.closest('.post-content-wrapper');
-            const mask = wrapper.querySelector('.content-fade-mask');
-            mask.style.display = 'none';
-            wrapper.classList.add('is-expanded');
-        }
-
-        const observerOptions = {
-            root: document.getElementById('feed-container'),
-            rootMargin: '100px 0px', 
-            threshold: 0.1
-        };
-
-        const postObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const card = entry.target;
-                    const downloadUrl = card.dataset.downloadUrl;
-                    const isLoaded = card.dataset.loaded;
-
-                    if (downloadUrl && isLoaded === 'false') {
-                        loadRawContent(card, downloadUrl);
-                        card.dataset.loaded = 'true';
-                    }
-                }
-            });
-        }, observerOptions);
-
-        /**
-         * HÀM PARSE HTML SIÊU THÔNG MINH - SÁT THỦ DIỆT RÁC
-         */
-        async function loadRawContent(cardElement, downloadUrl) {
-            const contentContainer = cardElement.querySelector('.raw-content-inject');
-            try {
-                // TUYỆT ĐỐI KHÔNG DÙNG HEADER AUTHORIZATION ĐỂ TRÁNH CORS PREFLIGHT
-                const response = await fetch(downloadUrl);
-                if (!response.ok) throw new Error(`Lỗi tải file: HTTP ${response.status}`);
-                const htmlText = await response.text();
-
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-                
-                // Fallback thông minh: Cố lấy thẻ chứa nội dung chính, nếu không có thì lấy body
-                let mainContent = 
-                    doc.querySelector('article') || 
-                    doc.querySelector('main') || 
-                    doc.querySelector('.notion-page-content') || 
-                    doc.querySelector('.markdown-body') || 
-                    doc.body;
-
-                // ---------------------------------------------------------
-                // BƯỚC 1: SÁT THỦ DOM - Xoá sạch thẻ rác và layout nguy hiểm
-                // (Chính SVG, Canvas và Iframe sinh ra các khối đen khổng lồ)
-                // ---------------------------------------------------------
-                const tagsToKill = ['script', 'style', 'link', 'meta', 'iframe', 'svg', 'canvas', 'noscript', 'nav', 'header', 'footer', 'aside'];
-                tagsToKill.forEach(tag => {
-                    mainContent.querySelectorAll(tag).forEach(el => el.remove());
-                });
-
-                // ---------------------------------------------------------
-                // BƯỚC 2: TẨY RỬA THUỘC TÍNH (Sanitization)
-                // Lột sạch CSS inline và class gốc để ép văn bản theo chuẩn Typography của ta
-                // (Chữa dứt điểm bệnh nền tối, chữ chìm)
-                // ---------------------------------------------------------
-                mainContent.querySelectorAll('*').forEach(el => {
-                    el.removeAttribute('style'); // Xoá inline CSS
-                    el.removeAttribute('class'); // Xoá class của tool gốc
-                    el.removeAttribute('id');
-                    el.removeAttribute('bgcolor');
-                    el.removeAttribute('color');
-                    
-                    // Ép link mở tab mới an toàn
-                    if (el.tagName === 'A') {
-                        el.setAttribute('target', '_blank');
-                        el.setAttribute('rel', 'noopener noreferrer');
-                    }
-                });
-
-                // Xoá các đoạn văn/div rỗng (sinh ra do tool export)
-                mainContent.querySelectorAll('div, p, span').forEach(el => {
-                    if (el.innerHTML.trim() === '') el.remove();
-                });
-
-                contentContainer.innerHTML = mainContent.innerHTML;
-
-            } catch (error) {
-                console.error("Lỗi parse bài viết:", error);
-                contentContainer.innerHTML = `
-                    <div class="p-6 bg-red-50 text-red-600 rounded-xl border border-red-100 font-sans mx-auto mt-6">
-                        <p class="font-bold text-lg mb-1">Không thể hiển thị bài viết này</p>
-                        <p class="text-sm opacity-80">${error.message}</p>
-                    </div>`;
-            }
-        }
-
-        async function fetchAndRenderFeed() {
-            const container = document.getElementById('feed-container');
+    <!-- Main Container -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <!-- Hero Section: Featured / Latest Story (Mới Nhất) -->
+        <section id="hero-featured" class="mb-12 border-b border-gray-100 pb-10 hidden">
+            <div class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4 flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>Bài Mới Nhất • Featured Masterpiece</span>
+            </div>
             
+            <div id="hero-card" class="group grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center bg-gray-50/60 p-5 sm:p-7 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all">
+                <!-- Hero Image -->
+                <div class="lg:col-span-7 img-zoom-box rounded-xl overflow-hidden shadow-sm aspect-[16/9] bg-gray-200 relative">
+                    <img id="hero-img" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-md">
+                        <span id="hero-category">Kịch Bản Quay</span>
+                    </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="lg:col-span-5 flex flex-col justify-center space-y-4">
+                    <div class="flex items-center gap-2 text-xs text-gray-500 font-medium">
+                        <span>FEDU • Anh Việt</span>
+                        <span>•</span>
+                        <span id="hero-date">27 Th08, 2026</span>
+                        <span>•</span>
+                        <span id="hero-readtime">11 phút đọc</span>
+                    </div>
+
+                    <a id="hero-link" href="#" target="_blank" class="block">
+                        <h1 id="hero-title" class="text-2xl sm:text-3xl lg:text-3xl font-bold font-display text-gray-900 leading-tight group-hover:text-emerald-700 transition-colors">
+                            Tiêu đề bài viết nổi bật
+                        </h1>
+                    </a>
+
+                    <p id="hero-excerpt" class="text-sm sm:text-base text-gray-600 font-sans leading-relaxed line-clamp-3">
+                        Tóm tắt nội dung bài viết mới nhất được sinh tự động.
+                    </p>
+
+                    <div class="pt-2 flex items-center justify-between">
+                        <a id="hero-cta-btn" href="#" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-sm font-semibold hover:bg-emerald-700 transition shadow-sm">
+                            <span>Đọc bài viết ngay</span>
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <span id="hero-size" class="text-xs text-gray-400 font-mono">60 KB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feed Controls / Status -->
+        <div class="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
+            <div class="flex items-center gap-2">
+                <h2 id="section-title" class="font-display text-xl font-bold text-gray-900">Danh Sách Kịch Bản & Bài Giảng</h2>
+                <span id="results-count" class="text-xs bg-gray-100 text-gray-600 font-semibold px-2.5 py-0.5 rounded-full">0 bài</span>
+            </div>
+            <div class="text-xs text-gray-500 flex items-center gap-1.5">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Click mở bài trong tab mới</span>
+            </div>
+        </div>
+
+        <!-- Skeleton Loader -->
+        <div id="skeleton-loader" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 rounded-xl border border-gray-100">
+                <div class="md:col-span-2 space-y-3">
+                    <div class="h-4 bg-gray-100 rounded w-1/4 shimmer-anim"></div>
+                    <div class="h-6 bg-gray-200 rounded w-3/4 shimmer-anim"></div>
+                    <div class="h-4 bg-gray-100 rounded w-full shimmer-anim"></div>
+                </div>
+                <div class="h-32 bg-gray-100 rounded-lg shimmer-anim"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 rounded-xl border border-gray-100">
+                <div class="md:col-span-2 space-y-3">
+                    <div class="h-4 bg-gray-100 rounded w-1/4 shimmer-anim"></div>
+                    <div class="h-6 bg-gray-200 rounded w-3/4 shimmer-anim"></div>
+                    <div class="h-4 bg-gray-100 rounded w-full shimmer-anim"></div>
+                </div>
+                <div class="h-32 bg-gray-100 rounded-lg shimmer-anim"></div>
+            </div>
+        </div>
+
+        <!-- Posts Container (Medium Feed / Grid) -->
+        <div id="posts-container" class="space-y-8 sm:space-y-10">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden py-16 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Không tìm thấy bài viết phù hợp</h3>
+            <p class="text-sm text-gray-500">Hãy thử tìm kiếm bằng từ khóa khác hoặc chuyển danh mục.</p>
+        </div>
+
+        <!-- Load More / Footer Info -->
+        <div id="load-more-wrapper" class="mt-12 text-center hidden">
+            <button id="load-more-btn" class="px-8 py-3 rounded-full border border-gray-300 font-medium text-sm text-gray-800 hover:border-black hover:bg-black hover:text-white transition-all shadow-sm">
+                Tải thêm bài viết...
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 bg-gray-50 py-10 mt-16 text-center text-xs text-gray-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-gray-700">FEDU VIETNAM • HỆ THỐNG KỊCH BẢN & ĐÀO TẠO THỊ GIÁC CAO CẤP</p>
+            <p>© 2026 Nguyễn Đức Việt. Tự động đồng bộ từ GitHub Repository <a href="https://github.com/vietndj/course" target="_blank" class="underline text-emerald-700 hover:text-emerald-900 font-mono">vietndj/course</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Application Script -->
+    <script>
+        // State Management
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let currentView = 'feed'; // 'feed' or 'grid'
+        let displayLimit = 15;
+        const PAGE_SIZE = 15;
+
+        // Categories Configuration
+        const CATEGORY_MAP = {
+            'broll': { label: '🎬 B-Roll & Cảnh Trám', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+            'script': { label: '📝 Kịch Bản Thực Chiến', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+            'science': { label: '🧠 Tâm Lý & Não Bộ', color: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
+            'camera': { label: '🎥 Góc Máy & Chuyển Cảnh', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+            'storytelling': { label: '🚀 Xây Kênh & Story', color: 'bg-purple-50 text-purple-800 border-purple-200' },
+            'growth': { label: '💎 Landing & Kinh Doanh', color: 'bg-rose-50 text-rose-800 border-rose-200' },
+            'other': { label: '📌 Tài Liệu Chuyên Đề', color: 'bg-gray-100 text-gray-700 border-gray-200' }
+        };
+
+        // Format Date to Vietnamese
+        function formatDateVN(dateString) {
+            if (!dateString) return 'Gần đây';
             try {
-                // Phá cache API
-                const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents?t=${Date.now()}`;
-                
-                const fetchOptions = { method: 'GET', headers: {} };
-                const savedToken = localStorage.getItem(TOKEN_KEY);
-                if (savedToken) fetchOptions.headers['Authorization'] = `Bearer ${savedToken}`;
+                const date = new Date(dateString.replace(' ', 'T'));
+                if (isNaN(date.getTime())) return dateString.split(' ')[0] || 'Gần đây';
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day} Th${month}, ${year}`;
+            } catch (e) {
+                return dateString.split(' ')[0] || 'Gần đây';
+            }
+        }
 
-                const response = await fetch(apiUrl, fetchOptions);
-                if (!response.ok) throw new Error(`Lỗi API: ${response.status}`);
-                const data = await response.json();
+        // Remove Vietnamese accents for fast matching
+        function removeAccents(str) {
+            if (!str) return '';
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        }
 
-                const posts = data.filter(item => item.type === 'file' && item.name.endsWith('.html') && !CONFIG.ignoredFiles.includes(item.name));
-                
-                document.getElementById('initial-loader').style.display = 'none';
-
-                if (posts.length === 0) {
-                    container.innerHTML = `<div class="feed-item text-white font-['Inter']">Chưa có bài viết nào.</div>`;
-                    return;
+        // Initialize and Fetch Posts
+        async function initFeed() {
+            try {
+                // 1. Fetch from static manifest (0ms latency, reliable)
+                const res = await fetch(`./posts-manifest.json?t=${Date.now()}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    allPosts = data.posts || [];
                 }
+            } catch (err) {
+                console.warn("Không tải được posts-manifest.json, thử fallback GitHub API...", err);
+            }
 
-                posts.reverse().forEach((post) => {
-                    const title = formatTitle(post.name);
-                    let postUrl = '';
-                    try { postUrl = encodeURIComponent(post.name); } catch(e) { postUrl = post.name; }
-                    
-                    const feedItem = document.createElement('div');
-                    feedItem.className = 'feed-item';
-                    feedItem.dataset.downloadUrl = post.download_url;
-                    feedItem.dataset.loaded = 'false';
+            // 2. Background check GitHub API for live discovered files
+            checkGitHubLiveUpdates();
 
-                    feedItem.innerHTML = `
-                        <div class="feed-card">
-                            <div class="px-8 py-5 border-b border-gray-100 bg-white/95 backdrop-blur flex justify-between items-center z-20 shrink-0 sticky top-0">
-                                <h2 class="text-xl font-bold text-gray-900 truncate pr-6 font-['Inter'] tracking-tight">${title}</h2>
-                                <a href="./${postUrl}" target="_blank" class="shrink-0 text-gray-500 hover:text-black font-semibold text-sm transition font-['Inter']">
-                                    Mở toàn màn hình ↗
-                                </a>
+            // 3. Render initial state
+            updateCategoryCounts();
+            filterAndRender();
+
+            document.getElementById('skeleton-loader').classList.add('hidden');
+        }
+
+        // Live Discovery from GitHub Repo
+        async function checkGitHubLiveUpdates() {
+            try {
+                const apiRes = await fetch(`https://api.github.com/repos/vietndj/course/contents?t=${Date.now()}`);
+                if (!apiRes.ok) return;
+                const contents = await apiRes.json();
+                
+                const existingFiles = new Set(allPosts.map(p => p.filename));
+                let newFound = false;
+
+                contents.forEach(item => {
+                    if (item.type === 'file' && item.name.endsWith('.html') && !['index.html', 'fix-url.html', '404.html'].includes(item.name)) {
+                        if (!existingFiles.has(item.name)) {
+                            // New file discovered in repo! Prepend to allPosts
+                            const cleanName = item.name.replace('.html', '').replace(/-/g, ' ');
+                            const title = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+                            allPosts.unshift({
+                                filename: item.name,
+                                title: title,
+                                excerpt: 'Tài liệu hướng dẫn mới được đồng bộ từ kho bài giảng.',
+                                category_key: 'other',
+                                category_label: '📌 Tài Liệu Mới',
+                                cover_image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80',
+                                updated_at: new Date().toISOString(),
+                                read_time: '5 phút đọc',
+                                file_size_kb: Math.round(item.size / 1024)
+                            });
+                            newFound = true;
+                        }
+                    }
+                });
+
+                if (newFound) {
+                    updateCategoryCounts();
+                    filterAndRender();
+                }
+            } catch (e) {
+                // Ignore API limit in background
+            }
+        }
+
+        // Update Counter Badges
+        function updateCategoryCounts() {
+            document.getElementById('count-all').innerText = allPosts.length;
+            const counts = { broll: 0, script: 0, science: 0, camera: 0, storytelling: 0, growth: 0 };
+            allPosts.forEach(p => {
+                if (counts[p.category_key] !== undefined) counts[p.category_key]++;
+            });
+            for (let k in counts) {
+                const el = document.getElementById(`count-${k}`);
+                if (el) el.innerText = counts[k];
+            }
+        }
+
+        // Filter and Render logic
+        function filterAndRender() {
+            const query = removeAccents(currentSearch.trim());
+
+            filteredPosts = allPosts.filter(post => {
+                const matchCat = (currentCategory === 'all' || post.category_key === currentCategory);
+                if (!matchCat) return false;
+                if (!query) return true;
+
+                const textToSearch = removeAccents(`${post.title} ${post.excerpt} ${post.filename} ${post.category_label}`);
+                return textToSearch.includes(query);
+            });
+
+            document.getElementById('results-count').innerText = `${filteredPosts.length} bài`;
+
+            // Render Hero (Only if viewing 'all' and no active search)
+            const heroSec = document.getElementById('hero-featured');
+            if (currentCategory === 'all' && !query && filteredPosts.length > 0) {
+                renderHero(filteredPosts[0]);
+                heroSec.classList.remove('hidden');
+            } else {
+                heroSec.classList.add('hidden');
+            }
+
+            renderPosts();
+        }
+
+        // Render Hero Spotlight
+        function renderHero(post) {
+            document.getElementById('hero-title').innerText = post.title;
+            document.getElementById('hero-excerpt').innerText = post.excerpt;
+            document.getElementById('hero-date').innerText = formatDateVN(post.updated_at);
+            document.getElementById('hero-readtime').innerText = post.read_time;
+            document.getElementById('hero-category').innerText = post.category_label;
+            document.getElementById('hero-size').innerText = `${post.file_size_kb} KB`;
+            document.getElementById('hero-img').src = post.cover_image;
+            document.getElementById('hero-img').alt = post.title;
+            
+            const postUrl = `./${encodeURIComponent(post.filename)}`;
+            document.getElementById('hero-link').href = postUrl;
+            document.getElementById('hero-cta-btn').href = postUrl;
+        }
+
+        // Render Main Post List
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            const emptyState = document.getElementById('empty-state');
+            const loadMoreWrapper = document.getElementById('load-more-wrapper');
+
+            // If we showed the hero post, skip it in the list to avoid duplicate
+            let postsToDisplay = (currentCategory === 'all' && !currentSearch && filteredPosts.length > 0) 
+                ? filteredPosts.slice(1, displayLimit + 1)
+                : filteredPosts.slice(0, displayLimit);
+
+            if (postsToDisplay.length === 0 && filteredPosts.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                loadMoreWrapper.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            if (currentView === 'feed') {
+                container.className = 'space-y-8 sm:space-y-10 divide-y divide-gray-100';
+                container.innerHTML = postsToDisplay.map(post => createMediumFeedCard(post)).join('');
+            } else {
+                container.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8';
+                container.innerHTML = postsToDisplay.map(post => createVisualGridCard(post)).join('');
+            }
+
+            // Show / Hide Load More
+            const totalAvailable = (currentCategory === 'all' && !currentSearch) ? filteredPosts.length - 1 : filteredPosts.length;
+            if (postsToDisplay.length < totalAvailable) {
+                loadMoreWrapper.classList.remove('hidden');
+            } else {
+                loadMoreWrapper.classList.add('hidden');
+            }
+        }
+
+        // Template: Medium Style Story Card
+        function createMediumFeedCard(post) {
+            const postUrl = `./${encodeURIComponent(post.filename)}`;
+            const catInfo = CATEGORY_MAP[post.category_key] || CATEGORY_MAP['other'];
+            const dateStr = formatDateVN(post.updated_at);
+
+            return `
+                <article class="story-card pt-8 first:pt-0 group">
+                    <a href="${postUrl}" target="_blank" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                        
+                        <!-- Left Content Column -->
+                        <div class="md:col-span-8 flex flex-col justify-between space-y-3">
+                            
+                            <!-- Author & Meta -->
+                            <div class="flex items-center gap-2 text-xs text-gray-500 font-medium">
+                                <div class="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center font-serif text-[10px]">F</div>
+                                <span class="font-semibold text-gray-800">FEDU • Anh Việt</span>
+                                <span>•</span>
+                                <span>${dateStr}</span>
                             </div>
 
-                            <div class="post-content-wrapper">
-                                <div class="prose-container">
-                                    <div class="raw-content-inject prose max-w-none w-full">
-                                        <div class="animate-pulse space-y-6 mt-4">
-                                            <div class="h-6 bg-gray-100 rounded w-3/4"></div>
-                                            <div class="space-y-4">
-                                                <div class="h-4 bg-gray-100 rounded w-full"></div>
-                                                <div class="h-4 bg-gray-100 rounded w-full"></div>
-                                                <div class="h-4 bg-gray-100 rounded w-5/6"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <!-- Title -->
+                            <h2 class="story-title text-xl sm:text-2xl font-bold font-display text-gray-900 group-hover:text-emerald-700 leading-snug">
+                                ${post.title}
+                            </h2>
+
+                            <!-- Excerpt -->
+                            <p class="text-sm text-gray-600 font-sans line-clamp-2 leading-relaxed">
+                                ${post.excerpt}
+                            </p>
+
+                            <!-- Bottom Meta & Tags -->
+                            <div class="pt-2 flex items-center justify-between text-xs text-gray-500">
+                                <div class="flex items-center gap-3">
+                                    <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${catInfo.color}">
+                                        ${post.category_label}
+                                    </span>
+                                    <span>${post.read_time}</span>
+                                    <span class="font-mono text-gray-400 hidden sm:inline">${post.file_size_kb} KB</span>
                                 </div>
-                                
-                                <div class="content-fade-mask">
-                                    <button onclick="expandContent(this)" class="read-more-btn">
-                                        Đọc tiếp bài này 
-                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                                    </button>
+                                <div class="text-gray-400 group-hover:text-emerald-700 flex items-center gap-1 font-medium transition-colors">
+                                    <span>Mở tab mới</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                 </div>
                             </div>
                         </div>
-                    `;
-                    
-                    container.appendChild(feedItem);
-                    postObserver.observe(feedItem);
-                });
 
-            } catch (error) {
-                console.error(error);
-                container.innerHTML = `<div class="feed-item flex-col text-red-400 bg-gray-900 font-['Inter']"><p class="text-xl font-bold mb-2">Lỗi kết nối Repository</p><p class="text-sm opacity-80">${error.message}</p></div>`;
-            }
+                        <!-- Right Image Thumbnail -->
+                        <div class="md:col-span-4 order-first md:order-last">
+                            <div class="img-zoom-box rounded-xl overflow-hidden aspect-[16/10] bg-gray-100 border border-gray-100 shadow-sm relative">
+                                <img src="${post.cover_image}" alt="${post.title}" loading="lazy" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+            `;
         }
 
-        document.addEventListener('DOMContentLoaded', fetchAndRenderFeed);
+        // Template: Visual Cards Grid
+        function createVisualGridCard(post) {
+            const postUrl = `./${encodeURIComponent(post.filename)}`;
+            const catInfo = CATEGORY_MAP[post.category_key] || CATEGORY_MAP['other'];
+            const dateStr = formatDateVN(post.updated_at);
+
+            return `
+                <article class="story-card group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-gray-200 transition-all">
+                    <a href="${postUrl}" target="_blank" class="flex flex-col h-full">
+                        
+                        <!-- Top Image -->
+                        <div class="img-zoom-box aspect-[16/10] w-full bg-gray-100 relative">
+                            <img src="${post.cover_image}" alt="${post.title}" loading="lazy" class="w-full h-full object-cover">
+                            <div class="absolute top-2.5 left-2.5">
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide bg-black/75 backdrop-blur-md text-white">
+                                    ${post.category_label}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-5 flex flex-col justify-between flex-grow space-y-3">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs text-gray-400 font-medium">
+                                    <span>${dateStr}</span>
+                                    <span>•</span>
+                                    <span>${post.read_time}</span>
+                                </div>
+                                <h2 class="story-title text-lg font-bold font-display text-gray-900 group-hover:text-emerald-700 leading-snug line-clamp-2">
+                                    ${post.title}
+                                </h2>
+                                <p class="text-xs text-gray-600 font-sans line-clamp-3 leading-relaxed">
+                                    ${post.excerpt}
+                                </p>
+                            </div>
+
+                            <div class="pt-2 border-t border-gray-50 flex items-center justify-between text-xs text-gray-400">
+                                <span class="font-mono">${post.file_size_kb} KB</span>
+                                <span class="text-emerald-700 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                                    Xem ngay ↗
+                                </span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+            `;
+        }
+
+        // Event Listeners Setup
+        document.addEventListener('DOMContentLoaded', () => {
+            initFeed();
+
+            // Search input
+            const searchInput = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search-btn');
+
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                displayLimit = PAGE_SIZE;
+                if (currentSearch.trim()) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+                filterAndRender();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                currentSearch = '';
+                clearBtn.classList.add('hidden');
+                displayLimit = PAGE_SIZE;
+                filterAndRender();
+            });
+
+            // Category Filter Pills
+            const topicBtns = document.querySelectorAll('.topic-filter-btn');
+            topicBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    topicBtns.forEach(b => {
+                        b.classList.remove('bg-black', 'text-white', 'shadow-sm', 'font-semibold');
+                        b.classList.add('bg-gray-100', 'text-gray-600', 'font-medium');
+                    });
+                    btn.classList.add('bg-black', 'text-white', 'shadow-sm', 'font-semibold');
+                    btn.classList.remove('bg-gray-100', 'text-gray-600', 'font-medium');
+
+                    currentCategory = btn.dataset.category;
+                    displayLimit = PAGE_SIZE;
+                    filterAndRender();
+                });
+            });
+
+            // Layout Switcher
+            const feedBtn = document.getElementById('view-feed-btn');
+            const gridBtn = document.getElementById('view-grid-btn');
+
+            feedBtn.addEventListener('click', () => {
+                currentView = 'feed';
+                feedBtn.className = 'px-2.5 py-1.5 rounded-full transition bg-white text-black shadow-sm flex items-center gap-1.5 font-medium';
+                gridBtn.className = 'px-2.5 py-1.5 rounded-full transition text-gray-500 hover:text-black flex items-center gap-1.5 font-medium';
+                renderPosts();
+            });
+
+            gridBtn.addEventListener('click', () => {
+                currentView = 'grid';
+                gridBtn.className = 'px-2.5 py-1.5 rounded-full transition bg-white text-black shadow-sm flex items-center gap-1.5 font-medium';
+                feedBtn.className = 'px-2.5 py-1.5 rounded-full transition text-gray-500 hover:text-black flex items-center gap-1.5 font-medium';
+                renderPosts();
+            });
+
+            // Load More Button
+            document.getElementById('load-more-btn').addEventListener('click', () => {
+                displayLimit += PAGE_SIZE;
+                renderPosts();
+            });
+        });
     </script>
 </body>
 </html>
