@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Face Clone Pro | Bộ Kỹ Năng Nhân Bản Khuôn Mặt Cho Antigravity</title>
-  <!-- Google Fonts & Tailwind CSS CDN -->
+  <title>AI Face Clone | Vũ Khí Hình Ảnh Bí Mật Cho Antigravity</title>
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,18 +20,10 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            brand: {
-              50: '#ecfdf5',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-            },
-            dark: {
-              900: '#0b0f17',
-              850: '#111827',
-              800: '#1e293b',
-              700: '#334155',
-            }
+            obsidian: '#05070c',
+            surface: '#0d111a',
+            accent: '#10b981',
+            gold: '#f59e0b',
           }
         }
       }
@@ -38,601 +31,216 @@
   </script>
   <style>
     body {
-      background-color: #080c14;
-      color: #f1f5f9;
+      background-color: #05070c;
+      color: #f8fafc;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
     }
-    .glow-emerald {
-      box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
+    .glow-glow {
+      box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.25);
     }
-    .glow-cyan {
-      box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.3);
+    .glass-box {
+      background: rgba(13, 17, 26, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
-    .glass-card {
-      background: rgba(17, 24, 39, 0.7);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card:hover {
-      border-color: rgba(52, 211, 153, 0.3);
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, #34d399 0%, #38bdf8 50%, #818cf8 100%);
+    .gradient-gold-text {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gradient-border {
-      position: relative;
-      border-radius: 1rem;
-      background: linear-gradient(60deg, #10b981, #06b6d4, #6366f1);
-      padding: 1px;
+    .gradient-emerald-text {
+      background: linear-gradient(135deg, #6ee7b7 0%, #10b981 50%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .image-hover-zoom {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .image-hover-zoom:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
-<body class="min-h-screen selection:bg-emerald-500 selection:text-black">
+<body class="selection:bg-emerald-500 selection:text-black">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-cyan-950 border-b border-emerald-500/20 py-2 px-4 text-center text-xs sm:text-sm font-medium text-emerald-300 flex items-center justify-center gap-2">
-    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-    <span>⚡️ Tương thích 100% với Antigravity IDE, Google Gemini Pro / Flash & Cursor</span>
-    <span class="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded-full border border-emerald-500/30 ml-2">v2.4 Pro</span>
+  <!-- Subtle Top Glow & Logo -->
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-6 text-center">
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-emerald-400 mb-6 shadow-inner">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="tracking-wider uppercase">VŨ KHÍ ĐẶC QUYỀN • ANTIGRAVITY IDE</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight mb-5">
+      Một Câu Lệnh.<br />
+      <span class="gradient-emerald-text">Đúng Khuôn Mặt Của Bạn.</span>
+    </h1>
+
+    <p class="text-base sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+      Chỉ cần nạp 3 bức ảnh thường ngày. Từ nay mọi bức ảnh AI Antigravity sinh ra đều tự động mang đúng khuôn mặt và thần thái của chính bạn — <span class="text-slate-200 font-medium">không cần mô tả lại, không cần kéo thả lặp lại.</span>
+    </p>
   </div>
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50 bg-[#080c14]/90 backdrop-blur-md border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-black text-black text-xl shadow-lg shadow-emerald-500/20">
-          👤
+  <!-- SECTION 1: VISUAL PROOF (INPUT -> OUTPUT CỦA ANH VIỆT) -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+    
+    <!-- 1.1 KHỐI ĐẦU VÀO (INPUT) -->
+    <div class="glass-box rounded-3xl p-6 sm:p-8 mb-8 border border-slate-800/80">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-slate-800/60 pb-4">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-emerald-400 font-bold">BƯỚC 1</span>
+          <h2 class="text-lg font-bold text-white tracking-wide">Đầu Vào: 3 Ảnh Chụp Thường Ngày</h2>
         </div>
-        <div>
-          <span class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-            AI Face Clone <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">PRO SKILL</span>
-          </span>
-          <p class="text-[11px] text-slate-400">By Antigravity Automation</p>
-        </div>
+        <span class="text-xs text-slate-400 font-light">Chụp bằng điện thoại • Không cần chỉnh sửa</span>
       </div>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="#tong-quan" class="hover:text-emerald-400 transition">Tổng Quan</a>
-        <a href="#dau-vao-dau-ra" class="hover:text-emerald-400 transition">Đầu Vào / Đầu Ra</a>
-        <a href="#cai-dat" class="hover:text-emerald-400 transition">Cài Đặt 1-Chạm</a>
-        <a href="#tao-ho-so" class="hover:text-emerald-400 transition">Tạo Hồ Sơ Online</a>
-        <a href="#huong-dan" class="hover:text-emerald-400 transition">Hướng Dẫn</a>
-      </nav>
-      <div class="flex items-center gap-3">
-        <a href="#cai-dat" class="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition shadow-lg shadow-emerald-500/25 flex items-center gap-1.5">
-          <span>⚡️ Cài Đặt Ngay</span>
-        </a>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6">
+        <div class="rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-slate-800 shadow-md">
+          <img src="./assets/face-clone/real_01.jpg" alt="Ảnh thật góc thẳng" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-slate-800 shadow-md">
+          <img src="./assets/face-clone/real_02.jpg" alt="Ảnh thật góc nghiêng" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-slate-800 shadow-md">
+          <img src="./assets/face-clone/real_03.jpg" alt="Ảnh thật ngoại cảnh" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="relative pt-16 pb-20 overflow-hidden" id="tong-quan">
-    <div class="absolute inset-0 -z-10 flex items-center justify-center">
-      <div class="w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl"></div>
-      <div class="w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-3xl ml-60"></div>
+    <!-- Mũi Tên Chuyển Hóa Phép Thuật -->
+    <div class="flex items-center justify-center my-4">
+      <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl font-black glow-glow">
+        ↓
+      </div>
     </div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-emerald-400 mb-6">
-        <span>✨ Biến Antigravity Thành Studio Điện Ảnh Cá Nhân Hóa</span>
+    <!-- 1.2 KHỐI ĐẦU RA (OUTPUT - 3 TRƯỜNG HỢP PHỔ BIẾN) -->
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800/60 pb-3 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-xs font-mono text-emerald-300 font-bold">BƯỚC 2</span>
+          <h2 class="text-lg font-bold text-white tracking-wide">Đầu Ra: 3 Tình Huống Với 3 Câu Lệnh Tự Nhiên</h2>
+        </div>
+        <span class="text-xs text-emerald-400 font-medium">Chất lượng 4K • Chuẩn Điện Ảnh</span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-tight mb-6">
-        Tạo Ảnh Giống Bạn 100%<br />
-        <span class="gradient-text">Hoàn Toàn Tự Động Trong Antigravity</span>
-      </h1>
+      <!-- Tình Huống 1: Bàn Gỗ -->
+      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
+        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
+          <img src="./assets/face-clone/gen_01_desk.jpg" alt="AI Tạo: Làm việc bàn gỗ" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+          <div>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Tình huống 01</span>
+            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Deep Work Bàn Gỗ • Hoàng Hôn Vàng Ấm</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
+            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
+            <span class="text-xs font-semibold text-emerald-300 font-mono">"Tạo ảnh tôi ngồi làm việc bàn gỗ"</span>
+          </div>
+        </div>
+      </div>
 
-      <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-        Không cần kéo thả ảnh lặp đi lặp lại. Không cần gõ lại prompt mô tả khuôn mặt. Chỉ cần chat lệnh tự nhiên: <span class="text-emerald-300 font-semibold">"Tạo ảnh tôi ngồi làm việc bàn gỗ"</span> — AI sẽ tự động ráp đúng khuôn mặt của bạn với chất lượng điện ảnh 4K.
+      <!-- Tình Huống 2: Thể Thao / Runner -->
+      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
+        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
+          <img src="./assets/face-clone/gen_02_runner.jpg" alt="AI Tạo: Chạy bộ đón bình minh" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+          <div>
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Tình huống 02</span>
+            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Runner Marathon Đón Bình Minh</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
+            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
+            <span class="text-xs font-semibold text-cyan-300 font-mono">"Tạo ảnh tôi chạy bộ đón bình minh"</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tình Huống 3: Avatar Chuyên Gia Studio -->
+      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
+        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
+          <img src="./assets/face-clone/gen_03_studio.jpg" alt="AI Tạo: Avatar Studio Chuyên Gia" class="w-full h-full object-cover image-hover-zoom" />
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+          <div>
+            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Tình huống 03</span>
+            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Avatar Studio Executive 85mm Bokeh</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
+            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
+            <span class="text-xs font-semibold text-indigo-300 font-mono">"Làm avatar chuyên gia phong cách studio"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: KÍCH HOẠT 1 CHẠM TỐI GIẢN & HUYỀN BÍ -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="relative glass-box rounded-3xl p-8 sm:p-10 border border-emerald-500/30 text-center glow-glow overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl"></div>
+      
+      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">KÍCH HOẠT NGAY</span>
+      
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-4 mb-3">
+        Kích Hoạt Vào Antigravity Của Bạn
+      </h2>
+      
+      <p class="text-sm text-slate-400 max-w-lg mx-auto mb-8 font-light">
+        Sao chép lệnh kích hoạt bên dưới, dán vào Antigravity của bạn, kéo 3 ảnh chân dung vào thư mục và bắt đầu tạo ảnh.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#cai-dat" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-black font-bold text-base transition shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2">
-          <span>🚀 Lấy Lệnh Cài Đặt 1-Click</span>
-        </a>
-        <a href="#tao-ho-so" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-base transition flex items-center justify-center gap-2">
-          <span>🛠 Trình Tạo Hồ Sơ Trực Tuyến</span>
-        </a>
+      <!-- Nút 1 Chạm Sao Chép Duy Nhất -->
+      <div class="max-w-md mx-auto mb-6">
+        <button onclick="copyActivationCommand()" id="btn-activate" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-black font-extrabold text-base tracking-wide transition shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-3">
+          <span class="text-lg">⚡️</span>
+          <span id="btn-text">SAO CHÉP LỆNH KÍCH HOẠT 1-CHẠM</span>
+        </button>
       </div>
 
-      <!-- 4 Quick Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto">
-        <div class="glass-card p-4 rounded-xl text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</div>
-          <div class="text-xs text-slate-400 mt-1">Tự Động Nhận Diện Mặt</div>
-        </div>
-        <div class="glass-card p-4 rounded-xl text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400">0s</div>
-          <div class="text-xs text-slate-400 mt-1">Không Cần Gõ Prompt Mặt</div>
-        </div>
-        <div class="glass-card p-4 rounded-xl text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">15/15</div>
-          <div class="text-xs text-slate-400 mt-1">Đồng Nhất Trang Phục Storyboard</div>
-        </div>
-        <div class="glass-card p-4 rounded-xl text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">1-Touch</div>
-          <div class="text-xs text-slate-400 mt-1">Cài Đặt Trong 10 Giây</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Showcase Before & After / 4 Styles -->
-  <section class="py-16 bg-slate-950/60 border-y border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">Chất Lượng Thực Tế</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white">4 Phong Cách Điện Ảnh Kinh Điển</p>
-        <p class="text-slate-400 mt-3 text-sm sm:text-base">Từ 3 ảnh chụp selfie đời thường, hệ thống tự động sinh ra các bức ảnh đỉnh cao chuẩn studio.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Style 1 -->
-        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between group hover:border-emerald-500/50 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">Style 01</span>
-              <span class="text-xs text-slate-400">Tỉ lệ 1:1</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition">Avatar Studio Chuyên Gia</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Ánh sáng ven tóc mềm mại (rim light), ống kính 85mm f/1.4 xóa phông mờ ảo, nụ cười tự tin ấm áp, trang phục suit hoặc blazer sang trọng.
-            </p>
-          </div>
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
-            <span class="text-emerald-400">Prompt:</span> "Làm avatar chuyên gia phong cách studio"
-          </div>
-        </div>
-
-        <!-- Style 2 -->
-        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between group hover:border-cyan-500/50 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold text-cyan-400 uppercase bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">Style 02</span>
-              <span class="text-xs text-slate-400">Tỉ lệ 16:9</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition">Bàn Gỗ Deep Work Tech</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Ngồi tập trung làm việc bên bàn gỗ óc chó mộc mạc, ánh nắng hoàng hôn vàng ấm rọi qua cửa sổ lớn, cây xanh decor, vibe công nghệ tối giản.
-            </p>
-          </div>
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
-            <span class="text-cyan-400">Prompt:</span> "Tạo ảnh tôi đang ngồi làm việc bàn gỗ"
-          </div>
-        </div>
-
-        <!-- Style 3 -->
-        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between group hover:border-indigo-500/50 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold text-indigo-400 uppercase bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">Style 03</span>
-              <span class="text-xs text-slate-400">Tỉ lệ 9:16</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition">Runner Marathon Sáng Sớm</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Sải bước chạy bộ đón bình minh công viên, sương sớm lấp lánh, vóc dáng săn chắc thể thao, đồng hồ smartwatch, khoảnh khắc đóng băng chuyển động.
-            </p>
-          </div>
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
-            <span class="text-indigo-400">Prompt:</span> "Tạo ảnh tôi chạy bộ đón bình minh"
-          </div>
-        </div>
-
-        <!-- Style 4 -->
-        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between group hover:border-amber-500/50 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold text-amber-400 uppercase bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">Style 04</span>
-              <span class="text-xs text-slate-400">Tỉ lệ 16:9</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition">Zen Áo Đũi Thiên Nhiên</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Đứng ngắm cảnh tĩnh lặng trên cầu gỗ giữa hồ nước sương mây vùng cao, áo đũi linen nhẹ nhàng, ánh sáng khuếch tán dịu êm, màu phim 35mm hoài niệm.
-            </p>
-          </div>
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
-            <span class="text-amber-400">Prompt:</span> "Ảnh tôi mặc áo đũi đứng ngắm cảnh"
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature Highlight: Wardrobe Continuity -->
-      <div class="mt-8 glass-card rounded-2xl p-6 sm:p-8 border border-emerald-500/20 bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-cyan-950/40">
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-3xl shrink-0">
-            👔
-          </div>
-          <div>
-            <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
-              <span>Tính Năng Khóa Đồng Nhất Trang Phục (Wardrobe Continuity)</span>
-              <span class="text-xs bg-emerald-500 text-black font-extrabold px-2 py-0.5 rounded">ĐỘC QUYỀN</span>
-            </h4>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Khi bạn tạo bảng phân cảnh Storyboard 15 beats hoặc chuỗi ảnh liên hoàn, AI tự động khóa cố định 1 bộ trang phục (ví dụ: áo blazer xám than + áo thun trắng) xuyên suốt 100% tất cả các khung hình, không bị lỗi raccord thay đổi đồ giữa chừng như các công cụ AI thông thường.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Input vs Output Section -->
-  <section class="py-16 max-w-6xl mx-auto px-4 sm:px-6" id="dau-vao-dau-ra">
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Đặc Tả Kỹ Thuật</h2>
-      <p class="text-3xl sm:text-4xl font-extrabold text-white">Đầu Vào & Đầu Ra Chi Tiết</p>
-      <p class="text-slate-400 mt-3 text-sm">Hệ thống xử lý thông minh chuyển hóa ảnh đời thường thành vector nhân dạng chuẩn xác.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Input Card -->
-      <div class="glass-card rounded-2xl p-6 sm:p-8 border-l-4 border-l-cyan-500">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">IN</span>
-          <h3 class="text-xl font-bold text-white">Đầu Vào (Input) Bạn Cần Chuẩn Bị</h3>
-        </div>
-        <ul class="space-y-4 text-sm text-slate-300">
-          <li class="flex items-start gap-3">
-            <span class="text-cyan-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">3 đến 5 ảnh chân dung rõ mặt:</strong> Ảnh chụp điện thoại bình thường, góc thẳng, góc nghiêng 3/4, nụ cười tự nhiên.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-cyan-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Định dạng hỗ trợ:</strong> JPG, PNG, WEBP, JPEG. Không cần tách nền phức tạp.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-cyan-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Vị trí lưu trữ:</strong> Thả vào thư mục <code class="bg-slate-800 text-cyan-300 px-1.5 py-0.5 rounded font-mono">~/.gemini/avatar_photos/</code> trên máy bạn.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-cyan-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Thông số tùy chọn:</strong> Tuổi tác (28-35), vóc dáng (thể thao / runner / thư sinh), phong cách ăn mặc yêu thích.
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Output Card -->
-      <div class="glass-card rounded-2xl p-6 sm:p-8 border-l-4 border-l-emerald-500">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">OUT</span>
-          <h3 class="text-xl font-bold text-white">Đầu Ra (Output) AI Tự Động Sinh</h3>
-        </div>
-        <ul class="space-y-4 text-sm text-slate-300">
-          <li class="flex items-start gap-3">
-            <span class="text-emerald-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Hồ sơ Face Catalog JSON:</strong> Trích xuất mã gen Prompt DNA, đặc điểm nhân trắc học, mắt, sống mũi, nụ cười, cấu trúc xương hàm.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-emerald-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Ảnh AI chuẩn điện ảnh 4K:</strong> Xuất trực tiếp qua công cụ <code class="bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono">generate_image</code> với đúng tỷ lệ và mỏ neo khuôn mặt mượt mà.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-emerald-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Rule tự động tích hợp Antigravity:</strong> Tạo rule kích hoạt ngầm, bất kỳ khi nào chat vẽ ảnh nam/nữ chính là tự gắn mặt bạn.
-            </div>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-emerald-400 font-bold">✓</span>
-            <div>
-              <strong class="text-white">Xuất bản bảng Storyboard phân cảnh:</strong> Tự động ráp vào khung hình kịch bản video marketing 30s.
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1-Click Installer Section -->
-  <section class="py-16 bg-slate-950/80 border-t border-slate-800" id="cai-dat">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10">
-        <span class="bg-emerald-500/10 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/20">CÀI ĐẶT 1-CHẠM (ZERO-FRICTION)</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Chọn Nền Tảng Của Bạn</h2>
-        <p class="text-slate-400 mt-2 text-sm">Chỉ cần sao chép 1 dòng lệnh bên dưới và dán vào Terminal hoặc khung chat Antigravity.</p>
-      </div>
-
-      <!-- Tabs -->
-      <div class="glass-card rounded-2xl p-6 sm:p-8">
-        <div class="flex border-b border-slate-800 mb-6 gap-2 sm:gap-4 overflow-x-auto">
-          <button id="tab-mac" onclick="switchTab('mac')" class="tab-btn pb-3 px-3 text-sm font-semibold text-emerald-400 border-b-2 border-emerald-400 flex items-center gap-2">
-            <span>🍎 macOS / Linux (Khuyên Dùng)</span>
-          </button>
-          <button id="tab-win" onclick="switchTab('win')" class="tab-btn pb-3 px-3 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-slate-200 flex items-center gap-2">
-            <span>🪟 Windows (PowerShell)</span>
-          </button>
-          <button id="tab-chat" onclick="switchTab('chat')" class="tab-btn pb-3 px-3 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-slate-200 flex items-center gap-2">
-            <span>💬 Dán Trong Khung Chat Antigravity</span>
-          </button>
-        </div>
-
-        <!-- Mac Content -->
-        <div id="content-mac" class="tab-content">
-          <p class="text-xs text-slate-400 mb-3">Mở Terminal trên máy Mac / Linux của bạn và chạy dòng lệnh sau:</p>
-          <div class="relative bg-slate-900 p-4 rounded-xl border border-slate-800 font-mono text-xs sm:text-sm text-emerald-300 flex items-center justify-between gap-4">
-            <span class="overflow-x-auto select-all" id="cmd-mac">curl -fsSL https://raw.githubusercontent.com/vietndj/AI-Skill/main/install-face-clone.sh | bash</span>
-            <button onclick="copyToClipboard('cmd-mac', 'btn-copy-mac')" id="btn-copy-mac" class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs px-3 py-1.5 rounded-lg transition">
-              Copy 1-Click
-            </button>
-          </div>
-        </div>
-
-        <!-- Windows Content -->
-        <div id="content-win" class="tab-content hidden">
-          <p class="text-xs text-slate-400 mb-3">Mở PowerShell (Run as Administrator) trên Windows và chạy dòng lệnh sau:</p>
-          <div class="relative bg-slate-900 p-4 rounded-xl border border-slate-800 font-mono text-xs sm:text-sm text-cyan-300 flex items-center justify-between gap-4">
-            <span class="overflow-x-auto select-all" id="cmd-win">irm https://raw.githubusercontent.com/vietndj/AI-Skill/main/install-face-clone.ps1 | iex</span>
-            <button onclick="copyToClipboard('cmd-win', 'btn-copy-win')" id="btn-copy-win" class="shrink-0 bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-xs px-3 py-1.5 rounded-lg transition">
-              Copy 1-Click
-            </button>
-          </div>
-        </div>
-
-        <!-- Chat Content -->
-        <div id="content-chat" class="tab-content hidden">
-          <p class="text-xs text-slate-400 mb-3">Nếu bạn đang mở Antigravity IDE, chỉ cần copy câu lệnh này và gửi vào khung chat:</p>
-          <div class="relative bg-slate-900 p-4 rounded-xl border border-slate-800 font-mono text-xs sm:text-sm text-indigo-300 flex items-center justify-between gap-4">
-            <span class="overflow-x-auto select-all" id="cmd-chat">Hãy cài đặt và kích hoạt skill AI Face Clone từ repo vietndj/AI-Skill, sau đó hướng dẫn tôi thiết lập hồ sơ khuôn mặt</span>
-            <button onclick="copyToClipboard('cmd-chat', 'btn-copy-chat')" id="btn-copy-chat" class="shrink-0 bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">
-              Copy 1-Click
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-6 flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-slate-800">
-          <span>⚡️ Thời gian cài đặt: ~8 giây</span>
-          <span class="text-emerald-400 font-semibold">Tự động tạo thư mục ~/.gemini/avatar_photos</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Online Face Profile Builder -->
-  <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6" id="tao-ho-so">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="bg-indigo-500/10 text-indigo-400 text-xs font-bold px-3 py-1 rounded-full border border-indigo-500/20">WIZARD TRỰC TUYẾN</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Trình Tạo Hồ Sơ Khuôn Mặt (Profile Builder)</h2>
-      <p class="text-slate-400 mt-2 text-sm">Điền thông tin của bạn để tạo ngay tệp cấu hình <code class="text-emerald-300 font-mono">face_catalog.json</code> chuẩn xác 100%.</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <!-- Form Input (5 cols) -->
-      <div class="lg:col-span-5 glass-card rounded-2xl p-6 space-y-4">
-        <h3 class="text-base font-bold text-white border-b border-slate-800 pb-3">👤 Thông Tin Nhân Dạng</h3>
-
+      <!-- 3 Bước Siêu Tối Giản -->
+      <div class="grid grid-cols-3 gap-3 text-left pt-6 border-t border-slate-800/80 text-xs">
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Tên của bạn (hoặc Tên gọi)</label>
-          <input type="text" id="inp-name" value="Anh Việt" oninput="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" />
+          <span class="text-emerald-400 font-bold block mb-1">01. Sao Chép</span>
+          <span class="text-slate-400">Ấn nút trên để copy lệnh cài đặt độc quyền.</span>
         </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1">Giới tính</label>
-            <select id="inp-gender" onchange="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
-              <option value="male" selected>Nam (Male)</option>
-              <option value="female">Nữ (Female)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1">Độ tuổi</label>
-            <input type="text" id="inp-age" value="30-38" oninput="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" />
-          </div>
-        </div>
-
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Kiểu tóc & Màu tóc</label>
-          <input type="text" id="inp-hair" value="Short neat textured black hair" oninput="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" />
+          <span class="text-cyan-400 font-bold block mb-1">02. Dán & Thả Ảnh</span>
+          <span class="text-slate-400">Dán vào Terminal/Chat, thả 3 ảnh vào thư mục vừa tạo.</span>
         </div>
-
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Vóc dáng (Build)</label>
-          <input type="text" id="inp-build" value="Athletic lean runner build, upright posture" oninput="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Trang phục mặc định ưu tiên</label>
-          <select id="inp-attire" onchange="updateProfileJson()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
-            <option value="blazer_tee" selected>Blazer xám than + Áo thun trắng (Tech Casual)</option>
-            <option value="all_black">All-Black tối giản (Minimalist Tee & Trousers)</option>
-            <option value="linen_zen">Áo đũi Linen nhẹ nhàng (Nature Zen)</option>
-            <option value="runner_sport">Đồ thể thao Runner (Athletic Sportswear)</option>
-            <option value="formal_suit">Suit công sở chỉnh chu (Executive Suit)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- JSON Preview (7 cols) -->
-      <div class="lg:col-span-7 glass-card rounded-2xl p-6 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-              <h3 class="text-sm font-bold text-white font-mono">face_catalog.json (Live Generator)</h3>
-            </div>
-            <div class="flex gap-2">
-              <button onclick="copyProfileJson()" id="btn-copy-json" class="bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-3 py-1.5 rounded border border-slate-700 transition">
-                Copy JSON
-              </button>
-              <button onclick="downloadProfileJson()" class="bg-emerald-500 hover:bg-emerald-400 text-xs font-bold text-black px-3 py-1.5 rounded transition">
-                Tải File .JSON
-              </button>
-            </div>
-          </div>
-
-          <pre id="json-output" class="bg-slate-900 p-4 rounded-xl font-mono text-[11px] sm:text-xs text-emerald-300 overflow-x-auto max-h-[380px] border border-slate-800 select-all"></pre>
-        </div>
-
-        <p class="text-[11px] text-slate-400 mt-4">
-          💡 <strong>Mẹo:</strong> Tải file này và đặt vào thư mục <code class="text-cyan-300 font-mono">~/.gemini/avatar_photos/face_catalog.json</code> trên máy bạn để hoàn tất cấu hình ngay lập tức!
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 Steps Frictionless Guide -->
-  <section class="py-16 bg-slate-950/60 border-t border-slate-800" id="huong-dan">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">QUY TRÌNH 3 BƯỚC</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white">Sử Dụng Không Ma Sát</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-card rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-lg mb-4">
-            1
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Cài Đặt 1-Click</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Chạy dòng lệnh cài đặt tự động vào Terminal. Hệ thống sẽ tự tạo cấu trúc thư mục và tích hợp skill vào Antigravity IDE trong 8 giây.
-          </p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold text-lg mb-4">
-            2
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Thả 3 Ảnh Vào Thư Mục</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Copy 3-5 bức ảnh chân dung rõ mặt của bạn vào thư mục <code class="text-cyan-300 font-mono">~/.gemini/avatar_photos/</code>.
-          </p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center font-bold text-lg mb-4">
-            3
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Chat Tự Nhiên & Hưởng Thụ</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Mở Antigravity và chat tự nhiên: *"Tạo cho tôi ảnh ngồi làm việc..."*. AI sẽ tự động gắn khuôn mặt bạn vào tất cả các bức ảnh.
-          </p>
+          <span class="text-indigo-400 font-bold block mb-1">03. Ra Lệnh</span>
+          <span class="text-slate-400">Chat tự nhiên: "Tạo ảnh tôi..." AI tự gắn mặt 100%.</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-10 border-t border-slate-800 bg-[#080c14] text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4">
-      <p class="mb-2">© 2026 Antigravity Automation & AI Studio. Thiết kế và tối ưu cho Creator Chuyên Nghiệp.</p>
-      <p class="text-slate-600">Được tối ưu hóa cho Antigravity 2.0 • Google Gemini Pro • High-Precision Face Synthesis</p>
-    </div>
+  <footer class="py-8 text-center text-xs text-slate-600 border-t border-slate-900">
+    <p>© 2026 Antigravity Visual Twin Engine • Tối ưu cho Gemini Pro</p>
   </footer>
 
-  <!-- Interactive JavaScript -->
+  <!-- Script Copy Bí Mật -->
   <script>
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('text-emerald-400', 'border-emerald-400');
-        el.classList.add('text-slate-400', 'border-transparent');
-      });
+    const ACTIVATION_CMD = "curl -fsSL https://raw.githubusercontent.com/vietndj/face-clone/main/install.sh | bash";
 
-      document.getElementById('content-' + tab).classList.remove('hidden');
-      const activeBtn = document.getElementById('tab-' + tab);
-      activeBtn.classList.remove('text-slate-400', 'border-transparent');
-      activeBtn.classList.add('text-emerald-400', 'border-emerald-400');
-    }
-
-    function copyToClipboard(elementId, btnId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById(btnId);
-        const originalText = btn.innerText;
-        btn.innerText = '✅ Đã Copy!';
-        btn.classList.add('bg-emerald-400');
+    function copyActivationCommand() {
+      navigator.clipboard.writeText(ACTIVATION_CMD).then(() => {
+        const btn = document.getElementById('btn-activate');
+        const txt = document.getElementById('btn-text');
+        
+        btn.classList.add('from-emerald-400', 'to-emerald-300');
+        txt.innerText = '✅ ĐÃ SAO CHÉP VÀO BỘ NHỚ ĐỆM!';
+        
         setTimeout(() => {
-          btn.innerText = originalText;
-          btn.classList.remove('bg-emerald-400');
-        }, 2000);
+          txt.innerText = 'SAO CHÉP LỆNH KÍCH HOẠT 1-CHẠM';
+          btn.classList.remove('from-emerald-400', 'to-emerald-300');
+        }, 2500);
       });
     }
-
-    function updateProfileJson() {
-      const name = document.getElementById('inp-name').value || "Chủ Nhân";
-      const gender = document.getElementById('inp-gender').value;
-      const age = document.getElementById('inp-age').value || "30-35";
-      const hair = document.getElementById('inp-hair').value;
-      const build = document.getElementById('inp-build').value;
-      const attireKey = document.getElementById('inp-attire').value;
-
-      const genderWord = gender === 'male' ? 'man' : 'woman';
-      const adj = gender === 'male' ? 'handsome' : 'beautiful';
-      const ageNum = age.split('-')[0] || '30';
-
-      const anchorSnippet = `a ${adj} ${ageNum}s Vietnamese ${genderWord} with ${hair}, defined jawline, ${build}, expressive dark eyes, authentic Asian facial features, clean smart attire`;
-
-      const catalog = {
-        "profile": {
-          "name": name,
-          "gender": gender,
-          "age_range": age,
-          "ethnicity": "Vietnamese / East Asian",
-          "build": build,
-          "hair": hair,
-          "facial_features": {
-            "face_shape": "Oval with defined jawline and clean contour",
-            "eyes": "Expressive dark brown Asian eyes, confident gaze",
-            "nose": "Straight proportionate bridge",
-            "mouth_smile": "Genuine warm confident smile",
-            "skin": "Healthy fair-to-medium skin tone"
-          },
-          "standard_attires": {
-            "smart_casual_studio": "Tailored dark blazer over crisp white crewneck tee",
-            "deep_work_tech": "Minimalist black crewneck tee and tailored slim trousers",
-            "athletic_runner": "High-performance athletic running singlet and sports smartwatch",
-            "nature_eco_zen": "Light gray breathable linen collarless shirt"
-          },
-          "prompt_anchor_snippet": anchorSnippet
-        },
-        "dataset_metadata": {
-          "storage_dir": "~/.gemini/avatar_photos",
-          "reference_photos": [
-            "~/.gemini/avatar_photos/portrait_01.jpg",
-            "~/.gemini/avatar_photos/portrait_02.jpg"
-          ]
-        }
-      };
-
-      document.getElementById('json-output').innerText = JSON.stringify(catalog, null, 2);
-    }
-
-    function copyProfileJson() {
-      const text = document.getElementById('json-output').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById('btn-copy-json');
-        btn.innerText = '✅ Đã Copy!';
-        setTimeout(() => { btn.innerText = 'Copy JSON'; }, 2000);
-      });
-    }
-
-    function downloadProfileJson() {
-      const text = document.getElementById('json-output').innerText;
-      const blob = new Blob([text], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'face_catalog.json';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    // Init on page load
-    updateProfileJson();
   </script>
 </body>
 </html>
