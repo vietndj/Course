@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Kịch Bản Thoại 1 Dòng & Cảnh Trám Gợi Ý - Căn Phòng Lạ & Nụ Cười Mở Lời</title>
+  <title>Kịch Bản Teleprompter Master 10 Dòng - Căn Phòng Lạ & Nụ Cười Mở Lời - Anh Việt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070B14;
-      --card-bg: #0F172A;
-      --card-inner: #162036;
-      --card-border: #1E293B;
+      --bg: #060911;
+      --card-bg: #0D1527;
+      --card-inner: #15223C;
+      --card-border: #1F2E4D;
       --card-border-active: #38BDF8;
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
@@ -23,12 +23,12 @@
       --amber-bg: rgba(245, 158, 11, 0.12);
       --emerald: #10B981;
       --emerald-bg: rgba(16, 185, 129, 0.12);
-      --purple: #A855F7;
+      --purple: #C084FC;
       --font-heading: "Plus Jakarta Sans", sans-serif;
       --font-body: "Be Vietnam Pro", sans-serif;
       --font-mono: "JetBrains Mono", monospace;
       --script-font-size: 19px;
-      --script-line-height: 1.6;
+      --script-line-height: 1.65;
     }
 
     * {
@@ -43,7 +43,7 @@
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.6;
-      padding: 12px 10px 120px;
+      padding: 10px 10px 120px;
       font-size: 15px;
       user-select: text;
     }
@@ -56,16 +56,16 @@
     /* Sticky Mobile Teleprompter Control Bar */
     .tele-bar {
       position: sticky;
-      top: 8px;
+      top: 6px;
       z-index: 1000;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(13, 21, 39, 0.96);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 16px;
       padding: 8px 12px;
-      margin-bottom: 16px;
-      box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.1);
+      margin-bottom: 14px;
+      box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.85), 0 0 15px rgba(56, 189, 248, 0.12);
     }
 
     .tele-bar-row1 {
@@ -124,7 +124,7 @@
       display: grid;
       grid-template-columns: 1.2fr 1fr 0.9fr;
       gap: 4px;
-      background: #090D18;
+      background: #080C16;
       padding: 3px;
       border-radius: 10px;
       border: 1px solid var(--card-border);
@@ -147,17 +147,17 @@
 
     .tab-btn.active {
       background: var(--accent);
-      color: #070B14;
+      color: #060911;
       box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
     }
 
     /* Header Summary Card */
     .hero-card {
-      background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+      background: linear-gradient(180deg, #1A2642 0%, #0D1527 100%);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      padding: 18px 16px;
-      margin-bottom: 16px;
+      padding: 16px 14px;
+      margin-bottom: 14px;
       position: relative;
       overflow: hidden;
     }
@@ -195,31 +195,31 @@
 
     h1 {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       line-height: 1.35;
       color: #FFFFFF;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .hero-sub {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      padding-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid var(--card-border);
     }
 
     .stat-box {
-      background: rgba(15, 23, 42, 0.6);
-      padding: 6px 8px;
+      background: rgba(13, 21, 39, 0.7);
+      padding: 5px 6px;
       border-radius: 8px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.05);
@@ -227,13 +227,13 @@
 
     .stat-val {
       font-family: var(--font-mono);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 800;
       color: var(--accent);
     }
 
     .stat-lbl {
-      font-size: 10px;
+      font-size: 9.5px;
       color: var(--text-muted);
       margin-top: 1px;
     }
@@ -272,21 +272,21 @@
 
     .prompt-card:hover {
       border-color: rgba(56, 189, 248, 0.4);
-      background: #131E35;
+      background: #111C33;
     }
 
     /* Active Highlighted Line when filming */
     .prompt-card.current-active {
       border-color: #38BDF8;
-      background: linear-gradient(180deg, #162444 0%, #0F1A30 100%);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 0 0 1px rgba(56, 189, 248, 0.4);
+      background: linear-gradient(180deg, #152549 0%, #0D172E 100%);
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.28), inset 0 0 0 1px rgba(56, 189, 248, 0.4);
       transform: scale(1.01);
     }
 
     .prompt-card.current-active .script-line-text {
       color: #FFFFFF;
       font-weight: 700;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
     }
 
     .card-top-meta {
@@ -298,7 +298,7 @@
 
     .line-number-pill {
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       padding: 3px 8px;
       border-radius: 6px;
@@ -311,13 +311,35 @@
 
     .line-duration-pill {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--amber);
       background: var(--amber-bg);
       padding: 2px 7px;
       border-radius: 5px;
     }
+
+    /* Acting & Delivery Cue Badge */
+    .cue-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .cue-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cue-action { background: rgba(56, 189, 248, 0.12); color: #7DD3FC; border: 1px solid rgba(56, 189, 248, 0.25); }
+    .cue-voice { background: rgba(245, 158, 11, 0.12); color: #FCD34D; border: 1px solid rgba(245, 158, 11, 0.25); }
+    .cue-eye { background: rgba(192, 132, 252, 0.12); color: #E9D5FF; border: 1px solid rgba(192, 132, 252, 0.25); }
 
     .script-line-text {
       font-size: var(--script-font-size);
@@ -329,9 +351,27 @@
       transition: font-size 0.15s ease;
     }
 
+    /* Emphasis notation in text */
+    .script-line-text strong {
+      color: #38BDF8;
+      font-weight: 800;
+    }
+
+    .script-line-text .drawl {
+      color: #FCD34D;
+      text-decoration: underline wavy rgba(245, 158, 11, 0.5);
+      text-underline-offset: 3px;
+    }
+
+    .script-line-text .pause-dot {
+      color: #38BDF8;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
     /* B-Roll Suggestion Mini Card Attached to Each Line */
     .broll-hint-box {
-      background: #090D18;
+      background: #080C16;
       border: 1px dashed rgba(245, 158, 11, 0.4);
       border-radius: 10px;
       padding: 10px 12px;
@@ -352,7 +392,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -387,7 +427,7 @@
     /* Climax Card Style (Dòng 10) */
     .prompt-card.climax-special {
       border: 1.5px solid var(--emerald);
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.12) 0%, rgba(13, 21, 39, 0.98) 100%);
     }
 
     .prompt-card.climax-special .line-number-pill {
@@ -398,10 +438,10 @@
 
     .action-badge-box {
       background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       border-radius: 8px;
       padding: 8px 10px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 12px;
       color: #6EE7B7;
       display: flex;
@@ -470,7 +510,7 @@
 
     .timeline-audio {
       font-size: 13.5px;
-      line-height: 1.5;
+      line-height: 1.55;
       color: #F8FAFC;
     }
 
@@ -481,7 +521,7 @@
     .timeline-visual {
       font-size: 12.5px;
       color: var(--text-muted);
-      background: #090D18;
+      background: #080C16;
       padding: 8px 10px;
       border-radius: 6px;
       border-left: 3px solid var(--amber);
@@ -531,7 +571,7 @@
 
     /* Luc Bat Poetry Card */
     .lucbat-box {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(26, 38, 66, 0.9) 0%, rgba(13, 21, 39, 0.95) 100%);
       border: 1.5px solid var(--accent);
       border-radius: 16px;
       padding: 18px 14px;
@@ -602,7 +642,7 @@
     }
 
     .comment-preview {
-      background: #070B14;
+      background: #060911;
       border: 1px solid var(--card-border);
       border-radius: 10px;
       padding: 12px;
@@ -616,10 +656,10 @@
     /* Floating Navigation Controls on Mobile */
     .mobile-float-nav {
       position: fixed;
-      bottom: 16px;
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(13, 21, 39, 0.95);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--accent);
@@ -628,7 +668,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75), 0 0 15px rgba(56, 189, 248, 0.2);
       z-index: 1000;
     }
 
@@ -649,7 +689,7 @@
 
     .float-btn:active {
       background: var(--accent);
-      color: #070B14;
+      color: #060911;
     }
 
     .line-counter {
@@ -663,7 +703,7 @@
     /* Footer */
     .footer {
       text-align: center;
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--text-dim);
       padding: 20px 0 10px;
     }
@@ -730,8 +770,12 @@
             <span class="line-number-pill">DÒNG 01 • HOOK MỞ MÀN</span>
             <span class="line-duration-pill">00s - 03s</span>
           </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-eye">👁️ Nhìn thẳng máy quay</span>
+            <span class="cue-tag cue-voice">🎙️ Hỏi tự nhiên, nhướng mày nhẹ</span>
+          </div>
           <div class="script-line-text">
-            Bạn thử nhớ lại xem: Lần gần nhất bạn bước chân vào một căn phòng có cả trăm người lạ, việc đầu tiên bạn làm là gì?
+            Bước vào một căn phòng lạ<span class="pause-dot">...</span> việc đầu tiên bạn làm là gì?
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -748,10 +792,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 2)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 02 • THỰC TẾ ĐỜI THƯỜNG</span>
-            <span class="line-duration-pill">03s - 06s</span>
+            <span class="line-duration-pill">03s - 07s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">👉 Tay khẽ chỉ sang bên cạnh</span>
+            <span class="cue-tag cue-voice">🎙️ Cười nhẹ, xưng "mình"</span>
           </div>
           <div class="script-line-text">
-            Đa phần chúng ta sẽ chọn một góc khuất, ngồi xuống, cầm điện thoại lên và im lặng quan sát.
+            Mình sẽ chọn một góc này<span class="pause-dot">...</span> rồi mình rút điện thoại ra lướt<span class="pause-dot">...</span> và im lặng quan sát.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -768,10 +816,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 3)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 03 • GIẢI MÃ TÂM LÝ</span>
-            <span class="line-duration-pill">06s - 12s</span>
+            <span class="line-duration-pill">07s - 14s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-voice">🎙️ Nhả chữ "chảnh~" kéo dài tếu táo</span>
+            <span class="cue-tag cue-action">🤝 Gật đầu đồng cảm</span>
           </div>
           <div class="script-line-text">
-            Không phải vì mình khó gần, mà vì bản năng con người khi ở nơi xa lạ luôn có cảm giác ngượng ngùng: sợ bị phán xét, sợ nói sai, hoặc chỉ đơn giản là chưa thấy đủ an toàn để cất lời.
+            Không phải là vì mình <span class="drawl">chảnh~~~</span><span class="pause-dot">...</span> mà là ở một nơi lạ<span class="pause-dot">...</span> ai cũng cần một cái cảm giác thoải mái an toàn<span class="pause-dot">...</span> trước khi mình nói chuyện với nhau.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -787,11 +839,15 @@
         <!-- DÒNG 04 -->
         <div class="prompt-card" onclick="setActiveCard(this, 4)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 04 • CHUYỂN CẢNH MẠNG XÃ HỘI</span>
-            <span class="line-duration-pill">12s - 15s</span>
+            <span class="line-number-pill">DÒNG 04 • BẢN LỀ CHUYỂN Ý</span>
+            <span class="line-duration-pill">14s - 17s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">🤷 Nhún vai nhẹ nhàng</span>
+            <span class="cue-tag cue-voice">🎙️ Nhịp nói gãy gọn</span>
           </div>
           <div class="script-line-text">
-            Trên mạng xã hội cũng y hệt như vậy.
+            Thì ở trên mạng xã hội<span class="pause-dot">...</span> nó cũng y như vậy thôi.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -808,10 +864,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 5)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 05 • TRẢI NGHIỆM CÁ NHÂN</span>
-            <span class="line-duration-pill">15s - 28s</span>
+            <span class="line-duration-pill">17s - 28s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-voice">🎙️ Hạ tone giọng trầm ấm</span>
+            <span class="cue-tag cue-eye">👁️ Ánh mắt nhìn sâu vào người xem</span>
           </div>
           <div class="script-line-text">
-            Bản thân tôi cũng vậy: Khi bắt gặp một nội dung đúng với trăn trở của mình, tôi thường chỉ lặng lẽ xem hết và suy ngẫm. Bởi khi một vấn đề chạm đúng thực tế, phản xạ tự nhiên của chúng ta là giữ lại để tự tìm lời giải cho mình, chứ không phải vội vã gõ ra vài dòng bình luận công khai.
+            Bản thân mình cũng thế<span class="pause-dot">...</span> Khi mình gặp đúng cái thứ mình đang quan tâm ở hiện tại<span class="pause-dot">...</span> phản xạ tự nhiên cũng là <strong>lắng lại một chút</strong><span class="pause-dot">...</span> để tự tìm lời giải<span class="pause-dot">...</span> chứ không phải là bình luận công khai.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -827,11 +887,15 @@
         <!-- DÒNG 06 -->
         <div class="prompt-card" onclick="setActiveCard(this, 6)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 06 • ẨN DỤ HỘI TRƯỜNG</span>
-            <span class="line-duration-pill">28s - 35s</span>
+            <span class="line-number-pill">DÒNG 06 • BẮT THÓP SỰ GỒNG</span>
+            <span class="line-duration-pill">28s - 39s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">🤦 Lắc đầu nhẹ thấu hiểu</span>
+            <span class="cue-tag cue-voice">🎙️ Giọng bộc bạch chân thành</span>
           </div>
           <div class="script-line-text">
-            Bình luận công khai trên mạng đôi khi cũng giống như việc bạn phải đứng dậy phát biểu trước một hội trường xa lạ. Khi chưa cảm nhận được một không gian đủ an toàn, ai trong chúng ta cũng sẽ chọn cách im lặng như một phản xạ tự nhiên.
+            Bình luận công khai<span class="pause-dot">...</span> giống như việc mình phải đứng lên phát biểu giữa một nơi xa lạ<span class="pause-dot">...</span> Tự nhiên thấy nó hơi gồng<span class="pause-dot">...</span> mất đi sự tự nhiên ban đầu<span class="pause-dot">...</span> Mà mình thì thích một <strong>cuộc trò chuyện chất lượng</strong><span class="pause-dot">...</span> hơn là những lời xã giao.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -847,11 +911,15 @@
         <!-- DÒNG 07 -->
         <div class="prompt-card" onclick="setActiveCard(this, 7)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 07 • MA SÁT NHẬN THỨC</span>
-            <span class="line-duration-pill">35s - 45s</span>
+            <span class="line-number-pill">DÒNG 07 • SỢ HỞ SƯỜN & SÁO RỖNG</span>
+            <span class="line-duration-pill">39s - 52s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-voice">🎙️ Cười tự trào đoạn "thà nói với AI"</span>
+            <span class="cue-tag cue-eye">👁️ Ánh mắt chân thành ở câu cuối</span>
           </div>
           <div class="script-line-text">
-            Một người trưởng thành thường không hưởng ứng những lời kêu gọi mang tính hình thức, nhưng việc chủ động nhắn tin riêng cũng tạo ra những ma sát tâm lý nhất định. Nếu bạn cũng là người đang làm video, bạn sẽ hiểu: khoảng cách đó không đến từ người xem, mà đến từ cách chúng ta thiết lập sự kết nối ban đầu.
+            Bởi vì người ta sợ nhất là<span class="pause-dot">...</span> khi mình đã chấp nhận mở lòng<span class="pause-dot">...</span> nói ra đúng cái khó khăn của mình rồi<span class="pause-dot">...</span> <span class="drawl">hở sườn rồi</span><span class="pause-dot">...</span> mà lại nhận về sự thờ ơ<span class="pause-dot">...</span> hay trả lời sáo rỗng<span class="pause-dot">...</span> thì hụt hẫng lắm<span class="pause-dot">...</span> <strong>thà nói chuyện với AI còn hơn!</strong><span class="pause-dot">...</span> Người xem chỉ sẵn sàng nhắn tin<span class="pause-dot">...</span> khi cảm nhận được là mình thực sự muốn nghe.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -867,11 +935,15 @@
         <!-- DÒNG 08 -->
         <div class="prompt-card" onclick="setActiveCard(this, 8)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 08 • NGƯỜI CHỦ NHÀ KÉO GHẾ</span>
-            <span class="line-duration-pill">45s - 55s</span>
+            <span class="line-number-pill">DÒNG 08 • NGƯỜI CHỦ NHÀ HÀO SẢNG</span>
+            <span class="line-duration-pill">52s - 62s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">🪑 Tay làm động tác kéo ghế, phủi nhẹ mặt bàn</span>
+            <span class="cue-tag cue-voice">🎙️ Giọng ấm, hào sảng, phóng khoáng</span>
           </div>
           <div class="script-line-text">
-            Mọi thứ sẽ mãi xa cách nếu người sáng tạo chỉ thích đứng trên cao để nói; nó chỉ thực sự chạm đến người xem khi bạn đóng vai một người chủ nhà biết bước xuống, kéo chiếc ghế và chân thành mở lời trước.
+            Làm video mà cứ gồng lên làm chuyên gia<span class="pause-dot">...</span> thì mãi mãi có khoảng cách<span class="pause-dot">...</span> Cứ coi mình là <strong>người chủ nhà</strong>: bước xuống<span class="pause-dot">...</span> kéo chiếc ghế<span class="pause-dot">...</span> phủi bụi<span class="pause-dot">...</span> rót chén trà<span class="pause-dot">...</span> Chủ nhà thì phải <span class="drawl">hào sảng</span><span class="pause-dot">...</span> phải chân thành chứ!
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -879,7 +951,7 @@
               <span class="broll-shot-badge">Match-Cut Bàn Trà</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Bàn tay kéo nhẹ chiếc ghế gỗ mộc sang đối diện, đặt ly trà nóng bốc khói xuống bàn <em>(kết hợp B-Roll ID: 126)</em>.
+              <strong>Visual:</strong> Bàn tay kéo nhẹ chiếc ghế gỗ mộc sang đối diện, phủi nhẹ mặt bàn, đặt ly trà nóng bốc khói xuống <em>(kết hợp B-Roll ID: 126)</em>.
             </div>
           </div>
         </div>
@@ -888,10 +960,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 9)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 09 • SỰ KHIÊM NHƯỜNG THẬT</span>
-            <span class="line-duration-pill">55s - 65s</span>
+            <span class="line-duration-pill">62s - 70s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">🌿 Đứng bên chậu cây tỉ mẩn tỉa lá</span>
+            <span class="cue-tag cue-voice">🎙️ Điềm đạm, khiêm nhường, không màu mè</span>
           </div>
           <div class="script-line-text">
-            Những gì tôi chia sẻ ở đây cũng chỉ là trải nghiệm riêng của một người đi dạy đang làm kênh, tôi không chắc nó có đúng thứ bạn đang cần hay không. Mọi thứ đang thay đổi quá nhanh, và chính những khó khăn thực tế bạn đang đối mặt mới là thứ có thật.
+            Những gì mình chia sẻ ở đây<span class="pause-dot">...</span> cũng chỉ là trải nghiệm của một người đi dạy<span class="pause-dot">...</span> chưa chắc đã đúng thứ bạn cần<span class="pause-dot">...</span> Mọi thứ thay đổi nhanh quá<span class="pause-dot">...</span> và chính những <strong>khó khăn thực tế bạn đang đối mặt</strong><span class="pause-dot">...</span> mới là thứ có thật.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -908,7 +984,7 @@
         <div class="prompt-card climax-special" onclick="setActiveCard(this, 10)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 10 • MASTER CLIMAX & NỤ CƯỜI</span>
-            <span class="line-duration-pill" style="background: rgba(16,185,129,0.2); color: #10B981;">65s - 75s</span>
+            <span class="line-duration-pill" style="background: rgba(16,185,129,0.2); color: #10B981;">70s - 78s</span>
           </div>
           
           <div class="action-badge-box">
@@ -917,7 +993,7 @@
           </div>
 
           <div class="script-line-text" style="color: #38BDF8; font-size: calc(var(--script-font-size) + 2px);">
-            "Thế nên cứ nhắn đi! Xem vài video của mình là biết thừa tính mình rồi còn gì... Ngại gì vết bẩn!" 😄
+            "Thế nên cứ nhắn đi! Xem vài video của mình là biết thừa tính mình rồi còn gì<span class="pause-dot">...</span> Ngại gì vết bẩn!" 😄
           </div>
 
           <div class="broll-hint-box" style="border-color: var(--emerald);">
@@ -938,17 +1014,17 @@
     <div id="timelineView" class="section-view">
       <div class="card-wrap">
         <div class="table-title-row">
-          <div class="table-title"><span>🎬</span> Bảng Phân Cảnh Master Mix (00s - 75s)</div>
+          <div class="table-title"><span>🎬</span> Bảng Phân Cảnh Master Mix (00s - 78s)</div>
           <a href="https://vietndj.github.io/brollbank.html" target="_blank" class="btn-tool" style="text-decoration:none;">📦 B-Roll Bank</a>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 00s - 06s</span>
+            <span class="time-slot">⏱️ 00s - 07s</span>
             <span class="shot-code">DÒNG 01 - 02</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bạn thử nhớ lại xem: Lần gần nhất bước chân vào phòng 100 người lạ... việc đầu tiên bạn làm là gì? Đa phần sẽ chọn góc khuất, cầm điện thoại im lặng quan sát."
+            <strong>Audio:</strong> "Bước vào một căn phòng lạ... việc đầu tiên bạn làm là gì? Mình sẽ chọn một góc này... rồi mình rút điện thoại ra lướt... và im lặng quan sát."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> A-Roll ngồi bàn gỗ mở màn ➔ Cắt sang <strong>B-Roll ID: 129</strong> ngón tay lướt chậm Instagram trong bóng tối.
@@ -957,11 +1033,11 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 06s - 15s</span>
+            <span class="time-slot">⏱️ 07s - 17s</span>
             <span class="shot-code">DÒNG 03 - 04</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Không phải vì khó gần, mà vì bản năng ngượng ngùng: sợ phán xét, sợ nói sai, hoặc chưa thấy an toàn. Trên mạng xã hội cũng y hệt như vậy."
+            <strong>Audio:</strong> "Không phải là vì mình chảnh... mà là ở một nơi lạ, ai cũng cần cảm giác thoải mái an toàn trước khi nói chuyện với nhau. Thì ở trên mạng xã hội, nó cũng y như vậy thôi."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> <strong>SHOT MỚI 01 (Cực đắt):</strong> Cận ngón tay gõ vài chữ ngập ngừng rồi <strong>bấm Backspace xóa sạch</strong> khung chat.
@@ -970,59 +1046,72 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 15s - 28s</span>
+            <span class="time-slot">⏱️ 17s - 28s</span>
             <span class="shot-code">DÒNG 05</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bản thân tôi cũng vậy: Khi gặp nội dung đúng trăn trở, tôi thường lặng lẽ xem hết và suy ngẫm... phản xạ tự nhiên là giữ lại để tự tìm lời giải."
+            <strong>Audio:</strong> "Bản thân mình cũng thế... Khi gặp đúng thứ mình đang quan tâm ở hiện tại, phản xạ tự nhiên cũng là lắng lại một chút, để tự tìm lời giải chứ không phải là bình luận công khai."
           </div>
           <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>B-Roll ID: 022:</strong> Gõ nhẹ phím Macbook bên bàn gỗ, tay dừng trên trackpad, chống cằm suy ngẫm.
+            <strong>Visual:</strong> <strong>B-Roll ID: 022:</strong> Gõ nhẹ phím Macbook bên bàn gỗ, tay dừng trên trackpad, chống cằm suy ngẫm sâu.
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 28s - 40s</span>
-            <span class="shot-code">DÒNG 06 - 07</span>
+            <span class="time-slot">⏱️ 28s - 39s</span>
+            <span class="shot-code">DÒNG 06</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bình luận công khai như phát biểu hội trường... Người trưởng thành không thích lời kêu gọi hình thức nhưng cũng ngại ma sát nhắn tin riêng."
+            <strong>Audio:</strong> "Bình luận công khai... giống như việc phải đứng lên phát biểu giữa một nơi xa lạ... Tự nhiên thấy nó hơi gồng, mất đi sự tự nhiên ban đầu... Mà mình thì thích một cuộc trò chuyện chất lượng hơn là những lời xã giao."
           </div>
           <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>B-Roll ID: 125:</strong> Cảnh hội trường đông người nhìn lên bục ➔ Cắt về A-Roll mặt anh nói Dòng 07 điềm đạm.
+            <strong>Visual:</strong> <strong>B-Roll ID: 125:</strong> Cảnh hội trường đông người nhìn lên bục ➔ Cắt về A-Roll mặt anh nói Dòng 06 điềm đạm.
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 40s - 55s</span>
+            <span class="time-slot">⏱️ 39s - 52s</span>
+            <span class="shot-code">DÒNG 07</span>
+          </div>
+          <div class="timeline-audio">
+            <strong>Audio:</strong> "Bởi vì người ta sợ nhất là... khi mình đã chấp nhận mở lòng, nói ra đúng cái khó khăn của mình rồi, hở sườn rồi... mà lại nhận về sự thờ ơ hay trả lời sáo rỗng... thì hụt hẫng lắm... thà nói chuyện với AI còn hơn! Người xem chỉ sẵn sàng nhắn tin khi cảm nhận được là mình thực sự muốn nghe."
+          </div>
+          <div class="timeline-visual">
+            <strong>Visual:</strong> <strong>A-Roll MCU:</strong> Cận mặt anh nói bộc bạch, cười tự trào ở đoạn "thà nói với AI", rồi ánh mắt chân thành nhìn thẳng ở câu cuối.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="time-slot">⏱️ 52s - 62s</span>
             <span class="shot-code">DÒNG 08</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Mọi thứ sẽ mãi xa cách nếu chỉ thích đứng trên cao; nó chỉ thực sự chạm khi bạn là người chủ nhà biết kéo chiếc ghế và chân thành mở lời trước."
+            <strong>Audio:</strong> "Làm video mà cứ gồng lên làm chuyên gia... thì mãi mãi có khoảng cách... Cứ coi mình là người chủ nhà: bước xuống, kéo chiếc ghế, phủi bụi, rót chén trà... Chủ nhà thì phải hào sảng, phải chân thành chứ..."
           </div>
           <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>SHOT MỚI 02:</strong> Bàn tay kéo nhẹ ghế gỗ mộc sang đối diện, đặt ly trà nóng bốc khói <strong>(B-Roll ID: 126)</strong>.
+            <strong>Visual:</strong> <strong>SHOT MỚI 02:</strong> Bàn tay kéo nhẹ ghế gỗ mộc sang đối diện, phủi nhẹ mặt bàn, đặt ly trà nóng bốc khói <strong>(B-Roll ID: 126)</strong>.
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 55s - 65s</span>
+            <span class="time-slot">⏱️ 62s - 70s</span>
             <span class="shot-code">DÒNG 09</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Những gì tôi chia sẻ chỉ là trải nghiệm của người đi dạy đang làm kênh... chính khó khăn thực tế bạn đối mặt mới là thứ có thật."
+            <strong>Audio:</strong> "Những gì mình chia sẻ ở đây cũng chỉ là trải nghiệm của một người đi dạy, chưa chắc đã đúng thứ bạn cần... Mọi thứ thay đổi nhanh quá, và chính những khó khăn thực tế bạn đang đối mặt mới là thứ có thật."
           </div>
           <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>A-Roll In-Situ:</strong> Anh đứng bên chậu cây xanh, ánh nắng xiên ban mai, vừa tỉa lá vừa nói khiêm nhường.
+            <strong>Visual:</strong> <strong>A-Roll In-Situ:</strong> Anh đứng bên chậu cây xanh, ánh nắng xiên ban mai, vừa tỉa lá vừa chia sẻ khiêm nhường.
           </div>
         </div>
 
         <div class="timeline-item" style="border-color: var(--emerald);">
           <div class="timeline-header">
-            <span class="time-slot" style="color: var(--emerald);">⏱️ 65s - 75s</span>
+            <span class="time-slot" style="color: var(--emerald);">⏱️ 70s - 78s</span>
             <span class="shot-code" style="background: var(--emerald); color:#000;">DÒNG 10 (CHỐT)</span>
           </div>
           <div class="timeline-audio">
