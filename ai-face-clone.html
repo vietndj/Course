@@ -418,13 +418,13 @@
       <!-- NÚT XUẤT THẺ CĂN CƯỚC AI (MÃ QR FACE DNA) -->
       <div class="max-w-md mx-auto text-center space-y-4">
         <button onclick="generateAICard()" id="btn-sync" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-black font-extrabold text-base tracking-wide transition-all duration-300 shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-3 active:scale-[0.98]">
-          <span class="text-xl">🪪</span>
-          <span id="sync-btn-text">XUẤT THẺ CĂN CƯỚC AI (MÃ QR FACE DNA)</span>
+          <span class="text-xl">⚡️</span>
+          <span id="sync-btn-text">TẠO & TẢI THẺ CĂN CƯỚC AI (1-CHẠM)</span>
         </button>
 
         <p id="sync-status-tip" class="text-xs text-slate-400 font-light flex items-center justify-center gap-1.5">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>Chỉ cần tải ảnh Thẻ QR về và ném vào Antigravity là xong</span>
+          <span>Bấm 1 chạm: Tự tạo mã QR và tải ảnh thẻ về máy ngay lập tức</span>
         </p>
       </div>
 
@@ -847,6 +847,9 @@
         // Xuất Data URL của Thẻ
         currentPassportDataUrl = canvas.toDataURL('image/png');
 
+        // Tự động tải file ảnh Thẻ Căn Cước về máy ngay lập tức (1-Chạm)
+        downloadPassportCard();
+
         // Cập nhật UI kết quả an toàn
         const tagEl = document.getElementById('card-face-id-tag');
         if (tagEl) tagEl.innerText = `#${faceId}`;
@@ -856,7 +859,7 @@
           resContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        if (btnText) btnText.innerText = '✅ ĐÃ TẠO THẺ CĂN CƯỚC AI • HÃY TẢI ẢNH BÊN DƯỚI';
+        if (btnText) btnText.innerText = '✅ ĐÃ TẢI THẺ CĂN CƯỚC XUỐNG MÁY!';
         if (btn) {
           btn.classList.remove('from-emerald-500', 'to-cyan-500', 'opacity-80', 'cursor-wait');
           btn.classList.add('from-emerald-400', 'to-emerald-300');
