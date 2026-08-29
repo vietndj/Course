@@ -782,10 +782,15 @@
         currentPassportDataUrl = canvas.toDataURL('image/png');
 
         // Cập nhật UI kết quả
-        document.getElementById('card-face-id-tag').innerText = `#${faceId}`;
-        document.getElementById('display-card-pass').innerText = userPassword;
-        document.getElementById('card-result-container').classList.remove('hidden');
-        document.getElementById('card-result-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const tagEl = document.getElementById('card-face-id-tag');
+        if (tagEl) tagEl.innerText = `#${faceId}`;
+        const passEl = document.getElementById('display-card-pass');
+        if (passEl) passEl.innerText = userPassword;
+        const resContainer = document.getElementById('card-result-container');
+        if (resContainer) {
+          resContainer.classList.remove('hidden');
+          resContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
         btnText.innerText = '✅ ĐÃ TẠO THẺ CĂN CƯỚC AI • HÃY TẢI ẢNH BÊN DƯỚI';
         btn.classList.remove('from-emerald-500', 'to-cyan-500');
