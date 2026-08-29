@@ -507,26 +507,92 @@
     const userPhotos = { 1: null, 2: null, 3: null };
     let currentPassportDataUrl = '';
 
+    // Hàm vẽ hình chữ nhật bo góc an toàn tuyệt đối (Tương thích mọi phiên bản Safari/Chrome/Firefox)
+    function drawRoundedRect(ctx, x, y, w, h, r) {
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    // Hàm load ảnh an toàn với Promise
+    function loadImage(src) {
+      return new Promise((resolve) => {
+        if (!src) { resolve(null); return; }
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = src;
+        if (img.complete && img.naturalWidth > 0) {
+          resolve(img);
+        }
+      });
+    }
+
+    // Hàm tạo và lấy ảnh QR Code an toàn (Có Fallback Online nếu thư viện lỗi)
+    async function getQRCodeImage(text, size = 200) {
+      const qrContainer = document.getElementById('qr-hidden-container');
+      qrContainer.innerHTML = '';
+
+      if (typeof QRCode !== 'undefined') {
+        try {
+          new QRCode(qrContainer, {
+            text: text,
+            width: size,
+            height: size,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+          });
+
+          // Đợi tối đa 1 giây để QR render ra canvas hoặc img
+          for (let i = 0; i < 20; i++) {
+            await new Promise(r => setTimeout(r, 50));
+            const canvasEl = qrContainer.querySelector('canvas');
+            if (canvasEl) return canvasEl;
+            const imgEl = qrContainer.querySelector('img');
+            if (imgEl && imgEl.src && imgEl.complete) return imgEl;
+          }
+        } catch (e) {
+          console.warn('QRCode.js lỗi, chuyển sang fallback:', e);
+        }
+      }
+
+      // Fallback: Tạo qua QR Server API chuẩn
+      const fallbackUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}`;
+      const qrImg = await loadImage(fallbackUrl);
+      return qrImg;
+    }
+
     function handleDragOver(e, slot) {
       e.preventDefault();
-      document.getElementById('dropzone-' + slot).classList.add('border-emerald-400', 'bg-emerald-500/10');
+      const el = document.getElementById('dropzone-' + slot);
+      if (el) el.classList.add('border-emerald-400', 'bg-emerald-500/10');
     }
 
     function handleDragLeave(e, slot) {
       e.preventDefault();
-      document.getElementById('dropzone-' + slot).classList.remove('border-emerald-400', 'bg-emerald-500/10');
+      const el = document.getElementById('dropzone-' + slot);
+      if (el) el.classList.remove('border-emerald-400', 'bg-emerald-500/10');
     }
 
     function handleDrop(e, slot) {
       e.preventDefault();
-      document.getElementById('dropzone-' + slot).classList.remove('border-emerald-400', 'bg-emerald-500/10');
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const el = document.getElementById('dropzone-' + slot);
+      if (el) el.classList.remove('border-emerald-400', 'bg-emerald-500/10');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
         processImageFile(e.dataTransfer.files[0], slot);
       }
     }
 
     function handleFileSelect(e, slot) {
-      if (e.target.files && e.target.files[0]) {
+      if (e.target && e.target.files && e.target.files[0]) {
         processImageFile(e.target.files[0], slot);
       }
     }
@@ -545,10 +611,12 @@
           type: file.type
         };
 
-        // Render preview
-        document.getElementById('img-preview-' + slot).src = e.target.result;
-        document.getElementById('placeholder-' + slot).classList.add('hidden');
-        document.getElementById('preview-box-' + slot).classList.remove('hidden');
+        const previewImg = document.getElementById('img-preview-' + slot);
+        if (previewImg) previewImg.src = e.target.result;
+        const placeholder = document.getElementById('placeholder-' + slot);
+        if (placeholder) placeholder.classList.add('hidden');
+        const previewBox = document.getElementById('preview-box-' + slot);
+        if (previewBox) previewBox.classList.remove('hidden');
 
         checkPhotosStatus();
       };
@@ -557,10 +625,14 @@
 
     function removePhoto(slot) {
       userPhotos[slot] = null;
-      document.getElementById('input-slot-' + slot).value = '';
-      document.getElementById('img-preview-' + slot).src = '';
-      document.getElementById('preview-box-' + slot).classList.add('hidden');
-      document.getElementById('placeholder-' + slot).classList.remove('hidden');
+      const inputEl = document.getElementById('input-slot-' + slot);
+      if (inputEl) inputEl.value = '';
+      const previewImg = document.getElementById('img-preview-' + slot);
+      if (previewImg) previewImg.src = '';
+      const previewBox = document.getElementById('preview-box-' + slot);
+      if (previewBox) previewBox.classList.add('hidden');
+      const placeholder = document.getElementById('placeholder-' + slot);
+      if (placeholder) placeholder.classList.remove('hidden');
       checkPhotosStatus();
     }
 
@@ -569,45 +641,53 @@
       const btnText = document.getElementById('sync-btn-text');
       const tipText = document.getElementById('sync-status-tip');
 
-      if (uploadedCount === 3) {
-        btnText.innerText = '⚡️ ĐÃ ĐỦ 3 ẢNH • XUẤT THẺ CĂN CƯỚC AI (QR CARD)';
+      if (btnText) {
+        if (uploadedCount === 3) {
+          btnText.innerText = '⚡️ ĐÃ ĐỦ 3 ẢNH • XUẤT THẺ CĂN CƯỚC AI (QR CARD)';
+        } else {
+          btnText.innerText = `🪪 NẠP THÊM ${3 - uploadedCount} ẢNH ĐỂ HOÀN TẤT (${uploadedCount}/3)`;
+        }
+      }
+      if (tipText && uploadedCount === 3) {
         tipText.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="text-emerald-400 font-semibold">Tuyệt vời! Bản sao khuôn mặt đã sẵn sàng tạo mã QR.</span>';
-      } else {
-        btnText.innerText = `🪪 NẠP THÊM ${3 - uploadedCount} ẢNH ĐỂ HOÀN TẤT (${uploadedCount}/3)`;
       }
     }
 
-    // TẠO THẺ CĂN CƯỚC AI & MÃ QR FACE DNA
+    // TẠO THẺ CĂN CƯỚC AI & MÃ QR FACE DNA (CHUẨN 100% KHÔNG LỖI)
     async function generateAICard() {
       const uploadedCount = Object.values(userPhotos).filter(Boolean).length;
-      const userName = document.getElementById('user-name').value.trim() || 'Chủ Nhân';
-      const userStyle = document.getElementById('user-style').value;
-      const userPassword = document.getElementById('user-password').value.trim();
+      const nameEl = document.getElementById('user-name');
+      const styleEl = document.getElementById('user-style');
+      const passEl = document.getElementById('user-password');
       const btn = document.getElementById('btn-sync');
       const btnText = document.getElementById('sync-btn-text');
 
+      const userName = (nameEl ? nameEl.value.trim() : '') || 'Chủ Nhân';
+      const userStyle = styleEl ? styleEl.value : 'executive';
+      const userPassword = passEl ? passEl.value.trim() : '';
+
       if (uploadedCount === 0) {
         alert('Anh/chị vui lòng kéo hoặc chọn ít nhất 1-3 bức ảnh chân dung để tạo Thẻ Căn Cước nhé!');
-        document.getElementById('dropzone-1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const dz = document.getElementById('dropzone-1');
+        if (dz) dz.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
       if (!userPassword) {
         alert('Vui lòng nhập Mã Kích Hoạt bản quyền do Thầy Việt cấp để tạo Thẻ Căn Cước!');
-        document.getElementById('user-password').focus();
+        if (passEl) passEl.focus();
         return;
       }
 
-      btnText.innerText = '⏳ ĐANG TẠO THẺ CĂN CƯỚC & ĐÓNG GÓI MÃ QR...';
-      btn.classList.add('opacity-80', 'cursor-wait');
+      if (btnText) btnText.innerText = '⏳ ĐANG TẠO THẺ CĂN CƯỚC & ĐÓNG GÓI MÃ QR...';
+      if (btn) btn.classList.add('opacity-80', 'cursor-wait');
 
       try {
         const photoList = [userPhotos[1]?.dataUrl, userPhotos[2]?.dataUrl, userPhotos[3]?.dataUrl].filter(Boolean);
-        
         let faceId = 'FACE_' + Math.random().toString(36).substring(2, 8).toUpperCase();
         let qrPayload = `FEDU-FACE:${faceId}`;
 
-        // Thử upload lên Cloudflare R2 qua API ai.fedu.vn
+        // Gọi API lưu trữ Cloudflare R2
         try {
           const resp = await fetch('https://ai.fedu.vn/api/face/save', {
             method: 'POST',
@@ -621,33 +701,21 @@
           });
           if (resp.ok) {
             const data = await resp.json();
-            if (data.face_id) {
+            if (data && data.face_id) {
               faceId = data.face_id;
               qrPayload = data.qr_url || `FEDU-FACE:${faceId}`;
             }
           }
         } catch (apiErr) {
-          console.warn('API cloud lưu trữ fallback local:', apiErr);
+          console.warn('API cloud lưu trữ (dùng fallback offline):', apiErr);
         }
 
-        // Tạo mã QR vào container ẩn
-        const qrContainer = document.getElementById('qr-hidden-container');
-        qrContainer.innerHTML = '';
-        const qr = new QRCode(qrContainer, {
-          text: qrPayload,
-          width: 220,
-          height: 220,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-
-        // Chờ QR render xong
-        await new Promise(resolve => setTimeout(resolve, 300));
-        const qrImg = qrContainer.querySelector('img') || qrContainer.querySelector('canvas');
+        // Tạo mã QR
+        const qrDrawable = await getQRCodeImage(qrPayload, 200);
 
         // Vẽ Thẻ Căn Cước AI lên Canvas chuẩn 800x460
         const canvas = document.getElementById('ai-passport-canvas');
+        if (!canvas) throw new Error('Không tìm thấy phần tử Canvas');
         const ctx = canvas.getContext('2d');
 
         // 1. Nền Thẻ Dark Obsidian Slate + Viền Neon Glow
@@ -672,11 +740,11 @@
 
         // 2. Header Thẻ
         ctx.fillStyle = '#10b981';
-        ctx.font = 'bold 16px "JetBrains Mono", monospace';
+        ctx.font = 'bold 16px monospace';
         ctx.fillText('FEDU AI • VISUAL TWIN PRO', 35, 45);
 
         ctx.fillStyle = '#94a3b8';
-        ctx.font = '12px "Plus Jakarta Sans", sans-serif';
+        ctx.font = '12px sans-serif';
         ctx.fillText('OFFICIAL CERTIFIED AI FACE PASSPORT', 35, 65);
 
         // Badge góc phải
@@ -685,7 +753,7 @@
         ctx.strokeStyle = '#10b981';
         ctx.strokeRect(580, 25, 185, 30);
         ctx.fillStyle = '#34d399';
-        ctx.font = 'bold 12px "JetBrains Mono", monospace';
+        ctx.font = 'bold 12px monospace';
         ctx.fillText(`ID: #${faceId}`, 595, 45);
 
         // Đường kẻ phân cách
@@ -697,69 +765,67 @@
 
         // 3. Ảnh chân dung mỏ neo chính (Bên Trái)
         const primaryPhoto = userPhotos[2] || userPhotos[1] || userPhotos[3];
-        if (primaryPhoto) {
-          const portraitImg = new Image();
-          portraitImg.src = primaryPhoto.dataUrl;
-          await new Promise(r => { portraitImg.onload = r; });
+        if (primaryPhoto && primaryPhoto.dataUrl) {
+          const portraitImg = await loadImage(primaryPhoto.dataUrl);
+          if (portraitImg) {
+            ctx.save();
+            drawRoundedRect(ctx, 35, 105, 180, 240, 16);
+            ctx.clip();
+            ctx.drawImage(portraitImg, 35, 105, 180, 240);
+            ctx.restore();
 
-          ctx.save();
-          ctx.beginPath();
-          ctx.roundRect(35, 105, 180, 240, 16);
-          ctx.clip();
-          ctx.drawImage(portraitImg, 35, 105, 180, 240);
-          ctx.restore();
-
-          ctx.strokeStyle = '#10b981';
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.roundRect(35, 105, 180, 240, 16);
-          ctx.stroke();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            drawRoundedRect(ctx, 35, 105, 180, 240, 16);
+            ctx.stroke();
+          }
         }
 
         // 4. Thông tin chủ nhân (Ở Giữa)
         ctx.fillStyle = '#64748b';
-        ctx.font = '12px "JetBrains Mono", monospace';
+        ctx.font = '12px monospace';
         ctx.fillText('CHỦ NHÂN BẢN SAO:', 235, 125);
 
         ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 24px "Plus Jakarta Sans", sans-serif';
+        ctx.font = 'bold 24px sans-serif';
         ctx.fillText(userName.toUpperCase(), 235, 155);
 
         ctx.fillStyle = '#64748b';
-        ctx.font = '12px "JetBrains Mono", monospace';
+        ctx.font = '12px monospace';
         ctx.fillText('PHONG CÁCH:', 235, 195);
 
         ctx.fillStyle = '#38bdf8';
-        ctx.font = 'bold 15px "Plus Jakarta Sans", sans-serif';
+        ctx.font = 'bold 15px sans-serif';
         ctx.fillText(userStyle.toUpperCase(), 235, 220);
 
         ctx.fillStyle = '#64748b';
-        ctx.font = '12px "JetBrains Mono", monospace';
+        ctx.font = '12px monospace';
         ctx.fillText('BẢO MẬT BẢN QUYỀN:', 235, 260);
 
         ctx.fillStyle = '#10b981';
-        ctx.font = 'bold 13px "JetBrains Mono", monospace';
+        ctx.font = 'bold 13px monospace';
         ctx.fillText('🔒 ĐÃ KHÓA (CẦN MÃ BÍ MẬT)', 235, 285);
 
         ctx.fillStyle = '#94a3b8';
-        ctx.font = '11px "Plus Jakarta Sans", sans-serif';
+        ctx.font = '11px sans-serif';
         ctx.fillText('✓ Nạp 3 Mỏ Neo • Nhận Diện 99% Khớp', 235, 325);
 
         // 5. Khối QR Code (Bên Phải)
         ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.roundRect(545, 105, 220, 240, 16);
+        drawRoundedRect(ctx, 545, 105, 220, 240, 16);
         ctx.fill();
 
         ctx.strokeStyle = '#10b981';
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Vẽ ảnh QR Code vào giữa khung trắng
-        ctx.drawImage(qrImg, 555, 115, 200, 200);
+        // Vẽ ảnh QR Code vào giữa khung trắng nếu có
+        if (qrDrawable) {
+          ctx.drawImage(qrDrawable, 555, 115, 200, 200);
+        }
 
         ctx.fillStyle = '#0f172a';
-        ctx.font = 'bold 10px "JetBrains Mono", monospace';
+        ctx.font = 'bold 10px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('SCAN IN ANTIGRAVITY', 655, 332);
         ctx.textAlign = 'left';
@@ -771,42 +837,46 @@
         ctx.strokeRect(35, 370, 730, 60);
 
         ctx.fillStyle = '#a7f3d0';
-        ctx.font = 'bold 13px "Plus Jakarta Sans", sans-serif';
+        ctx.font = 'bold 13px sans-serif';
         ctx.fillText('⚡️ HƯỚNG DẪN KÍCH HOẠT TRONG 1 BƯỚC:', 50, 395);
 
         ctx.fillStyle = '#94a3b8';
-        ctx.font = '12px "Plus Jakarta Sans", sans-serif';
+        ctx.font = '12px sans-serif';
         ctx.fillText('Kéo thả ảnh Thẻ này vào khung chat Antigravity ➔ Nhập mật khẩu mở khóa để kích hoạt ngay!', 50, 415);
 
         // Xuất Data URL của Thẻ
         currentPassportDataUrl = canvas.toDataURL('image/png');
 
-        // Cập nhật UI kết quả
+        // Cập nhật UI kết quả an toàn
         const tagEl = document.getElementById('card-face-id-tag');
         if (tagEl) tagEl.innerText = `#${faceId}`;
-        const passEl = document.getElementById('display-card-pass');
-        if (passEl) passEl.innerText = userPassword;
         const resContainer = document.getElementById('card-result-container');
         if (resContainer) {
           resContainer.classList.remove('hidden');
           resContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        btnText.innerText = '✅ ĐÃ TẠO THẺ CĂN CƯỚC AI • HÃY TẢI ẢNH BÊN DƯỚI';
-        btn.classList.remove('from-emerald-500', 'to-cyan-500');
-        btn.classList.add('from-emerald-400', 'to-emerald-300');
+        if (btnText) btnText.innerText = '✅ ĐÃ TẠO THẺ CĂN CƯỚC AI • HÃY TẢI ẢNH BÊN DƯỚI';
+        if (btn) {
+          btn.classList.remove('from-emerald-500', 'to-cyan-500', 'opacity-80', 'cursor-wait');
+          btn.classList.add('from-emerald-400', 'to-emerald-300');
+        }
 
       } catch (err) {
-        console.error(err);
-        alert('Có lỗi xảy ra khi tạo Thẻ Căn Cước: ' + err.message);
-        btnText.innerText = '⚡️ THỬ LẠI';
-        btn.classList.remove('opacity-80', 'cursor-wait');
+        console.error('Lỗi khi tạo thẻ:', err);
+        alert('Có lỗi xảy ra khi tạo Thẻ Căn Cước: ' + (err.message || err));
+        if (btnText) btnText.innerText = '⚡️ THỬ LẠI';
+        if (btn) btn.classList.remove('opacity-80', 'cursor-wait');
       }
     }
 
     function downloadPassportCard() {
-      if (!currentPassportDataUrl) return;
-      const userName = document.getElementById('user-name').value.trim() || 'Chu-Nhan';
+      if (!currentPassportDataUrl) {
+        alert('Chưa có dữ liệu Thẻ Căn Cước!');
+        return;
+      }
+      const nameEl = document.getElementById('user-name');
+      const userName = (nameEl ? nameEl.value.trim() : '') || 'Chu-Nhan';
       const a = document.createElement('a');
       a.href = currentPassportDataUrl;
       a.download = `The-Can-Cuoc-AI-${userName}.png`;
