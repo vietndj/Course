@@ -114,65 +114,169 @@
       </div>
     </div>
 
-    <!-- 1.2 KHỐI ĐẦU RA (OUTPUT - 3 TRƯỜNG HỢP PHỔ BIẾN) -->
+    <!-- 1.2 KHỐI ĐẦU RA (OUTPUT - 10 TÌNH HUỐNG ĐỜI THƯỜNG & CHUYÊN NGHIỆP) -->
     <div class="space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800/60 pb-3 mb-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/60 pb-3 mb-6">
         <div class="flex items-center gap-3">
           <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-xs font-mono text-emerald-300 font-bold">BƯỚC 2</span>
-          <h2 class="text-lg font-bold text-white tracking-wide">Đầu Ra: 3 Tình Huống Với 3 Câu Lệnh Tự Nhiên</h2>
+          <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide">Đầu Ra: 10 Tình Huống Phổ Biến Với 1 Câu Chat Tự Nhiên</h2>
         </div>
         <span class="text-xs text-emerald-400 font-medium">Chất lượng 4K • Chuẩn Điện Ảnh</span>
       </div>
 
-      <!-- Tình Huống 1: Bàn Gỗ -->
-      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
-        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
-          <img src="./assets/face-clone/gen_01_desk.jpg?v=20260829" alt="AI Tạo: Làm việc bàn gỗ" class="w-full h-full object-cover image-hover-zoom" />
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-          <div>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Tình huống 01</span>
-            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Deep Work Bàn Gỗ • Hoàng Hôn Vàng Ấm</h3>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
-            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
-            <span class="text-xs font-semibold text-emerald-300 font-mono">"Tạo ảnh tôi ngồi làm việc bàn gỗ"</span>
-          </div>
-        </div>
-      </div>
+      <!-- Grid 10 Tình Huống -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <!-- Tình Huống 2: Thể Thao / Runner -->
-      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
-        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
-          <img src="./assets/face-clone/gen_02_runner.jpg?v=20260829" alt="AI Tạo: Chạy bộ đón bình minh" class="w-full h-full object-cover image-hover-zoom" />
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+        <!-- Tình Huống 1: Bàn Gỗ -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-emerald-500/30 transition flex flex-col justify-between">
           <div>
-            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Tình huống 02</span>
-            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Runner Marathon Đón Bình Minh</h3>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_01_desk.jpg?v=20260829" alt="AI Tạo: Làm việc bàn gỗ" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Tình huống 01 • Công Việc</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Deep Work Bàn Gỗ • Nắng Hoàng Hôn Ấm</h3>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
-            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
-            <span class="text-xs font-semibold text-cyan-300 font-mono">"Tạo ảnh tôi chạy bộ đón bình minh"</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-emerald-300 font-mono truncate">"Tạo ảnh tôi ngồi làm việc bàn gỗ"</span>
           </div>
         </div>
-      </div>
 
-      <!-- Tình Huống 3: Avatar Chuyên Gia Studio -->
-      <div class="glass-box rounded-3xl overflow-hidden p-5 sm:p-7 border border-slate-800/80 hover:border-emerald-500/30 transition">
-        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-slate-900 border border-slate-800 shadow-xl">
-          <img src="./assets/face-clone/gen_03_studio.jpg?v=20260829" alt="AI Tạo: Avatar Studio Chuyên Gia" class="w-full h-full object-cover image-hover-zoom" />
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+        <!-- Tình Huống 2: Thể Thao / Runner -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-cyan-500/30 transition flex flex-col justify-between">
           <div>
-            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Tình huống 03</span>
-            <h3 class="text-base sm:text-lg font-bold text-white mt-0.5">Avatar Studio Executive 85mm Bokeh</h3>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_02_runner.jpg?v=20260829" alt="AI Tạo: Chạy bộ đón bình minh" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Tình huống 02 • Thể Thao</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Runner Marathon Đón Bình Minh Công Viên</h3>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center gap-2">
-            <span class="text-xs text-slate-400 font-mono">Bạn chỉ cần chat:</span>
-            <span class="text-xs font-semibold text-indigo-300 font-mono">"Làm avatar chuyên gia phong cách studio"</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-cyan-300 font-mono truncate">"Tạo ảnh tôi chạy bộ đón bình minh"</span>
           </div>
         </div>
+
+        <!-- Tình Huống 3: Avatar Chuyên Gia Studio -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-indigo-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_03_studio.jpg?v=20260829" alt="AI Tạo: Avatar Studio Chuyên Gia" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Tình huống 03 • Thương Hiệu</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Avatar Studio Executive 85mm Bokeh</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-indigo-300 font-mono truncate">"Làm avatar chuyên gia phong cách studio"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 4: Đi Xe Máy Dạo Phố -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-amber-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_04_motorbike.jpg?v=20260829" alt="AI Tạo: Đi xe máy phố Hà Nội" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Tình huống 04 • Đời Thường</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Đi Xe Máy Dạo Phố Mùa Thu Hà Nội</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-amber-300 font-mono truncate">"Tạo ảnh tôi đi xe máy trên phố mùa thu"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 5: Đi Siêu Thị Mua Sắm -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-emerald-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_05_supermarket.jpg?v=20260829" alt="AI Tạo: Đi siêu thị mua sắm" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Tình huống 05 • Gia Đình</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Đi Siêu Thị Đẩy Xe Hàng Chọn Đồ Tươi Ngon</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-emerald-300 font-mono truncate">"Tạo ảnh tôi đi siêu thị chọn đồ"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 6: Trà Đá Vỉa Hè Phố Cổ -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-orange-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_06_trada.jpg?v=20260829" alt="AI Tạo: Uống trà đá vỉa hè" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Tình huống 06 • Bản Sắc</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Uống Trà Đá Ghế Nhựa Vỉa Hè Phố Cổ</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-orange-300 font-mono truncate">"Tạo ảnh tôi ngồi uống trà đá vỉa hè"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 7: Du Lịch Ngắm Cảnh Núi Đồi -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-teal-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_07_travel.jpg?v=20260829" alt="AI Tạo: Du lịch ngắm cảnh" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Tình huống 07 • Du Lịch</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Nghỉ Dưỡng Ngắm Núi Đồi Mây Trắng Resort</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-teal-300 font-mono truncate">"Tạo ảnh tôi đi du lịch ngắm cảnh thiên nhiên"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 8: Giới Thiệu Sản Phẩm Hội Chợ -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-blue-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_08_gadget_expo.jpg?v=20260829" alt="AI Tạo: Review củ sạc hội chợ" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Tình huống 08 • Review / Bán Hàng</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Cầm Củ Sạc Đa Năng Giới Thiệu Tại Hội Chợ</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-blue-300 font-mono truncate">"Tạo ảnh tôi cầm củ sạc giới thiệu ở hội chợ"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 9: Diễn Giả Sân Khấu Sự Kiện -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-purple-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_09_stage_speaker.jpg?v=20260829" alt="AI Tạo: Thuyết trình sân khấu" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Tình huống 09 • Diễn Giả</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Cầm Mic Thuyết Trình Trên Sân Khấu Hội Thảo</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-purple-300 font-mono truncate">"Tạo ảnh tôi cầm mic thuyết trình sân khấu"</span>
+          </div>
+        </div>
+
+        <!-- Tình Huống 10: Cafe Chill Bên Cửa Sổ -->
+        <div class="glass-box rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-rose-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-slate-900 border border-slate-800 shadow-xl">
+              <img src="./assets/face-clone/gen_10_cafe.jpg?v=20260829" alt="AI Tạo: Uống cafe bên cửa sổ" class="w-full h-full object-cover image-hover-zoom" />
+            </div>
+            <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">Tình huống 10 • Phong Cách Sống</span>
+            <h3 class="text-base font-bold text-white mt-0.5 mb-3">Thưởng Thức Cafe Bên Cửa Sổ Ngập Nắng</h3>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400 font-mono">Chat:</span>
+            <span class="font-semibold text-rose-300 font-mono truncate">"Tạo ảnh tôi ngồi thư giãn uống cafe bên cửa sổ"</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
