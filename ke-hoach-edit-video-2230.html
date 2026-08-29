@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kế Hoạch Biên Tập Video Master 2230 & Bóc Tách Phân Cảnh Offline</title>
+  <title>Kế Hoạch Biên Tập Video Master 2230 & Danh Mục YouTube Master</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -93,11 +93,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      border-radius: 8px;
+      padding: 12px 14px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.04);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
     }
@@ -105,15 +105,22 @@
       border-color: rgba(255, 208, 39, 0.4);
       background: rgba(255, 208, 39, 0.05);
     }
-    .file-status {
-      font-size: 11px;
-      padding: 2px 8px;
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #FF0000;
+      color: #FFF;
+      text-decoration: none;
       border-radius: 6px;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 12px;
+      transition: opacity 0.2s;
     }
-    .status-uploading { background: rgba(0, 240, 255, 0.15); color: var(--accent-cyan); }
-    .status-done { background: rgba(255, 208, 39, 0.15); color: var(--accent-gold); }
-    .status-queue { background: rgba(255, 255, 255, 0.08); color: var(--text-muted); }
+    .yt-btn:hover {
+      opacity: 0.85;
+    }
 
     .preview-gallery {
       display: grid;
@@ -220,36 +227,52 @@
 <body>
   <div class="container">
     <header>
-      <div class="badge badge-gold">⚡ HỆ THỐNG BIÊN TẬP TỰ ĐỘNG ANTIGRAVITY</div>
-      <h1>Kế Hoạch Dựng Video Ổ Cứng 2230 & Bóc Tách Phân Cảnh Offline</h1>
-      <p class="subhead">Xử lý 5 Master Footage (45.8 GB) trên SSD 2230 • Tự động đẩy YouTube • Trích xuất 30s Master Cut bằng Remotion Engine</p>
+      <div class="badge badge-gold">⚡ HOÀN TẤT 100% TIẾN TRÌNH BIÊN TẬP & ĐẨY YOUTUBE</div>
+      <h1>Kế Hoạch Dựng Video Ổ Cứng 2230 & Danh Mục YouTube Master</h1>
+      <p class="subhead">Toàn bộ 5 Master Footage (45.8 GB) trên SSD 2230 đã được tải lên YouTube • Trích xuất và render 30s Master Cut bằng Remotion Engine</p>
     </header>
 
     <!-- SECTION 1: MASTER FOOTAGE CATALOG -->
     <div class="grid-2">
       <div class="card">
-        <h2>📁 Danh Sách Video Ổ Cứng 1TB 2230</h2>
+        <h2>📁 5 Video Master Trên Ổ Cứng 1TB 2230 (Đã Lên YouTube)</h2>
         <ul class="file-list">
-          <li class="file-item">
-            <span>VID_20260823_112558_079.mp4 <span style="color:var(--text-dim)">(12.49 GB)</span></span>
-            <span class="file-status status-uploading">🚀 Uploading YouTube</span>
+
+          <li class="file-item ">
+            <div>
+              <strong>VID_20260823_112558_079.mp4</strong> <br><small style="color:var(--text-dim)">Dung lượng: 12.49 GB</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=Xdu_h1wT6sA" target="_blank" class="yt-btn">▶ Mở YouTube</a>
           </li>
+
           <li class="file-item active">
-            <span>VID_20260823_115556_080.mp4 <span style="color:var(--accent-gold)">(2.45 GB)</span></span>
-            <span class="file-status status-done">✨ Đã Dựng 30s</span>
+            <div>
+              <strong>VID_20260823_115556_080.mp4</strong> <br><small style="color:var(--text-dim)">Dung lượng: 2.45 GB</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=RhV2rbccGRk" target="_blank" class="yt-btn">▶ Mở YouTube</a>
           </li>
-          <li class="file-item">
-            <span>VID_20260823_134942_081.mp4 <span style="color:var(--text-dim)">(12.49 GB)</span></span>
-            <span class="file-status status-queue">⏳ Hàng đợi YouTube</span>
+
+          <li class="file-item ">
+            <div>
+              <strong>VID_20260823_134942_081.mp4</strong> <br><small style="color:var(--text-dim)">Dung lượng: 12.49 GB</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=DYE28cVT1ZA" target="_blank" class="yt-btn">▶ Mở YouTube</a>
           </li>
-          <li class="file-item">
-            <span>VID_20260823_141941_082.mp4 <span style="color:var(--text-dim)">(13.10 GB)</span></span>
-            <span class="file-status status-queue">⏳ Hàng đợi YouTube</span>
+
+          <li class="file-item ">
+            <div>
+              <strong>VID_20260823_141941_082.mp4</strong> <br><small style="color:var(--text-dim)">Dung lượng: 13.10 GB</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=lZ7411hipO4" target="_blank" class="yt-btn">▶ Mở YouTube</a>
           </li>
-          <li class="file-item">
-            <span>VID_20260823_144941_083.mp4 <span style="color:var(--text-dim)">(5.32 GB)</span></span>
-            <span class="file-status status-queue">⏳ Hàng đợi YouTube</span>
+
+          <li class="file-item ">
+            <div>
+              <strong>VID_20260823_144941_083.mp4</strong> <br><small style="color:var(--text-dim)">Dung lượng: 5.32 GB</small>
+            </div>
+            <a href="https://www.youtube.com/watch?v=yA3MlwpR2Fo" target="_blank" class="yt-btn">▶ Mở YouTube</a>
           </li>
+
         </ul>
       </div>
 
@@ -262,6 +285,7 @@
           <tr><td>Bối cảnh quay</td><td>Lớp học Offline / Workshop thực chiến FEDU</td></tr>
           <tr><td>Chủ đề giảng dạy</td><td><strong>Kỹ thuật chuyển cảnh 1 Cam & Nhịp điệu vật lý</strong></td></tr>
           <tr><td>Đoạn cắt vàng (30s)</td><td><span class="time-tag">275.0s → 305.0s</span> (Chuyển ý & Không gian)</td></tr>
+          <tr><td>Link YouTube gốc</td><td><a href="https://www.youtube.com/watch?v=RhV2rbccGRk" target="_blank" style="color:var(--accent-gold);font-weight:700">Xem video gốc 080</a></td></tr>
         </table>
       </div>
     </div>
@@ -314,7 +338,7 @@
             <td><span class="time-tag">2.6s - 8.0s</span></td>
             <td><span class="badge badge-cyan">Lower-Third</span></td>
             <td><strong>ĐỨNG LÊN LÀ CHUYỂN</strong><br><small style="color:var(--text-muted)">Mượn hành động tự nhiên</small></td>
-            <td>Camera toàn cảnh lớp học. Anh Việt giảng giải: <em>"Ngồi dựa cái bàn nói chuyện xong, đứng lên là chuyển cảnh mà!"</em></td>
+            <td>Camera toàn cảnh lớp học. Anh Việt giảng: <em>"Ngồi dựa cái bàn nói chuyện xong, đứng lên là chuyển cảnh mà!"</em></td>
           </tr>
           <tr>
             <td><span class="time-tag">8.0s - 14.0s</span></td>
