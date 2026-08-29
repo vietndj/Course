@@ -66,6 +66,75 @@
 </head>
 <body class="selection:bg-emerald-500 selection:text-black">
 
+  <!-- ADMIN / RESELLER PORTAL (KÍCH HOẠT QUA ?admin HOẶC #admin) -->
+  <div id="admin-portal" class="hidden max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4">
+    <div class="glass-box rounded-3xl p-6 sm:p-8 border-2 border-amber-500/50 bg-slate-900/95 shadow-2xl shadow-amber-500/10">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white font-mono flex items-center gap-2">
+            <span>⚡️ BẢNG ĐIỀU KHIỂN ĐẠI LÝ BÁN HÀNG</span>
+          </h2>
+        </div>
+        <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">MÃ ĐỘNG DÙNG 1 LẦN</span>
+      </div>
+
+      <!-- Khối Tạo Mã Nhanh -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Ghi chú / Tên khách hàng / CTV:</label>
+          <input type="text" id="admin-note" value="Khách mua gói 1-Chạm" placeholder="Ví dụ: Anh Nam Zalo..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Số lượng mã cần tạo:</label>
+          <select id="admin-count" class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition font-medium">
+            <option value="1">1 Mã duy nhất</option>
+            <option value="3">3 Mã</option>
+            <option value="5">5 Mã</option>
+            <option value="10">10 Mã (Bán sỉ)</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <button onclick="adminCreateLicense()" id="btn-admin-create" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-amber-500/20 active:scale-95">
+            <span>⚡️</span>
+            <span id="btn-admin-create-text">TẠO MÃ KÍCH HOẠT MỚI</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Danh Sách Mã Đã Tạo & Trạng Thái Trực Tuyến -->
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">DANH SÁCH MÃ BẢN QUYỀN (CLOUDFLARE R2)</h3>
+          <button onclick="adminLoadLicenses()" class="text-xs text-amber-400 hover:underline flex items-center gap-1 font-mono">
+            <span>🔄 Làm mới danh sách</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/60 max-h-72 overflow-y-auto">
+          <table class="w-full text-left text-xs text-slate-300 font-mono">
+            <thead class="bg-slate-900/90 text-slate-400 uppercase text-[11px] sticky top-0 border-b border-slate-800">
+              <tr>
+                <th class="py-2.5 px-4">Mã Kích Hoạt</th>
+                <th class="py-2.5 px-4">Trạng Thái</th>
+                <th class="py-2.5 px-4">Ghi Chú</th>
+                <th class="py-2.5 px-4">Thời Gian</th>
+                <th class="py-2.5 px-4 text-right">Hành Động</th>
+              </tr>
+            </thead>
+            <tbody id="admin-license-tbody" class="divide-y divide-slate-800/60">
+              <tr>
+                <td colspan="5" class="py-4 text-center text-slate-500">Đang tải danh sách mã từ Cloudflare R2...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Subtle Top Glow & Logo -->
   <div class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-6 text-center">
     <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-emerald-400 mb-6 shadow-inner">
@@ -887,6 +956,107 @@
       a.click();
       document.body.removeChild(a);
     }
+
+    // ── ADMIN / RESELLER PORTAL ENGINE ──
+    function initAdminPortal() {
+      const isParam = window.location.search.toLowerCase().includes('admin') || window.location.hash.toLowerCase().includes('admin');
+      if (isParam) {
+        const portal = document.getElementById('admin-portal');
+        if (portal) {
+          portal.classList.remove('hidden');
+          portal.scrollIntoView({ behavior: 'smooth' });
+          adminLoadLicenses();
+        }
+      }
+    }
+
+    async function adminLoadLicenses() {
+      const tbody = document.getElementById('admin-license-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-500">Đang tải danh sách từ Cloudflare R2...</td></tr>';
+
+      try {
+        const resp = await fetch('https://ai.fedu.vn/api/face/license/list');
+        const data = await resp.json();
+        const licenses = data.licenses || [];
+
+        if (licenses.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-500">Chưa có mã nào được tạo. Hãy bấm "TẠO MÃ KÍCH HOẠT MỚI" ở trên.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = licenses.map(item => {
+          const isUsed = item.status === 'used';
+          const badge = isUsed
+            ? '<span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold border border-red-500/30">🔴 ĐÃ DÙNG</span>'
+            : '<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">🟢 CHƯA DÙNG</span>';
+          
+          const timeStr = item.created_at ? new Date(item.created_at).toLocaleString('vi-VN') : '—';
+          const usedInfo = isUsed && item.activated_at ? `<div class="text-[10px] text-slate-500">Dùng: ${new Date(item.activated_at).toLocaleTimeString('vi-VN')}</div>` : '';
+
+          return `
+            <tr class="hover:bg-slate-900/50 transition">
+              <td class="py-2.5 px-4 font-bold text-amber-300 text-sm tracking-wider">${item.code}</td>
+              <td class="py-2.5 px-4">${badge} ${usedInfo}</td>
+              <td class="py-2.5 px-4 text-slate-400">${item.note || '—'}</td>
+              <td class="py-2.5 px-4 text-slate-500 text-[11px]">${timeStr}</td>
+              <td class="py-2.5 px-4 text-right space-x-1.5">
+                <button onclick="copyToClipboard('${item.code}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] border border-slate-700 transition">📋 Copy Mã</button>
+                <button onclick="copyZaloTemplate('${item.code}')" class="px-2 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-semibold text-[11px] border border-amber-500/30 transition">🚀 Gửi Khách</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-red-400">Lỗi tải danh sách: ${err.message}</td></tr>`;
+      }
+    }
+
+    async function adminCreateLicense() {
+      const note = document.getElementById('admin-note').value.trim() || 'Khách CTV';
+      const count = document.getElementById('admin-count').value || '1';
+      const btn = document.getElementById('btn-admin-create');
+      const btnText = document.getElementById('btn-admin-create-text');
+
+      if (btnText) btnText.innerText = '⏳ Đang tạo...';
+      if (btn) btn.classList.add('opacity-80', 'cursor-wait');
+
+      try {
+        const resp = await fetch('https://ai.fedu.vn/api/face/license/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ count: Number(count), note })
+        });
+        const data = await resp.json();
+        if (data.success) {
+          alert(`✅ Đã tạo thành công ${data.created.length} mã kích hoạt mới!`);
+          adminLoadLicenses();
+        } else {
+          alert('Lỗi: ' + (data.error || 'Không thể tạo mã'));
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      } finally {
+        if (btnText) btnText.innerText = 'TẠO MÃ KÍCH HOẠT MỚI';
+        if (btn) btn.classList.remove('opacity-80', 'cursor-wait');
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`📋 Đã copy mã: ${text}`);
+      });
+    }
+
+    function copyZaloTemplate(code) {
+      const msg = `👋 Chào bạn! Đây là Mã Kích Hoạt Bản Sao Khuôn Mặt AI độc quyền của bạn:\n\n🔑 MÃ KÍCH HOẠT (DÙNG 1 LẦN): ${code}\n🌐 Link tạo Thẻ Căn Cước AI: https://fedu.vn/course/ai-face-clone.html\n\n👉 HƯỚNG DẪN 3 BƯỚC:\n1. Vào link trên, tải 3 ảnh chân dung và dán Mã Kích Hoạt vào ô bảo mật.\n2. Bấm "TẠO & TẢI THẺ CĂN CƯỚC AI" để tải ảnh thẻ về máy.\n3. Mở Antigravity, kéo thả ảnh thẻ vào chat và nhập lại mã trên để bắt đầu tạo ảnh!`;
+      navigator.clipboard.writeText(msg).then(() => {
+        alert(`🚀 Đã copy sẵn nội dung tin nhắn gửi khách kèm mã ${code}!\nBạn chỉ cần dán vào Zalo/Facebook gửi cho khách hàng.`);
+      });
+    }
+
+    // Tự động kiểm tra tham số ?admin khi tải trang
+    window.addEventListener('DOMContentLoaded', initAdminPortal);
   </script>
 </body>
 </html>
