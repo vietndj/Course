@@ -2,96 +2,207 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mở Antigravity Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mở Antigravity Chat | Quản gia AI</title>
   <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #131b2e;
+      --border: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --tele: #229ed9;
+      --tele-hover: #1b85b8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
       padding: 20px;
-      box-sizing: border-box;
     }
     .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 32px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 24px;
       max-width: 440px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
     }
-    .icon {
-      font-size: 48px;
-      margin-bottom: 16px;
+    .icon-badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px auto;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(2, 132, 199, 0.25));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
     }
     h1 {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
-      margin: 0 0 8px 0;
-      color: #38bdf8;
+      margin-bottom: 8px;
+      color: var(--accent);
+      letter-spacing: -0.3px;
     }
     p {
-      color: #94a3b8;
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.5;
-      margin: 0 0 24px 0;
+      margin-bottom: 24px;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
     }
     .btn {
-      display: inline-block;
-      background: #0284c7;
-      color: #ffffff;
-      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 12px;
       font-weight: 600;
       font-size: 15px;
-      padding: 12px 28px;
-      border-radius: 10px;
-      transition: background 0.2s ease;
+      text-decoration: none;
+      transition: all 0.2s ease;
       cursor: pointer;
       border: none;
     }
-    .btn:hover {
-      background: #0369a1;
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
     }
-    .cid {
-      font-family: monospace;
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1, #075985);
+      transform: translateY(-1px);
+    }
+    .btn-tele {
+      background: rgba(34, 158, 217, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(34, 158, 217, 0.4);
+    }
+    .btn-tele:hover {
+      background: rgba(34, 158, 217, 0.25);
+      color: #ffffff;
+    }
+    .cid-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px dashed #334155;
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .cid-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      color: #94a3b8;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+    }
+    .mobile-tip {
+      margin-top: 18px;
       font-size: 12px;
       color: #64748b;
-      margin-top: 16px;
-      word-break: break-all;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="icon">🚀</div>
-    <h1>Đang mở Antigravity...</h1>
-    <p>Nếu ứng dụng không tự bật lên, vui lòng bấm nút bên dưới:</p>
-    <a id="openBtn" class="btn" href="#">Mở Cuộc Trò Chuyện</a>
-    <div id="cidText" class="cid"></div>
+    <div class="icon-badge">🌌</div>
+    <h1>Mở Phiên Antigravity</h1>
+    <p id="descText">Đang tự động kích hoạt phiên chat trên máy Mac của anh Việt...</p>
+    
+    <div class="btn-group">
+      <a id="macBtn" class="btn btn-primary" href="#">
+        <span>💻</span> Mở trực tiếp trên Mac
+      </a>
+      <a id="teleBtn" class="btn btn-tele" href="#">
+        <span>📱</span> Bật máy Mac từ xa (Bot NOVA)
+      </a>
+    </div>
+
+    <div class="cid-box">
+      <span id="cidCode" class="cid-code">ID: ...</span>
+      <button id="copyBtn" class="copy-btn" onclick="copyCid()">Copy</button>
+    </div>
+
+    <div id="mobileNotice" class="mobile-tip">
+      💡 <b>Trên điện thoại:</b> Bấm nút <i>"Bật máy Mac từ xa"</i> để Bot NOVA tự mở sẵn màn hình trên máy tính.
+    </div>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const cid = params.get("c") || params.get("id") || "";
-    const targetUrl = cid ? `antigravity://conversation/${cid}` : "antigravity://";
+    const shortId = cid ? cid.substring(0, 8) : "";
     
-    document.getElementById("openBtn").href = targetUrl;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    const agySchemeUrl = cid ? `agy://open?c=${cid}` : "agy://open";
+    const novaBotUrl = cid ? `https://t.me/nova0410_bot?start=open_${shortId}` : "https://t.me/nova0410_bot";
+    
+    document.getElementById("macBtn").href = agySchemeUrl;
+    document.getElementById("teleBtn").href = novaBotUrl;
+    
     if (cid) {
-      document.getElementById("cidText").innerText = `ID: ${cid}`;
+      document.getElementById("cidCode").innerText = `ID: ${cid}`;
     }
     
-    // Auto redirect
-    setTimeout(() => {
-      window.location.href = targetUrl;
-    }, 150);
+    function copyCid() {
+      if (!cid) return;
+      navigator.clipboard.writeText(cid).then(() => {
+        const btn = document.getElementById("copyBtn");
+        btn.innerText = "Đã chép! ✓";
+        setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+      });
+    }
+
+    // Tự động chuyển hướng nếu đang ở trên máy tính Mac
+    if (!isMobile && cid) {
+      setTimeout(() => {
+        window.location.href = agySchemeUrl;
+      }, 100);
+    }
   </script>
 </body>
 </html>
