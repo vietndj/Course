@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cổng Phát Hành Mật Khẩu Bản Quyền AI Face Clone | FEDU AI</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#05070c',
+            surface: '#0d111a',
+            accent: '#10b981',
+            gold: '#f59e0b',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #05070c;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .glass-box {
+      background: rgba(13, 17, 26, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-gold {
+      box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.25);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 50px -10px rgba(16, 185, 129, 0.2);
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-black min-h-screen py-10 px-4 sm:px-6">
+
+  <div class="max-w-5xl mx-auto space-y-8">
+    
+    <!-- HEADER -->
+    <header class="text-center space-y-3">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-amber-400 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="tracking-wider uppercase font-mono font-bold">TRUNG TÂM PHÁT HÀNH MÃ BẢN QUYỀN • FEDU AI</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Tạo Mật Khẩu <span class="gradient-gold">Dùng 1 Lần</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto font-light">
+        Dành cho Đại lý, Cộng tác viên & Người bán. Mỗi mật khẩu được tạo ra chỉ kích hoạt được <strong class="text-white">đúng 1 lần</strong> trên Antigravity và tự động khóa vĩnh viễn.
+      </p>
+    </header>
+
+    <!-- FORM TẠO MẬT KHẨU -->
+    <section class="glass-box rounded-3xl p-6 sm:p-8 border border-amber-500/30 glow-gold relative overflow-hidden">
+      <div class="absolute -right-16 -top-16 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30">BƯỚC 1</span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-wide font-mono">THIẾT LẬP MẬT KHẨU MỚI</h2>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">Cloudflare R2 Encrypted</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 mb-6">
+        
+        <!-- Ô TỰ ĐẶT MẬT KHẨU -->
+        <div class="sm:col-span-5 space-y-1.5">
+          <label class="block text-xs font-semibold text-slate-300">
+            Mật khẩu tùy chọn <span class="text-amber-400 font-normal">(Dùng 1 lần)</span>:
+          </label>
+          <input 
+            type="text" 
+            id="input-custom-code" 
+            placeholder="Ví dụ: ANHNAM2026, VIP99..." 
+            class="w-full px-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-700 text-amber-300 font-mono text-sm font-bold placeholder:text-slate-600 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+          />
+          <p class="text-[11px] text-slate-500">Bỏ trống ô này nếu bạn muốn hệ thống tự sinh ngẫu nhiên.</p>
+        </div>
+
+        <!-- Ô GHI CHÚ KHÁCH HÀNG -->
+        <div class="sm:col-span-4 space-y-1.5">
+          <label class="block text-xs font-semibold text-slate-300">
+            Tên khách hàng / CTV / Ghi chú:
+          </label>
+          <input 
+            type="text" 
+            id="input-note" 
+            value="Khách mua gói 1-Chạm" 
+            placeholder="Ví dụ: Anh Nam Zalo..." 
+            class="w-full px-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-700 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+          />
+          <p class="text-[11px] text-slate-500">Giúp bạn nhận diện khách nào đã dùng mã.</p>
+        </div>
+
+        <!-- Ô CHỌN SỐ LƯỢNG KHI TỰ SINH -->
+        <div class="sm:col-span-3 space-y-1.5">
+          <label class="block text-xs font-semibold text-slate-300">
+            Số lượng (Khi tự sinh):
+          </label>
+          <select 
+            id="select-count" 
+            class="w-full px-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-700 text-white text-sm font-medium focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+          >
+            <option value="1">1 Mật khẩu</option>
+            <option value="3">3 Mật khẩu</option>
+            <option value="5">5 Mật khẩu</option>
+            <option value="10">10 Mật khẩu</option>
+          </select>
+          <p class="text-[11px] text-slate-500">Chỉ áp dụng khi không tự gõ pass.</p>
+        </div>
+
+      </div>
+
+      <!-- NÚT BẤM TẠO MẬT KHẨU -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+        <div class="text-xs text-slate-400 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Khách nạp vào Antigravity là mật khẩu tự động khóa vĩnh viễn</span>
+        </div>
+
+        <button 
+          onclick="handleCreatePass()" 
+          id="btn-create-pass" 
+          class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-sm tracking-wide transition-all duration-300 shadow-xl shadow-amber-500/25 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+        >
+          <span class="text-lg">⚡️</span>
+          <span id="btn-create-text">PHÁT HÀNH MẬT KHẨU MỚI</span>
+        </button>
+      </div>
+
+      <!-- BANNER HIỂN THỊ KẾT QUẢ VỪA TẠO (POPUP/MODAL NHANH) -->
+      <div id="latest-result-box" class="hidden mt-6 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/40 animate-fade-in space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 text-amber-300 font-bold text-xs uppercase tracking-wider font-mono">
+            <span>✅ ĐÃ PHÁT HÀNH MẬT KHẨU THÀNH CÔNG</span>
+          </div>
+          <span class="text-[11px] text-amber-400 font-mono">Sẵn sàng gửi khách</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-950/80 p-4 rounded-xl border border-amber-500/20">
+          <div class="space-y-1">
+            <span class="text-[11px] text-slate-400 font-mono">MẬT KHẨU DÙNG 1 LẦN:</span>
+            <div id="latest-pass-display" class="text-2xl font-black text-amber-300 font-mono tracking-wider">FACE-XXXX</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="copyLatestPassOnly()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition flex items-center gap-1.5">
+              <span>📋</span> Copy Mã
+            </button>
+            <button onclick="copyLatestZaloMessage()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs transition shadow-md shadow-amber-500/20 flex items-center gap-1.5">
+              <span>🚀</span> Copy Tin Nhắn Zalo Gửi Khách
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BẢNG THEO DÕI TẤT CẢ MẬT KHẨU ĐÃ TẠO -->
+    <section class="glass-box rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-4">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <h3 class="text-base font-bold text-white font-mono uppercase tracking-wider">LỊCH SỬ PHÁT HÀNH & TRẠNG THÁI REAL-TIME</h3>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <span id="total-count-badge" class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">0 Mã</span>
+          <button onclick="loadLicensesList()" class="text-xs text-amber-400 hover:text-amber-300 font-mono flex items-center gap-1 transition">
+            <span>🔄 Làm mới</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bộ Lọc Tìm Kiếm Nhanh -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
+        <input 
+          type="text" 
+          id="search-filter" 
+          oninput="filterTable()" 
+          placeholder="🔍 Tìm theo mật khẩu hoặc ghi chú khách..." 
+          class="w-full sm:w-72 px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder:text-slate-600 focus:outline-none focus:border-amber-400 transition"
+        />
+
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end text-xs font-mono">
+          <button onclick="setFilterStatus('all')" id="filter-btn-all" class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold transition">Tất cả</button>
+          <button onclick="setFilterStatus('unused')" id="filter-btn-unused" class="px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition">🟢 Chưa dùng</button>
+          <button onclick="setFilterStatus('used')" id="filter-btn-used" class="px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition">🔴 Đã dùng</button>
+        </div>
+      </div>
+
+      <!-- Bảng Dữ Liệu -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/70 max-h-96 overflow-y-auto">
+        <table class="w-full text-left text-xs text-slate-300 font-mono">
+          <thead class="bg-slate-900/90 text-slate-400 uppercase text-[11px] sticky top-0 border-b border-slate-800 z-10">
+            <tr>
+              <th class="py-3 px-4">Mật Khẩu</th>
+              <th class="py-3 px-4">Trạng Thái</th>
+              <th class="py-3 px-4">Ghi Chú Khách</th>
+              <th class="py-3 px-4">Ngày Tạo</th>
+              <th class="py-3 px-4 text-right">Thao Tác</th>
+            </tr>
+          </thead>
+          <tbody id="license-tbody" class="divide-y divide-slate-800/60">
+            <tr>
+              <td colspan="5" class="py-8 text-center text-slate-500">Đang đồng bộ dữ liệu từ Cloudflare R2...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- FOOTER & SHORTCUTS -->
+    <footer class="text-center text-xs text-slate-500 space-y-2 pt-4">
+      <p>Hệ thống bản quyền Cloudflare R2 + Antigravity Engine • Phát triển bởi Thầy Nguyễn Đức Việt</p>
+      <div class="flex items-center justify-center gap-4 text-slate-400 font-mono">
+        <a href="ai-face-clone.html" class="hover:text-emerald-400 transition underline">← Về trang tạo Thẻ Căn Cước AI</a>
+        <span>•</span>
+        <a href="https://ai.fedu.vn" target="_blank" class="hover:text-emerald-400 transition underline">Trang chủ ai.fedu.vn</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JAVASCRIPT XỬ LÝ TẠO & QUẢN LÝ MẬT KHẨU -->
+  <script>
+    let allLicenses = [];
+    let currentFilter = 'all';
+    let latestCreatedCode = '';
+
+    async function loadLicensesList() {
+      const tbody = document.getElementById('license-tbody');
+      tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-slate-500">Đang tải dữ liệu từ Cloudflare R2...</td></tr>';
+
+      try {
+        const resp = await fetch('https://ai.fedu.vn/api/face/license/list');
+        const data = await resp.json();
+        allLicenses = data.licenses || [];
+
+        document.getElementById('total-count-badge').innerText = `${allLicenses.length} Mã`;
+        renderTable();
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-red-400">Lỗi kết nối máy chủ: ${err.message}</td></tr>`;
+      }
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('license-tbody');
+      const searchQuery = document.getElementById('search-filter').value.trim().toLowerCase();
+
+      let filtered = allLicenses.filter(item => {
+        if (currentFilter === 'unused' && item.status === 'used') return false;
+        if (currentFilter === 'used' && item.status !== 'used') return false;
+        if (searchQuery) {
+          const matchCode = (item.code || '').toLowerCase().includes(searchQuery);
+          const matchNote = (item.note || '').toLowerCase().includes(searchQuery);
+          return matchCode || matchNote;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-slate-500">Không tìm thấy mật khẩu nào phù hợp.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => {
+        const isUsed = item.status === 'used';
+        const badge = isUsed
+          ? '<span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold border border-red-500/30">🔴 ĐÃ DÙNG</span>'
+          : '<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">🟢 CHƯA DÙNG</span>';
+        
+        const createdDate = item.created_at ? new Date(item.created_at).toLocaleString('vi-VN') : '—';
+        const activatedDate = isUsed && item.activated_at ? `<div class="text-[10px] text-slate-500">Dùng lúc: ${new Date(item.activated_at).toLocaleString('vi-VN')}</div>` : '';
+
+        return `
+          <tr class="hover:bg-slate-900/60 transition">
+            <td class="py-3 px-4 font-bold text-amber-300 text-sm tracking-wider">${item.code}</td>
+            <td class="py-3 px-4">${badge} ${activatedDate}</td>
+            <td class="py-3 px-4 text-slate-300 font-sans">${item.note || '—'}</td>
+            <td class="py-3 px-4 text-slate-400 text-[11px]">${createdDate}</td>
+            <td class="py-3 px-4 text-right space-x-1.5">
+              <button onclick="copyCode('${item.code}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] border border-slate-700 transition">📋 Copy</button>
+              <button onclick="copyMessageTemplate('${item.code}')" class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-semibold text-[11px] border border-amber-500/30 transition">🚀 Gửi Zalo</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function handleCreatePass() {
+      const customCode = document.getElementById('input-custom-code').value.trim();
+      const note = document.getElementById('input-note').value.trim() || 'Khách mua 1-Chạm';
+      const count = document.getElementById('select-count').value || '1';
+      const btn = document.getElementById('btn-create-pass');
+      const btnText = document.getElementById('btn-create-text');
+
+      btnText.innerText = '⏳ ĐANG TẠO MẬT KHẨU...';
+      btn.classList.add('opacity-80', 'cursor-wait');
+
+      try {
+        const resp = await fetch('https://ai.fedu.vn/api/face/license/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            count: Number(count),
+            note: note,
+            custom_code: customCode || undefined
+          })
+        });
+
+        const data = await resp.json();
+        if (data.success && data.created && data.created.length > 0) {
+          latestCreatedCode = data.created[0].code;
+          const codesList = data.created.map(c => c.code).join(', ');
+
+          // Hiển thị banner kết quả
+          document.getElementById('latest-pass-display').innerText = codesList;
+          document.getElementById('latest-result-box').classList.remove('hidden');
+          document.getElementById('latest-result-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+          // Reset ô nhập
+          document.getElementById('input-custom-code').value = '';
+
+          // Reload danh sách
+          loadLicensesList();
+        } else {
+          alert('❌ Lỗi: ' + (data.error || 'Không thể tạo mật khẩu'));
+        }
+      } catch (err) {
+        alert('❌ Lỗi kết nối: ' + err.message);
+      } finally {
+        btnText.innerText = 'PHÁT HÀNH MẬT KHẨU MỚI';
+        btn.classList.remove('opacity-80', 'cursor-wait');
+      }
+    }
+
+    function copyCode(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        alert(`📋 Đã copy mật khẩu: ${code}`);
+      });
+    }
+
+    function copyMessageTemplate(code) {
+      const msg = `👋 Chào bạn! Đây là Mật Khẩu Kích Hoạt Bản Sao Khuôn Mặt AI độc quyền của bạn:\n\n🔑 MẬT KHẨU (DÙNG 1 LẦN): ${code}\n🌐 Link tạo Thẻ Căn Cước AI: https://fedu.vn/course/ai-face-clone.html\n\n👉 HƯỚNG DẪN 3 BƯỚC:\n1. Vào link trên, tải 3 ảnh chân dung và dán Mật Khẩu vào ô bảo mật.\n2. Bấm "TẠO & TẢI THẺ CĂN CƯỚC AI" để tải ảnh thẻ về máy.\n3. Mở Antigravity, kéo thả ảnh thẻ vào chat và nhập lại mật khẩu trên để bắt đầu tạo ảnh!`;
+      
+      navigator.clipboard.writeText(msg).then(() => {
+        alert(`🚀 Đã copy sẵn nội dung tin nhắn Zalo kèm mật khẩu [${code}]!\nBạn chỉ cần dán vào Zalo/Messenger gửi ngay cho khách hàng.`);
+      });
+    }
+
+    function copyLatestPassOnly() {
+      if (latestCreatedCode) copyCode(latestCreatedCode);
+    }
+
+    function copyLatestZaloMessage() {
+      if (latestCreatedCode) copyMessageTemplate(latestCreatedCode);
+    }
+
+    function setFilterStatus(status) {
+      currentFilter = status;
+      ['all', 'unused', 'used'].forEach(s => {
+        const btn = document.getElementById(`filter-btn-${s}`);
+        if (s === status) {
+          btn.className = 'px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold transition';
+        } else {
+          btn.className = 'px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
+        }
+      });
+      renderTable();
+    }
+
+    function filterTable() {
+      renderTable();
+    }
+
+    // Tự động tải danh sách khi mở trang
+    window.addEventListener('DOMContentLoaded', loadLicensesList);
+  </script>
+</body>
+</html>
