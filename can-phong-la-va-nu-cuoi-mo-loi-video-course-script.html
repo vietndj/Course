@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kịch Bản Master & B-Roll Breakdown: Căn Phòng Lạ & Nụ Cười Mở Lời - Anh Việt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090D16;
+      --card-bg: #111827;
+      --card-inner: #1A2234;
+      --card-border: #243048;
+      --card-border-active: #38BDF8;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent: #38BDF8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --badge-talking: #0284C7;
+      --badge-walk: #10B981;
+      --badge-broll: #F59E0B;
+      --warning: #F59E0B;
+      --success: #10B981;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Be Vietnam Pro', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      padding: 16px 12px 100px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Floating Control Bar */
+    .tele-bar {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: rgba(17, 24, 39, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .tele-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tele-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: var(--card-inner);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-action:hover, .btn-action:active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px 18px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38BDF8, #818CF8, #34D399);
+    }
+
+    .badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-blue { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-green { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-amber { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      line-height: 1.35;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+    }
+
+    .sub-title {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .stat-item {
+      background: var(--card-inner);
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 20px 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--card-inner);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 1px solid var(--card-border);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* 4 Lenses Grid */
+    .lens-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .lens-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .lens-box {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .lens-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .lens-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .lens-desc strong {
+      color: var(--text-main);
+    }
+
+    /* Script Lines */
+    .script-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .script-item {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .script-item:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: #1C263A;
+    }
+
+    .script-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .script-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .script-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .script-content {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .script-highlight {
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .script-highlight .script-content {
+      font-weight: 600;
+      color: #38BDF8;
+    }
+
+    /* Action Box */
+    .action-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px dashed #10B981;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #A7F3D0;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* Master Mix Table */
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .timeline-table th {
+      background: var(--card-inner);
+      color: var(--accent);
+      text-align: left;
+      padding: 10px 12px;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--card-border);
+    }
+
+    .timeline-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--card-border);
+      vertical-align: top;
+    }
+
+    .timeline-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .time-badge {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--warning);
+      white-space: nowrap;
+    }
+
+    .broll-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    .new-shot-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    /* Luc Bat Box */
+    .lucbat-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid #38BDF8;
+      border-radius: 16px;
+      padding: 20px 18px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .lucbat-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .lucbat-verse {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.8;
+      color: #F1F5F9;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* Pinned Comment Box */
+    .comment-box {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .comment-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .comment-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.95);
+      background: var(--accent);
+      color: #000;
+    }
+
+    .comment-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #E2E8F0;
+      white-space: pre-line;
+      background: #090D16;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #1E293B;
+      font-family: var(--font-mono);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px 0 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Sticky Bar -->
+    <div class="tele-bar">
+      <div class="tele-title">
+        <span>🎬</span> BÁO CÁO ĐẠO DIỄN • ANH VIỆT
+      </div>
+      <div class="tele-actions">
+        <a href="https://vietndj.github.io/brollbank.html" target="_blank" class="btn-action">
+          <span>📦</span> B-Roll Bank
+        </a>
+      </div>
+    </div>
+
+    <!-- Header Banner -->
+    <div class="header">
+      <div class="badge-wrap">
+        <span class="tag tag-blue">Talking Head 75s</span>
+        <span class="tag tag-green">B-Roll Master Mix</span>
+        <span class="tag tag-amber">Tâm Lý Thực Chiến</span>
+      </div>
+      <h1>Căn Phòng Lạ & Nụ Cười Mở Lời</h1>
+      <p class="sub-title">Giải mã hiện tượng 90% khán giả xem hết nhưng không bình luận và kịch bản kết nối hạ ma sát về 0.</p>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-val">10 Dòng</div>
+          <div class="stat-lbl">Kịch Bản Master</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">~75 Giây</div>
+          <div class="stat-lbl">Thời Lượng Chuẩn</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">3 Shot Mới</div>
+          <div class="stat-lbl">B-Roll Đắt Giá</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: 4 Lăng Kính Tâm Lý -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🧠</div>
+        <div class="section-title">Phần 1: Bóc Tách 4 Lăng Kính Tâm Lý</div>
+      </div>
+      
+      <div class="lens-grid">
+        <div class="lens-box">
+          <div class="lens-head"><span>📐</span> 1. Logic Quy Luật 90–9–1</div>
+          <div class="lens-desc">
+            <strong>90% người xem là Lurkers:</strong> Họ tiếp nhận thông tin thụ động (0.1s vuốt) và ngại ma sát sản xuất (5–10s gõ phím suy nghĩ).
+          </div>
+        </div>
+
+        <div class="lens-box">
+          <div class="lens-head"><span>🪞</span> 2. Tâm Lý Spotlight Effect</div>
+          <div class="lens-desc">
+            <strong>Nỗi sợ bị phán xét:</strong> Bình luận công khai giống như đứng phát biểu trước hội trường 100 người lạ khi chưa thấy đủ an toàn.
+          </div>
+        </div>
+
+        <div class="lens-box">
+          <div class="lens-head"><span>🎮</span> 3. Cơ Chế Game (Fog of War)</div>
+          <div class="lens-desc">
+            <strong>Map chưa mở khóa:</strong> Người xem vào kênh lạ bật chế độ "Tàng hình núp lùm". Đừng giao nhiệm vụ cấp cao làm họ bấm Esc.
+          </div>
+        </div>
+
+        <div class="lens-box">
+          <div class="lens-head"><span>⚡</span> 4. Vật Lý Năng Lượng</div>
+          <div class="lens-desc">
+            <strong>Hạ điện trở tiếp xúc:</strong> Người làm video đóng vai trò dây dẫn hạ cái tôi, đưa năng lượng hoạt hóa về 0 để dòng kết nối phóng qua.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Kịch Bản Master 10 Dòng -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🎙️</div>
+        <div class="section-title">Phần 2: Kịch Bản Master (Bản Bấm Máy)</div>
+      </div>
+
+      <div class="script-list">
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 01</span>
+            <span class="script-tag">Hook Mở Màn</span>
+          </div>
+          <div class="script-content">Bạn thử nhớ lại xem: Lần gần nhất bạn bước chân vào một căn phòng có cả trăm người lạ, việc đầu tiên bạn làm là gì?</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 02</span>
+            <span class="script-tag">Thực Tế Đời Thường</span>
+          </div>
+          <div class="script-content">Đa phần chúng ta sẽ chọn một góc khuất, ngồi xuống, cầm điện thoại lên và im lặng quan sát.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 03</span>
+            <span class="script-tag">Giải Mã Tâm Lý</span>
+          </div>
+          <div class="script-content">Không phải vì mình khó gần, mà vì bản năng con người khi ở nơi xa lạ luôn có cảm giác ngượng ngùng: sợ bị phán xét, sợ nói sai, hoặc chỉ đơn giản là chưa thấy đủ an toàn để cất lời.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 04</span>
+            <span class="script-tag">Chuyển Cảnh MXH</span>
+          </div>
+          <div class="script-content">Trên mạng xã hội cũng y hệt như vậy.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 05</span>
+            <span class="script-tag">Trải Nghiệm Cá Nhân</span>
+          </div>
+          <div class="script-content">Bản thân tôi cũng vậy: Khi bắt gặp một nội dung đúng với trăn trở của mình, tôi thường chỉ lặng lẽ xem hết và suy ngẫm. Bởi khi một vấn đề chạm đúng thực tế, phản xạ tự nhiên của chúng ta là giữ lại để tự tìm lời giải cho mình, chứ không phải vội vã gõ ra vài dòng bình luận công khai.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 06</span>
+            <span class="script-tag">Ẩn Dụ Hội Trường</span>
+          </div>
+          <div class="script-content">Bình luận công khai trên mạng đôi khi cũng giống như việc bạn phải đứng dậy phát biểu trước một hội trường xa lạ. Khi chưa cảm nhận được một không gian đủ an toàn, ai trong chúng ta cũng sẽ chọn cách im lặng như một phản xạ tự nhiên.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 07</span>
+            <span class="script-tag">Ma Sát Nhận Thức</span>
+          </div>
+          <div class="script-content">Một người trưởng thành thường không hưởng ứng những lời kêu gọi mang tính hình thức, nhưng việc chủ động nhắn tin riêng cũng tạo ra những ma sát tâm lý nhất định. Nếu bạn cũng là người đang làm video, bạn sẽ hiểu: khoảng cách đó không đến từ người xem, mà đến từ cách chúng ta thiết lập sự kết nối ban đầu.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 08</span>
+            <span class="script-tag">Người Chủ Nhà Kéo Ghế</span>
+          </div>
+          <div class="script-content">Mọi thứ sẽ mãi xa cách nếu người sáng tạo chỉ thích đứng trên cao để nói; nó chỉ thực sự chạm đến người xem khi bạn đóng vai một người chủ nhà biết bước xuống, kéo chiếc ghế và chân thành mở lời trước.</div>
+        </div>
+
+        <div class="script-item">
+          <div class="script-meta">
+            <span class="script-num">DÒNG 09</span>
+            <span class="script-tag">Sự Khiêm Nhường Thật</span>
+          </div>
+          <div class="script-content">Những gì tôi chia sẻ ở đây cũng chỉ là trải nghiệm riêng của một người đi dạy đang làm kênh, tôi không chắc nó có đúng thứ bạn đang cần hay không. Mọi thứ đang thay đổi quá nhanh, và chính những khó khăn thực tế bạn đang đối mặt mới là thứ có thật.</div>
+        </div>
+
+        <div class="script-item script-highlight">
+          <div class="script-meta">
+            <span class="script-num" style="background: var(--warning); color: #000;">DÒNG 10 (CHỐT HẠ)</span>
+            <span class="script-tag" style="color: var(--accent);">Master Climax Shot</span>
+          </div>
+          <div class="action-box">
+            <span>🌿</span>
+            <div><strong>Chỉ dẫn hành động:</strong> Máy quay cận cảnh tay anh đang xịt nước mát lên chậu cây xanh. Anh dừng tay, quay người nhìn thẳng ống kính, cười tươi rạng rỡ, nửa đùa nửa chân thành.</div>
+          </div>
+          <div class="script-content" style="margin-top: 10px; font-size: 16px;">
+            "Thế nên cứ nhắn đi! Xem vài video của mình là biết thừa tính mình rồi còn gì... Ngại gì vết bẩn!" 😄
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: 3 Cảnh B-Roll Quay Thêm Đắt Giá -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🎥</div>
+        <div class="section-title">Phần 3: 3 Cảnh B-Roll Quay Thêm Đắt Giá</div>
+      </div>
+
+      <div class="lens-grid">
+        <div class="lens-box">
+          <div class="lens-head"><span class="new-shot-badge">SHOT 01</span> Ngón Tay Xóa Tin Nhắn</div>
+          <div class="lens-desc">
+            <strong>Góc ECU:</strong> Ngón tay gõ 2-3 chữ trong khung chat ("Anh ơi..."), dừng lại 1 giây ngập ngừng, rồi <strong>bấm giữ Backspace xóa sạch</strong> và tắt màn hình.
+          </div>
+        </div>
+
+        <div class="lens-box">
+          <div class="lens-head"><span class="new-shot-badge">SHOT 02</span> Kéo Chiếc Ghế Đón Khách</div>
+          <div class="lens-desc">
+            <strong>Góc MS:</strong> Bàn tay kéo nhẹ chiếc ghế gỗ mộc sang đối diện, đặt một chiếc cốc sứ nóng bốc khói xuống bàn (khoảng trống đón khách).
+          </div>
+        </div>
+
+        <div class="lens-box" style="grid-column: 1 / -1;">
+          <div class="lens-head"><span class="new-shot-badge">SHOT 03</span> Tia Nước Đọng Giọt Trên Lá</div>
+          <div class="lens-desc">
+            <strong>Góc Macro:</strong> Cận cảnh tia nước li ti từ bình xịt đọng giọt óng ánh trên phiến lá xanh trong vệt nắng xiên ban mai trước khi lia lên nụ cười chốt hạ.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Bảng Master Mix 75s -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon">🎬</div>
+        <div class="section-title">Phần 4: Bảng Phân Cảnh Master Mix (00s - 75s)</div>
+      </div>
+
+      <table class="timeline-table">
+        <thead>
+          <tr>
+            <th style="width: 75px;">Thời Gian</th>
+            <th style="width: 45%;">Lời Thoại (Audio)</th>
+            <th>Cảnh Quay (Visual & B-Roll)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="time-badge">00s - 06s</span></td>
+            <td><strong>D01 - D02:</strong> Căn phòng 100 người lạ... chọn góc khuất cầm điện thoại im lặng quan sát.</td>
+            <td>
+              <strong>A-Roll:</strong> Ngồi bàn gỗ mở màn.<br>
+              <span class="broll-tag">ID: 129</span> Ngón tay lướt chậm màn hình điện thoại trong tối.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">06s - 15s</span></td>
+            <td><strong>D03 - D04:</strong> Bản năng sợ bị phán xét... Trên mạng xã hội cũng y hệt như vậy.</td>
+            <td>
+              <span class="new-shot-badge">SHOT MỚI 01</span> Cận ngón tay gõ vài chữ rồi <strong>bấm Backspace xóa sạch</strong> khung chat.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">15s - 28s</span></td>
+            <td><strong>D05:</strong> Bản thân tôi cũng vậy... gặp đúng trăn trở thì giữ lại tự tìm lời giải.</td>
+            <td>
+              <span class="broll-tag">ID: 022</span> Gõ Macbook, tay dừng trên trackpad chống cằm ngẫm nghĩ bên bàn gỗ.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">28s - 40s</span></td>
+            <td><strong>D06 - D07:</strong> Bình luận công khai như phát biểu hội trường... người trưởng thành ngại ma sát nhắn tin.</td>
+            <td>
+              <span class="broll-tag">ID: 125</span> Giảng đường nhiều người nhìn lên bục.<br>
+              <strong>A-Roll:</strong> Cắt về mặt anh nói D07 điềm đạm.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">40s - 55s</span></td>
+            <td><strong>D08:</strong> Mọi thứ sẽ mãi xa cách nếu đứng trên cao... chạm khi người chủ nhà biết kéo ghế mở lời.</td>
+            <td>
+              <span class="new-shot-badge">SHOT MỚI 02</span> Tay kéo ghế gỗ sang đối diện, đặt ly trà nóng.<br>
+              <span class="broll-tag">ID: 126</span> Khói trà bốc lên ấm cúng.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">55s - 65s</span></td>
+            <td><strong>D09:</strong> Trải nghiệm của người đi dạy đang làm kênh... khó khăn thực tế bạn đối mặt mới có thật.</td>
+            <td>
+              <strong>A-Roll In-Situ:</strong> Đứng bên chậu cây xanh, ánh nắng ban mai, vừa tỉa lá vừa chia sẻ khiêm nhường.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="time-badge">65s - 75s</span></td>
+            <td><strong>D10:</strong> "Thế nên cứ nhắn đi! Xem vài video của mình là biết thừa tính mình rồi... Ngại gì vết bẩn!"</td>
+            <td>
+              <span class="new-shot-badge">SHOT MỚI 03</span> Cận tia nước đọng giọt trên lá.<br>
+              <strong>A-Roll Master:</strong> Dừng tay, nhìn thẳng camera cười tươi rạng rỡ.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 5: Thơ Lục Bát & Comment Ghim -->
+    <div class="lucbat-card">
+      <div class="lucbat-title">📜 KHẨU QUYẾT ĐÚC KẾT (THƠ LỤC BÁT)</div>
+      <div class="lucbat-verse">
+        "Phòng lạ người lặng bước vào,<br>
+        Ngại ngùng chẳng biết cất chào từ đâu.<br>
+        Kéo ghế ngồi lại cùng nhau,<br>
+        Mở lòng chén ấm, tan màu cách xa." ☕🌱
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="comment-box">
+        <div class="comment-head">
+          <div class="comment-title">
+            <span>📌</span> MẪU BÌNH LUẬN GHIM (ZALO 1-CHẠM)
+          </div>
+          <button class="copy-btn" onclick="copyComment()">Copy Mẫu</button>
+        </div>
+        <div class="comment-text" id="commentContent">Viết riêng cho những anh em đã theo dõi kênh từ lâu nhưng chưa một lần để lại bình luận...
+
+Mình hiểu cảm giác ngượng ngùng khi bước vào một căn phòng lạ: sợ bị phán xét hoặc ngại những thủ tục nhắn tin rườm rà. Nhưng căn phòng này mở ra là để kéo một chiếc ghế ngồi lại cùng nhau.
+
+Anh em có bài toán thực tế nào cần trao đổi, cứ bấm thẳng vào Zalo cá nhân của mình ở đây nhé:
+👉 https://zalo.me/0934688632 (Việt) — Nhắn thẳng việc, không cần chào hỏi câu nệ đâu nhé!</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2026 FEDU VIETNAM • HỆ THỐNG ĐÀO TẠO QUAY DỰNG VIDEO THỰC CHIẾN
+    </div>
+
+  </div>
+
+  <script>
+    function copyComment() {
+      const text = document.getElementById('commentContent').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'Đã Copy!';
+        setTimeout(() => { btn.innerText = 'Copy Mẫu'; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
