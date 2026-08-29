@@ -484,8 +484,8 @@
           </select>
         </div>
         <div>
-          <label class="block text-xs font-medium text-amber-400 mb-1">Mã kích hoạt bản quyền:</label>
-          <input type="password" id="user-password" value="" placeholder="Nhập mã kích hoạt anh Việt cấp..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-amber-500/40 text-sm text-amber-300 focus:outline-none focus:border-amber-400 transition font-mono font-bold" />
+          <label class="block text-xs font-semibold text-amber-400 mb-1">Mật khẩu kích hoạt bản quyền:</label>
+          <input type="text" id="user-password" value="" autocomplete="off" placeholder="Ví dụ: ANHNAM2026, FACE-XXXX..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-amber-500/50 text-sm text-amber-300 placeholder:text-slate-600 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition font-mono font-bold uppercase tracking-wider" />
         </div>
       </div>
 
@@ -748,13 +748,37 @@
       }
 
       if (!userPassword) {
-        alert('Vui lòng nhập Mã Kích Hoạt bản quyền do Thầy Việt cấp để tạo Thẻ Căn Cước!');
-        if (passEl) passEl.focus();
+        alert('⚠️ Vui lòng nhập Mật Khẩu / Mã Kích Hoạt do Thầy Việt hoặc Đại Lý cấp để tạo Thẻ Căn Cước!');
+        if (passEl) {
+          passEl.focus();
+          passEl.classList.add('border-red-500', 'ring-2', 'ring-red-500/50');
+        }
         return;
       }
 
-      if (btnText) btnText.innerText = '⏳ ĐANG TẠO THẺ CĂN CƯỚC & ĐÓNG GÓI MÃ QR...';
+      if (btnText) btnText.innerText = '⏳ ĐANG XÁC THỰC MẬT KHẨU...';
       if (btn) btn.classList.add('opacity-80', 'cursor-wait');
+
+      // 1. Kiểm tra xác thực mật khẩu trực tuyến với Cloudflare R2
+      try {
+        const vResp = await fetch(`https://ai.fedu.vn/api/face/license/verify?code=${encodeURIComponent(userPassword)}`);
+        const vData = await vResp.json();
+        
+        if (!vResp.ok || !vData.valid) {
+          alert('❌ MẬT KHẨU KHÔNG HỢP LỆ:\n' + (vData.error || 'Mật khẩu này không tồn tại hoặc đã được sử dụng trước đó!'));
+          if (passEl) {
+            passEl.focus();
+            passEl.classList.add('border-red-500', 'ring-2', 'ring-red-500/50');
+          }
+          if (btnText) btnText.innerText = '⚡️ THỬ LẠI';
+          if (btn) btn.classList.remove('opacity-80', 'cursor-wait');
+          return;
+        }
+      } catch (vErr) {
+        console.warn('Lỗi kết nối kiểm tra mật khẩu:', vErr);
+      }
+
+      if (btnText) btnText.innerText = '⏳ ĐANG TẠO THẺ CĂN CƯỚC & ĐÓNG GÓI MÃ QR...';
 
       try {
         const photoList = [userPhotos[1]?.dataUrl, userPhotos[2]?.dataUrl, userPhotos[3]?.dataUrl].filter(Boolean);
