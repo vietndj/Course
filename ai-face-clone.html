@@ -489,25 +489,25 @@
         </div>
       </div>
 
-      <!-- NÚT XUẤT THẺ CĂN CƯỚC AI (MÃ QR FACE DNA) -->
+      <!-- NÚT NẠP KHUÔN MẶT CỦA TÔI (LỰA CHỌN 3) -->
       <div class="max-w-md mx-auto text-center space-y-4">
         <button onclick="generateAICard()" id="btn-sync" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-black font-extrabold text-base tracking-wide transition-all duration-300 shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-3 active:scale-[0.98]">
-          <span class="text-xl">⚡️</span>
-          <span id="sync-btn-text">TẠO & TẢI THẺ CĂN CƯỚC AI (1-CHẠM)</span>
+          <span class="text-xl">👤</span>
+          <span id="sync-btn-text">NẠP KHUÔN MẶT CỦA TÔI CHO TRỢ LÝ AI</span>
         </button>
 
         <p id="sync-status-tip" class="text-xs text-slate-400 font-light flex items-center justify-center gap-1.5">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>Bấm 1 chạm: Tự tạo mã QR và tải ảnh thẻ về máy ngay lập tức</span>
+          <span>Hệ thống tự đóng gói 3 góc mặt thành 1 file duy nhất. Ném vào chat là AI nhận diện bạn trọn đời.</span>
         </p>
       </div>
 
-      <!-- MODAL / KHU VỰC HIỂN THỊ THẺ CĂN CƯỚC AI VỪA TẠO -->
+      <!-- MODAL / KHU VỰC HIỂN THỊ FILE NHẬN DIỆN VỪA TẠO -->
       <div id="card-result-container" class="hidden mt-10 max-w-xl mx-auto p-6 rounded-3xl bg-slate-900/90 border border-emerald-500/40 shadow-2xl shadow-emerald-500/20 text-center space-y-6 animate-fade-in">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono">THẺ CĂN CƯỚC AI • ĐÃ ĐÓNG GÓI HOÀN TẤT</h3>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono">FILE NHẬN DIỆN KHUÔN MẶT • ĐÃ TẢI VỀ MÁY</h3>
           </div>
           <span id="card-face-id-tag" class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">#FACE_READY</span>
         </div>
@@ -717,13 +717,13 @@
 
       if (btnText) {
         if (uploadedCount === 3) {
-          btnText.innerText = '⚡️ ĐÃ ĐỦ 3 ẢNH • XUẤT THẺ CĂN CƯỚC AI (QR CARD)';
+          btnText.innerText = '👤 ĐÃ ĐỦ 3 ẢNH • NẠP KHUÔN MẶT CỦA TÔI CHO TRỢ LÝ AI';
         } else {
-          btnText.innerText = `🪪 NẠP THÊM ${3 - uploadedCount} ẢNH ĐỂ HOÀN TẤT (${uploadedCount}/3)`;
+          btnText.innerText = `👤 CHỌN THÊM ${3 - uploadedCount} ẢNH ĐỂ HOÀN TẤT (${uploadedCount}/3)`;
         }
       }
       if (tipText && uploadedCount === 3) {
-        tipText.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="text-emerald-400 font-semibold">Tuyệt vời! Bản sao khuôn mặt đã sẵn sàng tạo mã QR.</span>';
+        tipText.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span class="text-emerald-400 font-semibold">Tuyệt vời! 3 góc mặt đã sẵn sàng đóng gói cho Trợ lý AI.</span>';
       }
     }
 
@@ -957,15 +957,15 @@
           resContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        if (btnText) btnText.innerText = '✅ ĐÃ TẢI THẺ CĂN CƯỚC XUỐNG MÁY!';
+        if (btnText) btnText.innerText = '✅ ĐÃ TẢI FILE NHẬN DIỆN VỀ MÁY! NÉM VÀO ANTIGRAVITY ĐỂ DÙNG';
         if (btn) {
           btn.classList.remove('from-emerald-500', 'to-cyan-500', 'opacity-80', 'cursor-wait');
           btn.classList.add('from-emerald-400', 'to-emerald-300');
         }
 
       } catch (err) {
-        console.error('Lỗi khi tạo thẻ:', err);
-        alert('Có lỗi xảy ra khi tạo Thẻ Căn Cước: ' + (err.message || err));
+        console.error('Lỗi khi nạp ảnh:', err);
+        alert('Có lỗi xảy ra khi nạp ảnh: ' + (err.message || err));
         if (btnText) btnText.innerText = '⚡️ THỬ LẠI';
         if (btn) btn.classList.remove('opacity-80', 'cursor-wait');
       }
@@ -973,14 +973,14 @@
 
     function downloadPassportCard() {
       if (!currentPassportDataUrl) {
-        alert('Chưa có dữ liệu Thẻ Căn Cước!');
+        alert('Chưa có dữ liệu khuôn mặt!');
         return;
       }
       const nameEl = document.getElementById('user-name');
       const userName = (nameEl ? nameEl.value.trim() : '') || 'Chu-Nhan';
       const a = document.createElement('a');
       a.href = currentPassportDataUrl;
-      a.download = `The-Can-Cuoc-AI-${userName}.png`;
+      a.download = `Nhan-Dien-Khuon-Mat-${userName}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
