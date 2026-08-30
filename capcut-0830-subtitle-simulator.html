@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mô Phỏng & Kiểm Tra Phụ Đề CapCut 9:16 - Dự Án 0830</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700;1,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: #111827;
+      --bg-surface: #1a2234;
+      --border: #233148;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.25);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.2);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --danger-glow: rgba(239, 68, 68, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: rgba(17, 24, 39, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .header-title h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header-title p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .stat-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-pill strong {
+      color: var(--text-main);
+    }
+
+    .stat-pill.success {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: var(--success-glow);
+    }
+
+    .stat-pill.success strong {
+      color: var(--success);
+    }
+
+    /* Main Layout */
+    .app-container {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      flex: 1;
+      height: calc(100vh - 73px);
+      overflow: hidden;
+    }
+
+    @media (max-width: 1100px) {
+      .app-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+      }
+    }
+
+    /* Simulator Panel (Left) */
+    .sim-panel {
+      background: #0d121e;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+      gap: 16px;
+    }
+
+    .phone-mockup {
+      width: 320px;
+      height: 568px; /* 9:16 ratio */
+      background: #000;
+      border-radius: 36px;
+      border: 4px solid #334155;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 70px 0;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 18px;
+      background: #1e293b;
+      border-radius: 10px;
+      z-index: 20;
+    }
+
+    .phone-screen-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 60%, #020617 100%);
+      opacity: 0.95;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #475569;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .video-time-tag {
+      position: absolute;
+      top: 36px;
+      left: 16px;
+      z-index: 10;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(0,0,0,0.6);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Safe Area Box (82% width) */
+    .safe-box-overlay {
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      bottom: 60px;
+      height: 110px;
+      border: 1.5px dashed rgba(239, 68, 68, 0.4);
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4px 6px;
+      transition: all 0.2s;
+    }
+
+    .safe-box-overlay.hide {
+      opacity: 0;
+    }
+
+    .safe-tag {
+      font-size: 0.55rem;
+      color: rgba(239, 68, 68, 0.8);
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Subtitle text container inside mockup */
+    .subtitle-render-box {
+      position: relative;
+      z-index: 15;
+      width: 82%; /* 885px on 1080px */
+      margin: 0 auto;
+      text-align: center;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sub-text-acta {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 2px #000;
+      word-break: normal;
+      overflow-wrap: normal;
+      white-space: pre-line;
+      letter-spacing: -0.01em;
+      transition: all 0.15s ease;
+    }
+
+    .sub-text-acta.danger-wrap {
+      color: #fca5a5;
+      text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+    }
+
+    /* Controls beneath phone */
+    .sim-controls {
+      width: 320px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-scrubber {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .ctrl-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ctrl {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .btn-ctrl:hover {
+      background: var(--border);
+      border-color: #3b82f6;
+    }
+
+    .btn-ctrl.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-play {
+      flex: 1;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: none;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .btn-play:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Inspector & Subtitle List (Right) */
+    .list-panel {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+
+    .filter-bar {
+      padding: 14px 24px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tab-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      outline: none;
+      width: 200px;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .subtitle-scroll-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Subtitle Card */
+    .sub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: grid;
+      grid-template-columns: 60px 1fr 1fr;
+      gap: 16px;
+      align-items: center;
+      position: relative;
+    }
+
+    .sub-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .sub-card.selected {
+      border-color: var(--accent);
+      background: #172138;
+      box-shadow: 0 0 0 2px var(--accent), 0 8px 24px rgba(59, 130, 246, 0.2);
+    }
+
+    .sub-card.selected::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-idx {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #60a5fa;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .card-time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: "JetBrains Mono", monospace;
+      background: var(--bg-surface);
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .card-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .col-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-text-raw {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border-left: 3px solid #ef4444;
+    }
+
+    .card-text-opt {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.35;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border-left: 3px solid #10b981;
+      white-space: pre-line;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+    }
+
+    .line-stat-pills {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .line-pill {
+      font-size: 0.65rem;
+      font-family: "JetBrains Mono", monospace;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #1e293b;
+      color: #94a3b8;
+    }
+
+    .line-pill.safe {
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .line-pill.danger {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .tags-container {
+      grid-column: 2 / -1;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: -4px;
+    }
+
+    .badge-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid var(--border);
+    }
+
+    .badge-tag.highlight {
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .badge-tag.fix {
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-badge">
+      <div class="badge-icon">🎬</div>
+      <div class="header-title">
+        <h1>CapCut 9:16 Subtitle Simulator & Diagnostics</h1>
+        <p>Dự án: <strong>0830</strong> • Font: <strong>SVN-Acta-BoldItalic (Cỡ 9-10)</strong></p>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-pill success">
+        <span>✅ Tối ưu:</span>
+        <strong>65/65 Subtitles</strong>
+      </div>
+      <div class="stat-pill success">
+        <span>📏 Max Dòng Đơn:</span>
+        <strong>24 ký tự (Chuẩn &le;25)</strong>
+      </div>
+      <div class="stat-pill">
+        <span>⚠️ Lỗi rách từ:</span>
+        <strong style="color: #10b981;">0% (Hoàn toàn sạch)</strong>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Left Simulator Panel -->
+    <div class="sim-panel">
+      
+      <!-- Phone Mockup 9:16 -->
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="video-time-tag" id="timeTag">00:00.00 / 02:17.25</div>
+        
+        <div class="phone-screen-bg">
+          <div style="font-size: 2rem; margin-bottom: 8px;">📹</div>
+          <div>Mô phỏng Màn hình 9:16</div>
+          <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">Tỷ lệ 1080 &times; 1920 (CapCut Preview)</div>
+        </div>
+
+        <!-- Safe Zone Box -->
+        <div class="safe-box-overlay" id="safeBox">
+          <div class="safe-tag">Safe Box (82% Width / 885px)</div>
+          <div class="safe-tag" style="text-align: right;">Max 25 Ký Tự / Dòng</div>
+        </div>
+
+        <!-- Subtitle Container -->
+        <div class="subtitle-render-box">
+          <div class="sub-text-acta" id="simSubText">khi mà mình bước vào
+một căn phòng lạ ấy</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="sim-controls">
+        <div class="ctrl-row">
+          <button class="btn-ctrl" id="btnPrev">⏮ Câu trước</button>
+          <button class="btn-play" id="btnPlay">▶ Phát Mô Phỏng</button>
+          <button class="btn-ctrl" id="btnNext">Câu sau ⏭</button>
+        </div>
+
+        <input type="range" class="timeline-scrubber" id="scrubber" min="0" max="137.25" step="0.1" value="0">
+
+        <div class="ctrl-row" style="margin-top: 4px;">
+          <button class="btn-ctrl active" id="btnModeOpt">🟢 Xem Đã Tối Ưu</button>
+          <button class="btn-ctrl" id="btnModeRaw">🔴 Xem Gốc</button>
+          <button class="btn-ctrl" id="btnToggleSafe">🔲 Ẩn/Hiện Khung Safe</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right List Panel -->
+    <div class="list-panel">
+      
+      <div class="filter-bar">
+        <div class="tab-group">
+          <button class="filter-tab active" data-filter="all">Tất cả (65)</button>
+          <button class="filter-tab" data-filter="multiline">Đã ngắt 2 dòng (44)</button>
+          <button class="filter-tab" data-filter="single">Dòng đơn chuẩn (21)</button>
+          <button class="filter-tab" data-filter="fixed">Đã sửa chính tả & gộp từ (12)</button>
+        </div>
+
+        <input type="text" class="search-input" id="searchSub" placeholder="🔍 Tìm phụ đề...">
+      </div>
+
+      <div class="subtitle-scroll-container" id="subList">
+        <!-- Subtitle Cards rendered by JS -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const subData = [{"id": 1, "start": 0.0, "end": 2.46, "duration": 2.46, "text": "khi mà mình bước vào\nmột căn phòng lạ ấy", "lines": ["khi mà mình bước vào", "một căn phòng lạ ấy"], "raw_text": "khi mà mình à bước vào một cái căn phòng lạ ấy", "raw_max_len": 46, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 2, "start": 2.71, "end": 4.62, "duration": 1.92, "text": "thì điều đầu tiên\nmình sẽ làm gì nhở?", "lines": ["thì điều đầu tiên", "mình sẽ làm gì nhở?"], "raw_text": "thì điều đầu tiên là mình sẽ làm gì nhở", "raw_max_len": 39, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 3, "start": 4.62, "end": 6.67, "duration": 2.04, "text": "đầu tiên là mình\nsẽ chọn vào góc", "lines": ["đầu tiên là mình", "sẽ chọn vào góc"], "raw_text": "đầu tiên là mình sẽ chọn vào góc", "raw_max_len": 32, "opt_max_len": 16, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 4, "start": 6.67, "end": 8.58, "duration": 1.92, "text": "sau đó là mình\nrút điện thoại ra", "lines": ["sau đó là mình", "rút điện thoại ra"], "raw_text": "sau đó là mình rút điện thoại Ra", "raw_max_len": 32, "opt_max_len": 17, "tags": ["Ngắt 2 dòng cân xứng", "Sửa viết hoa: Ra ➔ ra"]}, {"id": 5, "start": 8.58, "end": 10.88, "duration": 2.29, "text": "sau đó là\nim lặng quan sát", "lines": ["sau đó là", "im lặng quan sát"], "raw_text": "sau đó là im lặng quan sát", "raw_max_len": 26, "opt_max_len": 16, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 6, "start": 10.88, "end": 12.21, "duration": 1.33, "text": "không phải là\nbởi vì mình chảnh", "lines": ["không phải là", "bởi vì mình chảnh"], "raw_text": "không phải là bởi vì mình chảnh", "raw_max_len": 31, "opt_max_len": 17, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 7, "start": 12.21, "end": 14.21, "duration": 2.0, "text": "mà là ở một nơi xa lạ ấy", "lines": ["mà là ở một nơi xa lạ ấy"], "raw_text": "mà là ở một nơi xa lạ ấy", "raw_max_len": 24, "opt_max_len": 24, "tags": ["Dòng đơn chuẩn"]}, {"id": 8, "start": 14.21, "end": 18.12, "duration": 3.92, "text": "thì ai cũng cần cảm giác\nan toàn và thoải mái", "lines": ["thì ai cũng cần cảm giác", "an toàn và thoải mái"], "raw_text": "thì AI cũng cần một cái cảm giác an toàn và thoải mái", "raw_max_len": 53, "opt_max_len": 24, "tags": ["Ngắt 2 dòng cân xứng", "Sửa đại từ: AI ➔ ai"]}, {"id": 9, "start": 18.12, "end": 20.04, "duration": 1.92, "text": "thì mình mới bắt đầu\nnói chuyện được", "lines": ["thì mình mới bắt đầu", "nói chuyện được"], "raw_text": "thì mình mới bắt đầu nói chuyện được", "raw_max_len": 36, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 10, "start": 20.04, "end": 21.75, "duration": 1.71, "text": "ở trên mạng xã hội\ncũng như vậy", "lines": ["ở trên mạng xã hội", "cũng như vậy"], "raw_text": "ở trên mạng xã hội cũng vậy", "raw_max_len": 27, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 11, "start": 21.75, "end": 23.71, "duration": 1.96, "text": "và bản thân mình\ncũng thế luôn", "lines": ["và bản thân mình", "cũng thế luôn"], "raw_text": "và bản thân mình cũng thế luôn", "raw_max_len": 30, "opt_max_len": 16, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 12, "start": 23.71, "end": 25.79, "duration": 2.08, "text": "tức là khi mà gặp\nmột cái thứ gì đấy", "lines": ["tức là khi mà gặp", "một cái thứ gì đấy"], "raw_text": "tức là khi mà gặp một cái thứ gì đấy", "raw_max_len": 36, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 13, "start": 26.0, "end": 28.54, "duration": 2.54, "text": "mà mình đang quan tâm\ntrong thời điểm hiện tại", "lines": ["mà mình đang quan tâm", "trong thời điểm hiện tại"], "raw_text": "mà mình đang quan tâm trong cái thời điểm hiện tại nhá", "raw_max_len": 54, "opt_max_len": 24, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 14, "start": 28.54, "end": 30.42, "duration": 1.88, "text": "thì cái phản xạ đầu tiên\ncủa mình ý", "lines": ["thì cái phản xạ đầu tiên", "của mình ý"], "raw_text": "thì cái phản xạ đầu tiên của mình ý", "raw_max_len": 35, "opt_max_len": 24, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 15, "start": 30.58, "end": 31.83, "duration": 1.25, "text": "là lắng lại một chút", "lines": ["là lắng lại một chút"], "raw_text": "là lắng lại một chút", "raw_max_len": 20, "opt_max_len": 20, "tags": ["Dòng đơn chuẩn"]}, {"id": 16, "start": 31.83, "end": 33.21, "duration": 1.38, "text": "để mình tự tìm lời giải", "lines": ["để mình tự tìm lời giải"], "raw_text": "để mình tự tìm lời giải", "raw_max_len": 23, "opt_max_len": 23, "tags": ["Dòng đơn chuẩn"]}, {"id": 17, "start": 33.21, "end": 35.5, "duration": 2.29, "text": "chứ không phải là mình\ngõ luôn một bình luận", "lines": ["chứ không phải là mình", "gõ luôn một bình luận"], "raw_text": "chứ không phải là mình gõ luôn một cái bình luận", "raw_max_len": 48, "opt_max_len": 22, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 18, "start": 35.62, "end": 36.42, "duration": 0.79, "text": "công khai", "lines": ["công khai"], "raw_text": "công khai", "raw_max_len": 9, "opt_max_len": 9, "tags": ["Dòng đơn chuẩn"]}, {"id": 19, "start": 36.42, "end": 39.5, "duration": 3.08, "text": "bởi vì ở một nơi lạ ấy\nthì cảm giác nó", "lines": ["bởi vì ở một nơi lạ ấy", "thì cảm giác nó"], "raw_text": "bởi vì ở một nơi lạ ấy thì cảm giác nó", "raw_max_len": 38, "opt_max_len": 22, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 20, "start": 39.83, "end": 41.08, "duration": 1.25, "text": "nó rất là mất tự nhiên", "lines": ["nó rất là mất tự nhiên"], "raw_text": "nó rất là mất tự nhiên", "raw_max_len": 22, "opt_max_len": 22, "tags": ["Dòng đơn chuẩn"]}, {"id": 21, "start": 41.08, "end": 42.42, "duration": 1.33, "text": "kể cả bản thân mình\ncũng cảm giác như vậy", "lines": ["kể cả bản thân mình", "cũng cảm giác như vậy"], "raw_text": "kể cả mình cũng cảm giác như vậy", "raw_max_len": 32, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 22, "start": 42.71, "end": 46.42, "duration": 3.71, "text": "lúc đầu muốn nói thật\nnhưng lúc gõ thì lại", "lines": ["lúc đầu muốn nói thật", "nhưng lúc gõ thì lại"], "raw_text": "lúc đầu mình mình muốn nói thật nhưng mà lúc gõ thì lại", "raw_max_len": 55, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 23, "start": 47.0, "end": 49.04, "duration": 2.04, "text": "chỉnh sửa một chút\nlại thành không thật", "lines": ["chỉnh sửa một chút", "lại thành không thật"], "raw_text": "chỉnh sửa một chút cuối cùng nó lại thành không thật", "raw_max_len": 52, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 24, "start": 49.04, "end": 51.5, "duration": 2.46, "text": "mà mình thì luôn muốn\nmột cái gì đấy thật", "lines": ["mà mình thì luôn muốn", "một cái gì đấy thật"], "raw_text": "mà mình ý thì mình muốn một cái gì đấy thật", "raw_max_len": 43, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 25, "start": 51.5, "end": 52.79, "duration": 1.29, "text": "một cái gì đấy\nnó thật chất lượng", "lines": ["một cái gì đấy", "nó thật chất lượng"], "raw_text": "một cái gì đấy nó chất lượng", "raw_max_len": 28, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 26, "start": 52.79, "end": 54.75, "duration": 1.96, "text": "chứ không phải là một\ncuộc nói chuyện xã giao", "lines": ["chứ không phải là một", "cuộc nói chuyện xã giao"], "raw_text": "chứ không phải là một cái cuộc nói chuyện xã giao", "raw_max_len": 49, "opt_max_len": 23, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 27, "start": 54.75, "end": 55.54, "duration": 0.79, "text": "nếu mà xã giao", "lines": ["nếu mà xã giao"], "raw_text": "nếu mà xã", "raw_max_len": 9, "opt_max_len": 14, "tags": ["Dòng đơn chuẩn", "Gộp từ rách: nếu mà xã ➔ nếu mà xã giao"]}, {"id": 28, "start": 55.54, "end": 58.0, "duration": 2.46, "text": "thì mình nói chuyện\nvới AI còn hơn nhá", "lines": ["thì mình nói chuyện", "với AI còn hơn nhá"], "raw_text": "giao ấy thì mình nói chuyện với AI còn hơn nhá", "raw_max_len": 46, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 29, "start": 58.0, "end": 61.12, "duration": 3.12, "text": "khi người ta bình luận\nđã hỏi mình rồi", "lines": ["khi người ta bình luận", "đã hỏi mình rồi"], "raw_text": "một người ấy khi mà người ta bình luận hỏi mình rồi", "raw_max_len": 51, "opt_max_len": 22, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 30, "start": 61.12, "end": 63.0, "duration": 1.88, "text": "nói ra cái khó khăn\ncủa mình rồi", "lines": ["nói ra cái khó khăn", "của mình rồi"], "raw_text": "nói Ra cái khó khăn của mình rồi", "raw_max_len": 32, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng", "Sửa viết hoa: Ra ➔ ra"]}, {"id": 31, "start": 63.0, "end": 64.79, "duration": 1.79, "text": "chấp nhận hở sườn rồi", "lines": ["chấp nhận hở sườn rồi"], "raw_text": "chấp nhận hở sườn rồi", "raw_max_len": 21, "opt_max_len": 21, "tags": ["Dòng đơn chuẩn"]}, {"id": 32, "start": 64.79, "end": 67.29, "duration": 2.5, "text": "mà lại nhận được\nmột cái sự sáo rỗng", "lines": ["mà lại nhận được", "một cái sự sáo rỗng"], "raw_text": "mà lại nhận được một cái sự xáo rỗng", "raw_max_len": 36, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng", "Sửa lỗi: xáo rỗng ➔ sáo rỗng"]}, {"id": 33, "start": 67.29, "end": 70.42, "duration": 3.12, "text": "đãi bôi thờ ơ thì\nnói chung hụt hẫng lắm", "lines": ["đãi bôi thờ ơ thì", "nói chung hụt hẫng lắm"], "raw_text": "đãi bôi thờ ơ thì nói Chung là nó hụt hẫng lắm", "raw_max_len": 46, "opt_max_len": 22, "tags": ["Ngắt 2 dòng cân xứng", "Sửa viết hoa: Chung ➔ chung"]}, {"id": 34, "start": 70.42, "end": 72.58, "duration": 2.17, "text": "và đối với người\nxem video cũng thế", "lines": ["và đối với người", "xem video cũng thế"], "raw_text": "và đối với người xem video cũng thế", "raw_max_len": 35, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 35, "start": 72.58, "end": 75.58, "duration": 3.0, "text": "người ta chỉ sẵn sàng\nnhắn tin ý khi mà", "lines": ["người ta chỉ sẵn sàng", "nhắn tin ý khi mà"], "raw_text": "người ta chỉ sẵn sàng nhắn tin ý khi mà", "raw_max_len": 39, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 36, "start": 76.33, "end": 78.33, "duration": 2.0, "text": "thực sự cảm thấy là\nmình muốn nghe người ta", "lines": ["thực sự cảm thấy là", "mình muốn nghe người ta"], "raw_text": "thực sự cảm thấy là mình muốn nghe người ta", "raw_max_len": 43, "opt_max_len": 23, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 37, "start": 78.33, "end": 81.21, "duration": 2.88, "text": "cho nên mình luôn coi\nmình là chủ nhà", "lines": ["cho nên mình luôn coi", "mình là chủ nhà"], "raw_text": "Cho nên là mình luôn coi mình là chủ nhà", "raw_max_len": 40, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 38, "start": 81.21, "end": 87.88, "duration": 6.67, "text": "mình bước đến kéo ghế\nphủi bụi và rót trà", "lines": ["mình bước đến kéo ghế", "phủi bụi và rót trà"], "raw_text": "mình bước đến mình kéo ghế mình phủi bụi mình rót trà", "raw_max_len": 53, "opt_max_len": 21, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 39, "start": 87.88, "end": 89.38, "duration": 1.5, "text": "mình là chủ nhà mà", "lines": ["mình là chủ nhà mà"], "raw_text": "mình là chủ nhà mà", "raw_max_len": 18, "opt_max_len": 18, "tags": ["Dòng đơn chuẩn"]}, {"id": 40, "start": 89.38, "end": 92.92, "duration": 3.54, "text": "mình phải hào sảng\nmình phải chân thật", "lines": ["mình phải hào sảng", "mình phải chân thật"], "raw_text": "mình phải hào sảng mình phải chân thật", "raw_max_len": 38, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 41, "start": 92.92, "end": 94.5, "duration": 1.58, "text": "thì người ta\nmới mở lời chứ", "lines": ["thì người ta", "mới mở lời chứ"], "raw_text": "thì người ta mới mở lời chứ", "raw_max_len": 27, "opt_max_len": 14, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 42, "start": 94.5, "end": 97.29, "duration": 2.79, "text": "người ta mất thời gian\nđể đến nhà của mình", "lines": ["người ta mất thời gian", "để đến nhà của mình"], "raw_text": "người ta đã mất thời gian để người ta đến nhà mình", "raw_max_len": 50, "opt_max_len": 22, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 43, "start": 97.42, "end": 98.92, "duration": 1.5, "text": "mà mình lại\nkhông chân thật", "lines": ["mà mình lại", "không chân thật"], "raw_text": "mà mình lại không chân thật", "raw_max_len": 27, "opt_max_len": 15, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 44, "start": 98.92, "end": 100.71, "duration": 1.79, "text": "thì chẳng phải là\nquá buồn hay sao?", "lines": ["thì chẳng phải là", "quá buồn hay sao?"], "raw_text": "thì chẳng phải là quá buồn hay SAO", "raw_max_len": 34, "opt_max_len": 17, "tags": ["Ngắt 2 dòng cân xứng", "Sửa: SAO ➔ sao?"]}, {"id": 45, "start": 100.71, "end": 101.96, "duration": 1.25, "text": "cho nên là mình phải thật", "lines": ["cho nên là mình phải thật"], "raw_text": "Cho nên là mình phải thật", "raw_max_len": 25, "opt_max_len": 25, "tags": ["Dòng đơn chuẩn"]}, {"id": 46, "start": 101.96, "end": 103.33, "duration": 1.38, "text": "đấy là điều\nmà mình nhận ra", "lines": ["đấy là điều", "mà mình nhận ra"], "raw_text": "đấy là điều mà mình nhận Ra", "raw_max_len": 27, "opt_max_len": 15, "tags": ["Ngắt 2 dòng cân xứng", "Sửa viết hoa: Ra ➔ ra"]}, {"id": 47, "start": 103.67, "end": 104.5, "duration": 0.83, "text": "trong cái quá trình", "lines": ["trong cái quá trình"], "raw_text": "trong cái quá trình", "raw_max_len": 19, "opt_max_len": 19, "tags": ["Dòng đơn chuẩn"]}, {"id": 48, "start": 104.71, "end": 106.75, "duration": 2.04, "text": "bắt đầu làm video\ntừ đầu năm nay", "lines": ["bắt đầu làm video", "từ đầu năm nay"], "raw_text": "mà bắt đầu làm video từ đầu năm nay", "raw_max_len": 35, "opt_max_len": 17, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 49, "start": 106.75, "end": 108.92, "duration": 2.17, "text": "bởi vì mình cũng chỉ\nlà một ông giáo", "lines": ["bởi vì mình cũng chỉ", "là một ông giáo"], "raw_text": "bởi vì mình cũng chỉ là một ông giáo", "raw_max_len": 36, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 50, "start": 108.92, "end": 109.71, "duration": 0.79, "text": "đang", "lines": ["đang"], "raw_text": "đang", "raw_max_len": 4, "opt_max_len": 4, "tags": ["Dòng đơn chuẩn"]}, {"id": 51, "start": 109.71, "end": 111.67, "duration": 1.96, "text": "học một cái kỹ năng\ntrên mạng xã hội", "lines": ["học một cái kỹ năng", "trên mạng xã hội"], "raw_text": "học một cái kỹ năng ở trên mạng xã hội", "raw_max_len": 38, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 52, "start": 111.67, "end": 112.67, "duration": 1.0, "text": "là kỹ năng làm video", "lines": ["là kỹ năng làm video"], "raw_text": "là kỹ năng làm video", "raw_max_len": 20, "opt_max_len": 20, "tags": ["Dòng đơn chuẩn"]}, {"id": 53, "start": 112.67, "end": 115.04, "duration": 2.38, "text": "chẳng may có một vài\nclip gọi là viral", "lines": ["chẳng may có một vài", "clip gọi là viral"], "raw_text": "chẳng may có một vài clip gọi là viral", "raw_max_len": 38, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 54, "start": 115.04, "end": 116.96, "duration": 1.92, "text": "cho nên mình có\nmột góc nhìn như vậy", "lines": ["cho nên mình có", "một góc nhìn như vậy"], "raw_text": "Cho nên là mình có một góc nhìn như vậy", "raw_max_len": 39, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 55, "start": 116.96, "end": 119.17, "duration": 2.21, "text": "nên nếu như mà\nbạn cần một cái", "lines": ["nên nếu như mà", "bạn cần một cái"], "raw_text": "nên là nếu mà bạn cần một cái", "raw_max_len": 29, "opt_max_len": 15, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 56, "start": 119.42, "end": 122.38, "duration": 2.96, "text": "sự giúp đỡ hay lời góp ý\ngì từ phía mình ý", "lines": ["sự giúp đỡ hay lời góp ý", "gì từ phía mình ý"], "raw_text": "cái sự giúp đỡ hay là một lời góp ý gì từ phía mình ý", "raw_max_len": 53, "opt_max_len": 24, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 57, "start": 122.38, "end": 123.5, "duration": 1.12, "text": "thì bạn cứ mở lời", "lines": ["thì bạn cứ mở lời"], "raw_text": "thì bạn cứ mở lời", "raw_max_len": 17, "opt_max_len": 17, "tags": ["Dòng đơn chuẩn"]}, {"id": 58, "start": 123.5, "end": 125.29, "duration": 1.79, "text": "bạn cứ nhắn vào\nsố Zalo của mình", "lines": ["bạn cứ nhắn vào", "số Zalo của mình"], "raw_text": "bạn cứ nhắn vào cái số Zalo của mình", "raw_max_len": 36, "opt_max_len": 16, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 59, "start": 125.42, "end": 127.83, "duration": 2.42, "text": "mình có thể là mình\nkhông trả lời luôn", "lines": ["mình có thể là mình", "không trả lời luôn"], "raw_text": "mình thì mình có thể là mình không trả lời luôn", "raw_max_len": 47, "opt_max_len": 19, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 60, "start": 127.83, "end": 130.12, "duration": 2.29, "text": "nhưng nếu check được\ntin nhắn của bạn ấy", "lines": ["nhưng nếu check được", "tin nhắn của bạn ấy"], "raw_text": "nhưng mà nếu mà mình check được tin nhắn của bạn ấy", "raw_max_len": 51, "opt_max_len": 20, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 61, "start": 130.12, "end": 131.46, "duration": 1.33, "text": "là mình sẽ\ntrả lời chân thành", "lines": ["là mình sẽ", "trả lời chân thành"], "raw_text": "là mình sẽ trả lời chân thành", "raw_max_len": 29, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 62, "start": 131.46, "end": 133.04, "duration": 1.58, "text": "bạn nếu mà xem\nvideo của mình", "lines": ["bạn nếu mà xem", "video của mình"], "raw_text": "bạn nếu mà xem video của mình", "raw_max_len": 29, "opt_max_len": 14, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 63, "start": 133.25, "end": 134.38, "duration": 1.12, "text": "thì bạn đã\nbiết thừa mình rồi", "lines": ["thì bạn đã", "biết thừa mình rồi"], "raw_text": "thì bạn biết thừa mình rồi", "raw_max_len": 26, "opt_max_len": 18, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 64, "start": 134.71, "end": 136.21, "duration": 1.5, "text": "cho nên là bạn\nđừng có ngại", "lines": ["cho nên là bạn", "đừng có ngại"], "raw_text": "Cho nên là bạn đừng có ngại", "raw_max_len": 27, "opt_max_len": 14, "tags": ["Ngắt 2 dòng cân xứng"]}, {"id": 65, "start": 136.21, "end": 137.25, "duration": 1.04, "text": "cứ nhắn tin nhá", "lines": ["cứ nhắn tin nhá"], "raw_text": "cứ nhắn tin nhá", "raw_max_len": 15, "opt_max_len": 15, "tags": ["Dòng đơn chuẩn"]}];
+
+    let currentIndex = 0;
+    let isPlaying = false;
+    let playInterval = null;
+    let viewMode = "opt"; // "opt" or "raw"
+    let showSafeBox = true;
+
+    const simSubText = document.getElementById("simSubText");
+    const timeTag = document.getElementById("timeTag");
+    const scrubber = document.getElementById("scrubber");
+    const btnPlay = document.getElementById("btnPlay");
+    const btnPrev = document.getElementById("btnPrev");
+    const btnNext = document.getElementById("btnNext");
+    const btnModeOpt = document.getElementById("btnModeOpt");
+    const btnModeRaw = document.getElementById("btnModeRaw");
+    const btnToggleSafe = document.getElementById("btnToggleSafe");
+    const safeBox = document.getElementById("safeBox");
+    const subList = document.getElementById("subList");
+    const searchSub = document.getElementById("searchSub");
+    const filterTabs = document.querySelectorAll(".filter-tab");
+
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60);
+      const s = Math.floor(secs % 60);
+      const ms = Math.floor((secs % 1) * 100);
+      return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}.${ms.toString().padStart(2, "0")}`;
+    }
+
+    function renderSimulator(idx) {
+      if (idx < 0 || idx >= subData.length) return;
+      currentIndex = idx;
+      const item = subData[idx];
+
+      const textToShow = viewMode === "opt" ? item.text : item.raw_text;
+      simSubText.textContent = textToShow;
+      
+      if (viewMode === "raw" && item.raw_max_len > 25) {
+        simSubText.classList.add("danger-wrap");
+      } else {
+        simSubText.classList.remove("danger-wrap");
+      }
+
+      timeTag.textContent = `${formatTime(item.start)} / 02:17.25`;
+      scrubber.value = item.start;
+
+      // Update card active state
+      document.querySelectorAll(".sub-card").forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add("selected");
+          c.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        } else {
+          c.classList.remove("selected");
+        }
+      });
+    }
+
+    function renderList(items) {
+      subList.innerHTML = "";
+      items.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.className = `sub-card ${idx === currentIndex ? "selected" : ""}`;
+        card.dataset.idx = idx;
+
+        const rawLines = item.raw_text.split("\n");
+        const optLines = item.text.split("\n");
+
+        const rawPills = rawLines.map((l, li) => `<span class="line-pill ${l.length > 25 ? "danger" : "safe"}">D${li+1}: ${l.length} ký tự</span>`).join(" ");
+        const optPills = optLines.map((l, li) => `<span class="line-pill safe">D${li+1}: ${l.length} ký tự</span>`).join(" ");
+
+        const tagBadges = item.tags.map(t => `<span class="badge-tag ${t.includes("Sửa") || t.includes("Gộp") ? "fix" : "highlight"}">${t}</span>`).join(" ");
+
+        card.innerHTML = `
+          <div class="card-meta">
+            <div class="card-idx">[${item.id.toString().padStart(2, "0")}]</div>
+            <div class="card-time">${formatTime(item.start)}</div>
+            <div class="card-time" style="color: #64748b;">${item.duration}s</div>
+          </div>
+
+          <div class="card-col">
+            <div class="col-title" style="color: #ef4444;">🔴 Trước khi sửa (Gốc)</div>
+            <div class="card-text-raw">${item.raw_text}</div>
+            <div class="line-stat-pills">${rawPills}</div>
+          </div>
+
+          <div class="card-col">
+            <div class="col-title" style="color: #10b981;">🟢 Đã tối ưu (Chuẩn 9:16)</div>
+            <div class="card-text-opt">${item.text}</div>
+            <div class="line-stat-pills">${optPills}</div>
+          </div>
+
+          <div class="tags-container">
+            ${tagBadges}
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          renderSimulator(idx);
+        });
+
+        subList.appendChild(card);
+      });
+    }
+
+    // Playback logic
+    function togglePlay() {
+      if (isPlaying) {
+        isPlaying = false;
+        btnPlay.textContent = "▶ Phát Mô Phỏng";
+        btnPlay.style.background = "";
+        clearInterval(playInterval);
+      } else {
+        isPlaying = true;
+        btnPlay.textContent = "⏸ Tạm Dừng";
+        btnPlay.style.background = "linear-gradient(135deg, #ef4444, #dc2626)";
+        
+        let curTime = parseFloat(scrubber.value);
+        playInterval = setInterval(() => {
+          curTime += 0.2;
+          if (curTime > 137.25) {
+            curTime = 0;
+          }
+          scrubber.value = curTime;
+          timeTag.textContent = `${formatTime(curTime)} / 02:17.25`;
+
+          // Find matching subtitle
+          const matchIdx = subData.findIndex(s => curTime >= s.start && curTime <= s.end);
+          if (matchIdx !== -1 && matchIdx !== currentIndex) {
+            renderSimulator(matchIdx);
+          }
+        }, 200);
+      }
+    }
+
+    btnPlay.addEventListener("click", togglePlay);
+
+    btnPrev.addEventListener("click", () => {
+      if (currentIndex > 0) renderSimulator(currentIndex - 1);
+    });
+
+    btnNext.addEventListener("click", () => {
+      if (currentIndex < subData.length - 1) renderSimulator(currentIndex + 1);
+    });
+
+    scrubber.addEventListener("input", (e) => {
+      const t = parseFloat(e.target.value);
+      timeTag.textContent = `${formatTime(t)} / 02:17.25`;
+      const matchIdx = subData.findIndex(s => t >= s.start && t <= s.end);
+      if (matchIdx !== -1) {
+        renderSimulator(matchIdx);
+      }
+    });
+
+    btnModeOpt.addEventListener("click", () => {
+      viewMode = "opt";
+      btnModeOpt.classList.add("active");
+      btnModeRaw.classList.remove("active");
+      renderSimulator(currentIndex);
+    });
+
+    btnModeRaw.addEventListener("click", () => {
+      viewMode = "raw";
+      btnModeRaw.classList.add("active");
+      btnModeOpt.classList.remove("active");
+      renderSimulator(currentIndex);
+    });
+
+    btnToggleSafe.addEventListener("click", () => {
+      showSafeBox = !showSafeBox;
+      if (showSafeBox) {
+        safeBox.classList.remove("hide");
+        btnToggleSafe.classList.add("active");
+      } else {
+        safeBox.classList.add("hide");
+        btnToggleSafe.classList.remove("active");
+      }
+    });
+
+    // Filtering
+    filterTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        filterTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const filter = tab.dataset.filter;
+
+        let filtered = subData;
+        if (filter === "multiline") {
+          filtered = subData.filter(s => s.lines.length > 1);
+        } else if (filter === "single") {
+          filtered = subData.filter(s => s.lines.length === 1);
+        } else if (filter === "fixed") {
+          filtered = subData.filter(s => s.tags.some(t => t.includes("Sửa") || t.includes("Gộp")));
+        }
+        renderList(filtered);
+      });
+    });
+
+    searchSub.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtered = subData.filter(s => s.text.toLowerCase().includes(q) || s.raw_text.toLowerCase().includes(q));
+      renderList(filtered);
+    });
+
+    // Initialize
+    renderList(subData);
+    renderSimulator(0);
+  </script>
+</body>
+</html>
