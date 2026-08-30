@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Kịch Bản Teleprompter Master 100% Hoàn Hảo - Căn Phòng Lạ & Nụ Cười Mở Lời - Anh Việt</title>
+  <title>Kịch Bản Teleprompter Master 16 Dòng - Căn Phòng Lạ & Nụ Cười Mở Lời - Anh Việt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
       --font-heading: "Plus Jakarta Sans", sans-serif;
       --font-body: "Be Vietnam Pro", sans-serif;
       --font-mono: "JetBrains Mono", monospace;
-      --script-font-size: 19px;
+      --script-font-size: 20px;
       --script-line-height: 1.65;
     }
 
@@ -96,7 +96,7 @@
       background: var(--card-inner);
       color: var(--text-main);
       border: 1px solid var(--card-border);
-      padding: 5px 9px;
+      padding: 5px 10px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
@@ -253,7 +253,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Prompter Mode (Kịch Bản Thoại 1 Dòng) */
+    /* Prompter Mode (Kịch Bản Thoại 16 Dòng) */
     .prompt-list {
       display: flex;
       flex-direction: column;
@@ -285,7 +285,6 @@
 
     .prompt-card.current-active .script-line-text {
       color: #FFFFFF;
-      font-weight: 700;
       text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
     }
 
@@ -346,7 +345,7 @@
       font-size: var(--script-font-size);
       line-height: var(--script-line-height);
       color: #E2E8F0;
-      font-weight: 600;
+      font-weight: 500;
       margin-bottom: 10px;
       letter-spacing: -0.2px;
       transition: font-size 0.15s ease;
@@ -375,12 +374,12 @@
       background: #080C16;
       border: 1px dashed rgba(245, 158, 11, 0.4);
       border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 12.5px;
+      padding: 9px 11px;
+      font-size: 12px;
       color: #CBD5E1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
       transition: all 0.2s;
     }
 
@@ -393,7 +392,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -409,7 +408,7 @@
 
     .broll-shot-badge {
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 10px;
       background: rgba(56, 189, 248, 0.2);
       color: var(--accent);
       padding: 1px 6px;
@@ -417,7 +416,7 @@
     }
 
     .broll-hint-desc {
-      line-height: 1.5;
+      line-height: 1.45;
       color: #E2E8F0;
     }
 
@@ -425,7 +424,7 @@
       color: #FBBF24;
     }
 
-    /* Climax Card Style (Dòng 10) */
+    /* Climax Card Style (Dòng 16) */
     .prompt-card.climax-special {
       border: 1.5px solid var(--emerald);
       background: linear-gradient(180deg, rgba(16, 185, 129, 0.12) 0%, rgba(13, 21, 39, 0.98) 100%);
@@ -435,19 +434,6 @@
       background: var(--emerald);
       color: #000;
       font-weight: 900;
-    }
-
-    .action-badge-box {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      border-radius: 8px;
-      padding: 8px 10px;
-      margin-bottom: 10px;
-      font-size: 12px;
-      color: #6EE7B7;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     /* Master Timeline Table */
@@ -729,39 +715,39 @@
 
       <!-- Mode Selector Tabs -->
       <div class="tab-bar">
-        <button class="tab-btn active" onclick="switchTab("promptView")">📱 1 Dòng (Nhắc Lời)</button>
-        <button class="tab-btn" onclick="switchTab("timelineView")">🎬 Cảnh Trám (Full)</button>
-        <button class="tab-btn" onclick="switchTab("strategyView")">🧠 Tâm Lý & Ghim</button>
+        <button class="tab-btn active" onclick="switchTab("promptView")">📱 16 Dòng (Teleprompter)</button>
+        <button class="tab-btn" onclick="switchTab("timelineView")">🎬 Timeline & B-Roll</button>
+        <button class="tab-btn" onclick="switchTab("strategyView")">🧠 Tâm Lý & Ghim Zalo</button>
       </div>
     </div>
 
     <!-- Header Info Banner -->
     <div class="hero-card">
       <div class="hero-badge-wrap">
-        <span class="badge badge-blue">Talking Head 85s</span>
-        <span class="badge badge-amber">B-Roll Bank Thực Tế</span>
+        <span class="badge badge-blue">Talking Head ~95s</span>
+        <span class="badge badge-amber">16 Dòng Đôi Chuẩn Nhịp</span>
         <span class="badge badge-emerald">Giọng Mộc 100%</span>
       </div>
       <h1>Căn Phòng Lạ & Nụ Cười Mở Lời</h1>
-      <p class="hero-sub">Giải mã hiện tượng 90% khán giả xem hết nhưng không bình luận và kịch bản kết nối hạ ma sát về 0.</p>
+      <p class="hero-sub">Kịch bản bóc trần tâm lý phòng thủ người xem & lời mời kết nối mộc mạc phong cách anh Việt.</p>
       
       <div class="hero-stats">
         <div class="stat-box">
-          <div class="stat-val">10 Đoạn Master</div>
+          <div class="stat-val">16 Dòng</div>
           <div class="stat-lbl">Kịch Bản Master</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">~85 Giây</div>
+          <div class="stat-val">~95 Giây</div>
           <div class="stat-lbl">Thời Lượng Chuẩn</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">3 Shot Mới</div>
-          <div class="stat-lbl">B-Roll Đắt Giá</div>
+          <div class="stat-val">B-Roll Bank</div>
+          <div class="stat-lbl">Khung Hình Mộc</div>
         </div>
       </div>
     </div>
 
-    <!-- ================= TAB 1: KỊCH BẢN THOẠI 1 DÒNG (TELEPROMPTER CARD) ================= -->
+    <!-- ================= TAB 1: KỊCH BẢN THOẠI 16 DÒNG (TELEPROMPTER CARD) ================= -->
     <div id="promptView" class="section-view active">
       <div class="prompt-list" id="promptList">
 
@@ -769,14 +755,14 @@
         <div class="prompt-card current-active" onclick="setActiveCard(this, 1)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 01 • HOOK MỞ MÀN</span>
-            <span class="line-duration-pill">00s - 03s</span>
+            <span class="line-duration-pill">00s - 05s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-eye">👁️ Nhìn thẳng máy quay</span>
             <span class="cue-tag cue-voice">🎙️ Hỏi tự nhiên, nhướng mày nhẹ</span>
           </div>
           <div class="script-line-text">
-            Bước vào một căn phòng lạ<span class="pause-dot">...</span> việc đầu tiên bạn làm là gì?
+            Khi mình bước vào một <strong>căn phòng lạ</strong>, thì việc đầu tiên của mình là làm gì?
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -784,7 +770,7 @@
               <span class="broll-shot-badge">B-Roll ID: 129</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Ngồi góc tối, ngón tay lướt chậm trên màn hình điện thoại trong im lặng <em>(06_META_129_STUDIO_luot-instagram-fomo_CU)</em>.
+              <strong>Visual:</strong> Ngồi góc tối, ngón tay lướt chậm trên màn hình điện thoại trong im lặng <em>(06_META_129_STUDIO)</em>.
             </div>
           </div>
         </div>
@@ -793,14 +779,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 2)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 02 • THỰC TẾ ĐỜI THƯỜNG</span>
-            <span class="line-duration-pill">03s - 07s</span>
+            <span class="line-duration-pill">05s - 10s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-action">👉 Tay khẽ chỉ sang bên cạnh</span>
-            <span class="cue-tag cue-voice">🎙️ Cười nhẹ, xưng "mình"</span>
+            <span class="cue-tag cue-voice">🎙️ Giọng kể chuyện điềm đạm</span>
           </div>
           <div class="script-line-text">
-            Mình sẽ chọn một góc này<span class="pause-dot">...</span> rồi mình rút điện thoại ra lướt<span class="pause-dot">...</span> và im lặng quan sát.
+            Đầu tiên là mình <strong>chọn một cái góc</strong>, sau đó rút điện thoại ra và <strong>im lặng quan sát</strong>.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -817,22 +803,22 @@
         <div class="prompt-card" onclick="setActiveCard(this, 3)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 03 • GIẢI MÃ TÂM LÝ</span>
-            <span class="line-duration-pill">07s - 14s</span>
+            <span class="line-duration-pill">10s - 17s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-voice">🎙️ Nhả chữ "chảnh~" kéo dài tếu táo</span>
             <span class="cue-tag cue-action">🤝 Gật đầu đồng cảm</span>
           </div>
           <div class="script-line-text">
-            Không phải là vì mình <span class="drawl">chảnh~~~</span><span class="pause-dot">...</span> mà là ở một nơi lạ<span class="pause-dot">...</span> ai cũng cần một cái cảm giác thoải mái an toàn<span class="pause-dot">...</span> trước khi mình nói chuyện với nhau.
+            Không phải vì mình <span class="drawl">chảnh~~~</span>, mà ở một nơi xa lạ, ai cũng cần cảm giác <strong>an toàn, thoải mái</strong> thì mới bắt đầu nói chuyện được.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
-              <span class="broll-type-tag" style="color: #F59E0B;">⭐ SHOT MỚI ĐẮT GIÁ 01</span>
+              <span class="broll-type-tag" style="color: #F59E0B;">⭐ SHOT MỚI ĐẮT GIÁ</span>
               <span class="broll-shot-badge" style="background: rgba(245,158,11,0.2); color:#F59E0B;">Góc Cận ECU</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Ngón tay gõ vài chữ "Anh ơi..." trong khung chat, ngập ngừng 1s rồi <strong>bấm giữ Backspace xóa sạch</strong> và tắt màn hình.
+              <strong>Visual:</strong> Ngón tay gõ vài chữ "Anh ơi...", ngập ngừng 1s rồi <strong>bấm giữ Backspace xóa sạch</strong> và tắt màn hình.
             </div>
           </div>
         </div>
@@ -841,14 +827,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 4)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 04 • BẢN LỀ CHUYỂN Ý</span>
-            <span class="line-duration-pill">14s - 17s</span>
+            <span class="line-duration-pill">17s - 21s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-action">🤷 Nhún vai nhẹ nhàng</span>
             <span class="cue-tag cue-voice">🎙️ Nhịp nói gãy gọn</span>
           </div>
           <div class="script-line-text">
-            Thì ở trên mạng xã hội<span class="pause-dot">...</span> nó cũng y như vậy thôi.
+            Trên <strong>mạng xã hội</strong> nó cũng như vậy thôi, và <strong>bản thân mình</strong> thì cũng thế.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -865,14 +851,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 5)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 05 • TRẢI NGHIỆM CÁ NHÂN</span>
-            <span class="line-duration-pill">17s - 28s</span>
+            <span class="line-duration-pill">21s - 27s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-voice">🎙️ Hạ tone giọng trầm ấm</span>
             <span class="cue-tag cue-eye">👁️ Ánh mắt nhìn sâu vào người xem</span>
           </div>
           <div class="script-line-text">
-            Bản thân mình cũng thế<span class="pause-dot">...</span> Khi mình gặp đúng cái thứ mình đang quan tâm ở hiện tại<span class="pause-dot">...</span> phản xạ tự nhiên cũng là <strong>lắng lại một chút</strong><span class="pause-dot">...</span> để tự tìm lời giải<span class="pause-dot">...</span> chứ không phải là bình luận công khai.
+            Khi mình gặp đúng thứ mình đang quan tâm, phản xạ của mình là <strong>lắng lại một chút</strong> để tự tìm lời giải.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -880,7 +866,7 @@
               <span class="broll-shot-badge">B-Roll ID: 022</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Ngồi gõ vài phím Macbook bên bàn gỗ, tay dừng lại trên trackpad, chống cằm suy ngẫm sâu <em>(Warm Amber Tone)</em>.
+              <strong>Visual:</strong> Ngồi gõ vài phím Macbook bên bàn gỗ, tay dừng lại trên trackpad, chống cằm suy ngẫm sâu.
             </div>
           </div>
         </div>
@@ -889,14 +875,14 @@
         <div class="prompt-card" onclick="setActiveCard(this, 6)">
           <div class="card-top-meta">
             <span class="line-number-pill">DÒNG 06 • BẮT THÓP SỰ GỒNG</span>
-            <span class="line-duration-pill">28s - 39s</span>
+            <span class="line-duration-pill">27s - 33s</span>
           </div>
           <div class="cue-bar">
             <span class="cue-tag cue-action">🤦 Lắc đầu nhẹ thấu hiểu</span>
             <span class="cue-tag cue-voice">🎙️ Giọng bộc bạch chân thành</span>
           </div>
           <div class="script-line-text">
-            Bình luận công khai<span class="pause-dot">...</span> giống như việc mình phải đứng lên phát biểu giữa một nơi xa lạ<span class="pause-dot">...</span> Tự nhiên thấy nó hơi gồng<span class="pause-dot">...</span> mất đi sự tự nhiên ban đầu<span class="pause-dot">...</span> Mà mình thì thích một <strong>cuộc trò chuyện chất lượng</strong><span class="pause-dot">...</span> hơn là những lời xã giao.
+            Chứ không phải là gõ luôn <strong>bình luận công khai</strong>, cảm giác ở chỗ lạ nó hơi <strong>mất tự nhiên</strong>.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -912,23 +898,23 @@
         <!-- DÒNG 07 -->
         <div class="prompt-card" onclick="setActiveCard(this, 7)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 07 • SỢ HỞ SƯỜN & SÁO RỖNG</span>
-            <span class="line-duration-pill">39s - 52s</span>
+            <span class="line-number-pill">DÒNG 07 • CHẤT LƯỢNG VS XÃ GIAO</span>
+            <span class="line-duration-pill">33s - 37s</span>
           </div>
           <div class="cue-bar">
-            <span class="cue-tag cue-voice">🎙️ Cười tự trào đoạn "thà nói với AI"</span>
-            <span class="cue-tag cue-eye">👁️ Ánh mắt chân thành ở câu cuối</span>
+            <span class="cue-tag cue-voice">🎙️ Nhấn mạnh chữ "chất lượng"</span>
+            <span class="cue-tag cue-eye">👁️ Nhìn thẳng chân thành</span>
           </div>
           <div class="script-line-text">
-            Bởi vì người ta sợ nhất là<span class="pause-dot">...</span> khi mình đã chấp nhận mở lòng<span class="pause-dot">...</span> nói ra đúng cái khó khăn của mình rồi<span class="pause-dot">...</span> <span class="drawl">hở sườn rồi</span><span class="pause-dot">...</span> mà lại nhận về sự thờ ơ<span class="pause-dot">...</span> hay trả lời sáo rỗng<span class="pause-dot">...</span> thì hụt hẫng lắm<span class="pause-dot">...</span> <strong>thà nói chuyện với AI còn hơn!</strong><span class="pause-dot">...</span> Người xem chỉ sẵn sàng nhắn tin<span class="pause-dot">...</span> khi cảm nhận được là mình thực sự muốn nghe.
+            Mà mình thì luôn muốn một <strong>cuộc nói chuyện chất lượng</strong>, chứ không phải xã giao.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
               <span class="broll-type-tag" style="color: #38BDF8;">🎙️ A-ROLL MASTER SHOT</span>
-              <span class="broll-shot-badge">Cận Mặt MCU</span>
+              <span class="broll-shot-badge">Cận Ngực MCU</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Cắt về mặt anh nói bộc bạch, cười tự trào ở đoạn AI, lia ánh mắt ấm áp nhìn thẳng máy quay.
+              <strong>Visual:</strong> Cận ngực anh ngồi thẳng thắn, giọng nói đĩnh đạc và ấm áp.
             </div>
           </div>
         </div>
@@ -936,15 +922,87 @@
         <!-- DÒNG 08 -->
         <div class="prompt-card" onclick="setActiveCard(this, 8)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 08 • NGƯỜI CHỦ NHÀ HÀO SẢNG</span>
-            <span class="line-duration-pill">52s - 62s</span>
+            <span class="line-number-pill">DÒNG 08 • SỢ BỊ HỞ SƯỜN</span>
+            <span class="line-duration-pill">37s - 44s</span>
           </div>
           <div class="cue-bar">
-            <span class="cue-tag cue-action">🪑 Tay làm động tác kéo ghế, phủi nhẹ mặt bàn</span>
-            <span class="cue-tag cue-voice">🎙️ Giọng ấm, hào sảng, phóng khoáng</span>
+            <span class="cue-tag cue-action">🤝 Tay ôm nhẹ bên hông mô phỏng "hở sườn"</span>
+            <span class="cue-tag cue-voice">🎙️ Giọng tâm sự thấu hiểu</span>
           </div>
           <div class="script-line-text">
-            Làm video mà cứ gồng lên làm chuyên gia<span class="pause-dot">...</span> thì mãi mãi có khoảng cách<span class="pause-dot">...</span> Cứ coi mình là <strong>người chủ nhà</strong>: bước xuống<span class="pause-dot">...</span> kéo chiếc ghế<span class="pause-dot">...</span> phủi bụi<span class="pause-dot">...</span> rót chén trà<span class="pause-dot">...</span> Chủ nhà thì phải <span class="drawl">hào sảng</span><span class="pause-dot">...</span> phải chân thành chứ!
+            Bởi vì người ta sợ nhất là khi đã <strong>mở lòng</strong> rồi, nói ra khó khăn của mình rồi — kiểu như mình <span class="drawl">hở sườn</span> rồi...
+          </div>
+          <div class="broll-hint-box">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag">🎥 CẢNH TRÁM GỢI Ý</span>
+              <span class="broll-shot-badge">B-Roll ID: 126</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Cận góc nghiêng trầm tư, ánh đèn ấm hắt bóng tĩnh lặng.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 09 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 9)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 09 • THÀ NÓI VỚI AI</span>
+            <span class="line-duration-pill">44s - 50s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-voice">🎙️ Cười tự trào đoạn "thà nói với AI"</span>
+            <span class="cue-tag cue-action">🤦 Lắc đầu hụt hẫng</span>
+          </div>
+          <div class="script-line-text">
+            ...mà lại nhận lại sự <strong>sáo rỗng hay thờ ơ</strong> thì hụt hẫng lắm, <strong>thà nói chuyện với AI còn hơn!</strong>
+          </div>
+          <div class="broll-hint-box">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag" style="color: #38BDF8;">🎙️ A-ROLL MASTER</span>
+              <span class="broll-shot-badge">Cận Mặt CU</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Nụ cười tự trào dí dỏm của anh khi nhắc tới AI, phá vỡ bầu không khí căng thẳng.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 10 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 10)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 10 • SẴN SÀNG LẮNG NGHE</span>
+            <span class="line-duration-pill">50s - 56s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-heart">🙏 Giọng ấm áp, đón nhận</span>
+            <span class="cue-tag cue-eye">👁️ Nhìn thẳng mắt người xem</span>
+          </div>
+          <div class="script-line-text">
+            Và người xem video cũng thế, họ chỉ sẵn sàng nhắn tin khi thực sự cảm nhận là <strong>mình muốn nghe họ</strong>.
+          </div>
+          <div class="broll-hint-box">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag">🎥 CẢNH TRÁM GỢI Ý</span>
+              <span class="broll-shot-badge">B-Roll ID: 001</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Tay nâng tách trà ấm lên nhấp ngụm nhỏ, không gian mộc mạc tĩnh tại.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 11 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 11)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 11 • NGƯỜI CHỦ NHÀ KÉO GHẾ</span>
+            <span class="line-duration-pill">56s - 63s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">🪑 Mô phỏng động tác kéo ghế, phủi bụi bàn</span>
+            <span class="cue-tag cue-voice">🎙️ Hào sảng, mộc mạc</span>
+          </div>
+          <div class="script-line-text">
+            Cho nên mình luôn coi mình là <strong>người chủ nhà</strong>: mình bước xuống, <strong>kéo ghế</strong>, <strong>phủi bụi</strong>, <strong>rót trà</strong>.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
@@ -952,70 +1010,127 @@
               <span class="broll-shot-badge">Match-Cut Bàn Trà</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Bàn tay kéo nhẹ chiếc ghế gỗ mộc sang đối diện, phủi nhẹ mặt bàn, đặt ly trà nóng bốc khói xuống <em>(kết hợp B-Roll ID: 126)</em>.
+              <strong>Visual:</strong> Bàn tay kéo nhẹ chiếc ghế gỗ mộc sang đối diện, phủi nhẹ mặt bàn, đặt ly trà nóng bốc khói xuống.
             </div>
           </div>
         </div>
 
-        <!-- DÒNG 08.5 (ĐÓN KHÁCH TƯƠM TẤT & KHUNG HÌNH SẠCH) -->
-        <div class="prompt-card" onclick="setActiveCard(this, 9)" style="border-color: rgba(56, 189, 248, 0.45); background: #0E182F;">
+        <!-- DÒNG 12 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 12)">
           <div class="card-top-meta">
-            <span class="line-number-pill" style="background: rgba(56, 189, 248, 0.25);">DÒNG 8.5 • ĐÓN KHÁCH TƯƠM TẤT & SỰ TÔN TRỌNG</span>
-            <span class="line-duration-pill">62s - 75s</span>
+            <span class="line-number-pill">DÒNG 12 • HÀO SẢNG & CHÂN THẬT</span>
+            <span class="line-duration-pill">63s - 70s</span>
           </div>
           <div class="cue-bar">
-            <span class="cue-tag cue-heart">🙏 Chắp tay nhẹ trước ngực chân thành</span>
+            <span class="cue-tag cue-heart">💖 Nụ cười mộc mạc chân thật</span>
             <span class="cue-tag cue-voice">🎙️ Giọng đĩnh đạc, ấm áp</span>
           </div>
           <div class="script-line-text">
-            Ở ngoài đời<span class="pause-dot">...</span> đón khách vào nhà thì chỗ ngồi phải tươm tất, nụ cười ánh mắt phải thật<span class="pause-dot">...</span> là người ta mới thấy <span class="drawl">gần gũi để mở lời chứ</span><span class="pause-dot">...</span>  
-            Còn qua cái màn hình điện thoại này<span class="pause-dot">...</span> <strong>sự tôn trọng nằm ở một khung hình sạch sẽ, âm thanh rõ ràng<span class="pause-dot">...</span> không giật gân màu mè</strong><span class="pause-dot">...</span>  
-            Chỉ khi thấy được sự chỉn chu và lòng chân thành của mình<span class="pause-dot">...</span> thì người ta mới thấy an toàn để mở lời<span class="pause-dot">...</span>
+            Chủ nhà mà, phải <span class="drawl">hào sảng</span>, chỗ ngồi tươm tất, <strong>ánh mắt nụ cười chân thật</strong> thì người ta mới mở lời.
           </div>
           <div class="broll-hint-box">
             <div class="broll-hint-header">
-              <span class="broll-type-tag" style="color: #38BDF8;">🎥 B-ROLL BÀN GỖ & ÁNH SÁNG</span>
-              <span class="broll-shot-badge">B-Roll ID: 001</span>
+              <span class="broll-type-tag">🎥 CẢNH TRÁM GỢI Ý</span>
+              <span class="broll-shot-badge">B-Roll In-Situ</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Góc máy bàn gỗ ngăn nắp, ánh sáng tự nhiên sạch sẽ, tay nâng tách trà ấm lên nhấp một ngụm.
+              <strong>Visual:</strong> Góc máy bàn gỗ ngăn nắp, ánh sáng tự nhiên sạch sẽ, nụ cười hiền hậu.
             </div>
           </div>
         </div>
 
-        <!-- DÒNG 09 + 10 (ÔNG GIÁO HỌC KỸ NĂNG MỚI & CHỐT HẠ NỤ CƯỜI) -->
-        <div class="prompt-card climax-special" onclick="setActiveCard(this, 10)">
+        <!-- DÒNG 13 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 13)">
           <div class="card-top-meta">
-            <span class="line-number-pill">DÒNG 09 - 10 • ÔNG GIÁO KHIÊM NHƯỜNG & NỤ CƯỜI CHỐT HẠ</span>
-            <span class="line-duration-pill" style="background: rgba(16,185,129,0.2); color: #10B981;">75s - 90s</span>
+            <span class="line-number-pill">DÒNG 13 • ÔNG GIÁO & CLIP VIRAL</span>
+            <span class="line-duration-pill">70s - 78s</span>
           </div>
-          
           <div class="cue-bar">
-            <span class="cue-tag cue-action">🌿 Đứng bên chậu cây, tỉ mẩn tỉa lá</span>
-            <span class="cue-tag cue-voice">🎙️ Khiêm nhường, mộc mạc, tự sự</span>
-            <span class="cue-tag cue-eye">😄 Cười tươi rạng rỡ, nháy mắt duyên dáng</span>
+            <span class="cue-tag cue-voice">🎙️ Tự sự khiêm nhường, dí dỏm</span>
+            <span class="cue-tag cue-action">🌿 Đứng bên chậu cây, tỉa lá nhẹ</span>
           </div>
-
-          <div class="action-badge-box">
-            <span>🌿</span>
-            <div><strong>Chỉ dẫn hành động:</strong> Vừa tỉa lá vừa chia sẻ khiêm nhường ➔ Dừng tay ➔ Xoay người nhìn thẳng camera cười tươi rạng rỡ ➔ Nói câu chốt hạ duyên dáng.</div>
+          <div class="script-line-text">
+            Bản thân mình cũng chỉ là <strong>một ông giáo đang học làm video từ đầu năm</strong>, chẳng may có vài clip viral, nên thấy sao thì <strong>chia sẻ thật dưới góc nhìn của mình</strong> thôi.
           </div>
-
-          <div class="script-line-text" style="font-size: calc(var(--script-font-size) + 1px);">
-            Đấy là cảm nhận của mình về quá trình làm video<span class="pause-dot">...</span> mình vẫn đang quan sát<span class="pause-dot">...</span> <strong>thấy được đến đâu thì mình chia sẻ đến đấy</strong><span class="pause-dot">...</span> mình cũng chỉ là <span class="drawl">ông giáo đang học một kỹ năng mới thôi</span><span class="pause-dot">...</span> chưa chắc đã đúng<span class="pause-dot">...</span>  
-            <br><br>
-            <span style="color: #38BDF8; font-weight: 800; font-size: calc(var(--script-font-size) + 2px);">
-              "Vậy nên nếu cần giúp gì từ mình thì cứ nhắn nhé<span class="pause-dot">...</span> Bạn xem video của mình thì cũng biết thừa tính mình rồi còn gì<span class="pause-dot">...</span> Ngại gì vết bẩn!" 😄
-            </span>
-          </div>
-
-          <div class="broll-hint-box" style="border-color: var(--emerald);">
+          <div class="broll-hint-box">
             <div class="broll-hint-header">
-              <span class="broll-type-tag" style="color: #10B981;">⭐ SHOT MỚI ĐẮT GIÁ 03 + MASTER</span>
+              <span class="broll-type-tag" style="color: #10B981;">⭐ SHOT MỚI ĐẮT GIÁ 03</span>
               <span class="broll-shot-badge" style="background: rgba(16,185,129,0.2); color:#10B981;">Macro Giọt Nước</span>
             </div>
             <div class="broll-hint-desc">
-              <strong>Visual:</strong> Cận cảnh tia nước đọng giọt óng ánh trên phiến lá xanh ➔ lia nhanh lên nụ cười rạng rỡ, dí dỏm của anh nhìn thẳng máy quay.
+              <strong>Visual:</strong> Cận cảnh tia nước đọng giọt óng ánh trên phiến lá xanh ➔ lia nhẹ sang anh đang tỉa cây.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 14 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 14)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 14 • LỜI MỜI KẾT NỐI</span>
+            <span class="line-duration-pill">78s - 84s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-action">👇 Tay chỉ nhẹ xuống dưới hướng dẫn</span>
+            <span class="cue-tag cue-voice">🎙️ Chân thành, không ép buộc</span>
+          </div>
+          <div class="script-line-text">
+            Nên nếu bạn cần một <strong>sự giúp đỡ gì từ phía mình</strong>, cứ <strong>nhắn vào số cá nhân</strong> của mình.
+          </div>
+          <div class="broll-hint-box">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag">🎥 A-ROLL TRỰC DIỆN</span>
+              <span class="broll-shot-badge">MCU</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Ánh mắt nhìn thẳng ấm áp, cử chỉ tay mở ra chào đón.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 15 -->
+        <div class="prompt-card" onclick="setActiveCard(this, 15)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 15 • CHILL CHILL THƯ GIÃN</span>
+            <span class="line-duration-pill">84s - 91s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-voice">🎙️ Hóm hỉnh ở từ "chill chill"</span>
+            <span class="cue-tag cue-heart">💖 Quản trị kỳ vọng tinh tế</span>
+          </div>
+          <div class="script-line-text">
+            Mình có thể không trả lời luôn vì muốn <strong>chill chill thư giãn</strong>, nhưng check được tin nhắn mình sẽ <strong>trả lời chân thành</strong>.
+          </div>
+          <div class="broll-hint-box">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag">🎥 CẢNH TRÁM GỢI Ý</span>
+              <span class="broll-shot-badge">B-Roll ID: 001</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Cảnh chiếc điện thoại đặt trên bàn gỗ rung nhẹ báo tin nhắn đến trong yên bình.
+            </div>
+          </div>
+        </div>
+
+        <!-- DÒNG 16 -->
+        <div class="prompt-card climax-special" onclick="setActiveCard(this, 16)">
+          <div class="card-top-meta">
+            <span class="line-number-pill">DÒNG 16 • NỤ CƯỜI CHỐT HẠ ĐẮT GIÁ</span>
+            <span class="line-duration-pill" style="background: rgba(16,185,129,0.2); color: #10B981;">91s - 96s</span>
+          </div>
+          <div class="cue-bar">
+            <span class="cue-tag cue-eye">😄 Cười tươi rạng rỡ, nháy mắt duyên dáng</span>
+            <span class="cue-tag cue-voice">🎙️ Câu chốt tếu táo, ấm áp</span>
+          </div>
+          <div class="script-line-text" style="font-size: calc(var(--script-font-size) + 1px); color: #38BDF8; font-weight: 800;">
+            Bạn xem video của mình thì <strong>thừa biết mà!</strong> Cho nên bạn cứ nhắn, <strong>đừng ngại!</strong> 😄
+          </div>
+          <div class="broll-hint-box" style="border-color: var(--emerald);">
+            <div class="broll-hint-header">
+              <span class="broll-type-tag" style="color: #10B981;">⭐ SHOT KẾT MASTER</span>
+              <span class="broll-shot-badge" style="background: rgba(16,185,129,0.2); color:#10B981;">Nụ Cười Rạng Rỡ</span>
+            </div>
+            <div class="broll-hint-desc">
+              <strong>Visual:</strong> Anh dừng tay, nhìn thẳng máy quay nở nụ cười rạng rỡ, kết thúc video nhẹ nhõm và ấm áp.
             </div>
           </div>
         </div>
@@ -1023,21 +1138,21 @@
       </div>
     </div>
 
-    <!-- ================= TAB 2: BẢNG PHÂN CẢNH MASTER MIX (ĐẠO DIỄN) ================= -->
+    <!-- ================= TAB 2: BẢNG PHÂN CẢNH MASTER TIMELINE ================= -->
     <div id="timelineView" class="section-view">
       <div class="card-wrap">
         <div class="table-title-row">
-          <div class="table-title"><span>🎬</span> Bảng Phân Cảnh Master Mix (00s - 90s)</div>
+          <div class="table-title"><span>🎬</span> Bảng Phân Cảnh Master Timeline (00s - 96s)</div>
           <a href="https://vietndj.github.io/brollbank.html" target="_blank" class="btn-tool" style="text-decoration:none;">📦 B-Roll Bank</a>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 00s - 07s</span>
+            <span class="time-slot">⏱️ 00s - 10s</span>
             <span class="shot-code">DÒNG 01 - 02</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bước vào một căn phòng lạ... việc đầu tiên bạn làm là gì? Mình sẽ chọn một góc này... rồi mình rút điện thoại ra lướt... và im lặng quan sát."
+            <strong>Audio:</strong> "Khi mình bước vào một căn phòng lạ, thì việc đầu tiên của mình là làm gì? Đầu tiên là mình chọn một cái góc, sau đó rút điện thoại ra và im lặng quan sát."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> A-Roll ngồi bàn gỗ mở màn ➔ Cắt sang <strong>B-Roll ID: 129</strong> ngón tay lướt chậm Instagram trong bóng tối.
@@ -1046,11 +1161,11 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 07s - 17s</span>
+            <span class="time-slot">⏱️ 10s - 21s</span>
             <span class="shot-code">DÒNG 03 - 04</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Không phải là vì mình chảnh... mà là ở một nơi lạ, ai cũng cần cảm giác thoải mái an toàn trước khi nói chuyện với nhau. Thì ở trên mạng xã hội, nó cũng y như vậy thôi."
+            <strong>Audio:</strong> "Không phải vì mình chảnh, mà ở một nơi xa lạ, ai cũng cần cảm giác an toàn, thoải mái thì mới bắt đầu nói chuyện được. Trên mạng xã hội nó cũng như vậy thôi, và bản thân mình thì cũng thế."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> <strong>SHOT MỚI 01 (Cực đắt):</strong> Cận ngón tay gõ vài chữ ngập ngừng rồi <strong>bấm Backspace xóa sạch</strong> khung chat.
@@ -1059,11 +1174,11 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 17s - 28s</span>
-            <span class="shot-code">DÒNG 05</span>
+            <span class="time-slot">⏱️ 21s - 33s</span>
+            <span class="shot-code">DÒNG 05 - 06</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bản thân mình cũng thế... Khi gặp đúng thứ mình đang quan tâm ở hiện tại, phản xạ tự nhiên cũng là lắng lại một chút, để tự tìm lời giải chứ không phải là bình luận công khai."
+            <strong>Audio:</strong> "Khi mình gặp đúng thứ mình đang quan tâm, phản xạ của mình là lắng lại một chút để tự tìm lời giải. Chứ không phải là gõ luôn bình luận công khai, cảm giác ở chỗ lạ nó hơi mất tự nhiên."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> <strong>B-Roll ID: 022:</strong> Gõ nhẹ phím Macbook bên bàn gỗ, tay dừng trên trackpad, chống cằm suy ngẫm sâu.
@@ -1072,37 +1187,24 @@
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 28s - 39s</span>
-            <span class="shot-code">DÒNG 06</span>
+            <span class="time-slot">⏱️ 33s - 50s</span>
+            <span class="shot-code">DÒNG 07 - 09</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bình luận công khai... giống như việc phải đứng lên phát biểu giữa một nơi xa lạ... Tự nhiên thấy nó hơi gồng, mất đi sự tự nhiên ban đầu... Mà mình thì thích một cuộc trò chuyện chất lượng hơn là những lời xã giao."
+            <strong>Audio:</strong> "Mà mình thì luôn muốn một cuộc nói chuyện chất lượng, chứ không phải xã giao. Bởi vì người ta sợ nhất là khi đã mở lòng rồi, nói ra khó khăn của mình rồi — kiểu như mình hở sườn rồi... mà lại nhận lại sự sáo rỗng hay thờ ơ thì hụt hẫng lắm, thà nói chuyện với AI còn hơn!"
           </div>
           <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>B-Roll ID: 125:</strong> Cảnh hội trường đông người nhìn lên bục ➔ Cắt về A-Roll mặt anh nói Dòng 06 điềm đạm.
+            <strong>Visual:</strong> <strong>A-Roll MCU:</strong> Cận mặt anh nói bộc bạch, cười tự trào ở đoạn "thà nói với AI", ánh mắt ấm áp nhìn thẳng máy quay.
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-header">
-            <span class="time-slot">⏱️ 39s - 52s</span>
-            <span class="shot-code">DÒNG 07</span>
+            <span class="time-slot">⏱️ 50s - 70s</span>
+            <span class="shot-code">DÒNG 10 - 12</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Bởi vì người ta sợ nhất là... khi mình đã chấp nhận mở lòng, nói ra đúng cái khó khăn của mình rồi, hở sườn rồi... mà lại nhận về sự thờ ơ hay trả lời sáo rỗng... thì hụt hẫng lắm... thà nói chuyện với AI còn hơn! Người xem chỉ sẵn sàng nhắn tin khi cảm nhận được là mình thực sự muốn nghe."
-          </div>
-          <div class="timeline-visual">
-            <strong>Visual:</strong> <strong>A-Roll MCU:</strong> Cận mặt anh nói bộc bạch, cười tự trào ở đoạn "thà nói với AI", rồi ánh mắt chân thành nhìn thẳng ở câu cuối.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="time-slot">⏱️ 52s - 62s</span>
-            <span class="shot-code">DÒNG 08</span>
-          </div>
-          <div class="timeline-audio">
-            <strong>Audio:</strong> "Làm video mà cứ gồng lên làm chuyên gia... thì mãi mãi có khoảng cách... Cứ coi mình là người chủ nhà: bước xuống, kéo chiếc ghế, phủi bụi, rót chén trà... Chủ nhà thì phải hào sảng, phải chân thành chứ..."
+            <strong>Audio:</strong> "Và người xem video cũng thế, họ chỉ sẵn sàng nhắn tin khi thực sự cảm nhận là mình muốn nghe họ. Cho nên mình luôn coi mình là người chủ nhà: mình bước xuống, kéo ghế, phủi bụi, rót trà. Chủ nhà mà, phải hào sảng, chỗ ngồi tươm tất, ánh mắt nụ cười chân thật thì người ta mới mở lời."
           </div>
           <div class="timeline-visual">
             <strong>Visual:</strong> <strong>SHOT MỚI 02:</strong> Bàn tay kéo nhẹ ghế gỗ mộc sang đối diện, phủi nhẹ mặt bàn, đặt ly trà nóng bốc khói <strong>(B-Roll ID: 126)</strong>.
@@ -1111,27 +1213,27 @@
 
         <div class="timeline-item" style="border-color: var(--accent);">
           <div class="timeline-header">
-            <span class="time-slot" style="color: var(--accent);">⏱️ 62s - 75s</span>
-            <span class="shot-code" style="background: var(--accent); color:#060911;">DÒNG 08.5 (ĐÓN KHÁCH TƯƠM TẤT)</span>
+            <span class="time-slot" style="color: var(--accent);">⏱️ 70s - 84s</span>
+            <span class="shot-code" style="background: var(--accent); color:#060911;">DÒNG 13 - 14 (ÔNG GIÁO & LỜI MỜI)</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Ở ngoài đời... đón khách vào nhà thì chỗ ngồi phải tươm tất, nụ cười ánh mắt phải thật... là người ta mới thấy gần gũi để mở lời chứ... Còn qua cái màn hình điện thoại này... sự tôn trọng nằm ở một khung hình sạch sẽ, âm thanh rõ ràng... không giật gân màu mè... Chỉ khi thấy được sự chỉn chu và lòng chân thành của mình... thì người ta mới thấy an toàn để mở lời..."
+            <strong>Audio:</strong> "Bản thân mình cũng chỉ là một ông giáo đang học làm video từ đầu năm, chẳng may có vài clip viral, nên thấy sao thì chia sẻ thật dưới góc nhìn của mình thôi. Nên nếu bạn cần một sự giúp đỡ gì từ phía mình, cứ nhắn vào số cá nhân của mình."
           </div>
           <div class="timeline-visual" style="border-left-color: var(--accent);">
-            <strong>Visual:</strong> <strong>A-Roll In-Situ:</strong> Anh hai tay chắp nhẹ trước ngực, mỉm cười chân thành, sau đó lia sang bàn gỗ ngăn nắp <strong>(B-Roll ID: 001)</strong>.
+            <strong>Visual:</strong> <strong>A-Roll In-Situ:</strong> Anh đứng bên chậu cây xanh tỉa lá nhẹ nhàng, ánh mắt khiêm nhường ➔ quay sang nhìn camera chào đón.
           </div>
         </div>
 
         <div class="timeline-item" style="border-color: var(--emerald);">
           <div class="timeline-header">
-            <span class="time-slot" style="color: var(--emerald);">⏱️ 75s - 90s</span>
-            <span class="shot-code" style="background: var(--emerald); color:#000;">DÒNG 09 - 10 (CHỐT CLIMAX)</span>
+            <span class="time-slot" style="color: var(--emerald);">⏱️ 84s - 96s</span>
+            <span class="shot-code" style="background: var(--emerald); color:#000;">DÒNG 15 - 16 (CHỐT CLIMAX)</span>
           </div>
           <div class="timeline-audio">
-            <strong>Audio:</strong> "Đấy là cảm nhận của mình về quá trình làm video... mình vẫn đang quan sát, thấy được đến đâu thì chia sẻ đến đấy... mình cũng chỉ là ông giáo đang học một kỹ năng mới thôi, chưa chắc đã đúng. Vậy nên nếu cần giúp gì từ mình thì cứ nhắn nhé! Bạn xem video của mình thì cũng biết thừa tính mình rồi còn gì... Ngại gì vết bẩn!" 😄
+            <strong>Audio:</strong> "Mình có thể không trả lời luôn vì muốn chill chill thư giãn, nhưng check được tin nhắn mình sẽ trả lời chân thành. Bạn xem video của mình thì thừa biết mà! Cho nên bạn cứ nhắn, đừng ngại! 😄"
           </div>
           <div class="timeline-visual" style="border-left-color: var(--emerald);">
-            <strong>Visual:</strong> <strong>SHOT MỚI 03 + MASTER:</strong> Cận tia nước đọng giọt trên lá ➔ Anh dừng tay, quay người nhìn thẳng camera cười rạng rỡ, dí dỏm.
+            <strong>Visual:</strong> <strong>SHOT MỚI 03 + MASTER:</strong> Cận nụ cười rạng rỡ, dí dỏm của anh nhìn thẳng máy quay, kết thúc nhẹ nhàng.
           </div>
         </div>
 
@@ -1181,12 +1283,12 @@
           <div class="comment-title"><span>📌</span> MẪU BÌNH LUẬN GHIM (ZALO 1-CHẠM)</div>
           <button class="btn-copy" onclick="copyComment()">Copy Mẫu</button>
         </div>
-        <div class="comment-preview" id="commentText">Viết riêng cho những anh em đã theo dõi kênh từ lâu nhưng chưa một lần để lại bình luận...
+        <div class="comment-preview" id="commentText">Viết riêng cho những bạn đã theo dõi kênh từ lâu nhưng chưa một lần để lại bình luận...
 
-Mình hiểu cảm giác ngượng ngùng khi bước vào một căn phòng lạ: sợ bị phán xét hoặc ngại những thủ tục nhắn tin rườm rà. Nhưng căn phòng này mở ra là để kéo một chiếc ghế ngồi lại cùng nhau.
+Mình hiểu cảm giác e dè khi bước vào một căn phòng lạ: sợ bị hở sườn nhận lại sự sáo rỗng hoặc ngại những thủ tục nhắn tin rườm rà. Nhưng căn phòng này mở ra là để kéo một chiếc ghế ngồi lại cùng nhau.
 
-Anh em có bài toán thực tế nào cần trao đổi, cứ bấm thẳng vào Zalo cá nhân của mình ở đây nhé:
-👉 https://zalo.me/0934688632 (Việt) — Nhắn thẳng việc, không cần chào hỏi câu nệ đâu nhé!</div>
+Bạn có bài toán thực tế nào cần trao đổi hay gỡ rối, cứ bấm thẳng vào Zalo cá nhân của mình ở đây nhé:
+👉 https://zalo.me/0934688632 (Việt) — Nhắn thẳng việc, không cần câu nệ đâu nhé!</div>
       </div>
 
     </div>
@@ -1194,7 +1296,7 @@ Anh em có bài toán thực tế nào cần trao đổi, cứ bấm thẳng và
     <!-- Mobile Floating Navigation Control -->
     <div class="mobile-float-nav">
       <button class="float-btn" onclick="prevLine()"><span>⬆</span> Trước</button>
-      <div class="line-counter" id="lineCounter">01 / 10</div>
+      <div class="line-counter" id="lineCounter">01 / 16</div>
       <button class="float-btn" onclick="nextLine()">Tiếp <span>⬇</span></button>
     </div>
 
@@ -1207,8 +1309,8 @@ Anh em có bài toán thực tế nào cần trao đổi, cứ bấm thẳng và
 
   <script>
     let currentLine = 1;
-    const totalLines = 10;
-    let fontSize = 19;
+    const totalLines = 16;
+    let fontSize = 20;
     let isAutoScrolling = false;
     let scrollInterval = null;
 
@@ -1258,11 +1360,11 @@ Anh em có bài toán thực tế nào cần trao đổi, cứ bấm thẳng và
 
     function updateLineCounter() {
       const pad = currentLine < 10 ? "0" + currentLine : currentLine;
-      document.getElementById("lineCounter").innerText = `${pad} / 10`;
+      document.getElementById("lineCounter").innerText = `${pad} / ${totalLines}`;
     }
 
     function changeFontSize(delta) {
-      fontSize = Math.max(15, Math.min(28, fontSize + delta));
+      fontSize = Math.max(16, Math.min(30, fontSize + delta));
       document.documentElement.style.setProperty("--script-font-size", fontSize + "px");
     }
 
