@@ -54,18 +54,13 @@
       backdrop-filter: blur(24px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .gradient-gold-text {
-      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
     .gradient-red-text {
       background: linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #b91c1c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .image-zoom {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .image-zoom:hover {
       transform: scale(1.03);
@@ -86,9 +81,9 @@
     }
   </style>
 </head>
-<body class="selection:bg-red-500 selection:text-white pb-16">
+<body class="selection:bg-red-500 selection:text-white pb-24 md:pb-16">
 
-  <!-- STICKY HEADER (CỐ ĐỊNH TRÊN ĐỈNH) -->
+  <!-- STICKY TOP HEADER -->
   <nav class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl backdrop-blur-xl">
     <div class="flex items-center gap-2.5">
       <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
@@ -102,62 +97,41 @@
       </a>
       <a href="#license-section" class="py-2 px-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-red-500/25 flex items-center gap-1.5 transition active:scale-95">
         <span>⚡️</span>
-        <span>CÀI VÀO AI NGAY</span>
+        <span>TẢI MÃ QR CÀI ĐẶT</span>
       </a>
     </div>
   </nav>
 
-  <!-- ADMIN PORTAL (KÍCH HOẠT QUA ?admin HOẶC #admin) -->
-  <div id="admin-portal" class="hidden max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4">
-    <div class="glass-card rounded-3xl p-6 sm:p-8 border-2 border-amber-500/50 bg-slate-900/95 shadow-2xl shadow-amber-500/10">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-white font-mono flex items-center gap-2">
-            <span>⚡️ BẢNG ĐIỀU KHIỂN SINH MẬT KHẨU KÍCH HOẠT 1 LẦN</span>
-          </h2>
-        </div>
-        <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">MÃ ĐƠN HÀNG</span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
-        <div>
-          <label class="block text-xs font-medium text-slate-400 mb-1">Mật khẩu tùy chọn:</label>
-          <input type="text" id="admin-custom-code" placeholder="Ví dụ: VIP2026, ANHNAM..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-amber-300 font-mono focus:outline-none focus:border-amber-400 uppercase" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-400 mb-1">Tên khách hàng:</label>
-          <input type="text" id="admin-note" value="Khách VIP" placeholder="Tên khách hàng..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400" />
-        </div>
-        <div class="flex items-end">
-          <button onclick="adminCreateLicense()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-amber-500/20 active:scale-95">
-            <span>⚡️ TẠO MÃ KÍCH HOẠT</span>
-          </button>
-        </div>
-      </div>
-    </div>
+  <!-- STICKY BOTTOM BAR TRÊN MOBILE (LUÔN NẰM NGAY TẦM NGÓN TAY CÁI) -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/95 border-t border-slate-800/80 backdrop-blur-xl shadow-2xl flex items-center justify-between gap-3">
+    <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="flex-1 py-3 px-3 rounded-xl bg-slate-900 border border-slate-700 text-amber-300 font-bold text-xs text-center">
+      📄 Xem File PDF
+    </a>
+    <button onclick="downloadCard()" class="flex-1 py-3 px-3 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-extrabold text-xs text-center shadow-lg shadow-red-500/30">
+      ⚡️ Tải Mã QR (1-Chạm)
+    </button>
   </div>
 
-  <!-- HERO SECTION (LỌC VĂN MẪU: ĐI THẲNG VÀO NỖI ĐAU & KẾT QUẢ) -->
-  <header class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-8 text-center">
+  <!-- HERO SECTION -->
+  <header class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-8 text-center">
     <div class="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
     
-    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-red-400 mb-6 shadow-inner">
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-red-400 mb-5 shadow-inner">
       <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
       <span class="tracking-widest uppercase font-mono">TỰ ĐỘNG BÓC TÁCH VIDEO BẰNG AI</span>
     </div>
 
-    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.2] mb-6">
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.2] mb-5">
       Thấy Video Nào Hay, Gửi Link Vào.<br />
       <span class="gradient-red-text">AI Bóc Từng Cảnh Để Bạn Làm Theo.</span>
     </h1>
 
-    <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
-      Bạn lướt thấy video triệu view của người khác mà không biết họ quay góc nào, cắt ghép ra sao? Chỉ cần gửi link video (Reels, TikTok, Shorts). AI sẽ tự bóc ra từng giây: <span class="text-white font-semibold">góc máy, ánh sáng, nhịp cắt cảnh và bài học để bạn tự quay lại được ngay</span>. Xuất thẳng thành file PDF để bạn lưu vào máy hoặc gửi cho ekip.
+    <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-8">
+      Bạn lướt thấy video triệu view của người khác mà không biết họ quay góc nào, cắt ghép ra sao? Chỉ cần gửi link video. AI sẽ tự bóc ra từng giây: <span class="text-white font-semibold">góc máy, ánh sáng, nhịp cắt cảnh và bài học để bạn tự quay lại được ngay</span>. Tự xuất thành file PDF để xem hoặc gửi cho ekip.
     </p>
 
-    <!-- Key Highlights Badges -->
-    <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300 mb-10">
+    <!-- 4 Badges Thực Dụng -->
+    <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300 mb-8">
       <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md">
         <span class="text-emerald-400 font-bold">✓</span> <span>Dán link là chạy ngay</span>
       </div>
@@ -173,367 +147,266 @@
     </div>
   </header>
 
-  <!-- SECTION 1: VISUAL PROOF (INPUT THẬT -> OUTPUT THẬT) -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
-    
-    <!-- 1.1 ĐẦU VÀO -->
-    <div class="glass-card rounded-3xl p-6 sm:p-8 mb-8 border border-slate-800/80 shadow-2xl">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-slate-800/60 pb-4">
-        <div class="flex items-center gap-3">
-          <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-red-400 font-bold">BƯỚC 1</span>
-          <h2 class="text-lg font-bold text-white tracking-wide">Bạn Gửi Link Video Muốn Học Theo</h2>
-        </div>
-        <span class="text-xs text-slate-400 font-light">Link Instagram Reels, TikTok, Shorts hoặc tệp video trong máy</span>
-      </div>
-
-      <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-inner">
-        <div class="flex items-center gap-3 w-full sm:w-auto">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-2xl shrink-0">
-            🎬
-          </div>
-          <div class="truncate">
-            <span class="text-[11px] text-slate-500 font-mono block">Bạn chỉ cần nhắn link này cho Trợ lý AI:</span>
-            <span class="text-xs sm:text-sm font-mono text-red-300 font-bold truncate block">https://www.instagram.com/reel/DcJoysIuLS9/</span>
-          </div>
-        </div>
-        <span class="text-xs px-3.5 py-2 rounded-xl bg-red-500/20 text-red-300 font-mono font-extrabold shrink-0 border border-red-500/30">
-          ⚡️ CHỈ 1 CÂU CHAT
-        </span>
-      </div>
-    </div>
-
-    <!-- Mũi Tên Chuyển Tiếp -->
-    <div class="flex items-center justify-center my-6">
-      <div class="w-14 h-14 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl font-black glow-cinema">
-        ↓
-      </div>
-    </div>
-
-    <!-- 1.2 ĐẦU RA: BÓC TÁCH CHI TIẾT TỪNG CẢNH -->
-    <div class="glass-card rounded-3xl p-6 sm:p-8 mb-8 border border-slate-800/80 shadow-2xl">
+  <!-- MAIN SPLIT-SCREEN LAYOUT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
-      <!-- Carousel Header -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/60 pb-4 mb-6">
-        <div>
-          <div class="flex flex-wrap items-center gap-2.5 mb-1">
-            <span class="px-2.5 py-1 rounded bg-red-500/20 text-xs font-mono text-red-300 font-bold">BƯỚC 2</span>
-            <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide">AI Bóc Tách Chi Tiết Từng Cảnh Quay</h2>
-            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono text-[11px] font-bold">Toàn bộ 39 Cảnh Quay</span>
+      <!-- CỘT TRÁI (7 CỘT): TRẢI NGHIỆM ĐẦU VÀO -> 39 CẢNH QUAY -> FILE PDF -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <!-- BƯỚC 1: ĐẦU VÀO -->
+        <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-800/80 shadow-2xl">
+          <div class="flex items-center justify-between gap-2 mb-4 border-b border-slate-800/60 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-red-400 font-bold">BƯỚC 1</span>
+              <h2 class="text-base sm:text-lg font-bold text-white">Bạn Gửi Link Video Muốn Học Theo</h2>
+            </div>
+            <span class="text-xs text-slate-400 font-light hidden sm:inline">Instagram Reels • TikTok • Shorts</span>
           </div>
-          <p class="text-xs text-slate-400">Xem ảnh chụp từng giây, điểm làm tốt, điểm chưa tốt và cách áp dụng khi tự quay</p>
+
+          <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-4 flex items-center justify-between gap-4 shadow-inner">
+            <div class="flex items-center gap-3 truncate">
+              <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-xl shrink-0">
+                🎬
+              </div>
+              <div class="truncate">
+                <span class="text-[11px] text-slate-500 font-mono block">Chỉ cần gửi 1 câu chat:</span>
+                <span class="text-xs sm:text-sm font-mono text-red-300 font-bold truncate block">https://www.instagram.com/reel/DcJoysIuLS9/</span>
+              </div>
+            </div>
+            <span class="text-xs px-3 py-1.5 rounded-xl bg-red-500/20 text-red-300 font-mono font-extrabold shrink-0 border border-red-500/30">
+              CHẠY NGAY
+            </span>
+          </div>
         </div>
 
-        <!-- Carousel Navigation Buttons -->
-        <div class="flex items-center gap-2 self-end sm:self-center">
-          <button onclick="scrollShots('left')" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md" title="Xem cảnh trước">
-            <span class="text-lg font-bold">‹</span>
-          </button>
-          <button onclick="scrollShots('right')" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md" title="Xem cảnh tiếp theo">
-            <span class="text-lg font-bold">›</span>
-          </button>
+        <!-- BƯỚC 2: BÓC TÁCH 39 CẢNH QUAY (CAROUSEL) -->
+        <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-800/80 shadow-2xl">
+          <div class="flex items-center justify-between gap-2 border-b border-slate-800/60 pb-3 mb-5">
+            <div>
+              <div class="flex items-center gap-2.5 mb-1">
+                <span class="px-2.5 py-1 rounded bg-red-500/20 text-xs font-mono text-red-300 font-bold">BƯỚC 2</span>
+                <h2 class="text-base sm:text-lg font-bold text-white">AI Bóc Tách Chi Tiết Từng Cảnh</h2>
+              </div>
+              <p class="text-xs text-slate-400">Xem góc máy, điểm hay, điểm dở và bài học để tự làm theo</p>
+            </div>
+
+            <!-- Nút điều hướng Carousel -->
+            <div class="flex items-center gap-2">
+              <button onclick="scrollShots('left')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+                <span class="text-base font-bold">‹</span>
+              </button>
+              <button onclick="scrollShots('right')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+                <span class="text-base font-bold">›</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SLIDER CÁC CẢNH QUAY -->
+          <div id="shots-slider" class="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-4 snap-x snap-mandatory">
+
+            <!-- Cảnh 1 -->
+            <div class="min-w-[260px] sm:min-w-[300px] max-w-[300px] snap-start glass-card rounded-2xl p-4 border border-slate-800 hover:border-red-500/50 transition flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-60 mb-3 bg-slate-900 border border-slate-800 relative">
+                  <img src="./assets/video-analysis/shot_01.jpg" alt="Cảnh 1" class="w-full h-full object-cover image-zoom" />
+                  <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
+                    CẢNH 01 • 0s - 0.75s
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-red-400 uppercase font-mono">Cách Mở Đầu Giữ Chân</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white mt-1 mb-2 leading-snug">Góc Máy Trên Cao Chúc Xuống & Gạt Tay Mở Màn</h3>
+                
+                <div class="space-y-1.5 text-[11px] mb-3">
+                  <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-300">
+                    <b>✅ Điểm hay:</b> Góc lạ mắt, ánh sáng cửa sổ rọi vào làm sáng rõ phòng.
+                  </div>
+                  <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-300">
+                    <b>⚠️ Lưu ý:</b> Gạt tay hơi nhanh khó kịp đọc chữ nhỏ.
+                  </div>
+                </div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-[11px]">
+                <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
+                <span class="font-medium text-slate-200">Đưa tay tương tác thẳng vào camera 3s đầu.</span>
+              </div>
+            </div>
+
+            <!-- Cảnh 2 -->
+            <div class="min-w-[260px] sm:min-w-[300px] max-w-[300px] snap-start glass-card rounded-2xl p-4 border border-slate-800 hover:border-amber-500/50 transition flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-60 mb-3 bg-slate-900 border border-slate-800 relative">
+                  <img src="./assets/video-analysis/shot_02.jpg" alt="Cảnh 2" class="w-full h-full object-cover image-zoom" />
+                  <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-amber-400 font-bold border border-amber-500/30">
+                    CẢNH 02 • 0.75s - 2.88s
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-amber-400 uppercase font-mono">Cách Đặt Tiêu Đề</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white mt-1 mb-2 leading-snug">Nhìn Thẳng Camera & Đặt Chữ To Phần Trên</h3>
+                
+                <div class="space-y-1.5 text-[11px] mb-3">
+                  <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-300">
+                    <b>✅ Điểm hay:</b> Chữ to đập vào mắt ngay, người nói đứng chính giữa tự tin.
+                  </div>
+                  <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-300">
+                    <b>⚠️ Lưu ý:</b> Nắng gắt cắt ngang áo tạo bóng hơi mạnh.
+                  </div>
+                </div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-[11px]">
+                <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
+                <span class="font-medium text-slate-200">Đặt tiêu đề ở 1/3 trên để không bị nút Like che.</span>
+              </div>
+            </div>
+
+            <!-- Cảnh 3 -->
+            <div class="min-w-[260px] sm:min-w-[300px] max-w-[300px] snap-start glass-card rounded-2xl p-4 border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-60 mb-3 bg-slate-900 border border-slate-800 relative">
+                  <img src="./assets/video-analysis/shot_03.jpg" alt="Cảnh 3" class="w-full h-full object-cover image-zoom" />
+                  <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-cyan-400 font-bold border border-cyan-500/30">
+                    CẢNH 03 • 2.88s - 4.50s
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-cyan-400 uppercase font-mono">Quay Cảnh Thật Hàng Ngày</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white mt-1 mb-2 leading-snug">Quay Rất Cận Bàn Tay Nắm Chặt Thanh Tạ</h3>
+                
+                <div class="space-y-1.5 text-[11px] mb-3">
+                  <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-300">
+                    <b>✅ Điểm hay:</b> Hậu cảnh mờ, nổi bật cơ bắp và độ nặng của bài tập.
+                  </div>
+                  <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-300">
+                    <b>⚠️ Lưu ý:</b> Đèn phòng tập ngả màu hồng ở góc trên.
+                  </div>
+                </div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-[11px]">
+                <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
+                <span class="font-medium text-slate-200">Quay lại việc bạn làm hàng ngày thay vì diễn.</span>
+              </div>
+            </div>
+
+            <!-- Cảnh 4 -->
+            <div class="min-w-[260px] sm:min-w-[300px] max-w-[300px] snap-start glass-card rounded-2xl p-4 border border-slate-800 hover:border-purple-500/50 transition flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-60 mb-3 bg-slate-900 border border-slate-800 relative">
+                  <img src="./assets/video-analysis/shot_04.jpg" alt="Cảnh 4" class="w-full h-full object-cover image-zoom" />
+                  <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-purple-400 font-bold border border-purple-500/30">
+                    CẢNH 04 • 4.50s - 6.63s
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-purple-400 uppercase font-mono">Góc Quay Toàn Cảnh</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white mt-1 mb-2 leading-snug">Góc Máy Chính Giữa Toàn Phòng Tập</h3>
+                
+                <div class="space-y-1.5 text-[11px] mb-3">
+                  <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-300">
+                    <b>✅ Điểm hay:</b> Khung xà cân đối chính giữa, tạo cảm giác rộng lớn.
+                  </div>
+                  <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-300">
+                    <b>⚠️ Lưu ý:</b> Áo đen trùng màu với khung xà.
+                  </div>
+                </div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-[11px]">
+                <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
+                <span class="font-medium text-slate-200">Đặt camera thẳng trục chính giữa căn phòng.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Nút xem nhanh PDF -->
+          <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-950/70 p-3.5 rounded-2xl">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">📖</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-white">Xem File PDF Đầy Đủ 39 Cảnh</h4>
+                <p class="text-[11px] text-slate-400">File PDF thực tế đã xuất bản từ video này (39 trang)</p>
+              </div>
+            </div>
+            <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20 transition active:scale-95">
+              <span>👁️ MỞ XEM FILE PDF ↗</span>
+            </a>
+          </div>
         </div>
+
+        <!-- BƯỚC 3: NHẬN FILE PDF -->
+        <div class="glass-card rounded-3xl p-6 sm:p-7 border border-amber-500/30 glow-gold">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-bold text-amber-400 font-mono uppercase">
+              <span>📄 KẾT QUẢ ĐẦU RA</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white">
+              Nhận File PDF Đẹp Mắt, Mở Xem Mọi Lúc
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed">
+              Sau khi phân tích xong, bạn sẽ nhận được 1 file PDF trình bày rõ ràng từng cảnh quay. File tự động mở trên màn hình máy tính và tự lưu vào Google Drive để bạn xem trên điện thoại hoặc chia sẻ cho người khác.
+            </p>
+            
+            <div class="pt-2 flex flex-wrap gap-3">
+              <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-amber-500/20 transition">
+                <span>📄 MỞ XEM FILE PDF MẪU</span>
+              </a>
+              <a href="./assets/video-analysis/demo_director_report.html" target="_blank" class="py-2.5 px-3.5 rounded-xl bg-slate-900 text-slate-300 font-bold text-xs flex items-center gap-2 border border-slate-700 transition">
+                <span>🌐 Xem Bản Web</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- HORIZONTAL SLIDER (8 CẢNH TIÊU BIỂU) -->
-      <div id="shots-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 snap-x snap-mandatory">
-
-        <!-- Cảnh 1 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-red-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_01.jpg" alt="Cảnh 1 Mở đầu" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
-                CẢNH 01 • Giây 0.00 - 0.75
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-red-400 uppercase tracking-wider font-mono">Cách Mở Đầu Giữ Chân Khán Giả</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Góc Máy Trên Cao Chúc Xuống & Động Tác Gạt Tay Mở Màn</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Góc máy từ trên cao tạo cảm giác lạ mắt, ánh sáng cửa sổ rọi vào làm sáng rõ căn phòng.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Gạt tay hơi nhanh khiến người xem khó kịp đọc chữ nhỏ ở góc trái.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Đưa tay tương tác thẳng vào camera trong 3 giây đầu để người xem không lướt qua.</span>
-          </div>
-        </div>
-
-        <!-- Cảnh 2 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-amber-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_02.jpg" alt="Cảnh 2 Nói chuyện trực diện" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-amber-400 font-bold border border-amber-500/30">
-                CẢNH 02 • Giây 0.75 - 2.88
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider font-mono">Cách Đặt Tiêu Đề Trên Video</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Nhìn Thẳng Camera & Đặt Chữ To Ở Phần Trên</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Chữ in hoa to đập vào mắt ngay, người nói đứng chính giữa tạo sự tự tin.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Vệt nắng cắt ngang áo tạo bóng hơi gắt.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Đặt tiêu đề ở phần trên màn hình để không bị các nút Like, Comment của app che mất.</span>
-          </div>
-        </div>
-
-        <!-- Cảnh 3 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_03.jpg" alt="Cảnh 3 Cận cảnh hành động" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-cyan-400 font-bold border border-cyan-500/30">
-                CẢNH 03 • Giây 2.88 - 4.50
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider font-mono">Quay Cảnh Thật Hàng Ngày</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Quay Rất Cận Bàn Tay Nắm Chặt Thanh Tạ</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Hậu cảnh mờ mịt, nổi bật cơ bắp và độ nặng của bài tập, tạo cảm giác rất thật.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Đèn phòng tập hơi ngả màu hồng ở góc trên.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Quay lại chính việc bạn đang làm hàng ngày (tập gym, làm việc) thay vì diễn gượng gạo.</span>
-          </div>
-        </div>
-
-        <!-- Cảnh 4 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-purple-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_04.jpg" alt="Cảnh 4 Toàn cảnh không gian" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-purple-400 font-bold border border-purple-500/30">
-                CẢNH 04 • Giây 4.50 - 6.63
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider font-mono">Góc Quay Toàn Cảnh</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Góc Máy Chính Giữa Kéo Xà Toàn Phòng Tập</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Khung xà nằm cân đối chính giữa, tạo cảm giác không gian rộng lớn và kỷ luật.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Áo đen trùng màu với khung xà nên người hơi chìm vào hậu cảnh.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Đặt camera thẳng trục chính giữa căn phòng để tạo cảm giác không gian chỉn chu, đẹp mắt.</span>
-          </div>
-        </div>
-
-        <!-- Cảnh 5 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-red-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_05.jpg" alt="Cảnh 5 Cắt cảnh theo nhạc" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
-                CẢNH 05 • Giây 6.63 - 7.67
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-red-400 uppercase tracking-wider font-mono">Cách Cắt Cảnh Hút Người Xem</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Cắt Cảnh Đúng Vào Nhịp Trống Nhạc Nền</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Đổi cảnh đúng lúc nhạc rơi giúp video có nhịp điệu dồn dập, xem rất cuốn.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Cảnh ngắn (1 giây) nên chỉ chiếu hành động chính.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Cắt đổi góc quay đúng vào tiếng trống của bài nhạc để video không bị nhàm chán.</span>
-          </div>
-        </div>
-
-        <!-- Cảnh 6 -->
-        <div class="min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start glass-card rounded-2xl overflow-hidden p-5 border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between shadow-2xl">
-          <div>
-            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-72 mb-3.5 bg-slate-900 border border-slate-800 relative shadow-inner">
-              <img src="./assets/video-analysis/shot_06.jpg" alt="Cảnh 6 Bàn làm việc" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-mono text-cyan-400 font-bold border border-cyan-500/30">
-                CẢNH 06 • Giây 7.67 - 9.09
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider font-mono">Góc Quay Bàn Làm Việc</span>
-            <h3 class="text-sm sm:text-base font-bold text-white mt-1 mb-2 leading-snug">Quay Nghiêng Màn Hình Máy Tính Đang Dựng Phim</h3>
-            
-            <div class="space-y-2 text-xs mb-4">
-              <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                <b>✅ Điểm hay:</b> Góc quay nghiêng tạo cảm giác đang làm việc chăm chỉ và chân thật.
-              </div>
-              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                <b>⚠️ Lưu ý:</b> Cần dọn bớt đồ thừa trên bàn để khung hình gọn hơn.
-              </div>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs">
-            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
-            <span class="font-medium text-slate-200">Quay cảnh màn hình làm việc để người xem thấy quy trình thực tế của bạn.</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Quick Action: Nút mở xem file PDF -->
-      <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-950/80 p-4 sm:p-5 rounded-2xl">
-        <div class="flex items-center gap-3">
-          <span class="text-3xl">📖</span>
-          <div>
-            <h4 class="text-sm font-bold text-white">Xem Toàn Bộ Bản Bóc Tách 39 Cảnh</h4>
-            <p class="text-xs text-slate-400">Xem file PDF thực tế được tạo ra từ video này (39 trang đầy đủ hình ảnh và bài học)</p>
-          </div>
-        </div>
-        <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition active:scale-95">
-          <span>👁️ MỞ XEM FILE PDF ĐẦY ĐỦ (39 TRANG) ↗</span>
-        </a>
-      </div>
-
-    </div>
-
-    <!-- 1.3 KHỐI XUẤT BẢN FILE PDF (LỌC VĂN MẪU: ĐƠN GIẢN, TẬP TRUNG KẾT QUẢ) -->
-    <div class="glass-card rounded-3xl p-6 sm:p-8 mb-16 border border-amber-500/30 glow-gold">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="space-y-3 max-w-xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-bold text-amber-400 font-mono uppercase">
-            <span>📄 KẾT QUẢ ĐẦU RA</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
-            Nhận File PDF Đẹp Mắt, Mở Xem Mọi Lúc
-          </h3>
-          <p class="text-sm text-slate-300 font-normal leading-relaxed">
-            Sau khi phân tích xong, bạn sẽ nhận được 1 file PDF trình bày rõ ràng từng cảnh quay. File tự động mở trên màn hình máy tính và tự lưu vào Google Drive để bạn xem trên điện thoại hoặc chia sẻ cho người khác.
-          </p>
+      <!-- CỘT PHẢI (5 CỘT - STICKY CỐ ĐỊNH): THẺ MÃ QR 1-CHẠM (KHÔNG CẦN NHẬP MẬT KHẨU TRÊN WEB) -->
+      <div id="license-section" class="lg:col-span-5 lg:sticky lg:top-20 space-y-6">
+        <div class="glass-card rounded-3xl p-6 sm:p-7 border border-red-500/40 glow-cinema relative overflow-hidden">
           
-          <div class="pt-2 flex flex-wrap gap-3">
-            <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 transition active:scale-95">
-              <span>📄</span>
-              <span>MỞ XEM FILE PDF MẪU ↗</span>
-            </a>
-            <a href="./assets/video-analysis/demo_director_report.html" target="_blank" class="py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs flex items-center gap-2 border border-slate-700 transition">
-              <span>🌐</span>
-              <span>Xem Bản Web</span>
-            </a>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase font-mono mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
+            CÀI ĐẶT 1-CHẠM CHO TRỢ LÝ AI
           </div>
-        </div>
 
-        <div class="shrink-0 flex flex-col items-center gap-3">
-          <div class="px-6 py-5 rounded-2xl bg-slate-950 border border-slate-800 text-center shadow-xl">
-            <span class="text-xs text-slate-400 font-mono block mb-1">Quy cách file:</span>
-            <span class="text-xl sm:text-2xl font-extrabold text-amber-400">File PDF Chuẩn A4</span>
-            <span class="text-xs text-slate-400 block mt-1">Đọc tốt trên điện thoại & iPad</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2">
+            Tải Thẻ Kích Hoạt (Mã QR)
+          </h3>
+          <p class="text-xs text-slate-300 font-normal leading-relaxed mb-5">
+            Bấm nút bên dưới để tải ảnh mã QR về máy. Sau đó kéo thả ảnh vào khung chat AI và nhập mật khẩu mở khóa do người bán cấp (chỉ nhập 1 lần duy nhất trong chat).
+          </p>
+
+          <!-- Khung xem trước Thẻ QR sắc nét -->
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-black flex justify-center mb-5">
+            <canvas id="director-card-canvas" width="600" height="360" class="w-full h-auto max-w-[420px]"></canvas>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SECTION 2: CÁCH CÀI ĐẶT (MÃ QR 1-CHẠM) -->
-  <section id="license-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-8 mb-12">
-    <div class="relative glass-card rounded-3xl p-6 sm:p-10 border border-red-500/40 glow-cinema overflow-hidden">
-      <div class="absolute -top-24 -right-24 w-60 h-60 bg-red-500/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-60 h-60 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+          <!-- Nút Tải 1-Chạm Siêu Nhanh -->
+          <button onclick="downloadCard()" class="w-full py-4 px-5 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-sm sm:text-base tracking-wide transition shadow-xl shadow-red-500/30 flex items-center justify-center gap-2.5 active:scale-[0.98]">
+            <span class="text-xl">📥</span>
+            <span>BẤM VÀO ĐÂY ĐỂ TẢI ẢNH MÃ QR</span>
+          </button>
 
-      <!-- Section Header -->
-      <div class="text-center max-w-xl mx-auto mb-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase tracking-widest mb-3">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
-          CÁCH CÀI ĐẶT VÀO TRỢ LÝ AI
-        </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Tải Thẻ Kích Hoạt (Ảnh QR)
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-300 mt-2 font-normal leading-relaxed">
-          Bấm nút bên dưới để tải ảnh Thẻ Kích Hoạt về máy. Sau đó kéo ảnh thả vào khung chat AI và nhập mật khẩu 1 lần duy nhất để dùng mãi mãi.
-        </p>
-      </div>
-
-      <!-- Khối Nhập Tên & Mật Khẩu -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-6 bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
-        <div>
-          <label class="block text-xs font-medium text-slate-400 mb-1">Tên của bạn:</label>
-          <input type="text" id="user-name" value="Chủ Nhân" oninput="renderCard()" placeholder="Nhập tên của bạn..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-red-500 transition font-medium" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-amber-400 mb-1">Mật khẩu kích hoạt (Nhận từ người bán):</label>
-          <input type="text" id="user-password" value="VIP2026" oninput="renderCard()" placeholder="Nhập mật khẩu..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-amber-500/50 text-sm text-amber-300 focus:outline-none focus:border-amber-400 transition font-mono font-bold uppercase tracking-wider" />
-        </div>
-      </div>
-
-      <!-- Canvas Thẻ Kích Hoạt -->
-      <div class="max-w-xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-black flex justify-center">
-        <canvas id="director-card-canvas" width="800" height="460" class="w-full h-auto max-w-[540px]"></canvas>
-      </div>
-
-      <!-- Nút Tải 1-Chạm -->
-      <div class="max-w-md mx-auto text-center space-y-4">
-        <button onclick="downloadCard()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-base tracking-wide transition-all duration-300 shadow-xl shadow-red-500/30 flex items-center justify-center gap-3 active:scale-[0.98]">
-          <span class="text-xl">📥</span>
-          <span>BẤM VÀO ĐÂY ĐỂ TẢI ẢNH MÃ QR VỀ MÁY</span>
-        </button>
-
-        <p class="text-xs text-slate-400 font-normal flex items-center justify-center gap-1.5">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-400"></span>
-          <span>Ảnh tải về máy trong 1 giây. Sau đó kéo thả ảnh vào khung chat AI.</span>
-        </p>
-      </div>
-
-      <!-- 3 BƯỚC CỰC DỄ -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-8 mt-8 border-t border-slate-800/80 text-xs">
-        <div class="flex items-start gap-2.5">
-          <span class="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 border border-red-500/30">1</span>
-          <div>
-            <span class="text-slate-200 font-bold block mb-0.5">Tải Ảnh QR Về Máy</span>
-            <span class="text-slate-400">Bấm nút đỏ bên trên để lưu ảnh thẻ có chứa mã QR về máy.</span>
+          <!-- 3 Bước Cực Ngắn Gọn -->
+          <div class="mt-6 pt-5 border-t border-slate-800/80 space-y-3 text-xs">
+            <div class="flex items-start gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5 border border-red-500/30">1</span>
+              <p class="text-slate-300"><b>Bấm nút tải ảnh QR</b> về máy tính hoặc điện thoại.</p>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5 border border-amber-500/30">2</span>
+              <p class="text-slate-300"><b>Kéo thả ảnh vừa tải vào khung chat AI</b>.</p>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5 border border-emerald-500/30">3</span>
+              <p class="text-slate-300"><b>Nhập mật khẩu trong khung chat</b> khi AI hỏi (1 lần duy nhất để dùng trọn đời).</p>
+            </div>
           </div>
-        </div>
-        <div class="flex items-start gap-2.5">
-          <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 border border-amber-500/30">2</span>
-          <div>
-            <span class="text-slate-200 font-bold block mb-0.5">Kéo Thả Vào Chat AI</span>
-            <span class="text-slate-400">Kéo file ảnh vừa tải thả vào khung chat. AI sẽ tự động đọc mã.</span>
-          </div>
-        </div>
-        <div class="flex items-start gap-2.5">
-          <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 border border-emerald-500/30">3</span>
-          <div>
-            <span class="text-slate-200 font-bold block mb-0.5">Nhập Mật Khẩu 1 Lần</span>
-            <span class="text-slate-400">Nhập mã mở khóa. Từ nay cứ gửi link video là AI tự bóc tách!</span>
-          </div>
+
         </div>
       </div>
 
     </div>
-  </section>
+  </main>
 
   <!-- FOOTER SẠCH SẼ -->
-  <footer class="py-10 text-center text-xs text-slate-500 border-t border-slate-900">
+  <footer class="mt-16 py-10 text-center text-xs text-slate-500 border-t border-slate-900">
     <p class="font-mono">© 2026 Video Analysis AI • Personal Studio Edition</p>
   </footer>
 
@@ -542,13 +415,9 @@
 
   <!-- JAVASCRIPT XỬ LÝ CANVAS & CAROUSEL -->
   <script>
-    if (window.location.search.includes('admin') || window.location.hash.includes('admin')) {
-      document.getElementById('admin-portal').classList.remove('hidden');
-    }
-
     function scrollShots(direction) {
       const slider = document.getElementById('shots-slider');
-      const scrollAmount = 380;
+      const scrollAmount = 320;
       if (direction === 'left') {
         slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       } else {
@@ -588,106 +457,89 @@
             const canvas = qrContainer.querySelector('canvas');
             resolve(canvas ? canvas.toDataURL() : '');
           }
-        }, 100);
+        }, 80);
       });
     }
 
     async function renderCard() {
       const canvas = document.getElementById('director-card-canvas');
       const ctx = canvas.getContext('2d');
-      const name = document.getElementById('user-name').value.trim() || 'Chủ Nhân';
-      const pass = document.getElementById('user-password').value.trim() || 'VIP2026';
 
       // 1. Nền Thẻ
       ctx.fillStyle = '#090C12';
-      ctx.fillRect(0, 0, 800, 460);
+      ctx.fillRect(0, 0, 600, 360);
 
-      const grad = ctx.createLinearGradient(0, 0, 800, 460);
-      grad.addColorStop(0, 'rgba(229, 9, 20, 0.2)');
-      grad.addColorStop(0.5, 'rgba(15, 23, 42, 0.85)');
-      grad.addColorStop(1, 'rgba(245, 158, 11, 0.2)');
+      const grad = ctx.createLinearGradient(0, 0, 600, 360);
+      grad.addColorStop(0, 'rgba(229, 9, 20, 0.25)');
+      grad.addColorStop(0.5, 'rgba(15, 23, 42, 0.9)');
+      grad.addColorStop(1, 'rgba(245, 158, 11, 0.25)');
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 800, 460);
+      ctx.fillRect(0, 0, 600, 360);
 
       // 2. Viền Bo Góc
       ctx.strokeStyle = 'rgba(229, 9, 20, 0.5)';
-      ctx.lineWidth = 4;
-      drawRoundedRect(ctx, 10, 10, 780, 440, 24);
+      ctx.lineWidth = 3;
+      drawRoundedRect(ctx, 8, 8, 584, 344, 18);
       ctx.stroke();
 
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
       ctx.lineWidth = 1;
-      drawRoundedRect(ctx, 20, 20, 760, 420, 16);
+      drawRoundedRect(ctx, 16, 16, 568, 328, 12);
       ctx.stroke();
 
       // 3. Header Thẻ
       ctx.fillStyle = '#E50914';
-      ctx.font = 'bold 12px "JetBrains Mono", monospace';
-      ctx.fillText('VIDEO ANALYSIS AI • VIP LICENSE CARD', 40, 56);
+      ctx.font = 'bold 10px "JetBrains Mono", monospace';
+      ctx.fillText('VIDEO ANALYSIS AI • VIP LICENSE CARD', 32, 45);
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 24px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('THẺ KÍCH HOẠT BÓC TÁCH VIDEO', 40, 92);
+      ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('THẺ KÍCH HOẠT BÓC TÁCH VIDEO', 32, 74);
 
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(40, 110);
-      ctx.lineTo(480, 110);
+      ctx.moveTo(32, 88);
+      ctx.lineTo(360, 88);
       ctx.stroke();
 
-      // 4. Thông tin chủ thẻ
+      // 4. Thông tin tính năng
       ctx.fillStyle = '#94A3B8';
-      ctx.font = '12px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('CHỦ SỞ HỮU BẢN QUYỀN:', 40, 145);
+      ctx.font = '11px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('• Bóc tách chi tiết từng cảnh quay và góc máy', 32, 125);
+      ctx.fillText('• Tự xuất file PDF mở xem ngay trên điện thoại', 32, 155);
+      ctx.fillText('• Tự động đồng bộ vào Google Drive của bạn', 32, 185);
 
-      ctx.fillStyle = '#F8FAFC';
-      ctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText(name.toUpperCase(), 40, 175);
-
-      ctx.fillStyle = '#94A3B8';
-      ctx.font = '12px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('MẬT KHẨU KÍCH HOẠT 1 LẦN:', 40, 220);
-
-      // Box mật khẩu
+      // Hướng dẫn
       ctx.fillStyle = 'rgba(245, 158, 11, 0.15)';
-      drawRoundedRect(ctx, 40, 235, 260, 40, 8);
+      drawRoundedRect(ctx, 32, 220, 330, 42, 8);
       ctx.fill();
-      ctx.strokeStyle = 'rgba(245, 158, 11, 0.5)';
-      ctx.lineWidth = 1.5;
-      drawRoundedRect(ctx, 40, 235, 260, 40, 8);
+      ctx.strokeStyle = 'rgba(245, 158, 11, 0.4)';
+      ctx.lineWidth = 1;
+      drawRoundedRect(ctx, 32, 220, 330, 42, 8);
       ctx.stroke();
 
       ctx.fillStyle = '#FBBF24';
-      ctx.font = 'bold 16px "JetBrains Mono", monospace';
-      ctx.fillText('🔑 ' + pass.toUpperCase(), 55, 261);
-
-      // Tính năng
-      ctx.fillStyle = '#94A3B8';
-      ctx.font = '11px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('• Bóc tách chi tiết từng cảnh quay và góc máy', 40, 315);
-      ctx.fillText('• Xuất file PDF mở xem ngay trên điện thoại & máy tính', 40, 335);
-      ctx.fillText('• Tự động đồng bộ vào Google Drive của bạn', 40, 355);
+      ctx.font = 'bold 11px "JetBrains Mono", monospace';
+      ctx.fillText('🔑 KÉO THẢ VÀO CHAT AI ĐỂ MỞ KHÓA', 46, 246);
 
       ctx.fillStyle = '#38BDF8';
-      ctx.font = 'bold 11px "JetBrains Mono", monospace';
-      ctx.fillText('👉 Hướng dẫn: Kéo thả ảnh này vào Trợ lý AI để kích hoạt!', 40, 405);
+      ctx.font = '10px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('👉 Nhập mật khẩu trong khung chat AI khi được hỏi.', 32, 305);
 
       // 5. Khối QR Code Bên Phải
       ctx.fillStyle = '#FFFFFF';
-      drawRoundedRect(ctx, 515, 120, 240, 240, 16);
+      drawRoundedRect(ctx, 385, 95, 180, 180, 12);
       ctx.fill();
       ctx.strokeStyle = 'rgba(229, 9, 20, 0.6)';
       ctx.lineWidth = 2;
-      drawRoundedRect(ctx, 515, 120, 240, 240, 16);
+      drawRoundedRect(ctx, 385, 95, 180, 180, 12);
       ctx.stroke();
 
       const qrPayload = JSON.stringify({
         skill: "analyze-video-02",
-        name: name,
         product: "Video Analysis AI",
         action: "trigger_install",
-        default_pass: pass,
         version: "2026.2"
       });
 
@@ -695,32 +547,24 @@
       if (qrDataUrl) {
         const qrImg = new Image();
         qrImg.onload = function() {
-          ctx.drawImage(qrImg, 530, 135, 210, 210);
+          ctx.drawImage(qrImg, 395, 105, 160, 160);
         };
         qrImg.src = qrDataUrl;
       }
 
       ctx.fillStyle = '#E50914';
-      ctx.font = 'bold 11px "JetBrains Mono", monospace';
+      ctx.font = 'bold 9px "JetBrains Mono", monospace';
       ctx.textAlign = 'center';
-      ctx.fillText('QUÉT ĐỂ KÍCH HOẠT', 635, 385);
+      ctx.fillText('QUÉT ĐỂ KÍCH HOẠT', 475, 300);
       ctx.textAlign = 'left';
     }
 
     function downloadCard() {
       const canvas = document.getElementById('director-card-canvas');
       const link = document.createElement('a');
-      const name = document.getElementById('user-name').value.trim() || 'ChuNhan';
-      link.download = `The_Kich_Hoat_Video_AI_${name}.png`;
+      link.download = `The_Kich_Hoat_Video_AI.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
-    }
-
-    function adminCreateLicense() {
-      const code = document.getElementById('admin-custom-code').value.trim() || 'VIP2026';
-      document.getElementById('user-password').value = code;
-      renderCard();
-      alert(`✅ Đã cập nhật mật khẩu kích hoạt: ${code}`);
     }
 
     window.onload = function() {
