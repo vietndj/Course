@@ -1,117 +1,139 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>20 Ý Tưởng AI Agent Computer Use - Trước & Sau | Nâng Cấp Từ ChatGPT</title>
   
-  <!-- Google Fonts Fallbacks for Web View -->
+  <!-- Google Fonts Fallbacks & CDN Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <style>
     /* ===================================================
-       STRICT TYPOGRAPHY STACK (3 FONTS EXCLUSIVE)
-       1. SVN-Integral CF (Heading, Display, Badges)
-       2. SVN-Poppins (Body Text, UI, Buttons)
-       3. SVN-Acta (Quotes, Hooks, Editorial, Highlights)
+       TYPOGRAPHY SYSTEM (INTEGRAL REGULAR + POPPINS)
+       - Tiêu đề ngắn (<= 8 từ): SVN-Integral CF Regular (400)
+       - Tiêu đề dài (> 8 từ): SVN-Poppins SemiBold (600) / Bold (700)
+       - Thân bài & Đọc: SVN-Poppins (400/500/600)
+       - Trích dẫn & Hook: SVN-Acta / Playfair Display (Italic)
+       - Mã code / Timestamp: JetBrains Mono
        =================================================== */
     @font-face {
-      font-family: 'SVN-Integral CF';
-      src: local('SVN-Integral CF'), local('SVN-IntegralCF-Bold'), local('SVN-IntegralCF-Regular'), local('Integral CF');
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'SVN-Integral CF';
-      src: local('SVN-IntegralCF-Heavy'), local('IntegralCF-Heavy');
-      font-weight: 900;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'SVN-Poppins';
-      src: local('SVN-Poppins-Regular'), local('SVN-Poppins'), local('Poppins-Regular');
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular'), local('SVN-IntegralCF-Regular');
       font-weight: 400;
       font-style: normal;
     }
     @font-face {
       font-family: 'SVN-Poppins';
-      src: local('SVN-Poppins-Medium'), local('Poppins-Medium');
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular'), local('SVN-Poppins');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Medium.ttf') format('truetype'),
+           local('SVN-Poppins-Medium');
       font-weight: 500;
       font-style: normal;
     }
     @font-face {
       font-family: 'SVN-Poppins';
-      src: local('SVN-Poppins-SemiBold'), local('Poppins-SemiBold');
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
       font-weight: 600;
       font-style: normal;
     }
     @font-face {
       font-family: 'SVN-Poppins';
-      src: local('SVN-Poppins-Bold'), local('Poppins-Bold');
+      src: url('./assets/fonts/SVN-Poppins-Bold.ttf') format('truetype'),
+           local('SVN-Poppins-Bold');
       font-weight: 700;
       font-style: normal;
     }
     @font-face {
       font-family: 'SVN-Acta';
-      src: local('SVN-Acta-Book'), local('SVN-Acta'), local('Acta-Book');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'SVN-Acta';
-      src: local('SVN-Acta-BookItalic'), local('Acta-BookItalic');
+      src: url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
+           local('SVN-Acta-BookItalic'), local('SVN-Acta');
       font-weight: 400;
       font-style: italic;
     }
-    @font-face {
-      font-family: 'SVN-Acta';
-      src: local('SVN-Acta-Bold'), local('Acta-Bold');
-      font-weight: 700;
-      font-style: normal;
-    }
 
     :root {
-      --font-heading: 'SVN-Integral CF', 'Integral CF', sans-serif;
-      --font-body: 'SVN-Poppins', 'Poppins', sans-serif;
-      --font-quote: 'SVN-Acta', 'Acta', serif;
+      --font-integral: 'SVN-Integral', sans-serif;
+      --font-poppins: 'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-acta: 'SVN-Acta', 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     body {
-      background-color: #070b12;
+      background-color: #06090e;
       color: #f1f5f9;
-      font-family: var(--font-body);
+      font-family: var(--font-poppins);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .font-integral {
-      font-family: var(--font-heading);
-      letter-spacing: -0.02em;
+    /* Tiêu đề ngắn <= 8 từ: SVN-Integral CF Regular 400 */
+    .title-short, .title-short-integral, .font-integral-reg {
+      font-family: var(--font-integral);
+      font-weight: 400; /* Bắt buộc Regular, tuyệt đối không dùng Bold */
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
+
+    /* Tiêu đề dài > 8 từ: SVN-Poppins SemiBold/Bold */
+    .title-long, .title-long-poppins, .font-poppins-title {
+      font-family: var(--font-poppins);
+      font-weight: 600;
+      letter-spacing: normal;
+      line-height: 1.45;
+      text-transform: none;
+    }
+
     .font-poppins {
-      font-family: var(--font-body);
+      font-family: var(--font-poppins);
     }
     .font-acta {
-      font-family: var(--font-quote);
+      font-family: var(--font-acta);
+    }
+    .font-mono {
+      font-family: var(--font-mono);
     }
 
     .glow-emerald {
-      box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 45px -10px rgba(16, 185, 129, 0.22);
     }
-    .glow-rose {
-      box-shadow: 0 0 35px -10px rgba(244, 63, 94, 0.2);
+    .glow-cyan {
+      box-shadow: 0 0 45px -10px rgba(6, 182, 212, 0.22);
     }
+    
+    .glass-card {
+      background: rgba(14, 22, 38, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(18, 28, 48, 0.85);
+    }
+
     .toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      transform: translateY(100px);
+      bottom: 28px;
+      right: 28px;
+      transform: translateY(120px);
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 100;
     }
     .toast.show {
@@ -119,6 +141,7 @@
       opacity: 1;
     }
   </style>
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -126,8 +149,9 @@
         extend: {
           fontFamily: {
             sans: ['"SVN-Poppins"', '"Poppins"', 'sans-serif'],
-            display: ['"SVN-Integral CF"', '"Integral CF"', 'sans-serif'],
-            editorial: ['"SVN-Acta"', '"Acta"', 'serif'],
+            integral: ['"SVN-Integral"', 'sans-serif'],
+            acta: ['"SVN-Acta"', '"Playfair Display"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
             brand: {
@@ -136,11 +160,11 @@
               600: '#059669',
             },
             dark: {
-              bg: '#070b12',
-              card: '#0e1524',
-              surface: '#152033',
-              border: '#1e2e47',
-              hover: '#243754'
+              bg: '#06090e',
+              card: '#0d1524',
+              surface: '#131e33',
+              border: '#1b2a45',
+              hover: '#223557'
             }
           }
         }
@@ -151,15 +175,15 @@
 <body class="min-h-screen flex flex-col font-poppins selection:bg-emerald-500/30 selection:text-emerald-200">
 
   <!-- TOP BAR -->
-  <header class="sticky top-0 z-50 bg-[#070b12]/90 backdrop-blur-md border-b border-dark-border px-4 lg:px-8 py-3.5 flex items-center justify-between">
+  <header class="sticky top-0 z-50 bg-[#06090e]/90 backdrop-blur-md border-b border-dark-border px-4 lg:px-8 py-3.5 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-integral font-bold text-emerald-400 text-sm">
+      <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-integral-reg text-emerald-400 text-sm">
         ⚡
       </div>
       <div>
-        <div class="text-sm font-integral font-bold tracking-tight text-white flex items-center gap-2">
+        <div class="text-sm font-integral-reg text-white flex items-center gap-2">
           AI AGENT COMPUTER USE
-          <span class="text-[10px] uppercase font-integral px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">20 Ý TƯỞNG THỰC CHIẾN</span>
+          <span class="text-[10px] font-integral-reg px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">20 Ý TƯỞNG THỰC CHIẾN</span>
         </div>
         <div class="text-[11px] text-slate-400 font-poppins">Nâng cấp từ ChatGPT "Nói mồm" sang AI "Bắt tay làm thật"</div>
       </div>
@@ -176,42 +200,43 @@
   </header>
 
   <!-- HERO BANNER -->
-  <section class="relative pt-12 pb-16 px-4 lg:px-8 max-w-6xl mx-auto text-center overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[120px] pointer-events-none rounded-full"></div>
-    <div class="absolute top-1/3 left-1/4 w-[300px] h-[200px] bg-blue-500/10 blur-[100px] pointer-events-none rounded-full"></div>
+  <section class="relative pt-14 pb-16 px-4 lg:px-8 max-w-6xl mx-auto text-center overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-emerald-500/10 blur-[130px] pointer-events-none rounded-full"></div>
+    <div class="absolute top-1/3 left-1/4 w-[320px] h-[220px] bg-cyan-500/10 blur-[110px] pointer-events-none rounded-full"></div>
 
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-integral mb-6">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-integral-reg mb-6">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
       TỰ ĐỘNG HÓA THAO TÁC MÁY TÍNH 100%
     </div>
 
-    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-integral font-bold tracking-tight text-white mb-6 leading-[1.15]">
-      ĐỪNG DÙNG AI ĐỂ CHAT HỎI ĐÁP.<br>
+    <!-- Tiêu đề Hero: 2 vế ngắn <= 8 từ dùng font SVN-Integral CF Regular (không Bold) -->
+    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-integral-reg text-white mb-6 leading-[1.25]">
+      ĐỪNG DÙNG AI ĐỂ CHAT HỎI ĐÁP<br>
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-        BIẾN AI THÀNH THỢ THỰC THI CHO BẠN.
+        BIẾN AI THÀNH THỢ THỰC THI CHO BẠN
       </span>
     </h1>
 
-    <p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto mb-8 font-poppins font-normal leading-relaxed">
+    <p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto mb-10 font-poppins font-normal leading-relaxed">
       Sự khác biệt cốt lõi: ChatGPT web chỉ biết "nói mồm" và bắt bạn tự làm. Còn <strong class="text-white font-semibold">AI Agent (Computer Use)</strong> có tay chân: Tự mở file, tự cắt video, tự tính toán Excel, tự tải lên Google Drive và tự gửi link qua Telegram chỉ với 1 câu lệnh tiếng Việt đời thường.
     </p>
 
     <!-- Quick Stats -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto mb-10 text-left font-poppins">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 max-w-4xl mx-auto mb-12 text-left font-poppins">
       <div class="bg-dark-card border border-dark-border p-4 rounded-xl">
-        <div class="text-2xl font-integral font-bold text-emerald-400">01 LỆNH</div>
+        <div class="text-xl sm:text-2xl font-integral-reg text-emerald-400">01 LỆNH</div>
         <div class="text-xs text-slate-400 mt-1">Tiếng Việt ngắn gọn, không cần biết lập trình</div>
       </div>
       <div class="bg-dark-card border border-dark-border p-4 rounded-xl">
-        <div class="text-2xl font-integral font-bold text-cyan-400">100%</div>
+        <div class="text-xl sm:text-2xl font-integral-reg text-cyan-400">100%</div>
         <div class="text-xs text-slate-400 mt-1">Chạy thẳng trên máy tính & tài khoản Google quen thuộc</div>
       </div>
       <div class="bg-dark-card border border-dark-border p-4 rounded-xl">
-        <div class="text-2xl font-integral font-bold text-amber-400">15 GIÂY</div>
+        <div class="text-xl sm:text-2xl font-integral-reg text-amber-400">15 GIÂY</div>
         <div class="text-xs text-slate-400 mt-1">Xử lý xong việc mà trước đây mất 1–2 tiếng cặm cụi</div>
       </div>
       <div class="bg-dark-card border border-dark-border p-4 rounded-xl">
-        <div class="text-2xl font-integral font-bold text-purple-400">20 Ý TƯỞNG</div>
+        <div class="text-xl sm:text-2xl font-integral-reg text-purple-400">20 Ý TƯỞNG</div>
         <div class="text-xs text-slate-400 mt-1">Áp dụng ngay cho Video, Văn phòng, Bán hàng & Quản trị</div>
       </div>
     </div>
@@ -222,8 +247,11 @@
     <div class="bg-dark-card border border-dark-border rounded-2xl p-6 lg:p-8 relative overflow-hidden">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 pb-4 border-b border-dark-border gap-4">
         <div>
-          <span class="text-xs font-integral uppercase text-emerald-400 tracking-wider font-semibold">Bản chất vấn đề</span>
-          <h2 class="text-xl sm:text-2xl font-integral font-bold text-white mt-1">TẠI SAO CHATGPT WEB KHIẾN BẠN CÀNG DÙNG CÀNG MỆT?</h2>
+          <span class="text-xs font-integral-reg uppercase text-emerald-400 tracking-wider">Bản chất vấn đề</span>
+          <!-- Tiêu đề > 8 từ dùng font-poppins-title để đọc lướt êm ái -->
+          <h2 class="text-xl sm:text-2xl font-poppins-title text-white mt-1">
+            Tại sao ChatGPT Web khiến bạn càng dùng càng mệt?
+          </h2>
         </div>
         <div class="text-xs text-slate-400 max-w-md font-poppins">
           ChatGPT web bị nhốt trong phòng kính: Biết rất nhiều nhưng không chạm tay vào ổ cứng, chuột, phím máy tính của bạn được.
@@ -232,9 +260,9 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-red-950/20 border border-red-500/20 rounded-xl p-5">
-          <div class="flex items-center gap-2 text-red-400 font-integral font-bold text-sm mb-3">
+          <div class="flex items-center gap-2 text-red-400 font-integral-reg text-xs sm:text-sm mb-3">
             <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-xs">✕</span>
-            CHATGPT TRÊN TRÌNH DUYỆT (BỊ TRÓI TAY TRÓI CHÂN)
+            CHATGPT TRÊN WEB (BỊ TRÓI CHÂN TAY)
           </div>
           <ul class="space-y-2.5 text-xs text-slate-300 font-poppins">
             <li class="flex items-start gap-2">
@@ -257,9 +285,9 @@
         </div>
 
         <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-5 glow-emerald">
-          <div class="flex items-center gap-2 text-emerald-400 font-integral font-bold text-sm mb-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-integral-reg text-xs sm:text-sm mb-3">
             <span class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs">✓</span>
-            AI AGENT CÓ COMPUTER USE (THỢ THỰC THI TRỰC TIẾP)
+            AI AGENT COMPUTER USE (THỢ THỰC THI)
           </div>
           <ul class="space-y-2.5 text-xs text-slate-300 font-poppins">
             <li class="flex items-start gap-2">
@@ -287,8 +315,11 @@
   <!-- 20 Ý TƯỞNG TRƯỚC VÀ SAU (BEFORE & AFTER) -->
   <section id="danh-sach" class="max-w-6xl mx-auto px-4 lg:px-8 mb-20 font-poppins">
     <div class="text-center max-w-3xl mx-auto mb-10">
-      <span class="text-xs font-integral uppercase text-emerald-400 tracking-wider font-semibold">Thư viện tình huống</span>
-      <h2 class="text-2xl sm:text-4xl font-integral font-bold text-white mt-1 mb-4">20 TÌNH HUỐNG MARKETING "TRƯỚC & SAU"</h2>
+      <span class="text-xs font-integral-reg uppercase text-emerald-400 tracking-wider">Thư viện tình huống</span>
+      <!-- Tiêu đề <= 8 từ: SVN-Integral CF Regular -->
+      <h2 class="text-xl sm:text-3xl font-integral-reg text-white mt-1 mb-4">
+        20 TÌNH HUỐNG THỰC CHIẾN TRƯỚC VÀ SAU
+      </h2>
       <p class="text-slate-400 text-sm font-poppins">
         Chọn bộ lọc ngành nghề để xem những công việc hàng ngày được tự động hóa từ A đến Z như thế nào.
       </p>
@@ -325,12 +356,13 @@
       <div class="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
-      <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-integral font-bold uppercase mb-4">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-integral-reg uppercase mb-4">
         CẮM LÀ CHẠY — LÀM SẴN 80%
       </span>
 
-      <h2 class="text-3xl sm:text-4xl font-integral font-bold text-white mb-4">
-        SỞ HỮU TRỌN BỘ 3 CÔNG CỤ & KINH NGHIỆM THỰC CHIẾN
+      <!-- Tiêu đề > 8 từ dùng font-poppins-title dễ đọc -->
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-poppins-title text-white mb-4">
+        Sở hữu trọn bộ 3 công cụ & kinh nghiệm thực chiến
       </h2>
       
       <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-poppins leading-relaxed">
@@ -338,26 +370,26 @@
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto mb-8 font-poppins">
-        <div class="bg-[#070b12]/80 border border-dark-border p-4 rounded-xl">
-          <div class="text-emerald-400 font-integral font-bold text-sm mb-1">01. BÓC KỊCH BẢN CLIP</div>
+        <div class="bg-[#06090e]/80 border border-dark-border p-4 rounded-xl">
+          <div class="text-emerald-400 font-integral-reg text-xs mb-1">01. BÓC KỊCH BẢN CLIP</div>
           <div class="text-xs text-slate-400">Dán link viral -> bóc lời và góc quay 2 cột trong 5 phút.</div>
         </div>
-        <div class="bg-[#070b12]/80 border border-dark-border p-4 rounded-xl">
-          <div class="text-emerald-400 font-integral font-bold text-sm mb-1">02. TRỢ LÝ DỰNG VIDEO</div>
+        <div class="bg-[#06090e]/80 border border-dark-border p-4 rounded-xl">
+          <div class="text-emerald-400 font-integral-reg text-xs mb-1">02. TRỢ LÝ DỰNG VIDEO</div>
           <div class="text-xs text-slate-400">Gọt sạch đoạn ngập ngừng, tự làm sub chuyển động, xuất video đăng ngay.</div>
         </div>
-        <div class="bg-[#070b12]/80 border border-dark-border p-4 rounded-xl">
-          <div class="text-emerald-400 font-integral font-bold text-sm mb-1">03. WEB BÁN HÀNG QR</div>
+        <div class="bg-[#06090e]/80 border border-dark-border p-4 rounded-xl">
+          <div class="text-emerald-400 font-integral-reg text-xs mb-1">03. WEB BÁN HÀNG QR</div>
           <div class="text-xs text-slate-400">Có sẵn mã QR ngân hàng, tiền về tài khoản, đổi nội dung trong 10 phút.</div>
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
         <div class="text-center sm:text-right">
           <div class="text-xs text-slate-400 line-through font-poppins">Giá gốc 6.000.000đ</div>
-          <div class="text-3xl font-integral font-bold text-white">3.000.000đ</div>
+          <div class="text-3xl font-integral-reg text-white">3.000.000đ</div>
         </div>
-        <a href="https://ai.fedu.vn" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-integral font-bold text-sm sm:text-base transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2">
+        <a href="https://ai.fedu.vn" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-poppins font-bold text-sm sm:text-base transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2">
           <span>ĐĂNG KÝ NHẬN BỘ CÔNG CỤ NGAY</span>
           <span class="text-lg">→</span>
         </a>
@@ -386,7 +418,7 @@
       {
         id: 1,
         cat: 'video',
-        title: 'BÓC KỊCH BẢN CLIP HAY & TẢI NHẠC NỀN VỀ MÁY',
+        title: 'Bóc kịch bản clip hay & tải nhạc nền về máy',
         hook: 'Lướt thấy clip hay, khỏi cắn bút gõ lại lời hay tìm link tải nhạc.',
         beforeTime: '30 - 45 Phút',
         beforeDesc: 'Mở clip nghe đi nghe lại từng câu, gõ từng chữ vào Word, sau đó lên Google tìm trang web convert link để tải file MP3 dính đầy quảng cáo độc hại.',
@@ -398,7 +430,7 @@
       {
         id: 2,
         cat: 'video',
-        title: 'GIAO VIỆC XONG ĐI NGỦ: ĐÊM DỰNG - SÁNG GIAO KHÁCH',
+        title: 'Giao việc xong đi ngủ: Đêm dựng - Sáng giao khách',
         hook: 'Thoát khỏi cảnh ngồi trông máy tính render video đến 2 giờ sáng.',
         beforeTime: '60 - 90 Phút',
         beforeDesc: 'Quay xong 3 video thô, ngồi căng mắt cắt từng đoạn ngập ngừng, gõ phụ đề, xuất file rồi ngồi canh thanh tiến trình 100% để copy link gửi cho khách.',
@@ -410,7 +442,7 @@
       {
         id: 3,
         cat: 'video',
-        title: 'MẪU KHUNG KỊCH BẢN CÓ SẴN 80% TỪ CLIP TRIỆU VIEW',
+        title: 'Mẫu khung kịch bản có sẵn 80% từ clip triệu view',
         hook: 'Xóa bỏ hoàn toàn nỗi sợ nhìn vào trang giấy trắng khi bắt đầu làm video.',
         beforeTime: '2 - 3 Tiếng Bế Tắc',
         beforeDesc: 'Cần quay video giới thiệu sản phẩm nhưng ngồi nhìn màn hình Word trống trơn 30 phút, không biết mở đầu bằng câu gì để giữ chân người xem.',
@@ -422,7 +454,7 @@
       {
         id: 4,
         cat: 'video',
-        title: 'BÓC LỜI THOẠI & LỒNG TIẾNG VIỆT DIỄN CẢM CHO CLIP NƯỚC NGOÀI',
+        title: 'Bóc lời thoại & lồng tiếng Việt diễn cảm cho clip nước ngoài',
         hook: 'Remake video quốc tế cực nhanh mà không lo giọng đọc robot đơ cứng.',
         beforeTime: '60 Phút',
         beforeDesc: 'Ngồi chép lại lời video tiếng Anh/Trung, dịch sang tiếng Việt rồi tự thu âm lại nhiều lần hoặc dùng app giọng AI đọc ngọng nghịu không cảm xúc.',
@@ -434,7 +466,7 @@
       {
         id: 5,
         cat: 'video',
-        title: 'DỌN RÁC & NÉN 50GB VIDEO THÔ VỀ CHUẨN 1080P NÉT NHẸ',
+        title: 'Dọn rác & nén 50GB video thô về chuẩn 1080p nét nhẹ',
         hook: 'Ổ cứng đỏ ngòm dung lượng được giải phóng chỉ sau 1 câu lệnh.',
         beforeTime: '40 Phút Mò File',
         beforeDesc: 'Mở từng clip ngắn xem cái nào quay hỏng để bấm xóa, sau đó mở phần mềm convert từng video để giảm dung lượng gửi qua Zalo không bị mờ.',
@@ -448,7 +480,7 @@
       {
         id: 6,
         cat: 'office',
-        title: 'ĐỌC ẢNH BILL CHUYỂN KHOẢN & TỰ CẤP MÃ BÀI HỌC CHO KHÁCH TRONG 3S',
+        title: 'Đọc ảnh bill chuyển khoản & tự cấp mã bài học cho khách trong 3s',
         hook: 'Xác nhận đơn hàng tức thì, không bắt khách phải đợi mòn mỏi.',
         beforeTime: '15 Phút / Khách',
         beforeDesc: 'Khách gửi ảnh chụp chuyển khoản qua Zalo/Mess, bạn phải mở app ngân hàng check tiền, gõ mã kích hoạt thủ công gửi lại từng người.',
@@ -460,7 +492,7 @@
       {
         id: 7,
         cat: 'office',
-        title: 'CHIỀU THỨ SÁU: 1 NÚT DỌN SẠCH BÃI RÁC DESKTOP & DOWNLOADS',
+        title: 'Chiều Thứ Sáu: 1 nút dọn sạch bãi rác Desktop & Downloads',
         hook: 'Thứ Hai tuần sau mở máy lên tinh tươm, nhẹ đầu làm việc.',
         beforeTime: '30 Phút Ngại Dọn',
         beforeDesc: 'Desktop đặc nghẹt icon, Downloads cả nghìn file rác. Nhìn vào hoa mắt, sợ bấm nhầm xóa mất tài liệu quan trọng nên cứ để bừa bãi.',
@@ -472,7 +504,7 @@
       {
         id: 8,
         cat: 'office',
-        title: 'BÓC TÁCH TIN NHẮN ĐẶT HÀNG LỘN XỘN RA BẢNG GIAO VẬN',
+        title: 'Bóc tách tin nhắn đặt hàng lộn xộn ra bảng giao vận',
         hook: 'Khách nhắn mỗi người một kiểu, AI tự quy về một bảng ngăn nắp để in đơn.',
         beforeTime: '45 Phút Copy-Paste',
         beforeDesc: 'Ngồi đọc từng tin nhắn chat Facebook/Zalo, copy tên, số điện thoại, địa chỉ rời rạc rồi dán vào từng ô Excel để gửi bên giao hàng.',
@@ -484,7 +516,7 @@
       {
         id: 9,
         cat: 'office',
-        title: 'TỰ TÍNH HOA HỒNG CHO CỘNG TÁC VIÊN & GỬI BẢNG KÊ QUA ZALO',
+        title: 'Tự tính hoa hồng cho cộng tác viên & gửi bảng kê qua Zalo',
         hook: 'Tính toán chuẩn xác từng đồng, giữ uy tín tuyệt đối với đội ngũ bán hàng.',
         beforeTime: '90 Phút Cộng Sổ',
         beforeDesc: 'Cuối tháng ngồi cộng từng đơn của 10 cộng tác viên, tính % hoa hồng rồi chuyển khoản, vừa dễ nhầm vừa mất cả buổi tối.',
@@ -496,7 +528,7 @@
       {
         id: 10,
         cat: 'office',
-        title: 'TỰ LỌC DANH SÁCH KHÁCH CŨ ĐỂ SOẠN TIN TẶNG QUÀ / BÁN LẠI',
+        title: 'Tự lọc danh sách khách cũ để soạn tin tặng quà / bán lại',
         hook: 'Khai thác mỏ vàng khách hàng cũ mà không tốn 1 đồng tiền quảng cáo.',
         beforeTime: '60 Phút Lọc Tay',
         beforeDesc: 'Có danh sách 500 khách cũ nhưng bỏ xó, muốn nhắn tin chăm sóc lại để bán thêm sản phẩm mới nhưng ngại ngồi lọc từng người.',
@@ -510,7 +542,7 @@
       {
         id: 11,
         cat: 'business',
-        title: 'TỰ ĐỌC 100 COMMENT KHÁN GIẢ ĐỂ LÊN 5 Ý TƯỞNG VIDEO VIRAL',
+        title: 'Tự đọc 100 comment khán giả để lên 5 ý tưởng video viral',
         hook: 'Không còn đau đầu cạn kiệt ý tưởng, làm đúng chủ đề khán giả đang thèm khát.',
         beforeTime: '90 Phút Lướt Mỏi Tay',
         beforeDesc: 'Lướt đọc từng bình luận dưới video TikTok/Facebook, ghi chép câu hỏi của người xem vào sổ tay rời rạc, không biết đâu là chủ đề họ quan tâm nhất.',
@@ -522,7 +554,7 @@
       {
         id: 12,
         cat: 'business',
-        title: 'CẮT 1 VIDEO DÀI 60 PHÚT THÀNH 5 CLIP SHORT-FORM VIRAL CÓ PHỤ ĐỀ',
+        title: 'Cắt 1 video dài 60 phút thành 5 clip short-form viral có phụ đề',
         hook: 'Nhân bản nội dung tối đa từ 1 buổi livestream hay podcast dài.',
         beforeTime: '120 Phút Ngồi Cắt',
         beforeDesc: 'Quay video dài 1 tiếng, phải ngồi nghe lại từ đầu để bấm cắt từng đoạn hay, sau đó lại mất công gõ phụ đề cho từng clip ngắn.',
@@ -534,7 +566,7 @@
       {
         id: 13,
         cat: 'business',
-        title: 'TỰ ĐỐI SOÁT SAO KÊ NGÂN HÀNG VỚI SỔ BÁN HÀNG CUỐI THÁNG',
+        title: 'Tự đối soát sao kê ngân hàng với sổ bán hàng cuối tháng',
         hook: 'Tìm ra ngay lập tức các khoản tiền bị lệch hoặc bị ngân hàng trừ phí vô lý.',
         beforeTime: '90 Phút Dò Từng Dòng',
         beforeDesc: 'Tải file sao kê 200 giao dịch về, vừa mở sổ đơn hàng vừa căng mắt so sánh từng mã thanh toán, hoa mắt rất dễ sót đơn chưa nhận được tiền.',
@@ -546,7 +578,7 @@
       {
         id: 14,
         cat: 'business',
-        title: 'BÓC 100 ĐÁNH GIÁ 1 SAO CỦA ĐỐI THỦ ĐỂ TÌM ĐIỂM YẾU CHỐT SALE',
+        title: 'Bóc 100 đánh giá 1 sao của đối thủ để tìm điểm yếu chốt sale',
         hook: 'Biết rõ đối thủ bị chửi ở đâu để làm video đánh trúng tim đen khách hàng.',
         beforeTime: '60 Phút Đọc Review',
         beforeDesc: 'Vào từng gian hàng đối thủ trên Shopee/TikTok Shop đọc hàng trăm bình luận chê bai, ghi chép rời rạc không hệ thống.',
@@ -558,7 +590,7 @@
       {
         id: 15,
         cat: 'business',
-        title: 'BIẾN BÀI VIẾT DÀI THÀNH BỘ ẢNH CAROUSEL VUỐT NGANG ĐĂNG MẠNG',
+        title: 'Biến bài viết dài thành bộ ảnh Carousel vuốt ngang đăng mạng',
         hook: 'Tăng gấp 5 lần lượt tương tác và lưu bài viết trên Facebook/Instagram.',
         beforeTime: '90 Phút Thiết Kế',
         beforeDesc: 'Có bài viết hay nhưng đăng chữ dài không ai đọc, mở Canva chia từng trang, gõ chữ căn chỉnh màu sắc mất cả buổi chiều.',
@@ -572,7 +604,7 @@
       {
         id: 16,
         cat: 'automation',
-        title: 'CẦU NỐI TỰ ĐỘNG: KHÁCH QUÉT QR -> TỰ GIAO BÀI LÚC 2H SÁNG',
+        title: 'Cầu nối tự động: Khách quét QR -> Tự giao bài lúc 2h sáng',
         hook: 'Kiếm tiền tự động 24/7, sáng dậy thấy tiền đã về ví và khách đã nhận bài.',
         beforeTime: 'Mất Khách Vì Chậm',
         beforeDesc: 'Nửa đêm khách chuyển khoản gửi ảnh bill, bạn đang ngủ không trực chat được. Sáng dậy khách đổi ý đòi hủy đơn.',
@@ -584,7 +616,7 @@
       {
         id: 17,
         cat: 'automation',
-        title: 'BÁN SẢN PHẨM MỚI CHỈ SAU 1 TIN NHẮN ĐỔI NỘI DUNG WEB',
+        title: 'Bán sản phẩm mới chỉ sau 1 tin nhắn đổi nội dung web',
         hook: 'Tự tạo thì mới tự sửa được, không cần tốn tiền triệu thuê thợ code.',
         beforeTime: 'Chờ Thợ Sửa 2 Ngày',
         beforeDesc: 'Mỗi lần muốn đổi giá bán, đổi tên sản phẩm hay đổi ảnh bìa lại phải nhắn tin nhờ thợ làm web, vừa tốn tiền vừa mất thời gian chờ đợi.',
@@ -596,7 +628,7 @@
       {
         id: 18,
         cat: 'automation',
-        title: 'TỰ ĐỘNG GOM 50 TIN NHẮN TƯ VẤN ĐỂ SOẠN BỘ KỊCH BẢN CHỐT ĐƠN 1-CHẠM',
+        title: 'Tự động gom 50 tin nhắn tư vấn để soạn bộ kịch bản chốt đơn 1-chạm',
         hook: 'Chăm sóc khách hàng mượt mà, trả lời đúng ý khách trong 3 giây.',
         beforeTime: 'Gõ Mỏi Tay Mỗi Ngày',
         beforeDesc: 'Khách hỏi giá, bảo hành, ship hàng liên tục trên Zalo/Fanpage, ngồi gõ lại từng câu trả lời mỏi tay hoặc nhân viên tư vấn lệch tông.',
@@ -608,19 +640,19 @@
       {
         id: 19,
         cat: 'automation',
-        title: 'TỰ ĐỔI TÊN & PHÂN LOẠI 100 ẢNH SẢN PHẨM / ẢNH MÀN HÌNH',
+        title: 'Tự đổi tên & phân loại 100 ảnh sản phẩm / ảnh màn hình',
         hook: 'Xóa sạch bãi rác tên file `IMG_9281.jpg`, tìm lại ảnh sản phẩm trong 1 nốt nhạc.',
         beforeTime: '40 Phút Mở Từng Ảnh',
         beforeDesc: 'Mở từng ảnh chụp sản phẩm hoặc ảnh tài liệu chụp màn hình lên xem, bấm F2 đổi tên từng file và tạo thư mục kéo thả thủ công.',
         afterTime: '10 Giây',
-        afterDesc: 'AI tự nhìn nội dung trong ảnh, đổi tên rác thành tên chuẩn (Vi du: Binh_Giu_Nhiet_Xanh_01.jpg) và xếp ngay ngắn vào từng thư mục sản phẩm.',
+        afterDesc: 'AI tự nhìn nội dung trong ảnh, đổi tên rác thành tên chuẩn (Ví dụ: Binh_Giu_Nhiet_Xanh_01.jpg) và xếp ngay ngắn vào từng thư mục sản phẩm.',
         prompt: 'Đọc nội dung 100 ảnh trong thư mục này, đổi tên file theo tên sản phẩm có trong ảnh và gom vào từng thư mục riêng.',
         badge: 'QUẢN LÝ ẢNH THÔNG MINH'
       },
       {
         id: 20,
         cat: 'automation',
-        title: 'TỰ TÁCH NỀN & GHÉP ẢNH SẢN PHẨM VÀO BỐI CẢNH ĐỜI THƯỜNG LUNG LINH',
+        title: 'Tự tách nền & ghép ảnh sản phẩm vào bối cảnh đời thường lung linh',
         hook: 'Có ngay bộ ảnh lifestyle bán hàng sang xịn mà không cần biết Photoshop.',
         beforeTime: 'Thuê Thợ 50k / Ảnh',
         beforeDesc: 'Chụp ảnh sản phẩm trên nền nhà lộn xộn, muốn có ảnh đẹp đăng bài phải gửi cho thợ photoshop chỉnh sửa mất cả ngày và tốn chi phí.',
@@ -635,16 +667,23 @@
       const container = document.getElementById('cards-container');
       const filtered = filter === 'all' ? ideas : ideas.filter(item => item.cat === filter);
 
-      container.innerHTML = filtered.map(item => `
-        <div class="bg-dark-card border border-dark-border hover:border-emerald-500/40 rounded-2xl p-6 lg:p-7 transition-all duration-300 font-poppins">
-          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-dark-border">
+      container.innerHTML = filtered.map(item => {
+        // Tự động kiểm tra độ dài tiêu đề (> 8 từ -> dùng Poppins SemiBold, <= 8 từ -> dùng Integral Regular 400)
+        const wordCount = item.title.trim().split(/\s+/).length;
+        const titleClass = wordCount > 8 
+          ? 'title-long-poppins text-base sm:text-lg text-white font-semibold' 
+          : 'title-short-integral text-base sm:text-lg text-white font-normal tracking-tight';
+
+        return `
+        <div class="glass-card rounded-2xl p-6 lg:p-7 transition-all duration-300 font-poppins">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3.5 border-b border-dark-border">
             <div class="flex items-center gap-3">
-              <span class="font-integral text-xs font-bold px-2.5 py-1 rounded bg-dark-surface text-emerald-400 border border-dark-border">
+              <span class="font-integral-reg text-xs px-2.5 py-1 rounded bg-dark-surface text-emerald-400 border border-dark-border">
                 #${String(item.id).padStart(2, '0')}
               </span>
-              <h3 class="text-base sm:text-lg font-integral font-bold text-white tracking-tight">${item.title}</h3>
+              <h3 class="${titleClass}">${item.title}</h3>
             </div>
-            <span class="text-[11px] font-integral font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+            <span class="text-[11px] font-integral-reg px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
               ${item.badge}
             </span>
           </div>
@@ -656,11 +695,11 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5 font-poppins">
             <div class="bg-red-950/15 border border-red-500/20 rounded-xl p-4 flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between text-red-400 text-xs font-integral font-bold mb-2">
+                <div class="flex items-center justify-between text-red-400 text-xs font-integral-reg mb-2">
                   <span class="flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-red-400"></span> TRƯỚC (THỦ CÔNG / CHATGPT WEB)
                   </span>
-                  <span class="font-integral px-2 py-0.5 rounded bg-red-500/10 text-[11px]">${item.beforeTime}</span>
+                  <span class="font-integral-reg px-2 py-0.5 rounded bg-red-500/10 text-[11px]">${item.beforeTime}</span>
                 </div>
                 <p class="text-xs text-slate-400 leading-relaxed font-poppins">${item.beforeDesc}</p>
               </div>
@@ -671,11 +710,11 @@
 
             <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-4 flex flex-col justify-between glow-emerald">
               <div>
-                <div class="flex items-center justify-between text-emerald-400 text-xs font-integral font-bold mb-2">
+                <div class="flex items-center justify-between text-emerald-400 text-xs font-integral-reg mb-2">
                   <span class="flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> SAU (AI AGENT COMPUTER USE)
                   </span>
-                  <span class="font-integral px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px]">${item.afterTime}</span>
+                  <span class="font-integral-reg px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px]">${item.afterTime}</span>
                 </div>
                 <p class="text-xs text-slate-200 leading-relaxed font-poppins">${item.afterDesc}</p>
               </div>
@@ -685,17 +724,18 @@
             </div>
           </div>
 
-          <div class="bg-[#05080f] border border-dark-border rounded-xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-            <div class="flex items-center gap-2 overflow-x-auto w-full text-slate-300 font-poppins">
-              <span class="text-emerald-400 select-none font-integral font-bold text-[11px]">LỆNH:</span>
-              <span class="text-slate-200 truncate">"${item.prompt}"</span>
+          <div class="bg-[#05080f] border border-dark-border rounded-xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-poppins">
+            <div class="flex items-center gap-2 overflow-x-auto w-full text-slate-300">
+              <span class="text-emerald-400 select-none font-integral-reg text-[11px]">LỆNH:</span>
+              <span class="text-slate-200 truncate font-mono text-[11.5px]">"${item.prompt}"</span>
             </div>
-            <button onclick="copyPrompt('${item.prompt.replace(/'/g, "\'")}')" class="shrink-0 text-[11px] font-poppins font-semibold px-3 py-1.5 rounded-lg bg-dark-surface hover:bg-emerald-500 hover:text-slate-950 text-slate-300 border border-dark-border transition-colors flex items-center gap-1.5">
+            <button onclick="copyPrompt('${item.prompt.replace(/'/g, "\\'")}')" class="shrink-0 text-[11px] font-poppins font-semibold px-3.5 py-1.5 rounded-lg bg-dark-surface hover:bg-emerald-500 hover:text-slate-950 text-slate-200 border border-dark-border transition-colors flex items-center gap-1.5">
               <span>📋</span> Copy Lệnh
             </button>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function filterCategory(cat) {
