@@ -105,10 +105,10 @@
   <!-- STICKY BOTTOM BAR TRÊN MOBILE -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/95 border-t border-slate-800/80 backdrop-blur-xl shadow-2xl flex items-center justify-between gap-3">
     <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="flex-1 py-3 px-3 rounded-xl bg-slate-900 border border-slate-700 text-amber-300 font-bold text-xs text-center">
-      📄 Xem File PDF
+      📄 Xem File PDF (39 Trang)
     </a>
     <button onclick="downloadCard()" class="flex-1 py-3 px-3 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-extrabold text-xs text-center shadow-lg shadow-red-500/30">
-      ⚡️ Tải Mã QR (1-Chạm)
+      ⚡️ Tải Mã QR
     </button>
   </div>
 
@@ -147,10 +147,10 @@
     </div>
   </header>
 
-  <!-- SECTION 1: VISUAL PROOF (INPUT -> CAROUSEL CÁC CẢNH QUAY -> PDF) -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-4 space-y-8">
+  <!-- MAIN CONTENT -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
     
-    <!-- 1.1 BƯỚC 1: ĐẦU VÀO -->
+    <!-- BƯỚC 1: ĐẦU VÀO -->
     <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-800/80 shadow-2xl">
       <div class="flex items-center justify-between gap-2 mb-4 border-b border-slate-800/60 pb-3">
         <div class="flex items-center gap-3">
@@ -183,29 +183,30 @@
       </div>
     </div>
 
-    <!-- 1.2 BƯỚC 2: BÓC TÁCH CÁC CẢNH QUAY (CAROUSEL) -->
+    <!-- BƯỚC 2: BÓC TÁCH CÁC CẢNH MẪU THEN CHỐT (CAROUSEL) -->
     <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-800/80 shadow-2xl">
-      <div class="flex items-center justify-between gap-2 border-b border-slate-800/60 pb-3 mb-5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/60 pb-4 mb-5">
         <div>
-          <div class="flex items-center gap-2.5 mb-1">
+          <div class="flex flex-wrap items-center gap-2.5 mb-1">
             <span class="px-2.5 py-1 rounded bg-red-500/20 text-xs font-mono text-red-300 font-bold">BƯỚC 2</span>
-            <h2 class="text-base sm:text-lg font-bold text-white">AI Bóc Tách Chi Tiết Từng Cảnh</h2>
+            <h2 class="text-base sm:text-lg font-bold text-white">Xem Trước Các Cảnh Mẫu Then Chốt</h2>
+            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono text-[11px] font-bold">6 Cảnh Mẫu / 39 Cảnh Đầy Đủ</span>
           </div>
-          <p class="text-xs text-slate-400">Xem góc máy, điểm hay, điểm dở và bài học để tự làm theo</p>
+          <p class="text-xs text-slate-400">Trượt xem 6 cảnh mở đầu mẫu bên dưới. Toàn bộ 39 cảnh chi tiết được đóng gói trọn vẹn trong file PDF.</p>
         </div>
 
         <!-- Nút điều hướng Carousel -->
-        <div class="flex items-center gap-2">
-          <button onclick="scrollShots('left')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+        <div class="flex items-center gap-2 self-end sm:self-center">
+          <button onclick="scrollShots('left')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md" title="Xem cảnh trước">
             <span class="text-base font-bold">‹</span>
           </button>
-          <button onclick="scrollShots('right')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+          <button onclick="scrollShots('right')" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md" title="Xem cảnh tiếp theo">
             <span class="text-base font-bold">›</span>
           </button>
         </div>
       </div>
 
-      <!-- SLIDER CÁC CẢNH QUAY -->
+      <!-- SLIDER CÁC CẢNH MẪU -->
       <div id="shots-slider" class="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-4 snap-x snap-mandatory">
 
         <!-- Cảnh 1 -->
@@ -316,24 +317,68 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- Nút xem nhanh PDF -->
-      <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-950/70 p-3.5 rounded-2xl">
-        <div class="flex items-center gap-2.5">
-          <span class="text-2xl">📖</span>
+        <!-- Cảnh 5 -->
+        <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start glass-card rounded-2xl p-4 border border-slate-800 hover:border-red-500/50 transition flex flex-col justify-between shadow-xl">
           <div>
-            <h4 class="text-xs sm:text-sm font-bold text-white">Xem File PDF Đầy Đủ 39 Cảnh</h4>
-            <p class="text-[11px] text-slate-400">File PDF thực tế đã xuất bản từ video này (39 trang)</p>
+            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-64 mb-3 bg-slate-900 border border-slate-800 relative">
+              <img src="./assets/video-analysis/shot_05.jpg" alt="Cảnh 5" class="w-full h-full object-cover image-zoom" />
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
+                CẢNH 05 • 6.63s - 7.67s
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-red-400 uppercase font-mono">Cách Cắt Cảnh Theo Nhạc</span>
+            <h3 class="text-xs sm:text-sm font-bold text-white mt-1 mb-2 leading-snug">Cắt Cảnh Đúng Vào Nhịp Trống Nhạc Nền</h3>
+            
+            <div class="space-y-1.5 text-[11px] mb-3">
+              <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-300">
+                <b>✅ Điểm hay:</b> Đổi cảnh đúng lúc nhạc rơi giúp video xem rất cuốn.
+              </div>
+              <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-300">
+                <b>⚠️ Lưu ý:</b> Cảnh ngắn (1 giây) chỉ chiếu hành động chính.
+              </div>
+            </div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 text-[11px]">
+            <span class="text-purple-400 font-mono block text-[10px] font-bold uppercase mb-0.5">💡 Cách làm theo:</span>
+            <span class="font-medium text-slate-200">Cắt đổi góc đúng tiếng trống để video không chán.</span>
           </div>
         </div>
-        <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20 transition active:scale-95">
-          <span>👁️ MỞ XEM FILE PDF ↗</span>
+
+        <!-- THẺ KẾT THÚC CAROUSEL: DẪN DẮT SANG 33 CẢNH TRONG PDF -->
+        <div class="min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start glass-card rounded-2xl p-5 border-2 border-dashed border-amber-500/60 bg-amber-500/5 transition flex flex-col justify-between shadow-2xl text-center">
+          <div class="flex flex-col items-center justify-center my-auto py-6">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-2xl mb-4">
+              📖
+            </div>
+            <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">+33 CẢNH TIẾP THEO</span>
+            <h3 class="text-sm sm:text-base font-extrabold text-white mb-2">Đang Chờ Trong File PDF</h3>
+            <p class="text-xs text-slate-300 leading-relaxed max-w-[240px] mb-4">
+              Toàn bộ 39 phân cảnh đầy đủ từ đầu đến cuối video đều được bóc tách chi tiết trong file PDF.
+            </p>
+          </div>
+          <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20 transition active:scale-95">
+            <span>MỞ XEM TRỌN BỘ 39 CẢNH ↗</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Quick Action: Nút mở xem file PDF -->
+      <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-950/70 p-3.5 rounded-2xl">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">📄</span>
+          <div>
+            <h4 class="text-xs sm:text-sm font-bold text-white">Mở File PDF Đầy Đủ 39 Phân Cảnh</h4>
+            <p class="text-[11px] text-slate-400">Xem file PDF 39 trang thực tế đã xuất bản từ video này</p>
+          </div>
+        </div>
+        <a href="./assets/video-analysis/demo_director_report.pdf" target="_blank" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20 transition active:scale-95">
+          <span>👁️ MỞ XEM FILE PDF TRỌN BỘ (39 TRANG) ↗</span>
         </a>
       </div>
     </div>
 
-    <!-- 1.3 BƯỚC 3: NHẬN FILE PDF -->
+    <!-- BƯỚC 3: NHẬN FILE PDF -->
     <div class="glass-card rounded-3xl p-6 sm:p-7 border border-amber-500/30 glow-gold">
       <div class="space-y-3">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-bold text-amber-400 font-mono uppercase">
@@ -357,7 +402,7 @@
       </div>
     </div>
 
-    <!-- 1.4 KHỐI KÍCH HOẠT TỐI GIẢN (SIÊU GỌN - 0 RÀO CẢN) -->
+    <!-- BƯỚC 4: KHỐI KÍCH HOẠT TỐI GIẢN (SIÊU GỌN - 0 RÀO CẢN) -->
     <div id="license-section" class="glass-card rounded-3xl p-6 sm:p-8 border border-red-500/40 glow-cinema text-center max-w-2xl mx-auto shadow-2xl">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase font-mono mb-4">
         <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
@@ -396,7 +441,7 @@
       </div>
     </div>
 
-  </section>
+  </main>
 
   <!-- FOOTER SẠCH SẼ -->
   <footer class="mt-16 py-10 text-center text-xs text-slate-500 border-t border-slate-900">
