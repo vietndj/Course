@@ -284,6 +284,141 @@ body {
     color: #CBD5E1;
 }
 
+/* REMAKE SCRIPT & CTA MATRIX STYLES */
+.remake-section {
+    page-break-before: always;
+    margin-top: 30px;
+    padding: 30px;
+    background: #111520;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.remake-header {
+    border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    padding-bottom: 18px;
+    margin-bottom: 24px;
+}
+.remake-badge {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.remake-title {
+    font-family: 'SVN-Integral', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+.remake-desc {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.script-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+.script-table th {
+    background: rgba(255,255,255,0.05);
+    color: #F8FAFC;
+    font-family: 'SVN-Integral', sans-serif;
+    font-size: 12px;
+    text-align: left;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.script-table td {
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+    font-size: 13px;
+}
+.script-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.02);
+}
+.script-time {
+    font-weight: 700;
+    color: #E50914;
+    font-family: monospace;
+    white-space: nowrap;
+    width: 15%;
+}
+.script-shot {
+    color: #94A3B8;
+    width: 35%;
+}
+.script-voice {
+    color: #F1F5F9;
+    font-weight: 500;
+    width: 50%;
+}
+.script-voice b {
+    color: #F59E0B;
+}
+
+.cta-section-title {
+    font-family: 'SVN-Integral', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #F59E0B;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+.cta-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+.cta-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.cta-type-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+.badge-lead { background: rgba(59, 130, 246, 0.2); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.4); }
+.badge-sale { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.4); }
+.badge-viral { background: rgba(245, 158, 11, 0.2); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+.cta-voice-quote {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid #F59E0B;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-style: italic;
+    color: #F8FAFC;
+    line-height: 1.5;
+    margin-top: 6px;
+    border-radius: 0 6px 6px 0;
+}
+
 /* PRINT OPTIMIZATION */
 @page {
     size: A4 portrait;
@@ -299,13 +434,17 @@ body {
         break-inside: avoid !important;
         margin-bottom: 20px;
     }
+    .remake-section {
+        page-break-before: always !important;
+        break-before: page !important;
+    }
 }
 </style>
 </head>
 <body>
 <div class="report-container">
     <div class="cover-header">
-        <div class="doc-tag">DIRECTOR'S SHOT NOTEBOOK • FEDU PRO AI</div>
+        <div class="doc-tag">DIRECTOR'S SHOT NOTEBOOK • PERSONAL AI STUDIO</div>
         <h1 class="main-title">5 STEPS TO CREATE CONTENT: BÓC TÁCH NGHỆ THUẬT QUAY DỰNG LIFESTYLE & GYM</h1>
         <div class="meta-row">
             <div class="meta-item">👤 <b>Kênh / Tác giả:</b> @creator_lifestyle (Reel DcJoysIuLS9)</div>
@@ -2383,6 +2522,83 @@ body {
             </div>
         </div>
         
+
+    <!-- KHỐI KỊCH BẢN TIẾNG VIỆT ĂN THEO & 3 MẪU CTA CHỐT HẠ -->
+    <div class="remake-section">
+        <div class="remake-header">
+            <span class="remake-badge">🎬 KỊCH BẢN THỰC THI (REMAKE SCRIPT)</span>
+            <h2 class="remake-title">KỊCH BẢN LỜI THOẠI TIẾNG VIỆT ĂN THEO (SẴN SÀNG QUAY NGAY)</h2>
+            <p class="remake-desc">Lời thoại mẫu được băm khớp 1-1 theo từng mốc thời gian và hành động của 39 phân cảnh phía trên.</p>
+        </div>
+
+        <table class="script-table">
+            <thead>
+                <tr>
+                    <th>MỐC THỜI GIAN</th>
+                    <th>CẢNH QUAY & HÀNH ĐỘNG</th>
+                    <th>LỜI THOẠI TIẾNG VIỆT (VOICEOVER)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="script-time">0.00s - 2.88s<br><small>(Shot 01 - 02)</small></td>
+                    <td class="script-shot"><b>Hook Mở Màn:</b> Góc máy trên cao chúc xuống, tay gạt che camera ➔ POV trực diện đồng bộ chữ lớn.</td>
+                    <td class="script-voice">"<b>Đừng bao giờ quay video mà không biết cảnh tiếp theo mình sẽ làm gì...</b> Xem cách mình lên kịch bản 60 giây trong 5 bước."</td>
+                </tr>
+                <tr>
+                    <td class="script-time">2.88s - 13.05s<br><small>(Shot 03 - 08)</small></td>
+                    <td class="script-shot"><b>B-Roll Thực Chiến:</b> Cận cảnh nắm tay đòn tạ, toàn cảnh kéo xà đối xứng, nhịp cắt theo tiếng trống nhạc nền.</td>
+                    <td class="script-voice">"<b>Bước 1 & 2:</b> Quay lại chính việc bạn làm hàng ngày. Đừng diễn. Một góc toàn định vị không gian và một góc cận tả thực áp lực công việc."</td>
+                </tr>
+                <tr>
+                    <td class="script-time">13.05s - 45.20s<br><small>(Shot 09 - 30)</small></td>
+                    <td class="script-shot"><b>Quy Trình & Chi Tiết:</b> Góc quay nghiêng màn hình dựng phim, chuyển cảnh động, chia sẻ bài học xương máu.</td>
+                    <td class="script-voice">"<b>Bước 3 & 4:</b> Đưa người xem vào hậu trường làm việc thật. Cắt cảnh đúng vào nhịp nhạc, chữ tiêu đề đặt ở 1/3 trên để không bị che khuất."</td>
+                </tr>
+                <tr>
+                    <td class="script-time">45.20s - 65.36s<br><small>(Shot 31 - 39)</small></td>
+                    <td class="script-shot"><b>Đỉnh Điểm & Đoạn Kết:</b> Ngồi trước bàn làm việc, ánh mắt trực diện tự tin, đưa tay tương tác camera để kêu gọi hành động.</td>
+                    <td class="script-voice">"<b>Bước 5:</b> Chốt hạ bằng một lời kêu gọi hành động rõ ràng... <i>(Chọn 1 trong 3 mẫu CTA bên dưới tùy mục tiêu)</i>"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cta-section-title">
+            <span>🎯 3 PHƯƠNG ÁN LỜI THOẠI CTA ĐOẠN CUỐI (TÙY CHỌN THEO MỤC TIÊU)</span>
+        </div>
+
+        <div class="cta-grid">
+            <div class="cta-card">
+                <div class="cta-card-header">
+                    <span class="cta-type-badge badge-lead">MẪU 1: KÉO LEAD & BÌNH LUẬN (COMMENT-TO-DM)</span>
+                    <small style="color: #94A3B8;">Tăng tỷ lệ tương tác & gửi tài liệu tự động</small>
+                </div>
+                <div class="cta-voice-quote">
+                    "Nếu bạn muốn có trọn bộ kịch bản bóc tách từng giây của video này cùng file PDF 39 trang để tự làm theo: <b>Bình luận [BÓC TÁCH] ngay bên dưới</b>, mình gửi trọn bộ tài liệu vào tin nhắn cho bạn trong 3 giây!"
+                </div>
+            </div>
+
+            <div class="cta-card">
+                <div class="cta-card-header">
+                    <span class="cta-type-badge badge-sale">MẪU 2: BÁN HÀNG & CHUYỂN ĐỔI (DIRECT LINK BIO)</span>
+                    <small style="color: #94A3B8;">Đẩy traffic vào trang bán hàng / đăng ký khóa học</small>
+                </div>
+                <div class="cta-voice-quote">
+                    "Đừng tự mò góc quay mất thời gian nữa. <b>Bấm ngay vào link ở đầu trang cá nhân</b> để nhận công cụ tự động bóc tách video trong 1 câu lệnh!"
+                </div>
+            </div>
+
+            <div class="cta-card">
+                <div class="cta-card-header">
+                    <span class="cta-type-badge badge-viral">MẪU 3: TĂNG LƯỢT LƯU & ĐẨY THUẬT TOÁN (SAVE & SHARE)</span>
+                    <small style="color: #94A3B8;">Giúp video ăn đề xuất triệu view</small>
+                </div>
+                <div class="cta-voice-quote">
+                    "<b>Lưu video này lại ngay</b> để lần tới khi bí ý tưởng quay video ngắn, bạn chỉ cần mở ra và làm đúng 3 bước này là có clip triệu view!"
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
