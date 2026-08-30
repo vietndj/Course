@@ -82,9 +82,32 @@
     .animate-glow {
       animation: pulseGlow 4s ease-in-out infinite;
     }
+    /* Hide scrollbar for clean horizontal carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
-<body class="selection:bg-red-500 selection:text-white">
+<body class="selection:bg-red-500 selection:text-white pb-16">
+
+  <!-- STICKY HEADER NHANH (FIX CỨNG TRÊN ĐỈNH) -->
+  <nav class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl backdrop-blur-xl">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+      <span class="font-mono font-extrabold text-xs sm:text-sm tracking-wider text-white">DIRECTOR'S SHOT PRO</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <a href="#license-section" class="py-2 px-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-red-500/25 flex items-center gap-1.5 transition active:scale-95">
+        <span>⚡️</span>
+        <span>KÍCH HOẠT NGAY</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- ADMIN / RESELLER PORTAL (KÍCH HOẠT QUA ?admin HOẶC #admin) -->
   <div id="admin-portal" class="hidden max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4">
@@ -93,20 +116,20 @@
         <div class="flex items-center gap-3">
           <span class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white font-mono flex items-center gap-2">
-            <span>⚡️ BẢNG ĐIỀU KHIỂN ĐẠI LÝ • SINH MẬT KHẨU KÍCH HOẠT 1 LẦN</span>
+            <span>⚡️ BẢNG ĐIỀU KHIỂN ĐẠI LÝ • TẠO MẬT KHẨU KÍCH HOẠT 1 LẦN</span>
           </h2>
         </div>
-        <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">SKILL ANALYZE-VIDEO-02</span>
+        <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">WHITE-LABEL LICENSE</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
         <div>
           <label class="block text-xs font-medium text-slate-400 mb-1">Mật khẩu tùy chọn:</label>
-          <input type="text" id="admin-custom-code" placeholder="Ví dụ: FEDU2026, ANHNAM..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-amber-300 font-mono focus:outline-none focus:border-amber-400 uppercase" />
+          <input type="text" id="admin-custom-code" placeholder="Ví dụ: VIP2026, ANHNAM..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-amber-300 font-mono focus:outline-none focus:border-amber-400 uppercase" />
         </div>
         <div>
           <label class="block text-xs font-medium text-slate-400 mb-1">Tên khách hàng / Ghi chú:</label>
-          <input type="text" id="admin-note" value="Học viên VIP" placeholder="Tên khách hàng..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400" />
+          <input type="text" id="admin-note" value="Khách VIP" placeholder="Tên khách hàng..." class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400" />
         </div>
         <div class="flex items-end">
           <button onclick="adminCreateLicense()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-amber-500/20 active:scale-95">
@@ -118,13 +141,13 @@
   </div>
 
   <!-- HERO SECTION -->
-  <header class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-24 pb-8 text-center">
+  <header class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-8 text-center">
     <!-- Ambient Lights -->
     <div class="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
     
     <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-red-400 mb-6 shadow-inner">
       <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-      <span class="tracking-widest uppercase font-mono">VŨ KHÍ ĐẶC QUYỀN • DIRECTOR'S SHOT NOTEBOOK PRO</span>
+      <span class="tracking-widest uppercase font-mono">DIRECTOR'S SHOT NOTEBOOK PRO • AI COPILOT</span>
     </div>
 
     <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
@@ -133,16 +156,16 @@
     </h1>
 
     <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
-      Không còn phải xem video của người khác rồi đoán mò góc quay. Chỉ cần gửi 1 link <span class="text-white font-medium">Instagram Reels, TikTok, Shorts</span> hoặc thả file <span class="text-white font-medium">MP4</span> — Trợ lý Antigravity tự động mổ xẻ từng phân cảnh bằng OpenCV, chấm điểm thị giác 2 chiều, xuất bản <span class="text-amber-400 font-semibold">cuốn PDF A4 Dark Editorial sang xịn</span> và tự động bay lên Google Drive.
+      Không còn phải xem video triệu view của người khác rồi đoán mò góc quay. Chỉ cần gửi 1 link <span class="text-white font-medium">Instagram Reels, TikTok, Shorts</span> hoặc thả file <span class="text-white font-medium">MP4</span> — Trợ lý AI tự động mổ xẻ từng phân cảnh bằng OpenCV, chấm điểm thị giác 2 chiều, xuất bản <span class="text-amber-400 font-semibold">cuốn PDF A4 Dark Editorial sang xịn</span> và tự động lưu vào Google Drive.
     </p>
 
     <!-- Key Highlights Badges -->
-    <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300 mb-12">
+    <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300 mb-10">
       <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md">
         <span class="text-emerald-400 font-bold">✓</span> <span>Tự cài thư viện 100% (Zero setup)</span>
       </div>
       <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md">
-        <span class="text-red-400 font-bold">✓</span> <span>Font Chuẩn SVN-Integral CF & Poppins</span>
+        <span class="text-red-400 font-bold">✓</span> <span>Báo Cáo PDF Dark Editorial Sang Xịn</span>
       </div>
       <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md">
         <span class="text-amber-400 font-bold">✓</span> <span>Tự Mở PDF & Đồng Bộ Google Drive</span>
@@ -153,15 +176,15 @@
     </div>
   </header>
 
-  <!-- SECTION 1: VISUAL PROOF (INPUT -> OPENCV PIPELINE -> OUTPUT) -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+  <!-- SECTION 1: VISUAL PROOF (INPUT -> OPENCV PIPELINE -> HORIZONTAL CAROUSEL OUTPUT) -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
     
     <!-- 1.1 ĐẦU VÀO (INPUT THỰC TẾ) -->
     <div class="glass-card rounded-3xl p-6 sm:p-8 mb-8 border border-slate-800/80 shadow-2xl">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-slate-800/60 pb-4">
         <div class="flex items-center gap-3">
           <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-red-400 font-bold">BƯỚC 1</span>
-          <h2 class="text-lg font-bold text-white tracking-wide">Đầu Vào: Bạn Chỉ Cần Gửi 1 Link Video</h2>
+          <h2 class="text-lg font-bold text-white tracking-wide">Đầu Vào: Bạn Chỉ Cần Gửi 1 Link Video Cho Trợ Lý AI</h2>
         </div>
         <span class="text-xs text-slate-400 font-light">Instagram Reels • TikTok • Shorts • MP4 Cục Bộ</span>
       </div>
@@ -172,7 +195,7 @@
             🎬
           </div>
           <div class="truncate">
-            <span class="text-[11px] text-slate-500 font-mono block">Tin nhắn chat bạn gửi cho Antigravity:</span>
+            <span class="text-[11px] text-slate-500 font-mono block">Tin nhắn chat bạn gửi cho Trợ lý AI:</span>
             <span class="text-xs sm:text-sm font-mono text-red-300 font-bold truncate block">https://www.instagram.com/reel/DcJoysIuLS9/</span>
           </div>
         </div>
@@ -189,107 +212,121 @@
       </div>
     </div>
 
-    <!-- 1.2 ĐẦU RA (OUTPUT THỰC TẾ: BÓC TÁCH 39 SHOTS & BÁO CÁO PDF SANG XỊN) -->
-    <div class="space-y-6 mb-16">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/60 pb-3 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="px-2.5 py-1 rounded bg-red-500/20 text-xs font-mono text-red-300 font-bold">BƯỚC 2</span>
-          <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide">Đầu Ra: Bóc Tách 39 Shots Chuẩn Đạo Diễn Kèm File PDF</h2>
+    <!-- 1.2 ĐẦU RA (CAROUSEL CUỘN NGANG: BÓC TÁCH PHÂN CẢNH CHUẨN ĐẠO DIỄN) -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 mb-12 border border-slate-800/80 shadow-2xl">
+      
+      <!-- Carousel Header with Prev/Next Controls -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/60 pb-4 mb-6">
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <span class="px-2.5 py-1 rounded bg-red-500/20 text-xs font-mono text-red-300 font-bold">BƯỚC 2</span>
+            <h2 class="text-lg sm:text-xl font-bold text-white tracking-wide">Đầu Ra: Bóc Tách 39 Shots Chuẩn Đạo Diễn</h2>
+          </div>
+          <p class="text-xs text-slate-400">Trích xuất tự động bằng OpenCV • Chấm điểm khen/chê 2 chiều • Bài học thực chiến</p>
         </div>
-        <span class="text-xs text-amber-400 font-mono font-medium">Bản Quyền FEDU Pro AI • Đã kiểm thử thực chiến</span>
+
+        <!-- Carousel Navigation Buttons -->
+        <div class="flex items-center gap-2 self-end sm:self-center">
+          <button onclick="scrollShots('left')" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+            <span class="text-lg font-bold">‹</span>
+          </button>
+          <button onclick="scrollShots('right')" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 hover:border-red-500 text-white flex items-center justify-center transition active:scale-90 shadow-md">
+            <span class="text-lg font-bold">›</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Grid 4 Phân Cảnh Tiêu Biểu Bóc Tách Thật Từ Reel DcJoysIuLS9 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- HORIZONTAL SCROLL CONTAINER -->
+      <div id="shots-slider" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-4 snap-x snap-mandatory">
 
-        <!-- Shot 01 -->
-        <div class="glass-card rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-red-500/30 transition flex flex-col justify-between">
+        <!-- Card 1 -->
+        <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] snap-start glass-card rounded-2xl overflow-hidden p-4 border border-slate-800 hover:border-red-500/40 transition flex flex-col justify-between shadow-xl">
           <div>
-            <div class="rounded-2xl overflow-hidden aspect-[9/16] max-h-72 mb-4 bg-slate-900 border border-slate-800 shadow-xl relative">
+            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-64 mb-3 bg-slate-900 border border-slate-800 relative shadow-inner">
               <img src="./assets/video-analysis/shot_01.jpg" alt="Shot 01 Hook Top Down" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono text-red-400 font-bold border border-red-500/30">
                 SHOT 01 • 0.00s - 0.75s
               </div>
             </div>
-            <span class="text-xs font-bold text-red-400 uppercase tracking-wider font-mono">Hook Thị Giác 3 Giây Đầu</span>
-            <h3 class="text-base font-bold text-white mt-1 mb-2">Góc Quay Top-Down 0.5x Từ Trần Nhà & Che Mắt Bất Ngờ</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            <span class="text-[11px] font-bold text-red-400 uppercase tracking-wider font-mono">Hook Thị Giác 3 Giây Đầu</span>
+            <h3 class="text-sm font-bold text-white mt-1 mb-1.5 line-clamp-2">Góc Quay Top-Down 0.5x Từ Trần Nhà & Che Mắt Bất Ngờ</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-3 line-clamp-3">
               Góc máy chúc từ trên cao tạo hiệu ứng biến dạng Fisheye tràn đầy năng lượng, khóa chặt sự chú ý của người xem trước khi họ kịp lướt đi.
             </p>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-mono">Bài học:</span>
-            <span class="font-semibold text-amber-300 truncate">Dùng tương tác tay vào ống kính để giữ chân</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2 text-[11px]">
+            <span class="text-slate-400 font-mono block text-[10px]">💡 Bài học thực chiến:</span>
+            <span class="font-semibold text-amber-300 line-clamp-1">Dùng tương tác tay vào ống kính để giữ chân</span>
           </div>
         </div>
 
-        <!-- Shot 02 -->
-        <div class="glass-card rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-amber-500/30 transition flex flex-col justify-between">
+        <!-- Card 2 -->
+        <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] snap-start glass-card rounded-2xl overflow-hidden p-4 border border-slate-800 hover:border-amber-500/40 transition flex flex-col justify-between shadow-xl">
           <div>
-            <div class="rounded-2xl overflow-hidden aspect-[9/16] max-h-72 mb-4 bg-slate-900 border border-slate-800 shadow-xl relative">
+            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-64 mb-3 bg-slate-900 border border-slate-800 relative shadow-inner">
               <img src="./assets/video-analysis/shot_02.jpg" alt="Shot 02 Direct POV" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[10px] font-mono text-amber-400 font-bold border border-amber-500/30">
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono text-amber-400 font-bold border border-amber-500/30">
                 SHOT 02 • 0.75s - 2.88s
               </div>
             </div>
-            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider font-mono">Định Vị Chủ Đề & Typography</span>
-            <h3 class="text-base font-bold text-white mt-1 mb-2">POV Trực Diện Đồng Bộ Big Typography 1/3 Trên</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider font-mono">Định Vị Chủ Đề & Typography</span>
+            <h3 class="text-sm font-bold text-white mt-1 mb-1.5 line-clamp-2">POV Trực Diện Đồng Bộ Big Typography 1/3 Trên</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-3 line-clamp-3">
               Cỡ chữ in hoa lớn đóng vai trò mỏ neo thị giác, đặt ở 1/3 trên để tránh hoàn toàn các nút bấm giao diện của Reels/TikTok che khuất.
             </p>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-mono">Bài học:</span>
-            <span class="font-semibold text-amber-300 truncate">Khóa tiêu đề ở vị trí an toàn 1/3 trên màn hình</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2 text-[11px]">
+            <span class="text-slate-400 font-mono block text-[10px]">💡 Bài học thực chiến:</span>
+            <span class="font-semibold text-amber-300 line-clamp-1">Khóa tiêu đề ở vị trí an toàn 1/3 trên màn hình</span>
           </div>
         </div>
 
-        <!-- Shot 03 -->
-        <div class="glass-card rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-cyan-500/30 transition flex flex-col justify-between">
+        <!-- Card 3 -->
+        <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] snap-start glass-card rounded-2xl overflow-hidden p-4 border border-slate-800 hover:border-cyan-500/40 transition flex flex-col justify-between shadow-xl">
           <div>
-            <div class="rounded-2xl overflow-hidden aspect-[9/16] max-h-72 mb-4 bg-slate-900 border border-slate-800 shadow-xl relative">
+            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-64 mb-3 bg-slate-900 border border-slate-800 relative shadow-inner">
               <img src="./assets/video-analysis/shot_03.jpg" alt="Shot 03 Raw B-Roll" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[10px] font-mono text-cyan-400 font-bold border border-cyan-500/30">
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono text-cyan-400 font-bold border border-cyan-500/30">
                 SHOT 03 • 2.88s - 4.50s
               </div>
             </div>
-            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider font-mono">B-Roll Thực Chiến (Raw Realism)</span>
-            <h3 class="text-base font-bold text-white mt-1 mb-2">Macro Telephoto 85mm Tả Thực Nắm Tay Đòn Tạ</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            <span class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider font-mono">B-Roll Thực Chiến (Raw Realism)</span>
+            <h3 class="text-sm font-bold text-white mt-1 mb-1.5 line-clamp-2">Macro Telephoto 85mm Tả Thực Nắm Tay Đòn Tạ</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-3 line-clamp-3">
               Độ sâu trường ảnh cực nông, xóa mờ hậu cảnh bánh tạ, tôn vinh cảm giác thô ráp và độ nặng chân thật của buổi tập (Film What You Do).
             </p>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-mono">Bài học:</span>
-            <span class="font-semibold text-cyan-300 truncate">Quay lại việc bạn làm hàng ngày thay vì diễn</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2 text-[11px]">
+            <span class="text-slate-400 font-mono block text-[10px]">💡 Bài học thực chiến:</span>
+            <span class="font-semibold text-cyan-300 line-clamp-1">Quay lại việc bạn làm hàng ngày thay vì diễn</span>
           </div>
         </div>
 
-        <!-- Shot 04 -->
-        <div class="glass-card rounded-3xl overflow-hidden p-5 border border-slate-800/80 hover:border-purple-500/30 transition flex flex-col justify-between">
+        <!-- Card 4 -->
+        <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] snap-start glass-card rounded-2xl overflow-hidden p-4 border border-slate-800 hover:border-purple-500/40 transition flex flex-col justify-between shadow-xl">
           <div>
-            <div class="rounded-2xl overflow-hidden aspect-[9/16] max-h-72 mb-4 bg-slate-900 border border-slate-800 shadow-xl relative">
+            <div class="rounded-xl overflow-hidden aspect-[9/16] max-h-64 mb-3 bg-slate-900 border border-slate-800 relative shadow-inner">
               <img src="./assets/video-analysis/shot_04.jpg" alt="Shot 04 Establishing Shot" class="w-full h-full object-cover image-zoom" />
-              <div class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[10px] font-mono text-purple-400 font-bold border border-purple-500/30">
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono text-purple-400 font-bold border border-purple-500/30">
                 SHOT 04 • 4.50s - 6.63s
               </div>
             </div>
-            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider font-mono">Toàn Cảnh Đối Xứng (Symmetry)</span>
-            <h3 class="text-base font-bold text-white mt-1 mb-2">Wide 28mm Bố Cục Đối Xứng Kéo Xà Toàn Phòng Gym</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider font-mono">Toàn Cảnh Đối Xứng (Symmetry)</span>
+            <h3 class="text-sm font-bold text-white mt-1 mb-1.5 line-clamp-2">Wide 28mm Bố Cục Đối Xứng Kéo Xà Toàn Phòng Gym</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-3 line-clamp-3">
               Khung xà đơn đóng vai trò khung trong khung (Frame in Frame) hút trọn ánh nhìn vào lưng chủ thể, thể hiện tầm vóc không gian uy nghiêm.
             </p>
           </div>
-          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-mono">Bài học:</span>
-            <span class="font-semibold text-purple-300 truncate">Căn góc máy vào trục chính diện không gian</span>
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2 text-[11px]">
+            <span class="text-slate-400 font-mono block text-[10px]">💡 Bài học thực chiến:</span>
+            <span class="font-semibold text-purple-300 line-clamp-1">Căn góc máy vào trục chính diện không gian</span>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- 1.3 KHỐI BÁO CÁO PDF A4 DARK EDITORIAL CHUẨN IN -->
+    <!-- 1.3 KHỐI BÁO CÁO PDF ĐẠO DIỄN (VIẾT LẠI GỌN GÀNG, TẬP TRUNG GIÁ TRỊ) -->
     <div class="glass-card rounded-3xl p-6 sm:p-10 mb-16 border border-amber-500/30 glow-gold">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-3 max-w-xl">
@@ -297,17 +334,17 @@
             <span>📄 SỔ TAY ĐẠO DIỄN PDF</span>
           </div>
           <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
-            Xuất Bản File PDF A4 Sang Xịn (< 5MB)
+            Báo Cáo PDF Đạo Diễn Sang Xịn (< 5MB)
           </h3>
-          <p class="text-sm text-slate-400 font-light leading-relaxed">
-            Nhúng trực tiếp bộ đôi font thương hiệu <b class="text-white">SVN-Integral CF</b> & <b class="text-white">SVN-Poppins</b>. Thiết kế chuẩn Dark Editorial chống rách trang, tự động mở ngay trên máy và tự động bay vào Google Drive của bạn!
+          <p class="text-sm text-slate-300 font-light leading-relaxed">
+            Báo cáo chuẩn điện ảnh Dark Mode sắc nét từng khung hình. Tự động bật mở tức thì trên máy tính và tự đồng bộ vào Google Drive để chia sẻ trong 1 nốt nhạc.
           </p>
         </div>
         <div class="shrink-0 flex flex-col items-center gap-3">
-          <div class="px-5 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-center shadow-xl">
+          <div class="px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-center shadow-xl">
             <span class="text-xs text-slate-500 font-mono block">Dung lượng tối ưu:</span>
             <span class="text-2xl font-extrabold text-amber-400 font-mono">~3.5 MB</span>
-            <span class="text-[11px] text-slate-400 block mt-1">39 Trang • 117 Keyframes</span>
+            <span class="text-[11px] text-slate-400 block mt-1">39 Trang • 117 Keyframes Sắc Nét</span>
           </div>
         </div>
       </div>
@@ -315,7 +352,7 @@
   </section>
 
   <!-- SECTION 2: THẺ KÍCH HOẠT QR 1-CHẠM (VIP DIRECTOR LICENSE CARD) -->
-  <section id="license-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-8 mb-16">
+  <section id="license-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-8 mb-12">
     <div class="relative glass-card rounded-3xl p-6 sm:p-10 border border-red-500/40 glow-cinema overflow-hidden">
       <!-- Background Ambient Glow -->
       <div class="absolute -top-24 -right-24 w-60 h-60 bg-red-500/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -325,13 +362,13 @@
       <div class="text-center max-w-xl mx-auto mb-8">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-xs font-bold text-red-400 uppercase tracking-widest mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
-          KÍCH HOẠT 1-CHẠM TRÊN ANTIGRAVITY
+          KÍCH HOẠT 1-CHẠM CHO TRỢ LÝ AI
         </div>
         <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Tải Thẻ Kích Hoạt AI Đạo Diễn
         </h2>
         <p class="text-xs sm:text-sm text-slate-400 mt-2 font-light leading-relaxed">
-          Bấm nút bên dưới để tải ảnh Thẻ Kích Hoạt (có mã QR). Kéo thả ảnh vào Antigravity và nhập Mật khẩu 1 lần duy nhất để mở khóa trọn đời!
+          Bấm nút bên dưới để tải ảnh Thẻ Kích Hoạt (có mã QR). Kéo thả ảnh vào Trợ lý AI và nhập Mật khẩu 1 lần duy nhất để mở khóa trọn đời!
         </p>
       </div>
 
@@ -339,11 +376,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-6 bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
         <div>
           <label class="block text-xs font-medium text-slate-400 mb-1">Tên chủ nhân thẻ:</label>
-          <input type="text" id="user-name" value="Học Viên FEDU" oninput="renderCard()" placeholder="Ví dụ: Anh Nam, Chị Mai..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-red-500 transition font-medium" />
+          <input type="text" id="user-name" value="Chủ Nhân" oninput="renderCard()" placeholder="Ví dụ: Anh Nam, Chị Mai..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-red-500 transition font-medium" />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-amber-400 mb-1">Mật khẩu kích hoạt (Nhận từ anh Việt):</label>
-          <input type="text" id="user-password" value="FEDU2026" oninput="renderCard()" placeholder="Ví dụ: FEDU2026, DIRECTOR2026..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-amber-500/50 text-sm text-amber-300 focus:outline-none focus:border-amber-400 transition font-mono font-bold uppercase tracking-wider" />
+          <label class="block text-xs font-semibold text-amber-400 mb-1">Mật khẩu kích hoạt (Nhận từ người bán):</label>
+          <input type="text" id="user-password" value="VIP2026" oninput="renderCard()" placeholder="Ví dụ: VIP2026, PRO2026..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-amber-500/50 text-sm text-amber-300 focus:outline-none focus:border-amber-400 transition font-mono font-bold uppercase tracking-wider" />
         </div>
       </div>
 
@@ -355,13 +392,13 @@
       <!-- Nút Tải 1-Chạm Về Máy -->
       <div class="max-w-md mx-auto text-center space-y-4">
         <button onclick="downloadCard()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-base tracking-wide transition-all duration-300 shadow-xl shadow-red-500/30 flex items-center justify-center gap-3 active:scale-[0.98]">
-          <span class="text-xl">📥</span>
-          <span>TẢI THẺ KÍCH HOẠT (ẢNH PNG) VỀ MÁY</span>
+          <span class="text-xl">⚡️</span>
+          <span>TẢI THẺ KÍCH HOẠT 1-CHẠM (ẢNH QR)</span>
         </button>
 
         <p class="text-xs text-slate-400 font-light flex items-center justify-center gap-1.5">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-400"></span>
-          <span>1-Chạm là có ngay file ảnh. Kéo thả vào Antigravity là AI tự động nhận diện.</span>
+          <span>1-Chạm là có ngay file ảnh. Kéo thả vào Trợ lý AI là hệ thống tự nhận diện.</span>
         </p>
       </div>
 
@@ -377,7 +414,7 @@
         <div class="flex items-start gap-2.5">
           <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 border border-amber-500/30">2</span>
           <div>
-            <span class="text-slate-200 font-bold block mb-0.5">Thả Vào Antigravity</span>
+            <span class="text-slate-200 font-bold block mb-0.5">Thả Vào Trợ Lý AI</span>
             <span class="text-slate-400">Kéo thả file ảnh vừa tải vào khung chat. AI tự động đọc mã QR.</span>
           </div>
         </div>
@@ -394,17 +431,28 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-10 text-center text-xs text-slate-600 border-t border-slate-900">
-    <p class="font-mono">© 2026 FEDU AI Studio • Director's Shot Notebook Pro Edition</p>
+  <footer class="py-10 text-center text-xs text-slate-500 border-t border-slate-900">
+    <p class="font-mono">© 2026 Director's Shot Notebook Pro Edition • Personal AI Video Studio</p>
   </footer>
 
   <!-- Hidden Container for QRCode generation -->
   <div id="qrcode-hidden" class="hidden"></div>
 
-  <!-- JAVASCRIPT XỬ LÝ CANVAS THẺ QR 1-CHẠM -->
+  <!-- JAVASCRIPT XỬ LÝ CANVAS & CAROUSEL -->
   <script>
     if (window.location.search.includes('admin') || window.location.hash.includes('admin')) {
       document.getElementById('admin-portal').classList.remove('hidden');
+    }
+
+    // Xử lý cuộn ngang Carousel
+    function scrollShots(direction) {
+      const slider = document.getElementById('shots-slider');
+      const scrollAmount = 360;
+      if (direction === 'left') {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
     }
 
     function drawRoundedRect(ctx, x, y, w, h, r) {
@@ -446,8 +494,8 @@
     async function renderCard() {
       const canvas = document.getElementById('director-card-canvas');
       const ctx = canvas.getContext('2d');
-      const name = document.getElementById('user-name').value.trim() || 'Học Viên FEDU';
-      const pass = document.getElementById('user-password').value.trim() || 'FEDU2026';
+      const name = document.getElementById('user-name').value.trim() || 'Chủ Nhân';
+      const pass = document.getElementById('user-password').value.trim() || 'VIP2026';
 
       // 1. Nền Thẻ
       ctx.fillStyle = '#090C12';
@@ -517,12 +565,12 @@
       ctx.fillStyle = '#94A3B8';
       ctx.font = '11px "Plus Jakarta Sans", sans-serif';
       ctx.fillText('• Bóc tách Scene Cuts OpenCV & 3 Keyframes', 40, 315);
-      ctx.fillText('• Báo cáo PDF A4 Dark Editorial (Font SVN-Integral & Poppins)', 40, 335);
+      ctx.fillText('• Báo cáo PDF A4 Dark Editorial chuẩn điện ảnh', 40, 335);
       ctx.fillText('• Tự động đồng bộ Google Drive & Tự mở trên máy', 40, 355);
 
       ctx.fillStyle = '#38BDF8';
       ctx.font = 'bold 11px "JetBrains Mono", monospace';
-      ctx.fillText('👉 Hướng dẫn: Kéo thả ảnh này vào Antigravity để kích hoạt!', 40, 405);
+      ctx.fillText('👉 Hướng dẫn: Kéo thả ảnh này vào Trợ lý AI để kích hoạt!', 40, 405);
 
       // 5. Khối QR Code Bên Phải
       ctx.fillStyle = '#FFFFFF';
@@ -561,14 +609,14 @@
     function downloadCard() {
       const canvas = document.getElementById('director-card-canvas');
       const link = document.createElement('a');
-      const name = document.getElementById('user-name').value.trim() || 'HocVien';
+      const name = document.getElementById('user-name').value.trim() || 'ChuNhan';
       link.download = `The_Kich_Hoat_AI_Dao_Dien_${name}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }
 
     function adminCreateLicense() {
-      const code = document.getElementById('admin-custom-code').value.trim() || 'FEDU2026';
+      const code = document.getElementById('admin-custom-code').value.trim() || 'VIP2026';
       document.getElementById('user-password').value = code;
       renderCard();
       alert(`✅ Đã cập nhật mật khẩu kích hoạt: ${code}`);
