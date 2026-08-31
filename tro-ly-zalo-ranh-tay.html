@@ -185,7 +185,13 @@
   <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 bg-opacity-90">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-blue-500/20">
+        <!-- Header Back Button -->
+        <a href="javascript:void(0)" onclick="handleGoBack()" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-300 font-mono-code transition px-2.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40" title="Quay lại trang trước">
+          <span class="text-sm">←</span>
+          <span class="hidden sm:inline">Quay lại</span>
+        </a>
+
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold text-base shadow-lg shadow-blue-500/20">
           Z
         </div>
         <div>
@@ -208,6 +214,12 @@
       </a>
     </div>
   </header>
+
+  <!-- FIXED FLOATING BACK BUTTON (ALWAYS VISIBLE) -->
+  <a href="javascript:void(0)" onclick="handleGoBack()" id="fixed-back-btn" class="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full glass-card border border-cyan-500/40 bg-slate-900/95 text-cyan-300 hover:text-white hover:bg-cyan-950 hover:border-cyan-400 font-mono-code text-xs font-semibold shadow-2xl shadow-cyan-950/60 transition transform hover:-translate-y-0.5 active:scale-95 group backdrop-blur-xl">
+    <span class="text-sm transition-transform group-hover:-translate-x-1">←</span>
+    <span>Quay lại</span>
+  </a>
 
   <!-- HERO SECTION -->
   <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
@@ -975,6 +987,14 @@
           btnText.innerText = "Sao chép câu lệnh";
         }, 2000);
       });
+    }
+
+    function handleGoBack() {
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = './index.html';
+      }
     }
 
     // Initialize with command 1
