@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Co-Pilot Chứng Khoán | Quét Sàn & Soi Dòng Tiền Real-Time</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#06090e',
+            cardBg: '#0e1420',
+            cardBorder: '#1e293b',
+            accentGreen: '#22c55e',
+            accentGold: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Acta';
+      src: url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
+           local('SVN-Acta-BookItalic');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    body {
+      background-color: #06090e;
+      color: #cbd5e1;
+      font-family: 'SVN-Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    .title-short {
+      font-family: 'SVN-Integral', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .title-long {
+      font-family: 'SVN-Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .font-quote {
+      font-family: 'SVN-Acta', Georgia, serif;
+      font-style: italic;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(14, 20, 32, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="selection:bg-green-500 selection:text-black">
+
+  <!-- FIXED FLOATING BACK BUTTON -->
+  <a href="javascript:void(0)" onclick="handleGoBack()" id="fixed-back-btn" class="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900/95 border border-green-500/40 text-green-300 hover:text-white hover:bg-green-950 hover:border-green-400 font-mono-code text-xs font-semibold shadow-2xl shadow-green-950/60 transition transform hover:-translate-y-0.5 active:scale-95 group backdrop-blur-xl">
+    <span class="text-sm transition-transform group-hover:-translate-x-1">←</span>
+    <span>Quay lại</span>
+  </a>
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80 bg-opacity-90">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="javascript:void(0)" onclick="handleGoBack()" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-green-300 font-mono-code transition px-2.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <span>←</span> <span class="hidden sm:inline">Quay lại</span>
+        </a>
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold text-base shadow-lg shadow-green-500/20">
+          📈
+        </div>
+        <span class="title-short text-sm tracking-wider text-white">AI CHỨNG KHOÁN</span>
+      </div>
+      <a href="#5-cach-goi" class="px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-black font-bold text-xs transition shadow-md shadow-green-500/30">
+        Thử câu lệnh demo
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden text-center">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-xs text-green-300 font-mono-code mb-6">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        <span>STOCK CO-PILOT • PHÂN TÍCH DÒNG TIỀN REAL-TIME</span>
+      </div>
+
+      <h1 class="title-short text-3xl sm:text-5xl md:text-6xl text-white mb-6 leading-tight">
+        AI CO-PILOT CHỨNG KHOÁN
+      </h1>
+
+      <p class="title-long text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 font-normal">
+        Quét toàn bộ sàn chứng khoán Việt Nam trong 3 giây. Kiểm tra dòng tiền tay to, chấm điểm mẫu hình xác suất và mô phỏng quản trị rủi ro ngay trong phiên giao dịch.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto text-left mb-12">
+        <div class="glass-card rounded-2xl p-5 border border-slate-800">
+          <div class="text-xs font-mono-code text-green-400 mb-1">01. SOI DÒNG LỆNH TAY TO</div>
+          <div class="text-sm font-bold text-white mb-1">Bắt Sóng Dòng Tiền Lớn</div>
+          <p class="text-xs text-slate-400">Theo dõi lệnh mua/bán chủ động của khối ngoại và tự doanh theo thời gian thực.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border border-slate-800">
+          <div class="text-xs font-mono-code text-emerald-400 mb-1">02. QUÉT SÀN CHẤM ĐIỂM</div>
+          <div class="text-sm font-bold text-white mb-1">Tìm Cổ Phiếu Dẫn Dắt</div>
+          <p class="text-xs text-slate-400">Lọc 500+ mã cổ phiếu, tìm mã có tích lũy nền chặt chẽ và vượt đỉnh kèm khối lượng.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border border-slate-800">
+          <div class="text-xs font-mono-code text-gold mb-1">03. QUẢN TRỊ RỦI RO CHẶT CHẼ</div>
+          <div class="text-sm font-bold text-white mb-1">Tính Tỷ Lệ Đi Vốn Tối Ưu</div>
+          <p class="text-xs text-slate-400">Tự động tính điểm cắt lỗ, tỷ lệ R:R và khối lượng cổ phiếu nên mua theo NAV.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 COMMANDS DEMO -->
+  <section id="5-cach-goi" class="py-16 border-t border-slate-800 bg-slate-950/60">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-3">5 CÂU LỆNH PHÂN TÍCH CHỨNG KHOÁN</h2>
+        <p class="text-xs text-slate-400">Hỏi đáp nhanh gọn, không cần mở hàng chục biểu đồ phức tạp.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-[11px] font-mono-code text-green-400 mb-1">01. CHECK TÌNH HÌNH CỔ PHIẾU CỤ THỂ</div>
+            <div class="text-sm font-semibold text-white">"Check cho tôi tình hình cổ phiếu SHS hôm nay, dòng tiền tay to đang mua hay bán?"</div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-green-950 text-green-300 font-mono-code border border-green-800/40 shrink-0">⚡️ Báo cáo sau 3s</span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-[11px] font-mono-code text-emerald-400 mb-1">02. QUÉT MÃ VƯỢT ĐỈNH TOÀN SÀN</div>
+            <div class="text-sm font-semibold text-white">"Quét toàn bộ sàn lọc ra 3 mã có dòng tiền vào đột biến và sắp bứt phá nền giá"</div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-emerald-950 text-emerald-300 font-mono-code border border-emerald-800/40 shrink-0">⚡️ Lọc 500+ mã</span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-[11px] font-mono-code text-cyan-400 mb-1">03. NHẬN ĐỊNH THỊ TRƯỜNG CHUNG (VN-INDEX)</div>
+            <div class="text-sm font-semibold text-white">"Hôm nay VN-INDEX rung lắc ở vùng cản nào? Xu hướng tuần này ra sao?"</div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-cyan-950 text-cyan-300 font-mono-code border border-cyan-800/40 shrink-0">⚡️ Tóm tắt thị trường</span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-[11px] font-mono-code text-amber-400 mb-1">04. TÍNH TOÁN ĐI VỐN & ĐIỂM CẮT LỖ</div>
+            <div class="text-sm font-semibold text-white">"Tôi muốn mua 100 triệu mã FPT ở giá này, hãy tính cho tôi điểm chốt lời và cắt lỗ chuẩn"</div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-amber-950 text-amber-300 font-mono-code border border-amber-800/40 shrink-0">⚡️ Quản trị vốn</span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-[11px] font-mono-code text-purple-400 mb-1">05. BẮN CẢNH BÁO GIÁ QUA TELEGRAM</div>
+            <div class="text-sm font-semibold text-white">"Theo dõi mã SSI, khi nào giá vượt 35 kèm khối lượng lớn thì bắn tin nhắn Telegram cho tôi ngay"</div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-purple-950 text-purple-300 font-mono-code border border-purple-800/40 shrink-0">⚡️ Báo động real-time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center text-xs text-slate-500 font-mono-code">
+    <p class="font-quote text-slate-300 text-sm mb-4">"Đầu tư thành công không phải vì dự đoán đúng tương lai, mà vì quản trị rủi ro kỷ luật hơn số đông."</p>
+    <div>© 2026 FEDU COURSE • THẦY NGUYỄN ĐỨC VIỆT</div>
+  </footer>
+
+  <script>
+    function handleGoBack() {
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = './skills.html';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -66,6 +66,12 @@
 </head>
 <body class="selection:bg-emerald-500 selection:text-black">
 
+  <!-- FIXED FLOATING BACK BUTTON -->
+  <a href="javascript:void(0)" onclick="handleGoBack()" id="fixed-back-btn" class="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-900/95 border border-emerald-500/40 text-emerald-300 hover:text-white hover:bg-emerald-950 hover:border-emerald-400 font-mono text-xs font-semibold shadow-2xl shadow-emerald-950/60 transition transform hover:-translate-y-0.5 active:scale-95 group backdrop-blur-xl">
+    <span class="text-sm transition-transform group-hover:-translate-x-1">←</span>
+    <span>Quay lại</span>
+  </a>
+
   <!-- ADMIN / RESELLER PORTAL (KÍCH HOẠT QUA ?admin HOẶC #admin) -->
   <div id="admin-portal" class="hidden max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4">
     <div class="glass-box rounded-3xl p-6 sm:p-8 border-2 border-amber-500/50 bg-slate-900/95 shadow-2xl shadow-amber-500/10">
@@ -1089,6 +1095,14 @@
       navigator.clipboard.writeText(msg).then(() => {
         alert(`🚀 Đã copy sẵn nội dung tin nhắn gửi khách kèm mã ${code}!\nBạn chỉ cần dán vào Zalo/Facebook gửi cho khách hàng.`);
       });
+    }
+
+    function handleGoBack() {
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = './skills.html';
+      }
     }
 
     // Tự động kiểm tra tham số ?admin khi tải trang
