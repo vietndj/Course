@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trợ Lý Zalo Rảnh Tay | Quản Lý Tin Nhắn & Lưu Trữ Media Lên Drive Tự Động</title>
+  <title>Trợ Lý Zalo Rảnh Tay | Tận Dụng Drive 2TB Biến Zalo Thành Kho Tư Liệu Vĩnh Cửu</title>
   
   <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,17 +14,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: "class",
       theme: {
         extend: {
           colors: {
-            obsidian: '#06090e',
-            cardBg: '#0e1420',
-            cardBorder: '#1e293b',
-            zaloBlue: '#0068ff',
-            zaloCyan: '#00c2ff',
-            emeraldAccent: '#10b981',
-            amberAccent: '#f59e0b',
+            obsidian: "#06090e",
+            cardBg: "#0e1420",
+            cardBorder: "#1e293b",
+            zaloBlue: "#0068ff",
+            zaloCyan: "#00c2ff",
+            emeraldAccent: "#10b981",
+            amberAccent: "#f59e0b",
           }
         }
       }
@@ -33,7 +33,7 @@
 
   <style>
     /* ===================================================
-       TYPOGRAPHY SYSTEM (INTEGRAL REGULAR + POPPINS)
+       TYPOGRAPHY SYSTEM (INTEGRAL REGULAR + POPPINS + ACTA)
        - Tiêu đề ngắn (<= 8 từ): SVN-Integral CF Regular (400)
        - Tiêu đề dài (> 8 từ): SVN-Poppins SemiBold (600) / Bold (700)
        - Thân bài & Đọc: SVN-Poppins (400/500/600)
@@ -41,54 +41,54 @@
        - Mã code / Timestamp: JetBrains Mono
        =================================================== */
     @font-face {
-      font-family: 'SVN-Integral';
-      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
-           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
-           local('SVN-Integral CF Regular'), local('SVN-IntegralCF-Regular');
+      font-family: "SVN-Integral";
+      src: url("./fonts/SVN-IntegralCF-Regular.ttf") format("truetype"),
+           url("./assets/fonts/SVN-IntegralCF-Regular.ttf") format("truetype"),
+           local("SVN-Integral CF Regular"), local("SVN-IntegralCF-Regular");
       font-weight: 400;
       font-style: normal;
     }
     @font-face {
-      font-family: 'SVN-Poppins';
-      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
-           local('SVN-Poppins-Regular'), local('SVN-Poppins');
+      font-family: "SVN-Poppins";
+      src: url("./assets/fonts/SVN-Poppins-Regular.ttf") format("truetype"),
+           local("SVN-Poppins-Regular"), local("SVN-Poppins");
       font-weight: 400;
       font-style: normal;
     }
     @font-face {
-      font-family: 'SVN-Poppins';
-      src: url('./assets/fonts/SVN-Poppins-Medium.ttf') format('truetype'),
-           local('SVN-Poppins-Medium');
+      font-family: "SVN-Poppins";
+      src: url("./assets/fonts/SVN-Poppins-Medium.ttf") format("truetype"),
+           local("SVN-Poppins-Medium");
       font-weight: 500;
       font-style: normal;
     }
     @font-face {
-      font-family: 'SVN-Poppins';
-      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
-           local('SVN-Poppins-SemiBold');
+      font-family: "SVN-Poppins";
+      src: url("./assets/fonts/SVN-Poppins-SemiBold.ttf") format("truetype"),
+           local("SVN-Poppins-SemiBold");
       font-weight: 600;
       font-style: normal;
     }
     @font-face {
-      font-family: 'SVN-Poppins';
-      src: url('./assets/fonts/SVN-Poppins-Bold.ttf') format('truetype'),
-           local('SVN-Poppins-Bold');
+      font-family: "SVN-Poppins";
+      src: url("./assets/fonts/SVN-Poppins-Bold.ttf") format("truetype"),
+           local("SVN-Poppins-Bold");
       font-weight: 700;
       font-style: normal;
     }
     @font-face {
-      font-family: 'SVN-Acta';
-      src: url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
-           local('SVN-Acta-BookItalic'), local('SVN-Acta');
+      font-family: "SVN-Acta";
+      src: url("./fonts/SVN-Acta-BookItalic.ttf") format("truetype"),
+           local("SVN-Acta-BookItalic"), local("SVN-Acta");
       font-weight: 400;
       font-style: italic;
     }
 
     :root {
-      --font-integral: 'SVN-Integral', sans-serif;
-      --font-poppins: 'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-acta: 'SVN-Acta', 'Playfair Display', Georgia, serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-integral: "SVN-Integral", sans-serif;
+      --font-poppins: "SVN-Poppins", "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-acta: "SVN-Acta", "Playfair Display", Georgia, serif;
+      --font-mono: "JetBrains Mono", monospace;
     }
 
     body {
@@ -100,21 +100,17 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Tiêu đề ngắn <= 8 từ: SVN-Integral CF Regular 400 */
-    .title-short, .title-short-integral, .font-integral-reg {
+    .title-short {
       font-family: var(--font-integral);
       font-weight: 400;
       letter-spacing: 0.02em;
       text-transform: uppercase;
     }
 
-    /* Tiêu đề dài > 8 từ: SVN-Poppins SemiBold/Bold */
-    .title-long, .title-long-poppins, .font-poppins-title {
+    .title-long {
       font-family: var(--font-poppins);
       font-weight: 600;
-      letter-spacing: normal;
-      line-height: 1.45;
-      text-transform: none;
+      line-height: 1.4;
     }
 
     .font-quote {
@@ -126,882 +122,954 @@
       font-family: var(--font-mono);
     }
 
-    /* Glows & Glass */
-    .glass-card {
-      background: rgba(14, 20, 32, 0.75);
+    .glass-nav {
+      background: rgba(6, 9, 14, 0.85);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.6);
     }
 
-    .glass-card-hover {
+    .glass-card {
+      background: rgba(14, 20, 32, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(30, 41, 59, 0.8);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .glass-card-hover:hover {
-      border-color: rgba(0, 194, 255, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -10px rgba(0, 104, 255, 0.2);
-    }
 
-    .glow-zalo {
-      box-shadow: 0 0 60px -15px rgba(0, 104, 255, 0.35);
+    .glass-card:hover {
+      border-color: rgba(0, 194, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(0, 104, 255, 0.15);
     }
 
     .glow-cyan {
-      box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 35px -5px rgba(0, 194, 255, 0.25);
     }
 
-    .gradient-blue-text {
-      background: linear-gradient(135deg, #60a5fa 0%, #00c2ff 50%, #38bdf8 100%);
+    .glow-blue {
+      box-shadow: 0 0 35px -5px rgba(0, 104, 255, 0.3);
+    }
+
+    .glow-emerald {
+      box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.25);
+    }
+
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #ffffff 10%, #00c2ff 85%, #0068ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .gradient-emerald-text {
-      background: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #059669 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .btn-primary {
+      background: linear-gradient(135deg, #0068ff 0%, #00c2ff 100%);
+      color: #ffffff;
+      font-family: var(--font-poppins);
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(0, 194, 255, 0.5);
+      transform: translateY(-1px);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    .btn-secondary {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      color: #e2e8f0;
+      transition: all 0.2s ease;
     }
-    ::-webkit-scrollbar-track {
-      background: #06090e;
+    .btn-secondary:hover {
+      background: rgba(51, 65, 85, 0.8);
+      border-color: rgba(0, 194, 255, 0.4);
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
+
+    .modal-backdrop {
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(8px);
     }
   </style>
 </head>
-<body class="selection:bg-cyan-500 selection:text-black">
+<body class="bg-obsidian text-slate-300 min-h-screen flex flex-col justify-between selection:bg-cyan-500/30 selection:text-cyan-200">
 
-  <!-- TOP BANNER / NAVIGATION -->
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 bg-opacity-90">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- Header Back Button -->
-        <a href="javascript:void(0)" onclick="handleGoBack()" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-300 font-mono-code transition px-2.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40" title="Quay lại trang trước">
-          <span class="text-sm">←</span>
-          <span class="hidden sm:inline">Quay lại</span>
-        </a>
-
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold text-base shadow-lg shadow-blue-500/20">
-          Z
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-teal-400 p-[1px] flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-obsidian rounded-[11px] flex items-center justify-center">
+            <span class="title-short text-sm text-cyan-400 font-bold">Z</span>
+          </div>
         </div>
-        <div>
-          <span class="title-short text-sm tracking-wider text-white">TRỢ LÝ ZALO</span>
-          <span class="hidden sm:inline-block ml-2 text-xs text-cyan-400 font-mono-code px-2 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-800/40">RẢNH TAY</span>
+        <div class="flex flex-col">
+          <span class="title-short text-sm sm:text-base text-white tracking-wide">ZALO RẢNH TAY</span>
+          <span class="text-[10px] font-mono-code text-cyan-400 tracking-wider">FEDU COURSE HUB</span>
         </div>
-      </div>
+      </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-xs text-slate-300">
-        <a href="#noi-dau" class="hover:text-cyan-400 transition">Hiện trạng & Nỗi đau</a>
-        <a href="#5-cach-goi" class="hover:text-cyan-400 transition">5 Cách gọi thực chiến</a>
-        <a href="#luu-tru-drive" class="hover:text-cyan-400 transition">Lưu trữ Google Drive</a>
-        <a href="#quy-trinh" class="hover:text-cyan-400 transition">Quy trình tự động</a>
-        <a href="#faq" class="hover:text-cyan-400 transition">Hỏi đáp</a>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-slate-400">
+        <a href="#gia-tri-cot-loi" class="hover:text-cyan-400 transition-colors">3 Điều Bạn Mua</a>
+        <a href="#kho-drive-2tb" class="hover:text-cyan-400 transition-colors text-cyan-400 font-semibold">Kho Drive 2TB</a>
+        <a href="#kich-ban-wow" class="hover:text-cyan-400 transition-colors">7 Kịch Bản Wow</a>
+        <a href="#cau-lenh-1-cham" class="hover:text-cyan-400 transition-colors">5 Câu Lệnh</a>
+        <a href="#so-sanh" class="hover:text-cyan-400 transition-colors">Làm Tay vs AI</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">Hỏi Đáp</a>
       </nav>
 
-      <a href="#5-cach-goi" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs transition shadow-md shadow-blue-600/30 flex items-center gap-1.5 active:scale-95">
-        <span>⚡️</span>
-        <span>Thử 5 câu lệnh</span>
-      </a>
+      <div class="flex items-center gap-3">
+        <a href="#so-huu-ngay" class="btn-primary px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-md">
+          <span>Sở Hữu 3.000.000đ</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- FIXED FLOATING BACK BUTTON (ALWAYS VISIBLE) -->
-  <a href="javascript:void(0)" onclick="handleGoBack()" id="fixed-back-btn" class="fixed bottom-6 left-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full glass-card border border-cyan-500/40 bg-slate-900/95 text-cyan-300 hover:text-white hover:bg-cyan-950 hover:border-cyan-400 font-mono-code text-xs font-semibold shadow-2xl shadow-cyan-950/60 transition transform hover:-translate-y-0.5 active:scale-95 group backdrop-blur-xl">
-    <span class="text-sm transition-transform group-hover:-translate-x-1">←</span>
-    <span>Quay lại</span>
-  </a>
-
   <!-- HERO SECTION -->
-  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
-    <!-- Ambient Background Glows -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+  <section class="pt-32 pb-16 sm:pt-40 sm:pb-24 relative overflow-hidden">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-blue-600/15 via-cyan-500/15 to-emerald-500/10 blur-[130px] -z-10 pointer-events-none"></div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-      
-      <!-- Top Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-cyan-300 font-mono-code mb-6 shadow-inner">
-        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-        <span>TÍNH NĂNG MỚI • BẢN QUYỀN FEDU COURSE</span>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono-code mb-6 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>TẬN DỤNG GOOGLE DRIVE 2TB SẴN CÓ CỦA BẠN</span>
       </div>
 
-      <!-- Main Headline <= 8 words: SVN-Integral Regular 400 -->
-      <h1 class="title-short text-3xl sm:text-5xl md:text-6xl text-white mb-6 leading-tight">
-        TRỢ LÝ ZALO RẢNH TAY
+      <h1 class="title-short text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.1] mb-6">
+        TRỢ LÝ ZALO <br class="hidden sm:inline" />
+        <span class="text-gradient-cyan">RẢNH TAY</span>
       </h1>
 
-      <!-- Subtitle > 8 words: SVN-Poppins SemiBold/Regular -->
-      <p class="title-long text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 font-normal">
-        Chấm dứt cảnh cuộn mỏi tay tìm lại ảnh bill hay lo sợ <span class="text-rose-400 font-medium">"ảnh đã bị Zalo xóa mất"</span>. 
-        Mọi ảnh, video, tài liệu tự động gom gọn và sao lưu an toàn về <span class="text-cyan-300 font-medium">Google Drive của bạn</span> mỗi tuần bằng tiếng Việt đời thường.
+      <p class="font-quote text-lg sm:text-2xl text-slate-300 max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+        &ldquo;Một câu lệnh tiếng Việt đời thường. AI tự động gom toàn bộ ảnh, video và hóa đơn vào kho lưu trữ vĩnh cửu — vĩnh viễn không bao giờ sợ mất file hay gặp lỗi 'Ảnh không còn tồn tại'.&rdquo;
       </p>
 
-      <!-- Trust Badges (4 Pills) -->
-      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10 max-w-3xl mx-auto">
-        <div class="px-3.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-1.5">
-          <span class="text-emerald-400">✓</span> 100% Tài khoản chính chủ
+      <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs text-slate-400 font-medium mb-10">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span>Không còn lỗi "Ảnh không tồn tại"</span>
         </div>
-        <div class="px-3.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-1.5">
-          <span class="text-emerald-400">✓</span> Không sợ bị khóa nick
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+          <span class="text-cyan-400 font-bold">✓</span>
+          <span>Tự tin dọn sạch rác máy tính</span>
         </div>
-        <div class="px-3.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-1.5">
-          <span class="text-emerald-400">✓</span> Ra lệnh bằng tiếng Việt mộc mạc
-        </div>
-        <div class="px-3.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-1.5">
-          <span class="text-emerald-400">✓</span> Giữ 100% độ nét gốc (Full HD/4K)
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+          <span class="text-amber-400 font-bold">✓</span>
+          <span>Tìm lại bill trong 3 giây</span>
         </div>
       </div>
 
-      <!-- Action Buttons -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#5-cach-goi" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2">
-          <span>🚀</span>
-          <span>XEM DEMO 5 CÁCH GỌI THỰC CHIẾN</span>
+        <a href="#so-huu-ngay" class="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-3 shadow-xl glow-cyan">
+          <span>Kích Hoạt Trợ Lý Zalo Ngay</span>
+          <span class="px-2 py-0.5 rounded bg-white/20 text-xs font-mono-code font-bold">3.000.000đ</span>
         </a>
-        <a href="#luu-tru-drive" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800/90 border border-slate-700 text-slate-200 font-semibold text-sm transition flex items-center justify-center gap-2">
-          <span>☁️</span>
-          <span>Cơ chế sao lưu Drive mỗi tuần</span>
+        <a href="#kich-ban-wow" class="btn-secondary w-full sm:w-auto px-6 py-4 rounded-xl text-sm font-medium flex items-center justify-center gap-2">
+          <span>Xem 7 Tình Huống Wow</span>
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
         </a>
       </div>
-
-      <!-- Visual Preview Card / Mockup -->
-      <div class="mt-14 max-w-4xl mx-auto glass-card rounded-3xl p-4 sm:p-6 border border-slate-700/80 shadow-2xl relative">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs font-mono-code text-slate-400">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-            <span class="ml-2 text-slate-300">Zalo Assistant Hub • Tự động hóa 1 chạm</span>
-          </div>
-          <span class="text-emerald-400 flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Đang đồng bộ
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-          <!-- Step 1 Preview -->
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80">
-            <div class="text-xs font-mono-code text-cyan-400 mb-1">01. BẮT TIN NHẮN TỨC THÌ</div>
-            <div class="text-sm font-semibold text-white mb-2">Đọc hiểu tiếng Việt đời thường</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Bạn chỉ cần nhắn lệnh ngắn gọn. Trợ lý tự hiểu ngữ cảnh, lọc đúng người gửi, đúng nhóm chat và đúng khoảng thời gian.
-            </p>
-          </div>
-
-          <!-- Step 2 Preview -->
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80">
-            <div class="text-xs font-mono-code text-emerald-400 mb-1">02. GOM MEDIA & BÓC TÁCH</div>
-            <div class="text-sm font-semibold text-white mb-2">Nhặt đúng bill, ảnh mẫu, video</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Không bỏ sót file. Tự động gom video dự án để bạn ném vào dựng clip ngay, trích xuất dòng dặn việc quan trọng trong 3 giây.
-            </p>
-          </div>
-
-          <!-- Step 3 Preview -->
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80">
-            <div class="text-xs font-mono-code text-blue-400 mb-1">03. SAO LƯU DRIVE TỰ ĐỘNG</div>
-            <div class="text-sm font-semibold text-white mb-2">23:00 Chủ Nhật mỗi tuần</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Tự tạo thư mục theo tuần trên Google Drive cá nhân, đẩy toàn bộ media lên an toàn và gửi báo cáo tóm tắt nhẹ nhàng.
-            </p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- SECTION 1: NỖI ĐAU & HIỆN TRẠNG (BEFORE VS AFTER) -->
-  <section id="noi-dau" class="py-16 border-t border-slate-800/80 bg-slate-950/40 relative">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="text-xs font-mono-code text-rose-400 uppercase tracking-wider mb-2">BẠN CÓ ĐANG GẶP TÌNH CẢNH NÀY?</div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">3 NỖI KHỔ KHI DÙNG ZALO</h2>
-        <p class="text-sm text-slate-400">
-          Zalo là nơi trao đổi công việc nhiều nhất, nhưng cũng là nơi dễ làm trôi dữ liệu và gây ức chế nhất mỗi khi cần tìm lại.
+  <!-- SECTION 1: 3 ĐIỀU BẠN THỰC SỰ MUA -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/40 relative" id="gia-tri-cot-loi">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">TÂM LÝ HỌC THỰC CHIẾN</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">3 ĐIỀU BẠN THỰC SỰ MUA</h2>
+        <p class="title-long text-sm sm:text-base text-slate-400 font-normal">
+          Chúng tôi không bán mã nguồn hay kỹ thuật phức tạp. Đây là 3 món quà giải phóng công việc hàng ngày của bạn:
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Pain 1 -->
-        <div class="glass-card rounded-3xl p-6 border border-rose-500/20 bg-gradient-to-b from-rose-950/20 to-slate-900/40 relative">
-          <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl mb-4">
-            ⚠️
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-slate-800/80">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-2xl mb-5">
+              ⏳
+            </div>
+            <div class="text-xs font-mono-code text-cyan-400 mb-1">GIÁ TRỊ 01</div>
+            <h3 class="title-short text-lg text-white mb-3">THỜI GIAN THƯ THẢ</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Chấm dứt cảnh cúi gằm mặt vào điện thoại cuộn tìm hóa đơn hay tải từng clip vụn giữa 100 nhóm chat. Lúc bạn đang ngồi cà phê sáng hay lái xe, chỉ cần nhắn 1 câu là AI tự tìm và gửi đúng tài liệu bạn cần.
+            </p>
           </div>
-          <h3 class="text-base font-bold text-white mb-2">"Ảnh không còn tồn tại"</h3>
-          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-            Khách gửi ảnh hóa đơn, ảnh sản phẩm từ 2 tuần trước. Hôm nay bấm vào xem thì Zalo báo file đã bị xóa khỏi hệ thống. Mất luôn bằng chứng đối soát.
-          </p>
-          <div class="pt-3 border-t border-slate-800/80 text-xs text-emerald-400 font-medium flex items-center gap-1.5">
-            <span>✨</span> <span>AI tự tải và đẩy lên Google Drive trước khi bị xóa</span>
-          </div>
-        </div>
-
-        <!-- Pain 2 -->
-        <div class="glass-card rounded-3xl p-6 border border-amber-500/20 bg-gradient-to-b from-amber-950/20 to-slate-900/40 relative">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mb-4">
-            🔍
-          </div>
-          <h3 class="text-base font-bold text-white mb-2">Lục tìm tin nhắn hoa cả mắt</h3>
-          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-            Nhớ mang máng sếp hoặc khách có dặn sửa nội dung gì đó, nhưng phải cuộn ngược hàng trăm tin nhắn cũ để đọc lại, tốn 20-30 phút vô ích.
-          </p>
-          <div class="pt-3 border-t border-slate-800/80 text-xs text-emerald-400 font-medium flex items-center gap-1.5">
-            <span>✨</span> <span>Hỏi 1 câu là AI trích đúng 2 dòng cốt lõi</span>
+          <div class="mt-6 pt-4 border-t border-slate-800/60 text-xs font-mono-code text-slate-500 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+            <span>Tiết kiệm 1-2 tiếng làm việc/ngày</span>
           </div>
         </div>
 
-        <!-- Pain 3 -->
-        <div class="glass-card rounded-3xl p-6 border border-blue-500/20 bg-gradient-to-b from-blue-950/20 to-slate-900/40 relative">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-4">
-            💾
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-cyan-500/40 relative bg-gradient-to-b from-cyan-950/20 to-slate-900/60">
+          <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-cyan-400 text-slate-950 font-bold text-[10px] font-mono-code uppercase">
+            TẬN DỤNG DRIVE 2TB
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Nặng máy, tràn bộ nhớ</h3>
-          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-            Thư mục Zalo ngốn 30GB - 50GB ổ cứng làm đơ máy. Xóa đi thì sợ mất file công việc, để lại thì không còn chỗ cài phần mềm khác.
-          </p>
-          <div class="pt-3 border-t border-slate-800/80 text-xs text-emerald-400 font-medium flex items-center gap-1.5">
-            <span>✨</span> <span>Đã có Drive lưu trữ, bạn tự tin dọn dẹp máy tính</span>
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl mb-5">
+              💎
+            </div>
+            <div class="text-xs font-mono-code text-cyan-400 mb-1">GIÁ TRỊ 02</div>
+            <h3 class="title-short text-lg text-white mb-3">KHO TƯ LIỆU VĨNH CỬU</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Bạn đã có sẵn gói Google Drive 2TB nhưng chưa tận dụng. Giờ đây, mọi bill chuyển khoản, video 4K chất lượng gốc đều được AI nhặt riêng và xếp ngăn nắp vào kệ. Vĩnh viễn không bao giờ sợ Zalo tự xóa file.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/60 text-xs font-mono-code text-cyan-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>Không bao giờ mất tài liệu làm ăn</span>
           </div>
         </div>
 
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-slate-800/80">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-2xl mb-5">
+              🛡️
+            </div>
+            <div class="text-xs font-mono-code text-emerald-400 mb-1">GIÁ TRỊ 03</div>
+            <h3 class="title-short text-lg text-white mb-3">TỰ TIN DỌN SẠCH MÁY</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Máy tính của bạn sẽ không còn bị cảnh báo đầy ổ cứng đỏ lòm. Hàng tuần bạn có thể bấm nút dọn sạch 30GB rác Zalo một cách ung dung, vì biết chắc toàn bộ dữ liệu quan trọng đã nằm an toàn trên đám mây.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/60 text-xs font-mono-code text-slate-500 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>Giải phóng 30GB-50GB ổ cứng máy</span>
+          </div>
+        </div>
       </div>
-
     </div>
   </section>
 
-  <!-- SECTION 2: DEMO 5 CÁCH GỌI CƠ BẢN (INTERACTIVE COMMAND PLAYGROUND) -->
-  <section id="5-cach-goi" class="py-16 sm:py-24 relative">
+  <!-- SECTION 2: ĐẦU RA HÀO NHOÁNG TRÊN GOOGLE DRIVE 2TB -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-900/40 relative" id="kho-drive-2tb">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-950/60 border border-blue-800/50 text-xs text-cyan-400 font-mono-code mb-3">
-          <span>⚡️ TRẢI NGHIỆM THỰC CHIẾN 1 CHẠM</span>
-        </div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">5 CÁCH GỌI ĐỜI THƯỜNG</h2>
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">ĐẦU RA HÀO NHOÁNG & THỰC CHIẾN</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">
+          3 KỆ TƯ LIỆU VĨNH CỬU TRÊN DRIVE 2TB
+        </h2>
         <p class="title-long text-sm sm:text-base text-slate-300 font-normal">
-          Hãy bấm thử từng câu lệnh bên dưới để xem cách Trợ lý xử lý thông tin mượt mà và trực quan như thế nào.
+          AI tự động đóng vai người thủ thư mẫn cán: gom từng bức ảnh, từng clip rải rác trên Zalo và xếp vào đúng kệ trên Google Drive của bạn.
         </p>
       </div>
 
-      <!-- Playground Grid: Left Buttons / Right Chat Screen -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
-        <!-- Left: Command Selector Tabs (5 Cols) -->
-        <div class="lg:col-span-5 space-y-3">
-          
-          <!-- Command 1 -->
-          <button onclick="selectCommand(1)" id="cmd-btn-1" class="w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-blue-500/80 bg-blue-950/30 transition relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono-code text-cyan-400 font-semibold uppercase">Cách 1 • Tìm ảnh Bill / Hóa đơn</span>
-              <span class="text-xs text-slate-400 group-hover:text-cyan-300">Nhấn xem →</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="glass-card rounded-2xl p-6 border-slate-800 hover:border-cyan-500/50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 font-mono-code text-[11px] font-bold">KỆ 01 • DÒNG TIỀN</span>
+              <span class="text-xs font-mono-code text-slate-500">Tự động 100%</span>
             </div>
-            <div class="text-sm font-semibold text-white group-hover:text-cyan-200 mb-1">
-              "Tìm cho tôi tất cả ảnh chuyển khoản khách gửi tuần này..."
+            <h3 class="title-short text-lg text-white mb-2">KỆ HÓA ĐƠN & BILL CHUYỂN KHOẢN</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Mỗi khi khách gửi ảnh chuyển khoản vào bất kỳ nhóm chat nào, AI tự nhận diện, đọc số tiền, tên khách và xếp ngay vào thư mục <code class="text-cyan-300 font-mono-code text-[11px]">Drive/Zalo/Hoa_Don/</code>.
+            </p>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 font-mono-code text-[11px] text-slate-300 space-y-1.5 mb-4">
+              <div class="text-cyan-400 font-semibold">📂 Zalo_Hoa_Don_T09/</div>
+              <div class="text-slate-400 pl-3">├── 20260901_AnhNam_5tr000.jpg</div>
+              <div class="text-slate-400 pl-3">├── 20260901_ChiLinh_3tr000.jpg</div>
+              <div class="text-emerald-400 pl-3">└── 📊 Bang_Tong_Ket_Tuan.csv</div>
             </div>
-            <p class="text-xs text-slate-400 line-clamp-1">Lọc nhanh 14 ảnh bill, thống kê số tiền & tên người gửi trong nhóm Bán Hàng.</p>
-          </button>
-
-          <!-- Command 2 -->
-          <button onclick="selectCommand(2)" id="cmd-btn-2" class="w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-slate-800 transition relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono-code text-emerald-400 font-semibold uppercase">Cách 2 • Gom Video / Ảnh Dựng Clip</span>
-              <span class="text-xs text-slate-400 group-hover:text-cyan-300">Nhấn xem →</span>
-            </div>
-            <div class="text-sm font-semibold text-white group-hover:text-cyan-200 mb-1">
-              "Gom toàn bộ video quay mẫu áo Linh vừa gửi..."
-            </div>
-            <p class="text-xs text-slate-400 line-clamp-1">Tự tải và xếp gọn vào thư mục riêng để ném vào phần mềm dựng ngay.</p>
-          </button>
-
-          <!-- Command 3 -->
-          <button onclick="selectCommand(3)" id="cmd-btn-3" class="w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-slate-800 transition relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono-code text-amber-400 font-semibold uppercase">Cách 3 • Trích Xuất Lời Dặn Sửa Việc</span>
-              <span class="text-xs text-slate-400 group-hover:text-cyan-300">Nhấn xem →</span>
-            </div>
-            <div class="text-sm font-semibold text-white group-hover:text-cyan-200 mb-1">
-              "Xem lại tin nhắn với anh Nam xem dặn sửa đoạn nào..."
-            </div>
-            <p class="text-xs text-slate-400 line-clamp-1">Trích đúng 2 điểm sửa video cốt lõi, không cần đọc lại 100 tin nhắn.</p>
-          </button>
-
-          <!-- Command 4 -->
-          <button onclick="selectCommand(4)" id="cmd-btn-4" class="w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-slate-800 transition relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono-code text-purple-400 font-semibold uppercase">Cách 4 • Tóm Tắt Nhanh Nhóm Công Việc</span>
-              <span class="text-xs text-slate-400 group-hover:text-cyan-300">Nhấn xem →</span>
-            </div>
-            <div class="text-sm font-semibold text-white group-hover:text-cyan-200 mb-1">
-              "Hôm nay nhóm Dự Án có việc gì cần xử lý gấp không?"
-            </div>
-            <p class="text-xs text-slate-400 line-clamp-1">Tóm tắt 3 đầu việc quan trọng kèm tên người đang đợi phản hồi.</p>
-          </button>
-
-          <!-- Command 5 -->
-          <button onclick="selectCommand(5)" id="cmd-btn-5" class="w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-slate-800 transition relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono-code text-cyan-400 font-semibold uppercase">Cách 5 • Tự Động Sao Lưu & Dọn Rác</span>
-              <span class="text-xs text-slate-400 group-hover:text-cyan-300">Nhấn xem →</span>
-            </div>
-            <div class="text-sm font-semibold text-white group-hover:text-cyan-200 mb-1">
-              "Lưu hết ảnh tháng này lên Drive để tôi xóa bớt..."
-            </div>
-            <p class="text-xs text-slate-400 line-clamp-1">Đồng bộ toàn bộ media lên Drive an toàn rồi thông báo bạn giải phóng ổ cứng.</p>
-          </button>
-
+          </div>
+          <div class="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+            <span class="text-emerald-400 font-bold">👉</span>
+            <span>Tìm lại bill trong 3 giây khi kế toán cần</span>
+          </div>
         </div>
 
-        <!-- Right: Interactive Chat Simulator (7 Cols) -->
+        <div class="glass-card rounded-2xl p-6 border-slate-800 hover:border-cyan-500/50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 font-mono-code text-[11px] font-bold">KỆ 02 • SÁNG TẠO</span>
+              <span class="text-xs font-mono-code text-slate-500">Giữ nguyên 4K</span>
+            </div>
+            <h3 class="title-short text-lg text-white mb-2">KHO VIDEO MẪU THEO DỰ ÁN</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Gom toàn bộ 10 video quay mẫu áo, ảnh công trình gửi rải rác trong ngày vào đúng 1 folder dự án, giữ nguyên độ phân giải 4K không bị Zalo nén vỡ hình.
+            </p>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 font-mono-code text-[11px] text-slate-300 space-y-1.5 mb-4">
+              <div class="text-blue-400 font-semibold">📂 Du_An_Mau_Ao_Linh/</div>
+              <div class="text-slate-400 pl-3">├── Shot01_QuayCan_4K.mp4</div>
+              <div class="text-slate-400 pl-3">├── Shot02_QuayToan_4K.mp4</div>
+              <div class="text-cyan-400 pl-3">└── 🎬 Sẵn sàng kéo vào CapCut</div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+            <span class="text-emerald-400 font-bold">👉</span>
+            <span>Thợ dựng clip kéo từ Drive về làm ngay</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800 hover:border-cyan-500/50 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code text-[11px] font-bold">KỆ 03 • LƯU TRỮ</span>
+              <span class="text-xs font-mono-code text-slate-500">Bảo mật nội bộ</span>
+            </div>
+            <h3 class="title-short text-lg text-white mb-2">HỒ SƠ LỜI DẶN & KHÁCH VIP</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Tự động trích xuất đúng 2 câu dặn sửa video ở mốc thời gian cụ thể hoặc điều khoản hợp đồng của khách hàng VIP. Không cần đọc lại 500 tin nhắn tán gẫu.
+            </p>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 font-mono-code text-[11px] text-slate-300 space-y-1.5 mb-4">
+              <div class="text-emerald-400 font-semibold">📂 Loi_Dan_Khach_VIP/</div>
+              <div class="text-slate-400 pl-3">├── AnhNam_SuaVideo_Phut02.txt</div>
+              <div class="text-slate-400 pl-3">├── ChiLinh_ChotMauAo_Vang.txt</div>
+              <div class="text-amber-400 pl-3">└── 📌 Nhắc việc lúc 21h00</div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
+            <span class="text-emerald-400 font-bold">👉</span>
+            <span>Không bao giờ bị sót lời hứa với khách</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-900/30 via-cyan-900/20 to-emerald-900/30 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-2xl flex-shrink-0">
+            ☁️
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-white">Bạn đã có Google Drive 2TB? Hãy để AI làm việc thay bạn!</div>
+            <div class="text-xs text-slate-400">Không cài phần mềm lạ. Vận hành trực tiếp trên máy Mac/PC và tài khoản Google chính chủ của bạn.</div>
+          </div>
+        </div>
+        <a href="#so-huu-ngay" class="btn-primary px-6 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap shadow-md">
+          Bắt Đầu Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: 7 TÌNH HUỐNG THỰC TẾ -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/60 relative" id="kich-ban-wow">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">7 TÌNH HUỐNG THỰC TẾ</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">KỊCH BẢN TỰ NHIÊN DÙNG LÀ "WOW"</h2>
+        <p class="title-long text-sm sm:text-base text-slate-300 font-normal">
+          Xem cách trợ lý giải quyết những tình huống éo le đời thường nhất của người làm kinh doanh và sáng tạo nội dung:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-cyan-400 font-bold">TÌNH HUỐNG 01</span>
+            <span class="text-[11px] font-mono-code text-slate-500">THỜI GIAN THƯ THẢ</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">CÀ PHÊ SÁNG CHỦ NHẬT & TIN NHẮN KHÁCH VIP</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Bạn đang ngồi cà phê sáng ngắm phố phường. Khách VIP nhắn hỏi gửi lại ảnh hợp đồng hoặc mẫu thiết kế tuần trước. Thay vì cuống cuồng mở Zalo lội tin, bạn chỉ nhắn tin: <em>"Tìm cho anh hợp đồng anh Nam gửi tuần trước"</em>. AI bốc đúng file PDF trên Drive 2TB gửi lại trong 5 giây.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-cyan-300">
+            💬 "Tìm hợp đồng anh Nam gửi tuần trước" ➔ 📄 File trả về ngay tức khắc!
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-emerald-400 font-bold">TÌNH HUỐNG 02</span>
+            <span class="text-[11px] font-mono-code text-slate-500">LỌC BILL SIÊU TỐC</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">KẾ TOÁN ĐÒI BILL & "THÁM TỬ" LỌC TRONG 3 GIÂY</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Kế toán giục gửi ảnh bill chuyển khoản của khách hàng tuần này để đối soát. Thay vì cuộn mỏi tay giữa 50 nhóm chat, AI tự quét toàn bộ tin nhắn, nhặt ra đúng danh sách ảnh bill kèm số tiền và tên người gửi ra bảng excel rõ ràng.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-emerald-300">
+            ⚡️ Bóc tách 8 bill chuyển khoản (Tổng: 24.500.000đ) trong đúng 3 giây.
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-blue-400 font-bold">TÌNH HUỐNG 03</span>
+            <span class="text-[11px] font-mono-code text-slate-500">RẢNH TAY THỰC SỰ</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">ĐANG LÁI XE / ĐÓN CON VẪN GOM CLIP DỰ ÁN GỌN GÀNG</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Bạn đang lái xe hoặc đón con giờ tan tầm. Bạn nói 1 câu vào micro: <em>"Gom toàn bộ 10 video quay mẫu áo Linh vừa gửi hôm nay để tôi dựng clip"</em>. AI tự tải và xếp 10 clip vào thư mục riêng, tối về bạn chỉ việc bật CapCut dựng ngay.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-blue-300">
+            🎬 10 clip 4K tự động gom vào Folder `Du_An_Linh` không sót 1 giây.
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-amber-400 font-bold">TÌNH HUỐNG 04</span>
+            <span class="text-[11px] font-mono-code text-slate-500">TÓM TẮT THÔNG MINH</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">NHÓM DỰ ÁN 500 TIN NHẮN: TÓM TẮT 3 ĐẦU VIỆC GẤP</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Sau một buổi họp bận rộn, nhóm chat dự án có hơn 500 tin nhắn tán gẫu lẫn việc. Bạn chỉ cần hỏi: <em>"Nhóm Dự Án hôm nay có việc gì quan trọng cần xử lý gấp không?"</em>. AI bỏ qua chuyện phiếm và tóm tắt đúng 3 đầu việc cần chốt.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-amber-300">
+            📌 Trích xuất đúng 3 việc cần duyệt kèm tên người đang chờ phản hồi.
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-purple-400 font-bold">TÌNH HUỐNG 05</span>
+            <span class="text-[11px] font-mono-code text-slate-500">CHẤM DỨT NỖI SỢ</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">CỨU NGUY FILE GỬI TỪ 6 THÁNG TRƯỚC</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Khách hàng hỏi lại bản thiết kế đã gửi từ 6 tháng trước. Trên ứng dụng Zalo điện thoại đã hiện thông báo đỏ: <em>"Ảnh không còn tồn tại trên hệ thống"</em>. Nhưng nhờ Trợ Lý AI đã tự sao lưu lên Drive 2TB từ trước, bạn mở file gốc 4K gửi lại trong 1 nốt nhạc.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-purple-300">
+            🛡️ File gốc nguyên vẹn trên Drive cá nhân — Cứu nguy 1 hợp đồng lớn!
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono-code text-teal-400 font-bold">TÌNH HUỐNG 06</span>
+            <span class="text-[11px] font-mono-code text-slate-500">THƯ KÝ ĐÊM 21H</span>
+          </div>
+          <h3 class="title-short text-base text-white mb-2">BẢN TÓM TẮT "TỐI NAY CÓ GÌ CẦN NHỚ" LÚC 21H00</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            Đúng 21h00 tối, AI tự động điểm lại tất cả tin nhắn Zalo trong ngày và gửi bản tóm tắt: Có bao nhiêu khách đã chuyển khoản, có ai đang chờ phản hồi, và có file nào quan trọng đã được cất lên Drive. Bạn yên tâm đi ngủ mà không lo sót việc.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs font-mono-code text-teal-300">
+            🌙 Báo cáo cuối ngày gọn gàng — Thảnh thơi dành thời gian cho gia đình.
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 glass-card rounded-2xl p-7 border-emerald-500/40 bg-gradient-to-r from-emerald-950/20 via-slate-900/70 to-teal-950/20">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code text-[11px] font-bold mb-2">
+              🔒 TÌNH HUỐNG 07 • BẢO MẬT TUYỆT ĐỐI
+            </div>
+            <h3 class="title-short text-lg text-white mb-2">"DỮ LIỆU CỦA TÔI ĐI ĐÂU?" — 100% AN TOÀN TRÊN MÁY BẠN</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Trợ lý hoạt động trực tiếp trên máy tính và tài khoản Google Drive của chính bạn. Không gửi bất kỳ tin nhắn, số tài khoản, hay hình ảnh riêng tư nào lên máy chủ lạ. Tuyệt đối không lo bị quét mã hay khóa nick Zalo.
+            </p>
+          </div>
+          <div class="text-right">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/20 text-emerald-300 text-xs font-mono-code font-bold">
+              ✓ LOCAL-FIRST SECURITY
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: 5 CÂU LỆNH 1-CHẠM TIẾNG VIỆT -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-900/40 relative" id="cau-lenh-1-cham">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">THAO TÁC CỰC KỲ ĐƠN GIẢN</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">5 CÂU LỆNH 1-CHẠM TIẾNG VIỆT</h2>
+        <p class="title-long text-sm sm:text-base text-slate-400 font-normal">
+          Bạn chỉ việc nhắn tin bằng tiếng Việt đời thường cho AI, mọi việc phức tạp bên dưới tự động vận hành:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 space-y-2.5" id="cmd-buttons">
+          <button onclick="showCommand(1)" id="cmd-btn-1" class="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-900/90 border-cyan-500/50 text-white shadow-md">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 font-mono-code text-xs flex items-center justify-center font-bold">1</span>
+              <span class="text-xs sm:text-sm font-medium">Lọc Bill / Hóa đơn tuần này</span>
+            </div>
+            <span class="text-cyan-400 text-xs">➔</span>
+          </button>
+
+          <button onclick="showCommand(2)" id="cmd-btn-2" class="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-950/50 border-slate-800 text-slate-400 hover:text-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-400 font-mono-code text-xs flex items-center justify-center font-bold">2</span>
+              <span class="text-xs sm:text-sm font-medium">Gom Video dựng clip theo dự án</span>
+            </div>
+            <span class="text-slate-600 text-xs">➔</span>
+          </button>
+
+          <button onclick="showCommand(3)" id="cmd-btn-3" class="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-950/50 border-slate-800 text-slate-400 hover:text-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-400 font-mono-code text-xs flex items-center justify-center font-bold">3</span>
+              <span class="text-xs sm:text-sm font-medium">Trích Lời dặn sửa video của sếp</span>
+            </div>
+            <span class="text-slate-600 text-xs">➔</span>
+          </button>
+
+          <button onclick="showCommand(4)" id="cmd-btn-4" class="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-950/50 border-slate-800 text-slate-400 hover:text-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-400 font-mono-code text-xs flex items-center justify-center font-bold">4</span>
+              <span class="text-xs sm:text-sm font-medium">Tóm tắt việc gấp nhóm dự án</span>
+            </div>
+            <span class="text-slate-600 text-xs">➔</span>
+          </button>
+
+          <button onclick="showCommand(5)" id="cmd-btn-5" class="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-950/50 border-slate-800 text-slate-400 hover:text-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-400 font-mono-code text-xs flex items-center justify-center font-bold">5</span>
+              <span class="text-xs sm:text-sm font-medium">Lưu Drive & Dọn rác máy tính</span>
+            </div>
+            <span class="text-slate-600 text-xs">➔</span>
+          </button>
+        </div>
+
         <div class="lg:col-span-7">
-          <div class="glass-card rounded-3xl border border-slate-700 bg-slate-950/90 p-5 sm:p-6 shadow-2xl relative overflow-hidden min-h-[460px] flex flex-col justify-between">
-            
-            <!-- Window Header -->
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
-                  AI
-                </div>
-                <div>
-                  <div class="text-xs font-bold text-white">Trợ Lý Zalo Co-pilot</div>
-                  <div class="text-[10px] text-emerald-400 font-mono-code">● Sẵn sàng thực thi 1-chạm</div>
-                </div>
+          <div class="glass-card rounded-2xl p-6 border-slate-800 bg-slate-950/90 h-full flex flex-col justify-between" id="cmd-display-box">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800 text-xs font-mono-code">
+                <span class="text-cyan-400 font-semibold" id="cmd-title">Cách 1 • Tìm ảnh Bill / Hóa đơn</span>
+                <span class="text-slate-500">Gemini 3.7 Core</span>
               </div>
               
-              <button onclick="copyCurrentPrompt()" id="btn-copy-prompt" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono-code flex items-center gap-1.5 transition">
-                <span>📋</span>
-                <span id="copy-btn-text">Sao chép câu lệnh</span>
-              </button>
-            </div>
-
-            <!-- Chat Content Body (Dynamic) -->
-            <div id="simulator-chat-box" class="space-y-4 flex-1 overflow-y-auto pr-1">
-              <!-- Content rendered via JavaScript -->
-            </div>
-
-            <!-- Chat Input Footer -->
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2">
-              <div class="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono-code flex items-center justify-between">
-                <span id="simulator-input-text" class="text-slate-200 font-sans"></span>
-                <span class="text-[10px] text-slate-500 font-mono-code">Nhấn lệnh bên trái để đổi</span>
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-slate-200 mb-4 flex items-start gap-2.5">
+                <span class="text-cyan-400 font-bold">👤 Bạn:</span>
+                <span class="font-quote text-cyan-200" id="cmd-user-prompt">"Tìm cho tôi tất cả ảnh chuyển khoản khách gửi tuần này trong nhóm Bán Hàng"</span>
               </div>
-              <button class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-sm shadow-md shadow-blue-600/30">
-                ↵
-              </button>
+
+              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs leading-relaxed" id="cmd-ai-output">
+                <div class="text-xs text-cyan-400 font-mono-code mb-2">⚡️ ĐÃ QUÉT 120 TIN NHẮN TRONG 7 NGÀY GẦN NHẤT:</div>
+                <p class="text-slate-300 mb-3">Tìm thấy <strong>4 ảnh hóa đơn chuyển khoản</strong> trong nhóm <em>Bán Hàng Online</em>:</p>
+                <div class="space-y-1.5 font-mono-code text-[11px] text-slate-400 mb-3">
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+                    <span>1. Bill_ChiLinh_3tr000.jpg</span>
+                    <span class="text-emerald-400">3.000.000đ (08:30 T2)</span>
+                  </div>
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+                    <span>2. Bill_AnhNam_5tr000.jpg</span>
+                    <span class="text-emerald-400">5.000.000đ (14:15 T3)</span>
+                  </div>
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+                    <span>3. Bill_AnhHung_2tr500.jpg</span>
+                    <span class="text-emerald-400">2.500.000đ (19:20 T5)</span>
+                  </div>
+                </div>
+                <div class="text-[11px] text-slate-400">
+                  📁 Toàn bộ 4 ảnh đã được lưu vào <code class="text-cyan-300">Drive/Zalo/Hoa_Don_T09/</code>
+                </div>
+              </div>
             </div>
 
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono-code text-slate-500">
+              <span>Thời gian xử lý: ~1.2 giây</span>
+              <span class="text-emerald-400 font-bold">100% Chính Xác</span>
+            </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- SECTION 3: 3 PHƯƠNG ÁN LƯU TRỮ MEDIA & CHỌN PHƯƠNG ÁN TỐT NHẤT -->
-  <section id="luu-tru-drive" class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/60 relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">KIẾN TRÚC LƯU TRỮ MEDIA AN TOÀN</div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">3 PHƯƠNG ÁN ĐỒNG BỘ DRIVE</h2>
-        <p class="title-long text-sm sm:text-base text-slate-300 font-normal">
-          So sánh chi tiết 3 giải pháp lưu trữ để bạn an tâm tuyệt đối về tính ổn định và bảo mật tài khoản.
-        </p>
-      </div>
-
-      <!-- 3 Methods Comparison Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        
-        <!-- Method 1: Local Sync (RECOMMENDED WINNER) -->
-        <div class="glass-card rounded-3xl p-6 border-2 border-emerald-500/60 bg-slate-900/90 relative shadow-xl shadow-emerald-500/10 flex flex-col justify-between">
-          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-extrabold text-[11px] font-mono-code uppercase shadow-md">
-            🏆 LỰA CHỌN TỐT NHẤT
-          </div>
-
-          <div>
-            <div class="text-xs font-mono-code text-emerald-400 mb-1">PHƯƠNG ÁN 01</div>
-            <h3 class="text-lg font-bold text-white mb-3">Đồng bộ qua Thư mục Cục bộ (Local Sync)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Zalo trên máy tính tự lưu media vào thư mục máy. Script tự động quét các file mới nhận trong tuần và tải thẳng lên Google Drive cá nhân.
-            </p>
-
-            <div class="space-y-2.5 text-xs mb-6">
-              <div class="flex items-start gap-2 text-slate-200">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span><strong>An toàn 100%:</strong> Không vi phạm bot, không bao giờ bị Zalo khóa tài khoản.</span>
-              </div>
-              <div class="flex items-start gap-2 text-slate-200">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span><strong>Chất lượng gốc:</strong> Giữ nguyên độ nét 4K/Full HD của video và ảnh.</span>
-              </div>
-              <div class="flex items-start gap-2 text-slate-200">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span><strong>Siêu nhẹ:</strong> Chạy ngầm tốn chưa tới 1% CPU của máy.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/40 text-[11px] text-emerald-300 font-mono-code">
-            ⚡️ Đánh giá: 10/10 • Khuyên dùng mặc định
-          </div>
-        </div>
-
-        <!-- Method 2: Zalo Web Automation -->
-        <div class="glass-card rounded-3xl p-6 border border-slate-800 bg-slate-950/60 relative flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono-code text-slate-400 mb-1">PHƯƠNG ÁN 02</div>
-            <h3 class="text-lg font-bold text-white mb-3">Tự động hóa qua Zalo Web (Headless Script)</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Dùng trình duyệt tự động đăng nhập vào Zalo Web qua Cookie, cào từng đoạn chat rồi tải media về đẩy lên Drive.
-            </p>
-
-            <div class="space-y-2.5 text-xs mb-6">
-              <div class="flex items-start gap-2 text-slate-300">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Phân loại chuẩn xác theo từng tên người chat.</span>
-              </div>
-              <div class="flex items-start gap-2 text-rose-400">
-                <span class="font-bold">✗</span>
-                <span>Dễ bị Zalo quét bảo mật, bắt quét lại QR thường xuyên.</span>
-              </div>
-              <div class="flex items-start gap-2 text-rose-400">
-                <span class="font-bold">✗</span>
-                <span>Có rủi ro bị hạn chế tính năng nhắn tin tạm thời.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 font-mono-code">
-            ⚠️ Đánh giá: 6/10 • Không khuyến khích
-          </div>
-        </div>
-
-        <!-- Method 3: Forward Bot / Official Account -->
-        <div class="glass-card rounded-3xl p-6 border border-slate-800 bg-slate-950/60 relative flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono-code text-slate-400 mb-1">PHƯƠNG ÁN 03</div>
-            <h3 class="text-lg font-bold text-white mb-3">Lưu trữ qua Kênh Truyền File / Bot Chuyển Tiếp</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Chuyển tiếp (forward) các tin nhắn quan trọng vào mục "Truyền File" hoặc bot trung gian để webhook bắt dữ liệu.
-            </p>
-
-            <div class="space-y-2.5 text-xs mb-6">
-              <div class="flex items-start gap-2 text-slate-300">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Thao tác được từ điện thoại mọi lúc mọi nơi.</span>
-              </div>
-              <div class="flex items-start gap-2 text-rose-400">
-                <span class="font-bold">✗</span>
-                <span>Phải bấm tay thủ công chuyển tiếp từng tin nhắn.</span>
-              </div>
-              <div class="flex items-start gap-2 text-rose-400">
-                <span class="font-bold">✗</span>
-                <span>Chi phí duy trì Zalo Official Account cao nếu dùng API.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 font-mono-code">
-            ℹ️ Đánh giá: 7/10 • Dành cho nhu cầu thủ công
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Deep Dive: Weekly Automation Flow (23:00 Sunday) -->
-      <div id="quy-trinh" class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
-          <div>
-            <span class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider">LỊCH TRÌNH VẬN HÀNH TỰ ĐỘNG</span>
-            <h3 class="text-xl sm:text-2xl font-bold text-white">Chu Trình Tự Động Mỗi Tuần (Chủ Nhật 23:00)</h3>
-          </div>
-          <div class="px-4 py-2 rounded-xl bg-blue-950/80 border border-blue-800 text-xs font-mono-code text-cyan-300 flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>CRONJOB: 0 23 * * 0</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-          
-          <!-- Step 1 -->
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-400 font-mono-code font-bold flex items-center justify-center text-sm mb-3">1</div>
-            <div class="text-xs font-semibold text-white mb-1">Quét Media 7 Ngày</div>
-            <p class="text-[11px] text-slate-400 leading-relaxed">
-              Tự động lọc các ảnh, video, PDF mới nhận trong tuần qua từ thư mục Zalo máy tính.
-            </p>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-400 font-mono-code font-bold flex items-center justify-center text-sm mb-3">2</div>
-            <div class="text-xs font-semibold text-white mb-1">Tạo Thư Mục Tuần</div>
-            <p class="text-[11px] text-slate-400 leading-relaxed font-mono-code text-[10px]">
-              Tự tạo thư mục trên Drive:<br>
-              <span class="text-cyan-300">/Zalo_Backup/2026/Tuan_35/</span>
-            </p>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-400 font-mono-code font-bold flex items-center justify-center text-sm mb-3">3</div>
-            <div class="text-xs font-semibold text-white mb-1">Phân Loại 3 Nhóm</div>
-            <p class="text-[11px] text-slate-400 leading-relaxed">
-              Tách sẵn vào 3 thư mục con: <strong>Hinh_Anh</strong>, <strong>Video</strong>, <strong>Tai_Lieu</strong> để dễ mở lại.
-            </p>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 font-mono-code font-bold flex items-center justify-center text-sm mb-3">4</div>
-            <div class="text-xs font-semibold text-white mb-1">Gửi Báo Cáo Tóm Tắt</div>
-            <p class="text-[11px] text-slate-400 leading-relaxed">
-              Báo tin nhắn ngắn gọn số file đã lưu an toàn để bạn yên tâm dọn dẹp máy tính.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- Drive Tree Mockup -->
-        <div class="mt-6 p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono-code text-slate-300">
-          <div class="text-slate-500 mb-2">// CẤU TRÚC THƯ MỤC TRÊN GOOGLE DRIVE CỦA BẠN:</div>
-          <div class="space-y-1 text-slate-400">
-            <div>📁 <span class="text-white font-bold">Google Drive Cá Nhân</span></div>
-            <div class="pl-4">└── 📁 <span class="text-cyan-300">Zalo_Backup_Auto</span></div>
-            <div class="pl-8">└── 📁 <span class="text-blue-300">Nam_2026</span></div>
-            <div class="pl-12">├── 📁 <span class="text-emerald-300">Tuan_35 (01-07_09)</span> <span class="text-slate-500">[42 ảnh • 6 video • 3 PDF]</span></div>
-            <div class="pl-16">├── 📁 Hinh_Anh/ <span class="text-slate-500">(Bill_ChuyenKhoan_01.jpg, Mau_Ao_02.png...)</span></div>
-            <div class="pl-16">├── 📁 Video/ <span class="text-slate-500">(Clip_QuayMau_Linh_01.mp4...)</span></div>
-            <div class="pl-16">└── 📁 Tai_Lieu/ <span class="text-slate-500">(Hop_Dong_Dich_Vu.pdf...)</span></div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SECTION 4: HƯỚNG DẪN KÍCH HOẠT 3 BƯỚC CHO NGƯỜI MỚI -->
-  <section class="py-16 sm:py-20 relative">
+  <!-- SECTION 5: SO SÁNH THỰC TẾ -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/60 relative" id="so-sanh">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">ĐƠN GIẢN • KHÔNG CẦN BIẾT CODE</div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">CÁCH BẬT TÍNH NĂNG</h2>
-        <p class="title-long text-sm text-slate-300 font-normal">
-          Chỉ mất 2 phút để Trợ lý bắt đầu làm việc thay bạn từ hôm nay.
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">SO SÁNH THỰC TẾ</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">LÀM TAY VS. TRỢ LÝ ZALO</h2>
+        <p class="title-long text-sm sm:text-base text-slate-400 font-normal">
+          Sự khác biệt giữa làm việc vất vả thủ công và làm việc thông minh cùng AI:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="glass-card rounded-3xl p-6 border border-slate-800 text-left relative">
-          <div class="text-2xl font-mono-code font-extrabold text-cyan-400 mb-3">01</div>
-          <h3 class="text-base font-bold text-white mb-2">Mở Zalo Máy Tính</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Đăng nhập Zalo PC/Mac bình thường như mọi ngày. Không cần cài thêm phần mềm lạ nào vào máy.
-          </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-7 border-red-500/30 bg-gradient-to-b from-red-950/10 to-slate-950/60">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-sm">
+              ✕
+            </div>
+            <div>
+              <h3 class="title-short text-base text-white">LÀM THỦ CÔNG TRUYỀN THỐNG</h3>
+              <div class="text-xs font-mono-code text-red-400">Tốn thời gian & Dễ mất file</div>
+            </div>
+          </div>
+          <div class="space-y-4 text-xs sm:text-sm text-slate-400">
+            <div class="flex items-start gap-2.5">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>Cuộn mỏi tay tìm hóa đơn giữa hàng trăm tin nhắn tán gẫu trong nhóm.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>Cay đắng khi thấy thông báo <em>"Ảnh không còn tồn tại trên máy chủ"</em> lúc cần file gấp.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>Ổ cứng máy tính đầy 30GB-50GB rác Zalo nhưng không dám xóa vì sợ mất tài liệu.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>Tải từng clip quay mẫu về máy thủ công, Zalo nén làm giảm chất lượng video.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>Sót lời dặn của sếp hoặc yêu cầu sửa của khách VIP vì tin nhắn bị trôi.</span>
+            </div>
+          </div>
         </div>
 
-        <div class="glass-card rounded-3xl p-6 border border-slate-800 text-left relative">
-          <div class="text-2xl font-mono-code font-emerald-400 mb-3">02</div>
-          <h3 class="text-base font-bold text-white mb-2">Kết Nối Google Drive</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Chỉ định thư mục trên Google Drive cá nhân của bạn để nhận file sao lưu định kỳ hàng tuần.
-          </p>
+        <div class="glass-card rounded-2xl p-7 border-cyan-500/50 bg-gradient-to-b from-cyan-950/20 to-slate-900/80 relative shadow-xl glow-cyan">
+          <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-slate-950 font-bold text-[10px] font-mono-code uppercase">
+            RẢNH TAY 100%
+          </div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
+              ✓
+            </div>
+            <div>
+              <h3 class="title-short text-base text-white">TRỢ LÝ ZALO RẢNH TAY</h3>
+              <div class="text-xs font-mono-code text-cyan-400">Tận dụng Google Drive 2TB có sẵn</div>
+            </div>
+          </div>
+          <div class="space-y-4 text-xs sm:text-sm text-slate-200">
+            <div class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Nhắn 1 câu tiếng Việt, AI bốc đúng ảnh bill kèm số tiền trong 3 giây.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Tự động lưu trữ vĩnh viễn trên Drive 2TB — Không bao giờ lo bị xóa mất file.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Tự tin bấm dọn rác máy tính mỗi tuần vì tài liệu gốc đã an toàn trên đám mây.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Tự động gom 10 video theo dự án, giữ nguyên độ phân giải 4K không bị nén.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Bản tóm tắt 21h00 nhắc đúng các việc quan trọng, đi ngủ thảnh thơi.</span>
+            </div>
+          </div>
         </div>
-
-        <div class="glass-card rounded-3xl p-6 border border-slate-800 text-left relative">
-          <div class="text-2xl font-mono-code font-blue-400 mb-3">03</div>
-          <h3 class="text-base font-bold text-white mb-2">Nhắn Lệnh & Rảnh Tay</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Nhắn bất kỳ câu lệnh nào bằng tiếng Việt khi cần tìm file hoặc để lịch chạy tự động vào tối Chủ Nhật.
-          </p>
-        </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- SECTION 5: HỎI ĐÁP THƯỜNG GẶP (FAQ) -->
-  <section id="faq" class="py-16 border-t border-slate-800/80 bg-slate-950/40 relative">
+  <!-- SECTION 6: SỞ HỮU TRỌN GÓI -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-900/60 relative overflow-hidden" id="so-huu-ngay">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-600/15 to-blue-600/15 blur-[140px] -z-10 pointer-events-none"></div>
+
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="text-xs font-mono-code text-slate-400 uppercase tracking-wider mb-2">GIẢI ĐÁP MỌI BĂN KHOĂN</div>
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border-cyan-500/40 relative shadow-2xl glow-blue bg-gradient-to-b from-slate-900/90 to-obsidian">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono-code mb-4">
+            💎 TRỌN GÓI BÀN GIAO & CÀI ĐẶT 1-SHOT
+          </div>
+          <h2 class="title-short text-3xl sm:text-4xl text-white mb-4">
+            SỞ HỮU TRỢ LÝ ZALO RẢNH TAY
+          </h2>
+          <p class="title-long text-xs sm:text-sm text-slate-300 font-normal">
+            Bàn giao toàn bộ kịch bản làm sẵn, hướng dẫn kết nối Google Drive 2TB trong 5 phút, sử dụng vĩnh viễn trên chính tài khoản Google của bạn.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10 pb-8 border-b border-slate-800">
+          <div class="space-y-3.5 text-xs sm:text-sm text-slate-300">
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Bàn giao toàn bộ Engine Python xử lý cục bộ trên máy.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Kịch bản kết nối Google Drive 2TB tự động chạy hàng tuần.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Bộ 5 câu lệnh 1-chạm tiếng Việt tích hợp trực tiếp vào Gemini.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Hướng dẫn cài đặt 0-giây bằng video ngắn, không cần biết code.</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Hỗ trợ kỹ thuật 1-1 trực tiếp từ Thầy Nguyễn Đức Việt.</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 text-center flex flex-col items-center justify-center">
+            <div class="text-xs font-mono-code text-slate-400 uppercase tracking-wider mb-1">HỌC PHÍ TRỌN GÓI</div>
+            <div class="flex items-baseline justify-center gap-2 mb-2">
+              <span class="title-short text-4xl sm:text-5xl text-gradient-cyan font-bold">3.000.000đ</span>
+            </div>
+            <div class="text-xs text-slate-400 font-mono-code mb-6">/ tài khoản sử dụng trọn đời</div>
+
+            <button onclick="openPaymentModal()" class="btn-primary w-full py-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg glow-cyan">
+              <span>Đăng Ký & Quét Mã QR Nhận Ngay</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+            <div class="text-[11px] text-slate-500 font-mono-code mt-3">
+              ⚡️ Xác nhận thanh toán tự động qua SePay 24/7
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-mono-code">
+          <div class="flex items-center gap-1.5">
+            <span class="text-cyan-400">🛡️</span>
+            <span>Không rủi ro khóa nick</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-emerald-400">🔒</span>
+            <span>Bảo mật dữ liệu 100%</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-amber-400">⚡️</span>
+            <span>Cài đặt xong trong 5 phút</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: HỎI ĐÁP THƯỜNG GẶP -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/40 relative" id="faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-wider mb-2">GIẢI ĐÁP THẮC MẮC</div>
         <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">HỎI ĐÁP THƯỜNG GẶP</h2>
       </div>
 
       <div class="space-y-4">
-        
-        <div class="glass-card rounded-2xl p-5 border border-slate-800">
-          <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
-            <span class="text-cyan-400">❓</span> Tính năng này có làm lộ tin nhắn riêng tư không?
-          </h4>
-          <p class="text-xs text-slate-400 leading-relaxed pl-6">
-            Không. Toàn bộ quá trình quét và đồng bộ diễn ra cục bộ trực tiếp trên máy tính của bạn và đẩy thẳng lên Google Drive cá nhân của chính bạn. Không có bên thứ ba nào can thiệp.
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <h3 class="title-short text-sm sm:text-base text-white mb-2">1. Tôi không biết lập trình/code thì có cài và dùng được không?</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Dùng cực kỳ dễ dàng! Bạn không cần chạm vào bất kỳ dòng code nào. Sau khi đăng ký, bạn chỉ cần chạy 1 câu lệnh cài đặt duy nhất theo video hướng dẫn 3 phút. Mọi thao tác hàng ngày bạn chỉ cần nhắn tin bằng tiếng Việt như đang chat với một người trợ lý thật.
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 border border-slate-800">
-          <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
-            <span class="text-cyan-400">❓</span> Dùng tính năng này có bị Zalo khóa tài khoản không?
-          </h4>
-          <p class="text-xs text-slate-400 leading-relaxed pl-6">
-            Hoàn toàn an toàn. Vì chúng ta sử dụng Phương án 1 (đồng bộ từ thư mục nhận file cục bộ của Zalo PC), hệ thống không can thiệp trái phép vào server Zalo nên 100% tuân thủ chính sách sử dụng.
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <h3 class="title-short text-sm sm:text-base text-white mb-2">2. Tôi đã có sẵn gói Google Drive 2TB (Google One/Gemini), kết nối thế nào?</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Trợ lý sẽ kết nối trực tiếp vào Google Drive cá nhân của chính bạn thông qua công cụ Google Drive có sẵn trên máy. Bạn không phải mua thêm bất kỳ phần mềm hay dung lượng nào khác bên ngoài.
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 border border-slate-800">
-          <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
-            <span class="text-cyan-400">❓</span> Video 4K hoặc file dung lượng lớn có tải lên Drive được không?
-          </h4>
-          <p class="text-xs text-slate-400 leading-relaxed pl-6">
-            Có. Hệ thống giữ nguyên 100% chất lượng gốc của tệp, không nén giảm độ phân giải, giúp bạn thoải mái lấy lại video gốc để biên tập.
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <h3 class="title-short text-sm sm:text-base text-white mb-2">3. Dùng trợ lý này có bị Zalo khóa tài khoản hay checkpoint không?</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Tuyệt đối không! Trợ lý hoạt động bằng cơ chế đọc dữ liệu nhận về cục bộ trên máy tính của bạn (tương tự như cách bạn mở thư mục máy tính để xem ảnh). Trợ lý KHÔNG can thiệp vào máy chủ Zalo nên 100% an toàn và không bao giờ bị khóa nick.
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 border border-slate-800">
-          <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
-            <span class="text-cyan-400">❓</span> Nếu Chủ Nhật tôi tắt máy tính thì có bị mất lịch sao lưu không?
-          </h4>
-          <p class="text-xs text-slate-400 leading-relaxed pl-6">
-            Không lo. Lần tới khi bạn mở máy tính lên, Trợ lý sẽ tự động nhận biết và bù lại lượt sao lưu còn thiếu trong tuần ngay lập tức.
+        <div class="glass-card rounded-2xl p-6 border-slate-800">
+          <h3 class="title-short text-sm sm:text-base text-white mb-2">4. Dữ liệu và hình ảnh riêng tư của tôi có bị gửi lên server nào khác không?</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            100% dữ liệu chỉ chạy giữa máy tính của bạn và Google Drive cá nhân của bạn. Không có bất kỳ máy chủ trung gian nào có quyền truy cập vào tin nhắn, hóa đơn hay hình ảnh của bạn.
           </p>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- FINAL CTA / EDITORIAL FOOTER -->
-  <footer class="py-16 sm:py-20 border-t border-slate-800/80 bg-slate-950 relative text-center">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      
-      <p class="font-quote text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto mb-6">
-        "Công nghệ sinh ra là để bạn rảnh tay làm điều mình yêu thích, chứ không phải để ngồi lục tìm từng dòng tin nhắn cũ."
-      </p>
-
-      <div class="text-xs text-slate-500 font-mono-code mb-8">
-        HỆ THỐNG TRỢ LÝ THỰC CHIẾN • FEDU COURSE • THẦY NGUYỄN ĐỨC VIỆT
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-slate-800/80 bg-obsidian text-center text-xs text-slate-500 font-mono-code">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 FEDU COURSE HUB • THẦY NGUYỄN ĐỨC VIỆT
       </div>
-
-      <div class="inline-flex items-center gap-3">
-        <a href="#5-cach-goi" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs tracking-wider transition shadow-lg shadow-blue-600/30">
-          ⚡️ THỬ LẠI 5 CÂU LỆNH DEMO
-        </a>
+      <div class="flex items-center gap-6">
+        <a href="#gia-tri-cot-loi" class="hover:text-cyan-400 transition-colors">3 Điều Bạn Mua</a>
+        <a href="#kho-drive-2tb" class="hover:text-cyan-400 transition-colors">Kho Drive 2TB</a>
+        <a href="#kich-ban-wow" class="hover:text-cyan-400 transition-colors">7 Kịch Bản</a>
+        <a href="#so-huu-ngay" class="hover:text-cyan-400 transition-colors text-cyan-400">Đăng Ký</a>
       </div>
-
-      <div class="mt-12 text-[11px] text-slate-600 font-mono-code">
-        © 2026 vietndj/course • Xuất bản trực tiếp trên Course Hub
-      </div>
-
     </div>
   </footer>
 
-  <!-- JAVASCRIPT FOR INTERACTIVE COMMAND PLAYGROUND -->
+  <!-- PAYMENT MODAL -->
+  <div id="paymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden">
+    <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 border-cyan-500/50 bg-slate-900/95 relative shadow-2xl">
+      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-mono-code">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono-code mb-2">
+          ⚡️ THANH TOÁN TỰ ĐỘNG 24/7
+        </div>
+        <h3 class="title-short text-xl text-white">SỞ HỮU TRỢ LÝ ZALO RẢNH TAY</h3>
+        <p class="text-xs text-slate-400 mt-1">Quét mã VietQR để mở khóa toàn bộ bài học & source code</p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white flex flex-col items-center justify-center mb-4">
+        <img src="https://qr.sepay.vn/img?acc=0988523333&bank=TPBank&amount=3000000&des=ZALO%20RANH%20TAY" alt="VietQR Thanh Toán" class="w-48 h-48 object-contain" />
+        <div class="text-[11px] font-mono-code text-slate-800 mt-2 font-bold">
+          Nội dung: <span class="text-blue-600">ZALO RANH TAY</span>
+        </div>
+      </div>
+
+      <div class="space-y-2 text-xs font-mono-code text-slate-300 mb-6 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Ngân hàng:</span>
+          <span class="font-bold text-white">TPBank</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Số tài khoản:</span>
+          <span class="font-bold text-cyan-400">0988 52 3333</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Chủ tài khoản:</span>
+          <span class="font-bold text-white">NGUYEN DUC VIET</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Số tiền:</span>
+          <span class="font-bold text-emerald-400">3.000.000đ</span>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-[11px] text-slate-400 leading-relaxed">
+          Sau khi chuyển khoản, hệ thống tự động xác nhận trong 15-30 giây và gửi link kích hoạt qua Telegram/Zalo cho bạn.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
   <script>
     const commandData = {
       1: {
         title: "Cách 1 • Tìm ảnh Bill / Hóa đơn",
-        userPrompt: "Tìm cho tôi tất cả ảnh chuyển khoản khách gửi tuần này trong nhóm Bán Hàng",
+        userPrompt: "\"Tìm cho tôi tất cả ảnh chuyển khoản khách gửi tuần này trong nhóm Bán Hàng\"",
         aiResponse: `
-          <div class="text-xs text-cyan-400 font-mono-code mb-2">⚡️ ĐÃ QUÉT 120 TIN NHẮN TRONG NHÓM "BÁN HÀNG" (01/09 - 07/09)</div>
-          <div class="text-sm font-semibold text-white mb-2">Tìm thấy 4 ảnh hóa đơn chuyển tiền hợp lệ:</div>
-          <div class="space-y-2 text-xs">
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-emerald-400">💵</span>
-                <span><strong>Khách: Trần Văn Hùng</strong> (Vietcombank)</span>
-              </div>
-              <span class="font-mono-code text-cyan-300 font-bold">2.450.000đ</span>
+          <div class="text-xs text-cyan-400 font-mono-code mb-2">⚡️ ĐÃ QUÉT 120 TIN NHẮN TRONG 7 NGÀY GẦN NHẤT:</div>
+          <p class="text-slate-300 mb-3">Tìm thấy <strong>4 ảnh hóa đơn chuyển khoản</strong> trong nhóm <em>Bán Hàng Online</em>:</p>
+          <div class="space-y-1.5 font-mono-code text-[11px] text-slate-400 mb-3">
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>1. Bill_ChiLinh_3tr000.jpg</span>
+              <span class="text-emerald-400">3.000.000đ (08:30 T2)</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-emerald-400">💵</span>
-                <span><strong>Khách: Lê Mai Anh</strong> (MB Bank)</span>
-              </div>
-              <span class="font-mono-code text-cyan-300 font-bold">1.200.000đ</span>
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>2. Bill_AnhNam_5tr000.jpg</span>
+              <span class="text-emerald-400">5.000.000đ (14:15 T3)</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-emerald-400">💵</span>
-                <span><strong>Khách: Shop Hoàng Yến</strong> (Techcombank)</span>
-              </div>
-              <span class="font-mono-code text-cyan-300 font-bold">4.990.000đ</span>
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>3. Bill_AnhHung_2tr500.jpg</span>
+              <span class="text-emerald-400">2.500.000đ (19:20 T5)</span>
             </div>
           </div>
-          <div class="mt-3 text-[11px] text-slate-400">👉 Toàn bộ 4 ảnh đã được lưu vào thư mục <code>Drive/Zalo_Backup/Bills/</code>.</div>
+          <div class="text-[11px] text-slate-400">
+            📁 Toàn bộ 4 ảnh đã được lưu vào <code class="text-cyan-300">Drive/Zalo/Hoa_Don_T09/</code>
+          </div>
         `
       },
       2: {
-        title: "Cách 2 • Gom Video / Ảnh Dựng Clip",
-        userPrompt: "Gom toàn bộ video quay mẫu áo thun Linh vừa gửi hôm nay vào một thư mục để tôi dựng clip",
+        title: "Cách 2 • Gom Video dựng clip theo dự án",
+        userPrompt: "\"Gom toàn bộ video quay mẫu áo Linh vừa gửi hôm nay để tôi dựng clip\"",
         aiResponse: `
-          <div class="text-xs text-emerald-400 font-mono-code mb-2">⚡️ ĐÃ TẢI XONG MEDIA TỪ BẠN "LINH MEDIA"</div>
-          <div class="text-sm font-semibold text-white mb-2">Đã gom 5 video quay mẫu (Full HD 60fps):</div>
-          <div class="grid grid-cols-2 gap-2 text-[11px] mb-3">
-            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">🎥 Mau_Ao_Canh_Hook.mp4 (14s)</div>
-            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">🎥 Mau_Ao_Canh_Vong_Tay.mp4 (8s)</div>
-            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">🎥 Mau_Ao_Canh_Chat_Vai.mp4 (12s)</div>
-            <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">🎥 Mau_Ao_Canh_Ngoai_Troi.mp4 (22s)</div>
+          <div class="text-xs text-blue-400 font-mono-code mb-2">🎬 ĐÃ GOM 5 VIDEO NGUYÊN GỐC 4K:</div>
+          <p class="text-slate-300 mb-3">Đã gom toàn bộ 5 video clip từ bạn <strong>Linh Mẫu</strong> vào thư mục dự án:</p>
+          <div class="space-y-1.5 font-mono-code text-[11px] text-slate-400 mb-3">
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>1. Video_MauAo_CanCanh.mp4</span>
+              <span class="text-cyan-400">1080p (24MB)</span>
+            </div>
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>2. Video_MauAo_ToanCanh.mp4</span>
+              <span class="text-cyan-400">4K (85MB)</span>
+            </div>
+            <div class="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+              <span>3. Video_ChiTietVai_Slow.mp4</span>
+              <span class="text-cyan-400">4K (62MB)</span>
+            </div>
           </div>
-          <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-800/50 text-xs text-emerald-300">
-            📁 Thư mục làm việc: <strong>/Volumes/Work/Mau_Ao_Thun_Linh/</strong> (Sẵn sàng ném vào Premiere / CapCut).
+          <div class="text-[11px] text-emerald-400">
+            ✅ Đã tạo sẵn thư mục \`Drive/Zalo/Du_An_Linh/\`. Bạn có thể kéo thẳng vào CapCut/Premiere dựng ngay.
           </div>
         `
       },
       3: {
-        title: "Cách 3 • Trích Xuất Lời Dặn Sửa Việc",
-        userPrompt: "Xem lại tin nhắn với anh Nam xem anh ấy dặn sửa video ở những đoạn nào lúc mấy giờ",
+        title: "Cách 3 • Trích Lời dặn sửa video của sếp",
+        userPrompt: "\"Xem lại tin nhắn với anh Nam xem dặn sửa video ở những đoạn nào\"",
         aiResponse: `
-          <div class="text-xs text-amber-400 font-mono-code mb-2">⚡️ ĐÃ TRÍCH XUẤT TỪ ĐOẠN CHAT VỚI "ANH NAM" (LÚC 14:25)</div>
-          <div class="text-sm font-semibold text-white mb-2">Nội dung sửa video anh Nam dặn:</div>
-          <div class="space-y-2 text-xs">
-            <div class="p-2.5 rounded-xl bg-slate-900 border-l-4 border-amber-400 text-slate-200">
-              <strong>1. Đoạn 00:45:</strong> Cắt bỏ câu nói ngập ngừng, đổi góc máy sang cận cảnh sản phẩm.
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border-l-4 border-amber-400 text-slate-200">
-              <strong>2. Đoạn kết 01:12:</strong> Thay nhạc nền nhẹ hơn, thêm số điện thoại đặt hàng to hơn.
-            </div>
+          <div class="text-xs text-amber-400 font-mono-code mb-2">📌 TRÍCH XUẤT 2 LỜI DẶN SỬA QUAN TRỌNG:</div>
+          <p class="text-slate-300 mb-3">Từ cuộc trò chuyện với <strong>Anh Nam Đạo Diễn</strong> lúc 15:40 chiều nay:</p>
+          <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-200 space-y-2 mb-3">
+            <div><strong>1. Mốc 00:15:</strong> Cắt bớt đoạn mở đầu dài dòng, vào thẳng câu hook giật tít.</div>
+            <div><strong>2. Mốc 01:20:</strong> Đổi nhạc nền kịch tính hơn và chèn logo FEDU ở góc phải.</div>
           </div>
-          <div class="mt-2 text-[11px] text-slate-400">💡 Bạn không cần phải cuộn lại 80 tin nhắn tán gẫu trước đó.</div>
+          <div class="text-[11px] text-slate-400">
+            ✨ Bạn không cần phải lội lại 80 tin nhắn tán gẫu khác.
+          </div>
         `
       },
       4: {
-        title: "Cách 4 • Tóm Tắt Nhanh Nhóm Công Việc",
-        userPrompt: "Hôm nay nhóm Dự Án có việc gì quan trọng cần xử lý gấp không?",
+        title: "Cách 4 • Tóm tắt việc gấp nhóm dự án",
+        userPrompt: "\"Hôm nay nhóm Dự Án có việc gì quan trọng cần xử lý gấp không?\"",
         aiResponse: `
-          <div class="text-xs text-purple-400 font-mono-code mb-2">⚡️ TÓM TẮT NHANH 185 TIN NHẮN TRONG NHÓM "DỰ ÁN X" HÔM NAY</div>
-          <div class="text-sm font-semibold text-white mb-2">3 việc quan trọng nhất bạn cần lưu ý:</div>
-          <div class="space-y-2 text-xs">
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-2">
-              <span class="text-purple-400 font-bold">1.</span>
-              <span><strong>Duyệt hợp đồng:</strong> Bạn Thu đã gửi bản scan hợp đồng lúc 10h, đang đợi chữ ký duyệt.</span>
+          <div class="text-xs text-purple-400 font-mono-code mb-2">⚡️ TÓM TẮT 3 ĐẦU VIỆC QUAN TRỌNG HÔM NAY:</div>
+          <div class="space-y-2 text-xs text-slate-300 mb-3">
+            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+              <span class="text-amber-400 font-bold">1. Chốt duyệt mẫu:</span> Khách hàng Hoàng Mai đang đợi duyệt màu áo trước 17h.
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-2">
-              <span class="text-purple-400 font-bold">2.</span>
-              <span><strong>Lịch quay ngày mai:</strong> Dời sang 15:00 chiều tại Times City do sáng trời mưa.</span>
+            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+              <span class="text-cyan-400 font-bold">2. Hóa đơn VAT:</span> Kế toán Hương đã gửi bảng kê, cần bạn ký duyệt.
             </div>
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-2">
-              <span class="text-purple-400 font-bold">3.</span>
-              <span><strong>Demo landing page:</strong> Lập trình viên đã hoàn thiện, link nằm ở tin nhắn ghim.</span>
+            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+              <span class="text-emerald-400 font-bold">3. Lịch quay ngày mai:</span> Ekip đã chốt bối cảnh lúc 8h sáng tại Times City.
             </div>
+          </div>
+          <div class="text-[11px] text-slate-400">
+            💡 Đã lọc bỏ 450 tin nhắn thảo luận không khẩn cấp.
           </div>
         `
       },
       5: {
-        title: "Cách 5 • Tự Động Sao Lưu & Dọn Rác",
-        userPrompt: "Lưu hết ảnh tháng này lên Google Drive rồi báo tôi để tôi xóa bớt cho nhẹ máy",
+        title: "Cách 5 • Lưu Drive & Dọn rác máy tính",
+        userPrompt: "\"Lưu hết ảnh tháng này lên Google Drive rồi báo tôi để tôi xóa bớt cho nhẹ máy\"",
         aiResponse: `
-          <div class="text-xs text-cyan-400 font-mono-code mb-2">⚡️ ĐỒNG BỘ MEDIA LÊN GOOGLE DRIVE HOÀN TẤT</div>
-          <div class="text-sm font-semibold text-white mb-2">Báo cáo lưu trữ an toàn:</div>
-          <div class="space-y-2 text-xs mb-3">
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 grid grid-cols-3 gap-2 text-center font-mono-code">
-              <div>
-                <div class="text-cyan-400 text-lg font-bold">68</div>
-                <div class="text-[10px] text-slate-400 uppercase">Hình ảnh</div>
-              </div>
-              <div>
-                <div class="text-emerald-400 text-lg font-bold">12</div>
-                <div class="text-[10px] text-slate-400 uppercase">Video gốc</div>
-              </div>
-              <div>
-                <div class="text-blue-400 text-lg font-bold">1.4 GB</div>
-                <div class="text-[10px] text-slate-400 uppercase">Đã đồng bộ</div>
-              </div>
-            </div>
+          <div class="text-xs text-emerald-400 font-mono-code mb-2">☁️ ĐỒNG BỘ HOÀN TẤT & SẴN SÀNG DỌN RÁC:</div>
+          <p class="text-slate-300 mb-3">Đã kiểm tra toàn vẹn và sao lưu <strong>248 tệp media (3.8 GB)</strong> lên Google Drive 2TB:</p>
+          <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-mono-code text-slate-300 space-y-1 mb-3">
+            <div>✓ Thư mục đích: <span class="text-cyan-300">GoogleDrive/Zalo_Backup_T09/</span></div>
+            <div>✓ Số lượng ảnh: 195 ảnh (Full HD)</div>
+            <div>✓ Số lượng video: 53 video (4K nguyên bản)</div>
+            <div>✓ Trạng thái: Đã kiểm tra không lỗi file</div>
           </div>
-          <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-800/50 text-xs text-cyan-300">
-            ✅ Toàn bộ media đã nằm an toàn trên <strong>Google Drive / Zalo_Backup_Thang_09/</strong>. Bạn có thể bấm dọn dẹp bộ nhớ Zalo trên máy tính ngay bây giờ mà không sợ mất file.
+          <div class="text-[11px] text-emerald-300 font-semibold">
+            🎉 Bạn có thể tự tin vào Zalo bấm "Dọn dẹp bộ nhớ đệm" để giải phóng 3.8GB ổ cứng máy tính ngay bây giờ!
           </div>
         `
       }
     };
 
-    let currentCmdId = 1;
-
-    function selectCommand(id) {
-      currentCmdId = id;
-
-      // Update button active styles
+    function showCommand(id) {
       for (let i = 1; i <= 5; i++) {
         const btn = document.getElementById(`cmd-btn-${i}`);
         if (i === id) {
-          btn.className = 'w-full text-left p-4 rounded-2xl glass-card glass-card-hover border-2 border-cyan-400/80 bg-blue-950/40 shadow-lg shadow-cyan-500/10 transition relative overflow-hidden group';
+          btn.className = "w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-900/90 border-cyan-500/50 text-white shadow-md";
+          btn.querySelector("span:first-child").className = "w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 font-mono-code text-xs flex items-center justify-center font-bold";
+          btn.querySelector("span:last-child").className = "text-cyan-400 text-xs";
         } else {
-          btn.className = 'w-full text-left p-4 rounded-2xl glass-card glass-card-hover border border-slate-800 transition relative overflow-hidden group';
+          btn.className = "w-full text-left p-4 rounded-xl transition-all flex items-center justify-between border bg-slate-950/50 border-slate-800 text-slate-400 hover:text-slate-200";
+          btn.querySelector("span:first-child").className = "w-6 h-6 rounded-full bg-slate-800 text-slate-400 font-mono-code text-xs flex items-center justify-center font-bold";
+          btn.querySelector("span:last-child").className = "text-slate-600 text-xs";
         }
       }
 
       const data = commandData[id];
-      document.getElementById('simulator-input-text').innerText = `"${data.userPrompt}"`;
-
-      // Render chat bubbles
-      const chatBox = document.getElementById('simulator-chat-box');
-      chatBox.innerHTML = `
-        <!-- User Message Bubble -->
-        <div class="flex items-start justify-end gap-2.5 mb-4">
-          <div class="max-w-[85%] p-3.5 rounded-2xl rounded-tr-none bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs leading-relaxed shadow-md">
-            ${data.userPrompt}
-          </div>
-          <div class="w-7 h-7 rounded-full bg-cyan-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
-            Bạn
-          </div>
-        </div>
-
-        <!-- AI Assistant Response Bubble -->
-        <div class="flex items-start gap-2.5">
-          <div class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
-            AI
-          </div>
-          <div class="max-w-[90%] p-4 rounded-2xl rounded-tl-none bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs shadow-lg">
-            ${data.aiResponse}
-          </div>
-        </div>
-      `;
+      document.getElementById("cmd-title").textContent = data.title;
+      document.getElementById("cmd-user-prompt").textContent = data.userPrompt;
+      document.getElementById("cmd-ai-output").innerHTML = data.aiResponse;
     }
 
-    function copyCurrentPrompt() {
-      const data = commandData[currentCmdId];
-      navigator.clipboard.writeText(data.userPrompt).then(() => {
-        const btnText = document.getElementById('copy-btn-text');
-        btnText.innerText = "Đã sao chép! ✓";
-        setTimeout(() => {
-          btnText.innerText = "Sao chép câu lệnh";
-        }, 2000);
-      });
+    function openPaymentModal() {
+      document.getElementById("paymentModal").classList.remove("hidden");
     }
 
-    function handleGoBack() {
-      if (window.history.length > 1 && document.referrer) {
-        window.history.back();
-      } else {
-        window.location.href = './index.html';
-      }
+    function closePaymentModal() {
+      document.getElementById("paymentModal").classList.add("hidden");
     }
-
-    // Initialize with command 1
-    window.addEventListener('DOMContentLoaded', () => {
-      selectCommand(1);
-    });
   </script>
-
 </body>
 </html>
