@@ -1,7 +1,73 @@
 {
-  "generated_at": "2026-09-01 06:29:27",
-  "total_posts": 97,
+  "generated_at": "2026-09-01 06:31:43",
+  "total_posts": 98,
   "posts": [
+    {
+      "filename": "tro-ly-imessage-ranh-tay.html",
+      "title": "Trợ Lý iMessage Rảnh Tay",
+      "excerpt": "Biến chiếc máy Mac của bạn thành thư ký riêng tự động: Lọc sạch OTP & biến động số dư ngân hàng, phản hồi lịch hẹn tinh tế, chăm sóc đối tác VIP 1-1 và bảo mật 100% nộ...",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://img.vietqr.io/image/MB-0988848989-compact2.png",
+      "updated_at": "2026-09-01 06:31:31 +0700",
+      "read_time": "11 phút đọc",
+      "file_size_kb": 41.7
+    },
+    {
+      "filename": "ai-face-clone.html",
+      "title": "AI Face Clone",
+      "excerpt": "Chỉ cần nạp 3 bức ảnh thường ngày. Từ nay mọi bức ảnh Trợ lý AI sinh ra đều tự động mang đúng khuôn mặt và thần thái của chính bạn —không cần mô tả lại, không cần kéo ...",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "4 phút đọc",
+      "file_size_kb": 60.6
+    },
+    {
+      "filename": "auto-edit-video.html",
+      "title": "Trợ Lý Dựng Video Tự Động",
+      "excerpt": "Ném video tự quay vào — AI tự nghe tiếng Việt để gọt sạch đoạn ngập ngừng, tự động thêm phụ đề chuyển động bắt mắt và xuất thẳng video hoàn chỉnh để đăng ngay.",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "2 phút đọc",
+      "file_size_kb": 11.8
+    },
+    {
+      "filename": "boc-kich-ban-3-tang.html",
+      "title": "Bóc Kịch Bản Clip Hay & Phân Tích 3 Tầng",
+      "excerpt": "Thấy clip nào trên mạng đang viral hay, dán link vào là AI tự bóc sạch lời nói và góc quay thànhkịch bản 2 cộtđể quay theo trong 5 phút. Khỏi cắn bút nghĩ câu mở đầu.",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "2 phút đọc",
+      "file_size_kb": 11.4
+    },
+    {
+      "filename": "miss-ban-hang.html",
+      "title": "Trang Web Bán Hàng Tự Động",
+      "excerpt": "Trang web có sẵn mã QR ngân hàng. Khách quét mã chuyển khoản là tiền về tài khoản, web tự kích hoạt gửi bài học cho khách lúc 2h sáng mà không cần người trực chat.",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "2 phút đọc",
+      "file_size_kb": 11.2
+    },
+    {
+      "filename": "phan-tich-video-02.html",
+      "title": "Phân Tích Video 02",
+      "excerpt": "Chỉ cần gửi 1 linkReels, TikTok, Shortshoặc kéo thả fileMP4. Antigravity tự động bóc tách OpenCV từng phân cảnh, chấm điểm thị giác 2 chiều, xuất file PDF A4 Dark-Mode...",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "3 phút đọc",
+      "file_size_kb": 24.6
+    },
     {
       "filename": "skills.html",
       "title": "Kho Kỹ Năng AI Thực Chiến",
@@ -9,9 +75,9 @@
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
       "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:29:21 +0700",
-      "read_time": "3 phút đọc",
-      "file_size_kb": 24.9
+      "updated_at": "2026-09-01 06:29:29 +0700",
+      "read_time": "4 phút đọc",
+      "file_size_kb": 26.6
     },
     {
       "filename": "stock-advisor.html",
@@ -20,7 +86,7 @@
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
       "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:29:06 +0700",
+      "updated_at": "2026-09-01 06:29:29 +0700",
       "read_time": "2 phút đọc",
       "file_size_kb": 11.2
     },
@@ -31,42 +97,9 @@
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
       "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:28:59 +0700",
+      "updated_at": "2026-09-01 06:29:29 +0700",
       "read_time": "2 phút đọc",
       "file_size_kb": 11.1
-    },
-    {
-      "filename": "miss-ban-hang.html",
-      "title": "Trang Web Bán Hàng Tự Động",
-      "excerpt": "Trang web có sẵn mã QR ngân hàng. Khách quét mã chuyển khoản là tiền về tài khoản, web tự kích hoạt gửi bài học cho khách lúc 2h sáng mà không cần người trực chat.",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:28:51 +0700",
-      "read_time": "2 phút đọc",
-      "file_size_kb": 11.2
-    },
-    {
-      "filename": "boc-kich-ban-3-tang.html",
-      "title": "Bóc Kịch Bản Clip Hay & Phân Tích 3 Tầng",
-      "excerpt": "Thấy clip nào trên mạng đang viral hay, dán link vào là AI tự bóc sạch lời nói và góc quay thànhkịch bản 2 cộtđể quay theo trong 5 phút. Khỏi cắn bút nghĩ câu mở đầu.",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:28:43 +0700",
-      "read_time": "2 phút đọc",
-      "file_size_kb": 11.4
-    },
-    {
-      "filename": "auto-edit-video.html",
-      "title": "Trợ Lý Dựng Video Tự Động",
-      "excerpt": "Ném video tự quay vào — AI tự nghe tiếng Việt để gọt sạch đoạn ngập ngừng, tự động thêm phụ đề chuyển động bắt mắt và xuất thẳng video hoàn chỉnh để đăng ngay.",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-01 06:28:34 +0700",
-      "read_time": "2 phút đọc",
-      "file_size_kb": 11.8
     },
     {
       "filename": "tro-ly-zalo-ranh-tay.html",
@@ -74,7 +107,7 @@
       "excerpt": "Chấm dứt cảnh cuộn mỏi tay tìm lại ảnh bill hay lo sợ\"ảnh đã bị Zalo xóa mất\". \n        Mọi ảnh, video, tài liệu tự động gom gọn và sao lưu an toàn vềGoogle Drive của ...",
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-09-01 06:26:54 +0700",
       "read_time": "9 phút đọc",
       "file_size_kb": 53.4
@@ -155,28 +188,6 @@
       "updated_at": "2026-08-30 14:55:06 +0700",
       "read_time": "12 phút đọc",
       "file_size_kb": 52.2
-    },
-    {
-      "filename": "phan-tich-video-02.html",
-      "title": "Phân Tích Video 02",
-      "excerpt": "Chỉ cần gửi 1 linkReels, TikTok, Shortshoặc kéo thả fileMP4. Antigravity tự động bóc tách OpenCV từng phân cảnh, chấm điểm thị giác 2 chiều, xuất file PDF A4 Dark-Mode...",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-08-30 07:44:04 +0700",
-      "read_time": "3 phút đọc",
-      "file_size_kb": 24.6
-    },
-    {
-      "filename": "ai-face-clone.html",
-      "title": "AI Face Clone",
-      "excerpt": "Chỉ cần nạp 3 bức ảnh thường ngày. Từ nay mọi bức ảnh Trợ lý AI sinh ra đều tự động mang đúng khuôn mặt và thần thái của chính bạn —không cần mô tả lại, không cần kéo ...",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-08-29 23:23:24 +0700",
-      "read_time": "4 phút đọc",
-      "file_size_kb": 60.6
     },
     {
       "filename": "admin.html",
@@ -536,7 +547,7 @@
       "excerpt": "TỪ TÂM LÝ HỌC NIỀM TIN ĐẾN KỸ THUẬT KỂ CHUYỆN BẰNG HÌNH ẢNH",
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-04-22 17:28:34 +0700",
       "read_time": "18 phút đọc",
       "file_size_kb": 64.6
@@ -723,7 +734,7 @@
       "excerpt": "Hành trình chuyển đổi từ \"Tiêu thụ thụ động\" sang \"Kiến tạo chủ động\" và bí mật của Trí nhớ cơ bắp.",
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-04-14 20:32:02 +0700",
       "read_time": "18 phút đọc",
       "file_size_kb": 47.0
@@ -811,7 +822,7 @@
       "excerpt": "Bạn đang đặt ra những câu hỏi chạm đến cốt lõi củaKhoa học Thần kinh Tiến hóa (Evolutionary Neuroscience)vàSinh học Hành vi (Behavioral Biology).",
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-04-14 20:31:22 +0700",
       "read_time": "14 phút đọc",
       "file_size_kb": 38.5
@@ -822,7 +833,7 @@
       "excerpt": "Chào bạn, kịch bản bạn tự viết thực sự cực kỳ xuất sắc!",
       "category_key": "script",
       "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-04-14 20:31:17 +0700",
       "read_time": "16 phút đọc",
       "file_size_kb": 43.6
@@ -987,7 +998,7 @@
       "excerpt": "ĐÁNH GIÁ HỆ THỐNG TỦ B-ROLL:Hệ thống 4 tủ theo Trục Tâm lý của bạn đã xuất sắc, đi thẳng vào Hệ Limbic (Não cảm xúc) và thoát hoàn toàn khỏi tư duy của thợ quay phim t...",
       "category_key": "broll",
       "category_label": "🎬 B-Roll & Cảnh Trám",
-      "cover_image": "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&auto=format&fit=crop&q=80",
+      "cover_image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-04-14 20:29:18 +0700",
       "read_time": "16 phút đọc",
       "file_size_kb": 41.9
