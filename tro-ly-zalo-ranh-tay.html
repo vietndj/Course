@@ -637,7 +637,150 @@
     </div>
   </section>
 
-  <!-- SECTION 4: 5 CÂU LỆNH 1-CHẠM TIẾNG VIỆT -->
+  <!-- SECTION 4 (MỚI): GỬI TIN NHẮN ZALO NGẦM 100% -->
+  <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-900/50 relative overflow-hidden" id="gui-tin-ngam">
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-blue-600/10 to-cyan-600/10 blur-[120px] -z-10 pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="text-xs font-mono-code text-blue-400 uppercase tracking-wider mb-2">⚡ TÍNH NĂNG MỚI · CDP ENGINE</div>
+        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">
+          GỬI TIN NHẮN ZALO NGẦM 100%
+        </h2>
+        <p class="title-long text-xs sm:text-sm text-slate-300 font-normal leading-relaxed">
+          Không bật app Zalo. Không cướp cửa sổ. Không gián đoạn công việc.<br>
+          Tin nhắn gửi đi trong <span class="text-cyan-400 font-semibold">&lt; 1 giây</span> hoàn toàn vô hình — bạn đang gõ phím, đang họp, đang quay clip đều không bị ảnh hưởng.
+        </p>
+      </div>
+
+      <!-- 3 BƯỚC QUY TRÌNH -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <!-- Step 1 -->
+        <div class="glass-card rounded-2xl p-6 border-blue-500/30 relative group hover:border-blue-400/50 transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-sm">01</div>
+            <h3 class="title-short text-sm text-white">SETUP 1 LẦN</h3>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            Chạy lệnh setup → Chrome mở trang Zalo Web → Quét mã QR trên điện thoại → <span class="text-emerald-400">Xong.</span>
+          </p>
+          <div class="bg-slate-950/80 rounded-lg p-3 font-mono-code text-[11px] text-cyan-300 border border-slate-800">
+            python3 zalo_engine.py --setup
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-2xl p-6 border-cyan-500/30 relative group hover:border-cyan-400/50 transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">02</div>
+            <h3 class="title-short text-sm text-white">NÓI 1 CÂU</h3>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            Nhắn AI bằng tiếng Việt: <span class="text-slate-200 italic">"Nhắn Zalo cho Nhà thuốc Cát Tường nội dung XYZ"</span> — AI tự gửi ngầm.
+          </p>
+          <div class="bg-slate-950/80 rounded-lg p-3 font-mono-code text-[11px] text-cyan-300 border border-slate-800">
+            --to "Cát Tường" --msg "Nội dung"
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-2xl p-6 border-emerald-500/30 relative group hover:border-emerald-400/50 transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">03</div>
+            <h3 class="title-short text-sm text-white">TIN ĐÃ GỬI</h3>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">
+            Tin nhắn gửi đi trong <span class="text-emerald-400 font-semibold">&lt; 1 giây</span>. Màn hình của bạn hoàn toàn tĩnh lặng. Không popup, không chớp nháy.
+          </p>
+          <div class="bg-emerald-500/10 rounded-lg p-3 text-[11px] text-emerald-300 border border-emerald-500/20 text-center font-medium">
+            ✅ Đã gửi · 0.8 giây · 0% gián đoạn
+          </div>
+        </div>
+      </div>
+
+      <!-- BẢNG SO SÁNH TRƯỚC / SAU -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border-slate-800 mb-10">
+        <h3 class="title-long text-sm sm:text-base text-white mb-6 text-center font-semibold" style="font-weight:600;">
+          So sánh trải nghiệm gửi tin Zalo: Trước và Sau khi có CDP Engine
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs sm:text-sm">
+            <thead>
+              <tr class="text-left border-b border-slate-700">
+                <th class="py-3 pr-4 text-slate-400 font-mono-code font-normal">Tiêu chí</th>
+                <th class="py-3 px-4 text-red-400 font-mono-code font-normal">❌ Trước đây</th>
+                <th class="py-3 pl-4 text-emerald-400 font-mono-code font-normal">✅ CDP Engine</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate-300">
+              <tr class="border-b border-slate-800/60">
+                <td class="py-3 pr-4 text-slate-400">Tốc độ gửi</td>
+                <td class="py-3 px-4 text-red-300">3–5 giây (Playwright)</td>
+                <td class="py-3 pl-4 text-emerald-300 font-medium">&lt; 1 giây</td>
+              </tr>
+              <tr class="border-b border-slate-800/60">
+                <td class="py-3 pr-4 text-slate-400">Cướp cửa sổ?</td>
+                <td class="py-3 px-4 text-red-300">Có — Zalo nhảy lên 2 giây</td>
+                <td class="py-3 pl-4 text-emerald-300 font-medium">Không — 100% vô hình</td>
+              </tr>
+              <tr class="border-b border-slate-800/60">
+                <td class="py-3 pr-4 text-slate-400">Cần mở app Zalo?</td>
+                <td class="py-3 px-4 text-red-300">Có — bắt buộc</td>
+                <td class="py-3 pl-4 text-emerald-300 font-medium">Không — tắt hẳn cũng được</td>
+              </tr>
+              <tr class="border-b border-slate-800/60">
+                <td class="py-3 pr-4 text-slate-400">Rủi ro khóa nick</td>
+                <td class="py-3 px-4 text-slate-400">0%</td>
+                <td class="py-3 pl-4 text-emerald-300 font-medium">0% — hành vi giống người thật</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 text-slate-400">Thiết lập</td>
+                <td class="py-3 px-4 text-red-300">Phức tạp</td>
+                <td class="py-3 pl-4 text-emerald-300 font-medium">Quét QR 1 lần → Xong mãi mãi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CƠ CHẾ KỸ THUẬT -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border-slate-800">
+        <h3 class="title-short text-sm sm:text-base text-white mb-4">CƠ CHẾ HOẠT ĐỘNG</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-400">
+          <div class="flex items-start gap-3">
+            <span class="text-blue-400 mt-0.5">🌐</span>
+            <div>
+              <span class="text-slate-200 font-medium">Chrome DevTools Protocol (CDP)</span><br>
+              Kết nối WebSocket vào tab Zalo Web chạy ẩn trong bộ nhớ, inject JavaScript trực tiếp để tìm liên hệ và gửi tin.
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 mt-0.5">🛡️</span>
+            <div>
+              <span class="text-slate-200 font-medium">Fallback thông minh</span><br>
+              Nếu Chrome CDP không khả dụng, engine tự động chuyển sang AppleScript gửi qua Zalo Mac (chớp 0.3s rồi tự ẩn).
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-cyan-400 mt-0.5">🔒</span>
+            <div>
+              <span class="text-slate-200 font-medium">Bảo mật nội bộ 100%</span><br>
+              Không gửi dữ liệu qua server trung gian. Mọi thứ chạy cục bộ giữa máy Mac của bạn và Zalo Web.
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 mt-0.5">⚡</span>
+            <div>
+              <span class="text-slate-200 font-medium">Đóng gói 0 ma sát</span><br>
+              Người mới chỉ cần chạy 1 lệnh setup, quét QR trên điện thoại. Từ đó AI tự xử lý 100%.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: 5 CÂU LỆNH 1-CHẠM TIẾNG VIỆT -->
   <section class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-900/40 relative" id="cau-lenh-1-cham">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="text-center max-w-2xl mx-auto mb-14">
