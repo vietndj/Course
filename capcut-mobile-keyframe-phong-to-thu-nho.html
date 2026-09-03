@@ -77,7 +77,7 @@
     /* TYPOGRAPHY QUY CHUẨN ANH VIỆT */
     .title-short {
       font-family: 'SVN-Integral', 'Plus Jakarta Sans', sans-serif;
-      font-weight: 400; /* Regular, không dùng Bold */
+      font-weight: 400; /* Luôn Regular, cấm Bold */
       letter-spacing: 0.02em;
       text-transform: uppercase;
     }
@@ -93,12 +93,12 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* NAVIGATION / HEADER */
+    /* HEADER */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 9, 14, 0.85);
+      background: rgba(6, 9, 14, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -167,10 +167,10 @@
 
     /* HERO SECTION */
     .hero-banner {
-      background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, rgba(14, 20, 34, 0.5) 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.18) 0%, rgba(14, 20, 34, 0.6) 70%);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 48px 36px;
+      padding: 44px 36px;
       margin-bottom: 48px;
       position: relative;
       overflow: hidden;
@@ -192,20 +192,20 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
       color: #fcd34d;
       font-size: 0.85rem;
       font-weight: 600;
       padding: 6px 14px;
       border-radius: 999px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-title {
-      font-size: 2.2rem;
+      font-size: 2.15rem;
       color: var(--text-main);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       letter-spacing: -0.01em;
     }
 
@@ -216,10 +216,10 @@
     }
 
     .hero-desc {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       color: var(--text-body);
       max-width: 820px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .hero-meta-grid {
@@ -300,7 +300,7 @@
         grid-template-columns: 1fr;
       }
       .hero-title {
-        font-size: 1.7rem;
+        font-size: 1.65rem;
       }
     }
 
@@ -347,80 +347,11 @@
       transform: rotate(-45deg);
     }
 
-    /* TIMELINE EXPLANATION DIAGRAM */
-    .timeline-diagram {
-      background: #090e18;
-      border: 1px dashed var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      margin: 24px 0;
-      position: relative;
-    }
-
-    .diagram-track {
-      height: 48px;
-      background: #111a2c;
-      border-radius: 8px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin: 40px 0 20px;
-      border: 1px solid #1f2e4d;
-    }
-
-    .keyframe-node {
-      position: absolute;
-      top: 50%;
-      width: 30px;
-      height: 30px;
-      background: #ef4444;
-      border: 3px solid #ffffff;
-      border-radius: 4px;
-      transform: translate(-50%, -50%) rotate(45deg);
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
-      cursor: pointer;
-      z-index: 5;
-    }
-
-    .node-label {
-      position: absolute;
-      top: -36px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-45deg);
-      background: rgba(17, 24, 39, 0.9);
-      border: 1px solid #374151;
-      padding: 2px 10px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .node-status {
-      position: absolute;
-      bottom: -36px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-45deg);
-      font-size: 0.78rem;
-      color: #94a3b8;
-      white-space: nowrap;
-    }
-
-    .motion-arrow {
-      position: absolute;
-      height: 4px;
-      background: linear-gradient(90deg, #ef4444, #38bdf8, #ef4444);
-      top: 50%;
-      transform: translateY(-50%);
-      border-radius: 2px;
-    }
-
     /* SCREENSHOT SHOWCASE */
     .screenshots-showcase {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
+      gap: 28px;
       margin-top: 24px;
     }
 
@@ -466,31 +397,23 @@
     .mockup-img-wrap {
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid #233148;
       background: #000;
       position: relative;
-      aspect-ratio: 9/16;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
     .mockup-img-wrap img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.3s ease;
     }
 
-    .mockup-img-wrap:hover img {
-      transform: scale(1.02);
-    }
-
     .mockup-caption {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.55;
     }
 
     .highlight-tip {
@@ -498,7 +421,7 @@
       border-left: 3px solid var(--cyan);
       padding: 10px 14px;
       border-radius: 0 8px 8px 0;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: #e0f2fe;
     }
 
@@ -633,7 +556,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.05s linear;
-      transform-origin: center center;
+      transform-origin: center 40%;
     }
 
     .sim-overlay-hud {
@@ -644,7 +567,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.75rem;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(8px);
       padding: 6px 12px;
       border-radius: 999px;
@@ -816,7 +739,7 @@
           <p>Giáo Trình Dựng Video Thực Chiến Anh Việt</p>
         </div>
       </a>
-      <div class="badge-capcut">CAPCUT MOBILE 2026</div>
+      <div class="badge-capcut">CAPCUT MOBILE TIẾNG VIỆT</div>
     </div>
   </header>
 
@@ -826,31 +749,31 @@
     <!-- HERO BANNER -->
     <div class="hero-banner">
       <div class="hero-tag">
-        <span>⚡ KỸ THUẬT NẰM LÒNG CHO MỌI CREATOR</span>
+        <span>⚡ HƯỚNG DẪN TRỰC QUAN THEO GIAO DIỆN CAPCUT THỰC TẾ</span>
       </div>
       <h2 class="title-long hero-title">
         Cách Dùng Keyframe Trên CapCut Mobile Để Làm <span>Hiệu Ứng Phóng To Thu Nhỏ</span>
       </h2>
       <p class="hero-desc">
-        Keyframe (Khung hình then chốt) là tính năng quyền lực nhất giúp video short-form của bạn thoát khỏi cảnh "tĩnh và đơ". Chỉ với 2 cú chạm và thao tác 2 ngón tay, bạn có thể tạo cú Punch-in giật nhịp kịch tính hoặc cú Slow-Zoom êm ái như máy quay điện ảnh chuyên nghiệp.
+        Keyframe (Khung hình then chốt) là tính năng cốt lõi giúp video của bạn thoát khỏi sự nhàm chán của một góc máy chết. Chỉ với 2 cú chạm và thao tác 2 ngón tay thu phóng, bạn có thể biến một cảnh quay trung bình thành một cú Punch-in giật nhịp kịch tính hoặc cú trượt ống kính cận mặt mượt mà điện ảnh.
       </p>
 
       <div class="hero-meta-grid">
         <div class="meta-item">
-          <span class="meta-label">Thiết Bị Thực Hành</span>
-          <span class="meta-val">CapCut Mobile (iOS / Android)</span>
+          <span class="meta-label">Giao Diện Thực Tế</span>
+          <span class="meta-val">CapCut Mobile Bản Tiếng Việt</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Công Thức Cốt Lõi</span>
-          <span class="meta-val">2 Điểm Neo (A → B) + 2 Ngón Tay</span>
+          <span class="meta-label">Công Thức Bất Biến</span>
+          <span class="meta-val">Mốc A (Gốc) → Mốc B (Phóng to)</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Cấp Độ Ứng Dụng</span>
-          <span class="meta-val">Cơ Bản Đến Nâng Cao (Graphs Curve)</span>
+          <span class="meta-label">Thao Tác Thu Phóng</span>
+          <span class="meta-val">2 Ngón Tay Kéo Dãn / Bóp Chụm</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Tác Dụng Thị Giác</span>
-          <span class="meta-val">Đổi Cỡ Cảnh, Giữ Chân Người Xem 3s</span>
+          <span class="meta-label">Hiệu Quả Video</span>
+          <span class="meta-val">Đổi Cỡ Cảnh Nhấn Mạnh Tâm Lý 3s</span>
         </div>
       </div>
     </div>
@@ -859,7 +782,7 @@
     <section class="section-block">
       <div class="section-header">
         <div class="section-icon">💡</div>
-        <h3 class="title-short section-heading-short">1. BẢN CHẤT CỐT LÕI</h3>
+        <h3 class="title-short section-heading-short">1. BẢN CHẤT CỐT LÕI CỦA KEYFRAME</h3>
       </div>
 
       <div class="concept-grid">
@@ -869,12 +792,12 @@
             Keyframe Là Gì?
           </h3>
           <p>
-            Đừng sợ từ ngữ kỹ thuật. Hãy tưởng tượng <strong>Keyframe</strong> giống như một <strong>"Chiếc đinh đóng mốc thời gian"</strong> trên timeline video của bạn:
+            Đừng sợ các từ ngữ kỹ thuật chuyên sâu. Hãy hiểu nôm na <strong>Keyframe</strong> giống như một <strong>"Chiếc đinh đóng mốc thời gian"</strong> trên thanh video của bạn:
           </p>
           <ul style="margin-top: 12px; margin-left: 20px; display: flex; flex-direction: column; gap: 8px;">
-            <li>Tại giây <strong>01:00</strong>: Bạn đóng một chiếc đinh (Keyframe 1) và bảo CapCut <em>"Ở giây này, video kích thước 100%"</em>.</li>
-            <li>Tại giây <strong>02:00</strong>: Bạn di chuyển tới và đóng chiếc đinh thứ hai (Keyframe 2), rồi phóng to mặt lên <em>130%</em>.</li>
-            <li><strong>CapCut sẽ tự động:</strong> Làm chuyển động từ 100% trườn dần lên 130% trong suốt khoảng thời gian 1 giây đó mà bạn không cần phải cắt ghép từng frame!</li>
+            <li>Tại giây <strong>00:00</strong>: Bạn đóng chiếc đinh thứ nhất (Keyframe A) để chốt: <em>"Tại đây, video giữ nguyên cỡ gốc 100%"</em>.</li>
+            <li>Tại giây <strong>01:10</strong>: Bạn di chuyển tới và đóng chiếc đinh thứ hai (Keyframe B), rồi dùng tay phóng to mặt cô gái lên <em>140%</em>.</li>
+            <li><strong>CapCut sẽ tự động:</strong> Làm chuyển động từ 100% trườn mượt dần lên 140% trong suốt 1.1 giây đó mà bạn không cần phải cắt vụn video!</li>
           </ul>
         </div>
 
@@ -884,104 +807,74 @@
             Quy Tắc 2 Điểm Bất Biến
           </h3>
           <p>
-            Sai lầm số 1 của người mới là chỉ bấm 1 Keyframe rồi phóng to ngay, dẫn đến cả video bị phóng to từ đầu đến cuối!
+            Sai lầm phổ biến nhất của người mới học là: vừa bấm nút Keyframe xong liền vội vàng dùng tay phóng to ngay tại chỗ! Kết quả là toàn bộ video bị to đùng từ đầu đến đuôi, không có chuyển động nào xảy ra.
           </p>
           <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 12px; margin-top: 12px; border-left: 3px solid var(--purple);">
-            <strong style="color: #c4b5fd;">CÔNG THỨC VÀNG:</strong> Luôn cần <strong>TỐI THIỂU 2 KEYFRAME</strong> để tạo ra một chuyển động.
+            <strong style="color: #c4b5fd;">CÔNG THỨC VÀNG:</strong> Phải có <strong>TỐI THIỂU 2 ĐIỂM KEYFRAME Ở 2 GIÂY KHÁC NHAU</strong> thì mới sinh ra chuyển động!
             <div style="margin-top: 8px; font-size: 0.9rem;">
-              • <strong>Điểm A (Bắt đầu):</strong> Kích cỡ gốc (hoặc cỡ cảnh toàn)<br>
-              • <strong>Điểm B (Kết thúc):</strong> Kích cỡ đã phóng to (hoặc cỡ cận mặt)
+              • <strong>Điểm A (Bắt đầu):</strong> Kích cỡ trung cảnh bình thường (100%)<br>
+              • <strong>Điểm B (Kết thúc):</strong> Kích cỡ cận mặt hoặc phóng to (140%)
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Sơ đồ trực quan mốc thời gian -->
-      <div class="timeline-diagram">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: #94a3b8;">SƠ ĐỒ NỘI SUY CHUYỂN ĐỘNG (INTERPOLATION)</span>
-          <span style="font-size: 0.8rem; color: var(--cyan); font-family: monospace;">Khoảng cách = Tốc độ chuyển động</span>
-        </div>
-
-        <div class="diagram-track">
-          <!-- Keyframe 1 -->
-          <div class="keyframe-node" style="left: 20%;">
-            <div class="node-label">KEYFRAME 1 (A)</div>
-            <div class="node-status">Cỡ Gốc 100%</div>
-          </div>
-
-          <!-- Motion line -->
-          <div class="motion-arrow" style="left: 20%; width: 55%;"></div>
-
-          <!-- Keyframe 2 -->
-          <div class="keyframe-node" style="left: 75%;">
-            <div class="node-label">KEYFRAME 2 (B)</div>
-            <div class="node-status">Phóng To 140%</div>
-          </div>
-        </div>
-
-        <div style="text-align: center; font-size: 0.88rem; color: #cbd5e1; margin-top: 36px;">
-          👉 <strong>Nếu để A và B cách nhau 0.3 giây:</strong> Hiệu ứng giật Zoom nhanh (Punch-in) tạo cú sốc visual.<br>
-          👉 <strong>Nếu để A và B cách nhau 2.0 giây:</strong> Hiệu ứng đẩy ống kính chậm rãi (Slow Dolly-in) cực sang và tập trung.
-        </div>
-      </div>
     </section>
 
-    <!-- PHẦN 2: ẢNH CHỤP MÀN HÌNH CAPCUT MOBILE THỰC TẾ -->
+    <!-- PHẦN 2: ẢNH CHỤP GIAO DIỆN CAPCUT THỰC TẾ -->
     <section class="section-block">
       <div class="section-header">
         <div class="section-icon">📱</div>
-        <h3 class="title-short section-heading-short">2. ẢNH CHỤP GIAO DIỆN THỰC TẾ TRÊN CAPCUT MOBILE</h3>
+        <h3 class="title-short section-heading-short">2. ẢNH CHỤP GIAO DIỆN THỰC TẾ & CHỈ DẪN NÚT BẤM</h3>
       </div>
 
       <p style="margin-bottom: 20px;">
-        Dưới đây là ảnh chụp màn hình chuẩn của ứng dụng CapCut Mobile, đánh dấu chính xác nút bấm hình thoi và thao tác chụm ngón tay:
+        Dưới đây là hình ảnh thực tế từ ứng dụng CapCut Mobile với video quay cảnh lớp học, khoanh vùng chính xác vị trí <strong>Nút Keyframe hình thoi ♢+</strong> và thao tác thu phóng:
       </p>
 
       <div class="screenshots-showcase">
-        <!-- BƯỚC 1 MOCKUP -->
+        <!-- ẢNH 1: BƯỚC 1 -->
         <div class="phone-mockup-card">
           <div class="mockup-header">
-            <span class="step-pill">BƯỚC 1</span>
-            <span class="step-name">Bấm Nút Keyframe (Hình Thoi ♢+)</span>
+            <span class="step-pill">BƯỚC 1: ĐẶT MỐC A</span>
+            <span class="step-name">Bấm Nút Hình Thoi ♢+</span>
           </div>
 
           <div class="mockup-img-wrap">
-            <img src="./assets/images/capcut-keyframe-step1.jpg" alt="Ảnh chụp giao diện CapCut Mobile nút Keyframe" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-keyframe-step1.jpg'">
+            <img src="./assets/images/capcut-real-step1-keyframe.png" alt="Ảnh chụp CapCut Mobile bước 1 bấm nút Keyframe hình thoi" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-real-step1-keyframe.png'">
           </div>
 
           <div class="mockup-caption">
-            <strong>Nhận diện nút Keyframe:</strong> Chạm vào clip trên Timeline để hiện viền trắng. Biểu tượng <strong>Hình thoi có dấu cộng (♢+)</strong> nằm ngay thanh công cụ phụ phía dưới màn hình Preview. Bấm vào đây để đặt điểm neo đầu tiên (Điểm A).
+            <strong>Vị trí nút Keyframe:</strong> Chạm vào clip (thấy 2 vạch trắng đầu cuối clip). Nhìn ngay bên phải nút Play ▷, bạn sẽ thấy <strong>biểu tượng hình thoi có dấu cộng (♢+)</strong> nằm cạnh nút Undo mũi tên quay lại. Bấm vào đây để đóng chiếc đinh đầu tiên (Mốc A) ở giây 00:00.
           </div>
 
           <div class="highlight-tip">
-            📌 <strong>Dấu hiệu thành công:</strong> Một chấm hình thoi màu đỏ sẽ xuất hiện dính chặt trên track video ngay vạch kim trắng Playhead.
+            📌 <strong>Dấu hiệu nhận biết:</strong> Một chấm hình thoi màu đỏ sẽ xuất hiện trên track video ngay tại vạch kim trắng Playhead.
           </div>
         </div>
 
-        <!-- BƯỚC 2 MOCKUP -->
+        <!-- ẢNH 2: BƯỚC 2 -->
         <div class="phone-mockup-card">
           <div class="mockup-header">
-            <span class="step-pill" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">BƯỚC 2</span>
-            <span class="step-name">Chụm 2 Ngón Tay Zoom In/Out</span>
+            <span class="step-pill" style="background: linear-gradient(135deg, #ef4444, #dc2626);">BƯỚC 2: TỰ ĐỘNG CHỐT</span>
+            <span class="step-name">Kéo Dãn 2 Ngón Tay Phóng To</span>
           </div>
 
           <div class="mockup-img-wrap">
-            <img src="./assets/images/capcut-keyframe-step2.jpg" alt="Ảnh chụp thao tác 2 ngón tay thu phóng trên CapCut" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-keyframe-step2.jpg'">
+            <img src="./assets/images/capcut-real-step2-zoom.png" alt="Ảnh chụp CapCut Mobile bước 2 dùng 2 ngón tay thu phóng tự động tạo keyframe" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-real-step2-zoom.png'">
           </div>
 
           <div class="mockup-caption">
-            <strong>Thao tác thu phóng:</strong> Di chuyển thanh Playhead sang phải 1 đoạn ngắn (Điểm B). Đặt 2 ngón tay lên màn hình video trên rồi kéo dãn ra để phóng to, hoặc chụm lại để thu nhỏ.
+            <strong>Thao tác thu phóng:</strong> Lăn timeline sang phải khoảng 1 giây (đến Mốc B). Đặt 2 ngón tay lên màn hình video phía trên rồi kéo dãn ra để phóng to cận cảnh vào cô gái.
           </div>
 
-          <div class="highlight-tip" style="border-left-color: var(--purple); background: rgba(139, 92, 246, 0.08);">
-            ⚡ <strong>CapCut Tự Động:</strong> Bạn không cần bấm lại nút ♢+. Ngay khi ngón tay bạn vừa nhấc ra, CapCut tự động đóng luôn Keyframe thứ 2!
+          <div class="highlight-tip" style="border-left-color: var(--amber); background: rgba(245, 158, 11, 0.08);">
+            ⚡ <strong>Điều kỳ diệu của CapCut:</strong> Bạn KHÔNG CẦN bấm lại nút ♢+! Ngay khi bạn nhấc 2 ngón tay ra, CapCut tự động sinh ra Keyframe thứ 2 (chấm đỏ [B]) tại vạch trắng!
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PHẦN 3: 5 BƯỚC THAO TÁC CẦM TAY CHỈ VIỆC -->
+    <!-- PHẦN 3: QUY TRÌNH 5 BƯỚC THAO TÁC -->
     <section class="section-block">
       <div class="section-header">
         <div class="section-icon">🛠️</div>
@@ -993,12 +886,12 @@
         <div class="step-card-detailed">
           <div class="step-num-circle">01</div>
           <div class="step-content">
-            <h4>Chọn Đoạn Video Cần Phóng To / Thu Nhỏ</h4>
-            <p>Mở dự án CapCut của bạn. Lướt timeline và dùng ngón tay chạm nhẹ vào clip để kích hoạt viền sáng trắng bao quanh clip.</p>
+            <h4>Chạm Vào Clip Video Cần Phóng To</h4>
+            <p>Mở dự án CapCut của bạn. Lướt timeline và dùng ngón tay chạm nhẹ vào đoạn clip để kích hoạt viền sáng bao quanh clip (như trong ảnh mẫu là đoạn 2.3s).</p>
             <div class="step-instruction-box">
               <ul>
-                <li>Nếu video quá dài, hãy dùng công cụ <strong>Tách (Split)</strong> ở đầu và cuối đoạn bạn muốn phóng to để dễ quản lý.</li>
-                <li>Đảm bảo clip đang được chọn thì nút Keyframe mới hiển thị.</li>
+                <li>Phải chạm vào clip thì thanh công cụ có nút Keyframe mới hiển thị.</li>
+                <li>Nếu cần phóng to một câu nói ngắn, hãy dùng công cụ <strong>Tách</strong> ở đáy màn hình để cắt riêng đoạn đó ra.</li>
               </ul>
             </div>
           </div>
@@ -1008,12 +901,12 @@
         <div class="step-card-detailed">
           <div class="step-num-circle">02</div>
           <div class="step-content">
-            <h4>Đặt Keyframe Bắt Đầu (Điểm A - Trạng Thái Gốc)</h4>
-            <p>Kéo vạch chỉ thời gian (vạch trắng dọc Playhead) tới đúng khung hình bạn muốn bắt đầu chuyển động phóng to.</p>
+            <h4>Đặt Keyframe Bắt Đầu (Khóa Cỡ Gốc 100% - Điểm A)</h4>
+            <p>Kéo vạch chỉ thời gian (vạch kim trắng dọc) tới đúng giây bạn muốn bắt đầu hiệu ứng phóng to (ví dụ: giây 00:00).</p>
             <div class="step-instruction-box">
               <ul>
-                <li>Nhìn vào thanh công cụ nằm ngay bên dưới video preview, bấm vào nút <strong>Hình thoi dấu cộng ♢+</strong>.</li>
-                <li>Trên thanh video của bạn sẽ xuất hiện 1 điểm hình thoi màu đỏ. Đây chính là mốc A cố định kích thước 100%.</li>
+                <li>Bấm vào nút <strong>Hình thoi dấu cộng ♢+</strong> nằm ở bên phải nút Play.</li>
+                <li>Lúc này một chấm hình thoi màu đỏ xuất hiện dính chặt trên video clip. Bạn đã khóa thành công Điểm A!</li>
               </ul>
             </div>
           </div>
@@ -1023,12 +916,12 @@
         <div class="step-card-detailed">
           <div class="step-num-circle">03</div>
           <div class="step-content">
-            <h4>Lăn Timeline Tới Vị Trí Muốn Phóng To Xong (Điểm B)</h4>
-            <p>Gạt ngón tay sang trái để timeline trôi sang phải khoảng 0.3s đến 1.5s tùy vào tốc độ bạn muốn.</p>
+            <h4>Di Chuyển Vạch Trắng Playhead Tới Điểm Kết Thúc (Điểm B)</h4>
+            <p>Gạt ngón tay sang trái để timeline trôi sang phải khoảng 0.3s đến 1.5s tùy vào mục đích nhịp điệu của bạn:</p>
             <div class="step-instruction-box">
               <ul>
-                <li><strong>Muốn giật nhanh (Punch-in):</strong> Chỉ cần cách mốc A khoảng 5 đến 10 frames (khoảng 0.2 - 0.3 giây).</li>
-                <li><strong>Muốn trượt êm ái (Slow Push):</strong> Cách mốc A từ 1.5 giây đến 3.0 giây.</li>
+                <li><strong>Muốn giật nhanh (Punch-in giật nhịp):</strong> Cách mốc A khoảng 0.2s - 0.4s (vài khung hình).</li>
+                <li><strong>Muốn trượt chậm êm ái (Slow Zoom điện ảnh):</strong> Cách mốc A từ 1.0s đến 2.0s.</li>
               </ul>
             </div>
           </div>
@@ -1039,12 +932,12 @@
           <div class="step-num-circle">04</div>
           <div class="step-content">
             <h4>Dùng 2 Ngón Tay Thu Phóng Trên Màn Hình Xem Trước</h4>
-            <p>Vẫn để vạch trắng ở Điểm B, chạm 2 ngón tay lên màn hình video trên cùng:</p>
+            <p>Giữ nguyên vạch trắng ở Điểm B, đặt 2 ngón tay lên màn hình video phía trên:</p>
             <div class="step-instruction-box">
               <ul>
-                <li><strong>Phóng to (Zoom In):</strong> Đặt 2 ngón tay chụm lại rồi banh rộng ra ngoài. Kéo nhẹ khung hình sao cho mặt nhân vật nằm ngay 1/3 phía trên.</li>
+                <li><strong>Phóng to (Zoom In):</strong> Đặt 2 ngón tay chụm lại rồi kéo dãn ra ngoài. Dịch chuyển nhẹ khung hình để căn mặt chủ thể vào góc 1/3 phía trên.</li>
                 <li><strong>Thu nhỏ (Zoom Out):</strong> Đặt 2 ngón tay rộng rồi bóp chụm lại vào giữa.</li>
-                <li>Ngay khi bạn buông tay, CapCut sẽ <strong>tự động sinh ra Keyframe thứ hai</strong> tại điểm B. Bấm nút Play để xem thành quả!</li>
+                <li>Buông tay ra $\rightarrow$ CapCut sẽ <strong>TỰ ĐỘNG tạo Keyframe thứ 2 (chấm đỏ B)</strong>. Bấm nút Play ▷ để kiểm tra chuyển động!</li>
               </ul>
             </div>
           </div>
@@ -1054,14 +947,14 @@
         <div class="step-card-detailed" style="border-color: rgba(6, 182, 212, 0.4);">
           <div class="step-num-circle" style="color: #38bdf8; background: linear-gradient(135deg, #0369a1, #0c4a6e);">05</div>
           <div class="step-content">
-            <h4 style="color: #38bdf8;">Kỹ Thuật Đỉnh Cao: Dùng "Đồ Thị" (Graphs) Làm Mượt Chuyển Động</h4>
-            <p>Chuyển động mặc định của CapCut là <em>Linear (tuyến tính)</em>, chuyển động thẳng đơ như rô-bốt. Hãy biến nó thành chuyển động ống kính điện ảnh sang xịn:</p>
+            <h4 style="color: #38bdf8;">Mẹo Chuyên Nghiệp: Dùng "Đồ Thị" (Graphs) Để Chuyển Động Cực Mượt</h4>
+            <p>Mặc định CapCut sẽ chuyển động theo kiểu tuyến tính (đều đặn từ đầu đến cuối), nhìn hơi cứng như máy móc. Hãy biến nó thành cú đẩy ống kính điện ảnh:</p>
             <div class="step-instruction-box" style="border-left: 3px solid #0284c7;">
               <ul>
-                <li>Di chuyển vạch trắng Playhead nằm <strong>ở giữa khoảng cách 2 Keyframe</strong>.</li>
-                <li>Vuốt thanh công cụ đáy sang phải, chọn mục <strong>Đồ thị (Graphs)</strong> (biểu tượng hình sóng sin).</li>
+                <li>Rê vạch trắng Playhead nằm <strong>ở giữa 2 điểm Keyframe đỏ</strong>.</li>
+                <li>Gạt thanh công cụ dưới đáy sang phải, chọn biểu tượng <strong>Đồ thị (Graphs)</strong>.</li>
                 <li>Chọn preset: <strong>Cực mượt 1 (Ease In 1)</strong> hoặc <strong>Dòng chảy 1 (Flow 1)</strong>.</li>
-                <li>Lập tức cú Zoom sẽ bắt đầu từ từ rồi nhanh dần hoặc ngược lại, nhìn mượt mắt gấp 10 lần!</li>
+                <li>Cú phóng to sẽ bắt đầu êm ái, tăng tốc nhẹ rồi giảm tốc mượt mà, sang hơn hẳn video thông thường!</li>
               </ul>
             </div>
           </div>
@@ -1082,29 +975,29 @@
           <div class="phone-stage">
             <div class="phone-screen">
               <div class="sim-overlay-hud">
-                <span id="hud-time">00:01:15</span>
+                <span id="hud-time">00:00:00</span>
                 <span id="hud-zoom" style="color: var(--cyan); font-weight: bold;">ZOOM: 100%</span>
               </div>
               
-              <!-- Video mock image / graphic -->
-              <img id="sim-subject" class="sim-video-subject" src="./assets/images/capcut-keyframe-step1.jpg" alt="Video subject" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-keyframe-step1.jpg'">
+              <!-- Video subject crop từ ảnh thật của học viên -->
+              <img id="sim-subject" class="sim-video-subject" src="./assets/images/capcut-subject-real.png" alt="Video subject thực tế" onerror="this.src='https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/capcut/capcut-subject-real.png'">
             </div>
           </div>
 
           <!-- CONTROLS -->
           <div class="sim-controls-panel">
             <h4 class="title-long" style="font-size: 1.2rem; color: var(--text-main);">
-              Bảng Điều Khiển Giả Lập Keyframe CapCut
+              Bảng Giả Lập Keyframe CapCut Trực Tiếp
             </h4>
             <p style="font-size: 0.92rem; color: var(--text-muted);">
-              Kéo thanh trượt Playhead bên dưới để xem sự biến đổi kích thước video theo thời gian thực giữa 2 Keyframe A (100%) và B (160%).
+              Kéo thanh trượt Playhead bên dưới để xem sự biến đổi cỡ cảnh từ Trung Cảnh (100%) sang Cận Mặt (150%) theo đúng video thực tế của bạn.
             </p>
 
             <!-- Playhead scrubber -->
             <div class="control-row">
               <div class="control-label-group">
                 <span class="control-label">Vị trí Playhead (Dòng thời gian):</span>
-                <span class="control-badge" id="val-playhead">0% (Điểm A)</span>
+                <span class="control-badge" id="val-playhead">0% (Mốc A - 100%)</span>
               </div>
               <input type="range" id="slider-playhead" class="sim-slider" min="0" max="100" value="0">
             </div>
@@ -1113,9 +1006,9 @@
             <div class="control-row">
               <div class="control-label-group">
                 <span class="control-label">Mức Phóng To Tối Đa tại Điểm B:</span>
-                <span class="control-badge" id="val-maxzoom">160%</span>
+                <span class="control-badge" id="val-maxzoom">150%</span>
               </div>
-              <input type="range" id="slider-maxzoom" class="sim-slider" min="110" max="250" value="160">
+              <input type="range" id="slider-maxzoom" class="sim-slider" min="110" max="220" value="150">
             </div>
 
             <!-- Easing switch -->
@@ -1163,12 +1056,12 @@
             <tr>
               <td>
                 <span class="tag-error">LỖI 1</span><br>
-                <strong>Bấm phóng to xong toàn bộ video bị phóng to, không hề có hiệu ứng trượt.</strong>
+                <strong>Bấm nút hình thoi xong phóng to luôn, kết quả video bị to từ đầu đến cuối không có chuyển động.</strong>
               </td>
-              <td>Mới chỉ đặt 1 Keyframe duy nhất. Không có điểm neo gốc để CapCut so sánh.</td>
+              <td>Mới chỉ đặt 1 Keyframe duy nhất. Không có điểm neo thứ hai ở mốc thời gian khác để tạo độ lệch.</td>
               <td>
                 <span class="tag-solution">CÔNG THỨC 2 ĐIỂM</span><br>
-                Luôn đặt Keyframe 1 ở kích cỡ bình thường trước. Sau đó lăn timeline đi 1 giây rồi mới phóng to ở Keyframe 2.
+                Bấm nút ♢+ tại giây 00 (Điểm A) trước $\rightarrow$ Lăn timeline sang giây 01 $\rightarrow$ Mới dùng 2 ngón tay phóng to tại Điểm B.
               </td>
             </tr>
             <tr>
@@ -1176,13 +1069,13 @@
                 <span class="tag-error">LỖI 2</span><br>
                 <strong>Muốn phóng to lên rồi GIỮ NGUYÊN một lúc rồi mới thu nhỏ về, nhưng video lại bị co giật liên tục.</strong>
               </td>
-              <td>Chỉ đặt 2 hoặc 3 Keyframe sát nhau mà thiếu giai đoạn "Hold" (Giữ khung).</td>
+              <td>Chỉ đặt 2 hoặc 3 Keyframe sát nhau mà thiếu giai đoạn "Hold" (Giữ nguyên kích thước).</td>
               <td>
                 <span class="tag-solution">CÔNG THỨC 4 KEYFRAME</span><br>
-                • K1: 100% (bắt đầu)<br>
-                • K2: 130% (phóng to xong)<br>
-                • K3: 130% (giữ nguyên kích thước)<br>
-                • K4: 100% (thu nhỏ về gốc)
+                • K1: 100% (bắt đầu zoom)<br>
+                • K2: 140% (phóng to xong)<br>
+                • K3: 140% (giữ nguyên cỡ cận mặt)<br>
+                • K4: 100% (thu nhỏ về lại cảnh trung)
               </td>
             </tr>
             <tr>
@@ -1190,10 +1083,10 @@
                 <span class="tag-error">LỖI 3</span><br>
                 <strong>Đặt nhầm điểm Keyframe thừa làm video bị méo hoặc giật lắc không mong muốn.</strong>
               </td>
-              <td>Do vô tình chạm tay dịch chuyển video ở các điểm khác trên timeline làm CapCut tự đẻ thêm Keyframe thừa.</td>
+              <td>Do vô tình chạm tay dịch chuyển khung hình ở các giây khác làm CapCut tự động đẻ thêm chấm đỏ thừa.</td>
               <td>
                 <span class="tag-solution">XÓA BẰNG NÚT ♢-</span><br>
-                Rê vạch trắng Playhead khớp chính xác vào hình thoi đỏ bị thừa. Nút <strong>♢+</strong> sẽ tự đổi thành <strong>♢-</strong> (dấu trừ màu đỏ). Bấm vào dấu trừ để xóa sạch!
+                Rê vạch trắng Playhead khớp chính xác vào chấm đỏ bị thừa. Nút <strong>♢+</strong> sẽ tự đổi thành <strong>♢-</strong> (dấu trừ màu đỏ). Chạm vào dấu trừ để xóa sạch!
               </td>
             </tr>
           </tbody>
@@ -1201,23 +1094,23 @@
       </div>
     </section>
 
-    <!-- PHẦN 6: BẢNG TỔNG KẾT & LỜI DẶN ĐẠO DIỄN -->
+    <!-- PHẦN 6: LỜI DẶN ĐẠO DIỄN -->
     <section class="section-block">
       <div class="glass-card" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(14, 20, 34, 0.9)); border-color: rgba(6, 182, 212, 0.3);">
         <h3 class="title-long" style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 14px;">
           🎬 Lời Dặn Đạo Diễn Thực Chiến Cho Video Triệu View
         </h3>
         <p style="margin-bottom: 16px;">
-          "Đừng lạm dụng Keyframe bừa bãi. Hãy dùng Keyframe có mục đích tâm lý rõ ràng:
+          "Đừng lạm dụng Keyframe bừa bãi. Trong một video short-form 45 giây, chỉ nên dùng 3 đến 5 cú Keyframe có chủ đích tâm lý rõ ràng:
         </p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
           <div style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; border: 1px solid var(--border);">
             <strong style="color: var(--cyan);">1. Cú Giật Nhịp (Punch-in 0.2s):</strong><br>
-            Dùng khi bạn nói một từ khóa bí mật, một con số giật gân, hoặc câu chốt hạ (Punchline) hài hước. Nó hoạt động như một cú đấm thị giác đánh thức não bộ người xem.
+            Dùng khi bạn nói một từ khóa bí mật, một con số giật gân, hoặc câu chốt hạ (Punchline) hài hước. Nó hoạt động như một cú đấm thị giác đánh thức não bộ người xem khi họ đang lướt feed.
           </div>
           <div style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; border: 1px solid var(--border);">
-            <strong style="color: #c4b5fd;">2. Cú Đẩy Ống Kính Chậm (Slow Push 2.0s):</strong><br>
-            Dùng trong các đoạn kể chuyện nội tâm sâu sắc, chia sẻ tâm sự thật lòng (Tầng 3) để từ từ kéo mắt người xem vào sâu trong tròng mắt và cảm xúc của bạn."
+            <strong style="color: #c4b5fd;">2. Cú Đẩy Ống Kính Chậm (Slow Push 1.5s - 2.0s):</strong><br>
+            Dùng trong các đoạn kể chuyện nội tâm sâu sắc, chia sẻ tâm sự thật lòng (Tầng 3) để từ từ kéo mắt người xem vào sâu trong ánh mắt và cử chỉ của nhân vật."
           </div>
         </div>
       </div>
@@ -1267,17 +1160,17 @@
 
         const currentZoom = 100 + (maxZoomPercent - 100) * effectiveProgress;
         
-        // Cập nhật giao diện
+        // Cập nhật scale
         simSubject.style.transform = `scale(${currentZoom / 100})`;
         hudZoom.innerText = `ZOOM: ${Math.round(currentZoom)}%`;
         
-        const seconds = (progress * 2).toFixed(1);
+        const seconds = (progress * 1.5).toFixed(1);
         hudTime.innerText = `00:0${Math.floor(seconds)}:${Math.floor((seconds % 1) * 30).toString().padStart(2, '0')}`;
 
         if (progress === 0) {
-          valPlayhead.innerText = `0% (Mốc A - 100%)`;
+          valPlayhead.innerText = `0% (Mốc A - Cỡ Gốc 100%)`;
         } else if (progress === 1) {
-          valPlayhead.innerText = `100% (Mốc B - ${maxZoomPercent}%)`;
+          valPlayhead.innerText = `100% (Mốc B - Cận Mặt ${maxZoomPercent}%)`;
         } else {
           valPlayhead.innerText = `${Math.round(progress * 100)}% (${Math.round(currentZoom)}%)`;
         }
@@ -1330,7 +1223,7 @@
         if (startVal >= 100) startVal = 0;
         
         let startTime = performance.now();
-        const duration = 2000; // 2 giây cho một cú zoom
+        const duration = 1800; // 1.8 giây cho một cú zoom
 
         function step(timestamp) {
           const elapsed = timestamp - startTime;
