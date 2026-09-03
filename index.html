@@ -100,14 +100,123 @@
             animation: shimmer 1.6s infinite;
             content: '';
         }
+
+        /* Shake animation for incorrect passcode */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-green-100 selection:text-green-900">
+<body class="min-h-screen flex flex-col selection:bg-green-100 selection:text-green-900 bg-white">
 
-    <!-- Top Announcement / Top Bar -->
-    <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
+    <!-- ================= GATEKEEPER LOCK SCREEN ================= -->
+    <div id="gatekeeper-screen" class="fixed inset-0 z-[9999] bg-[#080a0f] text-slate-100 flex flex-col justify-between items-center px-4 py-8 sm:py-12 overflow-y-auto">
+        <!-- Ambient Glows -->
+        <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="fixed bottom-10 right-10 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <!-- Top Header Minimal -->
+        <div class="w-full max-w-md flex items-center justify-between z-10">
+            <a href="https://fedu.vn" class="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                <span>fedu.vn</span>
+            </a>
+            <span class="text-[11px] font-mono tracking-wider px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-emerald-400">
+                FEDU VAULT • SECURE
+            </span>
+        </div>
+
+        <!-- Center Card Box -->
+        <div class="w-full max-w-md my-auto py-6 z-10">
+            <div id="pin-card" class="bg-slate-900/90 backdrop-blur-2xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/80 text-center space-y-6 transition-transform">
+                
+                <!-- Icon & Badges -->
+                <div class="relative mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 border border-slate-700/60 flex items-center justify-center shadow-inner">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 absolute -top-1 -right-1 shadow-lg shadow-emerald-500/50 animate-pulse"></div>
+                    <svg class="w-7 h-7 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                </div>
+
+                <!-- Headline -->
+                <div class="space-y-1.5">
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white font-sans">
+                        Kho Kịch Bản & Khóa Học
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-400 font-sans leading-relaxed">
+                        Khu vực dành riêng cho học viên & thành viên FEDU.<br>Vui lòng nhập mật khẩu để mở khóa truy cập.
+                    </p>
+                </div>
+
+                <!-- PIN Input Field -->
+                <div class="space-y-3">
+                    <div class="flex justify-center">
+                        <input 
+                            type="password" 
+                            id="pin-input" 
+                            maxlength="6" 
+                            inputmode="numeric" 
+                            pattern="[0-9]*" 
+                            placeholder="••••"
+                            autocomplete="off"
+                            class="w-52 text-center text-3xl tracking-[0.5em] font-mono py-3 px-4 rounded-2xl bg-slate-950 border border-slate-700 text-emerald-400 placeholder:text-slate-700 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition-all shadow-inner"
+                        />
+                    </div>
+                    <!-- Error or Hint message -->
+                    <div id="pin-feedback" class="text-xs min-h-[18px] text-slate-500 font-mono transition-colors">
+                        Nhập mã 4 chữ số
+                    </div>
+                </div>
+
+                <!-- Keypad for fast mobile / desktop tap -->
+                <div class="grid grid-cols-3 gap-2 pt-1 max-w-[280px] mx-auto">
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="1">1</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="2">2</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="3">3</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="4">4</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="5">5</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="6">6</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="7">7</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="8">8</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="9">9</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/30 hover:bg-rose-900/30 active:scale-95 text-xs font-medium text-slate-400 hover:text-rose-300 border border-slate-800 transition" data-key="clear">Xóa</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 active:scale-95 text-base font-semibold text-white border border-slate-700/50 transition font-mono" data-key="0">0</button>
+                    <button type="button" class="key-btn h-12 rounded-xl bg-slate-800/30 hover:bg-slate-700/50 active:scale-95 text-xs font-medium text-slate-400 hover:text-white border border-slate-800 transition flex items-center justify-center" data-key="del">⌫</button>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    id="submit-unlock-btn" 
+                    type="button" 
+                    class="w-full py-3 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                    <span>Mở Khóa Truy Cập</span>
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Bottom Assistance -->
+        <div class="w-full max-w-md text-center text-xs text-slate-500 z-10 space-y-1">
+            <p>Chưa có mã hoặc quên mật khẩu?</p>
+            <p>Học viên liên hệ qua Zalo / Skool hoặc nhắn trực tiếp anh Việt để nhận mã truy cập.</p>
+        </div>
+    </div>
+    <!-- ================= END GATEKEEPER ================= -->
+
+    <!-- ================= MAIN COURSE APP VIEW ================= -->
+    <div id="app-view" style="display: none;" class="min-h-screen flex flex-col flex-grow">
+
+        <!-- Top Announcement / Top Bar -->
+        <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 sm:h-20">
                 
                 <!-- Logo & Brand -->
                 <div class="flex items-center space-x-3">
@@ -152,6 +261,12 @@
                             <span class="hidden md:inline">Grid Ảnh</span>
                         </button>
                     </div>
+
+                    <!-- Lock / Sign Out Button -->
+                    <button id="lock-screen-btn" title="Khóa lại kho bài giảng" class="px-2.5 py-1.5 rounded-full border border-gray-200 bg-gray-50 hover:bg-rose-50 hover:border-rose-200 text-gray-500 hover:text-rose-600 transition flex items-center gap-1 text-xs font-medium cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span class="hidden sm:inline">Khóa lại</span>
+                    </button>
                 </div>
 
             </div>
@@ -299,8 +414,94 @@
         </div>
     </footer>
 
+    </div>
+    <!-- ================= END MAIN COURSE APP VIEW ================= -->
+
     <!-- Application Script -->
     <script>
+        // ================= AUTHENTICATION & GATEKEEPER =================
+        const AUTH_STORAGE_KEY = 'fedu_vault_auth_v1';
+        const PASSCODE_PLAIN = '0070';
+        const PASSCODE_HASH = '71ffe84afd528a0365d6ec95c89a64cd6979b4a15730649feddf2dc390db9e3c';
+
+        async function sha256Hex(str) {
+            try {
+                const buffer = new TextEncoder().encode(str);
+                const hash = await crypto.subtle.digest('SHA-256', buffer);
+                return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+            } catch (e) {
+                return '';
+            }
+        }
+
+        function isUserUnlocked() {
+            return localStorage.getItem(AUTH_STORAGE_KEY) === PASSCODE_HASH;
+        }
+
+        let feedInitialized = false;
+        function unlockVault() {
+            localStorage.setItem(AUTH_STORAGE_KEY, PASSCODE_HASH);
+            const gate = document.getElementById('gatekeeper-screen');
+            const app = document.getElementById('app-view');
+            if (gate) gate.style.display = 'none';
+            if (app) app.style.display = 'flex';
+            if (!feedInitialized) {
+                feedInitialized = true;
+                initFeed();
+            }
+        }
+
+        function lockVault() {
+            localStorage.removeItem(AUTH_STORAGE_KEY);
+            window.location.reload();
+        }
+
+        async function verifyPasscode(rawPin) {
+            const pin = (rawPin || '').trim();
+            const pinCard = document.getElementById('pin-card');
+            const pinFeedback = document.getElementById('pin-feedback');
+            const pinInput = document.getElementById('pin-input');
+
+            if (!pin) {
+                if (pinFeedback) {
+                    pinFeedback.textContent = 'Vui lòng nhập mật khẩu';
+                    pinFeedback.className = 'text-xs min-h-[18px] text-amber-400 font-mono';
+                }
+                return;
+            }
+
+            let isCorrect = (pin === PASSCODE_PLAIN);
+            if (!isCorrect) {
+                const hash = await sha256Hex(pin);
+                if (hash === PASSCODE_HASH) isCorrect = true;
+            }
+
+            if (isCorrect) {
+                if (pinFeedback) {
+                    pinFeedback.textContent = '✅ Mật khẩu chính xác! Đang mở khóa...';
+                    pinFeedback.className = 'text-xs min-h-[18px] text-emerald-400 font-mono font-semibold';
+                }
+                if (pinCard) pinCard.classList.remove('animate-shake');
+                setTimeout(() => {
+                    unlockVault();
+                }, 200);
+            } else {
+                if (pinCard) {
+                    pinCard.classList.remove('animate-shake');
+                    void pinCard.offsetWidth; // trigger reflow
+                    pinCard.classList.add('animate-shake');
+                }
+                if (pinFeedback) {
+                    pinFeedback.textContent = '❌ Mật khẩu không đúng. Vui lòng thử lại!';
+                    pinFeedback.className = 'text-xs min-h-[18px] text-rose-400 font-mono font-semibold';
+                }
+                if (pinInput) {
+                    pinInput.value = '';
+                    pinInput.focus();
+                }
+            }
+        }
+
         // State Management
         let allPosts = [];
         let filteredPosts = [];
@@ -609,7 +810,72 @@
 
         // Event Listeners Setup
         document.addEventListener('DOMContentLoaded', () => {
-            initFeed();
+            // 1. Check Authentication Status
+            if (isUserUnlocked()) {
+                unlockVault();
+            } else {
+                const gate = document.getElementById('gatekeeper-screen');
+                const app = document.getElementById('app-view');
+                if (gate) gate.style.display = 'flex';
+                if (app) app.style.display = 'none';
+                const pinInput = document.getElementById('pin-input');
+                if (pinInput) setTimeout(() => pinInput.focus(), 150);
+            }
+
+            // 2. PIN Input & Keypad Handlers
+            const pinInput = document.getElementById('pin-input');
+            const pinFeedback = document.getElementById('pin-feedback');
+            const unlockBtn = document.getElementById('submit-unlock-btn');
+
+            if (pinInput) {
+                pinInput.addEventListener('input', () => {
+                    const len = pinInput.value.length;
+                    if (len > 0 && len < 4) {
+                        pinFeedback.textContent = `Đang nhập: ${len}/4 số`;
+                        pinFeedback.className = 'text-xs min-h-[18px] text-slate-400 font-mono';
+                    } else if (len >= 4) {
+                        verifyPasscode(pinInput.value);
+                    }
+                });
+
+                pinInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        verifyPasscode(pinInput.value);
+                    }
+                });
+            }
+
+            if (unlockBtn) {
+                unlockBtn.addEventListener('click', () => {
+                    if (pinInput) verifyPasscode(pinInput.value);
+                });
+            }
+
+            // Keypad button clicks
+            document.querySelectorAll('.key-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!pinInput) return;
+                    const key = btn.dataset.key;
+                    if (key === 'clear') {
+                        pinInput.value = '';
+                    } else if (key === 'del') {
+                        pinInput.value = pinInput.value.slice(0, -1);
+                    } else if (pinInput.value.length < 6) {
+                        pinInput.value += key;
+                    }
+                    pinInput.dispatchEvent(new Event('input'));
+                });
+            });
+
+            // Header Lock Button
+            const lockBtn = document.getElementById('lock-screen-btn');
+            if (lockBtn) {
+                lockBtn.addEventListener('click', () => {
+                    if (confirm('Khóa lại kho kịch bản và yêu cầu nhập mật khẩu ở lần truy cập tới?')) {
+                        lockVault();
+                    }
+                });
+            }
 
             // Search input
             const searchInput = document.getElementById('search-input');
