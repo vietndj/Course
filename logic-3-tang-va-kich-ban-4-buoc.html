@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logic 3 Tầng & Kịch Bản 4 Bước: Nghệ Thuật Đào Tâm Lý & Thôi Miên Bán Hàng | FEDU.VN</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-IntegralCF-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Poppins-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Poppins-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Bold.ttf') format('truetype'),
+           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Poppins-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'SVN-Acta';
+      src: url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
+           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Acta-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    :root {
+      --font-integral: 'SVN-Integral', sans-serif;
+      --font-poppins: 'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-acta: 'SVN-Acta', 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background-color: #06090e;
+      color: #cbd5e1;
+      font-family: var(--font-poppins);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .title-short {
+      font-family: var(--font-integral);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .title-long {
+      font-family: var(--font-poppins);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .font-quote {
+      font-family: var(--font-acta);
+      font-style: italic;
+    }
+    .font-code {
+      font-family: var(--font-mono);
+    }
+
+    .glow-bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, rgba(59, 130, 246, 0.12) 35%, transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glass-card {
+      background: rgba(14, 20, 32, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .gradient-border-orange {
+      border-left: 4px solid #f97316;
+    }
+
+    .gradient-border-blue {
+      border-left: 4px solid #3b82f6;
+    }
+
+    .gradient-border-purple {
+      border-left: 4px solid #a855f7;
+    }
+
+    .gradient-border-red {
+      border-left: 4px solid #ef4444;
+    }
+
+    .gradient-text-gold {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-blue {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .step-pill {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen relative selection:bg-blue-600 selection:text-white">
+
+  <!-- Glow Background Effect -->
+  <div class="glow-bg"></div>
+
+  <!-- Top Nav -->
+  <header class="border-b border-white/10 sticky top-0 bg-[#06090e]/90 backdrop-blur-md z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="./index.html" class="flex items-center gap-3 group">
+        <span class="px-2.5 py-1 bg-gradient-to-r from-red-600 to-blue-600 text-white text-xs font-bold rounded tracking-wider uppercase">FEDU MASTERCLASS</span>
+        <span class="text-sm text-slate-400 group-hover:text-white transition-colors">← Quay lại trang chủ Course</span>
+      </a>
+      <div class="text-xs text-slate-500 font-mono hidden md:block">FRAMEWORK: 3-TIER TRUTH × 4-STEP SCRIPT</div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-5xl mx-auto px-4 pt-16 pb-12 relative z-10 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold mb-6">
+      <i class="fa-solid fa-fire"></i> DÀNH CHO NGƯỜI MỚI BẮT ĐẦU: TỪ CON SỐ 0 ĐẾN KỊCH BẢN THỰC CHIẾN
+    </div>
+
+    <h1 class="title-short text-3xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+      LOGIC <span class="gradient-text-gold">3 TẦNG</span> & KỊCH BẢN <span class="gradient-text-blue">4 BƯỚC</span>
+    </h1>
+    
+    <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+      Làm sao để một video ngắn hoặc bài viết bán hàng <strong class="text-white">không có mùi quảng cáo</strong>, chạm đáy tim can người xem và khiến họ tự nguyện rút ví?
+    </p>
+
+    <!-- Quick Summary Box -->
+    <div class="glass-card rounded-2xl p-6 max-w-3xl mx-auto text-left border border-white/10 shadow-2xl">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl shrink-0 mt-1">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <div class="text-white font-bold text-base mb-1">CÔNG THỨC 1 CÂU DUY NHẤT:</div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-orange-400">Kỹ năng 3 Tầng</strong> là chiếc máy đào tâm lý để tìm ra <em>sự thật ngượng miệng nhất</em>.  
+            <strong class="text-blue-400">Kịch bản 4 Bước</strong> là khuôn đúc để nhét sự thật đó vào và biến nó thành một <em>câu chuyện thôi miên bán hàng</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Bar to Sections -->
+  <section class="max-w-5xl mx-auto px-4 mb-14 relative z-10">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-mono">
+      <a href="#section-what" class="p-3 glass-card rounded-xl hover:bg-white/5 transition-all text-slate-300 hover:text-white border border-white/5">
+        <span class="block text-blue-400 font-bold mb-1">01. WHAT</span> Bản chất là gì?
+      </a>
+      <a href="#section-why" class="p-3 glass-card rounded-xl hover:bg-white/5 transition-all text-slate-300 hover:text-white border border-white/5">
+        <span class="block text-orange-400 font-bold mb-1">02. WHY</span> Tại sao lại dính?
+      </a>
+      <a href="#section-how" class="p-3 glass-card rounded-xl hover:bg-white/5 transition-all text-slate-300 hover:text-white border border-white/5">
+        <span class="block text-green-400 font-bold mb-1">03. HOW</span> Lắp ghép thế nào?
+      </a>
+      <a href="#section-example" class="p-3 glass-card rounded-xl hover:bg-white/5 transition-all text-slate-300 hover:text-white border border-white/5">
+        <span class="block text-purple-400 font-bold mb-1">04. EXAMPLE</span> Ví dụ 60 giây
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 1: WHAT -->
+  <section id="section-what" class="max-w-5xl mx-auto px-4 py-10 relative z-10 border-t border-white/5">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-mono font-bold rounded">PHẦN 1</span>
+      <h2 class="title-short text-2xl text-white">WHAT: BẢN CHẤT CỦA TỪNG PHẦN LÀ GÌ?</h2>
+    </div>
+
+    <p class="text-slate-300 mb-8 leading-relaxed">
+      Nhiều người viết kịch bản thất bại vì nhầm lẫn giữa <span class="text-orange-400 font-semibold">"Nguyên liệu bên trong"</span> và <span class="text-blue-400 font-semibold">"Khung xương bên ngoài"</span>. Hãy phân tách rõ ràng:
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Cột 1: 3 Tầng -->
+      <div class="glass-card rounded-2xl p-6 gradient-border-orange">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-orange-400"></i> KỸ NĂNG 3 TẦNG
+          </h3>
+          <span class="text-xs font-mono bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded">NGUYÊN LIỆU (RUỘT)</span>
+        </div>
+        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+          Là kỹ thuật khoan sâu vào hành vi con người để bóc tách động cơ thật sự. Một hành động luôn có 3 tầng lý do:
+        </p>
+        <ul class="space-y-3 text-sm">
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-slate-400 block text-xs">TẦNG 1: NÓI ĐÃI BÔI (Lý do xã giao)</span>
+            <span class="text-slate-300">Lời văn mẫu, đạo lý ai cũng nói được để che giấu sự thật (Giữ chân: 0%).</span>
+          </li>
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-blue-400 block text-xs">TẦNG 2: CẢM GIÁC THẬT (Nghĩ trong đầu)</span>
+            <span class="text-slate-300">Cảm giác mệt mỏi, bất lực, khó khăn lúc đó (Giữ chân: 50%).</span>
+          </li>
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5 border-orange-500/30">
+            <span class="font-bold text-orange-400 block text-xs">TẦNG 3: SỰ THẬT NGƯỢNG MIỆNG (Góc tối / Nỗi sợ thật)</span>
+            <span class="text-slate-300">Nỗi sợ bị chê, lòng tham, sự đố kỵ, sĩ diện hèn nhát ngại thừa nhận nhất (Giữ chân: 100% - Điểm chạm Viral).</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Cột 2: 4 Bước -->
+      <div class="glass-card rounded-2xl p-6 gradient-border-blue">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-list-ol text-blue-400"></i> KỊCH BẢN 4 BƯỚC
+          </h3>
+          <span class="text-xs font-mono bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">KHUNG XƯƠNG (VỎ)</span>
+        </div>
+        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+          Là cấu trúc tâm lý học thuyết phục đỉnh cao (Russell Brunson / Direct Marketing) để dẫn người nghe từ nghi ngờ đến mua hàng:
+        </p>
+        <ul class="space-y-3 text-sm">
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-blue-400 block text-xs">BƯỚC 1: XÂY CẦU ĐỒNG CẢM (Validation)</span>
+            <span class="text-slate-300">Liệt kê nỗi vất vả mà khách hàng đã từng trải qua mà vẫn thất bại.</span>
+          </li>
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-purple-400 block text-xs">BƯỚC 2: TẨY TRẮNG TỘI LỖI (Guilt Relief)</span>
+            <span class="text-slate-300">Hô to "Đó không phải lỗi của bạn!" & đổ lỗi cho một kẻ thù chung.</span>
+          </li>
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-yellow-400 block text-xs">BƯỚC 3: BẺ LÁI 1 NÚT THẮT (Single Root Cause)</span>
+            <span class="text-slate-300">Gom toàn bộ rắc rối về đúng MỘT nguyên nhân cốt lõi nghe logic.</span>
+          </li>
+          <li class="p-3 bg-slate-900/50 rounded-xl border border-white/5">
+            <span class="font-bold text-green-400 block text-xs">BƯỚC 4: CHÌA KHÓA ĐỘC QUYỀN (The New Mechanism)</span>
+            <span class="text-slate-300">Tung sản phẩm ra như phương thuốc duy nhất giải quyết nút thắt đó.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WHY -->
+  <section id="section-why" class="max-w-5xl mx-auto px-4 py-10 relative z-10 border-t border-white/5">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-mono font-bold rounded">PHẦN 2</span>
+      <h2 class="title-short text-2xl text-white">WHY: TẠI SAO NÃO BỘ KHÔNG THỂ BẮT BẺ LOGIC NÀY?</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="glass-card rounded-xl p-5 border border-white/5">
+        <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2">1. Vuốt ve bản ngã (Ego)</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Con người rất sợ bị chê lười, dốt hoặc thất bại. Khi bạn nói: <em>"Đó không phải lỗi của bạn"</em>, não bộ tiết ra <strong>Dopamine</strong> (sự nhẹ nhõm). Khi cảm xúc sướng lên, hệ thống phòng thủ logic tự động tắt đi!
+        </p>
+      </div>
+
+      <div class="glass-card rounded-xl p-5 border border-white/5">
+        <div class="w-10 h-10 rounded-lg bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-compress"></i>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2">2. Xóa sổ mệt mỏi nhận thức</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Khách hàng đang rối mù vì 10 vấn đề. Nếu bạn bảo họ phải sửa cả 10, họ sẽ bỏ cuộc. Khi bạn quy về <strong>1 Nút Thắt Duy Nhất</strong>, họ thấy hy vọng: <em>"A-ha, thì ra bấy lâu nay mình kẹt ở đây, sửa cái này là xong!"</em>
+        </p>
+      </div>
+
+      <div class="glass-card rounded-xl p-5 border border-white/5">
+        <div class="w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2">3. Triệt tiêu đối thủ cạnh tranh</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Bạn không nói sản phẩm của mình "tốt nhất hay rẻ nhất", bạn định vị nó là <strong>"Cơ chế DUY NHẤT"</strong> trị đúng căn bệnh ở Bước 3. Khách hàng không thể so sánh giá với bất kỳ ai khác.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: HOW -->
+  <section id="section-how" class="max-w-5xl mx-auto px-4 py-10 relative z-10 border-t border-white/5">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-mono font-bold rounded">PHẦN 3</span>
+      <h2 class="title-short text-2xl text-white">HOW: SƠ ĐỒ LẮP GHÉP "3 TẦNG" VÀO "4 BƯỚC"</h2>
+    </div>
+
+    <p class="text-slate-300 mb-8 leading-relaxed">
+      Đây là bí kíp thực chiến. Hãy nhìn vào bảng ánh xạ xem từng Tầng sự thật được nhét chính xác vào đâu trong Kịch bản:
+    </p>
+
+    <!-- Interactive Logic Map -->
+    <div class="space-y-4">
+      
+      <!-- Box 1 -->
+      <div class="glass-card rounded-2xl p-5 border-l-4 border-blue-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="md:w-1/3">
+          <span class="px-2.5 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-mono font-bold">BƯỚC 1: ĐỒNG CẢM</span>
+          <h4 class="text-lg font-bold text-white mt-1">Xây cầu cảm xúc</h4>
+        </div>
+        <div class="text-center font-mono text-xs text-slate-400 hidden md:block">
+          <i class="fa-solid fa-arrow-left"></i> Nhét vào <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="md:w-1/2 bg-slate-900/60 p-3 rounded-xl border border-white/5">
+          <div class="text-xs font-bold text-blue-400 mb-1">NGUYÊN LIỆU: TẦNG 2 (Cảm giác thật)</div>
+          <p class="text-xs text-slate-300">Kể lại sự kiệt sức, mệt mỏi, bất lực thực tế lúc làm việc mà chưa ra kết quả. Khiến khách gật đầu: <em>"Chuẩn rồi, đúng là tao đang bị thế này!"</em></p>
+        </div>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="glass-card rounded-2xl p-5 border-l-4 border-purple-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="md:w-1/3">
+          <span class="px-2.5 py-1 bg-purple-500/20 text-purple-400 rounded text-xs font-mono font-bold">BƯỚC 2: TẨY TRẮNG</span>
+          <h4 class="text-lg font-bold text-white mt-1">Giải phóng tội lỗi</h4>
+        </div>
+        <div class="text-center font-mono text-xs text-slate-400 hidden md:block">
+          <i class="fa-solid fa-arrow-left"></i> Nhét vào <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="md:w-1/2 bg-slate-900/60 p-3 rounded-xl border border-white/5 border-orange-500/30">
+          <div class="text-xs font-bold text-orange-400 mb-1">NGUYÊN LIỆU: TẦNG 3 (Sự thật ngượng miệng)</div>
+          <p class="text-xs text-slate-300">Đâm trúng nỗi sợ bị chê, sự bất tài, lòng đố kỵ đang giấu kín. <strong>NHƯNG NGAY LẬP TỨC</strong> giải oan: <em>"Đó không phải lỗi của bạn!"</em> để xoa dịu cái tôi.</p>
+        </div>
+      </div>
+
+      <!-- Box 3 -->
+      <div class="glass-card rounded-2xl p-5 border-l-4 border-yellow-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="md:w-1/3">
+          <span class="px-2.5 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs font-mono font-bold">BƯỚC 3: BẺ LÁI</span>
+          <h4 class="text-lg font-bold text-white mt-1">Nút thắt duy nhất</h4>
+        </div>
+        <div class="text-center font-mono text-xs text-slate-400 hidden md:block">
+          <i class="fa-solid fa-arrow-left"></i> Đập vỡ <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="md:w-1/2 bg-slate-900/60 p-3 rounded-xl border border-white/5">
+          <div class="text-xs font-bold text-red-400 mb-1">MỤC TIÊU: ĐẬP TAN TẦNG 1 (Lý do đãi bôi)</div>
+          <p class="text-xs text-slate-300">Chỉ trích văn mẫu sáo rỗng ngoài kia. Khẳng định mọi bế tắc chỉ do <strong>1 lỗ hổng duy nhất</strong> (tự đặt tên nghe thật y khoa/chuyên môn).</p>
+        </div>
+      </div>
+
+      <!-- Box 4 -->
+      <div class="glass-card rounded-2xl p-5 border-l-4 border-green-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="md:w-1/3">
+          <span class="px-2.5 py-1 bg-green-500/20 text-green-400 rounded text-xs font-mono font-bold">BƯỚC 4: CHÌA KHÓA</span>
+          <h4 class="text-lg font-bold text-white mt-1">Giải pháp độc quyền</h4>
+        </div>
+        <div class="text-center font-mono text-xs text-slate-400 hidden md:block">
+          <i class="fa-solid fa-arrow-left"></i> Giải cứu <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="md:w-1/2 bg-slate-900/60 p-3 rounded-xl border border-white/5">
+          <div class="text-xs font-bold text-green-400 mb-1">ĐẦU RA: SẢN PHẨM / DỊCH VỤ CỦA BẠN</div>
+          <p class="text-xs text-slate-300">Trình bày sản phẩm là "chìa khóa duy nhất" mở đúng cái nút thắt ở Bước 3. Khách hàng cảm thấy được <strong>cứu rỗi</strong> chứ không phải bị bán hàng.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: VÍ DỤ THỰC CHIẾN -->
+  <section id="section-example" class="max-w-5xl mx-auto px-4 py-10 relative z-10 border-t border-white/5">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-mono font-bold rounded">PHẦN 4</span>
+      <h2 class="title-short text-2xl text-white">VÍ DỤ THỰC CHIẾN TỪ ĐẦU ĐẾN CUỐI</h2>
+    </div>
+
+    <div class="mb-6 p-4 bg-purple-900/20 border border-purple-500/30 rounded-xl text-sm text-purple-200">
+      <strong class="text-white">Bối cảnh:</strong> Bạn bán <strong>Khóa học Quay/Dựng Video AI Ngắn</strong> cho người bận rộn ngại lộ mặt.
+    </div>
+
+    <!-- Bước chuẩn bị: 3 Tầng -->
+    <div class="glass-card rounded-2xl p-6 mb-8 border border-white/10">
+      <h3 class="text-base font-bold text-orange-400 mb-3 uppercase tracking-wider flex items-center gap-2">
+        <i class="fa-solid fa-magnifying-glass"></i> Giai đoạn 1: Bóc tách 3 tầng tâm lý trong đầu
+      </h3>
+      <div class="grid md:grid-cols-3 gap-4 text-xs">
+        <div class="p-3.5 bg-slate-900/80 rounded-xl border border-white/5">
+          <span class="text-slate-400 font-bold block mb-1">TẦNG 1 (Đãi bôi):</span>
+          <p class="text-slate-300"><em>"Em bận quá, công việc bù đầu nên chưa sắp xếp được thời gian làm video."</em></p>
+        </div>
+        <div class="p-3.5 bg-slate-900/80 rounded-xl border border-white/5">
+          <span class="text-blue-400 font-bold block mb-1">TẦNG 2 (Cảm giác thật):</span>
+          <p class="text-slate-300"><em>"Ngồi trước máy cả buổi tối không biết nói gì, mở CapCut ra nhìn rối mắt, bất lực xóa đi."</em></p>
+        </div>
+        <div class="p-3.5 bg-slate-900/80 rounded-xl border border-orange-500/30 bg-orange-950/20">
+          <span class="text-orange-400 font-bold block mb-1">TẦNG 3 (Sự thật ngượng miệng):</span>
+          <p class="text-slate-300"><em>"Sợ bị cười! Sợ bạn bè, đồng nghiệp thấy bảo: 'Già rồi còn đú bẩn làm Tiktoker', tự thấy mặt mình lên hình xấu và vô duyên."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bước thành phẩm: Kịch bản 60s -->
+    <div class="glass-card rounded-2xl p-6 border border-blue-500/30 shadow-2xl">
+      <h3 class="text-base font-bold text-blue-400 mb-4 uppercase tracking-wider flex items-center gap-2">
+        <i class="fa-solid fa-video"></i> Giai đoạn 2: Kịch bản Video 60 giây hoàn chỉnh
+      </h3>
+
+      <div class="space-y-4 text-sm leading-relaxed">
+        
+        <div class="p-4 bg-slate-900/60 rounded-xl border-l-4 border-blue-500">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+            <span>[00:00 - 00:15] BƯỚC 1: ĐỒNG CẢM</span>
+            <span class="text-blue-400 font-bold">Lôi Tầng 2 ra nói</span>
+          </div>
+          <p class="text-slate-200">
+            "Có phải bạn đã từng ngồi trước màn hình điện thoại cả tiếng đồng hồ, quay đi quay lại hàng chục lần nhưng cuối cùng bấm xóa hết vì thấy giọng mình vừa đơ vừa gượng? Mở ứng dụng chỉnh sửa video lên thì rối mắt, mệt mỏi rồi lại tặc lưỡi bỏ cuộc?"
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-900/60 rounded-xl border-l-4 border-purple-500">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+            <span>[00:15 - 00:30] BƯỚC 2: TẨY TRẮNG</span>
+            <span class="text-purple-400 font-bold">Đâm trúng Tầng 3 & Giải oan</span>
+          </div>
+          <p class="text-slate-200">
+            "Và cái rào cản lớn nhất khiến bạn chưa dám đăng video... thật ra là bạn <strong>sợ bị người quen nhìn thấy rồi cười vào mặt</strong>, đúng không? Bạn sợ người ta nghĩ mình hết thời hay bày đặt làm màu.  
+            Nhưng nghe tôi này: <span class="text-yellow-400 font-bold">Đó hoàn toàn KHÔNG PHẢI lỗi của bạn!</span> Bất kỳ ai khi bắt đầu đứng trước máy quay đều có nỗi sợ bị phán xét đó cả."
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-900/60 rounded-xl border-l-4 border-yellow-500">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+            <span>[00:30 - 00:45] BƯỚC 3: BẺ LÁI</span>
+            <span class="text-yellow-400 font-bold">Đập vỡ Tầng 1 & Gom về 1 nút thắt</span>
+          </div>
+          <p class="text-slate-200">
+            "Đừng nghe mấy lời khuyên đạo lý ngoài kia bảo bạn: <em>'Cứ tự tin bật máy lên mà nói'</em> (Đập Tầng 1).  
+            Sự thật là bạn bế tắc chỉ vì <strong>ĐÚNG 1 NÚT THẮT CỐT LÕI: Bạn đang cố làm video theo phương pháp thủ công thời kỳ đồ đá</strong>. Bắt bạn vừa nghĩ kịch bản, vừa lộ mặt, vừa edit thì đến chuyên gia cũng kiệt sức."
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-900/60 rounded-xl border-l-4 border-green-500">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+            <span>[00:45 - 00:60] BƯỚC 4: CHÌA KHÓA</span>
+            <span class="text-green-400 font-bold">Tung giải pháp độc quyền</span>
+          </div>
+          <p class="text-slate-200">
+            "Đó là lý do <strong>Quy trình Video AI Không Lộ Mặt 3 Phút</strong> này ra đời. Bạn không cần ló mặt, không cần thu âm, chỉ cần nạp ý tưởng thô, AI sẽ tự động phân cảnh, lồng giọng tự nhiên và dựng thành video chuẩn xu hướng.  
+            Nhấp ngay vào link bên dưới để nhận cẩm nang hướng dẫn chi tiết từng bước hoàn toàn miễn phí!"
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary & Checklist for Beginners -->
+  <section class="max-w-5xl mx-auto px-4 py-12 relative z-10 border-t border-white/5">
+    <div class="glass-card rounded-2xl p-6 md:p-8 bg-gradient-to-br from-slate-900/90 to-blue-950/40 border border-blue-500/20">
+      <h3 class="title-short text-xl text-white mb-4">CHECKLIST 3 PHÚT DÀNH CHO NGƯỜI MỚI TRƯỚC KHI BẮT ĐẦU VIẾT</h3>
+      <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 font-bold">1</span>
+          <div>
+            <strong class="text-white">Không bao giờ viết kịch bản ngay:</strong> Luôn dừng lại 2 phút để tự hỏi: <em>Khách hàng đang giấu sự thật ngượng ngùng gì? (Tầng 3)</em>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 font-bold">2</span>
+          <div>
+            <strong class="text-white">Đừng quên câu thần chú tẩy trắng:</strong> Phải nói rõ <em>"Không phải lỗi của bạn"</em> để tháo bỏ phòng thủ của người xem.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 font-bold">3</span>
+          <div>
+            <strong class="text-white">Đừng bán sự chăm chỉ:</strong> Đừng bắt họ cố gắng thêm, hãy bán cho họ <em>sự giải thoát qua 1 cơ chế mới</em>.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 font-bold">4</span>
+          <div>
+            <strong class="text-white">Kiểm tra mùi bán hàng:</strong> Đọc to kịch bản lên, nếu nghe giống quảng cáo truyền hình thì hãy tăng thêm độ trần trụi của Tầng 3!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-4">
+      <p>© 2026 FEDU.VN - HỌC VIỆN ĐÀO TẠO KỸ NĂNG & VIDEO THỰC CHIẾN</p>
+      <p class="mt-1 font-mono">Tài liệu nội bộ & học viên độc quyền</p>
+    </div>
+  </footer>
+
+</body>
+</html>
