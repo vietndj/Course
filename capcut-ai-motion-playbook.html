@@ -129,6 +129,23 @@
       border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
+    /* Video Frame Styling */
+    .video-card-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #020408;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+    }
+
+    .video-card-container video {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
     /* Gradient Borders */
     .border-l-blue { border-left: 4px solid #3b82f6; }
     .border-l-cyan { border-left: 4px solid #06b6d4; }
@@ -159,7 +176,7 @@
     .prompt-box {
       background: #090e17;
       border: 1px solid rgba(59, 130, 246, 0.25);
-      border-radius: 10px;
+      border-radius: 12px;
       position: relative;
     }
 
@@ -203,13 +220,13 @@
       </a>
       
       <div class="flex items-center gap-3">
+        <a href="#demos" class="text-xs px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 border border-cyan-500/20 font-medium transition flex items-center gap-2">
+          <i class="fa-solid fa-play"></i>
+          <span>Video Demo</span>
+        </a>
         <a href="#cheatsheet" class="text-xs px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/20 font-medium transition flex items-center gap-2">
           <i class="fa-solid fa-bolt"></i>
           <span>Prompt Cheatsheet</span>
-        </a>
-        <a href="https://vietndj.github.io/course/" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1">
-          <span>Tất cả bài giảng</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
         </a>
       </div>
     </div>
@@ -221,7 +238,7 @@
       
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono mb-6">
         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-        HỆ THỐNG BIÊN TẬP TỰ ĐỘNG THẾ HỆ MỚI • 2026 EDITION
+        HỆ THỐNG BIÊN TẬP TỰ ĐỘNG THẾ HỆ MỚI • KÈM VIDEO DEMO THỰC TẾ
       </div>
 
       <!-- TIÊU ĐỀ NGẮN <= 8 TỪ: SVN-Integral CF Regular 400 -->
@@ -273,11 +290,11 @@
 
         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
           <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-code-merge"></i>
+            <i class="fa-solid fa-circle-play"></i>
           </div>
           <div>
-            <div class="text-xs text-slate-400">Tự động timeline</div>
-            <div class="text-sm font-bold text-white font-mono">Draft JSON 1-Click</div>
+            <div class="text-xs text-slate-400">Xem trực tiếp</div>
+            <div class="text-sm font-bold text-white font-mono">06 Video Demo</div>
           </div>
         </div>
       </div>
@@ -286,22 +303,258 @@
 
     <!-- Quick Anchor Tabs -->
     <div class="flex items-center justify-center gap-2 flex-wrap mb-14">
+      <a href="#demos" class="px-4 py-2 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold hover:bg-cyan-500/30 transition flex items-center gap-2">
+        <i class="fa-solid fa-clapperboard"></i>
+        <span>RẠP CHIẾU VIDEO DEMO (HOT)</span>
+      </a>
       <a href="#mindset" class="px-4 py-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 border border-slate-800 transition">
-        1. Khung Tư Duy (Mindset)
+        1. Khung Tư Duy
       </a>
       <a href="#modes" class="px-4 py-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 border border-slate-800 transition">
         2. 3 Chế Độ Phối Hợp
       </a>
       <a href="#weapons" class="px-4 py-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 border border-slate-800 transition">
-        3. Kho 7 Kỹ Xảo Thực Chiến
+        3. Kho 7 Kỹ Xảo
       </a>
       <a href="#workspace" class="px-4 py-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 border border-slate-800 transition">
-        4. Cấu Trúc Thư Mục Local
+        4. Cấu Trúc Thư Mục
       </a>
       <a href="#cheatsheet" class="px-4 py-2 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/40 text-xs font-medium hover:bg-blue-600/30 transition">
-        5. Cheatsheet Ra Lệnh 1-Chạm
+        5. Cheatsheet 1-Chạm
       </a>
     </div>
+
+    <!-- SECTION ĐẶC BIỆT: RẠP CHIẾU VIDEO DEMO THỰC TẾ (DEMO SHOWCASE) -->
+    <section id="demos" class="mb-16 scroll-mt-24">
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border-l-cyan">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-400 font-mono text-xs font-bold uppercase">LIVE DEMOS</span>
+              <!-- TIÊU ĐỀ NGẮN <= 8 TỪ: SVN-Integral Regular 400 -->
+              <h2 class="title-short text-xl sm:text-2xl text-white">RẠP CHIẾU VIDEO DEMO THỰC TẾ</h2>
+            </div>
+            <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+            <p class="title-long text-xs sm:text-sm text-slate-400 mt-1">
+              Toàn bộ các tệp video mẫu đã được AI biên dịch và render sẵn trên máy của anh Việt
+            </p>
+          </div>
+          <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5 self-start sm:self-auto px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
+            <i class="fa-solid fa-circle-check"></i> Đã đóng gói tại local
+          </span>
+        </div>
+
+        <!-- Video Grid (Mobile-First 9:16) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- DEMO 1: MAP ANIMATION -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-blue-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-map-location-dot"></i> 01. BẢN ĐỒ HÀNH TRÌNH
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">9:16 • 2.6 MB</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata" poster="./assets/demos/search_bar_preview.gif">
+                  <source src="./assets/demos/map_animation_demo_9x16.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video thẻ tag.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Bản đồ đường bay/hành trình Hà Nội - TP.HCM với đường nét đứt phát sáng và ghim điểm đến
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Đã xử lý tối ưu để kéo đè lên video cảnh quay.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/map_animation_demo_9x16.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-map')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+          <!-- DEMO 2: SEARCH BAR GOOGLE DARK MODE -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-cyan-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-brands fa-google"></i> 02. GOOGLE SEARCH BAR
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">ASMR Audio • 0.5 MB</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/search_bar_google_demo_9x16.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Thanh tìm kiếm Google Dark Mode gõ chữ tự động, chuột click và bung thẻ kết quả 5 sao
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Tích hợp sẵn hiệu ứng âm thanh gõ phím & click ASMR.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/search_bar_google_demo_9x16.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-cyan-600/20 hover:bg-cyan-600 text-cyan-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-search')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+          <!-- DEMO 3: SEARCH BAR SAFARI GLASS -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-purple-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-brands fa-safari"></i> 03. SAFARI GLASSMORPHISM
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">macOS Style • 0.5 MB</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/search_bar_safari_demo_9x16.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Giao diện Safari macOS kính mờ sang trọng, thanh URL trượt thông minh
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Thích hợp cho video công nghệ, thiết kế, bài giảng cao cấp.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/search_bar_safari_demo_9x16.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-search')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+          <!-- DEMO 4: MOTION BACKGROUND GLOW -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-emerald-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-water"></i> 04. MESH GLOW BACKGROUND
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">60 FPS • 10s Loop</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/motion_bg_vertical_demo_9x16.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Nền chuyển động ánh sáng đa tầng mờ mịn, khử dải màu (Anti-Banding Film Grain)
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Lót dưới video Talking Head đã tách phông hoặc slide.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/motion_bg_vertical_demo_9x16.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-bg')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+          <!-- DEMO 5: HIGHLIGHT TEXT SUITE -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-amber-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-highlighter"></i> 05. HIGHLIGHT TEXT KINETIC
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Typography • 1.4 MB</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/highlight_text_demo_9x16.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Hiệu ứng gạch chân highlight neon, chữ nảy đanh thép và hộp thông tin trượt
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Nhấn mạnh các từ khóa đắt giá trong lời thoại.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/highlight_text_demo_9x16.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-counter')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+          <!-- DEMO 6: GREEN SCREEN MOBILE -->
+          <div class="bg-slate-900/70 rounded-xl p-4 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-rose-400 font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-mobile-screen"></i> 06. PHÔNG XANH CAPCUT PHONE
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">Chroma Key • 0.5 MB</span>
+              </div>
+              
+              <div class="video-card-container aspect-[9/16] max-h-[380px] mx-auto mb-3">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/search_bar_greenscreen_demo.mp4" type="video/mp4">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+              </div>
+
+              <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
+              <p class="title-long text-xs text-slate-300 mb-1">
+                Bản nền xanh lá #00FF00 chuyên dụng cho CapCut Mobile (iPhone / iPad)
+              </p>
+              <p class="text-[11px] text-slate-400 mb-3">Chỉ cần bấm Cutout $ightarrow$ Chroma Key $ightarrow$ Kéo 20% là xong.</p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="./assets/demos/search_bar_greenscreen_demo.mp4" target="_blank" download class="text-[11px] px-3 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Tải MP4
+              </a>
+              <button onclick="copyPrompt('prompt-alpha')" class="text-[11px] px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition font-mono flex items-center gap-1.5">
+                <i class="fa-solid fa-copy"></i> Dùng Prompt
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
     <!-- SECTION 1: KHUNG TƯ DUY -->
     <section id="mindset" class="mb-16 scroll-mt-24">
@@ -318,13 +571,26 @@
           Tại Sao Cặp Đôi "Antigravity + CapCut" Thay Thế Hoàn Toàn After Effects?
         </h3>
 
-        <div class="text-slate-300 leading-relaxed space-y-4 mb-6 text-sm sm:text-base">
-          <p>
-            Trào lưu toàn cầu bắt nguồn từ video kinh điển: <strong class="text-white">"Forget After Effects: Claude + CapCut Is the Only Editing Stack You Need"</strong>. Tác giả phát hiện ra rằng việc mở After Effects để làm các hiệu ứng chữ chạy, thanh tìm kiếm, hay bộ đếm số là một sự lãng phí thời gian khủng khiếp. Tuy nhiên, nếu dùng <em>Claude Web</em>, người dùng vẫn phải tự copy code, tự cài Node.js, tự render thủ công rồi tải về máy.
-          </p>
-          <p>
-            Khi anh Việt kết hợp cùng <strong class="text-cyan-400">Antigravity ngay trên máy Mac</strong>, toàn bộ điểm nghẽn này được xóa sổ 100%. Antigravity chạy trực tiếp tại Terminal local của anh, có toàn quyền thực thi Node.js, Remotion, FFmpeg, Python và thậm chí can thiệp trực tiếp file cấu trúc <code class="px-1.5 py-0.5 rounded bg-slate-800 text-blue-300 font-mono text-xs">draft_content.json</code> của CapCut!
-          </p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div class="lg:col-span-2 text-slate-300 leading-relaxed space-y-4 text-xs sm:text-sm">
+            <p>
+              Trào lưu toàn cầu bắt nguồn từ video kinh điển: <strong class="text-white">"Forget After Effects: Claude + CapCut Is the Only Editing Stack You Need"</strong>. Tác giả phát hiện ra rằng việc mở After Effects để làm các hiệu ứng chữ chạy, thanh tìm kiếm, hay bộ đếm số là một sự lãng phí thời gian khủng khiếp. Tuy nhiên, nếu dùng <em>Claude Web</em>, người dùng vẫn phải tự copy code, tự cài Node.js, tự render thủ công rồi tải về máy.
+            </p>
+            <p>
+              Khi anh Việt kết hợp cùng <strong class="text-cyan-400">Antigravity ngay trên máy Mac</strong>, toàn bộ điểm nghẽn này được xóa sổ 100%. Antigravity chạy trực tiếp tại Terminal local của anh, có toàn quyền thực thi Node.js, Remotion, FFmpeg, Python và thậm chí can thiệp trực tiếp file cấu trúc <code class="px-1.5 py-0.5 rounded bg-slate-800 text-blue-300 font-mono text-xs">draft_content.json</code> của CapCut!
+            </p>
+          </div>
+
+          <!-- YouTube Embed Reference -->
+          <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 p-2 flex flex-col justify-between">
+            <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-slate-900 mb-2">
+              <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/j4FzO2fF1kg" title="Forget After Effects YouTube Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="text-[11px] text-slate-400 font-mono flex items-center justify-between px-1">
+              <span>Video Gốc Tham Khảo</span>
+              <a href="https://www.youtube.com/watch?v=j4FzO2fF1kg" target="_blank" class="text-blue-400 hover:underline">Mở YouTube <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+            </div>
+          </div>
         </div>
 
         <!-- Comparison Table -->
@@ -483,7 +749,7 @@
         <h2 class="title-short text-2xl sm:text-3xl text-white mt-2 mb-2">KHO 7 VŨ KHÍ KỸ XẢO THỰC CHIẾN</h2>
         <!-- TIÊU ĐỀ DÀI > 8 TỪ: SVN-Poppins SemiBold 600 -->
         <p class="title-long text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
-          Chi tiết từng dạng Motion Graphics: Cơ chế vận hành, định dạng xuất và cú pháp gọi 1-chạm chính xác 100%
+          Chi tiết từng dạng Motion Graphics: Kèm video demo nhúng trực tiếp và cú pháp gọi 1-chạm chính xác 100%
         </p>
       </div>
 
@@ -505,35 +771,54 @@
             </div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">ProRes 4444 Alpha</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">9:16 / 16:9</span>
+              <a href="./assets/demos/map_animation_demo_9x16.mp4" target="_blank" class="px-2.5 py-1 rounded bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white text-xs font-mono transition flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> Xem Demo
+              </a>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-              <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Giới thiệu hành trình đi quay thực địa (Hà Nội $ightarrow$ Times City $ightarrow$ Ecopark), định vị dự án bất động sản, vlog du lịch, hoặc mô phỏng vị trí địa lý chi nhánh kinh doanh.</p>
-              <p><strong class="text-white">⚙️ Cơ chế chuyển động:</strong> Phóng to bản đồ vệ tinh / dark minimalist, vẽ đường cong nét đứt phát sáng (Glowing Dash Path), icon phương tiện lướt theo cung đường, ghim cắm nhấp nháy tỏa sóng (Pulse Pin Marker) kèm popup thông số thời gian / cự ly.</p>
-              <p><strong class="text-white">📂 Định dạng nhận được:</strong> File <code class="text-cyan-300 font-mono">.mov</code> kênh Alpha trong suốt. Khi đặt vào CapCut, chỉ cần kéo đè lên trên video mặt nói hoặc video B-roll hiện trường là bản đồ hiển thị trong suốt mượt mà, không che khuất hậu cảnh.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Video Preview Column (4 cols) -->
+            <div class="lg:col-span-4">
+              <div class="video-card-container aspect-[9/16] max-h-[360px] mx-auto">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/map_animation_demo_9x16.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mt-2 text-[11px] text-center font-mono text-slate-400">
+                Demo thực tế: Hà Nội $ightarrow$ TP.HCM 9:16
+              </div>
             </div>
 
-            <div class="prompt-box p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
-                </span>
-                <button onclick="copyPrompt('prompt-map')" class="text-xs px-2.5 py-1 rounded bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white transition flex items-center gap-1">
-                  <i class="fa-regular fa-copy"></i>
-                  <span>Sao chép</span>
-                </button>
+            <!-- Content & Prompt Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-4">
+              <div class="text-xs sm:text-sm text-slate-300 space-y-2.5 leading-relaxed">
+                <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Giới thiệu hành trình đi quay thực địa (Hà Nội $ightarrow$ Times City $ightarrow$ Ecopark), định vị dự án bất động sản, vlog du lịch, hoặc mô phỏng vị trí địa lý chi nhánh kinh doanh.</p>
+                <p><strong class="text-white">⚙️ Cơ chế chuyển động:</strong> Phóng to bản đồ vệ tinh / dark minimalist, vẽ đường cong nét đứt phát sáng (Glowing Dash Path), icon phương tiện lướt theo cung đường, ghim cắm nhấp nháy tỏa sóng (Pulse Pin Marker) kèm popup thông số thời gian / cự ly.</p>
+                <p><strong class="text-white">📂 Định dạng nhận được:</strong> File <code class="text-cyan-300 font-mono">.mov</code> kênh Alpha trong suốt. Khi đặt vào CapCut, chỉ cần kéo đè lên trên video mặt nói hoặc video B-roll hiện trường là bản đồ hiển thị trong suốt mượt mà, không che khuất hậu cảnh.</p>
               </div>
-              <p id="prompt-map" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-cyan-500">
-                "Tạo cho anh Map Animation hành trình từ Hồ Hoàn Kiếm đến Times City: vẽ đường line phát sáng cam neon, có icon xe di chuyển, cắm ghim nhấp nháy tại điểm đến, xuất file ProRes 4444 nền trong suốt dài 4s, tỉ lệ 9:16."
-              </p>
-              <div class="mt-3 text-[11px] text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-arrow-turn-down text-blue-400 ml-1"></i>
-                <span>Tùy biến: Đổi địa điểm A, B, màu đường line (xanh cyan/cam neon), và thời lượng 3s-6s.</span>
+
+              <div class="prompt-box p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
+                  </span>
+                  <button onclick="copyPrompt('prompt-map')" class="text-xs px-2.5 py-1 rounded bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white transition flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Sao chép</span>
+                  </button>
+                </div>
+                <p id="prompt-map" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-cyan-500">
+                  "Tạo cho anh Map Animation hành trình từ Hồ Hoàn Kiếm đến Times City: vẽ đường line phát sáng cam neon, có icon xe di chuyển, cắm ghim nhấp nháy tại điểm đến, xuất file ProRes 4444 nền trong suốt dài 4s, tỉ lệ 9:16."
+                </p>
+                <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-turn-down text-blue-400 ml-1"></i>
+                  <span>Tùy biến: Đổi địa điểm A, B, màu đường line (xanh cyan/cam neon), và thời lượng 3s-6s.</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -553,40 +838,59 @@
             </div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono border border-cyan-500/20">Kèm ASMR Audio</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">Đã test thực tế</span>
+              <a href="./assets/demos/search_bar_google_demo_9x16.mp4" target="_blank" class="px-2.5 py-1 rounded bg-cyan-600/30 hover:bg-cyan-600 text-cyan-300 hover:text-white text-xs font-mono transition flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> Xem Demo
+              </a>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-              <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Dùng làm phân cảnh Hook mở đầu video (khán giả đang tìm kiếm câu trả lời), chứng minh từ khóa thịnh hành, hoặc tạo bối cảnh người dùng search thương hiệu FEDU / Khóa học của anh.</p>
-              <p><strong class="text-white">⚙️ 4 Giai đoạn chuyển động:</strong> 
-                1. Thanh tìm kiếm trượt vào mượt mà $ightarrow$ 
-                2. Chuột lướt vào click kích hoạt viền sáng $ightarrow$ 
-                3. Gõ chữ Typewriter kèm dropdown gợi ý $ightarrow$ 
-                4. Click chọn và phóng to Thẻ Kết Quả 5 Sao / Video thumbnail.
-              </p>
-              <p><strong class="text-white">📂 Đã đóng gói sẵn tại máy:</strong> Đã có sẵn script <code class="text-cyan-300 font-mono">tao_search_bar.py</code> tại <code class="text-slate-400 font-mono">Video phan tich/search_bar_capcut/</code> xuất trọn bộ ProRes 4444, MP4 và âm thanh <code class="text-cyan-300 font-mono">ui_sound.wav</code>.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Video Preview Column (4 cols) -->
+            <div class="lg:col-span-4">
+              <div class="video-card-container aspect-[9/16] max-h-[360px] mx-auto">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/search_bar_google_demo_9x16.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mt-2 text-[11px] text-center font-mono text-slate-400">
+                Demo Google Dark Mode 9:16 (Bật loa nghe ASMR)
+              </div>
             </div>
 
-            <div class="prompt-box p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
-                </span>
-                <button onclick="copyPrompt('prompt-search')" class="text-xs px-2.5 py-1 rounded bg-cyan-600/30 hover:bg-cyan-600 text-cyan-300 hover:text-white transition flex items-center gap-1">
-                  <i class="fa-regular fa-copy"></i>
-                  <span>Sao chép</span>
-                </button>
+            <!-- Content & Prompt Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-4">
+              <div class="text-xs sm:text-sm text-slate-300 space-y-2.5 leading-relaxed">
+                <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Dùng làm phân cảnh Hook mở đầu video (khán giả đang tìm kiếm câu trả lời), chứng minh từ khóa thịnh hành, hoặc tạo bối cảnh người dùng search thương hiệu FEDU / Khóa học của anh.</p>
+                <p><strong class="text-white">⚙️ 4 Giai đoạn chuyển động:</strong> 
+                  1. Thanh tìm kiếm trượt vào mượt mà $ightarrow$ 
+                  2. Chuột lướt vào click kích hoạt viền sáng $ightarrow$ 
+                  3. Gõ chữ Typewriter kèm dropdown gợi ý $ightarrow$ 
+                  4. Click chọn và phóng to Thẻ Kết Quả 5 Sao / Video thumbnail.
+                </p>
+                <p><strong class="text-white">📂 Đã đóng gói sẵn tại máy:</strong> Đã có sẵn script <code class="text-cyan-300 font-mono">tao_search_bar.py</code> tại <code class="text-slate-400 font-mono">Video phan tich/search_bar_capcut/</code> xuất trọn bộ ProRes 4444, MP4 và âm thanh <code class="text-cyan-300 font-mono">ui_sound.wav</code>.</p>
               </div>
-              <p id="prompt-search" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-cyan-500">
-                "Tạo Search Bar Animation gõ: 'Bí quyết đầu tư bất động sản 2026', phong cách Safari Dark Mode, có click chuột và bung thẻ kết quả 5 sao, nền trong suốt dài 4s kèm âm thanh ASMR gõ phím."
-              </p>
-              <div class="mt-3 text-[11px] text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-arrow-turn-down text-cyan-400 ml-1"></i>
-                <span>Tùy biến: Đổi phong cách (Google Pill / Safari macOS), từ khóa gõ, và kết quả hiển thị.</span>
+
+              <div class="prompt-box p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
+                  </span>
+                  <button onclick="copyPrompt('prompt-search')" class="text-xs px-2.5 py-1 rounded bg-cyan-600/30 hover:bg-cyan-600 text-cyan-300 hover:text-white transition flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Sao chép</span>
+                  </button>
+                </div>
+                <p id="prompt-search" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-cyan-500">
+                  "Tạo Search Bar Animation gõ: 'Bí quyết đầu tư bất động sản 2026', phong cách Safari Dark Mode, có click chuột và bung thẻ kết quả 5 sao, nền trong suốt dài 4s kèm âm thanh ASMR gõ phím."
+                </p>
+                <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-turn-down text-cyan-400 ml-1"></i>
+                  <span>Tùy biến: Đổi phong cách (Google Pill / Safari macOS), từ khóa gõ, và kết quả hiển thị.</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -606,40 +910,60 @@
             </div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-300 text-xs font-mono border border-purple-500/20">Chống Răng Cưa</span>
+              <a href="./assets/demos/search_bar_greenscreen_demo.mp4" target="_blank" class="px-2.5 py-1 rounded bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white text-xs font-mono transition flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> Xem Bản Green Screen
+              </a>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-              <p><strong class="text-white">🎯 Phân biệt 2 chuẩn bắt buộc phải nhớ:</strong></p>
-              <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1.5 text-xs">
-                <div class="text-emerald-400 font-bold font-mono">1. CapCut Mac / PC $ightarrow$ Apple ProRes 4444 (.mov):</div>
-                <div class="text-slate-300">Có kênh Alpha 10-bit thật sự. Kéo vào là trong suốt 100%, bảo toàn bóng đổ mềm mại, viền mờ ảo, không tốn 1 click lọc phông.</div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Video Preview Column (4 cols) -->
+            <div class="lg:col-span-4">
+              <div class="video-card-container aspect-[9/16] max-h-[360px] mx-auto">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/search_bar_greenscreen_demo.mp4" type="video/mp4">
+                </video>
               </div>
-              <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1.5 text-xs">
-                <div class="text-amber-400 font-bold font-mono">2. CapCut Mobile (iPhone / iPad) $ightarrow$ Green Screen (.mp4):</div>
-                <div class="text-slate-300">Nền xanh lá thuần <code class="text-amber-300">#00FF00</code>. Dùng tính năng <em>Cắt ảnh $ightarrow$ Phông xanh (Chroma Key)</em>, chỉnh Cường độ 15-20% để tách nền trên điện thoại.</div>
+              <div class="mt-2 text-[11px] text-center font-mono text-slate-400">
+                Demo Green Screen #00FF00 cho Mobile
               </div>
             </div>
 
-            <div class="prompt-box p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-purple-400 uppercase font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
-                </span>
-                <button onclick="copyPrompt('prompt-alpha')" class="text-xs px-2.5 py-1 rounded bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white transition flex items-center gap-1">
-                  <i class="fa-regular fa-copy"></i>
-                  <span>Sao chép</span>
-                </button>
+            <!-- Content & Prompt Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-4">
+              <div class="text-xs sm:text-sm text-slate-300 space-y-2.5 leading-relaxed">
+                <p><strong class="text-white">🎯 Phân biệt 2 chuẩn bắt buộc phải nhớ:</strong></p>
+                <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+                  <div class="text-emerald-400 font-bold font-mono">1. CapCut Mac / PC $ightarrow$ Apple ProRes 4444 (.mov):</div>
+                  <div class="text-slate-300">Có kênh Alpha 10-bit thật sự. Kéo vào là trong suốt 100%, bảo toàn bóng đổ mềm mại, viền mờ ảo, không tốn 1 click lọc phông.</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+                  <div class="text-amber-400 font-bold font-mono">2. CapCut Mobile (iPhone / iPad) $ightarrow$ Green Screen (.mp4):</div>
+                  <div class="text-slate-300">Nền xanh lá thuần <code class="text-amber-300">#00FF00</code>. Dùng tính năng <em>Cắt ảnh $ightarrow$ Phông xanh (Chroma Key)</em>, chỉnh Cường độ 15-20% để tách nền trên điện thoại.</div>
+                </div>
               </div>
-              <p id="prompt-alpha" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-purple-500">
-                "Xuất cho anh hiệu ứng [Tên hiệu ứng: Lower third / Khung chat iMessage / Icon nảy] thành 2 bản: 1 bản ProRes 4444 MOV nền trong suốt cho Mac, và 1 bản Green Screen MP4 cho CapCut điện thoại."
-              </p>
-              <div class="mt-3 text-[11px] text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-arrow-turn-down text-purple-400 ml-1"></i>
-                <span>Mẹo: Luôn ưu tiên dùng bản MOV trên máy Mac để có chất lượng hình ảnh đẳng cấp nhất.</span>
+
+              <div class="prompt-box p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-purple-400 uppercase font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
+                  </span>
+                  <button onclick="copyPrompt('prompt-alpha')" class="text-xs px-2.5 py-1 rounded bg-purple-600/30 hover:bg-purple-600 text-purple-300 hover:text-white transition flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Sao chép</span>
+                  </button>
+                </div>
+                <p id="prompt-alpha" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-purple-500">
+                  "Xuất cho anh hiệu ứng [Tên hiệu ứng: Lower third / Khung chat iMessage / Icon nảy] thành 2 bản: 1 bản ProRes 4444 MOV nền trong suốt cho Mac, và 1 bản Green Screen MP4 cho CapCut điện thoại."
+                </p>
+                <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-turn-down text-purple-400 ml-1"></i>
+                  <span>Mẹo: Luôn ưu tiên dùng bản MOV trên máy Mac để có chất lượng hình ảnh đẳng cấp nhất.</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -659,34 +983,54 @@
             </div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 text-xs font-mono border border-amber-500/20">Ease-Out Physics</span>
+              <a href="./assets/demos/highlight_text_demo_9x16.mp4" target="_blank" class="px-2.5 py-1 rounded bg-amber-600/30 hover:bg-amber-600 text-amber-300 hover:text-white text-xs font-mono transition flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> Xem Kinetic Demo
+              </a>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-              <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Thể hiện số liệu doanh thu bùng nổ, số dư tài khoản tăng liên tục, số lượng học viên đăng ký, % tăng trưởng chỉ số chứng khoán, hoặc đồng hồ đếm ngược (Countdown 10s) tạo tâm lý khẩn cấp.</p>
-              <p><strong class="text-white">⚙️ Cơ chế chuyển động:</strong> Chạy theo đường cong gia tốc (Easing Curve) — Bắt đầu tăng tốc cực nhanh và từ từ "phanh mượt" (Ease-Out) khi chạm tới con số đích, kết thúc bằng hiệu ứng lóe sáng (Flash Glow) hoặc rung giật nhẹ tạo điểm nhấn.</p>
-              <p><strong class="text-white">📂 Định dạng:</strong> Xuất video trong suốt đặt đúng vị trí bên cạnh ngón tay anh chỉ hoặc giữa màn hình.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Video Preview Column (4 cols) -->
+            <div class="lg:col-span-4">
+              <div class="video-card-container aspect-[9/16] max-h-[360px] mx-auto">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/highlight_text_demo_9x16.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mt-2 text-[11px] text-center font-mono text-slate-400">
+                Demo Kinetic Text & Số liệu 9:16
+              </div>
             </div>
 
-            <div class="prompt-box p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-amber-400 uppercase font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
-                </span>
-                <button onclick="copyPrompt('prompt-counter')" class="text-xs px-2.5 py-1 rounded bg-amber-600/30 hover:bg-amber-600 text-amber-300 hover:text-white transition flex items-center gap-1">
-                  <i class="fa-regular fa-copy"></i>
-                  <span>Sao chép</span>
-                </button>
+            <!-- Content & Prompt Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-4">
+              <div class="text-xs sm:text-sm text-slate-300 space-y-2.5 leading-relaxed">
+                <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Thể hiện số liệu doanh thu bùng nổ, số dư tài khoản tăng liên tục, số lượng học viên đăng ký, % tăng trưởng chỉ số chứng khoán, hoặc đồng hồ đếm ngược (Countdown 10s) tạo tâm lý khẩn cấp.</p>
+                <p><strong class="text-white">⚙️ Cơ chế chuyển động:</strong> Chạy theo đường cong gia tốc (Easing Curve) — Bắt đầu tăng tốc cực nhanh và từ từ "phanh mượt" (Ease-Out) khi chạm tới con số đích, kết thúc bằng hiệu ứng lóe sáng (Flash Glow) hoặc rung giật nhẹ tạo điểm nhấn.</p>
+                <p><strong class="text-white">📂 Định dạng:</strong> Xuất video trong suốt đặt đúng vị trí bên cạnh ngón tay anh chỉ hoặc giữa màn hình.</p>
               </div>
-              <p id="prompt-counter" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-amber-500">
-                "Tạo cho anh bộ đếm số doanh thu nhảy từ 0 lên 850.000.000đ trong 2.5 giây: định dạng tiền tệ VNĐ, font số đanh thép màu vàng kim viền phát sáng, phanh mượt khi chạm đích, nền trong suốt 9:16."
-              </p>
-              <div class="mt-3 text-[11px] text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-arrow-turn-down text-amber-400 ml-1"></i>
-                <span>Tùy biến: Đổi con số đích, đơn vị (VNĐ / USD / Học viên / %), và thời gian đếm.</span>
+
+              <div class="prompt-box p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-amber-400 uppercase font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
+                  </span>
+                  <button onclick="copyPrompt('prompt-counter')" class="text-xs px-2.5 py-1 rounded bg-amber-600/30 hover:bg-amber-600 text-amber-300 hover:text-white transition flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Sao chép</span>
+                  </button>
+                </div>
+                <p id="prompt-counter" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-amber-500">
+                  "Tạo cho anh bộ đếm số doanh thu nhảy từ 0 lên 850.000.000đ trong 2.5 giây: định dạng tiền tệ VNĐ, font số đanh thép màu vàng kim viền phát sáng, phanh mượt khi chạm đích, nền trong suốt 9:16."
+                </p>
+                <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-turn-down text-amber-400 ml-1"></i>
+                  <span>Tùy biến: Đổi con số đích, đơn vị (VNĐ / USD / Học viên / %), và thời gian đếm.</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -706,35 +1050,54 @@
             </div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-300 text-xs font-mono border border-emerald-500/20">Seamless Loop</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">Anti-Banding</span>
+              <a href="./assets/demos/motion_bg_vertical_demo_9x16.mp4" target="_blank" class="px-2.5 py-1 rounded bg-emerald-600/30 hover:bg-emerald-600 text-emerald-300 hover:text-white text-xs font-mono transition flex items-center gap-1">
+                <i class="fa-solid fa-play"></i> Xem Background
+              </a>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-              <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Làm nền phía sau video Talking Head đã xóa phông, lót dưới các thẻ bài học/slide, hoặc làm nền cho các đoạn chuyển cảnh kịch tính. Giúp khung hình sang trọng như video của Apple hay Linear.</p>
-              <p><strong class="text-white">⚙️ Cơ chế kỹ thuật:</strong> Kết hợp giữa dải màu Gradient chuyển động đa hướng, phủ một lớp nhiễu vi mô (Film Grain) để triệt tiêu hoàn toàn hiện tượng vỡ dải màu (Color Banding), khớp điểm đầu và điểm cuối để lặp vô tận.</p>
-              <p><strong class="text-white">📂 Đã đóng gói sẵn tại máy:</strong> Đã có script <code class="text-emerald-300 font-mono">generate_motion_bg.py</code> tại <code class="text-slate-400 font-mono">Video phan tich/motion_backgrounds/</code> xuất ra cả bản dọc 9:16 và ngang 16:9.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Video Preview Column (4 cols) -->
+            <div class="lg:col-span-4">
+              <div class="video-card-container aspect-[9/16] max-h-[360px] mx-auto">
+                <video controls playsinline loop muted preload="metadata">
+                  <source src="./assets/demos/motion_bg_vertical_demo_9x16.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mt-2 text-[11px] text-center font-mono text-slate-400">
+                Demo Mesh Glow 60FPS lặp vô tận 10s
+              </div>
             </div>
 
-            <div class="prompt-box p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-emerald-400 uppercase font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
-                </span>
-                <button onclick="copyPrompt('prompt-bg')" class="text-xs px-2.5 py-1 rounded bg-emerald-600/30 hover:bg-emerald-600 text-emerald-300 hover:text-white transition flex items-center gap-1">
-                  <i class="fa-regular fa-copy"></i>
-                  <span>Sao chép</span>
-                </button>
+            <!-- Content & Prompt Column (8 cols) -->
+            <div class="lg:col-span-8 space-y-4">
+              <div class="text-xs sm:text-sm text-slate-300 space-y-2.5 leading-relaxed">
+                <p><strong class="text-white">🎯 Ứng dụng thực chiến:</strong> Làm nền phía sau video Talking Head đã xóa phông, lót dưới các thẻ bài học/slide, hoặc làm nền cho các đoạn chuyển cảnh kịch tính. Giúp khung hình sang trọng như video của Apple hay Linear.</p>
+                <p><strong class="text-white">⚙️ Cơ chế kỹ thuật:</strong> Kết hợp giữa dải màu Gradient chuyển động đa hướng, phủ một lớp nhiễu vi mô (Film Grain) để triệt tiêu hoàn toàn hiện tượng vỡ dải màu (Color Banding), khớp điểm đầu và điểm cuối để lặp vô tận.</p>
+                <p><strong class="text-white">📂 Đã đóng gói sẵn tại máy:</strong> Đã có script <code class="text-emerald-300 font-mono">generate_motion_bg.py</code> tại <code class="text-slate-400 font-mono">Video phan tich/motion_backgrounds/</code> xuất ra cả bản dọc 9:16 và ngang 16:9.</p>
               </div>
-              <p id="prompt-bg" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-emerald-500">
-                "Dựa vào bức ảnh này, bóc tách bảng màu palette và render cho anh 1 video Ambient Mesh Glow Motion Background lặp vô tận 10s, tỉ lệ 9:16, 60fps, khử dải màu để làm nền CapCut."
-              </p>
-              <div class="mt-3 text-[11px] text-slate-400 flex items-center gap-2">
-                <i class="fa-solid fa-arrow-turn-down text-emerald-400 ml-1"></i>
-                <span>Cách dùng: Kéo vào Main Track (dưới cùng), đặt video người nói ở Overlay Track bên trên.</span>
+
+              <div class="prompt-box p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-emerald-400 uppercase font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-terminal"></i> Câu Lệnh Mẫu 1-Chạm
+                  </span>
+                  <button onclick="copyPrompt('prompt-bg')" class="text-xs px-2.5 py-1 rounded bg-emerald-600/30 hover:bg-emerald-600 text-emerald-300 hover:text-white transition flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Sao chép</span>
+                  </button>
+                </div>
+                <p id="prompt-bg" class="text-xs font-mono text-slate-200 leading-relaxed bg-slate-950/70 p-3 rounded-lg border border-slate-800 selection:bg-emerald-500">
+                  "Dựa vào bức ảnh này, bóc tách bảng màu palette và render cho anh 1 video Ambient Mesh Glow Motion Background lặp vô tận 10s, tỉ lệ 9:16, 60fps, khử dải màu để làm nền CapCut."
+                </p>
+                <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-turn-down text-emerald-400 ml-1"></i>
+                  <span>Cách dùng: Kéo vào Main Track (dưới cùng), đặt video người nói ở Overlay Track bên trên.</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
