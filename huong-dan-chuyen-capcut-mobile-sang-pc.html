@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng Dẫn Chuyển Dự Án CapCut Mobile Sang Máy Tính (PC/Mac) Chi Tiết Nhất</title>
+  
+  <!-- Google Fonts & Custom Webfonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    :root {
+      --bg-dark: #06090e;
+      --bg-card: #0e1422;
+      --bg-card-hover: #131b2e;
+      --bg-surface: #172138;
+      --border: #1e2d48;
+      --border-light: rgba(255, 255, 255, 0.08);
+      
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.25);
+      --electric-blue: #3b82f6;
+      --purple: #8b5cf6;
+      --purple-glow: rgba(139, 92, 246, 0.25);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #ef4444;
+      
+      --text-main: #f8fafc;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-body);
+      font-family: 'SVN-Poppins', 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TYPOGRAPHY QUY CHUẨN ANH VIỆT */
+    .title-short {
+      font-family: 'SVN-Integral', 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400; /* Luôn Regular, cấm Bold */
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .title-long {
+      font-family: 'SVN-Poppins', 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      line-height: 1.4;
+      text-transform: none;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 9, 14, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    .header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .brand-text h1 {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .badge-capcut {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #67e8f9;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.18) 0%, rgba(14, 20, 34, 0.6) 70%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px 36px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fcd34d;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 2.15rem;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.08rem;
+      color: var(--text-body);
+      max-width: 860px;
+      margin-bottom: 24px;
+    }
+
+    .hero-cover-img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin: 20px 0 28px;
+      display: block;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-val {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* QUICK NAV */
+    .quick-nav {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .quick-nav-title {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .nav-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 12px 16px;
+      border-radius: 10px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* SECTION CARDS */
+    .section-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .section-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* COMPARISON TABLE */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      padding: 14px 18px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-body);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge-recommend {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    /* STEP CARDS */
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    .step-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .step-num {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-heading {
+      font-size: 1.25rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .step-desc {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* REAL SCREENSHOT CONTAINER */
+    .screenshot-box {
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #020408;
+      overflow: hidden;
+      margin: 18px 0;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .screenshot-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot-box:hover img {
+      transform: scale(1.01);
+    }
+
+    .screenshot-caption {
+      padding: 12px 18px;
+      background: rgba(14, 20, 34, 0.95);
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .caption-icon {
+      color: var(--cyan);
+      font-size: 1.1rem;
+    }
+
+    /* ACTION CALLOUT */
+    .action-callout {
+      background: rgba(6, 182, 212, 0.08);
+      border-left: 4px solid var(--cyan);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 16px 0;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+    }
+
+    .action-callout strong {
+      color: #38bdf8;
+    }
+
+    .warning-callout {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 4px solid var(--rose);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 16px 0;
+      font-size: 0.92rem;
+      color: #fecaca;
+    }
+
+    .tip-callout {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 4px solid var(--emerald);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 16px 0;
+      font-size: 0.92rem;
+      color: #d1fae5;
+    }
+
+    /* GRID 2 COL */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    /* ERROR CARDS */
+    .error-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .error-card-title {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .error-cause {
+      font-size: 0.88rem;
+      color: var(--rose);
+      background: rgba(239, 68, 68, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .error-solution {
+      font-size: 0.9rem;
+      color: #a7f3d0;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #04060a;
+      padding: 36px 24px;
+      text-align: center;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* LIGHTBOX MODAL */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    #lightbox.active {
+      display: flex;
+    }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s;
+      z-index: 90;
+    }
+
+    .back-to-top:hover {
+      background: var(--cyan);
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner { padding: 28px 20px; }
+      .hero-title { font-size: 1.7rem; }
+      .section-block { padding: 24px 18px; }
+      .step-card { padding: 20px 16px; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="./index.html" class="brand-wrap">
+        <div class="brand-logo">⚡</div>
+        <div class="brand-text">
+          <h1 class="title-short">FEDU COURSE HUB</h1>
+          <p>Hệ thống bài giảng & Quy trình dựng video thực chiến</p>
+        </div>
+      </a>
+      <div class="badge-capcut mono">CAPCUT PLAYBOOK</div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+      <div class="hero-tag mono">
+        <span>●</span> HƯỚNG DẪN ĐỒNG BỘ ĐA NỀN TẢNG
+      </div>
+      
+      <h2 class="hero-title title-long">
+        Cách Chuyển Dự Án <span>CapCut Mobile Sang Máy Tính (PC/Mac)</span> Hiệu Quả Nhất
+      </h2>
+      
+      <p class="hero-desc">
+        Hướng dẫn từng bước với <strong>hình ảnh thực tế giao diện thật</strong>. Giúp bạn chuyển toàn bộ Timeline đang dựng dở, giữ nguyên hiệu ứng cắt ghép, keyframe, chữ phụ đề và chuyển sang màn hình lớn của máy tính để hậu kỳ chuyên nghiệp chỉ trong 30 giây.
+      </p>
+
+      <!-- HERO IMAGE -->
+      <img src="./assets/images/capcut-sync/capcut-sync-banner.jpg" alt="Đồng bộ CapCut Mobile sang PC" class="hero-cover-img" onclick="openLightbox(this.src)">
+
+      <div class="hero-meta-grid mono">
+        <div class="meta-item">
+          <span class="meta-label">Tác Giả & Hướng Dẫn</span>
+          <span class="meta-val">Anh Việt (FEDU)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Phương Thức Chính</span>
+          <span class="meta-val">CapCut Cloud Space</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Thiết Bị Hỗ Trợ</span>
+          <span class="meta-val">iOS / Android → Windows / Mac</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Thời Gian Thực Hiện</span>
+          <span class="meta-val">~30 Giây / Dự án</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK NAV -->
+    <div class="quick-nav">
+      <div class="quick-nav-title title-short">
+        <span>🧭</span> MỤC LỤC BÀI HỌC
+      </div>
+      <div class="nav-grid">
+        <a href="#section-compare" class="nav-link-btn">
+          <span>📊</span> 1. So sánh 3 cách chuyển
+        </a>
+        <a href="#section-cloud" class="nav-link-btn">
+          <span>☁️</span> 2. Đồng bộ qua Cloud Space (Có ảnh thật)
+        </a>
+        <a href="#section-footage" class="nav-link-btn">
+          <span>🚀</span> 3. Chuyển File gốc dung lượng lớn
+        </a>
+        <a href="#section-export" class="nav-link-btn">
+          <span>🎬</span> 4. Xuất video đệm / Filter độc quyền
+        </a>
+        <a href="#section-troubleshoot" class="nav-link-btn">
+          <span>🛠️</span> 5. Xử lý 4 lỗi thường gặp
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 1: SO SÁNH CÁC CÁCH CHUYỂN -->
+    <section id="section-compare" class="section-block">
+      <div class="section-header">
+        <span class="section-tag mono">TỔNG QUAN CHIẾN LƯỢC</span>
+        <h3 class="section-title title-long">
+          <span>🎯</span> Chọn Cách Chuyển Nào Cho Từng Tình Huống?
+        </h3>
+        <p class="section-subtitle">Tùy thuộc vào dung lượng video và mức độ dựng dở trên điện thoại để chọn phương án tối ưu nhất.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Phương thức</th>
+              <th>Nhu cầu áp dụng</th>
+              <th>Ưu điểm cốt lõi</th>
+              <th>Hạn chế cần lưu ý</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong style="color: #38bdf8;">Cách 1: CapCut Cloud Space</strong><br>
+                <span class="badge-recommend mono">KHUYÊN DÙNG</span>
+              </td>
+              <td>Đã cắt thô, lên phụ đề, add keyframe trên điện thoại; muốn sang PC để chỉnh màu, thêm âm thanh, xuất 4K.</td>
+              <td>Giữ nguyên 100% timeline, vết cắt, vị trí text, keyframe. Không cần cắm dây nối.</td>
+              <td>Cần kết nối Wi-Fi ổn định. Dung lượng miễn phí thường từ 1GB - 10GB.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong style="color: #34d399;">Cách 2: Chuyển Footage gốc</strong><br>
+                <span class="mono" style="font-size:0.8rem; color:var(--text-muted);">(LocalSend / AirDrop / Cáp)</span>
+              </td>
+              <td>Quay video dài, file 4K nặng hàng chục GB, chưa cắt ghép trên điện thoại hoặc muốn dựng lại từ đầu trên PC.</td>
+              <td>Tốc độ truyền cực nhanh qua mạng nội bộ hoặc dây cáp (30 - 80 MB/s), không tốn dung lượng Cloud.</td>
+              <td>Timeline chưa được cắt; bạn phải bắt đầu dựng từ đầu trên máy tính.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong style="color: #fbbf24;">Cách 3: Xuất Video đệm chất lượng cao</strong><br>
+                <span class="mono" style="font-size:0.8rem; color:var(--text-muted);">(Xuất file không nhạc / Nền xanh)</span>
+              </td>
+              <td>Dùng filter AI làm đẹp, template giật giật hoặc sticker động chỉ có trên bản CapCut Mobile.</td>
+              <td>Bảo toàn chuẩn hiệu ứng hiển thị trên điện thoại, đưa sang PC chỉ việc ghép thêm nhạc/SFX.</td>
+              <td>Không chỉnh sửa sâu lại được các layer đã gộp thành video.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CÁCH 1 - ĐỒNG BỘ QUA CLOUD SPACE (CÓ ẢNH THẬT) -->
+    <section id="section-cloud" class="section-block">
+      <div class="section-header">
+        <span class="section-tag mono">QUY TRÌNH CHUẨN 1-TOUCH</span>
+        <h3 class="section-title title-long">
+          <span>☁️</span> Cách 1: Đồng Bộ Timeline Qua CapCut Cloud Space (Có Ảnh Thật)
+        </h3>
+        <p class="section-subtitle">Cách nhanh nhất để biến điện thoại thành công cụ cắt thô và máy tính thành trạm dựng hoàn thiện.</p>
+      </div>
+
+      <div class="action-callout">
+        <strong>⚠️ Điều kiện tiên quyết:</strong> Đăng nhập <strong>cùng một tài khoản CapCut</strong> trên cả điện thoại và máy tính (Khuyên dùng: Đăng nhập bằng <em>Google</em> hoặc <em>TikTok</em>).
+      </div>
+
+      <!-- BƯỚC 1: TRÊN MOBILE - ẤN DẤU 3 CHẤM -->
+      <div class="step-card">
+        <div class="step-badge-row">
+          <span class="step-num mono">1A</span>
+          <h4 class="step-heading">Trên Mobile: Bấm Dấu 3 Chấm Dự Án & Chọn "Tải Lên Không Gian"</h4>
+        </div>
+        <p class="step-desc">
+          Tại màn hình chính của CapCut Mobile (tab <strong>Chỉnh sửa</strong>), bạn nhìn vào danh sách <strong>Dự án</strong> gần đây. Hãy nhấn vào biểu tượng <strong>dấu 3 chấm (<code>⋮</code>)</strong> ngay góc dưới của dự án cần chuyển. Khi menu phía dưới trượt lên, bạn bấm vào nút <strong>"Tải lên không gian"</strong> (có biểu tượng đám mây).
+        </p>
+
+        <!-- REAL PHOTO: FINGER TAPPING CLOUD UPLOAD -->
+        <div class="screenshot-box">
+          <img src="./assets/images/capcut-sync/capcut-mobile-finger-tap-cloud.jpg" alt="Ảnh thật ngón tay ấn nút Tải lên không gian trên CapCut Mobile" onclick="openLightbox(this.src)">
+          <div class="screenshot-caption">
+            <span class="caption-icon">📍</span>
+            <span><strong>Ảnh thật thực tế:</strong> Ngón tay đang bấm trực tiếp vào mục <em>"Tải lên không gian"</em> trong menu trượt của CapCut Mobile.</span>
+          </div>
+        </div>
+
+        <div class="tip-callout">
+          <strong>💡 Mẹo:</strong> Sau khi bấm, biểu tượng đám mây trên thumbnail dự án sẽ hiển thị vòng tròn xoay % tiến trình tải lên. Hãy giữ điện thoại sáng màn hình và kết nối Wi-Fi cho đến khi báo hoàn tất 100%.
+        </div>
+      </div>
+
+      <!-- BƯỚC 1B: TRÊN MOBILE - CÁCH VÀO TAB KHÔNG GIAN -->
+      <div class="step-card">
+        <div class="step-badge-row">
+          <span class="step-num mono">1B</span>
+          <h4 class="step-heading">Cách 2 Trên Mobile: Thao Tác Trực Tiếp Trong Mục "Không Gian"</h4>
+        </div>
+        <p class="step-desc">
+          Nếu bạn muốn quản lý nhiều dự án cùng lúc trong Cloud:
+          <br>1. Tại màn hình chính, bấm vào ô <strong>"Không gian"</strong> (Cloud icon).
+          <br>2. Bấm vào nút tròn màu xanh <strong><code>+</code></strong> ở góc dưới màn hình.
+          <br>3. Chọn <strong>"Tải dự án lên"</strong> để tích chọn dự án đưa vào Không gian làm việc.
+        </p>
+
+        <!-- REAL PHOTO: 3-STEP MOBILE UI HIGHLIGHT -->
+        <div class="screenshot-box">
+          <img src="./assets/images/capcut-sync/capcut-mobile-upload-steps.jpg" alt="Sơ đồ 3 bước thao tác trên giao diện CapCut Mobile" onclick="openLightbox(this.src)">
+          <div class="screenshot-caption">
+            <span class="caption-icon">📍</span>
+            <span><strong>Giao diện thật CapCut Mobile:</strong> Ba vị trí khoanh đỏ: (1) Nút Không gian ở trang chủ → (2) Nút <code>+</code> màu xanh → (3) Menu chọn "Tải dự án lên".</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BƯỚC 2: TRÊN PC - VÀO MỤC SPACES -->
+      <div class="step-card">
+        <div class="step-badge-row">
+          <span class="step-num mono">02</span>
+          <h4 class="step-heading">Trên Máy Tính (CapCut PC): Bấm Vào Mục "Không Gian" (Spaces)</h4>
+        </div>
+        <p class="step-desc">
+          Mở ứng dụng <strong>CapCut trên máy tính</strong> (Windows hoặc macOS). Đảm bảo đã đăng nhập cùng tài khoản với điện thoại.
+          Tại cột điều hướng màu đen bên tay trái, bạn tìm đến mục <strong>"Không gian"</strong> (Spaces). Nhấp chuột vào tên Không gian của bạn (nơi lưu trữ Cloud).
+        </p>
+
+        <!-- REAL PHOTO: PC SPACES MENU -->
+        <div class="screenshot-box">
+          <img src="./assets/images/capcut-sync/capcut-pc-click-spaces.jpg" alt="Giao diện CapCut PC bấm vào menu Không gian" onclick="openLightbox(this.src)">
+          <div class="screenshot-caption">
+            <span class="caption-icon">📍</span>
+            <span><strong>Giao diện thật CapCut PC:</strong> Mũi tên đỏ chỉ rõ vị trí nhấp chuột vào mục <em>"Không gian"</em> ở thanh menu điều hướng bên trái.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BƯỚC 3: TRÊN PC - TẢI XUỐNG DỰ ÁN -->
+      <div class="step-card">
+        <div class="step-badge-row">
+          <span class="step-num mono">03</span>
+          <h4 class="step-heading">Trên Máy Tính: Chuột Phải Vào Dự Án & Chọn "Tải Xuống" (Download)</h4>
+        </div>
+        <p class="step-desc">
+          Trong danh sách <strong>Dự án</strong> nằm bên trong Không gian, bạn sẽ nhìn thấy thumbnail của video vừa tải từ điện thoại lên (kèm dung lượng và độ dài).
+          <br>Hãy <strong>chuột phải</strong> vào thumbnail dự án (hoặc rê chuột bấm vào dấu 3 chấm) $\rightarrow$ Chọn <strong>"Tải xuống" (Download)</strong>.
+        </p>
+
+        <!-- REAL PHOTO: PC RIGHT CLICK DOWNLOAD -->
+        <div class="screenshot-box">
+          <img src="./assets/images/capcut-sync/capcut-pc-download-project.jpg" alt="Giao diện CapCut PC chọn Tải xuống dự án" onclick="openLightbox(this.src)">
+          <div class="screenshot-caption">
+            <span class="caption-icon">📍</span>
+            <span><strong>Giao diện thật CapCut PC:</strong> Menu chuột phải mở ra, mũi tên đỏ chỉ chính xác vào lệnh <em>"Tải xuống"</em> để kéo toàn bộ timeline về máy tính.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BƯỚC 4: MỞ RA DỰNG TRÊN TIMELINE -->
+      <div class="step-card">
+        <div class="step-badge-row">
+          <span class="step-num mono">04</span>
+          <h4 class="step-heading">Hoàn Tất: Mở Dự Án & Tiếp Tục Dựng Chuyên Nghiệp Trên PC</h4>
+        </div>
+        <p class="step-desc">
+          Sau khi tải về xong (mất khoảng 5-15 giây tùy kích thước file), dự án sẽ được chuyển vào mục <em>Dự án cục bộ</em> của máy tính. Bạn chỉ cần bấm đúp chuột vào dự án để mở timeline hoàn chỉnh: Toàn bộ phân cảnh, âm thanh, hiệu ứng đã sẵn sàng để bạn dựng tiếp!
+        </p>
+
+        <!-- REAL PHOTO: PC TIMELINE READY -->
+        <div class="screenshot-box">
+          <img src="./assets/images/capcut-sync/capcut-pc-timeline-ready.jpg" alt="Timeline CapCut PC hiển thị đầy đủ dự án sau khi đồng bộ" onclick="openLightbox(this.src)">
+          <div class="screenshot-caption">
+            <span class="caption-icon">📍</span>
+            <span><strong>Kết quả thực tế:</strong> Dự án được mở trực tiếp trên Timeline của CapCut PC với đầy đủ layer video, âm thanh và các công cụ chỉnh sửa nâng cao.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CÁCH 2 - CHUYỂN FILE GỐC DUNG LƯỢNG LỚN -->
+    <section id="section-footage" class="section-block">
+      <div class="section-header">
+        <span class="section-tag mono">TỐI ƯU CHO FILE NẶNG & 4K</span>
+        <h3 class="section-title title-long">
+          <span>🚀</span> Cách 2: Bắn Toàn Bộ File Gốc (Footage) Sang PC Bằng LocalSend / AirDrop
+        </h3>
+        <p class="section-subtitle">Giải pháp khi video dài 15-30 phút, file quay 4K nặng hàng chục GB vượt quá giới hạn Cloud.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="step-card" style="margin-bottom:0;">
+          <h4 class="step-heading" style="color:#38bdf8; margin-bottom:12px;">Từ iPhone sang Windows PC / Laptop</h4>
+          <p style="font-size:0.92rem; color:var(--text-body); line-height:1.6;">
+            <strong>Dùng LocalSend (Khuyên dùng):</strong> Cài app <em>LocalSend</em> (hoàn toàn miễn phí, mã nguồn mở, không quảng cáo) trên cả iPhone và máy tính Windows.
+          </p>
+          <ul style="margin: 12px 0 12px 20px; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">
+            <li>Kết nối chung một mạng Wi-Fi (hoặc phát Hotspot từ iPhone sang PC).</li>
+            <li>Mở LocalSend trên iPhone → Chọn mục <strong>Send</strong> → Chọn toàn bộ video gốc trong Album.</li>
+            <li>Bấm chọn tên máy tính Windows để bắn file. Tốc độ truyền đạt <strong>30 - 60 MB/s</strong>, không bị nén chất lượng.</li>
+          </ul>
+        </div>
+
+        <div class="step-card" style="margin-bottom:0;">
+          <h4 class="step-heading" style="color:#a78bfa; margin-bottom:12px;">Từ iPhone sang Mac / Android sang PC</h4>
+          <p style="font-size:0.92rem; color:var(--text-body); line-height:1.6;">
+            <strong>iPhone sang Mac:</strong> Dùng <strong>AirDrop</strong> trực tiếp. Đây là giải pháp nhanh nhất hệ sinh thái Apple, giữ nguyên thông số HDR và dải màu 10-bit.
+          </p>
+          <p style="font-size:0.92rem; color:var(--text-body); line-height:1.6; margin-top:10px;">
+            <strong>Android sang Windows:</strong> Bật <strong>Quick Share</strong> (Nearby Share của Google tích hợp trên Windows) hoặc cắm cáp USB Type-C tốc độ cao để copy trực tiếp từ thư mục <code>DCIM/Camera</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CÁCH 3 - XUẤT VIDEO ĐỆM TỪ MOBILE -->
+    <section id="section-export" class="section-block">
+      <div class="section-header">
+        <span class="section-tag mono">BẢO TOÀN HIỆU ỨNG MOBILE</span>
+        <h3 class="section-title title-long">
+          <span>🎬</span> Cách 3: Xuất Video Đệm / Layer Phông Xanh Từ Điện Thoại Sang PC
+        </h3>
+        <p class="section-subtitle">Áp dụng khi trên CapCut Mobile bạn đã dùng filter làm đẹp AI, sticker động, hoặc mẫu giật giật.</p>
+      </div>
+
+      <div class="step-card" style="margin-bottom: 0;">
+        <p class="step-desc">
+          Một số tính năng AI và hiệu ứng động chỉ có bản quyền trên phiên bản di động. Để không bị mất khi đưa lên máy tính:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="action-callout" style="margin: 0;">
+            <strong>Bước 1: Tắt âm thanh nền trên Mobile.</strong> Chỉ giữ lại phần hình ảnh và giọng nói gốc, giúp bạn dễ dàng thay đổi nhạc bản quyền trên PC.
+          </div>
+          <div class="action-callout" style="margin: 0;">
+            <strong>Bước 2: Xuất video với thông số cao nhất.</strong> Chọn độ phân giải <strong>2K/4K</strong>, Tỷ lệ khung hình <strong>60 FPS</strong>, và Bitrate ở mức <strong>Cao (High)</strong> để video không bị vỡ hạt.
+          </div>
+          <div class="action-callout" style="margin: 0;">
+            <strong>Bước 3: Chuyển file sang máy tính.</strong> Kéo file video vừa xuất vào CapCut PC để tiếp tục thêm âm thanh, hiệu ứng âm thanh (SFX) và xuất bản phẩm cuối cùng.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: XỬ LÝ LỖI THƯỜNG GẶP -->
+    <section id="section-troubleshoot" class="section-block">
+      <div class="section-header">
+        <span class="section-tag mono">BÍ KÍP THỰC CHIẾN</span>
+        <h3 class="section-title title-long">
+          <span>🛠️</span> 4 Lỗi "Xương Máu" Cần Tránh Khi Đồng Bộ CapCut Mobile Sang PC
+        </h3>
+        <p class="section-subtitle">Những lỗi phổ biến nhất khiến người mới bị mất file, lỗi font chữ hoặc sai màu video.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="error-card">
+          <div class="error-card-title">
+            <span>❌</span> Lỗi 1: "Media Missing" (Mất file gốc khi mở trên PC)
+          </div>
+          <div class="error-cause">
+            <strong>Nguyên nhân:</strong> Quá trình tải lên Cloud từ điện thoại chưa chạy đủ 100% hoặc video gốc trên iPhone bị lưu trên iCloud chưa load về máy.
+          </div>
+          <div class="error-solution">
+            <strong>Cách khắc phục:</strong> Giữ ứng dụng CapCut Mobile mở cho đến khi vòng xoay đồng bộ chuyển sang màu xanh lá hoàn tất. Đảm bảo video trong Photos đã tải trọn vẹn về bộ nhớ máy.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-card-title">
+            <span>🔤</span> Lỗi 2: Nhảy Font Chữ & Lỗi Ô Vuông Tiếng Việt
+          </div>
+          <div class="error-cause">
+            <strong>Nguyên nhân:</strong> Font chữ mặc định của hệ điều hành iOS/Android không có sẵn trong thư viện font của máy tính Windows/Mac.
+          </div>
+          <div class="error-solution">
+            <strong>Cách khắc phục:</strong> Trên CapCut PC, quét chọn toàn bộ lớp phụ đề (Subtitles) $\rightarrow$ Đổi sang các font chuẩn hỗ trợ tiếng Việt đầy đủ như: <em>SVN-Poppins, Inter, Montserrat, Be Vietnam Pro</em>.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-card-title">
+            <span>🎨</span> Lỗi 3: Video Quay iPhone Bị Bạc Màu / Cháy Sáng (HDR)
+          </div>
+          <div class="error-cause">
+            <strong>Nguyên nhân:</strong> iPhone mặc định quay HDR (Dolby Vision), khi đưa lên CapCut PC chưa bật chế độ quản lý dải tương phản động sẽ bị lóa trắng.
+          </div>
+          <div class="error-solution">
+            <strong>Cách khắc phục:</strong> Tại góc trên bên phải khung Timeline CapCut PC, bấm nút <strong>Modify (Chỉnh sửa thông số dự án)</strong> $\rightarrow$ Chọn Color Management $\rightarrow$ Đưa về dải màu chuẩn <strong>Rec.709 / SDR</strong>.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-card-title">
+            <span>💾</span> Lỗi 4: Đầy Dung Lượng Cloud Space (Hết chỗ sao lưu)
+          </div>
+          <div class="error-cause">
+            <strong>Nguyên nhân:</strong> Bản miễn phí của CapCut chỉ cho lưu lượng Cloud hữu hạn. Lưu nhiều dự án nặng sẽ bị chặn tải lên.
+          </div>
+          <div class="error-solution">
+            <strong>Cách khắc phục:</strong> Sau khi đã tải dự án về CapCut PC và lưu vào máy tính an toàn, hãy vào Không gian đám mây xóa các dự án cũ đã xuất bản để giải phóng chỗ trống cho dự án mới.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged screenshot">
+  </div>
+
+  <!-- BACK TO TOP -->
+  <a href="#" class="back-to-top" title="Lên đầu trang">↑</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="mono">HỆ THỐNG TÀI LIỆU KHÓA HỌC VIDEO VIRAL 30 NGÀY • FEDU.VN</p>
+      <p style="color: #64748b; font-size: 0.8rem;">
+        Biên soạn & Chuẩn hóa bởi Anh Việt • Bản quyền nội dung thuộc vietndj & FEDU Academy.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      const box = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      box.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
