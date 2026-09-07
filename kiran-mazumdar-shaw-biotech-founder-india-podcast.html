@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Billion-Dollar Founder: Why Success In India Is So Hard | Chuẩn Thiết Kế 30ngayviral</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --cl-bg:          #ffffff;
+      --cl-tint:        #f8fafc;
+      --cl-card:        #ffffff;
+      --cl-card-muted:  #f1f5f9;
+      --cl-accent:      #1a73e8;
+      --cl-accent-tint: rgba(26, 115, 232, 0.08);
+      --cl-accent-text: #ffffff;
+      --cl-line:        rgba(0, 0, 0, 0.06);
+      --cl-line-strong: rgba(0, 0, 0, 0.12);
+      --cl-text-base:   #0f172a;
+      --cl-text-body:   #334155;
+      --cl-text-muted:  #64748b;
+      --cl-radius-lg:   24px;
+      --cl-radius-md:   16px;
+      --cl-radius-sm:   10px;
+      --cl-radius-full: 9999px;
+
+      --font-display-short: 'SVN-Integral', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display-long:  'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
+      --font-body:          'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
+      --font-editorial:     'Playfair Display', Georgia, serif;
+      --font-mono:          'JetBrains Mono', monospace;
+
+      --apple-spring: cubic-bezier(0.25, 1, 0.35, 1.05);
+      --apple-ease:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--cl-bg);
+      color: var(--cl-text-base);
+      font-family: var(--font-body);
+    }
+
+    body {
+      overflow-x: clip;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .cl-zebra-section {
+      width: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 90px 24px;
+      box-sizing: border-box;
+    }
+
+    .cl-zebra--light { background-color: var(--cl-bg); }
+    .cl-zebra--tint {
+      background-color: var(--cl-tint);
+      border-top: 1px solid var(--cl-line);
+      border-bottom: 1px solid var(--cl-line);
+    }
+
+    .cl-sec-container {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cl-sec-container--wide { max-width: 1040px; }
+
+    .cl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cl-accent);
+      background: var(--cl-accent-tint);
+      border: 1px solid rgba(26, 115, 232, 0.15);
+      padding: 7px 18px;
+      border-radius: var(--cl-radius-full);
+      margin-bottom: 22px;
+    }
+
+    .title-short {
+      font-family: var(--font-display-short);
+      font-weight: 400;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cl-text-base);
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .title-long {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: clamp(22px, 3.5vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--cl-text-base);
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    .editorial-hook {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.6;
+      color: var(--cl-accent);
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .cl-body {
+      font-size: clamp(15.5px, 1.6vw, 17.5px);
+      color: var(--cl-text-body);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+
+    .apple-reveal {
+      opacity: 0;
+      transform: translate3d(0, 26px, 0);
+      transition: opacity 0.5s var(--apple-ease), transform 0.58s var(--apple-spring);
+      transition-delay: var(--delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .apple-reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      will-change: auto;
+    }
+
+    .apple-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .apple-card {
+      background: var(--cl-card);
+      border: 1px solid var(--cl-line);
+      border-radius: var(--cl-radius-lg);
+      padding: 26px 24px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translate3d(0, 22px, 0) scale(0.985);
+      transition: opacity 0.45s var(--apple-ease), transform 0.52s var(--apple-spring), box-shadow 0.35s ease, border-color 0.25s ease;
+      transition-delay: var(--card-delay, 0ms);
+    }
+
+    .is-visible .apple-card, .apple-card.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      will-change: auto;
+    }
+
+    .apple-card:hover {
+      transform: translate3d(0, -6px, 0) scale(1.01);
+      border-color: rgba(26, 115, 232, 0.35);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08), 0 0 24px rgba(26, 115, 232, 0.06);
+    }
+
+    .apple-card__title {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.35;
+      color: var(--cl-text-base);
+      margin-bottom: 6px;
+    }
+
+    .apple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+
+    .apple-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #ffffff;
+      padding: 18px 22px;
+      border-radius: var(--cl-radius-md);
+      border: 1px solid var(--cl-line);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cl-zebra--tint .apple-list-item { background: #ffffff; }
+    .cl-zebra--light .apple-list-item { background: var(--cl-tint); }
+
+    .apple-list-item:hover {
+      transform: translateX(4px);
+      border-color: var(--cl-accent);
+    }
+
+    .apple-list-item__bullet {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cl-accent-tint);
+      color: var(--cl-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .apple-list-item__content {
+      font-size: 15.5px;
+      color: var(--cl-text-body);
+      line-height: 1.6;
+    }
+
+    .cl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--cl-accent);
+      color: var(--cl-accent-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      padding: 16px 38px;
+      border-radius: var(--cl-radius-md);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(26, 115, 232, 0.25);
+      transition: transform 0.22s var(--apple-spring), box-shadow 0.22s ease;
+    }
+
+    .cl-btn:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 14px 36px rgba(26, 115, 232, 0.35);
+    }
+
+    .cl-btn--secondary {
+      background: #ffffff;
+      color: var(--cl-text-body);
+      border: 1px solid var(--cl-line-strong);
+      box-shadow: none;
+    }
+    .cl-btn--secondary:hover {
+      background: var(--cl-tint);
+      color: var(--cl-text-base);
+    }
+
+    .cl-scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cl-text-muted);
+      opacity: 0.7;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    @media (max-width: 768px) {
+      .cl-zebra-section { min-height: 100dvh; padding: 64px 20px; }
+      .apple-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cl-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- KHỐI 1: HERO (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-hero">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">CÔNG NGHỆ SINH HỌC &amp; KHỞI NGHIỆP TỶ ĐÔ // FO537</div>
+      <h1 class="title-short">KIRAN MAZUMDAR-SHAW</h1>
+      <h2 class="title-long">Billion-Dollar Founder: Why Success In India Is So Hard</h2>
+      <p class="editorial-hook">"Cứ ngỡ phụ nữ yếu mềm / Ai hay dựng nghiệp ấm êm muôn người"</p>
+      <p class="cl-body">Hành trình phá vỡ mọi định kiến giới tính năm 1978: khởi nghiệp từ một gara ô tô với số vốn ít ỏi để xây dựng tập đoàn dược phẩm sinh học sản xuất insulin giá rẻ cho hàng chục triệu bệnh nhân nghèo khắp thế giới.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+        <a href="#sec-delusion" class="cl-btn">KHÁM PHÁ BÀI HỌC HỆ THỐNG ↓</a>
+        <a href="https://www.youtube.com/watch?v=PXMyK7JxGOk" target="_blank" class="cl-btn cl-btn--secondary">XEM YOUTUBE GỐC ↗</a>
+      </div>
+    </div>
+    <div class="cl-scroll-hint">
+      <span>Cuộn khám phá</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- KHỐI 2: BÓC TRẦN LẦM TƯỞNG (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-delusion">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">01 / BÓC TRẦN LẦM TƯỞNG</div>
+      <h2 class="title-short">SỰ THẬT VÀ ẢO TƯỞNG ĐÁM ĐÔNG</h2>
+      <p class="editorial-hook">"Cứ ngỡ phụ nữ yếu mềm / Ai hay dựng nghiệp ấm êm muôn người"</p>
+
+      <div class="apple-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="apple-card" style="--card-delay: 0ms;">
+          <div class="text-3xl text-blue-500 mb-2">“</div>
+          <p class="text-base text-slate-700 leading-relaxed font-medium">Năm 1978, không một ngân hàng nào chịu cho tôi vay vốn vì họ bảo &#x27;Phụ nữ không thể làm kinh doanh, và công nghệ sinh học là thứ ảo tưởng&#x27;; nếu tôi chịu khuất phục trước sự hoài nghi đó, thế giới hôm nay đã không có insulin giá rẻ cho người nghèo.</p>
+        </div>
+        <div class="apple-card" style="--card-delay: 100ms;">
+          <div class="text-3xl text-blue-500 mb-2">“</div>
+          <p class="text-base text-slate-700 leading-relaxed font-medium">Đám đông nghĩ rằng khởi nghiệp là phải có bằng MBA và hàng triệu đô vốn từ quỹ mạo hiểm, nhưng bản chất của một nhà sáng lập vĩ đại là khả năng giải quyết một bài toán khoa học thực sự bằng sự kiên định thép.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 3: 4 INSIGHT ĐẦU TIÊN (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-insights-1">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">02 / NGUYÊN LÝ CỐT LÕI (PHẦN 1)</div>
+      <h2 class="title-short">4 BÀI HỌC CỐT LÕI ĐẦU TIÊN</h2>
+      <p class="editorial-hook">"Lắng nghe thực tế để điều chỉnh thuật toán hành vi."</p>
+
+      <div class="apple-cards-grid">
+        
+            <div class="apple-card" style="--card-delay: 0ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #01
+              </div>
+              <h3 class="apple-card__title">Biến sự từ chối của định kiến xã hội thành nhiên liệu phản lực</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Tốt nghiệp thạc sĩ chuyên ngành ủ bia bậc thầy tại Úc nhưng không một nhà máy bia nào tại Ấn Độ chịu tuyển dụng vì là phụ nữ; Kiran đã chuyển hướng toàn bộ kiến thức lên men vi sinh sang sản xuất enzyme công nghiệp.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Than thân trách phận và bỏ cuộc khi bị cánh cửa thị trường truyền thống đóng sầm trước mắt.</p>
+                <p><strong>🔬 Bản chất:</strong> Chuyển hóa năng lượng phẫn nộ (Sublimation): không để sự bất công xã hội làm thui chột ý chí; tái định hướng toàn bộ năng lượng đó vào việc tạo ra một sân chơi hoàn toàn mới do chính mình làm chủ.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Khi bị từ chối ở ngành cũ, hãy tìm kiếm một ngành công nghiệp mới nổi chưa ai khai phá để áp dụng kỹ năng cốt lõi của mình.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Cửa này đóng lại người ơi / Mở ra chân trời rộng lớn bao la"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 80ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #02
+              </div>
+              <h3 class="apple-card__title">Bắt đầu từ cái gara nhỏ với số vốn chỉ 10.000 Rupee (120 USD)</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Biocon khởi đầu từ một nhà để xe thuê chật hẹp ở Bangalore với các thiết bị lên men tự chế từ phế liệu; khách hàng đầu tiên là một công ty Ireland cần mua enzyme đu đủ.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Chờ đợi có văn phòng sang trọng và hàng chục tỷ vốn đầu tư mới chịu bấm nút khởi nghiệp.</p>
+                <p><strong>🔬 Bản chất:</strong> Nguyên lý hạt mầm sinh học: cây đại thụ nghìn năm luôn bắt đầu từ một hạt mầm siêu nhỏ cắm rễ vào mảnh đất cằn cỗi; khả năng sinh tồn trong điều kiện khắc nghiệt quyết định sức mạnh của rễ.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Tập trung tạo ra dòng tiền dương ngay từ tháng đầu tiên bằng một sản phẩm ngách siêu cụ thể.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Khởi đầu từ chốn đơn sơ / Nuôi mầm hy vọng dệt cơ đồ vàng"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 160ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #03
+              </div>
+              <h3 class="apple-card__title">Dân chủ hóa thuốc sinh học (Affordable Biosimilars)</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Biocon phá vỡ thế độc quyền của các tập đoàn dược phẩm phương Tây, đưa thuốc insulin điều trị tiểu đường giảm giá tới 50%, giúp người nghèo ở châu Phi và châu Á tiếp cận được thuốc sống còn.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Kinh doanh thuốc theo kiểu bóp nghẹt người bệnh bằng giá bán trên trời để tối đa hóa lợi nhuận ngắn hạn.</p>
+                <p><strong>🔬 Bản chất:</strong> Kinh tế học phụng sự nhân loại: giảm giá thành xuống mức bình dân sẽ mở rộng quy mô thị trường lên hàng trăm triệu người, tạo ra doanh thu bền vững và di sản đạo đức vô giá.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Tối ưu hóa quy trình lên men sinh học để hạ giá thành sản xuất mà vẫn đạt tiêu chuẩn kiểm định nghiêm ngặt của FDA Hoa Kỳ.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Thuốc hay cứu mạng người nghèo / Giá thành bình dị xóa tan nỗi sầu"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 240ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #04
+              </div>
+              <h3 class="apple-card__title">Nghệ thuật tuyển dụng và lãnh đạo khi chưa có tên tuổi</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Những ngày đầu, nhân sự giỏi từ chối làm việc cho một phụ nữ trẻ; Kiran đã kiên nhẫn tìm những người trẻ giàu nhiệt huyết, đào tạo họ từ con số 0 và trao cho họ niềm tin tuyệt đối.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Than vãn không thể tuyển được người giỏi vì công ty còn nhỏ và vô danh.</p>
+                <p><strong>🔬 Bản chất:</strong> Quy luật đồng sáng tạo văn hóa: nhân sự gắn bó bằng niềm tin vào sứ mệnh và cơ hội được chứng minh năng lực sẽ chiến đấu kiên cường hơn những kẻ chỉ đi làm vì lương thưởng cao.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Bán tầm nhìn và cơ hội làm chủ công nghệ mới để thu hút những tài năng chưa được mài giũa.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Trao niềm tin trọn tấm lòng / Cùng nhau chung sức đồng lòng dựng xây"
+              </div>
+            </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 4: 4 INSIGHT TIẾP THEO (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-insights-2">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">03 / NGUYÊN LÝ CỐT LÕI (PHẦN 2)</div>
+      <h2 class="title-short">4 BÀI HỌC ĐỘT PHÁ TIẾP THEO</h2>
+      <p class="editorial-hook">"Chuyển dịch từ hiểu biết sang đòn bẩy thực chiến."</p>
+
+      <div class="apple-cards-grid">
+        
+            <div class="apple-card" style="--card-delay: 0ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #05
+              </div>
+              <h3 class="apple-card__title">Chuyển dịch từ sản xuất Enzyme sang Dược phẩm sinh học cứu người</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Đang có dòng tiền cực kỳ ổn định từ mảng enzyme công nghiệp, Kiran dám mạo hiểm tái đầu tư toàn bộ lợi nhuận vào nghiên cứu phát triển (R&amp;D) dược phẩm sinh học có độ rủi ro cực cao.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Ngủ quên trên chiến thắng trong vùng an toàn của một ngành kinh doanh bão hòa.</p>
+                <p><strong>🔬 Bản chất:</strong> Đường cong chữ S thứ hai (The Second S-Curve): một doanh nghiệp vĩ đại phải bắt đầu xây dựng động cơ tăng trưởng mới ngay khi động cơ cũ đang ở đỉnh cao phong độ.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Dành ít nhất 15-20% doanh thu hàng năm để đầu tư vào các dự án nghiên cứu đột phá mang tính tương lai.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Đang thời thịnh vượng chớ say / Mở đường đón gió tương lai rạng ngời"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 80ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #06
+              </div>
+              <h3 class="apple-card__title">Kiên định trước rào cản kiểm định khắt khe của FDA Hoa Kỳ</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Mất hơn 10 năm và hàng trăm triệu USD thử nghiệm lâm sàng để Biocon trở thành công ty đầu tiên của Ấn Độ được FDA phê duyệt thuốc sinh học tương tự (Biosimilar) tại Mỹ.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Muốn đi đường tắt, làm ăn gian dối hoặc chỉ hài lòng với các thị trường dễ dãi kém phát triển.</p>
+                <p><strong>🔬 Bản chất:</strong> Rào cản chất lượng tối thượng: tiêu chuẩn kiểm định càng khắt khe bao nhiêu thì thị phần sau khi vượt qua càng an toàn và bền vững bấy nhiêu.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Xây dựng hệ thống quản lý chất lượng đạt chuẩn quốc tế ngay từ những ngày đầu vận hành phòng lab.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Mười năm thử lửa gian nan / Vượt qua kiểm định huy hoàng vinh quang"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 160ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #07
+              </div>
+              <h3 class="apple-card__title">Lòng dũng cảm đối diện với thất bại trong thử nghiệm lâm sàng</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Nhiều phân tử thuốc nghiên cứu suốt 5 năm bị thất bại ở giai đoạn thử nghiệm pha 3 làm bốc hơi hàng chục triệu USD; Kiran xem đó là dữ liệu quý giá để tái cấu trúc hướng đi mới.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Hoảng loạn, giấu giếm thất bại và đổ lỗi cho đội ngũ nghiên cứu khoa học.</p>
+                <p><strong>🔬 Bản chất:</strong> Bản chất xác suất của khoa học: trong công nghệ sinh học, 90% phân tử thử nghiệm sẽ thất bại; người thành công là người có đủ năng lực tài chính và tinh thần để chịu đựng các lần thử sai.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Đa dạng hóa danh mục phân tử thuốc thử nghiệm để phân tán rủi ro và không bao giờ đặt cược toàn bộ công ty vào một thử nghiệm duy nhất.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Thất bại là lẽ thường tình / Đúc kinh nghiệm quý chuyển mình vươn xa"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 240ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #08
+              </div>
+              <h3 class="apple-card__title">Trách nhiệm xã hội và di sản cho thế hệ tương lai</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Kiran ký cam kết &#x27;The Giving Pledge&#x27;, hiến tặng hơn một nửa khối tài sản của mình cho việc nghiên cứu điều trị ung thư và phát triển giáo dục chăm sóc sức khỏe cộng đồng.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Tích trữ của cải cho riêng gia tộc và sống cuộc đời xa hoa phô trương.</p>
+                <p><strong>🔬 Bản chất:</strong> Định luật bảo toàn di sản nhân loại: giá trị của một đời người không đo bằng số tiền bạn giữ lại khi nhắm mắt, mà đo bằng nỗi đau của nhân loại bạn đã xoa dịu được.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Gắn liền mọi hoạt động kinh doanh với sứ mệnh phụng sự cộng đồng và giải quyết các bài toán y tế nhức nhối nhất của xã hội.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Của cải trần thế trả về / Tình thương để lại trọn bề nhân văn"
+              </div>
+            </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 5: THIẾT KẾ KHÔNG GIAN (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-environment">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">04 / THIẾT KẾ KHÔNG GIAN</div>
+      <h2 class="title-short">BÀI TRÍ MÔI TRƯỜNG & GIẢM MA SÁT</h2>
+      <p class="editorial-hook">"Phòng lab vô trùng tinh khôi / Kính hiển vi sáng rạng ngời ước mơ"</p>
+
+      <div class="apple-list">
+        
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Thiết lập phòng lab đạt chuẩn an toàn sinh học cấp cao với hệ thống lọc không khí khép kín.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Bố trí không gian thư viện nghiên cứu chuyên sâu ngay cạnh khu vực thí nghiệm để kích thích tra cứu tài liệu.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Tạo dựng các khu vực sinh hoạt chung cởi mở để các nhà khoa học và kỹ sư thảo luận chéo ngành.</div>
+    </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 6: BẢO TOÀN CẢM XÚC (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-emotions">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">05 / BẢO TOÀN CẢM XÚC</div>
+      <h2 class="title-short">QUẢN TRỊ TÂM THÁI & DOPAMINE</h2>
+      <p class="editorial-hook">"Bản lĩnh người nữ phi thường / Vượt qua bão táp dặm trường phong ba"</p>
+
+      <div class="apple-list">
+        
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Không bao giờ để người khác định nghĩa giới hạn năng lực của bạn dựa trên giới tính hay xuất thân.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Giữ vững ngọn lửa đam mê khoa học ngay cả trong những giai đoạn khủng hoảng tài chính đen tối nhất.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Lấy nụ cười và sự hồi phục của người bệnh nghèo làm nguồn năng lượng tinh thần lớn nhất để tiếp tục chiến đấu.</div>
+    </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 7: TỔNG KẾT & HÀNH ĐỘNG (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-action">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">06 / HÀNH ĐỘNG & KẾT NỐI</div>
+      <h2 class="title-short">ĐƯA BÀI HỌC VÀO ĐỜI SỐNG</h2>
+      <p class="editorial-hook">"Làm đúng từ bước đầu tiên để không phải sửa chữa về sau."</p>
+      <p class="cl-body">Diễn giả: <strong>Kiran Mazumdar-Shaw</strong>. Kiran Mazumdar-Shaw</p>
+
+      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.youtube.com/watch?v=PXMyK7JxGOk" target="_blank" class="cl-btn">XEM PODCAST GỐC YOUTUBE ↗</a>
+        <a href="21-podcast-raj-shamani-khong-chinh-tri.html" class="cl-btn cl-btn--secondary">← VỀ BẢNG 21 PODCAST</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.apple-reveal, .apple-card').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

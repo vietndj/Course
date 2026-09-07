@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Most Expensive Cars Compete On Emotion, Not Engineering | Chuẩn Thiết Kế 30ngayviral</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --cl-bg:          #ffffff;
+      --cl-tint:        #f8fafc;
+      --cl-card:        #ffffff;
+      --cl-card-muted:  #f1f5f9;
+      --cl-accent:      #1a73e8;
+      --cl-accent-tint: rgba(26, 115, 232, 0.08);
+      --cl-accent-text: #ffffff;
+      --cl-line:        rgba(0, 0, 0, 0.06);
+      --cl-line-strong: rgba(0, 0, 0, 0.12);
+      --cl-text-base:   #0f172a;
+      --cl-text-body:   #334155;
+      --cl-text-muted:  #64748b;
+      --cl-radius-lg:   24px;
+      --cl-radius-md:   16px;
+      --cl-radius-sm:   10px;
+      --cl-radius-full: 9999px;
+
+      --font-display-short: 'SVN-Integral', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display-long:  'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
+      --font-body:          'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
+      --font-editorial:     'Playfair Display', Georgia, serif;
+      --font-mono:          'JetBrains Mono', monospace;
+
+      --apple-spring: cubic-bezier(0.25, 1, 0.35, 1.05);
+      --apple-ease:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--cl-bg);
+      color: var(--cl-text-base);
+      font-family: var(--font-body);
+    }
+
+    body {
+      overflow-x: clip;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .cl-zebra-section {
+      width: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 90px 24px;
+      box-sizing: border-box;
+    }
+
+    .cl-zebra--light { background-color: var(--cl-bg); }
+    .cl-zebra--tint {
+      background-color: var(--cl-tint);
+      border-top: 1px solid var(--cl-line);
+      border-bottom: 1px solid var(--cl-line);
+    }
+
+    .cl-sec-container {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cl-sec-container--wide { max-width: 1040px; }
+
+    .cl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cl-accent);
+      background: var(--cl-accent-tint);
+      border: 1px solid rgba(26, 115, 232, 0.15);
+      padding: 7px 18px;
+      border-radius: var(--cl-radius-full);
+      margin-bottom: 22px;
+    }
+
+    .title-short {
+      font-family: var(--font-display-short);
+      font-weight: 400;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cl-text-base);
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .title-long {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: clamp(22px, 3.5vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--cl-text-base);
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    .editorial-hook {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.6;
+      color: var(--cl-accent);
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .cl-body {
+      font-size: clamp(15.5px, 1.6vw, 17.5px);
+      color: var(--cl-text-body);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+
+    .apple-reveal {
+      opacity: 0;
+      transform: translate3d(0, 26px, 0);
+      transition: opacity 0.5s var(--apple-ease), transform 0.58s var(--apple-spring);
+      transition-delay: var(--delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .apple-reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      will-change: auto;
+    }
+
+    .apple-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .apple-card {
+      background: var(--cl-card);
+      border: 1px solid var(--cl-line);
+      border-radius: var(--cl-radius-lg);
+      padding: 26px 24px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translate3d(0, 22px, 0) scale(0.985);
+      transition: opacity 0.45s var(--apple-ease), transform 0.52s var(--apple-spring), box-shadow 0.35s ease, border-color 0.25s ease;
+      transition-delay: var(--card-delay, 0ms);
+    }
+
+    .is-visible .apple-card, .apple-card.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      will-change: auto;
+    }
+
+    .apple-card:hover {
+      transform: translate3d(0, -6px, 0) scale(1.01);
+      border-color: rgba(26, 115, 232, 0.35);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08), 0 0 24px rgba(26, 115, 232, 0.06);
+    }
+
+    .apple-card__title {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.35;
+      color: var(--cl-text-base);
+      margin-bottom: 6px;
+    }
+
+    .apple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+
+    .apple-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #ffffff;
+      padding: 18px 22px;
+      border-radius: var(--cl-radius-md);
+      border: 1px solid var(--cl-line);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cl-zebra--tint .apple-list-item { background: #ffffff; }
+    .cl-zebra--light .apple-list-item { background: var(--cl-tint); }
+
+    .apple-list-item:hover {
+      transform: translateX(4px);
+      border-color: var(--cl-accent);
+    }
+
+    .apple-list-item__bullet {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cl-accent-tint);
+      color: var(--cl-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .apple-list-item__content {
+      font-size: 15.5px;
+      color: var(--cl-text-body);
+      line-height: 1.6;
+    }
+
+    .cl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--cl-accent);
+      color: var(--cl-accent-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      padding: 16px 38px;
+      border-radius: var(--cl-radius-md);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(26, 115, 232, 0.25);
+      transition: transform 0.22s var(--apple-spring), box-shadow 0.22s ease;
+    }
+
+    .cl-btn:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 14px 36px rgba(26, 115, 232, 0.35);
+    }
+
+    .cl-btn--secondary {
+      background: #ffffff;
+      color: var(--cl-text-body);
+      border: 1px solid var(--cl-line-strong);
+      box-shadow: none;
+    }
+    .cl-btn--secondary:hover {
+      background: var(--cl-tint);
+      color: var(--cl-text-base);
+    }
+
+    .cl-scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cl-text-muted);
+      opacity: 0.7;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    @media (max-width: 768px) {
+      .cl-zebra-section { min-height: 100dvh; padding: 64px 20px; }
+      .apple-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cl-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- KHỐI 1: HERO (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-hero">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">KỸ NGHỆ SIÊU SANG &amp; THIẾT KẾ ĐỈNH CAO // FO551</div>
+      <h1 class="title-short">DR. FRANK-STEFFEN WALLISER</h1>
+      <h2 class="title-long">The Most Expensive Cars Compete On Emotion, Not Engineering</h2>
+      <p class="editorial-hook">"Tưởng rằng thông số hơn thua / Nào ngờ cảm xúc mới mua được lòng"</p>
+      <p class="cl-body">Huyền thoại kỹ nghệ cơ khí của Porsche và Bentley tiết lộ vì sao một chiếc xe có giá hàng triệu USD vẫn phải bắt đầu từ bản vẽ bút chì và mô hình đất sét, cùng bí mật cảm xúc đằng sau những cỗ máy xa xỉ bậc nhất thế giới.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+        <a href="#sec-delusion" class="cl-btn">KHÁM PHÁ BÀI HỌC HỆ THỐNG ↓</a>
+        <a href="https://www.youtube.com/watch?v=9CADz6sP40I" target="_blank" class="cl-btn cl-btn--secondary">XEM YOUTUBE GỐC ↗</a>
+      </div>
+    </div>
+    <div class="cl-scroll-hint">
+      <span>Cuộn khám phá</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- KHỐI 2: BÓC TRẦN LẦM TƯỞNG (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-delusion">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">01 / BÓC TRẦN LẦM TƯỞNG</div>
+      <h2 class="title-short">SỰ THẬT VÀ ẢO TƯỞNG ĐÁM ĐÔNG</h2>
+      <p class="editorial-hook">"Tưởng rằng thông số hơn thua / Nào ngờ cảm xúc mới mua được lòng"</p>
+
+      <div class="apple-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="apple-card" style="--card-delay: 0ms;">
+          <div class="text-3xl text-blue-500 mb-2">“</div>
+          <p class="text-base text-slate-700 leading-relaxed font-medium">Nếu bạn chỉ cạnh tranh bằng mã lực và tốc độ từ 0 lên 100 km/h, một chiếc xe điện phổ thông giá rẻ sẽ sớm đánh bại bạn; ở đỉnh cao của ngành siêu xe, người ta không mua kỹ thuật, người ta mua linh hồn của cỗ máy.</p>
+        </div>
+        <div class="apple-card" style="--card-delay: 100ms;">
+          <div class="text-3xl text-blue-500 mb-2">“</div>
+          <p class="text-base text-slate-700 leading-relaxed font-medium">Đám đông nghĩ rằng máy tính và AI sẽ thay thế hoàn toàn các nhà thiết kế xe hơi, nhưng không có phần mềm nào có thể cảm nhận được độ căng của đường cong kim loại bằng bàn tay của một nghệ nhân vuốt đất sét.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 3: 4 INSIGHT ĐẦU TIÊN (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-insights-1">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">02 / NGUYÊN LÝ CỐT LÕI (PHẦN 1)</div>
+      <h2 class="title-short">4 BÀI HỌC CỐT LÕI ĐẦU TIÊN</h2>
+      <p class="editorial-hook">"Lắng nghe thực tế để điều chỉnh thuật toán hành vi."</p>
+
+      <div class="apple-cards-grid">
+        
+            <div class="apple-card" style="--card-delay: 0ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #01
+              </div>
+              <h3 class="apple-card__title">Bản phác thảo bằng tay và mô hình đất sét: Nơi cảm xúc được thổi hồn</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Dù sở hữu những phần mềm mô phỏng 3D tiên tiến nhất hành tinh, mọi chiếc xe Bentley và Porsche mới đều bắt buộc phải được tạo hình bằng mô hình đất sét tỷ lệ 1:1 trong nhiều tháng.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Cho rằng vẽ tay và đắp đất sét là phương pháp thủ công lạc hậu làm chậm tiến độ ra mắt sản phẩm.</p>
+                <p><strong>🔬 Bản chất:</strong> Quang học hữu cơ: mắt người và xúc giác tương tác với ánh sáng phản chiếu trên bề mặt đất sét thật tạo ra những rung động cảm xúc mà màn hình pixel không thể tái tạo.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Trong mọi quy trình sáng tạo sản phẩm, hãy luôn giữ lại khâu tạo mẫu vật lý thô (Physical Prototyping) trước khi số hóa.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Đất sét nhào nặn công phu / Hồn xe thức giấc thiên thu rạng ngời"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 80ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #02
+              </div>
+              <h3 class="apple-card__title">Âm thanh động cơ là bản giao hưởng kích hoạt adrenaline</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Frank Walliser dành hàng nghìn giờ tinh chỉnh ống xả của Porsche 918 Spyder để tạo ra âm thanh cơ khí sắc bén kích thích hạch hạnh nhân của người lái.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Xem âm thanh xe hơi chỉ là tiếng ồn ngẫu nhiên phát ra từ quá trình đốt cháy nhiên liệu.</p>
+                <p><strong>🔬 Bản chất:</strong> Âm học thần kinh (Neuroacoustics): tần số âm thanh cơ khí tự nhiên tạo ra sự đồng điệu với nhịp tim, biến chiếc xe thành một phần nối dài của hệ thần kinh người lái.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Thiết kế trải nghiệm đa giác quan (âm thanh, xúc giác, mùi hương) cho bất kỳ sản phẩm dịch vụ cao cấp nào.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Tiếng gầm cỗ máy vang xa / Đánh thức bản lĩnh kiêu sa anh hùng"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 160ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #03
+              </div>
+              <h3 class="apple-card__title">Sự cân bằng tinh tế giữa di sản truyền thống và công nghệ hiện đại</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Bentley giữ nguyên kỹ thuật khâu da chữ thập bằng tay và ốp gỗ vân đối xứng từ những thân cây cổ thụ, nhưng bên dưới là hệ thống truyền động hybrid và màn hình xoay 3 mặt tối tân.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Hoặc là bảo thủ từ chối công nghệ mới, hoặc là chạy theo số hóa mù quáng biến nội thất xe thành một chiếc iPad gắn bánh xe.</p>
+                <p><strong>🔬 Bản chất:</strong> Nghệ thuật đối ngẫu: giá trị tối thượng xuất hiện khi bạn kết hợp sự ấm áp của vật liệu tự nhiên lâu đời với độ chính xác lạnh lùng của vi xử lý hiện đại.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Giữ gìn giá trị cốt lõi làm nên bản sắc thương hiệu, đồng thời cấy ghép công nghệ tiên tiến nhất vào bên trong.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Gỗ thơm da quý ngàn năm / Công nghệ hòa quyện trăng rằm sáng soi"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 240ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #04
+              </div>
+              <h3 class="apple-card__title">Trọng lượng là kẻ thù số một của hiệu suất cơ khí</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Khi phát triển Porsche 918 Spyder, đội ngũ kỹ sư sẵn sàng chi hàng triệu USD chỉ để giảm bớt 10 gram trọng lượng trên từng bu-lông và khung gầm sợi carbon.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Cứ thấy xe nặng nề thì giải quyết bằng cách tăng thêm công suất động cơ để kéo lại.</p>
+                <p><strong>🔬 Bản chất:</strong> Định luật 2 Newton (F = ma): khối lượng quán tính cản trở cả khả năng tăng tốc, vào cua lẫn phanh dừng; cắt giảm trọng lượng mang lại hiệu quả đa chiều không thể bù đắp.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Áp dụng tư duy tối giản triệt để: liên tục rà soát và cắt bỏ mọi quy trình thừa thãi, rườm rà trong tổ chức.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Cắt bớt gánh nặng thừa thãi / Bay cao lướt gió dặm dài thênh thang"
+              </div>
+            </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 4: 4 INSIGHT TIẾP THEO (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-insights-2">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">03 / NGUYÊN LÝ CỐT LÕI (PHẦN 2)</div>
+      <h2 class="title-short">4 BÀI HỌC ĐỘT PHÁ TIẾP THEO</h2>
+      <p class="editorial-hook">"Chuyển dịch từ hiểu biết sang đòn bẩy thực chiến."</p>
+
+      <div class="apple-cards-grid">
+        
+            <div class="apple-card" style="--card-delay: 0ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #05
+              </div>
+              <h3 class="apple-card__title">Cá nhân hóa tột độ (Bespoke): Nơi khách hàng trở thành đồng tác giả</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Bộ phận Mulliner của Bentley có thể đáp ứng bất kỳ yêu cầu nào: từ sơn màu xe trùng với màu chiếc váy dạ hội của khách hàng đến việc nạm đá quý vào táp-lô.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Chỉ sản xuất hàng loạt các phiên bản tiêu chuẩn để tối ưu chi phí dây chuyền lắp ráp.</p>
+                <p><strong>🔬 Bản chất:</strong> Tâm lý học sở hữu độc bản: khi khách hàng được tự tay lựa chọn từng chi tiết nhỏ, chiếc xe không còn là phương tiện di chuyển mà trở thành tác phẩm nghệ thuật mang dấu ấn cá nhân.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Cung cấp các tùy chọn cá nhân hóa sâu sắc cho tệp khách hàng VIP sẵn sàng chi trả mức giá không giới hạn.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Nét riêng khắc họa dấu son / Tác phẩm độc bản sắt son một đời"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 80ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #06
+              </div>
+              <h3 class="apple-card__title">Bài học quản trị kỹ thuật: Dũng cảm gánh vác trách nhiệm khi có lỗi</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Khi mẫu xe GT3 gặp sự cố kỹ thuật trên đường đua, Frank Walliser lập tức đứng ra nhận trách nhiệm trước hội đồng quản trị và công khai minh bạch nguyên nhân lỗi với khách hàng.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Đổ lỗi cho nhà cung cấp linh kiện hoặc che giấu lỗi kỹ thuật dưới thảm vì sợ ảnh hưởng giá cổ phiếu.</p>
+                <p><strong>🔬 Bản chất:</strong> Nguyên lý niềm tin thể chế: sự minh bạch và tinh thần trách nhiệm tuyệt đối trong cơn khủng hoảng tạo ra sự trung thành thương hiệu bền vững hơn nghìn lời quảng cáo.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Khi xảy ra lỗi sản phẩm, ưu tiên số một là bảo vệ an toàn của khách hàng và minh bạch giải pháp khắc phục ngay lập tức.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Thẳng thắn nhận lỗi về mình / Uy tín giữ vững trọn tình niềm tin"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 160ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #07
+              </div>
+              <h3 class="apple-card__title">Đường đua Nürburgring: Phòng thí nghiệm khắc nghiệt nhất trần đời</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Mọi chiếc xe thể thao của Porsche đều phải trải qua hàng nghìn vòng chạy bào mòn tại &#x27;Địa ngục xanh&#x27; Nürburgring Nordschleife để phơi bày mọi điểm yếu cơ khí.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Chỉ thử nghiệm xe trên bàn thử nghiệm mô phỏng trong phòng thí nghiệm máy lạnh êm ái.</p>
+                <p><strong>🔬 Bản chất:</strong> Kiểm thử áp lực cực hạn (Stress Testing): chỉ có môi trường thực tế khắc nghiệt với những đoạn xóc nảy và gia tốc trọng trường G cực đại mới bộc lộ được giới hạn của vật liệu.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Đưa sản phẩm của bạn vào môi trường sử dụng khắc nghiệt nhất của khách hàng khó tính nhất trước khi thương mại hóa.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Địa ngục xanh rèn dũng khí / Thép tôi ngọn lửa tinh vi phi thường"
+              </div>
+            </div>
+            
+            <div class="apple-card" style="--card-delay: 240ms;">
+              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
+                INSIGHT #08
+              </div>
+              <h3 class="apple-card__title">Tầm nhìn chuyển đổi điện hóa mà không làm mất đi cảm xúc</h3>
+              
+              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
+                🎙️ <strong>Dữ kiện:</strong> Bentley cam kết tương lai không phát thải, nhưng không đánh mất cảm giác lướt đi êm ái như một tấm thảm bay ma thuật (Magic Carpet Ride) đặc trưng của thương hiệu.
+              </div>
+
+              <div class="space-y-2 text-xs text-slate-600">
+                <p><strong>👁️ Bề mặt:</strong> Chống đối sự chuyển dịch xanh hoặc vứt bỏ toàn bộ di sản hàng thế kỷ để biến thành một hãng xe điện không cá tính.</p>
+                <p><strong>🔬 Bản chất:</strong> Tiến hóa bảo tồn gen: thích nghi với luật chơi sinh thái mới nhưng phải bảo vệ nguyên vẹn bộ mã di truyền (Brand DNA) làm nên linh hồn của thương hiệu.</p>
+                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Định vị lại sản phẩm trong bối cảnh công nghệ mới mà vẫn giữ trọn trải nghiệm cốt lõi khiến khách hàng say đắm.</p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
+                📜 "Thời thế đổi thay chuyển dời / Bản sắc gìn giữ muôn đời không phai"
+              </div>
+            </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 5: THIẾT KẾ KHÔNG GIAN (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-environment">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">04 / THIẾT KẾ KHÔNG GIAN</div>
+      <h2 class="title-short">BÀI TRÍ MÔI TRƯỜNG & GIẢM MA SÁT</h2>
+      <p class="editorial-hook">"Xưởng may xưởng tiện sáng soi / Mùi da thanh lịch đất trời hòa ca"</p>
+
+      <div class="apple-list">
+        
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Bố trí không gian kiểm tra chất lượng bề mặt xe bằng dàn đèn quang học đa góc chiếu không tạo bóng.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Khu vực trưng bày mẫu vật liệu (mẫu da, mẫu gỗ, mẫu sơn) phải được sắp xếp như một phòng trưng bày nghệ thuật.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">✓</div>
+      <div class="apple-list-item__content">Loại bỏ mọi tiếng ồn cơ khí thô ráp khỏi khu vực tiếp đón khách hàng đặt xe cá nhân hóa.</div>
+    </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 6: BẢO TOÀN CẢM XÚC (TINT) -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-emotions">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">05 / BẢO TOÀN CẢM XÚC</div>
+      <h2 class="title-short">QUẢN TRỊ TÂM THÁI & DOPAMINE</h2>
+      <p class="editorial-hook">"Cầm lái làm chủ cung đường / Tự tin vững bước dặm trường phong ba"</p>
+
+      <div class="apple-list">
+        
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Tận hưởng hành trình di chuyển như một khoảng lặng tĩnh tâm giữa hai cuộc họp căng thẳng.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Coi chiếc xe là tác phẩm nghệ thuật của hàng nghìn con người cống hiến, lái xe với sự trân trọng và khiêm nhường.</div>
+    </div>
+    
+    <div class="apple-list-item">
+      <div class="apple-list-item__bullet">★</div>
+      <div class="apple-list-item__content">Bình thản trước mọi sự khiêu khích tốc độ trên đường phố công cộng.</div>
+    </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- KHỐI 7: TỔNG KẾT & HÀNH ĐỘNG (LIGHT) -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-action">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">06 / HÀNH ĐỘNG & KẾT NỐI</div>
+      <h2 class="title-short">ĐƯA BÀI HỌC VÀO ĐỜI SỐNG</h2>
+      <p class="editorial-hook">"Làm đúng từ bước đầu tiên để không phải sửa chữa về sau."</p>
+      <p class="cl-body">Diễn giả: <strong>Dr. Frank-Steffen Walliser</strong>. Dr. Frank-Steffen Walliser</p>
+
+      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.youtube.com/watch?v=9CADz6sP40I" target="_blank" class="cl-btn">XEM PODCAST GỐC YOUTUBE ↗</a>
+        <a href="21-podcast-raj-shamani-khong-chinh-tri.html" class="cl-btn cl-btn--secondary">← VỀ BẢNG 21 PODCAST</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.apple-reveal, .apple-card').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
