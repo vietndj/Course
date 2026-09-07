@@ -748,51 +748,8 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- MÀN 2: 4 TẦNG NHẬN THỨC -->
-  <section class="cl-zebra-section cl-zebra--tint apple-reveal">
-    <div class="cl-container">
-      <span class="cl-badge">Tâm Lý Học Sáng Tạo Nội Dung</span>
-      <h2 class="title-long">Bóc Tách 4 Tầng Sự Thật Của Hành Động Này</h2>
-      <p class="cl-lead">Tại sao người học hay bị "chết dí khung hình"? Vấn đề không nằm ở cái máy, mà nằm ở rào cản tâm lý bên trong.</p>
-
-      <div class="tiers-grid">
-        <div class="tier-card">
-          <div class="tier-card-header">
-            <span class="tier-pill tier-pill-t1">TẦNG 1 • AN TOÀN</span>
-          </div>
-          <div class="tier-title">Văn Mẫu Đãi Bôi</div>
-          <div class="tier-desc">{t1}</div>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-card-header">
-            <span class="tier-pill tier-pill-t2">TẦNG 2 • HÀNH VI</span>
-          </div>
-          <div class="tier-title">Thao Tác Bề Mặt</div>
-          <div class="tier-desc">{t2}</div>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-card-header">
-            <span class="tier-pill tier-pill-t25">TẦNG 2.5 • THỂ DIỆN</span>
-          </div>
-          <div class="tier-title">Mặt Nạ Người Lớn</div>
-          <div class="tier-desc">{t25}</div>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-card-header">
-            <span class="tier-pill tier-pill-t3">TẦNG 3 • SỰ THẬT RAW</span>
-          </div>
-          <div class="tier-title">Nỗi Sợ Thầm Kín</div>
-          <div class="tier-desc">{t3}</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MÀN 3: 5 CÚ MÁY BĂM NHỎ -->
-  <section class="cl-zebra-section cl-zebra--light apple-reveal" id="section-beats">
+  <!-- MÀN 2: 5 CÚ MÁY BĂM NHỎ -->
+  <section class="cl-zebra-section cl-zebra--tint apple-reveal" id="section-beats">
     <div class="cl-container">
       <span class="cl-badge">Phân Cảnh Kỹ Thuật Đổi 3 Trục</span>
       <h2 class="title-long">5 Cú Máy Băm Nhỏ • Chuẩn Khả Năng Tái Sử Dụng B-Roll</h2>
@@ -804,8 +761,8 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- MÀN 4: GỢI Ý BỐI CẢNH TÁI SỬ DỤNG -->
-  <section class="cl-zebra-section cl-zebra--tint apple-reveal">
+  <!-- MÀN 3: GỢI Ý BỐI CẢNH TÁI SỬ DỤNG -->
+  <section class="cl-zebra-section cl-zebra--light apple-reveal">
     <div class="cl-container">
       <span class="cl-badge">Mở Rộng Không Gian</span>
       <h2 class="title-long">3 Bối Cảnh Tái Sử Dụng Minh Họa Ngoài Lớp Học</h2>
@@ -944,10 +901,6 @@ def generate_subpages():
             outfit=ex["outfit"],
             avatar=ex["avatar"],
             voice=ex["voice"],
-            t1=ex["t1"],
-            t2=ex["t2"],
-            t25=ex["t25"],
-            t3=ex["t3"],
             nav_options=nav_options_html,
             beats_html=beats_html,
             reshoot_html=reshoot_html

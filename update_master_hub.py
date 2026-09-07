@@ -99,39 +99,6 @@ def generate_exercise_detail(ex):
           </div>
         </div>
 
-        <!-- 4 Tiers of Truth -->
-        <div class="tiers-section">
-          <div class="tiers-header">
-            <div class="tiers-title">
-              <span>🧠 BẢN ĐỒ TÂM LÝ HỌC (BÀI TẬP {ex_id})</span>
-              <span class="tag tag-cyan">{ex['state']}</span>
-            </div>
-            <span style="font-size:12px; color:var(--text-muted);">Trang phục: {ex['outfit']}</span>
-          </div>
-          <div class="tiers-grid-4">
-            <div class="tier-card t1">
-              <div class="tier-card-head">Tầng 1 • Nói đãi bôi</div>
-              <div class="tier-card-content">"{ex['t1']}"</div>
-              <div class="tier-sub">Lý do bề nổi: cái cớ an toàn ai cũng nói được.</div>
-            </div>
-            <div class="tier-card t2">
-              <div class="tier-card-head">Tầng 2 • Cảm giác thật</div>
-              <div class="tier-card-content">"{ex['t2']}"</div>
-              <div class="tier-sub">Hành vi thật: thao tác lúng túng đời thường.</div>
-            </div>
-            <div class="tier-card t25">
-              <div class="tier-card-head">Tầng 2.5 • Thể diện người lớn</div>
-              <div class="tier-card-content">"{ex['t25']}"</div>
-              <div class="tier-sub">Điểm nghẽn thể diện: sợ người ngoài chê cười, làm màu.</div>
-            </div>
-            <div class="tier-card t3">
-              <div class="tier-card-head">Tầng 3 • Tim đen ngượng miệng</div>
-              <div class="tier-card-content">"{ex['t3']}"</div>
-              <div class="tier-sub">Sự thật giấu kín: nỗi sợ và điểm nghẽn thực sự.</div>
-            </div>
-          </div>
-        </div>
-
         <!-- 5 Beats Grid -->
         <div style="margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
           <h3 style="font-size:16px; font-weight:800; color:#fff;">🎬 CHI TIẾT 5 CÚ MÁY BĂM NHỎ (BÀI TẬP {ex_id})</h3>
