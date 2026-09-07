@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Khóa Học Thực Chiến — Nguyễn Đức Việt (FEDU)</title>
+  <meta name="description" content="Tài liệu chuẩn hóa kiến trúc sản phẩm đào tạo của anh Việt: 2 sản phẩm thương mại duy nhất (Khóa Online 2 lớp Skool và Khóa Offline 2 ngày/tháng).">
+  
+  <!-- Google Fonts Fallbacks & CDN Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ==========================================================================
+       TYPOGRAPHY SYSTEM (INTEGRAL REGULAR 400 + POPPINS + ACTA)
+       ========================================================================== */
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular'), local('SVN-IntegralCF-Regular');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('SVN-Poppins-Regular'), local('SVN-Poppins');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Medium.ttf') format('truetype'),
+           local('SVN-Poppins-Medium');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('SVN-Poppins-SemiBold');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Bold.ttf') format('truetype'),
+           local('SVN-Poppins-Bold');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SVN-Acta';
+      src: url('./fonts/SVN-Acta-Book.ttf') format('truetype'),
+           url('./assets/fonts/SVN-Acta-Book.ttf') format('truetype'),
+           local('SVN-Acta Book');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      background-color: #06090e;
+      color: #e2e8f0;
+      font-family: 'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Tiêu đề ngắn <= 8 từ: SVN-Integral CF Regular (CẤM Bold) */
+    .title-integral {
+      font-family: 'SVN-Integral', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* Tiêu đề dài > 8 từ: SVN-Poppins SemiBold/Bold */
+    .title-poppins {
+      font-family: 'SVN-Poppins', 'Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 1.45;
+      text-transform: none;
+    }
+
+    .font-acta {
+      font-family: 'SVN-Acta', 'Playfair Display', Georgia, serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Glass Panels */
+    .glass-box {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: rgba(18, 26, 47, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px -8px rgba(56, 189, 248, 0.15);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Gradient Text */
+    .gradient-sky {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-emerald {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen pb-24 selection:bg-sky-500 selection:text-white">
+
+  <!-- BACKGROUND GLOWS -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-sky-600/10 blur-[130px] rounded-full"></div>
+    <div class="absolute top-[40%] -left-32 w-[500px] h-[500px] bg-indigo-600/10 blur-[120px] rounded-full"></div>
+    <div class="absolute top-[75%] -right-32 w-[500px] h-[500px] bg-amber-600/10 blur-[120px] rounded-full"></div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-50 glass-box border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20">
+          <i class="ph-bold ph-film-slate text-white text-lg"></i>
+        </div>
+        <div>
+          <div class="title-integral text-xs text-sky-400">NGUYỄN ĐỨC VIỆT</div>
+          <div class="text-xs text-slate-400 font-medium">Bản Đồ Đóng Gói Hệ Thống Khóa Học</div>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <span class="glass-pill px-3 py-1 rounded-full text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          2 SẢN PHẨM THƯƠNG MẠI
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative z-10 max-w-5xl mx-auto px-4 pt-14 pb-12 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-mono text-sky-400 mb-6 border border-sky-500/20">
+      <i class="ph-fill ph-check-circle text-emerald-400"></i>
+      CHUẨN HÓA KIẾN TRÚC SẢN PHẨM • FEDU MASTER
+    </div>
+
+    <!-- Tiêu đề ngắn <= 8 từ: SVN-Integral Regular -->
+    <h1 class="title-integral text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-4xl mx-auto">
+      HỆ THỐNG KHÓA HỌC <span class="gradient-sky">THỰC CHIẾN</span>
+    </h1>
+
+    <p class="font-acta text-lg sm:text-2xl text-slate-300 mt-6 max-w-3xl mx-auto italic leading-relaxed">
+      “Ranh giới giữa video 'hàng chợ' và video đắt tiền nằm ở không gian và nhịp điệu. Đóng gói tinh gọn, loại bỏ mọi sự rườm rà.”
+    </p>
+
+    <!-- CORE CLARIFICATION BANNER -->
+    <div class="mt-10 p-5 rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900/80 to-amber-950/40 border border-amber-500/30 text-left max-w-3xl mx-auto flex items-start gap-4">
+      <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center flex-shrink-0 mt-0.5">
+        <i class="ph-fill ph-shield-check text-amber-400 text-xl"></i>
+      </div>
+      <div class="text-xs sm:text-sm text-slate-300 space-y-1">
+        <div class="font-bold text-white uppercase font-mono tracking-wider text-amber-300">Sự Thật Cốt Lõi Về Danh Mục Bán Hàng:</div>
+        <p>Hiện tại anh Việt <strong>CHỈ BÁN DUY NHẤT 2 THỨ</strong>. Toàn bộ các thư mục khác trong máy (BĐS, Spa, Nha khoa, Luật, công cụ code...) là <em>dự án cá nhân / tư vấn nội bộ / nghiên cứu</em>, không đem ra bán.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN WRAPPER -->
+  <main class="relative z-10 max-w-5xl mx-auto px-4 space-y-14">
+
+    <!-- =========================================================================
+         SẢN PHẨM 1: GÓI KHÓA HỌC ONLINE (SKOOL 2 KHÓA)
+         ========================================================================= -->
+    <section class="glass-box rounded-3xl p-6 sm:p-10 border border-sky-500/30 relative overflow-hidden">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="title-integral text-xs px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
+            SẢN PHẨM 01
+          </span>
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">HỌC TRỰC TUYẾN • SKOOL PLATFORM</span>
+        </div>
+        <span class="text-xs font-mono px-2.5 py-1 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+          1 GÓI BÁN — 2 KHÓA RUỘT
+        </span>
+      </div>
+
+      <!-- Tiêu đề ngắn <= 8 từ: SVN-Integral -->
+      <h2 class="title-integral text-2xl sm:text-3xl text-white">
+        GÓI KHÓA HỌC ONLINE
+      </h2>
+
+      <!-- Tiêu đề dài > 8 từ: SVN-Poppins SemiBold -->
+      <p class="title-poppins text-base text-slate-300 mt-2">
+        Các domain chỉ là "vỏ đóng gói" — Khi mở ra, học viên nhận đúng 2 khóa học lõi trên Skool
+      </p>
+
+      <!-- VỎ ĐÓNG GÓI VS RUỘT SKOOL -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-8">
+        
+        <!-- VỎ ĐÓNG GÓI -->
+        <div class="md:col-span-5 bg-slate-900/60 rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="text-xs font-mono text-amber-400 flex items-center gap-2 uppercase tracking-wider font-bold">
+            <i class="ph-bold ph-package"></i>
+            Vỏ Đóng Gói (Funnels / Landing)
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Các trang web bán hàng bên ngoài được thiết kế theo từng góc tiếp cận nỗi đau khác nhau để chạy marketing chuyển đổi:
+          </p>
+          <ul class="space-y-2 text-xs text-slate-300 font-mono">
+            <li class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center justify-between">
+              <span>🌐 video.fedu.vn</span>
+              <span class="text-[10px] text-slate-400 font-sans">Tư duy giấu vết cắt</span>
+            </li>
+            <li class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center justify-between">
+              <span>🌐 30ngayviral.fedu.vn</span>
+              <span class="text-[10px] text-slate-400 font-sans">Thử thách 30 ngày</span>
+            </li>
+          </ul>
+          <div class="text-[11px] text-slate-500 italic">
+            * Cả hai vỏ đóng gói này đều chỉ dẫn về 1 điểm giao nhận duy nhất: Nền tảng Skool.
+          </div>
+        </div>
+
+        <!-- RUỘT 2 KHÓA TRÊN SKOOL -->
+        <div class="md:col-span-7 bg-slate-900/80 rounded-2xl p-5 border border-sky-500/30 space-y-4">
+          <div class="text-xs font-mono text-sky-400 flex items-center justify-between uppercase tracking-wider font-bold">
+            <span class="flex items-center gap-2">
+              <i class="ph-fill ph-graduation-cap"></i>
+              Bên Trong Tài Khoản Skool (Chính Xác 2 Khóa)
+            </span>
+            <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">2 Khóa Học</span>
+          </div>
+
+          <!-- CARD KHÓA 1 -->
+          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/80 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-sky-400 font-bold">01. CAPCUT NỀN TẢNG</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-700 text-slate-300 font-mono">Cho người mới 100%</span>
+            </div>
+            <div class="text-sm font-bold text-white">Làm video với Capcut</div>
+            <div class="text-xs text-slate-400 italic">
+              “Nơi bắt đầu cho người từ con số 0. Mọi kỹ thuật bấm máy, thiết lập thông số cơ bản, tích lũy đủ 'giờ bay' để quen thao tác tay.”
+            </div>
+          </div>
+
+          <!-- CARD KHÓA 2 -->
+          <div class="p-4 rounded-xl bg-slate-800/60 border border-indigo-500/40 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-indigo-400 font-bold">02. LOGIC QUAY & KỊCH BẢN AI</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">Khóa học sống • Update</span>
+            </div>
+            <div class="text-sm font-bold text-white">Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI</div>
+            <div class="text-xs text-slate-400 italic">
+              “Ranh giới giữa video 'hàng chợ' và video đắt tiền nằm ở không gian và nhịp điệu. Kỹ thuật chuyển cảnh tàng hình (Cut-on-Action), ma trận cỡ cảnh, bối cảnh ánh sáng và công cụ AI.”
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LUỒNG MAKE.COM VÀ EMAIL TỰ ĐỘNG -->
+      <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
+        <div class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+          <i class="ph-bold ph-paper-plane-tilt text-sky-400"></i>
+          Luồng Vận Hành Tự Động & Email Chào Mừng (Make.com):
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-1">
+            <div class="font-mono text-sky-400 font-bold">01. Đối Soát SePay</div>
+            <p class="text-slate-400">Quét biến động tài khoản ngân hàng theo mã đơn / SĐT khách, khớp tiền trong 3 giây.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-1">
+            <div class="font-mono text-indigo-400 font-bold">02. Make.com Webhook</div>
+            <p class="text-slate-400">Bắn lệnh kích hoạt, ghi nhận Google Sheets và gửi ngay email HTML tự động cho học viên.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-1">
+            <div class="font-mono text-emerald-400 font-bold">03. Cấp Quyền & Zalo 1-1</div>
+            <p class="text-slate-400">Chỉ dẫn vào Skool bằng đúng email mua để mở cửa lớp, mở đường dây Zalo 0934.688.632 hỗ trợ trực tiếp.</p>
+          </div>
+        </div>
+
+        <!-- Trích dẫn khẩu quyết trong email -->
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-center font-acta text-slate-300 text-sm sm:text-base italic">
+          “Quay phim đâu phải ngẫu nhiên — Tư duy đi trước, kiếm tiền mới nhanh!”
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SẢN PHẨM 2: KHÓA HỌC OFFLINE (2 NGÀY / MỖI THÁNG 1 LỚP)
+         ========================================================================= -->
+    <section class="glass-box rounded-3xl p-6 sm:p-10 border border-amber-500/30 relative overflow-hidden">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="title-integral text-xs px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            SẢN PHẨM 02
+          </span>
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">HUẤN LUYỆN TRỰC TIẾP • ECOPARK / HÀ NỘI</span>
+        </div>
+        <span class="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          2 NGÀY THỰC CHIẾN • 1 LỚP / THÁNG
+        </span>
+      </div>
+
+      <!-- Tiêu đề ngắn <= 8 từ: SVN-Integral -->
+      <h2 class="title-integral text-2xl sm:text-3xl text-white">
+        KHÓA HỌC OFFLINE
+      </h2>
+
+      <!-- Tiêu đề dài > 8 từ: SVN-Poppins SemiBold -->
+      <p class="title-poppins text-base text-slate-300 mt-2">
+        Cầm tay chỉ việc 2 ngày thực tế — Bấm máy là nói, tắt máy là xong
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">01</div>
+          <div class="text-sm font-bold text-white">Giải Tỏa Tâm Lý Ống Kính</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Đập tan nỗi sợ đứng trước ống kính của chủ doanh nghiệp và chuyên gia. Không bắt học thuộc lòng, dùng cơ chế Myelin hóa phản xạ nói tự nhiên.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">02</div>
+          <div class="text-sm font-bold text-white">3 Định Dạng Video Nhanh</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Thực hành ngay tại chỗ: (1) Voice-over đè hình, (2) Thoại đổi cảnh Dynamic Cut, và (3) Talking Head chạy Ads chuyển đổi.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">03</div>
+          <div class="text-sm font-bold text-white">2 Cam & Kịch Bản Trà Đá</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Quay 2 Cam đồng bộ âm thanh, Text Animate preset giật nảy, và nạp bộ 9 kịch bản thực chiến phong cách Trà Đá (SAFE - REAL - RAW).
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <i class="ph-fill ph-check-circle text-emerald-400 text-lg"></i>
+          <span class="text-xs text-slate-300">Cam kết đầu ra: Học viên có video hoàn chỉnh đăng ngay sau 2 ngày học.</span>
+        </div>
+        <span class="text-xs font-mono text-amber-400 font-semibold">Tần suất: 1 tháng / 1 lớp</span>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         BẢNG ĐỐI SOÁT: SẢN PHẨM THƯƠNG MẠI VS DỰ ÁN CÁ NHÂN
+         ========================================================================= -->
+    <section class="glass-box rounded-3xl p-6 sm:p-10 border border-slate-800 space-y-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-slate-400 uppercase tracking-wider">
+        <i class="ph-bold ph-scales text-sky-400"></i>
+        Bảng Quy Chuẩn Định Vị (Phân Biệt Rạch Ròi)
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400 font-mono">
+              <th class="py-3 px-4 uppercase">Hạng Mục</th>
+              <th class="py-3 px-4 uppercase text-emerald-400">Sản Phẩm Thương Mại (Đang Bán)</th>
+              <th class="py-3 px-4 uppercase text-slate-500">Dự Án Cá Nhân / Tư Vấn Riêng (Không Bán)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-slate-300">
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white font-mono">Online</td>
+              <td class="py-3.5 px-4 text-emerald-300">
+                <strong>1 Gói Học Trực Tuyến</strong> (Chứa 2 khóa trên Skool: CapCut Nền Tảng + Logic Quay & Kịch Bản AI).
+              </td>
+              <td class="py-3.5 px-4 text-slate-400">
+                Các tool AI, app thí nghiệm, kho tài nguyên mẫu, kịch bản thử nghiệm nội bộ.
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white font-mono">Offline</td>
+              <td class="py-3.5 px-4 text-amber-300">
+                <strong>Lớp Masterclass 2 Ngày</strong> (Tổ chức đều đặn mỗi tháng 1 lớp tại Ecopark/Hà Nội).
+              </td>
+              <td class="py-3.5 px-4 text-slate-400">
+                Các buổi tư vấn In-house riêng cho các thương hiệu (BĐS, Spa, Nha khoa, Luật...).
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white font-mono">Funnels / Web</td>
+              <td class="py-3.5 px-4">
+                <code>video.fedu.vn</code>, <code>30ngayviral.fedu.vn</code> (chỉ là vỏ đóng gói đưa về Skool).
+              </td>
+              <td class="py-3.5 px-4 text-slate-400">
+                Các landing page mẫu tạo ra để test thị trường hoặc demo cho đối tác.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center pt-8 border-t border-slate-800/80 space-y-2 text-xs text-slate-500 font-mono">
+      <div>© 2026 NGUYỄN ĐỨC VIỆT • FEDU MASTERCLASS</div>
+      <div>Bản đặc tả cấu trúc hệ thống đào tạo — Lưu trữ độc quyền trên GitHub Repo Course</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
