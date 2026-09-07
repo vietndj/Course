@@ -1,7 +1,51 @@
 {
-  "generated_at": "2026-09-07 17:49:25",
+  "generated_at": "2026-09-07 18:03:08",
   "total_posts": 110,
   "posts": [
+    {
+      "filename": "baitap01_laptop_ads.html",
+      "title": "Bài Tập 01 • Băm Nhỏ Cảnh Trám Laptop Ads (Chuẩn Văn Phong Ông Giáo)",
+      "excerpt": "\"Đứng một góc bấm máy thì nhàn thật... nhưng lười đổi góc thì khung hình nó chết dí!\"",
+      "category_key": "broll",
+      "category_label": "🎬 B-Roll & Cảnh Trám",
+      "cover_image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-07 17:49:34 +0700",
+      "read_time": "7 phút đọc",
+      "file_size_kb": 51.2
+    },
+    {
+      "filename": "baitap02_sotay_kichban.html",
+      "title": "Bài Tập 02 • Bí Từ, Gạch Xóa Kịch Bản Nát Bét (Chuẩn Văn Phong Ông Giáo)",
+      "excerpt": "\"Cố rặn từng chữ cho nó kêu... viết ra rồi lại tự tay gạch xóa!\"",
+      "category_key": "script",
+      "category_label": "📝 Kịch Bản Thực Chiến",
+      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-07 17:49:34 +0700",
+      "read_time": "7 phút đọc",
+      "file_size_kb": 50.7
+    },
+    {
+      "filename": "baitap03_test_goc_quay.html",
+      "title": "Bài Tập 03 • Cầm Máy Test Góc Tại Bàn (Chuẩn Văn Phong Ông Giáo)",
+      "excerpt": "\"Bảo giơ máy lên quay thì ai cũng ngại... xấu cũng được, miễn là mình dám bấm nút REC!\"",
+      "category_key": "other",
+      "category_label": "📌 Tài Liệu Chuyên Đề",
+      "cover_image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-07 17:49:34 +0700",
+      "read_time": "7 phút đọc",
+      "file_size_kb": 50.5
+    },
+    {
+      "filename": "baitap04_slide_giatminh.html",
+      "title": "Bài Tập 04 • Lướt Điện Thoại & Giật Mình Nhìn Slide (Chuẩn Văn Phong Ông Giáo)",
+      "excerpt": "\"Đang cắm đầu lướt điện thoại tưởng mình biết hết rồi... nghe thầy nói một câu chạm đúng tim đen, giật thót cả mình!\"",
+      "category_key": "other",
+      "category_label": "📌 Tài Liệu Chuyên Đề",
+      "cover_image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80",
+      "updated_at": "2026-09-07 17:49:34 +0700",
+      "read_time": "7 phút đọc",
+      "file_size_kb": 50.6
+    },
     {
       "filename": "lopmarketingbaitap.html",
       "title": "Kho Bài Tập Thực Chiến • Băm Cảnh Trám Lớp Marketing",
@@ -9,53 +53,9 @@
       "category_key": "broll",
       "category_label": "🎬 B-Roll & Cảnh Trám",
       "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-07 17:49:18 +0700",
+      "updated_at": "2026-09-07 17:49:34 +0700",
       "read_time": "18 phút đọc",
       "file_size_kb": 84.9
-    },
-    {
-      "filename": "baitap02_sotay_kichban.html",
-      "title": "Bài Tập 02 • Cuốn Sổ Tay & Kịch Bản Gạch Xóa (Chuẩn Văn Phong Ông Giáo)",
-      "excerpt": "Hành động gốc: Bạn học ngồi viết nháp kịch bản video marketing nhưng bí từ, cố rặn từng chữ hoa mỹ rồi ngượng mồm tự gạch xóa.Băm thành 5 cú máy ngắn (2.0s - 2.5s) tha...",
-      "category_key": "script",
-      "category_label": "📝 Kịch Bản Thực Chiến",
-      "cover_image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-07 17:49:13 +0700",
-      "read_time": "5 phút đọc",
-      "file_size_kb": 30.0
-    },
-    {
-      "filename": "baitap03_test_goc_quay.html",
-      "title": "Bài Tập 03 • Cầm Điện Thoại Test Góc Quay Tại Bàn (Chuẩn Văn Phong Ông Giáo)",
-      "excerpt": "Hành động gốc: Một bạn sinh viên cầm điện thoại thực hành quay thử bạn cùng nhóm ngay tại bàn học.Băm thành 5 cú máy ngắn (2.0s - 2.5s) thay đổi liên tục Cỡ cảnh 🔄 Góc...",
-      "category_key": "other",
-      "category_label": "📌 Tài Liệu Chuyên Đề",
-      "cover_image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-07 17:49:13 +0700",
-      "read_time": "5 phút đọc",
-      "file_size_kb": 29.8
-    },
-    {
-      "filename": "baitap04_slide_giatminh.html",
-      "title": "Bài Tập 04 • Ngẩng Nhìn Slide Giảng & Giật Mình (Chuẩn Văn Phong Ông Giáo)",
-      "excerpt": "Hành động gốc: Sinh viên đang cắm cúi bấm điện thoại dưới gầm bàn thì nghe thầy chỉ đúng tim đen lỗi sai của mình, giật mình ngẩng phắt lên nhìn slide ghi chép.Băm thà...",
-      "category_key": "other",
-      "category_label": "📌 Tài Liệu Chuyên Đề",
-      "cover_image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-07 17:49:13 +0700",
-      "read_time": "5 phút đọc",
-      "file_size_kb": 30.0
-    },
-    {
-      "filename": "baitap01_laptop_ads.html",
-      "title": "Bài Tập 01 • Băm Nhỏ Cảnh Trám Lớp Học (Chuẩn Văn Phong Ông Giáo)",
-      "excerpt": "Thay vì giơ máy quay bạn học ngồi gõ máy tính suốt 10 giây buồn ngủ...Mìnhbăm nhỏ hành động đó thành 5 cú máy ngắn(2 giây/cảnh): đổi cỡ cảnh, đổi góc máy và lệch trục ...",
-      "category_key": "broll",
-      "category_label": "🎬 B-Roll & Cảnh Trám",
-      "cover_image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-07 17:48:44 +0700",
-      "read_time": "7 phút đọc",
-      "file_size_kb": 40.4
     },
     {
       "filename": "info.html",
