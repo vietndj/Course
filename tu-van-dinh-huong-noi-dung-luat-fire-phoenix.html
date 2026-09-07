@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth dark">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Định Hướng Nội Dung Video & Thương Hiệu: Fire Phoenix Law | FEDU.VN</title>
   
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
-  
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     @font-face {
@@ -47,432 +49,657 @@
       font-style: italic;
     }
 
+    /* ═══ 30NGAYVIRAL.FEDU.VN LIGHT THEME TOKENS ═══ */
     :root {
-      --font-integral: 'SVN-Integral', sans-serif;
-      --font-poppins: 'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-acta: 'SVN-Acta', 'Playfair Display', Georgia, serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --cl-bg:                  #ffffff;
+      --cl-bg-tint:             #f8fafc;
+      --cl-card:                #ffffff;
+      --cl-border:              #e2e8f0;
+      --cl-border-subtle:       #f1f5f9;
+      --cl-title:               #0f172a;
+      --cl-body:                #334155;
+      --cl-muted:               #64748b;
+      --cl-orange:              #ea580c;
+      --cl-orange-dark:         #c2410c;
+      --cl-orange-light:        #fff7ed;
+      --cl-orange-border:       #fed7aa;
+      --cl-blue:                #2563eb;
+      --cl-blue-light:          #eff6ff;
+
+      --font-integral:          'SVN-Integral', sans-serif;
+      --font-body:              'SVN-Poppins', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-accent:            'SVN-Acta', 'Newsreader', Georgia, serif;
+      --font-mono:              'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
     }
 
     body {
-      background-color: #06090e;
-      color: #cbd5e1;
-      font-family: var(--font-poppins);
-      overflow-x: hidden;
+      font-family: var(--font-body);
+      background-color: var(--cl-bg);
+      color: var(--cl-body);
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
     }
 
+    /* ─── TYPOGRAPHY ─── */
     .title-short {
       font-family: var(--font-integral);
-      font-weight: 400;
+      font-weight: 400; /* Strict regular weight */
       letter-spacing: 0.02em;
       text-transform: uppercase;
+      color: var(--cl-title);
     }
+
     .title-long {
-      font-family: var(--font-poppins);
+      font-family: var(--font-body);
       font-weight: 600;
-      line-height: 1.45;
+      line-height: 1.4;
+      color: var(--cl-title);
     }
+
     .font-quote {
-      font-family: var(--font-acta);
+      font-family: var(--font-accent);
       font-style: italic;
     }
+
     .font-code {
       font-family: var(--font-mono);
     }
 
-    .glow-bg {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1200px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(234, 88, 12, 0.08) 0%, rgba(59, 130, 246, 0.06) 40%, transparent 70%);
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
+    /* ─── MỖI KHỐI 1 MÀN HÌNH (1 SCREEN = 1 TOPIC) ─── */
+    .screen-block {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4.5rem 1.5rem 2.5rem;
+      box-sizing: border-box;
+      position: relative;
+      border-bottom: 1px solid var(--cl-border);
     }
 
-    .glass-card {
-      background: rgba(13, 18, 28, 0.8);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: border-color 0.2s ease;
+    @media (max-height: 750px) {
+      .screen-block {
+        min-height: auto;
+        padding: 4rem 1.5rem 2.5rem;
+      }
     }
 
-    .glass-card:hover {
-      border-color: rgba(234, 88, 12, 0.3);
+    /* ─── ZEBRA STRIPING (LIGHT THEME) ─── */
+    .zebra-white {
+      background-color: #ffffff;
     }
 
-    .card-solid {
-      background: #0d121c;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .zebra-tint {
+      background-color: #f8fafc;
     }
 
-    /* Đảm bảo ngắt dòng đẹp trên màn hình di động */
-    .scannable-line {
+    /* ─── LIGHT CARDS WITH SOFT SHADOWS ─── */
+    .cl-card {
+      background: #ffffff;
+      border: 1px solid var(--cl-border);
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px -4px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cl-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .cl-card-highlight {
+      background: #ffffff;
+      border: 1.5px solid var(--cl-orange-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(234, 88, 12, 0.06);
+    }
+
+    .badge-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ─── FLOATING SIDE DOTS NAVIGATION ─── */
+    .floating-nav {
+      position: fixed;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 9999px;
+      background: #cbd5e1;
+      transition: all 0.2s ease;
       display: block;
-      margin-bottom: 0.25rem;
+    }
+
+    .nav-dot:hover, .nav-dot.active {
+      background: var(--cl-orange);
+      transform: scale(1.3);
     }
   </style>
 </head>
-<body class="min-h-screen relative selection:bg-orange-600 selection:text-white">
+<body class="selection:bg-orange-100 selection:text-orange-900">
 
-  <!-- Glow Background -->
-  <div class="glow-bg"></div>
-
-  <!-- Header -->
-  <header class="border-b border-white/10 sticky top-0 bg-[#06090e]/90 backdrop-blur-md z-50">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="px-2 py-0.5 bg-orange-600/20 text-orange-400 border border-orange-500/30 text-xs font-semibold rounded font-code uppercase">Tài Liệu Bàn Giao</span>
-        <span class="text-sm font-semibold text-slate-200">Định Hướng Kênh: Fire Phoenix Law</span>
+  <!-- TOP HEADER (STICKY) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-4 sm:px-8">
+    <div class="max-w-5xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <span class="badge-pill bg-orange-50 text-orange-700 border border-orange-200">BÀN GIAO THỰC CHIẾN</span>
+        <span class="text-xs sm:text-sm font-semibold text-slate-900 truncate">Kênh Fire Phoenix Law • Thu Phạm</span>
       </div>
-      <a href="./index.html" class="text-xs text-slate-400 hover:text-white border border-white/15 px-3 py-1 rounded-md transition flex items-center gap-1.5 font-code">
-        <i class="fa-solid fa-arrow-left text-[10px]"></i> Kho Tư Liệu
-      </a>
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] font-code text-slate-500 hidden md:inline-block">Dự án mở văn phòng T10</span>
+        <a href="./index.html" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition flex items-center gap-1">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> Kho Tư Liệu
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-10 relative z-10 space-y-12">
+  <!-- FLOATING SIDE DOT NAVIGATION -->
+  <div class="floating-nav hidden lg:flex" title="Điều hướng các màn hình">
+    <a href="#screen-hero" class="nav-dot" title="Trang bìa"></a>
+    <a href="#screen-context" class="nav-dot" title="Khối 01: Bối cảnh & Cách làm"></a>
+    <a href="#screen-psychology" class="nav-dot" title="Khối 02: 4 Tầng tâm lý"></a>
+    <a href="#screen-matrix" class="nav-dot" title="Khối 03: Soi chiếu thực tế"></a>
+    <a href="#screen-formats" class="nav-dot" title="Khối 04: 2 Định dạng video"></a>
+    <a href="#screen-script1" class="nav-dot" title="Khối 05A: Kịch bản Brand"></a>
+    <a href="#screen-script2" class="nav-dot" title="Khối 05B: Kịch bản Dịch vụ"></a>
+    <a href="#screen-roadmap" class="nav-dot" title="Khối 06: Bước hành động"></a>
+  </div>
 
-    <!-- Title Section -->
-    <section class="space-y-3 border-b border-white/10 pb-8">
-      <span class="text-xs font-code text-orange-400 font-semibold tracking-wider uppercase">Phân Tích Bối Cảnh & Khung Kịch Bản Thực Tế</span>
-      <h1 class="title-short text-2xl md:text-4xl text-white tracking-wide">
-        ĐỊNH HƯỚNG NỘI DUNG FIRE PHOENIX
-      </h1>
-      <p class="title-long text-slate-300 text-sm md:text-base font-normal max-w-3xl leading-relaxed">
-        Tài liệu nghiên cứu thực tế về cách làm nội dung video cho dịch vụ pháp lý doanh nghiệp.
-        Bóc tách lý do tại sao người đứng đầu phải trực tiếp xuất hiện, cơ chế tâm lý giữ thể diện của khách hàng, và 2 kịch bản mẫu triển khai ngay.
-      </p>
-      <div class="flex flex-wrap gap-2 pt-2 text-xs font-code text-slate-400">
-        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">Đối tượng: Thu Phạm (CEO Fire Phoenix Law)</span>
-        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">Hồ sơ năng lực 1.2 • Kế hoạch mở văn phòng T10</span>
-      </div>
-    </section>
-
-    <!-- Khối 1: Bối Cảnh Thực Tế & Lựa Chọn Cách Làm -->
-    <section class="card-solid rounded-xl p-6 md:p-7 space-y-5 border-l-4 border-l-orange-500">
-      <div class="space-y-1">
-        <span class="text-xs font-code text-orange-400 font-semibold uppercase">Khối 01</span>
-        <h2 class="title-short text-lg md:text-xl text-white">BỐI CẢNH THỰC TẾ & LỰA CHỌN CÁCH LÀM</h2>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 1: HERO / TỔNG QUAN BÀN GIAO                                    -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-hero" class="screen-block zebra-white">
+    <div class="max-w-4xl mx-auto w-full space-y-6">
+      <div class="inline-flex items-center gap-2">
+        <span class="badge-pill bg-orange-100 text-orange-800 border border-orange-200">
+          <i class="fa-solid fa-scale-balanced text-[10px]"></i> TÀI LIỆU NGHIÊN CỨU & ĐỊNH HƯỚNG
+        </span>
       </div>
 
-      <div class="space-y-4 text-xs md:text-sm text-slate-300 leading-relaxed">
-        <p>
-          Hồ sơ Fire Phoenix Law cho thấy Thu có nền tảng vững với 10 năm kinh nghiệm pháp chế tại các tập đoàn lớn.
-          Tháng 10 này, văn phòng dự kiến triển khai trước 2 dịch vụ:
+      <div class="space-y-3">
+        <h1 class="title-short text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight">
+          ĐỊNH HƯỚNG NỘI DUNG FIRE PHOENIX
+        </h1>
+        <p class="title-long text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-3xl">
+          Bản phân tích thực tế về cách làm nội dung video cho dịch vụ pháp lý doanh nghiệp.
+          Chỉ rõ vì sao người đứng đầu phải trực tiếp xuất hiện, cơ chế tâm lý giữ thể diện của khách hàng, và 2 kịch bản mẫu triển khai ngay.
         </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 my-2">
-          <div class="bg-white/5 p-3.5 rounded-lg border border-white/5">
-            <span class="text-orange-400 font-bold block mb-1">1. Dịch vụ thành lập doanh nghiệp</span>
-            <span class="text-slate-400 text-xs">Mở công ty mới trong nước và hỗ trợ vốn đầu tư nước ngoài vào Việt Nam.</span>
-          </div>
-          <div class="bg-white/5 p-3.5 rounded-lg border border-white/5">
-            <span class="text-blue-400 font-bold block mb-1">2. Phòng pháp chế thuê ngoài cho SME</span>
-            <span class="text-slate-400 text-xs">Giúp doanh nghiệp vừa và nhỏ giảm chi phí nuôi nhân sự pháp chế in-house cố định.</span>
-          </div>
-        </div>
-
-        <div class="space-y-2 pt-2 border-t border-white/5">
-          <h3 class="font-semibold text-white text-xs uppercase font-code">Vì sao không nên thuê chạy quảng cáo hay làm video bên ngoài?</h3>
-          <ul class="space-y-2 text-xs text-slate-300">
-            <li class="flex items-start gap-2">
-              <span class="text-orange-400 font-bold">•</span>
-              <span><strong>Niềm tin gắn vào con người cụ thể:</strong> Khách doanh nghiệp không ký hợp đồng tư vấn pháp lý với một fanpage chạy ads chung chung. Họ quyết định làm việc khi nhìn thấy khuôn mặt, cách nói chuyện và sự am hiểu thực tế của chính luật sư Thu.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-orange-400 font-bold">•</span>
-              <span><strong>Tránh bẫy cạnh tranh giá rẻ:</strong> Mảng làm thủ tục kinh doanh đang bị các bên dịch vụ bên ngoài chạy quảng cáo phá giá 500 nghìn đến 1 triệu. Nếu bỏ tiền chạy ads đua theo họ sẽ kiệt sức. Lối đi bền vững là xuất hiện trực tiếp chia sẻ kinh nghiệm xử lý tranh chấp thực tế.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-orange-400 font-bold">•</span>
-              <span><strong>Video ngắn thay đổi liên tục:</strong> Thuật toán và cách làm video biến động từng tháng. Nếu phụ thuộc vào agency bên ngoài, Thu sẽ luôn bị động. Tự đứng trước ống kính nói câu chuyện của mình là kỹ năng phải tự làm chủ. Người cố vấn chỉ đóng vai trò cùng sửa kịch bản và gỡ vướng mắc khi cần.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Khối 2: Bản Chất 4 Tầng Tâm Lý & Cơ Chế Giữ Thể Diện -->
-    <section class="card-solid rounded-xl p-6 md:p-7 space-y-5">
-      <div class="space-y-1">
-        <span class="text-xs font-code text-blue-400 font-semibold uppercase">Khối 02</span>
-        <h2 class="title-short text-lg md:text-xl text-white">BẢN CHẤT 4 TẦNG TÂM LÝ & ĐIỂM NGHẼN THỂ DIỆN</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-[11px] font-code text-slate-500 uppercase block">Đối tượng đọc</span>
+          <span class="text-sm font-semibold text-slate-900 block mt-0.5">Anh Việt & Thu Phạm (FPLAW)</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-[11px] font-code text-slate-500 uppercase block">Dữ liệu đầu vào</span>
+          <span class="text-sm font-semibold text-slate-900 block mt-0.5">Hồ sơ năng lực 1.2 • Sơ đồ dịch vụ</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-[11px] font-code text-slate-500 uppercase block">Mục tiêu cốt lõi</span>
+          <span class="text-sm font-semibold text-orange-700 block mt-0.5">Chuyển đổi dịch vụ không dùng văn mẫu</span>
+        </div>
+      </div>
+
+      <div class="pt-4 flex items-center gap-3">
+        <a href="#screen-context" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 text-xs font-semibold transition">
+          Bắt đầu xem nội dung <i class="fa-solid fa-arrow-down text-[10px]"></i>
+        </a>
+        <span class="text-xs text-slate-400 font-code">Cuộn chuột hoặc bấm mũi tên</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 2: KHỐI 01 - BỐI CẢNH THỰC TẾ & LỰA CHỌN CÁCH LÀM            -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-context" class="screen-block zebra-tint">
+    <div class="max-w-4xl mx-auto w-full space-y-5">
+      <div class="flex items-center gap-2">
+        <span class="badge-pill bg-slate-200 text-slate-800">KHỐI 01</span>
+        <span class="text-xs font-code text-slate-500 uppercase">BỐI CẢNH VẬN HÀNH</span>
+      </div>
+
+      <h2 class="title-short text-2xl sm:text-3xl text-slate-900">
+        BỐI CẢNH THỰC TẾ & LỰA CHỌN CÁCH LÀM
+      </h2>
+
+      <!-- 2 Mũi nhọn -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="cl-card p-4 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-bold font-code">1</span>
+            <span class="text-xs font-bold text-slate-900 uppercase">Dịch Vụ Thành Lập Doanh Nghiệp</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed pl-8">
+            Phục vụ doanh nghiệp mới mở trong nước và hỗ trợ dòng vốn đầu tư nước ngoài vào Việt Nam.
+          </p>
+        </div>
+
+        <div class="cl-card p-4 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold font-code">2</span>
+            <span class="text-xs font-bold text-slate-900 uppercase">Pháp Chế Thuê Ngoài Cho SME</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed pl-8">
+            Giúp doanh nghiệp vừa và nhỏ giảm chi phí cố định thay vì phải tuyển một nhân sự pháp chế in-house.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Lý do không thuê ngoài -->
+      <div class="cl-card p-5 space-y-3">
+        <span class="text-xs font-bold text-slate-900 uppercase font-code block border-b border-slate-100 pb-2">
+          Vì sao không nên thuê chạy quảng cáo hay làm video bên ngoài?
+        </span>
+
+        <div class="space-y-2.5 text-xs text-slate-700">
+          <div class="flex items-start gap-2.5">
+            <i class="fa-solid fa-check text-orange-600 text-xs mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900">Niềm tin gắn vào con người cụ thể:</strong> Khách doanh nghiệp không ký hợp đồng pháp lý với một fanpage chạy ads chung chung. Họ quyết định làm việc khi nhìn thấy khuôn mặt, cách nói chuyện và sự am hiểu thực tế của chính luật sư Thu.
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <i class="fa-solid fa-check text-orange-600 text-xs mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900">Tránh bẫy cạnh tranh giá rẻ:</strong> Mảng làm thủ tục kinh doanh đang bị các bên dịch vụ bên ngoài chạy quảng cáo phá giá 500 nghìn đến 1 triệu. Nếu bỏ tiền chạy ads đua theo họ sẽ kiệt sức. Lối đi bền vững là xuất hiện trực tiếp chia sẻ kinh nghiệm xử lý tranh chấp thực tế.
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <i class="fa-solid fa-check text-orange-600 text-xs mt-0.5"></i>
+            <div>
+              <strong class="text-slate-900">Video ngắn thay đổi liên tục:</strong> Thuật toán và cách làm video biến động từng tháng. Nếu phụ thuộc vào agency bên ngoài, Thu sẽ luôn bị động. Tự đứng trước ống kính là kỹ năng phải tự làm chủ; người cố vấn chỉ đóng vai trò cùng sửa kịch bản.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 3: KHỐI 02 - BẢN CHẤT 4 TẦNG TÂM LÝ & ĐIỂM NGHẼN THỂ DIỆN   -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-psychology" class="screen-block zebra-white">
+    <div class="max-w-4xl mx-auto w-full space-y-5">
+      <div class="flex items-center gap-2">
+        <span class="badge-pill bg-slate-200 text-slate-800">KHỐI 02</span>
+        <span class="text-xs font-code text-slate-500 uppercase">TÂM LÝ HỌC HÀNH VI</span>
+      </div>
+
+      <h2 class="title-short text-2xl sm:text-3xl text-slate-900">
+        BẢN CHẤT 4 TẦNG TÂM LÝ & ĐIỂM NGHẼN THỂ DIỆN
+      </h2>
+
+      <!-- 4 Ô Tầng -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <!-- T1 -->
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-1.5">
-          <span class="text-[11px] font-bold text-slate-400 font-code block uppercase">TẦNG 1: NÓI ĐÃI BÔI</span>
-          <span class="text-xs text-slate-200 font-semibold block">Đạo lý bề nổi</span>
-          <p class="text-xs text-slate-400 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+          <span class="text-[10.5px] font-code text-slate-500 uppercase block">TẦNG 1: SAFE</span>
+          <span class="text-xs font-bold text-slate-900 block">Nói đãi bôi</span>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
             Câu từ trang trọng, đúng như sách giáo khoa. Ai nghe cũng gật đầu nhưng lướt qua sau 2 giây.
           </p>
-          <span class="text-[11px] text-slate-500 font-code block pt-1">VD: "Thượng tôn pháp luật..."</span>
+          <span class="text-[10.5px] text-slate-400 font-code block pt-1 border-t border-slate-200/60">VD: "Thượng tôn pháp luật..."</span>
         </div>
 
         <!-- T2 -->
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-1.5">
-          <span class="text-[11px] font-bold text-blue-400 font-code block uppercase">TẦNG 2: CẢM GIÁC THẬT</span>
-          <span class="text-xs text-blue-200 font-semibold block">Bế tắc đời thường</span>
-          <p class="text-xs text-slate-400 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+          <span class="text-[10.5px] font-code text-blue-600 uppercase block">TẦNG 2: REAL</span>
+          <span class="text-xs font-bold text-slate-900 block">Cảm giác thật</span>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
             Hành động thực tế: tải mẫu mạng, lúng túng khi làm, tốn thời gian mà vẫn xảy ra tranh chấp.
           </p>
-          <span class="text-[11px] text-blue-400/80 font-code block pt-1">VD: Ký hợp đồng mẫu rồi cãi nhau</span>
+          <span class="text-[10.5px] text-blue-600 font-code block pt-1 border-t border-slate-200/60">VD: Ký hợp đồng mẫu rồi cãi nhau</span>
         </div>
 
         <!-- T2.5 -->
-        <div class="bg-orange-950/20 p-4 rounded-lg border border-orange-500/40 space-y-1.5">
-          <span class="text-[11px] font-bold text-orange-400 font-code block uppercase">TẦNG 2.5: CÁI CỚ THỂ DIỆN</span>
-          <span class="text-xs text-orange-200 font-semibold block">Bình phong bảo vệ mình</span>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Lý do nghe rất đàng hoàng, có lòng tự trọng mà người lớn dựng lên để che đi sự bế tắc T2 và nỗi sợ T3.
+        <div class="p-3.5 rounded-xl bg-orange-50/80 border-2 border-orange-300 space-y-1 shadow-sm">
+          <span class="text-[10.5px] font-code text-orange-700 uppercase font-bold block">TẦNG 2.5: THE MASK</span>
+          <span class="text-xs font-bold text-orange-950 block">Cái cớ giữ thể diện</span>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            Lý do nghe rất đàng hoàng, có lòng tự trọng mà người lớn dựng lên để che đi bế tắc T2 và nỗi sợ T3.
           </p>
-          <span class="text-[11px] text-orange-300 font-code block pt-1">VD: "Anh em tin nhau là chính!"</span>
+          <span class="text-[10.5px] text-orange-800 font-code block pt-1 border-t border-orange-200">VD: "Anh em tin nhau là chính!"</span>
         </div>
 
         <!-- T3 -->
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-1.5">
-          <span class="text-[11px] font-bold text-purple-400 font-code block uppercase">TẦNG 3: TIM ĐEN</span>
-          <span class="text-xs text-purple-200 font-semibold block">Nỗi sợ giấu kín</span>
-          <p class="text-xs text-slate-400 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+          <span class="text-[10.5px] font-code text-purple-600 uppercase block">TẦNG 3: RAW</span>
+          <span class="text-xs font-bold text-slate-900 block">Tim đen ngượng ngùng</span>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
             Nỗi sợ thầm kín nhất: sợ mất tiền, sợ mất cơ nghiệp, sợ bị người đời hoặc đối tác coi thường.
           </p>
-          <span class="text-[11px] text-purple-400/80 font-code block pt-1">VD: Sợ bị hất khỏi công ty khi có lãi</span>
+          <span class="text-[10.5px] text-purple-600 font-code block pt-1 border-t border-slate-200/60">VD: Sợ bị hất khỏi công ty khi có lãi</span>
         </div>
       </div>
 
-      <div class="p-4 rounded-lg bg-black/40 border border-white/5 space-y-2 text-xs text-slate-300 leading-relaxed">
-        <span class="font-semibold text-white block uppercase font-code">Vì sao nội dung phải chạm vào Tầng 2.5?</span>
-        <p>• Nếu chỉ nói <strong>Tầng 1</strong>: Nội dung khô khan như đọc luật, người xem lướt qua ngay.</p>
-        <p>• Nếu chỉ kể <strong>Tầng 2</strong>: Bài viết bị nông, vô tình biến người nghe thành người vụng về, làm tổn thương lòng tự trọng của người có chuyên môn.</p>
-        <p>• Nếu chọc thẳng vào <strong>Tầng 3</strong>: Người nghe bị bóc trần nỗi sợ sẽ thấy xấu hổ, lập tức phòng thủ hoặc tắt video.</p>
-        <p class="text-orange-300 font-medium pt-1">
-          • Khi chạm vào <strong>Tầng 2.5</strong>: Ta chỉ ra đúng cái cớ họ đang dùng hàng ngày, giải oan cho họ, giúp họ nhận ra sự thật mà vẫn giữ trọn vẹn sự tôn trọng và thể diện.
-        </p>
+      <!-- Lý giải cơ chế thuyết phục -->
+      <div class="cl-card p-4 space-y-2">
+        <span class="text-xs font-bold text-slate-900 uppercase font-code block">
+          Vì sao nội dung phải chạm vào Tầng 2.5?
+        </span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+          <p>• <strong>Nói Tầng 1:</strong> Khô khan như đọc luật, người xem lướt qua ngay.</p>
+          <p>• <strong>Kể Tầng 2:</strong> Bài viết bị nông, làm tổn thương lòng tự trọng của người có chuyên môn.</p>
+          <p>• <strong>Chọc thẳng Tầng 3:</strong> Bị bóc trần nỗi sợ sẽ thấy xấu hổ, lập tức dựng khiên phòng thủ.</p>
+          <p class="text-orange-800 font-semibold bg-orange-50 p-2 rounded-lg border border-orange-100">
+            • <strong>Chạm vào Tầng 2.5:</strong> Chỉ ra cái cớ họ dùng mỗi ngày, giải oan cho họ, giúp họ nhận ra sự thật mà vẫn giữ trọn vẹn thể diện.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Khối 3: Bảng Bóc Tách Thực Tế Case Doanh Nghiệp Luật -->
-    <section class="card-solid rounded-xl p-6 md:p-7 space-y-5">
-      <div class="space-y-1">
-        <span class="text-xs font-code text-emerald-400 font-semibold uppercase">Khối 03</span>
-        <h2 class="title-short text-lg md:text-xl text-white">BẢNG BÓC TÁCH THỰC TẾ: NỘI TÂM LUẬT SƯ & KHÁCH HÀNG</h2>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 4: KHỐI 03 - BẢNG BÓC TÁCH THỰC TẾ CASE LUẬT                 -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-matrix" class="screen-block zebra-tint">
+    <div class="max-w-4xl mx-auto w-full space-y-5">
+      <div class="flex items-center gap-2">
+        <span class="badge-pill bg-slate-200 text-slate-800">KHỐI 03</span>
+        <span class="text-xs font-code text-slate-500 uppercase">SOI CHIẾU THỰC TẾ</span>
       </div>
+
+      <h2 class="title-short text-2xl sm:text-3xl text-slate-900">
+        NỘI TÂM LUẬT SƯ & KHÁCH HÀNG DOANH NGHIỆP
+      </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-        <!-- Cột 1: Phía Luật sư -->
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-3">
-          <div class="border-b border-white/10 pb-2">
-            <span class="text-blue-400 font-code font-bold uppercase block">HƯỚNG 1: BRAND CÁ NHÂN</span>
-            <span class="text-white font-semibold">Nội tâm người luật sư mở văn phòng</span>
+        <!-- Phía Luật sư -->
+        <div class="cl-card p-4 space-y-2.5">
+          <div class="border-b border-slate-100 pb-2 flex items-center justify-between">
+            <span class="font-bold text-blue-700 uppercase font-code">Góc Nhìn 1 • Brand Cá Nhân</span>
+            <span class="text-slate-400 font-code text-[11px]">Luật sư tự trào</span>
           </div>
 
-          <div class="space-y-2 text-slate-300">
+          <div class="space-y-2 text-slate-700">
             <div>
-              <strong class="text-slate-400 block font-code">TẦNG 1 (SAFE):</strong>
+              <strong class="text-slate-500 block font-code">TẦNG 1 (SAFE):</strong>
               “Luật sư phụng sự xã hội, thượng tôn pháp luật là nền tảng của doanh nghiệp.”
             </div>
             <div>
-              <strong class="text-blue-400 block font-code">TẦNG 2 (REAL):</strong>
+              <strong class="text-blue-700 block font-code">TẦNG 2 (REAL):</strong>
               Mở văn phòng đẹp, gánh tiền thuê mặt bằng và lương nhân viên mỗi tháng. Viết bài chuyên môn không ai đọc. Khách SME tiếc tiền tư vấn, tự tải hợp đồng mẫu về ký.
             </div>
-            <div class="bg-orange-950/20 p-2.5 rounded border border-orange-500/20">
-              <strong class="text-orange-400 block font-code">TẦNG 2.5 (CÁI CỚ THỂ DIỆN):</strong>
+            <div class="bg-orange-50/90 p-2.5 rounded-lg border border-orange-200">
+              <strong class="text-orange-800 block font-code">TẦNG 2.5 (CÁI CỚ THỂ DIỆN):</strong>
               “Doanh nghiệp nhỏ làm ăn chộp giật, không có văn hóa pháp luật. Tiếc vài triệu sau này mất tiền tỷ ráng chịu. Mình chỉ làm với tập đoàn lớn!”
-              <p class="text-[11px] text-slate-400 italic mt-1">
+              <p class="text-[11px] text-slate-600 italic mt-1">
                 ➔ Bản chất: Lấy cớ kén khách để che đi việc mình chưa nói được ngôn ngữ kinh doanh thực tế, và ngại làm video vì sợ mất vẻ đạo mạo.
               </p>
             </div>
             <div>
-              <strong class="text-purple-400 block font-code">TẦNG 3 (RAW):</strong>
+              <strong class="text-purple-700 block font-code">TẦNG 3 (RAW):</strong>
               Thấy bên dịch vụ giấy tờ giá rẻ chốt khách đều đặn, ruột gan nóng như lửa. Từng thoáng nghĩ hay mình cũng đi làm mấy việc vặt kiếm tiền nuôi văn phòng? Nghĩ đến đấy là tự thấy ngượng với bao năm đèn sách.
             </div>
           </div>
         </div>
 
-        <!-- Cột 2: Phía Khách hàng SME -->
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-3">
-          <div class="border-b border-white/10 pb-2">
-            <span class="text-orange-400 font-code font-bold uppercase block">HƯỚNG 2: VIDEO DỊCH VỤ / BÁN HÀNG</span>
-            <span class="text-white font-semibold">Nội tâm chủ doanh nghiệp khởi nghiệp / SME</span>
+        <!-- Phía Khách hàng SME -->
+        <div class="cl-card p-4 space-y-2.5">
+          <div class="border-b border-slate-100 pb-2 flex items-center justify-between">
+            <span class="font-bold text-orange-700 uppercase font-code">Góc Nhìn 2 • Video Dịch Vụ</span>
+            <span class="text-slate-400 font-code text-[11px]">Bán hàng & Giải oan</span>
           </div>
 
-          <div class="space-y-2 text-slate-300">
+          <div class="space-y-2 text-slate-700">
             <div>
-              <strong class="text-slate-400 block font-code">TẦNG 1 (SAFE):</strong>
+              <strong class="text-slate-500 block font-code">TẦNG 1 (SAFE):</strong>
               “Làm ăn thì hợp đồng phải rõ ràng, chặt chẽ để đôi bên cùng có lợi.”
             </div>
             <div>
-              <strong class="text-blue-400 block font-code">TẦNG 2 (REAL):</strong>
+              <strong class="text-blue-700 block font-code">TẦNG 2 (REAL):</strong>
               Rủ bạn thân mở công ty, hai bên vỗ vai nhau tin tưởng, lên mạng tải mẫu hợp đồng góp vốn 2 trang về ký xoẹt cái cho xong, ngại tốn tiền thuê luật sư.
             </div>
-            <div class="bg-orange-950/20 p-2.5 rounded border border-orange-500/20">
-              <strong class="text-orange-400 block font-code">TẦNG 2.5 (CÁI CỚ THỂ DIỆN):</strong>
+            <div class="bg-orange-50/90 p-2.5 rounded-lg border border-orange-200">
+              <strong class="text-orange-800 block font-code">TẦNG 2.5 (CÁI CỚ THỂ DIỆN):</strong>
               “Anh em gắn bó bao năm, làm ăn tin nhau là chính. Đưa luật sư vào họ lại bảo mình phòng thủ, toan tính, mất tình cảm!”
-              <p class="text-[11px] text-slate-400 italic mt-1">
+              <p class="text-[11px] text-slate-600 italic mt-1">
                 ➔ Bản chất: Sợ mang tiếng là người thực dụng, sợ người kia tự ái khi doanh nghiệp còn chưa làm ra đồng nào.
               </p>
             </div>
             <div>
-              <strong class="text-purple-400 block font-code">TẦNG 3 (RAW):</strong>
+              <strong class="text-purple-700 block font-code">TẦNG 3 (RAW):</strong>
               Nỗi sợ thật: Khi công ty có lãi thì đối tác lật kèo hất mình ra ngoài; hoặc khi thua lỗ thì một mình mình phải ôm nợ. Sợ mất cả chì lẫn chài (mất tiền, mất bạn).
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Khối 4: 2 Nhóm Định Dạng Cần Triển Khai -->
-    <section class="card-solid rounded-xl p-6 md:p-7 space-y-4">
-      <div class="space-y-1">
-        <span class="text-xs font-code text-purple-400 font-semibold uppercase">Khối 04</span>
-        <h2 class="title-short text-lg md:text-xl text-white">HAI ĐỊNH DẠNG VIDEO CẦN LÀM</h2>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 5: KHỐI 04 - HAI ĐỊNH DẠNG VIDEO CẦN LÀM                     -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-formats" class="screen-block zebra-white">
+    <div class="max-w-4xl mx-auto w-full space-y-5">
+      <div class="flex items-center gap-2">
+        <span class="badge-pill bg-slate-200 text-slate-800">KHỐI 04</span>
+        <span class="text-xs font-code text-slate-500 uppercase">CHIẾN LƯỢC ĐỊNH DẠNG</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm text-slate-300">
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-2">
-          <div class="text-orange-400 font-bold text-xs uppercase font-code">Định dạng 1: Kể chuyện nghề (Xây niềm tin)</div>
-          <p class="text-xs text-slate-300 leading-relaxed">
+      <h2 class="title-short text-2xl sm:text-3xl text-slate-900">
+        HAI ĐỊNH DẠNG VIDEO CẦN LÀM
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+        <div class="cl-card p-5 space-y-2.5 border-t-4 border-t-orange-500">
+          <span class="text-xs font-bold text-orange-700 uppercase font-code block">
+            ĐỊNH DẠNG 1: KỂ CHUYỆN NGHỀ (XÂY NIỀM TIN)
+          </span>
+          <p class="text-slate-700 leading-relaxed">
             Chính luật sư tự đứng ra kể lại cái cớ Tầng 2.5 của mình ngày xưa.
+          </p>
+          <p class="text-slate-600 leading-relaxed text-xs">
             Hạ cái tôi xuống để người nghe thấy đây là một người cố vấn thẳng thắn, hiểu nỗi lo cơm áo gạo tiền của giới chủ chứ không phải người ngồi phòng lạnh đọc luật.
           </p>
+          <div class="p-3 bg-slate-50 rounded-lg text-slate-600 text-xs">
+            <strong>Bối cảnh:</strong> Ngồi bàn làm việc, sơ mi thoải mái, giọng tự sự, nói chuyện điềm đạm.
+          </div>
         </div>
 
-        <div class="bg-white/5 p-4 rounded-lg border border-white/5 space-y-2">
-          <div class="text-blue-400 font-bold text-xs uppercase font-code">Định dạng 2: Tình huống dịch vụ (Bán hàng)</div>
-          <p class="text-xs text-slate-300 leading-relaxed">
+        <div class="cl-card p-5 space-y-2.5 border-t-4 border-t-blue-500">
+          <span class="text-xs font-bold text-blue-700 uppercase font-code block">
+            ĐỊNH DẠNG 2: TÌNH HUỐNG DỊCH VỤ (BÁN HÀNG)
+          </span>
+          <p class="text-slate-700 leading-relaxed">
             Đứng về phía khách hàng, bắt đúng cái cớ Tầng 2.5 của họ (sợ mất tình cảm, sợ bị bảo toan tính).
+          </p>
+          <p class="text-slate-600 leading-relaxed text-xs">
             Giải oan cho họ, rồi trao cho họ giải pháp: <em>"Làm hợp đồng sòng phẳng từ đầu là để bảo vệ tình anh em đến cùng"</em>.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-lg text-slate-600 text-xs">
+            <strong>Bối cảnh:</strong> Kéo ghế ngồi gần ống kính, nói như người từng trải, mộc mạc và chân thật.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 6: KHỐI 05A - KỊCH BẢN BRAND CÁ NHÂN                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-script1" class="screen-block zebra-tint">
+    <div class="max-w-4xl mx-auto w-full space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-pill bg-orange-100 text-orange-800">KHỐI 05A</span>
+          <span class="text-xs font-code text-slate-500 uppercase">KỊCH BẢN MẪU 01</span>
+        </div>
+        <span class="text-xs font-code text-slate-400">Thời lượng: 45 - 60 giây</span>
+      </div>
+
+      <h2 class="title-short text-xl sm:text-2xl text-slate-900">
+        KỊCH BẢN BRAND: HẠ CÁI TÔI CHUYÊN GIA
+      </h2>
+
+      <div class="cl-card p-5 space-y-3 text-xs md:text-sm leading-relaxed">
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-orange-700 uppercase block">[Nhịp 1: Bóc cái cớ ngày xưa]</span>
+          <p class="text-slate-800">
+            “Hồi mới mở văn phòng luật, thấy người ta cứ lên mạng tải hợp đồng mẫu về ký, mình hay chép miệng: 
+            <em>‘Làm ăn thế là nghiệp dư, tiếc vài triệu tư vấn sau mất tiền tỷ ráng chịu... mấy bên nhỏ lẻ ấy mình không thèm nhận!’</em>”
+          </p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-blue-700 uppercase block">[Nhịp 2: Thừa nhận bế tắc thực tế]</span>
+          <p class="text-slate-800">
+            “Nói cho sang mồm thế thôi... Chứ ngồi trong văn phòng nhìn tiền mặt bằng đến hạn, bài viết chuyên môn đăng lên chẳng ma nào đọc, ruột gan nóng như lửa.”
+          </p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-purple-700 uppercase block">[Nhịp 3: Tim đen ngượng ngùng]</span>
+          <p class="text-slate-800">
+            “Đáng xấu hổ nhất là lúc bí tiền, trong đầu từng thoáng nghĩ: 
+            <em>Hay là mình cũng hạ giá, đi làm mấy cái giấy tờ vài trăm nghìn kiếm bạc lẻ nuôi văn phòng?</em> 
+            Nghĩ đến đấy là tự thấy ngượng với bao năm đèn sách.”
+          </p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-emerald-50 border border-emerald-200 space-y-1">
+          <span class="text-[11px] font-code font-bold text-emerald-800 uppercase block">[Nhịp 4: Nhận ra bài học & Đổi cách tiếp cận]</span>
+          <p class="text-slate-900 font-medium">
+            “Doanh chủ không hề coi thường luật... mà do cái tôi của mình quá lớn. Cứ mở miệng ra là trích điều khoản dọa dẫm, mà không chịu hiểu nỗi lo cơm áo gạo tiền của người ta. Bỏ cái vẻ đạo mạo xuống, nói chuyện bằng ngôn ngữ làm ăn... lúc đấy văn phòng mới sống lại!”
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Khối 5: Bộ Đôi Kịch Bản 4 Nhịp Thực Tế -->
-    <section class="card-solid rounded-xl p-6 md:p-7 space-y-6 border-l-4 border-l-blue-500">
-      <div class="space-y-1">
-        <span class="text-xs font-code text-blue-400 font-semibold uppercase">Khối 05</span>
-        <h2 class="title-short text-lg md:text-xl text-white">BỘ ĐÔI KỊCH BẢN 4 NHỊP THỰC TẾ</h2>
-        <p class="text-xs text-slate-400">Văn nói mộc mạc, ngắt nhịp tự nhiên, nói thẳng vào việc</p>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 7: KHỐI 05B - KỊCH BẢN BÁN HÀNG / DỊCH VỤ                     -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-script2" class="screen-block zebra-white">
+    <div class="max-w-4xl mx-auto w-full space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-pill bg-blue-100 text-blue-800">KHỐI 05B</span>
+          <span class="text-xs font-code text-slate-500 uppercase">KỊCH BẢN MẪU 02</span>
+        </div>
+        <span class="text-xs font-code text-slate-400">Thời lượng: 50 - 65 giây</span>
       </div>
 
-      <!-- Kịch bản 1 -->
-      <div class="bg-black/40 rounded-xl p-5 border border-white/5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-          <span class="text-xs font-code font-bold text-orange-400 uppercase">KỊCH BẢN 1: BRAND CÁ NHÂN (LUẬT SƯ TỰ KỂ)</span>
-          <span class="text-[11px] text-slate-400 font-code">Bối cảnh: Ngồi bàn làm việc, sơ mi thoải mái, giọng tự sự</span>
+      <h2 class="title-short text-xl sm:text-2xl text-slate-900">
+        KỊCH BẢN DỊCH VỤ: HỢP ĐỒNG GÓP VỐN CỔ ĐÔNG
+      </h2>
+
+      <div class="cl-card p-5 space-y-3 text-xs md:text-sm leading-relaxed">
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-blue-700 uppercase block">[Nhịp 1: Tả cảnh đời thường]</span>
+          <p class="text-slate-800">
+            “Rủ bạn thân cùng mở công ty, hai anh em vỗ vai nhau: <em>‘Cứ làm đi, tiền bạc tính sau, anh em mình ai lại tính toán!’</em>. Xong lên mạng tải cái hợp đồng mẫu 2 trang về ký xoẹt cái cho xong chuyện.”
+          </p>
         </div>
 
-        <div class="space-y-3 text-xs md:text-sm text-slate-200 leading-relaxed">
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-orange-400 font-bold block">[Nhịp 1: Bóc cái cớ ngày xưa]</span>
-            <p>
-              “Hồi mới mở văn phòng luật, thấy người ta cứ lên mạng tải hợp đồng mẫu về ký, mình hay chép miệng:
-              <em>‘Làm ăn thế là nghiệp dư, tiếc vài triệu tư vấn sau mất tiền tỷ ráng chịu... mấy bên nhỏ lẻ ấy mình không thèm nhận!’</em>”
-            </p>
-          </div>
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-orange-700 uppercase block">[Nhịp 2: Bắt trúng cái cớ chống chế]</span>
+          <p class="text-slate-800">
+            “Ai hỏi sao không nhờ luật sư rà soát cơ chế chia tiền với rút vốn, lại cười xòa: 
+            <em>‘Anh em bao năm tin nhau là chính, đưa luật sư vào người ta lại bảo mình toan tính, mất tình cảm!’</em> 
+            Ai mới ra làm ăn chắc cũng từng tặc lưỡi như thế!”
+          </p>
+        </div>
 
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-blue-400 font-bold block">[Nhịp 2: Thừa nhận bế tắc thực tế]</span>
-            <p>
-              “Nói cho sang mồm thế thôi...
-              Chứ ngồi trong văn phòng nhìn tiền mặt bằng đến hạn, bài viết chuyên môn đăng lên chẳng ma nào đọc, ruột gan nóng như lửa.”
-            </p>
-          </div>
+        <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+          <span class="text-[11px] font-code font-bold text-purple-700 uppercase block">[Nhịp 3: Giải oan nỗi sợ]</span>
+          <p class="text-slate-800">
+            “Thực ra không phải bạn ngây thơ. Do bạn sợ mang tiếng là người tính toán khi công ty còn chưa kiếm ra đồng nào. Nhưng đến lúc có lãi lớn, hoặc khi thua lỗ phải gánh nợ, chính sự ‘cả nể’ ấy mới là thứ giết chết cả tình bạn lẫn cơ nghiệp.”
+          </p>
+        </div>
 
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-purple-400 font-bold block">[Nhịp 3: Tim đen ngượng ngùng]</span>
-            <p>
-              “Đáng xấu hổ nhất là lúc bí tiền, trong đầu từng thoáng nghĩ:
-              <em>Hay là mình cũng hạ giá, đi làm mấy cái giấy tờ vài trăm nghìn kiếm bạc lẻ nuôi văn phòng?</em>
-              Nghĩ đến đấy là tự thấy ngượng với bao năm đèn sách.”
-            </p>
-          </div>
+        <div class="p-3 rounded-lg bg-emerald-50 border border-emerald-200 space-y-1">
+          <span class="text-[11px] font-code font-bold text-emerald-800 uppercase block">[Nhịp 4: Trao chiếc chìa khóa mới]</span>
+          <p class="text-slate-900 font-medium">
+            “Ngồi lại làm rõ tỉ lệ góp vốn và cơ chế rút lui ngay từ ngày đầu không phải là đề phòng nhau, mà là để bảo vệ tình anh em đến cùng. Sòng phẳng trên giấy trắng mực đen trước... để sau này có chuyện gì vẫn vui vẻ ngồi uống bia với nhau được chứ!”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="bg-emerald-950/20 p-3 rounded-lg border border-emerald-500/30 space-y-1">
-            <span class="text-[11px] font-code text-emerald-400 font-bold block">[Nhịp 4: Nhận ra bài học & Đổi cách tiếp cận]</span>
-            <p>
-              “Doanh chủ không hề coi thường luật... mà do cái tôi của mình quá lớn. Cứ mở miệng ra là trích điều khoản dọa dẫm, mà không chịu hiểu nỗi lo cơm áo gạo tiền của người ta.
-              Bỏ cái vẻ đạo mạo xuống, nói chuyện bằng ngôn ngữ làm ăn... lúc đấy văn phòng mới sống lại!”
-            </p>
-          </div>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MÀN HÌNH 8: KHỐI 06 - LỘ TRÌNH THỰC THI & CHÂN TRANG                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="screen-roadmap" class="screen-block zebra-tint">
+    <div class="max-w-4xl mx-auto w-full space-y-5">
+      <div class="flex items-center gap-2">
+        <span class="badge-pill bg-slate-200 text-slate-800">KHỐI 06</span>
+        <span class="text-xs font-code text-slate-500 uppercase">HÀNH ĐỘNG TIẾP THEO</span>
+      </div>
+
+      <h2 class="title-short text-2xl sm:text-3xl text-slate-900">
+        KẾ HOẠCH BẮT TAY VÀO LÀM
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="cl-card p-4 space-y-2">
+          <span class="w-7 h-7 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-bold font-code">1</span>
+          <span class="text-xs font-bold text-slate-900 block uppercase">Thu Quay Thử 1 Video</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Chọn Kịch bản 1 hoặc 2, cầm máy quay thử 1 đoạn dưới 60 giây bằng giọng tự nhiên nhất.
+          </p>
+        </div>
+
+        <div class="cl-card p-4 space-y-2">
+          <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold font-code">2</span>
+          <span class="text-xs font-bold text-slate-900 block uppercase">Cùng Nghe & Sửa Nhịp</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Xem lại video thực tế để sửa nhịp ngắt câu, tốc độ nhả chữ và góc nhìn ống kính.
+          </p>
+        </div>
+
+        <div class="cl-card p-4 space-y-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold font-code">3</span>
+          <span class="text-xs font-bold text-slate-900 block uppercase">Đóng Gói Chủ Đề Tiếp</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Áp dụng khung 4 nhịp này cho các ca tranh chấp thực tế: nhãn hiệu, hợp đồng thuê ngoài, sa thải lao động.
+          </p>
         </div>
       </div>
 
-      <!-- Kịch bản 2 -->
-      <div class="bg-black/40 rounded-xl p-5 border border-white/5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-          <span class="text-xs font-code font-bold text-blue-400 uppercase">KỊCH BẢN 2: VIDEO DỊCH VỤ (HỢP ĐỒNG GÓP VỐN CỔ ĐÔNG)</span>
-          <span class="text-[11px] text-slate-400 font-code">Bối cảnh: Kéo ghế ngồi gần ống kính, nói như người từng trải</span>
-        </div>
-
-        <div class="space-y-3 text-xs md:text-sm text-slate-200 leading-relaxed">
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-blue-400 font-bold block">[Nhịp 1: Tả cảnh đời thường]</span>
-            <p>
-              “Rủ bạn thân cùng mở công ty, hai anh em vỗ vai nhau: <em>‘Cứ làm đi, tiền bạc tính sau, anh em mình ai lại tính toán!’</em>. Xong lên mạng tải cái hợp đồng mẫu 2 trang về ký xoẹt cái cho xong chuyện.”
-            </p>
-          </div>
-
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-orange-400 font-bold block">[Nhịp 2: Bắt trúng cái cớ chống chế]</span>
-            <p>
-              “Ai hỏi sao không nhờ luật sư rà soát cơ chế chia tiền với rút vốn, lại cười xòa:
-              <em>‘Anh em bao năm tin nhau là chính, đưa luật sư vào người ta lại bảo mình toan tính, mất tình cảm!’</em>
-              Ai mới ra làm ăn chắc cũng từng tặc lưỡi như thế!”
-            </p>
-          </div>
-
-          <div class="bg-white/5 p-3 rounded-lg space-y-1">
-            <span class="text-[11px] font-code text-purple-400 font-bold block">[Nhịp 3: Giải oan nỗi sợ]</span>
-            <p>
-              “Thực ra không phải bạn ngây thơ. Do bạn sợ mang tiếng là người tính toán khi công ty còn chưa kiếm ra đồng nào.
-              Nhưng đến lúc có lãi lớn, hoặc khi thua lỗ phải gánh nợ, chính sự ‘cả nể’ ấy mới là thứ giết chết cả tình bạn lẫn cơ nghiệp.”
-            </p>
-          </div>
-
-          <div class="bg-emerald-950/20 p-3 rounded-lg border border-emerald-500/30 space-y-1">
-            <span class="text-[11px] font-code text-emerald-400 font-bold block">[Nhịp 4: Trao chiếc chìa khóa mới]</span>
-            <p>
-              “Ngồi lại làm rõ tỉ lệ góp vốn và cơ chế rút lui ngay từ ngày đầu không phải là đề phòng nhau, mà là để bảo vệ tình anh em đến cùng.
-              Sòng phẳng trên giấy trắng mực đen trước... để sau này có chuyện gì vẫn vui vẻ ngồi uống bia với nhau được chứ!”
-            </p>
-          </div>
-        </div>
+      <!-- Footer Minimal Inside Final Screen -->
+      <div class="pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 font-code">
+        <span>© 2026 FEDU.VN • Hệ Thống Kịch Bản Video Thực Chiến</span>
+        <a href="#screen-hero" class="text-orange-700 hover:underline flex items-center gap-1">
+          Về đầu trang <i class="fa-solid fa-arrow-up text-[10px]"></i>
+        </a>
       </div>
-    </section>
-
-    <!-- Khối 6: Các Bước Tiếp Theo -->
-    <section class="p-5 md:p-6 rounded-xl bg-white/5 border border-white/10 space-y-3 text-xs">
-      <span class="text-slate-400 font-code font-bold uppercase block">Các Bước Triển Khai Tiếp Theo</span>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div class="bg-black/30 p-3 rounded-lg border border-white/5 space-y-1">
-          <span class="text-orange-400 font-semibold block">1. Thu quay thử 1 video</span>
-          <p class="text-slate-400">Chọn Kịch bản 1 hoặc 2, cầm máy quay thử 1 đoạn dưới 60 giây bằng giọng tự nhiên nhất.</p>
-        </div>
-        <div class="bg-black/30 p-3 rounded-lg border border-white/5 space-y-1">
-          <span class="text-blue-400 font-semibold block">2. Cùng nghe và sửa nhịp</span>
-          <p class="text-slate-400">Xem lại video thực tế để sửa nhịp ngắt câu, tốc độ nhả chữ và góc nhìn ống kính.</p>
-        </div>
-        <div class="bg-black/30 p-3 rounded-lg border border-white/5 space-y-1">
-          <span class="text-emerald-400 font-semibold block">3. Đóng gói các chủ đề tiếp theo</span>
-          <p class="text-slate-400">Áp dụng khung 4 nhịp này cho các ca tranh chấp thực tế khác: nhãn hiệu, hợp đồng thuê ngoài, lao động.</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-white/10 mt-12 py-6 text-center text-xs text-slate-500 font-code">
-    <p>© 2026 FEDU.VN • Tài Liệu Phân Tích Kịch Bản & Định Hướng Nội Dung Thực Tế</p>
-  </footer>
+    </div>
+  </section>
 
 </body>
 </html>
