@@ -882,7 +882,7 @@ TEMPLATE = """<!DOCTYPE html>
       document.getElementById('lb-title').innerText = title;
       document.getElementById('lb-time').innerText = time;
       document.getElementById('lb-voice').innerText = '🎙️ ' + voice;
-      document.getElementById('lb-tip').innerHTML = '💡 <b>Mẹo Ông Giáo:</b> ' + tip;
+      document.getElementById('lb-tip').innerHTML = '💡 <b>Mẹo quay:</b> ' + tip;
       document.getElementById('lb-modal').classList.add('active');
     }}
 
@@ -939,7 +939,7 @@ def build_all():
               <tr><td class="spec-label">Góc máy</td><td class="spec-val">{b_angle}</td></tr>
               <tr><td class="spec-label">Hướng</td><td class="spec-val">{b_dir}</td></tr>
             </table>
-            <div class="director-tip">💡 <b>Mẹo Ông Giáo:</b> {b_tip}</div>
+            <div class="director-tip">💡 <b>Mẹo quay:</b> {b_tip}</div>
           </div>
         </div>"""
             beats_blocks.append(b_html)

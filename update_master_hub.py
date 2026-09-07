@@ -517,7 +517,7 @@ def build_master_hub():
   <script>
     let currentActiveBt = "01";
 
-    function showExercise(id) {{
+    function showExercise(id, doScroll = true) {{
       // Update tabs
       document.querySelectorAll('.overview-card').forEach(c => c.classList.remove('active-tab'));
       const activeCard = document.getElementById('card-tab-' + id);
@@ -528,7 +528,9 @@ def build_master_hub():
       const activeDetail = document.getElementById('detail-bt' + id);
       if (activeDetail) {{
         activeDetail.classList.add('active');
-        activeDetail.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+        if (doScroll) {{
+          activeDetail.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+        }}
       }}
       currentActiveBt = id;
     }}
@@ -562,7 +564,7 @@ def build_master_hub():
       document.getElementById('lb-title').innerText = title;
       document.getElementById('lb-time').innerText = time;
       document.getElementById('lb-voice').innerText = '🎙️ ' + voice;
-      document.getElementById('lb-tip').innerHTML = '💡 <b>Mẹo Ông Giáo:</b> ' + tip;
+      document.getElementById('lb-tip').innerHTML = '💡 <b>Mẹo quay:</b> ' + tip;
       document.getElementById('lightbox').classList.add('active');
     }}
 
@@ -570,9 +572,9 @@ def build_master_hub():
       document.getElementById('lightbox').classList.remove('active');
     }}
 
-    // Default activate BT01
+    // Default activate BT01 without smooth scroll
     document.addEventListener('DOMContentLoaded', () => {{
-      showExercise('01');
+      showExercise('01', false);
     }});
   </script>
 </body>
