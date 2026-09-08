@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08 09:58:23",
+  "generated_at": "2026-09-08 18:25:03",
   "total_posts": 120,
   "posts": [
     {
@@ -9,7 +9,7 @@
       "category_key": "broll",
       "category_label": "🎬 B-Roll & Cảnh Trám",
       "cover_image": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=1200&auto=format&fit=crop&q=80",
-      "updated_at": "2026-09-08 09:58:12 +0700",
+      "updated_at": "2026-09-08 09:58:23 +0700",
       "read_time": "18 phút đọc",
       "file_size_kb": 83.1
     },
@@ -208,8 +208,8 @@
       "category_label": "📌 Tài Liệu Chuyên Đề",
       "cover_image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80",
       "updated_at": "2026-09-07 10:14:11 +0700",
-      "read_time": "13 phút đọc",
-      "file_size_kb": 39.9
+      "read_time": "18 phút đọc",
+      "file_size_kb": 49.1
     },
     {
       "filename": "demo-30ngay-style.html",
