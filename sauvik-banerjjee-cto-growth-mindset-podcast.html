@@ -59,6 +59,15 @@
     }
     @font-face {
       font-family: 'FD Acta';
+      src: url('./fonts/FDActa-Bold.ttf') format('truetype'),
+           url('./fonts/SVN-Acta-Bold.ttf') format('truetype'),
+           local('FD Acta Bold');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'FD Acta';
       src: url('./fonts/FDActa-Book.ttf') format('truetype'),
            url('./fonts/SVN-Acta-Book.ttf') format('truetype'),
            local('FD Acta');
@@ -228,7 +237,7 @@
       opacity: 0.9;
     }
 
-    /* ═══ 5. READING FLOW SECTIONS (VERTICAL SCROLL OPTIMIZED) ═══ */
+    /* ═══ 5. READING FLOW SECTIONS ═══ */
     .read-section {
       width: 100%;
       padding: 72px 24px;
@@ -383,20 +392,21 @@
       color: var(--cl-text-base);
     }
 
-    /* ═══ 7. CODE BOX (WHITE MINIMALIST + FD ACTA MEDIUM + COPY BUTTON) ═══ */
+    /* ═══ 7. CODE BOX (BOCUC CHUẨN: FD ACTA MEDIUM + TIÊU ĐỀ + NHẤN TỪ KHÓA) ═══ */
     .code-box {
       position: relative;
       background: #ffffff;
       border: 1px solid var(--cl-border-code);
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-      margin: 28px 0 36px;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+      margin: 32px 0 40px;
+      padding: 26px 30px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .code-box:hover {
       border-color: #cbd5e1;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     }
 
     .copy-btn {
@@ -433,21 +443,132 @@
       border-color: #86efac !important;
     }
 
-    .code-box pre {
-      margin: 0;
-      padding: 24px 28px;
-      padding-right: 110px; /* Chừa khoảng trống chống đè lên nút copy */
+    /* Nội dung hiển thị bên trong khối code */
+    .code-content {
       font-family: 'FD Acta', 'SVN-Acta', Georgia, serif;
       font-weight: 500;
-      font-size: 15.5px;
+      font-size: 16px;
       line-height: 1.85;
       color: #1e293b;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-x: auto;
+      padding-right: 80px; /* Chống đè lên nút copy */
     }
 
-    /* ═══ 8. EDITORIAL COMPARISON CARDS (BOCUC CHUẨN 3 NHỊP) ═══ */
+    /* Tiêu đề trong khối code */
+    .cb-header {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .cb-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cl-accent);
+      background: var(--cl-accent-tint);
+      border: 1px solid rgba(26, 115, 232, 0.15);
+      padding: 3px 10px;
+      border-radius: var(--cl-radius-full);
+      margin-bottom: 8px;
+    }
+
+    .cb-title {
+      font-family: 'SVN-Poppins', 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #0f172a;
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    /* Phân đoạn cấu trúc BOCUC */
+    .cb-section {
+      margin-bottom: 14px;
+    }
+
+    .cb-section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Nhãn định danh phân tầng */
+    .cb-label {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    .cb-label--fact {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #dbeafe;
+    }
+
+    .cb-label--surface {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fee2e2;
+    }
+
+    .cb-label--nature {
+      background: #f5f3ff;
+      color: #6d28d9;
+      border: 1px solid #ede9fe;
+    }
+
+    .cb-label--leverage {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #dcfce7;
+    }
+
+    /* Nhấn từ khóa (Keyword Highlighting) */
+    .kw {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .kw-accent {
+      font-weight: 700;
+      color: var(--cl-accent);
+    }
+
+    .kw-danger {
+      font-weight: 700;
+      color: #dc2626;
+    }
+
+    .kw-success {
+      font-weight: 700;
+      color: #16a34a;
+    }
+
+    /* Khối Mantra đúc kết */
+    .cb-mantra {
+      margin-top: 16px;
+      padding: 12px 18px;
+      background: #f8fafc;
+      border-left: 3px solid var(--cl-accent);
+      border-radius: 0 8px 8px 0;
+      font-family: 'FD Acta', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #0f172a;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* ═══ 8. EDITORIAL COMPARISON CARDS (BOCUC 3 NHỊP) ═══ */
     .compare-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -627,16 +748,18 @@
       .compare-grid {
         grid-template-columns: 1fr;
       }
-      .code-box pre {
-        font-size: 14.5px;
+      .code-box {
+        padding: 20px 16px;
+      }
+      .code-content {
+        font-size: 15px;
         line-height: 1.75;
-        padding: 18px 16px;
-        padding-top: 52px; /* Chừa chỗ cho nút copy góc trên mobile */
-        padding-right: 16px;
+        padding-right: 0;
+        padding-top: 36px; /* Chừa chỗ cho nút copy góc trên mobile */
       }
       .copy-btn {
-        top: 10px;
-        right: 10px;
+        top: 12px;
+        right: 12px;
       }
       .cl-btn {
         width: 100%;
@@ -715,39 +838,49 @@
         </div>
       </div>
 
-      <!-- Khối Code 01: Bản đồ tư duy tổng quan (Font FD Acta Medium) -->
+      <!-- Khối Code 01: Bản đồ tư duy tổng quan (BOCUC Đỉnh cao bên trong) -->
       <div class="code-box">
         <button class="copy-btn" onclick="copySnippet(this, 'code-hero-summary')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-hero-summary">BẢN ĐỒ TƯ DUY NÂNG CẤP BẢN THÂN // TOP CTO SAUVIK BANERJJEE
+        <div class="code-content" id="code-hero-summary">
+          <div class="cb-header">
+            <span class="cb-tag">BẢN ĐỒ TƯ DUY // STRATEGIC FRAMEWORK</span>
+            <h3 class="cb-title">5 NGUYÊN LÝ BỨT PHÁ TẦNG NHẬN THỨC CỦA TOP CTO</h3>
+          </div>
 
-I. NỖ LỰC CƠ BẮP VÀ ĐÒN BẨY QUYẾT ĐỊNH
-• Làm việc chăm chỉ không có định hướng
-  chỉ là hình thức trốn tránh tư duy chiến lược.
-• Một CTO đưa ra 3 quyết định kiến trúc sai lầm
-  có thể thiêu rụi 2 năm công sức của 500 kỹ sư hàng đầu.
+          <div class="cb-section">
+            <span class="cb-label cb-label--nature">01. ĐÒN BẨY QUYẾT ĐỊNH</span>
+            • Làm việc chăm chỉ không định hướng chỉ là <span class="kw-danger">hình thức trốn tránh tư duy chiến lược</span>.<br>
+            • Một CTO sai <span class="kw">3 quyết định kiến trúc</span> có thể thiêu rụi <span class="kw">2 năm công sức của 500 kỹ sư</span>.
+          </div>
 
-II. BẪY CHUYÊN MÔN KỸ THUẬT
-• Kỹ năng code giỏi chỉ đưa bạn chạm ngưỡng Senior.
-• Khả năng đọc báo cáo tài chính và thấu hiểu bài toán kinh doanh
-  mới là tấm vé đưa bạn bước lên bàn cờ lãnh đạo C-Level.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">02. BẪY KỸ NĂNG CHUYÊN MÔN</span>
+            • Viết code giỏi chỉ đưa bạn chạm ngưỡng <span class="kw">Senior</span>.<br>
+            • Đọc hiểu <span class="kw-accent">báo cáo P&amp;L</span> và <span class="kw">vận hành tổ chức</span> mới là tấm vé bước lên bàn cờ <span class="kw-accent">C-Level</span>.
+          </div>
 
-III. NGUYÊN LÝ GIẢI PHÓNG VẬN HÀNH (REDUNDANCY)
-• Thước đo của một nhà lãnh đạo xuất sắc:
-  Khi bạn vắng mặt 3 tháng, hệ thống vẫn tự động tăng trưởng.
+          <div class="cb-section">
+            <span class="cb-label cb-label--nature">03. NGUYÊN LÝ GIẢI PHÓNG VẬN HÀNH</span>
+            • Thước đo của một lãnh đạo xuất sắc: <span class="kw">Vắng mặt 3 tháng</span>, hệ thống vẫn <span class="kw-success">tự động vận hành và tăng trưởng</span>.
+          </div>
 
-IV. VỊ THẾ TRONG LÀN SÓNG AI
-• AI triệt tiêu những kẻ chỉ biết gõ lệnh rập khuôn,
-  đồng thời nâng tầm những ai biết đóng khung và định nghĩa bài toán.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">04. ĐỊNH VỊ TRONG KỶ NGUYÊN AI</span>
+            • AI triệt tiêu kẻ <span class="kw-danger">gõ lệnh rập khuôn</span> — đồng thời nâng tầm người biết <span class="kw-accent">định nghĩa &amp; đóng khung bài toán</span>.
+          </div>
 
-V. ĐÒN BẨY HÀNH ĐỘNG MỖI SÁNG
-• Dành trọn 45 phút đầu ngày không nhìn màn hình, tự vấn:
-  "Hôm nay, đâu là 1 quyết định giúp triệt tiêu 80% rác hệ thống?"
+          <div class="cb-section">
+            <span class="cb-label cb-label--leverage">05. ĐÒN BẨY HÀNH ĐỘNG HÀNG NGÀY</span>
+            • Dành <span class="kw">45 phút Zero-Screen mỗi sáng</span>: <em>"Đâu là 1 quyết định triệt tiêu 80% rác hệ thống hôm nay?"</em>
+          </div>
 
-MANTRA ĐÚC KẾT:
-"Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"</pre>
+          <div class="cb-mantra">
+            "Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"
+          </div>
+        </div>
       </div>
 
     </div>
@@ -786,26 +919,36 @@ MANTRA ĐÚC KẾT:
         </div>
       </div>
 
-      <!-- Khối Code 02: Ma trận phân loại 2 nhóm nhân sự (Font FD Acta Medium) -->
+      <!-- Khối Code 02: Ma trận phân loại 2 nhóm nhân sự (BOCUC Rõ Ràng) -->
       <div class="code-box">
         <button class="copy-btn" onclick="copySnippet(this, 'code-delusion-matrix')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-delusion-matrix">MA TRẬN PHÂN LOẠI 2 TẦNG NHẬN THỨC NGHỀ NGHIỆP
+        <div class="code-content" id="code-delusion-matrix">
+          <div class="cb-header">
+            <span class="cb-tag">MA TRẬN ĐỐI CHIẾU // MATRIX</span>
+            <h3 class="cb-title">PHÂN BIỆT 2 TẦNG NHẬN THỨC NGHỀ NGHIỆP</h3>
+          </div>
 
-NHÓM 1: CÔNG NHÂN KỸ THUẬT (OPERATIONAL LABORS)
-• Thước đo: Số giờ ngồi làm việc, số task cơ bắp hoàn thành.
-• Hành vi: Chờ giao việc, tỉ mỉ gọt từng chi tiết nhỏ nhưng mù mờ bức tranh lớn.
-• Giới hạn: Chạm trần thu nhập khi cạn kiệt thời gian và sức khỏe sinh học.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">NHÓM 1: CÔNG NHÂN KỸ THUẬT</span><br>
+            • <strong>Thước đo:</strong> Số giờ ngồi trước máy, số task cơ bắp hoàn thành.<br>
+            • <strong>Hành vi:</strong> Chờ giao việc, tỉ mỉ gọt từng chi tiết nhỏ nhưng <span class="kw-danger">mù mờ bức tranh lớn</span>.<br>
+            • <strong>Giới hạn:</strong> Chạm trần thu nhập khi <span class="kw-danger">cạn kiệt thời gian và sức khỏe</span> sinh học.
+          </div>
 
-NHÓM 2: KIẾN TRÚC SƯ CHIẾN LƯỢC (STRATEGIC ARCHITECTS)
-• Thước đo: Tỷ suất sinh lời trên thời gian (ROI), giảm thiểu rủi ro hệ thống.
-• Hành vi: Dịch bài toán kinh doanh thành cấu trúc công nghệ, xây đội ngũ tự chạy.
-• Kết quả: Thu nhập phi tuyến tính, thăng tiến cấp số nhân nhờ đòn bẩy quyết định.
+          <div class="cb-section">
+            <span class="cb-label cb-label--nature">NHÓM 2: KIẾN TRÚC SƯ CHIẾN LƯỢC</span><br>
+            • <strong>Thước đo:</strong> Tỷ suất sinh lời trên thời gian (ROI), <span class="kw-success">giảm thiểu rủi ro hệ thống</span>.<br>
+            • <strong>Hành vi:</strong> Dịch bài toán kinh doanh thành <span class="kw-accent">cấu trúc công nghệ</span>, xây dựng đội ngũ tự vận hành.<br>
+            • <strong>Kết quả:</strong> Thu nhập <span class="kw-accent">phi tuyến tính</span>, thăng tiến cấp số nhân nhờ <span class="kw">đòn bẩy quyết định</span>.
+          </div>
 
-MANTRA ĐÚC KẾT:
-"Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"</pre>
+          <div class="cb-mantra">
+            "Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"
+          </div>
+        </div>
       </div>
 
     </div>
@@ -821,7 +964,7 @@ MANTRA ĐÚC KẾT:
       <h2 class="title-sec">4 BÀI HỌC CỐT LÕI VỀ ĐÒN BẨY & CẤU TRÚC</h2>
       
       <p class="body-p">
-        Mỗi bài học được chuẩn hóa theo đúng cấu trúc 4 tầng: <strong>Quy tắc cốt lõi</strong> $ightarrow$ <strong>Dữ kiện thực tế</strong> $ightarrow$ <strong>Bóc tách 3 tầng nhận thức</strong> $ightarrow$ <strong>Mantra hành động</strong>.
+        Mỗi bài học được thiết kế theo cấu trúc BOCUC 4 tầng: <strong>Tiêu đề đanh</strong> $ightarrow$ <strong>Dữ kiện thực tế</strong> $ightarrow$ <strong>Bóc tách 3 tầng nhận thức</strong> $ightarrow$ <strong>Mantra hành động</strong>:
       </p>
 
       <!-- INSIGHT #01 -->
@@ -830,23 +973,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-1">INSIGHT 01: NĂNG LỰC RA QUYẾT ĐỊNH GẤP BỘI NỖ LỰC CƠ BẮP
+        <div class="code-content" id="code-insight-1">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #01 // QUYẾT ĐỊNH &gt; CÔNG SỨC</span>
+            <h3 class="cb-title">NĂNG LỰC RA QUYẾT ĐỊNH GẤP BỘI NỖ LỰC CƠ BẮP</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Sauvik chỉ ra một CTO đưa ra 3 quyết định kiến trúc sai lầm
-   có thể thiêu rụi 2 năm làm việc cật lực của 500 kỹ sư hàng đầu.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Một CTO đưa ra <span class="kw-danger">3 quyết định kiến trúc sai lầm</span> có thể thiêu rụi <span class="kw">2 năm làm việc cật lực</span> của <span class="kw">500 kỹ sư hàng đầu</span>.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Cố làm thêm giờ (overtime), giải quyết task vụn vặt
-     để chứng minh sự tận tụy với ban giám đốc.
-   • Bản chất: Nguyên lý đòn bẩy Archimedes:
-     Điểm tựa (chất lượng quyết định) nằm càng gần trọng tâm chiến lược
-     thì lực tác động (công sức bỏ ra) càng nhỏ mà nâng được khối tài sản lớn.
-   • Đòn bẩy thực chiến: Mỗi sáng dành 45 phút không nhìn màn hình, tự vấn:
-     "Đâu là 1 quyết định kiến trúc giúp triệt tiêu 80% lỗi hệ thống hôm nay?".
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Cố làm thêm giờ (overtime), nhặt nhạnh task vụn vặt để chứng minh sự chăm chỉ với ban giám đốc.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Vật lý đòn bẩy Archimedes:</strong> Điểm tựa (chất lượng quyết định) nằm càng gần trọng tâm chiến lược thì lực tác động (công sức) càng nhỏ mà nâng được khối tài sản khổng lồ.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Mỗi sáng dành <span class="kw-accent">45 phút Zero-Screen</span>, tự vấn: <em>"Đâu là 1 quyết định kiến trúc giúp triệt tiêu 80% sự cố hệ thống hôm nay?"</em>.
+          </div>
 
-3. MANTRA:
-   "Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"</pre>
+          <div class="cb-mantra">
+            "Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #02 -->
@@ -855,22 +1002,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-2">INSIGHT 02: BẪY CHUYÊN GIA KỸ THUẬT (CÀNG GIỎI CÀNG KHÓ LÊN ĐỈNH)
+        <div class="code-content" id="code-insight-2">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #02 // BẪY CHUYÊN MÔN</span>
+            <h3 class="cb-title">BẪY CHUYÊN GIA KỸ THUẬT: CÀNG GIỎI CÀNG KHÓ LÊN ĐỈNH</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Sauvik nhận thấy 90% Senior Engineer bị kẹt ở mức lương trần
-   vì họ từ chối học ngôn ngữ tài chính và tâm lý học tổ chức.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Sauvik nhận thấy <span class="kw-danger">90% Senior Engineer bị kẹt ở mức lương trần</span> vì họ từ chối học ngôn ngữ tài chính và tâm lý học tổ chức.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Tin rằng chỉ cần viết code sạch nhất, tối ưu thuật toán nhanh nhất
-     là đương nhiên sẽ được bổ nhiệm làm lãnh đạo cấp cao.
-   • Bản chất: Hiện tượng bão hòa cục bộ trong lý thuyết đồ thị:
-     Tối ưu hóa một nút mạng đơn lẻ không làm tăng thông lượng của toàn doanh nghiệp.
-   • Đòn bẩy thực chiến: Chuyển 30% thời gian học kỹ thuật sang đọc báo cáo P&L,
-     hiểu chi phí thu hút khách hàng (CAC) và giá trị vòng đời khách hàng (LTV).
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Tin rằng chỉ cần viết code sạch nhất, thuật toán nhanh nhất là đương nhiên sẽ được thăng chức lãnh đạo.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Bão hòa cục bộ trong lý thuyết đồ thị:</strong> Tối ưu hóa một nút mạng đơn lẻ không làm tăng thông lượng (throughput) của toàn bộ doanh nghiệp.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Dành <span class="kw">30% thời gian</span> sang học đọc <span class="kw-accent">báo cáo tài chính P&amp;L</span>, chi phí thu hút khách hàng (CAC) và giá trị vòng đời (LTV).
+          </div>
 
-3. MANTRA:
-   "Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"</pre>
+          <div class="cb-mantra">
+            "Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #03 -->
@@ -879,23 +1031,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-3">INSIGHT 03: NGUYÊN LÝ THIẾT KẾ DƯ THỪA (REDUNDANCY) ĐỂ GIẢI PHÓNG BẢN THÂN
+        <div class="code-content" id="code-insight-3">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #03 // GIẢI PHÓNG VẬN HÀNH</span>
+            <h3 class="cb-title">NGUYÊN LÝ THIẾT KẾ DƯ THỪA (REDUNDANCY) ĐỂ TỰ GIẢI PHÓNG</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Một CTO xuất sắc phải xây dựng đội ngũ sao cho nếu ông ta biến mất 3 tháng,
-   hệ thống vẫn tự vận hành và tăng trưởng ổn định.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Một CTO xuất sắc phải xây dựng đội ngũ sao cho nếu <span class="kw">ông ta biến mất 3 tháng</span>, hệ thống vẫn <span class="kw-success">tự vận hành và tăng trưởng ổn định</span>.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Lãnh đạo nắm chặt quyền duyệt từng chi tiết nhỏ
-     để cảm thấy bản thân quan trọng và không thể bị thay thế.
-   • Bản chất: Nút thắt cổ chai (bottleneck):
-     Tổ chức không thể lớn hơn khả năng chịu tải của một cá nhân
-     nếu mọi luồng quyết định đều phải chảy qua một bộ não.
-   • Đòn bẩy thực chiến: Xây dựng ma trận phân quyền RACI minh bạch;
-     tự cấm bản thân can thiệp vào các quyết định vận hành dưới 10.000 USD.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Lãnh đạo nắm chặt quyền duyệt từng việc nhỏ để cảm thấy bản thân quan trọng và không thể thay thế.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Nút thắt cổ chai (Bottleneck):</strong> Tổ chức không thể lớn hơn khả năng chịu tải của một cá nhân nếu mọi luồng quyết định đều chảy qua một bộ não.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Xây dựng <span class="kw-accent">ma trận phân quyền RACI</span>; tự cấm bản thân can thiệp vào các quyết định dưới <span class="kw">10.000 USD</span>.
+          </div>
 
-3. MANTRA:
-   "Lãnh đạo buông bớt cái tôi — Hệ thống tự chạy sinh sôi bội phần"</pre>
+          <div class="cb-mantra">
+            "Lãnh đạo buông bớt cái tôi — Hệ thống tự chạy sinh sôi bội phần"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #04 -->
@@ -904,22 +1060,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-4">INSIGHT 04: LÀN SÓNG AI (THAY THẾ KẺ GÕ CODE, NÂNG TẦM KẺ ĐÓNG KHUNG BÀI TOÁN)
+        <div class="code-content" id="code-insight-4">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #04 // VỊ THẾ AI</span>
+            <h3 class="cb-title">LÀN SÓNG AI: THAY THẾ KẺ GÕ CODE, NÂNG TẦM KẺ ĐÓNG KHUNG</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Rezolve AI xử lý hàng triệu truy vấn ngữ nghĩa trong vài giây,
-   biến các lập trình viên mức cơ bản thành nhân lực dư thừa nếu không biết điều phối.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Rezolve AI xử lý hàng triệu truy vấn ngữ nghĩa trong vài giây, biến các lập trình viên mức cơ bản thành <span class="kw-danger">nhân lực dư thừa</span> nếu không biết điều phối AI.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Sợ hãi AI cướp việc hoặc thờ ơ xem AI là trào lưu thổi phồng ngắn hạn.
-   • Bản chất: Quy luật entropy thông tin:
-     Khi chi phí tạo code và nội dung giảm về 0,
-     giá trị của bộ lọc ngữ cảnh và năng lực thẩm định bài toán tiệm cận vô cực.
-   • Đòn bẩy thực chiến: Tập trung rèn luyện kỹ năng Prompt Architecture
-     và Edge-case Validation — kiểm thử lỗi ngầm và phản biện kiến trúc hệ thống.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Sợ hãi AI cướp việc hoặc thờ ơ xem AI là trào lưu thổi phồng ngắn hạn của giới đầu tư.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Entropy thông tin:</strong> Khi chi phí tạo code và nội dung giảm về 0, giá trị của <span class="kw-accent">bộ lọc ngữ cảnh &amp; thẩm định bài toán</span> tiệm cận vô cực.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Nâng cấp kỹ năng <span class="kw-accent">Prompt Architecture</span> và <span class="kw">Edge-case Validation</span> — kiểm thử lỗi ngầm và phản biện hệ thống.
+          </div>
 
-3. MANTRA:
-   "Máy làm thay việc tầm thường — Người lo định hướng mở đường tương lai"</pre>
+          <div class="cb-mantra">
+            "Máy làm thay việc tầm thường — Người lo định hướng mở đường tương lai"
+          </div>
+        </div>
       </div>
 
     </div>
@@ -944,22 +1105,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-5">INSIGHT 05: TRÍ TUỆ CẢM XÚC (EQ) LÀ HẠ TẦNG CỨNG CỦA NHÀ CÔNG NGHỆ
+        <div class="code-content" id="code-insight-5">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #05 // HẠ TẦNG EQ</span>
+            <h3 class="cb-title">TRÍ TUỆ CẢM XÚC (EQ) LÀ HẠ TẦNG CỨNG CỦA NHÀ CÔNG NGHỆ</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Trong các cuộc sáp nhập hàng tỷ USD,
-   thương vụ đổ vỡ 80% là do xung đột văn hóa và cái tôi của các nhà sáng lập.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Trong các cuộc sáp nhập hàng tỷ USD, thương vụ <span class="kw-danger">đổ vỡ 80%</span> là do bất đồng văn hóa và cái tôi của các nhà sáng lập kỹ thuật.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Dùng số liệu kỹ thuật khô khan để tranh cãi đúng sai với hội đồng quản trị.
-   • Bản chất: Nguyên lý truyền sóng: Hai tần số cảm xúc lệch pha sẽ triệt tiêu nhau;
-     phải đồng bộ pha cảm xúc trước khi truyền tải tín hiệu logic.
-   • Đòn bẩy thực chiến: Áp dụng kỹ thuật lắng nghe chủ động:
-     Lặp lại quan điểm của đối phương cho đến khi họ xác nhận "Anh hiểu đúng ý tôi"
-     trước khi bắt đầu trình bày phương án kỹ thuật.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Dùng logic khô khan và số liệu để tranh cãi đúng sai với hội đồng quản trị và đối tác.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Nguyên lý truyền sóng:</strong> Hai tần số cảm xúc lệch pha sẽ triệt tiêu năng lượng của nhau; phải <span class="kw-accent">đồng bộ pha cảm xúc</span> trước khi truyền tải tín hiệu logic.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Áp dụng kỹ thuật lắng nghe chủ động: Luôn diễn giải lại ý đối phương cho đến khi họ xác nhận: <span class="kw-success">"Anh hiểu đúng ý tôi"</span>.
+          </div>
 
-3. MANTRA:
-   "Logic chỉ dựng khung xương — Thấu hiểu cảm xúc mở đường nhân tâm"</pre>
+          <div class="cb-mantra">
+            "Logic chỉ dựng khung xương — Thấu hiểu cảm xúc mở đường nhân tâm"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #06 -->
@@ -968,21 +1134,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-6">INSIGHT 06: NGHỆ THUẬT THẤT BẠI NHANH (FAIL-FAST) ĐỂ TÍCH LŨY TÀI SẢN SỐ
+        <div class="code-content" id="code-insight-6">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #06 // THẤT BẠI NHANH</span>
+            <h3 class="cb-title">NGHỆ THUẬT THẤT BẠI NHANH ĐỂ TÍCH LŨY TÀI SẢN SỐ</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Các dự án thử nghiệm tại Tata Digital được cấp ngân sách "Fail-Fast" trong 6 tuần
-   để kiểm chứng giả định trước khi quyết định rót hàng chục triệu USD.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Tata Digital cấp ngân sách <span class="kw">Fail-Fast trong 6 tuần</span> để kiểm chứng giả định trước khi quyết định rót hàng chục triệu USD.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Cố đấm ăn xôi bảo vệ một tính năng thất bại vì sợ bị quy chụp năng lực yếu.
-   • Bản chất: Định lý Bayes: Thất bại là quá trình thu thập dữ liệu xác suất thực tế
-     để hiệu chỉnh niềm tin tiên nghiệm, giúp lần thử tiếp theo chính xác hơn.
-   • Đòn bẩy thực chiến: Thiết lập ngưỡng cắt lỗ (stop-loss) về thời gian (tối đa 6 tuần)
-     và ngân sách cố định ngay từ ngày đầu bấm nút khởi động dự án.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Cố đấm ăn xôi bảo vệ một tính năng thất bại vì sợ bị đánh giá là yếu kém năng lực.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Quy trình lặp Bayes:</strong> Thất bại là việc thu thập dữ liệu thực tế để <span class="kw-accent">hiệu chỉnh niềm tin tiên nghiệm</span>, giúp lần thử sau chính xác hơn.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Đặt ra <span class="kw-danger">ngưỡng cắt lỗ (stop-loss)</span> về thời gian (tối đa 6 tuần) và ngân sách cố định ngay từ ngày đầu bấm nút.
+          </div>
 
-3. MANTRA:
-   "Thất bại gom lại thành tài — Rút ra kinh nghiệm ngày mai huy hoàng"</pre>
+          <div class="cb-mantra">
+            "Thất bại gom lại thành tài — Rút ra kinh nghiệm ngày mai huy hoàng"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #07 -->
@@ -991,22 +1163,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-7">INSIGHT 07: THỂ CHẤT LÀ DUNG LƯỢNG RAM CỦA BỘ NÃO CHIẾN LƯỢC
+        <div class="code-content" id="code-insight-7">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #07 // RAM NÃO BỘ</span>
+            <h3 class="cb-title">THỂ CHẤT LÀ DUNG LƯỢNG RAM CỦA NÃO BỘ CHIẾN LƯỢC</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Sauvik duy trì chế độ tập kháng lực và ăn uống nghiêm ngặt
-   vì suy giảm thể lực lập tức làm hỏng chất lượng các cuộc đàm phán kéo dài.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Sauvik duy trì chế độ tập kháng lực và ăn uống nghiêm ngặt vì <span class="kw-danger">suy giảm thể lực lập tức làm hỏng chất lượng</span> các cuộc đàm phán quan trọng.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Thức khuya triền miên, nhịn ăn cày việc
-     và xem đó là biểu tượng của tinh thần cống hiến.
-   • Bản chất: Cơ chế ty thể sinh học: Khi nồng độ lactate tăng và não thiếu oxy,
-     thùy trán (tư duy dài hạn) bị ức chế, nhường chỗ cho hạch hạnh nhân kích hoạt nỗi sợ.
-   • Đòn bẩy thực chiến: Khóa cố định lịch ngủ 7 tiếng;
-     bổ sung 30 phút vận động cường độ cao mỗi sáng trước khi tiếp xúc với email hay điện thoại.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Đánh đổi giấc ngủ và nhịn ăn cày việc, xem đó là biểu tượng của tinh thần cống hiến.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Sinh học ty thể:</strong> Khi nồng độ lactate tăng cao và não thiếu oxy, <span class="kw-danger">thùy trán (tư duy dài hạn) bị ức chế</span>, nhường chỗ cho hạch hạnh nhân kích hoạt nỗi sợ.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Khóa cố định <span class="kw">lịch ngủ 7 tiếng</span>; bổ sung <span class="kw-success">30 phút vận động cường độ cao</span> mỗi sáng trước khi tiếp xúc email hay chat.
+          </div>
 
-3. MANTRA:
-   "Thân thể yếu ớt mỏi mòn — Trí tuệ chiến lược chẳng còn sắc sảo"</pre>
+          <div class="cb-mantra">
+            "Thân thể yếu ớt mỏi mòn — Trí tuệ chiến lược chẳng còn sắc sảo"
+          </div>
+        </div>
       </div>
 
       <!-- INSIGHT #08 -->
@@ -1015,21 +1192,27 @@ MANTRA ĐÚC KẾT:
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-insight-8">INSIGHT 08: XÂY DỰNG DI SẢN CÔNG NGHỆ VƯỢT THỜI GIAN (TỐI GIẢN OCCAM)
+        <div class="code-content" id="code-insight-8">
+          <div class="cb-header">
+            <span class="cb-tag">INSIGHT #08 // DI SẢN VƯỢT THỜI GIAN</span>
+            <h3 class="cb-title">XÂY DỰNG DI SẢN CÔNG NGHỆ BẰNG ĐỊNH LUẬT TỐI GIẢN OCCAM</h3>
+          </div>
 
-1. DỮ KIỆN THỰC ĐỊA:
-   Những kiến trúc sư vĩ đại không tự hào về số dòng code họ viết,
-   mà tự hào về việc hệ thống đó giúp được bao nhiêu triệu người bình dân sống thuận tiện hơn.
+          <div class="cb-section">
+            <span class="cb-label cb-label--fact">DỮ KIỆN THỰC ĐỊA</span><br>
+            Kiến trúc sư vĩ đại không tự hào về số dòng code họ viết, mà tự hào về việc <span class="kw-success">hệ thống đó phục vụ được bao nhiêu triệu người tiêu dùng bình dân</span>.
+          </div>
 
-2. BÓC TÁCH 3 TẦNG THẤU SUỐT:
-   • Bề mặt: Chạy theo các thuật ngữ thời thượng phức tạp (buzzwords) để khoe khoang.
-   • Bản chất: Dao cạo Occam: Giải pháp vĩ đại nhất luôn là giải pháp
-     giải quyết được bài toán phức tạp bằng cấu trúc đơn giản nhất và ít điểm gãy nhất.
-   • Đòn bẩy thực chiến: Mỗi giải pháp kỹ thuật xuất xưởng đều phải trả lời được câu hỏi:
-     "Người nông dân bình thường có được hưởng lợi trực tiếp từ tính năng này không?".
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">TẦNG 1 • BỀ MẶT</span> Chạy theo các thuật ngữ thời thượng phức tạp (buzzwords) để khoe mẽ với giới chuyên môn.<br>
+            <span class="cb-label cb-label--nature">TẦNG 2 • BẢN CHẤT</span> <strong>Dao cạo Occam:</strong> Giải pháp vĩ đại nhất luôn là giải pháp giải quyết bài toán phức tạp bằng <span class="kw-accent">cấu trúc thanh lịch và ít điểm gãy nhất</span>.<br>
+            <span class="cb-label cb-label--leverage">TẦNG 3 • ĐÒN BẨY</span> Mọi tính năng kỹ thuật đều phải trả lời được: <em>"Người mẹ nông thôn có được hưởng lợi trực tiếp từ sự phức tạp này không?"</em>.
+          </div>
 
-3. MANTRA:
-   "Đỉnh cao công nghệ đơn sơ — Giúp đời bớt khổ dựng cơ đồ bền"</pre>
+          <div class="cb-mantra">
+            "Đỉnh cao công nghệ đơn sơ — Giúp đời bớt khổ dựng cơ đồ bền"
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1079,29 +1262,41 @@ MANTRA ĐÚC KẾT:
         </div>
       </div>
 
-      <!-- Khối Code 09: Checklist vận hành hàng ngày (Font FD Acta Medium) -->
+      <!-- Khối Code 09: Checklist vận hành hàng ngày (BOCUC Chuẩn Mực) -->
       <div class="code-box">
         <button class="copy-btn" onclick="copySnippet(this, 'code-checklist-action')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           <span>Sao chép</span>
         </button>
-        <pre id="code-checklist-action">CHECKLIST VẬN HÀNH BẢN THÂN DÀNH CHO NHÀ LÃNH ĐẠO CÔNG NGHỆ
+        <div class="code-content" id="code-checklist-action">
+          <div class="cb-header">
+            <span class="cb-tag">CHECKLIST THỰC CHIẾN // ROUTINE</span>
+            <h3 class="cb-title">QUY TRÌNH VẬN HÀNH BẢN THÂN CHO NHÀ LÃNH ĐẠO</h3>
+          </div>
 
-[BUỔI SÁNG — THIẾT LẬP ĐÒN BẨY]
-[ ] 07:00 - 07:30: 30 phút vận động thể chất kháng lực kích hoạt ty thể não bộ.
-[ ] 08:00 - 08:45: 45 phút "Zero Screen" xác định 1 quyết định đinh của ngày.
-[ ] 09:00 - 11:30: Khung giờ Deep Work không họp hành, không đọc tin nhắn chat.
+          <div class="cb-section">
+            <span class="cb-label cb-label--nature">BUỔI SÁNG — THIẾT LẬP ĐÒN BẨY</span><br>
+            • <strong>07:00 - 07:30:</strong> <span class="kw-success">30 phút vận động kháng lực</span> kích hoạt ty thể thùy trán.<br>
+            • <strong>08:00 - 08:45:</strong> <span class="kw-accent">45 phút Zero-Screen</span> xác định 1 quyết định đinh của ngày.<br>
+            • <strong>09:00 - 11:30:</strong> <span class="kw">Khung giờ Deep Work</span> — tuyệt đối không họp hành, không chat.
+          </div>
 
-[TRONG NGÀY — BẢO VỆ DÒNG CHẢY NĂNG LƯỢNG]
-[ ] Phân quyền RACI: Mọi việc dưới 10.000 USD trao quyền cho Lead tự quyết.
-[ ] Giao tiếp EQ: Luôn diễn giải lại ý đối phương ("Anh hiểu đúng ý tôi") trước khi phản biện.
-[ ] Kiểm soát cảm xúc: Hít thở sâu 10 nhịp nếu nhịp tim > 90 bpm trước khi phản hồi sự cố.
+          <div class="cb-section">
+            <span class="cb-label cb-label--leverage">TRONG NGÀY — BẢO VỆ DÒNG CHẢY NĂNG LƯỢNG</span><br>
+            • <strong>Phân quyền RACI:</strong> Mọi việc dưới <span class="kw">10.000 USD</span> trao quyền cho Lead tự quyết.<br>
+            • <strong>Giao tiếp EQ:</strong> Luôn diễn giải lại ý đối phương (<em>"Anh hiểu đúng ý tôi"</em>) trước khi phản biện logic.<br>
+            • <strong>Kiểm soát cảm xúc:</strong> Dừng <span class="kw-danger">hít thở sâu 10 nhịp</span> nếu nhịp tim &gt; 90 bpm trước khi phản hồi email gay gắt.
+          </div>
 
-[BUỔI CHIỀU — ĐÓNG GÓI BÀI HỌC]
-[ ] 17:00 - 17:30: Rà soát các sự cố trong ngày; đóng gói bài học vào quy trình hệ thống.
+          <div class="cb-section">
+            <span class="cb-label cb-label--surface">BUỔI CHIỀU — ĐÓNG GÓI BÀI HỌC</span><br>
+            • <strong>17:00 - 17:30:</strong> Rà soát các sự cố trong ngày; đóng gói bài học vào quy trình hệ thống.
+          </div>
 
-MANTRA:
-"Môi trường dọn sạch âu lo — Tâm an trí sáng tự do tung hoành"</pre>
+          <div class="cb-mantra">
+            "Môi trường dọn sạch âu lo — Tâm an trí sáng tự do tung hoành"
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1157,12 +1352,13 @@ MANTRA:
       if (percentLabel) percentLabel.innerText = Math.round(progress) + '% ĐÃ ĐỌC';
     });
 
-    // 2. One-click Copy Function for Code Boxes (Minimalist)
+    // 2. One-click Copy Function for Code Boxes (Extracts Clean Plain Text via innerText)
     function copySnippet(buttonEl, snippetId) {
       const snippetEl = document.getElementById(snippetId);
       if (!snippetEl) return;
       
-      const textToCopy = snippetEl.innerText;
+      // innerText automatically extracts formatted, human-readable text preserving line breaks
+      const textToCopy = snippetEl.innerText.trim();
       
       navigator.clipboard.writeText(textToCopy).then(() => {
         const originalHTML = buttonEl.innerHTML;
