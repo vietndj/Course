@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lộ Trình Bài Tập Tân Thủ: Lấy Cảnh Đời Thường Làm Chủ B-Roll & Voice-Over — Nguyễn Đức Việt</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts Fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+
+  <style>
+    /* ==========================================================================
+       TYPOGRAPHY THEO CHUẨN TAO-HTML-COURSE & FEDU SYSTEM
+       ========================================================================== */
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
+           local('SVN-Integral CF Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Integral';
+      src: url('./fonts/SVN-IntegralCF-Bold.ttf') format('truetype'),
+           url('./assets/fonts/SVN-IntegralCF-Bold.ttf') format('truetype'),
+           local('SVN-Integral CF Bold');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Acta';
+      src: url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
+           url('./fonts/SVN-Acta-BoldItalic.ttf') format('truetype'),
+           local('Playfair Display Italic');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
+           local('Poppins');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SVN-Poppins';
+      src: url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
+           local('Poppins SemiBold');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-dark: #060911;
+      --bg-surface: #0c121e;
+      --bg-card: #121a2b;
+      --bg-card-hover: #17233a;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.35);
+      --accent-cyan: #38bdf8;
+      --accent-amber: #f59e0b;
+      --accent-emerald: #10b981;
+      --accent-purple: #a855f7;
+      --accent-rose: #f43f5e;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'SVN-Poppins', 'Poppins', 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+    }
+
+    /* Tiêu đề ngắn <= 8 từ: SVN-Integral Regular 400 CẤM Bold */
+    .title-short, .font-integral-reg {
+      font-family: 'SVN-Integral', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* Tiêu đề dài > 8 từ: SVN-Poppins SemiBold 600 */
+    .title-long, .font-poppins-title {
+      font-family: 'SVN-Poppins', 'Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* Trích dẫn / Hook / Thơ */
+    .font-acta-quote {
+      font-family: 'SVN-Acta', 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* Badge & Mã code */
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Custom Glass & Shadows */
+    .glass-card {
+      background: rgba(18, 26, 43, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 12px 32px -8px rgba(56, 189, 248, 0.15);
+    }
+
+    /* Sticky Progress Header */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(6, 9, 17, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #060911; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+    /* Interactive Checkbox Strike */
+    .task-checkbox:checked + label {
+      text-decoration: line-through;
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-cyan-500 selection:text-black">
+
+  <!-- ========================================================================
+       TOP NOTIFICATION BAR & STICKY HEADER
+       ======================================================================== -->
+  <header class="sticky-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="px-2.5 py-1 rounded bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-xs font-mono font-bold uppercase tracking-wider">
+          FEDU COURSE HUB
+        </span>
+        <div class="h-4 w-px bg-slate-700 hidden sm:block"></div>
+        <span class="text-xs sm:text-sm font-semibold text-slate-300">
+          Giáo Án Tân Thủ • Huấn Luyện Quay Thực Chiến
+        </span>
+      </div>
+
+      <!-- Quick Action / Counter -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800 text-xs">
+          <i class="ph-bold ph-check-circle text-emerald-400 text-sm"></i>
+          <span class="text-slate-400">Tiến độ bài tập:</span>
+          <span id="progress-text" class="font-mono font-bold text-cyan-400">0/10</span>
+        </div>
+        <a href="#lo-trinh-bai-tap" class="px-3.5 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-lg shadow-cyan-500/20">
+          <span>Vào Thực Hành</span>
+          <i class="ph-bold ph-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO BANNER: TIÊU ĐỀ & ĐỊNH HƯỚNG TỔNG QUAN
+       ======================================================================== -->
+  <section class="relative pt-12 pb-16 overflow-hidden border-b border-slate-800/80">
+    <!-- Ambient Light Background -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-cyan-500/10 via-blue-500/5 to-transparent blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- Micro-Badge (<= 8 từ: SVN-Integral 400 Regular) -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span class="title-short">TỔNG HỢP VIDEO FACEBOOK THỰC CHIẾN</span>
+      </div>
+
+      <!-- Main Headline (Tiêu đề dài > 8 từ: SVN-Poppins SemiBold 600) -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl title-long text-white max-w-4xl mx-auto mb-6">
+        Lộ Trình Bài Tập Tân Thủ: Lấy Cảnh Đời Thường Làm Nền Tảng Làm Chủ B-Roll & Voice-Over
+      </h1>
+
+      <!-- Hook Subtitle (SVN-Acta Italic) -->
+      <p class="font-acta-quote text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+        "Đồ nghề trong túi quần, bối cảnh ngay tại phòng. Cứ xách tripod lên và farm số giờ bay đi anh em, cày đủ lượng thì chất tự đổi!"
+      </p>
+
+      <!-- Key Value Pillars -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-cyan-400 text-lg mb-1"><i class="ph-bold ph-video-camera"></i></div>
+          <div class="text-xs text-slate-400 font-medium">Thiết bị tối giản</div>
+          <div class="text-sm font-semibold text-white">1 Điện thoại + Tripod</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-amber-400 text-lg mb-1"><i class="ph-bold ph-film-strip"></i></div>
+          <div class="text-xs text-slate-400 font-medium">Phương pháp lõi</div>
+          <div class="text-sm font-semibold text-white">Băm nhỏ hành động</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-emerald-400 text-lg mb-1"><i class="ph-bold ph-microphone"></i></div>
+          <div class="text-xs text-slate-400 font-medium">Giải pháp vấp thoại</div>
+          <div class="text-sm font-semibold text-white">B-roll che Voice-over</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-purple-400 text-lg mb-1"><i class="ph-bold ph-users-three"></i></div>
+          <div class="text-xs text-slate-400 font-medium">Đối tượng áp dụng</div>
+          <div class="text-sm font-semibold text-white">Học viên & Toàn TEAM</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       KHỐI TRIẾT LÝ GỐC RỄ: VÌ SAO BẮT BUỘC PHẢI QUAY CẢNH ĐỜI THƯỜNG?
+       ======================================================================== -->
+  <section class="py-16 bg-slate-950/60 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold">TƯ DUY ĐẠO DIỄN CỦA ANH VIỆT</span>
+        <h2 class="text-2xl sm:text-3xl title-long text-white mt-2">
+          Tại Sao Cảnh Đời Thường Là Nền Tảng Sống Còn Cho Mọi Định Dạng Video?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mt-2">
+          Nhiều người lầm tưởng phải có kịch bản triệu view, diễn xuất thần sầu hay thuê studio tiền triệu mới bắt đầu. Sự thật: toàn bộ cỗ máy video đều khởi nguồn từ một ly trà, cái bàn làm việc và bước chân đi bộ.
+        </p>
+      </div>
+
+      <!-- 4 Trụ Cột Triết Lý -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Trụ Cột 1 -->
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 relative group hover:border-cyan-500/40 transition-all">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl flex-shrink-0">
+              <i class="ph-bold ph-shield-check"></i>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-cyan-400 uppercase font-bold tracking-wider">TRỤ CỘT 1 • TÂM LÝ HỌC HÀNH VI</span>
+              <h3 class="text-lg font-semibold text-white mt-1 mb-2">Hạ Điện Trở Tiếp Xúc Về 0 — Khử Sạch Nỗi Sợ Ống Kính</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Tân thủ cầm máy lên là sợ: sợ run tay, sợ mặt xấu, sợ bạn bè bảo "làm màu". Khi bạn quay cảnh đời thường (pha trà, xỏ giày, bấm máy tính, lật sổ), bạn đang làm những việc diễn ra hàng ngày trong vô thức. <b>Không có áp lực diễn xuất, không sợ sai, điện trở tâm lý giảm về 0.</b> Bạn dám bấm nút REC ngay lập tức.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trụ Cột 2 -->
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 relative group hover:border-amber-500/40 transition-all">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl flex-shrink-0">
+              <i class="ph-bold ph-film-slate"></i>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-amber-400 uppercase font-bold tracking-wider">TRỤ CỘT 2 • THỊ GIÁC & NÃO BỘ</span>
+              <h3 class="text-lg font-semibold text-white mt-1 mb-2">B-Roll Không Phải Để Lấp Chỗ Trống — Đó Là Dopamine Reset</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Trong tâm lý học thần kinh, nhìn một góc máy tĩnh quá 5 giây sẽ kích hoạt cơ chế <i>Thích nghi giác quan</i> — video trở thành tiếng ồn trắng và ngón tay họ sẽ lướt đi. Tập quay cảnh đời thường giúp rèn luyện phản xạ <b>băm nhỏ hành động</b> thành 3–5 góc (Wide ➡️ POV ➡️ Close-up), liên tục reset sự chú ý của người xem.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trụ Cột 3 -->
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 relative group hover:border-emerald-500/40 transition-all">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0">
+              <i class="ph-bold ph-waveform"></i>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-emerald-400 uppercase font-bold tracking-wider">TRỤ CỘT 3 • BẢO BỐI VOICEOVER</span>
+              <h3 class="text-lg font-semibold text-white mt-1 mb-2">B-Roll Là "Chiếc Khiên Tàng Hình" Che Sạch Lỗi Vấp Thoại</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Lỗi lớn nhất của người mới là nói vấp một từ thì bấm xoá quay lại từ đầu, quay 30 đúp mất cả ngày rồi nản chí. Với tư duy B-roll: <b>bạn cứ nói vấp thoải mái</b>. Trên CapCut chỉ cần cắt bỏ đoạn ngập ngừng, rồi đặt 1 cảnh B-roll đời thường đè lên đúng vết cắt. Giọng nói vẫn chạy liền mạch, còn mắt người xem được chiêm ngưỡng chi tiết hành động cực kỳ đắt giá!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trụ Cột 4 -->
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 relative group hover:border-purple-500/40 transition-all">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl flex-shrink-0">
+              <i class="ph-bold ph-tree-structure"></i>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-purple-400 uppercase font-bold tracking-wider">TRỤ CỘT 4 • MẪU NỀN MỌI ĐỊNH DẠNG</span>
+              <h3 class="text-lg font-semibold text-white mt-1 mb-2">Cội Nguồn Của Mọi Thể Loại: Talking Head, BĐS, F&B, Review</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Một video Talking Head chuyên gia nếu ngồi nói 60s sẽ cực kỳ buồn ngủ. Nhưng nếu chèn cảnh tay lật sổ, mắt nhìn biểu đồ, ngón tay gõ phím -> biến thành phim tài liệu cao cấp. Video BĐS, F&B, thời trang hay bán hàng đều 100% xây dựng trên: <b>3 Cỡ Cảnh + Match Cut + Cảnh Trám đè Voice</b>. Không làm chủ cảnh 3 giây đời thường, không bao giờ làm chủ được video 60 giây.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       BỘ LỌC CẤP ĐỘ & TIẾN TRÌNH THỰC HÀNH
+       ======================================================================== -->
+  <section class="py-8 bg-slate-900/90 border-b border-slate-800 sticky top-14 z-40 backdrop-blur-md" id="lo-trinh-bai-tap">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <div>
+        <span class="text-xs font-mono text-cyan-400 uppercase font-semibold">BỘ LỌC CẤP ĐỘ (LEVEL 1 ➡️ 5)</span>
+        <h3 class="text-base font-bold text-white">Sắp Xếp Bài Tập Từ Dễ Đến Khó</h3>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <button onclick="filterLevel('all')" id="btn-all" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500 text-black border border-cyan-400 transition-all">
+          Tất cả (10 bài)
+        </button>
+        <button onclick="filterLevel('lv1')" id="btn-lv1" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+          Level 1: Khử Đơ
+        </button>
+        <button onclick="filterLevel('lv2')" id="btn-lv2" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+          Level 2: 3 Cỡ Cảnh
+        </button>
+        <button onclick="filterLevel('lv3')" id="btn-lv3" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+          Level 3: Match Cut & Voice
+        </button>
+        <button onclick="filterLevel('lv4')" id="btn-lv4" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+          Level 4: CapCut & AI
+        </button>
+        <button onclick="filterLevel('lv5')" id="btn-lv5" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+          Level 5: Hook & Zalo
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       DANH SÁCH 10 BÀI TẬP CHI TIẾT (TỪ DỄ ĐẾN KHÓ)
+       ======================================================================== -->
+  <main class="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+    <!-- ====================================================================
+         LEVEL 1: KHỞI ĐỘNG CẢM XÚC & KHỬ ĐƠ CAMERA (ĐỘ KHÓ: ★☆☆☆☆)
+         ==================================================================== -->
+    <div class="level-group space-y-8" data-level="lv1">
+      <div class="border-l-4 border-cyan-400 pl-4 py-1">
+        <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">CẤP ĐỘ 1 • ĐỘ KHÓ: ★☆☆☆☆</span>
+        <h2 class="text-2xl title-long text-white font-bold">Khử Sạch Bệnh Đơ Camera & Làm Quen Thiết Bị Tối Giản</h2>
+        <p class="text-sm text-slate-400 mt-1">Mục tiêu: Đập tan cảm giác sợ ống kính, nói không cần học thuộc lòng và làm chủ camera sau.</p>
+      </div>
+
+      <!-- BÀI TẬP 01 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt01">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono font-bold text-sm border border-cyan-500/40">01</span>
+            <div>
+              <span class="text-xs font-mono text-cyan-400 uppercase font-semibold">BÀI TẬP VỠ LÒNG • THOẠI KHÔNG ĐƠ</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Kịch Bản 1 Dòng & Ngắt Câu Theo Nhịp Thở</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/24909527728721206/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (68s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Nỗi Đau & Sự Thật Ngượng Miệng</h4>
+              <p class="text-sm text-slate-300">
+                Cầm giấy học thuộc cả trang, đứng trước máy quay là mắt đảo liêng biếng, quên chữ thì cuống cuồng, mặt đơ cứng như khúc gỗ.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Bản Chất Kỹ Thuật Đạo Diễn</h4>
+              <p class="text-sm text-slate-300">
+                In kịch bản ra giấy, mỗi câu chỉ dài đúng 5–7 từ trên một dòng. Cúi xuống nhìn nhẩm ➡️ Ngước lên nhìn ống kính ➡️ Đếm thầm <b>"1 - 2"</b> rồi mới nói ➡️ Nói xong lại đếm <b>"1 - 2"</b> rồi mới cúi xuống câu tiếp theo.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Giúp Gì Cho B-Roll & Voice-Over?</h4>
+              <p class="text-sm text-slate-300">
+                Khoảng đệm <b>"1 - 2"</b> (thời gian rôi an toàn) ở đầu và cuối câu chính là chiếc mỏ neo vàng. Lúc đổ vào CapCut, bạn cắt bỏ đoạn im lặng cực dễ, hoặc dùng 1 shot B-roll đời thường đè lên nhịp thở chuyển câu mà không sợ bị nuốt âm thanh.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-01-1" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-01-1" class="text-slate-300 cursor-pointer">Viết 4 câu ngắn (mỗi câu dưới 7 chữ) về công việc hàng ngày của bạn.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-01-2" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-01-2" class="text-slate-300 cursor-pointer">Bấm quay bằng điện thoại, áp dụng đếm nhịp "1-2" trước và sau mỗi câu.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-01-3" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-01-3" class="text-slate-300 cursor-pointer">Dựng cắt bỏ khoảng lặng, video dài dưới 25s, không ngắc ngứ.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Thời lượng clip: 15–25s</span>
+              <span class="text-cyan-400">Tiêu chí: Mắt tự nhiên</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BÀI TẬP 02 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt02">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono font-bold text-sm border border-cyan-500/40">02</span>
+            <div>
+              <span class="text-xs font-mono text-cyan-400 uppercase font-semibold">BÀI TẬP THIẾT BỊ • TỐI ƯU QUANG HỌC</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">4 Mẹo Tự Căn Khung Hình Chuẩn Bằng Camera Sau</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/1417987499856423/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (207s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Nỗi Đau & Sai Lầm Phổ Biến</h4>
+              <p class="text-sm text-slate-300">
+                Cam trước thì tiện ngắm mặt nhưng chất lượng cực kém, dải nhạy sáng ngắn, hình bệt và noise. Cam sau đẹp vượt trội nhưng sợ quay một mình không biết mình có bị lọt khỏi khung hay không.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 4 Trick Căn Khung Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                1. <b>Setup 1 sải tay:</b> Đặt tripod cách ghế đúng 1 sải tay (60–70cm), máy ngang tầm mắt. <br>
+                2. <b>Gương nhỏ đối diện:</b> Đặt gương nhỏ hoặc dùng đồng hồ Apple Watch / iPad làm monitor soi góc. <br>
+                3. <b>Khóa nét & đo sáng (AE/AF Lock):</b> Chạm giữ màn hình vào vùng trán hoặc ngực để máy không tự nhảy sáng. <br>
+                4. <b>Vạch chia 3x3:</b> Đặt mắt nằm ở đường 1/3 phía trên khung hình.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Nền Tảng Cho B-Roll & Cảnh Đời Thường</h4>
+              <p class="text-sm text-slate-300">
+                Khi thạo mẹo căn cam sau, bạn có thể tự mình đặt máy trên bàn gỗ, cạnh kệ sách, quầy pha chế và tự tin bấm quay các chi tiết sắc nét 4K mà không cần ai hỗ trợ bấm máy giùm.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-02-1" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-02-1" class="text-slate-300 cursor-pointer">Bật lưới grid 3x3 trên camera sau điện thoại.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-02-2" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-02-2" class="text-slate-300 cursor-pointer">Đặt máy cách bàn làm việc 1 sải tay, quay thử 1 clip ngồi làm việc.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-02-3" class="task-checkbox mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-02-3" class="text-slate-300 cursor-pointer">Kiểm tra lại: mắt có nằm ở đường 1/3 không, ánh sáng có bị cháy nền không.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Độ phân giải: 1080p/4K Cam sau</span>
+              <span class="text-cyan-400">Tiêu chí: Nét căng</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ====================================================================
+         LEVEL 2: VỠ LÒNG GÓC MÁY & BĂM NHỎ HÀNH ĐỘNG (ĐỘ KHÓ: ★★☆☆☆)
+         ==================================================================== -->
+    <div class="level-group space-y-8" data-level="lv2">
+      <div class="border-l-4 border-amber-400 pl-4 py-1">
+        <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">CẤP ĐỘ 2 • ĐỘ KHÓ: ★★☆☆☆</span>
+        <h2 class="text-2xl title-long text-white font-bold">Làm Chủ 3 Cỡ Cảnh & Băm Nhỏ Hành Động Đời Thường</h2>
+        <p class="text-sm text-slate-400 mt-1">Mục tiêu: Thoát khỏi một cú máy tĩnh đơn điệu, băm nhỏ từng thao tác đời sống thành chuỗi cảnh điện ảnh.</p>
+      </div>
+
+      <!-- BÀI TẬP 03 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt03">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/40">03</span>
+            <div>
+              <span class="text-xs font-mono text-amber-400 uppercase font-semibold">TRÁI TIM VIDEO • CƠ CHẾ ĐIỀU PHỐI</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Quy Tắc 3 Cỡ Cảnh Toàn – Trung – Cận Bằng 1 Điện Thoại</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/775157861537584/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (26s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Lỗi Sai Khiến Video Chán Phèo</h4>
+              <p class="text-sm text-slate-300">
+                Đặt máy một chỗ từ đầu đến cuối, người xem nhìn 3 giây là đoán được hết diễn biến. Video thiếu nhịp thở thị giác, không có điểm nhấn.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Công Thức Vàng 3 Cỡ Cảnh</h4>
+              <div class="grid grid-cols-3 gap-2 mt-2 text-center text-xs">
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+                  <b class="text-cyan-400 block mb-1">1. CẢNH TOÀN (Wide)</b>
+                  Bao quát không gian, xác lập bối cảnh phòng làm việc/cửa hàng.
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+                  <b class="text-amber-400 block mb-1">2. CẢNH TRUNG (Medium)</b>
+                  Tập trung vào hành động chính (ngồi gõ phím, cầm cốc nước).
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+                  <b class="text-emerald-400 block mb-1">3. CẢNH CẬN (Close-up)</b>
+                  Tạo drama, cảm xúc (nheo mắt, ngón tay gõ, giọt nước rót).
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Ứng Dụng Xuyên Suốt Mọi Ngành Nghề</h4>
+              <p class="text-sm text-slate-300">
+                Quay đồ ăn: Toàn bàn ăn ➡️ Trung gắp miếng thịt ➡️ Cận nước sốt bốc khói. Quay BĐS: Toàn phòng khách ➡️ Trung mở rèm cửa ➡️ Cận chi tiết vân đá bếp. 100% video cuốn đều tuân theo tam giác này.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-03-1" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-03-1" class="text-slate-300 cursor-pointer">Chọn 1 hành động đơn giản: Rót một ly nước hoặc lật cuốn sách.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-03-2" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-03-2" class="text-slate-300 cursor-pointer">Quay đúng 3 shot: 1 Toàn (3s) ➡️ 1 Trung (2s) ➡️ 1 Cận (2s).</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-03-3" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-03-3" class="text-slate-300 cursor-pointer">Ghép vào CapCut kiểm tra: mạch video có trôi êm như nước chảy không.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Tổng thời lượng: 7–9s</span>
+              <span class="text-amber-400">Tiêu chí: Đủ 3 cỡ cảnh</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BÀI TẬP 04 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt04">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/40">04</span>
+            <div>
+              <span class="text-xs font-mono text-amber-400 uppercase font-semibold">LIFESTYLE B-ROLL • CASE STUDY PHA TRÀ</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Lộ Trình 6 Bước Băm Nhỏ Hành Động Điện Ảnh Hóa Khung Hình</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/835539876059315" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (60s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Cái Bẫy "Chết Người" Khi Làm B-Roll</h4>
+              <p class="text-sm text-slate-300">
+                Nhiều anh chị em phần nói rất cuốn, nhưng cảnh trám minh họa lại quay tuột một cú máy tĩnh từ đầu đến cuối. Khán giả mất kiên nhẫn và vuốt đi ngay lập tức!
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Lộ Trình 6 Bước Pha Ly Trà Cozy Bạc Hà Của Anh Việt</h4>
+              <ul class="space-y-1.5 text-xs sm:text-sm text-slate-300">
+                <li>• <b>B1:</b> Thức dậy trên sofa <code>(Toàn cảnh bao quát không gian)</code></li>
+                <li>• <b>B2:</b> Cúi xuống xỏ giày <code>(Trung cảnh ngang mặt đất)</code></li>
+                <li>• <b>B3:</b> Mở tủ gỗ lấy hộp trà <code>(Góc nhìn chủ quan POV cận)</code></li>
+                <li>• <b>B4:</b> Rót nước sôi vào ly <code>(Góc cận thấp sát mặt bàn gỗ)</code></li>
+                <li>• <b>B5:</b> Xé vỏ, dìm túi trà sủi bọt <code>(Đặc tả Tele xóa phông)</code></li>
+                <li>• <b>B6:</b> Nâng ly thưởng thức <code>(Toàn cảnh giải nén tâm lý)</code></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Bí Kíp Solo Creator: Quy Tắc X2 Hành Động</h4>
+              <p class="text-sm text-slate-300">
+                Khi chỉ có 1 mình với cái tripod: diễn lại động tác ở góc máy mới. Lúc mở nắp tủ ở góc POV, sang góc cận lại lặp lại cử chỉ mở nắp tủ rồi mới cắt. Khi đó 2 cảnh sẽ "ngậm" vào nhau mượt như lụa.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-04-1" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-04-1" class="text-slate-300 cursor-pointer">Băm 1 quy trình đời thường (pha cà phê, mở laptop làm việc) thành đủ 6 shot.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-04-2" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-04-2" class="text-slate-300 cursor-pointer">Bắt buộc có ít nhất 1 shot POV (góc nhìn ngôi thứ nhất) và 1 shot sát mặt bàn.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-04-3" class="task-checkbox mt-1 w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-04-3" class="text-slate-300 cursor-pointer">Ghép thành video 15–20s, mỗi shot cắt nhanh 2–3s theo nhịp.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Độ dài: 6 shot / 15–20s</span>
+              <span class="text-amber-400">Tiêu chí: Mượt nhịp nhạc</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ====================================================================
+         LEVEL 3: KỸ NGHỆ NỐI CẢNH TÀNG HÌNH & NHỊP ĐIỆU (ĐỘ KHÓ: ★★★☆☆)
+         ==================================================================== -->
+    <div class="level-group space-y-8" data-level="lv3">
+      <div class="border-l-4 border-emerald-400 pl-4 py-1">
+        <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">CẤP ĐỘ 3 • ĐỘ KHÓ: ★★★☆☆</span>
+        <h2 class="text-2xl title-long text-white font-bold">Match Cut Chuyển Động Vật Lý & B-Roll Đè Voice-Over</h2>
+        <p class="text-sm text-slate-400 mt-1">Mục tiêu: Nối cảnh tàng hình không dùng hiệu ứng app sến súa, biến lỗi nói vấp thành thước phim nghệ thuật.</p>
+      </div>
+
+      <!-- BÀI TẬP 05 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt05">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm border border-emerald-500/40">05</span>
+            <div>
+              <span class="text-xs font-mono text-emerald-400 uppercase font-semibold">CHUYỂN CẢNH TÀNG HÌNH • FLOW THỊ GIÁC</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">2 Nguyên Tắc "Tàng Hình" Mọi Vết Cắt (Match Cut Bằng Quả Bóng)</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/1735902844239442/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (62s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Vấn Đề Lỗi Thời</h4>
+              <p class="text-sm text-slate-300">
+                Nhiều người phụ thuộc vào hiệu ứng chuyển cảnh lòe loẹt của CapCut (nháy trắng, zoom xoay, lật trang). Xem vài giây là thấy rẻ tiền và giật cục.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 2 Nguyên Tắc Cốt Lõi Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                1. <b>Tính liên tục (Continuity):</b> Hướng di chuyển của chủ thể phải đồng nhất (cảnh A chạy từ trái sang phải ➡️ cảnh B cũng phải từ trái sang phải). <br>
+                2. <b>Match Cut (Nối điểm neo):</b> Mượn một vật thể hoặc chuyển động làm điểm cầu nối (trong clip anh Việt dùng quả bóng ném vào khung hình ở cảnh 1 ➡️ cảnh 2 tay đón quả bóng ở một bối cảnh hoàn toàn khác). Mắt người xem bám theo quả bóng nên không nhận ra vết cắt.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Ứng Dụng Trong Đời Thường & Team</h4>
+              <p class="text-sm text-slate-300">
+                Cầm cốc cà phê đưa sát che ống kính (Wipe) ➡️ Cảnh sau hạ cốc xuống ở bàn họp công ty. Cú vung tay gập laptop ở nhà ➡️ Cảnh sau mở cửa bước vào văn phòng. Tự động "mượt như lông mèo"!
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-05-1" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-05-1" class="text-slate-300 cursor-pointer">Chọn 1 vật thể làm điểm neo: cốc nước, cuốn sổ, chùm chìa khóa.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-05-2" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-05-2" class="text-slate-300 cursor-pointer">Quay cảnh 1: Đưa vật thể lướt qua ống kính. Cảnh 2: Đưa vật thể ra xa ống kính.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-05-3" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-05-3" class="text-slate-300 cursor-pointer">Khớp vết cắt ngay điểm chuyển động nhanh nhất (Cut-on-Action).</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Độ dài: 2 cảnh / 6s</span>
+              <span class="text-emerald-400">Tiêu chí: Mắt trượt êm</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BÀI TẬP 06 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt06">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm border border-emerald-500/40">06</span>
+            <div>
+              <span class="text-xs font-mono text-emerald-400 uppercase font-semibold">KỸ NGHỆ THỰC CHIẾN • B-ROLL ĐÈ VOICE</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Dùng Cảnh Trám Đời Thường Che Sạch Lỗi Vấp Thoại Voice-Over</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/835539876059315" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (60s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Nỗi Ám Ảnh Thu Âm</h4>
+              <p class="text-sm text-slate-300">
+                Thu âm 1 đoạn voice 30s nhưng cứ đến giây 25 lại nói nhịu hoặc hắt hơi. Ngồi thu lại 10 lần mất hết cảm xúc, giọng nói trở nên gượng gạo như đọc bài văn mẫu.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Công Thức B-Roll Lót Nền Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                1. <b>Thu âm 1 lèo:</b> Cứ mở app ghi âm trên điện thoại và nói tự nhiên như đang kéo ghế tâm sự với bạn thân. Vấp cứ dừng lại 2 giây rồi nói tiếp. <br>
+                2. <b>Cắt gọt timeline:</b> Bỏ những câu hỏng, kéo các câu đúng sát lại nhau. <br>
+                3. <b>Đè cảnh trám:</b> Chèn chuỗi 4–6 shot B-roll đời thường (bàn tay gõ máy, ngụm nước, bước chân, góc bàn) đè lên toàn bộ timeline voice.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Tại Sao Định Dạng Này Bất Khả Chiến Bại?</h4>
+              <p class="text-sm text-slate-300">
+                Khán giả không nhìn thấy mặt bạn lúc vấp. Họ chỉ nghe thấy giọng nói đĩnh đạc và mắt được ngắm những khung hình chân thật. Đây là định dạng nhanh nhất để sản xuất 1–2 video/ngày mà không tốn công setup mặt mũi phấn son.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-06-1" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-06-1" class="text-slate-300 cursor-pointer">Ghi âm 1 đoạn voice tâm sự nghề 30 giây (kể 1 khó khăn thực tế).</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-06-2" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-06-2" class="text-slate-300 cursor-pointer">Quay 5 shot B-roll đời thường ngay tại nơi bạn đang ngồi.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-06-3" class="task-checkbox mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-06-3" class="text-slate-300 cursor-pointer">Ghép B-roll đè lên giọng đọc, lót nhẹ 1 bản nhạc piano âm lượng 8–10%.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Độ dài: 30s hoàn chỉnh</span>
+              <span class="text-emerald-400">Tiêu chí: Giọng ấm + B-roll nét</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ====================================================================
+         LEVEL 4: TĂNG TỐC HẬU KỲ & ĐÒN BẨY CÔNG CỤ (ĐỘ KHÓ: ★★★★☆)
+         ==================================================================== -->
+    <div class="level-group space-y-8" data-level="lv4">
+      <div class="border-l-4 border-purple-400 pl-4 py-1">
+        <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest">CẤP ĐỘ 4 • ĐỘ KHÓ: ★★★★☆</span>
+        <h2 class="text-2xl title-long text-white font-bold">Biên Tập CapCut Tối Giản & Trợ Lý AI Sản Xuất Nhanh</h2>
+        <p class="text-sm text-slate-400 mt-1">Mục tiêu: Rút ngắn thời gian dựng từ 3 ngày xuống còn 20 phút, không phụ thuộc editor ngoài.</p>
+      </div>
+
+      <!-- BÀI TẬP 07 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt07">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-mono font-bold text-sm border border-purple-500/40">07</span>
+            <div>
+              <span class="text-xs font-mono text-purple-400 uppercase font-semibold">TINH GỌN THAO TÁC • QUY TẮC 2 NÚT</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Dựng CapCut Siêu Tốc: 2 Thao Tác Tách & Xóa + Motion Blur</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/1946728119575375/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (26s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Căn Bệnh Sa Đà Hiệu Ứng</h4>
+              <p class="text-sm text-slate-300">
+                Mở CapCut lên là mày mò chỉnh màu, add sticker, chèn filter lấp lánh... Mất 4 tiếng đồng hồ chỉ dựng được 1 clip mà xem lại như rạp xiếc.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Tư Duy Tối Giản Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                Biên tập thực chiến chỉ cần đúng 2 thao tác: <b>TÁCH (Split)</b> và <b>XÓA (Delete)</b>. Phóng to dòng thời gian, nhặt sạch các khoảng lặng thở dốc hoặc tiếng "ừm, à". Kết hợp tính năng <b>Tua nhanh (Speed ramp 1.5x - 3x)</b> + thêm hiệu ứng <b>Motion Blur</b> có sẵn trong Effects để tạo cảm giác chuyển động mượt mà như máy quay điện ảnh.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Ứng Dụng Xử Lý Footage Đời Thường</h4>
+              <p class="text-sm text-slate-300">
+                Cảnh đi bộ, cảnh dọn bàn, cảnh đóng gói hàng: quay bình thường thì dài lê thê, nhưng tua nhanh 2x + bật Motion blur 40% lập tức biến thành nhịp điệu hiện đại cuốn hút.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-07-1" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-07-1" class="text-slate-300 cursor-pointer">Lấy 1 đoạn video quay cảnh di chuyển hoặc thao tác tay dài 20s.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-07-2" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-07-2" class="text-slate-300 cursor-pointer">Cắt ngắn còn 8s, tăng tốc độ 2x và bật hiệu ứng Motion Blur.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-07-3" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-07-3" class="text-slate-300 cursor-pointer">Tự tạo phụ đề tự động (Auto Captions), căn lề 2 dòng chống rách chữ.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Thời gian dựng: Dưới 15 phút</span>
+              <span class="text-purple-400">Tiêu chí: Nhịp gãy gọn</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BÀI TẬP 08 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt08">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-mono font-bold text-sm border border-purple-500/40">08</span>
+            <div>
+              <span class="text-xs font-mono text-purple-400 uppercase font-semibold">CÔNG NGHỆ TRỢ LỰC • ĐÒN BẨY SẢN XUẤT</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Sử Dụng AI Tạo Cảnh Trám B-Roll & Hiệu Ứng Từ Video Tự Quay</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/2162457291248635/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (82s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Trở Ngại Không Gian & Bối Cảnh</h4>
+              <p class="text-sm text-slate-300">
+                Phòng chật, không có flycam, không thể đi quay ngoại cảnh xa xôi để minh họa cho những ý tưởng vĩ mô hoặc chuyển tiếp bối cảnh lớn.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Công Thức AI Thực Dụng Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                Sử dụng chính video đời thường tự quay của bạn làm ảnh tham chiếu (Image-to-Video). Dùng AI tạo thêm cảnh góc rộng giả lập Fly Cam hoặc cảnh chuyển không gian (như biến góc ban công thành toàn cảnh thành phố). AI hiện tại đã ổn định, không bị méo hình và cực kỳ rẻ, giúp video quảng cáo giữ chân người xem gấp bội.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Điểm Mấu Chốt</h4>
+              <p class="text-sm text-slate-300">
+                AI chỉ là người phụ việc, <b>nguyên liệu gốc phải là người thật việc thật</b> do bạn tự quay. Tuyệt đối không dùng video AI giả tạo 100% vì sẽ làm mất đi niềm tin của khách hàng.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-08-1" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-08-1" class="text-slate-300 cursor-pointer">Chụp 1 ảnh bối cảnh làm việc thật của bạn.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-08-2" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-08-2" class="text-slate-300 cursor-pointer">Dùng công cụ AI tạo 1 chuyển cảnh zoom-out rộng (Fake Fly Cam).</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-08-3" class="task-checkbox mt-1 w-4 h-4 rounded text-purple-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-08-3" class="text-slate-300 cursor-pointer">Ghép vào CapCut làm cảnh mở đầu hoặc chuyển cảnh chuyển ý.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Độ dài: 1 shot AI / 4s</span>
+              <span class="text-purple-400">Tiêu chí: Liền mạch tự nhiên</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ====================================================================
+         LEVEL 5: HOOK TÂM LÝ & CHUYỂN ĐỔI CHÂN THẬT (ĐỘ KHÓ: ★★★★★)
+         ==================================================================== -->
+    <div class="level-group space-y-8" data-level="lv5">
+      <div class="border-l-4 border-rose-400 pl-4 py-1">
+        <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-widest">CẤP ĐỘ 5 • ĐỘ KHÓ: ★★★★★</span>
+        <h2 class="text-2xl title-long text-white font-bold">Cú Sốc Hook 3 Giây & Kể Chuyện Ra Đơn Zalo Lịch Thiệp</h2>
+        <p class="text-sm text-slate-400 mt-1">Mục tiêu: Đạt tỷ lệ giữ chân cao nhất, định vị bản thân và dẫn khách về kết nối Zalo tự nhiên.</p>
+      </div>
+
+      <!-- BÀI TẬP 09 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt09">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-sm border border-rose-500/40">09</span>
+            <div>
+              <span class="text-xs font-mono text-rose-400 uppercase font-semibold">TÂM LÝ HỌC THUẬT TOÁN • 3 GIÂY SỐNG CÒN</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Hook Là Gì? Vì Sao Nó Quyết Định 70% Thành Công Của Video</h3>
+            </div>
+          </div>
+          <a href="https://www.facebook.com/reel/2091869361559299/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+            <i class="ph-bold ph-facebook-logo"></i>
+            <span>Xem Video Facebook Reel (36s) ↗</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Lỗi Sai Khiến Thuật Toán Bóp View</h4>
+              <p class="text-sm text-slate-300">
+                Chào hỏi rườm rà: <i>"Chào các bạn, hôm nay mình làm video này để..."</i>. Chưa nói hết câu người ta đã vuốt đi. Nếu viewer rời đi trước 3s, thuật toán đánh giá video rác và ngừng phân phối.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Bản Chất Hook Theo Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                Hook không phải là intro đẹp hay nhạc xập xình. <b>Hook là một CÚ SỐC TÂM LÝ.</b> Nhiệm vụ duy nhất là: DỪNG NGAY THAO TÁC LƯỚT CỦA NGƯỜI DÙNG. <br>
+                • <b>Cách ăn liền:</b> Động tác mạnh, giật mình, âm thanh ASMR gõ cộc cộc. <br>
+                • <b>Cách bền vững:</b> Dùng góc máy lạ (sát mặt đất, trong ngăn tủ nhìn ra) + đâm thẳng vào nỗi đau hoặc bóc trần sự thật ngượng miệng.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Ứng Dụng B-Roll Đời Thường Vào Hook</h4>
+              <p class="text-sm text-slate-300">
+                Cảnh mở đầu bằng 1 cú băm máy cận: bàn tay vò nát trang giấy, tiếng đóng sầm cửa xe, hoặc ngón tay ấn lì nút xóa trên bàn phím. Người xem tò mò muốn biết chuyện gì xảy ra tiếp theo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH CHO TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-09-1" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-09-1" class="text-slate-300 cursor-pointer">Viết 3 câu mở đầu đâm thẳng vào nỗi đau lớn nhất của khách hàng.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-09-2" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-09-2" class="text-slate-300 cursor-pointer">Quay 1 hành động B-roll bất ngờ trong 2 giây đầu tiên.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-09-3" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-09-3" class="text-slate-300 cursor-pointer">Tuyệt đối cấm các câu chào hỏi xã giao ở 3 giây đầu.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Thời gian vàng: Đúng 3 giây đầu</span>
+              <span class="text-rose-400">Tiêu chí: Giật ngón tay lướt</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BÀI TẬP 10 -->
+      <article class="glass-card rounded-2xl p-6 sm:p-8 transition-all relative overflow-hidden" id="card-bt10">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-sm border border-rose-500/40">10</span>
+            <div>
+              <span class="text-xs font-mono text-rose-400 uppercase font-semibold">ĐÍCH ĐẾN CHUYỂN ĐỔI • KINH DOANH CHÂN THẬT</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Video Storytelling: Định Vị BẢN THÂN Là Ngách & Lời Ngỏ Về Zalo</h3>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="https://www.facebook.com/reel/1629161828132946/" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+              <span>Reel Niche (172s) ↗</span>
+            </a>
+            <a href="https://www.facebook.com/reel/969746899486934/" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors">
+              <span>Reel Zalo (130s) ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          <div class="lg:col-span-7 space-y-4">
+            <div>
+              <h4 class="text-xs font-mono text-amber-400 uppercase font-bold mb-1">🚨 Căn Bệnh Copy Công Thức & Bán Hàng Ép Buộc</h4>
+              <p class="text-sm text-slate-300">
+                Suốt ngày đi copy kênh người khác, dùng chiêu trò chốt sale giật gân, kêu gào "mua ngay đi kẻo lỡ". Người trưởng thành và khách hàng có tiền cực kỳ dị ứng với kiểu bán hàng này.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-cyan-400 uppercase font-bold mb-1">💡 Triết Lý Cốt Lõi Của Anh Việt</h4>
+              <p class="text-sm text-slate-300">
+                1. <b>Sản phẩm chính là BẠN:</b> Thị trường ngách không nằm ở bên ngoài. Nó đến từ suy nghĩ, trải nghiệm thật và số giờ bay bạn tích lũy khi bấm máy và nâng nhận thức đến mốc 100 độ C. <br>
+                2. <b>Lời ngỏ Zalo lịch thiệp:</b> Kết bài bằng một nụ cười rạng rỡ, một câu thơ lục bát mộc mạc và lời mở: <i>"Xem clip có chỗ chưa thông / Bạn ơi đừng ngại đám đông ngoài này / Cứ nhắn cho mình vào đây / Biết gì mình chỉ, làm ngay cho tròn."</i> Khách hàng chủ động nhắn Zalo vì họ nể phục sự chân thành.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xs font-mono text-emerald-400 uppercase font-bold mb-1">🎯 Đỉnh Cao Của Lộ Trình Tân Thủ</h4>
+              <p class="text-sm text-slate-300">
+                Toàn bộ kỹ thuật quay cảnh đời thường, 3 cỡ cảnh, B-roll, CapCut... sinh ra để phục vụ cho video này: Một thước phim chân thật, đĩnh đạc, giúp bạn xây dựng uy tín cá nhân bền vững và bán được sản phẩm giá trị cao mà không phải cúi mình chèo kéo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Checklist For Team -->
+          <div class="lg:col-span-5 bg-slate-950/70 p-5 rounded-xl border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider">NHIỆM VỤ THỰC HÀNH TỐT NGHIỆP TEAM</span>
+              <ul class="space-y-2.5 mt-3 text-xs sm:text-sm">
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-10-1" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-10-1" class="text-slate-300 cursor-pointer">Quay 1 video hoàn chỉnh 45–60 giây theo mô hình: Hook 3s ➡️ Nói ngắn ➡️ B-roll đè ➡️ Lời ngỏ Zalo.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-10-2" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-10-2" class="text-slate-300 cursor-pointer">Không hô hào mua bán, chỉ kể một câu chuyện thật từ trải nghiệm làm nghề của mình.</label>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <input type="checkbox" id="chk-10-3" class="task-checkbox mt-1 w-4 h-4 rounded text-rose-500 bg-slate-800 border-slate-700 cursor-pointer" onchange="updateProgress()">
+                  <label for="chk-10-3" class="text-slate-300 cursor-pointer">Xuất bản lên kênh cá nhân (Facebook/Reels/TikTok) và nộp link để anh Việt chữa bài.</label>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Bài tập: Tốt nghiệp Level 5</span>
+              <span class="text-rose-400">Tiêu chí: Chân thật, ra đơn</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       MA TRẬN PHÂN VAI & KẾ HOẠCH TÁC CHIẾN CHO TEAM
+       ======================================================================== -->
+  <section class="py-16 bg-slate-950 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">TỔ CHỨC ĐỘI HÌNH THỰC CHIẾN</span>
+        <h2 class="text-2xl sm:text-3xl title-long text-white mt-2">
+          Kế Hoạch Huấn Luyện Dành Riêng Cho TEAM 3–5 Thành Viên
+        </h2>
+        <p class="text-sm text-slate-400 max-w-2xl mx-auto mt-2">
+          Để cả team cùng tiến bộ và không ai bị bỏ lại phía sau, hãy phân vai xoay vòng mỗi ngày theo mô hình "Tam Giác Tác Chiến".
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Vai 1 -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-4 font-bold font-mono">
+            01
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Người Cầm Máy (Camera Operator)</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Chịu trách nhiệm về khung hình, bố cục và ánh sáng. Không đứng một chỗ mà liên tục di chuyển tìm 3 cỡ cảnh (Toàn - Trung - Cận).
+          </p>
+          <div class="text-xs font-mono text-cyan-400 bg-slate-950 p-2.5 rounded border border-slate-800">
+            • Khóa nét & đo sáng<br>
+            • Đếm "1-2" trước khi bấm REC<br>
+            • Giữ máy tĩnh 3s mỗi góc
+          </div>
+        </div>
+
+        <!-- Vai 2 -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 font-bold font-mono">
+            02
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Người Diễn Thật (Main Subject)</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Thực hiện các hành động đời thường tại văn phòng hoặc cửa hàng. Tuyệt đối không nhìn vào camera (trừ khi quay Talking Head).
+          </p>
+          <div class="text-xs font-mono text-amber-400 bg-slate-950 p-2.5 rounded border border-slate-800">
+            • Diễn tự nhiên như thường ngày<br>
+            • Áp dụng quy tắc X2 hành động<br>
+            • Thao tác dứt khoát, rõ ràng
+          </div>
+        </div>
+
+        <!-- Vai 3 -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4 font-bold font-mono">
+            03
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Người Biên Tập (CapCut Editor)</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Ngồi ghép ngay sau khi quay xong. Áp dụng 2 thao tác Tách & Xóa, nhặt sạch khoảng lặng và chèn B-roll đè lên giọng đọc.
+          </p>
+          <div class="text-xs font-mono text-emerald-400 bg-slate-950 p-2.5 rounded border border-slate-800">
+            • Khớp nhịp cắt vào tiếng gõ/nhạc<br>
+            • Chèn B-roll che sạch lỗi vấp<br>
+            • Xuất bản trong vòng 20 phút
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Khẩu Quyết Thơ Lục Bát -->
+      <div class="mt-12 p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-cyan-500/30 text-center relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <span class="text-xs font-mono uppercase font-bold text-cyan-400 tracking-wider">KHẨU QUYẾT BẢY TẦNG CẢNH TRÁM CỦA ANH VIỆT</span>
+        <div class="font-acta-quote text-base sm:text-lg text-slate-200 mt-4 space-y-1 leading-relaxed max-w-xl mx-auto">
+          <p>Cutaway hình khớp từng lời,</p>
+          <p>Sequence băm nhịp liên hồi đẩy lên.</p>
+          <p>POV mượn mắt kề bên,</p>
+          <p>In-situ bối cảnh xây nền niềm tin.</p>
+          <p>Intercut luân chuyển góc nhìn,</p>
+          <p>Metaphor ẩn dụ gài hình cắm sâu.</p>
+          <p>Khoảng lặng chốt nhịp hồi lâu,</p>
+          <p class="text-cyan-400 font-bold">Bảy tầng cảnh trám in sâu vào đầu! 🚀</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER & COPYRIGHT
+       ======================================================================== -->
+  <footer class="py-10 bg-black border-t border-slate-900 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <span class="font-integral-reg text-slate-300">FEDU AI STUDIO</span>
+        <span>•</span>
+        <span>Đào Tạo Quay Dựng Video Thực Chiến</span>
+        <span>•</span>
+        <span>Thầy Nguyễn Đức Việt (15 năm FPT Arena)</span>
+      </div>
+      <p class="text-slate-600">
+        Giáo án điện tử phục vụ học viên & đội ngũ sản xuất nội dung. Cập nhật liên tục từ các case study thực chiến trên Facebook & Skool.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       INTERACTIVE JAVASCRIPT: BỘ LỌC & CHECKLIST LƯU LOCALSTORAGE
+       ======================================================================== -->
+  <script>
+    // Lọc theo Level
+    function filterLevel(level) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-cyan-500', 'text-black', 'border-cyan-400', 'active');
+        btn.classList.add('bg-slate-800', 'text-slate-300', 'border-slate-700');
+      });
+
+      const activeBtn = document.getElementById('btn-' + level);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-800', 'text-slate-300', 'border-slate-700');
+        activeBtn.classList.add('bg-cyan-500', 'text-black', 'border-cyan-400', 'active');
+      }
+
+      // Show/Hide cards
+      const groups = document.querySelectorAll('.level-group');
+      groups.forEach(group => {
+        if (level === 'all' || group.getAttribute('data-level') === level) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+
+    // Cập nhật tiến độ hoàn thành bài tập (Interactive Checklist)
+    const STORAGE_KEY = 'fedu_tan_thu_checklist_progress';
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.task-checkbox');
+      let checkedCount = 0;
+      const state = {};
+
+      checkboxes.forEach((cb, idx) => {
+        if (cb.checked) {
+          checkedCount++;
+          state[cb.id] = true;
+        } else {
+          state[cb.id] = false;
+        }
+      });
+
+      // Lưu vào LocalStorage
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+
+      // Cập nhật số bài tập đã xong (mỗi bài có 3 task, tính theo tổng task hoặc bài)
+      const totalTasks = checkboxes.length;
+      const progressText = document.getElementById('progress-text');
+      if (progressText) {
+        // Quy đổi ra tỉ lệ hoặc số bài tập hoàn thành (10 bài)
+        const completedLessons = Math.floor(checkedCount / 3);
+        progressText.innerText = `${completedLessons}/10 bài (${checkedCount}/${totalTasks} task)`;
+      }
+    }
+
+    // Load progress from LocalStorage on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const state = JSON.parse(saved);
+          Object.keys(state).forEach(id => {
+            const cb = document.getElementById(id);
+            if (cb && state[id]) {
+              cb.checked = true;
+            }
+          });
+        }
+      } catch (e) {}
+      updateProgress();
+    });
+  </script>
+
+</body>
+</html>
