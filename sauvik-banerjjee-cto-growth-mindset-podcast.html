@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Top CTO&#x27;s Advice: The Real Reason You Are Not Growing | Chuẩn Thiết Kế 30ngayviral</title>
+  <title>Sauvik Banerjjee: Top CTO's Advice - The Real Reason You Are Not Growing | Chuẩn Đọc 30ngayviral</title>
   
+  <!-- Font Definitions & System Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
+    /* ═══ 1. FONT DECLARATIONS ═══ */
     @font-face {
       font-family: 'SVN-Integral';
       src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
@@ -38,6 +40,7 @@
       font-display: swap;
     }
 
+    /* ═══ 2. DESIGN TOKENS (30ngayviral.fedu.vn Reading Optimized) ═══ */
     :root {
       --cl-bg:          #ffffff;
       --cl-tint:        #f8fafc;
@@ -48,29 +51,42 @@
       --cl-accent-text: #ffffff;
       --cl-line:        rgba(0, 0, 0, 0.06);
       --cl-line-strong: rgba(0, 0, 0, 0.12);
-      --cl-text-base:   #0f172a;
-      --cl-text-body:   #334155;
-      --cl-text-muted:  #64748b;
-      --cl-radius-lg:   24px;
-      --cl-radius-md:   16px;
-      --cl-radius-sm:   10px;
+      --cl-text-base:   #0f172a; /* Slate 900 */
+      --cl-text-body:   #334155; /* Slate 700 */
+      --cl-text-muted:  #64748b; /* Slate 500 */
+      --cl-code-bg:     #0b1120; /* Slate 950 deep reading terminal */
+      --cl-code-header: #1e293b;
+      --cl-code-text:   #e2e8f0;
+      --cl-code-green:  #10b981;
+      --cl-code-amber:  #f59e0b;
+      --cl-code-blue:   #38bdf8;
+
+      /* Radii */
+      --cl-radius-xl:   24px;
+      --cl-radius-lg:   16px;
+      --cl-radius-md:   12px;
+      --cl-radius-sm:   8px;
       --cl-radius-full: 9999px;
 
-      --font-display-short: 'SVN-Integral', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-display-long:  'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
+      /* Typography Stacks */
+      --font-display-short: 'SVN-Integral', 'Inter', -apple-system, sans-serif;
+      --font-display-long:  'SVN-Poppins', 'Poppins', -apple-system, sans-serif;
       --font-body:          'SVN-Poppins', 'Poppins', 'Inter', -apple-system, sans-serif;
       --font-editorial:     'Playfair Display', Georgia, serif;
       --font-mono:          'JetBrains Mono', monospace;
 
+      /* Apple Motion Curves */
       --apple-spring: cubic-bezier(0.25, 1, 0.35, 1.05);
       --apple-ease:   cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* ═══ 3. RESET & BASE ═══ */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     html {
@@ -83,170 +99,426 @@
     body {
       overflow-x: clip;
       min-height: 100vh;
-      line-height: 1.7;
+      line-height: 1.75;
+      font-size: 16.5px;
+      color: var(--cl-text-body);
     }
 
-    .cl-zebra-section {
+    /* ═══ 4. TOP STICKY BAR & READING PROGRESS ═══ */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      width: 0%;
+      background: linear-gradient(90deg, #1a73e8, #38bdf8);
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
       width: 100%;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      padding: 90px 24px;
-      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--cl-line);
+      z-index: 999;
+      padding: 12px 20px;
     }
 
-    .cl-zebra--light { background-color: var(--cl-bg); }
-    .cl-zebra--tint {
+    .top-nav__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .top-nav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cl-text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav__back:hover {
+      color: var(--cl-accent);
+    }
+
+    .top-nav__meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-badge {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--cl-accent);
+      background: var(--cl-accent-tint);
+      padding: 4px 10px;
+      border-radius: var(--cl-radius-full);
+      letter-spacing: 0.08em;
+    }
+
+    .top-nav__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--cl-accent);
+      padding: 6px 14px;
+      border-radius: var(--cl-radius-sm);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .top-nav__btn:hover {
+      opacity: 0.9;
+    }
+
+    /* ═══ 5. READING FLOW SECTIONS (VERTICAL SCROLL OPTIMIZED) ═══ */
+    .read-section {
+      width: 100%;
+      padding: 80px 24px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .read-section--light {
+      background-color: var(--cl-bg);
+    }
+
+    .read-section--tint {
       background-color: var(--cl-tint);
       border-top: 1px solid var(--cl-line);
       border-bottom: 1px solid var(--cl-line);
     }
 
-    .cl-sec-container {
+    .read-container {
       width: 100%;
-      max-width: 840px;
+      max-width: 820px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
       position: relative;
-      z-index: 2;
     }
 
-    .cl-sec-container--wide { max-width: 1040px; }
+    .read-container--wide {
+      max-width: 900px;
+    }
 
+    /* ═══ 6. TYPOGRAPHY ═══ */
     .cl-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--cl-accent);
       background: var(--cl-accent-tint);
       border: 1px solid rgba(26, 115, 232, 0.15);
-      padding: 7px 18px;
+      padding: 6px 16px;
       border-radius: var(--cl-radius-full);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .title-short {
+    .title-hero {
       font-family: var(--font-display-short);
       font-weight: 400;
-      font-size: clamp(28px, 4.5vw, 44px);
-      line-height: 1.2;
+      font-size: clamp(32px, 4.8vw, 52px);
+      line-height: 1.15;
       letter-spacing: 0.02em;
       text-transform: uppercase;
       color: var(--cl-text-base);
-      margin-bottom: 18px;
-      text-wrap: balance;
+      margin-bottom: 16px;
     }
 
-    .title-long {
+    .title-sub {
       font-family: var(--font-display-long);
       font-weight: 600;
-      font-size: clamp(22px, 3.5vw, 34px);
+      font-size: clamp(22px, 3.2vw, 32px);
       line-height: 1.35;
       letter-spacing: -0.015em;
       color: var(--cl-text-base);
       margin-bottom: 20px;
-      text-wrap: balance;
     }
 
-    .editorial-hook {
+    .title-sec {
+      font-family: var(--font-display-short);
+      font-weight: 400;
+      font-size: clamp(24px, 3.5vw, 36px);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cl-text-base);
+      margin-bottom: 14px;
+    }
+
+    .editorial-quote {
       font-family: var(--font-editorial);
       font-style: italic;
-      font-size: clamp(17px, 2.2vw, 21px);
+      font-size: clamp(18px, 2.2vw, 23px);
       line-height: 1.6;
       color: var(--cl-accent);
+      margin: 18px 0 24px;
+      padding-left: 20px;
+      border-left: 3px solid var(--cl-accent);
+    }
+
+    .lead-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--cl-text-base);
       margin-bottom: 24px;
-      max-width: 720px;
+      font-weight: 450;
     }
 
-    .cl-body {
-      font-size: clamp(15.5px, 1.6vw, 17.5px);
+    .body-p {
+      font-size: 16.5px;
+      line-height: 1.8;
       color: var(--cl-text-body);
-      line-height: 1.75;
-      margin-bottom: 28px;
-      max-width: 720px;
+      margin-bottom: 20px;
     }
 
-    .apple-reveal {
-      opacity: 0;
-      transform: translate3d(0, 26px, 0);
-      transition: opacity 0.5s var(--apple-ease), transform 0.58s var(--apple-spring);
-      transition-delay: var(--delay, 0ms);
-      will-change: opacity, transform;
-    }
-
-    .apple-reveal.is-visible {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      will-change: auto;
-    }
-
-    .apple-cards-grid {
+    .podcast-meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 22px;
-      width: 100%;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 28px 0 36px;
+      padding: 18px 22px;
+      background: var(--cl-tint);
+      border: 1px solid var(--cl-line);
+      border-radius: var(--cl-radius-lg);
     }
 
-    .apple-card {
-      background: var(--cl-card);
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-item__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cl-text-muted);
+    }
+
+    .meta-item__val {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--cl-text-base);
+    }
+
+    /* ═══ 7. CODE BLOCK (INSIGHTS COPYABLE UI) ═══ */
+    .insight-block {
+      margin: 40px 0;
+      background: var(--cl-code-bg);
+      border-radius: var(--cl-radius-lg);
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.25);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .insight-block:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.35), 0 0 20px rgba(56, 189, 248, 0.08);
+    }
+
+    .insight-block__header {
+      background: var(--cl-code-header);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      user-select: none;
+    }
+
+    .insight-block__left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mac-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mac-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .mac-dot--red   { background: #ef4444; }
+    .mac-dot--amber { background: #f59e0b; }
+    .mac-dot--green { background: #10b981; }
+
+    .insight-block__tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .insight-block__right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--cl-radius-sm);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--cl-accent);
+      color: #ffffff;
+      border-color: var(--cl-accent);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: #10b981 !important;
+      color: #ffffff !important;
+      border-color: #10b981 !important;
+    }
+
+    .insight-block__pre {
+      margin: 0;
+      padding: 22px 24px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--cl-code-text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .insight-block__pre .code-title {
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 14.5px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .insight-block__pre .code-section {
+      color: #f59e0b;
+      font-weight: 700;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .insight-block__pre .code-mantra {
+      color: #34d399;
+      font-style: italic;
+      margin-top: 14px;
+      display: block;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    /* ═══ 8. EDITORIAL COMPARISON CARDS ═══ */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .compare-card {
+      background: #ffffff;
       border: 1px solid var(--cl-line);
       border-radius: var(--cl-radius-lg);
       padding: 26px 24px;
-      text-align: left;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      opacity: 0;
-      transform: translate3d(0, 22px, 0) scale(0.985);
-      transition: opacity 0.45s var(--apple-ease), transform 0.52s var(--apple-spring), box-shadow 0.35s ease, border-color 0.25s ease;
-      transition-delay: var(--card-delay, 0ms);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .is-visible .apple-card, .apple-card.is-visible {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-      will-change: auto;
+    .compare-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--cl-accent);
     }
 
-    .apple-card:hover {
-      transform: translate3d(0, -6px, 0) scale(1.01);
-      border-color: rgba(26, 115, 232, 0.35);
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08), 0 0 24px rgba(26, 115, 232, 0.06);
+    .compare-card__badge {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--cl-radius-full);
+      display: inline-block;
+      margin-bottom: 12px;
     }
 
-    .apple-card__title {
+    .compare-card__badge--delusion {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fee2e2;
+    }
+
+    .compare-card__badge--truth {
+      background: #eff6ff;
+      color: #1a73e8;
+      border: 1px solid #dbeafe;
+    }
+
+    .compare-card__title {
       font-family: var(--font-display-long);
+      font-size: 17px;
       font-weight: 600;
-      font-size: 18px;
-      line-height: 1.35;
       color: var(--cl-text-base);
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
-    .apple-list {
+    .compare-card__text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--cl-text-body);
+    }
+
+    /* ═══ 9. ACTION TICK LIST ═══ */
+    .action-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto 32px;
-      text-align: left;
+      gap: 14px;
+      margin: 28px 0;
     }
 
-    .apple-list-item {
+    .action-item {
       display: flex;
       align-items: flex-start;
       gap: 16px;
@@ -254,19 +526,24 @@
       padding: 18px 22px;
       border-radius: var(--cl-radius-md);
       border: 1px solid var(--cl-line);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .cl-zebra--tint .apple-list-item { background: #ffffff; }
-    .cl-zebra--light .apple-list-item { background: var(--cl-tint); }
+    .read-section--tint .action-item {
+      background: #ffffff;
+    }
 
-    .apple-list-item:hover {
+    .read-section--light .action-item {
+      background: var(--cl-tint);
+    }
+
+    .action-item:hover {
       transform: translateX(4px);
       border-color: var(--cl-accent);
     }
 
-    .apple-list-item__bullet {
+    .action-item__icon {
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -275,16 +552,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    .apple-list-item__content {
+    .action-item__content {
       font-size: 15.5px;
       color: var(--cl-text-body);
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    .action-item__content strong {
+      color: var(--cl-text-base);
+    }
+
+    /* ═══ 10. BUTTONS & FOOTER ═══ */
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 36px;
     }
 
     .cl-btn {
@@ -295,21 +585,22 @@
       background: var(--cl-accent);
       color: var(--cl-accent-text);
       font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 15.5px;
       letter-spacing: 0.02em;
-      padding: 16px 38px;
+      padding: 14px 30px;
       border-radius: var(--cl-radius-md);
       text-decoration: none;
       border: none;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(26, 115, 232, 0.25);
-      transition: transform 0.22s var(--apple-spring), box-shadow 0.22s ease;
+      box-shadow: 0 4px 16px rgba(26, 115, 232, 0.2);
+      transition: transform 0.2s var(--apple-spring), box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
     .cl-btn:hover {
-      transform: translateY(-3px) scale(1.015);
-      box-shadow: 0 14px 36px rgba(26, 115, 232, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 115, 232, 0.3);
+      opacity: 0.96;
     }
 
     .cl-btn--secondary {
@@ -318,360 +609,639 @@
       border: 1px solid var(--cl-line-strong);
       box-shadow: none;
     }
+
     .cl-btn--secondary:hover {
       background: var(--cl-tint);
       color: var(--cl-text-base);
     }
 
-    .cl-scroll-hint {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--cl-text-muted);
-      opacity: 0.7;
-      animation: bounce 2s infinite ease-in-out;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 8px); }
-    }
-
+    /* ═══ 11. MOBILE ADAPTATION ═══ */
     @media (max-width: 768px) {
-      .cl-zebra-section { min-height: 100dvh; padding: 64px 20px; }
-      .apple-cards-grid { grid-template-columns: 1fr; gap: 16px; }
-      .cl-btn { width: 100%; }
+      .read-section {
+        padding: 52px 18px;
+      }
+      .top-nav {
+        padding: 10px 16px;
+      }
+      .top-nav__meta {
+        display: none;
+      }
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+      .insight-block__pre {
+        font-size: 12.5px;
+        padding: 16px 14px;
+      }
+      .cl-btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- KHỐI 1: HERO (LIGHT) -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-hero">
-    <div class="cl-sec-container apple-reveal">
-      <div class="cl-badge">CÔNG NGHỆ &amp; LÃNH ĐẠO // FO558</div>
-      <h1 class="title-short">SAUVIK BANERJJEE</h1>
-      <h2 class="title-long">Top CTO&#x27;s Advice: The Real Reason You Are Not Growing</h2>
-      <p class="editorial-hook">"Chăm làm vùi mặt thâu đêm / Ngỡ rằng thăng tiến lại thêm nhọc nhằn"</p>
-      <p class="cl-body">Bóc tách tư duy lãnh đạo công nghệ cấp cao, phân biệt giữa nỗ lực cơ bắp mù quáng và năng lực ra quyết định chiến lược, cùng kiến trúc thích nghi với làn sóng AI toàn diện.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-        <a href="#sec-delusion" class="cl-btn">KHÁM PHÁ BÀI HỌC HỆ THỐNG ↓</a>
-        <a href="https://www.youtube.com/watch?v=XwawXRaNfzM" target="_blank" class="cl-btn cl-btn--secondary">XEM YOUTUBE GỐC ↗</a>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="top-nav__inner">
+      <a href="21-podcast-raj-shamani-khong-chinh-tri.html" class="top-nav__back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Danh mục 21 Podcast</span>
+      </a>
+      <div class="top-nav__meta">
+        <span class="nav-badge">30NGAYVIRAL // READING MODE</span>
+        <span style="font-size: 13px; color: var(--cl-text-muted);" id="readingPercent">0% ĐÃ ĐỌC</span>
       </div>
+      <a href="https://www.youtube.com/watch?v=XwawXRaNfzM" target="_blank" class="top-nav__btn">
+        <span>Xem YouTube</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
     </div>
-    <div class="cl-scroll-hint">
-      <span>Cuộn khám phá</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 01: HERO / TỔNG QUAN TẬP PODCAST (LIGHT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--light" id="sec-hero">
+    <div class="read-container">
+      <div class="cl-badge">CÔNG NGHỆ &amp; LÃNH ĐẠO // EPISODE FO558</div>
+      <h1 class="title-hero">SAUVIK BANERJJEE</h1>
+      <h2 class="title-sub">Top CTO's Advice: The Real Reason You Are Not Growing</h2>
+      
+      <div class="editorial-quote">
+        "Chăm làm vùi mặt thâu đêm — Ngỡ rằng thăng tiến lại thêm nhọc nhằn."
+      </div>
+
+      <p class="lead-text">
+        Tại sao có những kỹ sư kỳ cựu làm việc 14 tiếng mỗi ngày suốt 10 năm nhưng mãi không vượt qua được ngưỡng lương trần? Và điều gì giúp một kiến trúc sư công nghệ lọt vào top những người ra quyết định cho các siêu ứng dụng hàng chục triệu người dùng?
+      </p>
+
+      <p class="body-p">
+        Trong cuộc đối thoại sâu với Raj Shamani, Sauvik Banerjjee — cựu CTO của Tata Digital và hiện là Global CEO của Rezolve AI — đã bóc trần sự thật ngượng miệng: <strong>Hệ thống không bao giờ trả tiền cho số giờ bạn ngồi trước màn hình; hệ thống chỉ trả tiền cho trọng lượng của quyết định bạn đưa ra.</strong>
+      </p>
+
+      <!-- Metadata Box -->
+      <div class="podcast-meta-grid">
+        <div class="meta-item">
+          <span class="meta-item__label">Khách mời</span>
+          <span class="meta-item__val">Sauvik Banerjjee</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-item__label">Vai trò</span>
+          <span class="meta-item__val">Cựu CTO Tata Digital</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-item__label">Thời lượng gốc</span>
+          <span class="meta-item__val">1 giờ 48 phút</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-item__label">Thời lượng đọc</span>
+          <span class="meta-item__val">~8 phút chắt lọc</span>
+        </div>
+      </div>
+
+      <!-- Quick Copy Code: Master Summary Prompt -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">TÓM TẮT THỰC CHIẾN // 1-CLICK COPY</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-hero-summary')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-hero-summary"><span class="code-title">📌 BẢN ĐỒ TƯ DUY NÂNG CẤP BẢN THÂN CỦA TOP CTO (SAUVIK BANERJJEE)</span>
+1. NỖ LỰC CƠ BẮP VS ĐÒN BẨY QUYẾT ĐỊNH:
+   - Làm việc chăm chỉ không có định hướng chỉ là hình thức trốn tránh tư duy chiến lược.
+   - Một CTO sai 3 quyết định kiến trúc có thể đốt cháy công sức 2 năm của 500 kỹ sư.
+
+2. BẪY CHUYÊN MÔN KỸ THUẬT:
+   - Kỹ năng code giỏi chỉ đưa bạn lên Senior. Ngôn ngữ kinh doanh và P&L mới đưa bạn lên C-Level.
+
+3. NGUYÊN LÝ GIẢI PHÓNG VẬN HÀNH (REDUNDANCY):
+   - Tổ chức xuất sắc là nơi lãnh đạo vắng mặt 3 tháng, hệ thống vẫn tự động tăng trưởng.
+
+4. LÀN SÓNG AI:
+   - AI triệt tiêu kẻ chỉ biết gõ lệnh; AI nâng tầm kẻ biết định nghĩa và đóng khung bài toán.
+
+5. ĐÒN BẨY HÀNH ĐỘNG HÀNG NGÀY:
+   - 45 phút mỗi sáng không màn hình: Đâu là 1 quyết định triệt tiêu 80% rác hệ thống hôm nay?
+
+<span class="code-mantra">📜 MANTRA: "Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"</span></pre>
+      </div>
+
     </div>
   </section>
 
-  <!-- KHỐI 2: BÓC TRẦN LẦM TƯỞNG (TINT) -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-delusion">
-    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">01 / BÓC TRẦN LẦM TƯỞNG</div>
-      <h2 class="title-short">SỰ THẬT VÀ ẢO TƯỞNG ĐÁM ĐÔNG</h2>
-      <p class="editorial-hook">"Chăm làm vùi mặt thâu đêm / Ngỡ rằng thăng tiến lại thêm nhọc nhằn"</p>
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 02: BÓC TRẦN LẦM TƯỞNG ĐÁM ĐÔNG (TINT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--tint" id="sec-delusion">
+    <div class="read-container">
+      <div class="cl-badge">01 / BÓC TRẦN ẢO TƯỞNG</div>
+      <h2 class="title-sec">SỰ THẬT VÀ LẦM TƯỞNG ĐÁM ĐÔNG</h2>
+      
+      <p class="body-p">
+        Đa số người làm nghề công nghệ và quản trị bị mắc kẹt ở tầng nhận thức thấp nhất: tin rằng chỉ cần tích lũy số giờ lao động là danh vọng và tiền bạc sẽ tự đến. Dưới đây là 2 ảo tưởng nguy hiểm nhất được Sauvik Banerjjee vạch trần:
+      </p>
 
-      <div class="apple-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-        <div class="apple-card" style="--card-delay: 0ms;">
-          <div class="text-3xl text-blue-500 mb-2">“</div>
-          <p class="text-base text-slate-700 leading-relaxed font-medium">Lao động chăm chỉ không có định hướng chỉ là hình thức trốn tránh tư duy chiến lược; hệ thống không trả tiền cho số giờ bạn ngồi mà trả cho trọng lượng của quyết định bạn đưa ra.</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-card__badge compare-card__badge--delusion">ẢO TƯỞNG #01</span>
+          <h3 class="compare-card__title">Cày cuốc 14 tiếng/ngày để chứng minh năng lực</h3>
+          <p class="compare-card__text">
+            Đám đông tin rằng thức khuya, cày task vụn vặt và sẵn sàng trả lời tin nhắn lúc nửa đêm là biểu hiện của sự tận tụy. Thực tế, đây là dấu hiệu của người bất lực trong việc sắp xếp độ ưu tiên và thiếu khả năng tạo đòn bẩy.
+          </p>
         </div>
-        <div class="apple-card" style="--card-delay: 100ms;">
-          <div class="text-3xl text-blue-500 mb-2">“</div>
-          <p class="text-base text-slate-700 leading-relaxed font-medium">Đám đông lầm tưởng tích lũy chứng chỉ kỹ thuật là chìa khóa thăng tiến, nhưng ở tầng cao nhất, người chiến thắng là kẻ có khả năng dịch thuật sự phức tạp của công nghệ thành bài toán kinh doanh sinh lời.</p>
+
+        <div class="compare-card">
+          <span class="compare-card__badge compare-card__badge--truth">SỰ THẬT C-LEVEL</span>
+          <h3 class="compare-card__title">Giá trị nằm ở trọng lượng của quyết định</h3>
+          <p class="compare-card__text">
+            Một quyết định cấu trúc đúng trong 15 phút có thể tiết kiệm 10 triệu USD ngân sách hạ tầng máy chủ và bảo vệ 500 nhân sự khỏi cuộc khủng hoảng sa thải. Bạn được trả công theo mức độ rủi ro mà quyết định của bạn gánh vác.
+          </p>
         </div>
       </div>
+
+      <!-- Code block: Phân biệt 2 nhóm nhân sự -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">MA TRẬN ĐỐI CHIẾU // COPY NỘI DUNG</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-delusion-matrix')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-delusion-matrix"><span class="code-title">[BẢNG PHÂN LOẠI 2 TẦNG NHẬN THỨC NGHỀ NGHIỆP]</span>
+
+NHÓM 1: CÔNG NHÂN KỸ THUẬT (OPERATIONAL LABORS)
+• Thước đo: Số giờ ngồi làm việc, số task hoàn thành, số chứng chỉ thu thập.
+• Hành vi: Chờ giao việc, tỉ mỉ gọt từng chi tiết nhỏ nhưng không hiểu bức tranh lớn.
+• Giới hạn: Chạm trần thu nhập khi cạn kiệt thời gian và sức khỏe sinh học.
+
+NHÓM 2: KIẾN TRÚC SƯ CHIẾN LƯỢC (STRATEGIC ARCHITECTS)
+• Thước đo: Tỷ suất sinh lời trên thời gian (ROI), giảm thiểu rủi ro, tăng thông lượng tổ chức.
+• Hành vi: Dịch bài toán kinh doanh thành cấu trúc công nghệ, xây đội ngũ tự vận hành.
+• Kết quả: Thu nhập phi tuyến tính, thăng tiến cấp số nhân nhờ đòn bẩy ra quyết định.
+
+<span class="code-mantra">"Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"</span></pre>
+      </div>
+
     </div>
   </section>
 
-  <!-- KHỐI 3: 4 INSIGHT ĐẦU TIÊN (LIGHT) -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-insights-1">
-    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 03: 4 INSIGHT ĐỘT PHÁ ĐẦU TIÊN (LIGHT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--light" id="sec-insights-part1">
+    <div class="read-container">
       <div class="cl-badge">02 / NGUYÊN LÝ CỐT LÕI (PHẦN 1)</div>
-      <h2 class="title-short">4 BÀI HỌC CỐT LÕI ĐẦU TIÊN</h2>
-      <p class="editorial-hook">"Lắng nghe thực tế để điều chỉnh thuật toán hành vi."</p>
+      <h2 class="title-sec">4 BÀI HỌC CỐT LÕI ĐẦU TIÊN</h2>
+      
+      <p class="body-p">
+        Mỗi bài học dưới đây được bóc tách theo đúng công thức 3 tầng: <strong>Dữ kiện thực tế</strong> $ightarrow$ <strong>Bản chất vật lý/hệ thống</strong> $ightarrow$ <strong>Đòn bẩy hành động</strong> để người đọc có thể lưu trữ và ứng dụng ngay.
+      </p>
 
-      <div class="apple-cards-grid">
-        
-            <div class="apple-card" style="--card-delay: 0ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #01
-              </div>
-              <h3 class="apple-card__title">Năng lực ra quyết định quan trọng gấp bội nỗ lực cơ bắp</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Sauvik chỉ ra rằng một CTO đưa ra 3 quyết định kiến trúc sai lầm có thể thiêu rụi 2 năm làm việc cật lực của 500 kỹ sư hàng đầu.
-              </div>
-
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Nhân viên cố gắng làm thêm giờ (overtime), giải quyết từng task vụn vặt để chứng minh sự tận tụy với ban giám đốc.</p>
-                <p><strong>🔬 Bản chất:</strong> Theo vật lý đòn bẩy: điểm tựa (chất lượng quyết định) nằm càng gần trọng tâm chiến lược thì lực tác động (công sức bỏ ra) càng nhỏ mà nâng được khối tài sản khổng lồ.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Mỗi sáng dành 45 phút không màn hình để đánh giá: &#x27;Nếu hôm nay chỉ được chốt 1 quyết định kiến trúc, đâu là việc giảm 80% rác hệ thống?&#x27;.</p>
-              </div>
-
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Điểm tựa đặt đúng một phân / Đòn bẩy nâng nhẹ muôn phần gian lao"
-              </div>
+      <!-- INSIGHT #01 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
             </div>
-            
-            <div class="apple-card" style="--card-delay: 80ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #02
-              </div>
-              <h3 class="apple-card__title">Bẫy chuyên gia kỹ thuật: Càng giỏi chuyên môn càng khó lên đỉnh</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Sauvik nhận thấy 90% Senior Engineer bị kẹt ở mức lương trần vì họ từ chối học ngôn ngữ tài chính và tâm lý học tổ chức.
-              </div>
+            <span class="insight-block__tag">INSIGHT #01 // NĂNG LỰC RA QUYẾT ĐỊNH</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-1')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-1"><span class="code-title">🎯 INSIGHT #01: NĂNG LỰC RA QUYẾT ĐỊNH GẤP BỘI NỖ LỰC CƠ BẮP</span>
 
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Tin rằng chỉ cần viết code sạch nhất, tối ưu thuật toán nhanh nhất là đương nhiên sẽ được bổ nhiệm làm lãnh đạo cấp cao.</p>
-                <p><strong>🔬 Bản chất:</strong> Hiện tượng bão hòa cục bộ trong lý thuyết đồ thị: tối ưu một nút cục bộ (code cá nhân) không làm tăng thông lượng (throughput) của toàn mạng lưới doanh nghiệp.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Chuyển dịch 30% thời gian học code sang đọc báo cáo tài chính P&amp;L và mô hình hóa dòng tiền doanh thu của sản phẩm.</p>
-              </div>
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Sauvik chỉ ra rằng một CTO đưa ra 3 quyết định kiến trúc sai lầm có thể thiêu rụi 2 năm làm việc cật lực của 500 kỹ sư hàng đầu.
 
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Thuật toán tối ưu một mình / Không bằng mở lối chuyển mình toàn quân"
-              </div>
-            </div>
-            
-            <div class="apple-card" style="--card-delay: 160ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #03
-              </div>
-              <h3 class="apple-card__title">Tư duy giải phóng bản thân khỏi vận hành (Redundancy Design)</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Một CTO xuất sắc phải xây dựng đội ngũ sao cho nếu ông ta biến mất 3 tháng, hệ thống vẫn tự vận hành và tăng trưởng ổn định.
-              </div>
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Nhân viên cố làm thêm giờ (overtime), nhặt nhạnh task vụn để chứng minh lòng trung thành.
+• Bản chất: Nguyên lý đòn bẩy Archimedes: Điểm tựa (chất lượng quyết định) nằm càng gần trọng tâm chiến lược thì lực tác động (công sức bỏ ra) càng nhỏ mà nâng được khối tài sản khổng lồ.
+• Đòn bẩy thực chiến: Mỗi sáng dành 45 phút không nhìn màn hình để tự vấn: "Nếu hôm nay chỉ được chốt 1 quyết định kiến trúc, đâu là quyết định giúp triệt tiêu 80% sự cố hệ thống?".
 
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Lãnh đạo giữ chặt quyền duyệt từng chi tiết nhỏ để cảm thấy bản thân quan trọng và không thể thay thế.</p>
-                <p><strong>🔬 Bản chất:</strong> Định luật bảo toàn năng lượng: người làm nghẽn cổ chai (bottleneck) của tổ chức chính là người ôm đồm kiểm soát mọi dòng chảy thông tin.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Xây dựng ma trận phân quyền RACI và hệ thống tự động cảnh báo ngưỡng lỗi; tự cấm bản thân can thiệp vào các quyết định dưới 10.000 USD.</p>
-              </div>
-
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Lãnh đạo buông bớt cái tôi / Hệ thống tự chạy sinh sôi bội phần"
-              </div>
-            </div>
-            
-            <div class="apple-card" style="--card-delay: 240ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #04
-              </div>
-              <h3 class="apple-card__title">Làn sóng AI: Thay thế kẻ gõ code, nâng tầm kẻ đóng khung bài toán</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Rezolve AI xử lý hàng triệu truy vấn ngữ nghĩa trong vài giây, biến các lập trình viên mức cơ bản thành nhân lực dư thừa nếu không biết điều phối AI.
-              </div>
-
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Sợ hãi AI cướp việc hoặc thờ ơ cho rằng AI chỉ là trào lưu thổi phồng ngắn hạn của giới đầu tư mạo hiểm.</p>
-                <p><strong>🔬 Bản chất:</strong> Quy luật entropy thông tin: AI hạ chi phí tạo nội dung/code xuống bằng 0, đẩy giá trị của bộ lọc (thẩm định chất lượng &amp; ngữ cảnh bài toán) lên vô cực.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Tập trung huấn luyện kỹ năng &#x27;Prompt Architecture&#x27; và &#x27;Edge-case Validation&#x27; — kiểm tra lỗi ngầm và tư duy phản biện hệ thống.</p>
-              </div>
-
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Máy làm thay việc tầm thường / Người lo định hướng mở đường tương lai"
-              </div>
-            </div>
-            
+<span class="code-mantra">📜 MANTRA: "Điểm tựa đặt đúng một phân — Đòn bẩy nâng nhẹ muôn phần gian lao"</span></pre>
       </div>
+
+      <!-- INSIGHT #02 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">INSIGHT #02 // BẪY KỸ THUẬT VIÊN</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-2')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-2"><span class="code-title">🎯 INSIGHT #02: BẪY CHUYÊN GIA KỸ THUẬT (CÀNG GIỎI CHUYÊN MÔN CÀNG KHÓ LÊN ĐỈNH)</span>
+
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Sauvik nhận thấy 90% Senior Engineer bị kẹt ở mức lương trần vì họ từ chối học ngôn ngữ tài chính và tâm lý học tổ chức.
+
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Tin rằng chỉ cần viết code sạch nhất, tối ưu thuật toán nhanh nhất là đương nhiên sẽ được thăng chức lãnh đạo.
+• Bản chất: Hiện tượng bão hòa cục bộ trong lý thuyết đồ thị: Tối ưu một nút mạng đơn lẻ không làm tăng thông lượng của toàn bộ hệ sinh thái doanh nghiệp.
+• Đòn bẩy thực chiến: Dành 30% thời gian học code sang đọc báo cáo tài chính P&L, hiểu chi phí thu hút khách hàng (CAC) và giá trị vòng đời khách hàng (LTV).
+
+<span class="code-mantra">📜 MANTRA: "Thuật toán tối ưu một mình — Không bằng mở lối chuyển mình toàn quân"</span></pre>
+      </div>
+
+      <!-- INSIGHT #03 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">INSIGHT #03 // GIẢI PHÓNG KHỎI VẬN HÀNH</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-3')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-3"><span class="code-title">🎯 INSIGHT #03: THIẾT KẾ DƯ THỪA (REDUNDANCY DESIGN) ĐỂ GIẢI PHÓNG LÃNH ĐẠO</span>
+
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Một CTO xuất sắc phải xây dựng đội ngũ sao cho nếu ông ta biến mất trong 3 tháng, hệ thống vẫn tự vận hành và tăng trưởng ổn định.
+
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Lãnh đạo nắm chặt quyền duyệt từng việc nhỏ để cảm thấy bản thân quan trọng và không thể bị thay thế.
+• Bản chất: Nút thắt cổ chai (bottleneck): Một tổ chức không thể lớn hơn khả năng chịu tải của cá nhân người đứng đầu nếu mọi luồng thông tin đều phải đi qua một bộ não.
+• Đòn bẩy thực chiến: Xây dựng ma trận phân quyền RACI rõ ràng; tự ban hành lệnh cấm bản thân can thiệp vào các quyết định dưới 10.000 USD.
+
+<span class="code-mantra">📜 MANTRA: "Lãnh đạo buông bớt cái tôi — Hệ thống tự chạy sinh sôi bội phần"</span></pre>
+      </div>
+
+      <!-- INSIGHT #04 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">INSIGHT #04 // ĐỊNH VỊ THỜI KỲ AI</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-4')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-4"><span class="code-title">🎯 INSIGHT #04: LÀN SÓNG AI (THAY THẾ KẺ GÕ CODE, NÂNG TẦM KẺ ĐÓNG KHUNG BÀI TOÁN)</span>
+
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Rezolve AI xử lý hàng triệu truy vấn ngữ nghĩa trong vài giây, biến các lập trình viên mức cơ bản thành nhân lực dư thừa nếu không biết điều phối AI.
+
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Sợ hãi AI cướp việc hoặc thờ ơ cho rằng AI chỉ là trào lưu thổi phồng ngắn hạn của giới đầu tư mạo hiểm.
+• Bản chất: Quy luật entropy thông tin: Khi chi phí tạo code/nội dung giảm về 0, giá trị của bộ lọc (thẩm định chất lượng &amp; nắm bắt ngữ cảnh) tiệm cận vô cực.
+• Đòn bẩy thực chiến: Nâng cấp kỹ năng "Prompt Architecture" và "Edge-case Validation" — kiểm tra lỗi ngầm và phản biện kiến trúc hệ thống.
+
+<span class="code-mantra">📜 MANTRA: "Máy làm thay việc tầm thường — Người lo định hướng mở đường tương lai"</span></pre>
+      </div>
+
     </div>
   </section>
 
-  <!-- KHỐI 4: 4 INSIGHT TIẾP THEO (TINT) -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-insights-2">
-    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 04: 4 INSIGHT ĐỘT PHÁ TIẾP THEO (TINT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--tint" id="sec-insights-part2">
+    <div class="read-container">
       <div class="cl-badge">03 / NGUYÊN LÝ CỐT LÕI (PHẦN 2)</div>
-      <h2 class="title-short">4 BÀI HỌC ĐỘT PHÁ TIẾP THEO</h2>
-      <p class="editorial-hook">"Chuyển dịch từ hiểu biết sang đòn bẩy thực chiến."</p>
+      <h2 class="title-sec">4 BÀI HỌC ĐỘT PHÁ TIẾP THEO</h2>
+      
+      <p class="body-p">
+        Từ trí tuệ cảm xúc trong các cuộc sáp nhập tỷ USD đến năng lực bảo toàn năng lượng sinh học cho bộ não chiến lược:
+      </p>
 
-      <div class="apple-cards-grid">
-        
-            <div class="apple-card" style="--card-delay: 0ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #05
-              </div>
-              <h3 class="apple-card__title">Trí tuệ cảm xúc (EQ) là hạ tầng cứng của nhà công nghệ</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Trong các cuộc sáp nhập hàng tỷ USD, thương vụ đổ vỡ 80% là do bất đồng văn hóa và cái tôi của các nhà sáng lập kỹ thuật.
-              </div>
-
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Dùng logic thuần túy để tranh cãi đúng sai với hội đồng quản trị và đối tác kinh doanh.</p>
-                <p><strong>🔬 Bản chất:</strong> Nguyên lý truyền sóng: hai tần số cảm xúc lệch pha sẽ triệt tiêu năng lượng của nhau; phải đồng bộ pha (pha cảm xúc) trước khi truyền tải tín hiệu logic.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Áp dụng kỹ thuật lắng nghe chủ động không ngắt lời; luôn lặp lại quan điểm của đối phương cho đến khi họ xác nhận &#x27;Anh hiểu đúng ý tôi&#x27;.</p>
-              </div>
-
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Logic chỉ dựng khung xương / Thấu hiểu cảm xúc mở đường nhân tâm"
-              </div>
+      <!-- INSIGHT #05 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
             </div>
-            
-            <div class="apple-card" style="--card-delay: 80ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #06
-              </div>
-              <h3 class="apple-card__title">Nghệ thuật thất bại nhanh và đóng gói bài học thành tài sản số</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Các dự án thử nghiệm tại Tata Digital được cấp ngân sách &#x27;Fail-Fast&#x27; trong 6 tuần để kiểm chứng giả định trước khi rót hàng chục triệu USD.
-              </div>
+            <span class="insight-block__tag">INSIGHT #05 // EQ LÀ HẠ TẦNG CỨNG</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-5')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-5"><span class="code-title">🎯 INSIGHT #05: TRÍ TUỆ CẢM XÚC (EQ) LÀ HẠ TẦNG CỨNG CỦA NHÀ CÔNG NGHỆ</span>
 
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Cố gắng bảo vệ một tính năng thất bại đến cùng vì sợ bị đánh giá là năng lực yếu kém.</p>
-                <p><strong>🔬 Bản chất:</strong> Quy trình lặp Bayes: thất bại là việc thu thập dữ liệu xác suất thực địa để cập nhật niềm tin tiên nghiệm, giúp lần thử tiếp theo chính xác hơn.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Đặt ra giới hạn dừng lỗ (stop-loss) về mặt thời gian và ngân sách ngay từ ngày đầu bấm nút khởi động dự án.</p>
-              </div>
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Trong các cuộc sáp nhập hàng tỷ USD, thương vụ đổ vỡ 80% là do bất đồng văn hóa và cái tôi của các nhà sáng lập kỹ thuật.
 
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Thất bại gom lại thành tài / Rút ra kinh nghiệm ngày mai huy hoàng"
-              </div>
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Dùng logic thuần túy và số liệu khô khan để tranh cãi đúng sai với hội đồng quản trị và đối tác.
+• Bản chất: Nguyên lý truyền sóng âm: Hai tần số cảm xúc lệch pha sẽ triệt tiêu năng lượng của nhau; phải đồng pha cảm xúc trước khi truyền tải thông điệp logic.
+• Đòn bẩy thực chiến: Áp dụng kỹ thuật lắng nghe chủ động: Luôn diễn giải lại quan điểm của đối phương cho đến khi họ xác nhận: "Anh hiểu đúng ý tôi" trước khi đưa ra đề xuất kỹ thuật.
+
+<span class="code-mantra">📜 MANTRA: "Logic chỉ dựng khung xương — Thấu hiểu cảm xúc mở đường nhân tâm"</span></pre>
+      </div>
+
+      <!-- INSIGHT #06 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
             </div>
-            
-            <div class="apple-card" style="--card-delay: 160ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #07
-              </div>
-              <h3 class="apple-card__title">Sức khỏe thể chất là RAM của bộ não chiến lược</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Sauvik duy trì chế độ tập luyện kháng lực và ăn uống nghiêm ngặt vì suy giảm thể lực lập tức làm hỏng chất lượng các cuộc đàm phán kéo dài.
-              </div>
+            <span class="insight-block__tag">INSIGHT #06 // CHIẾN LƯỢC THẤT BẠI NHANH</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-6')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-6"><span class="code-title">🎯 INSIGHT #06: NGHỆ THUẬT THẤT BẠI NHANH (FAIL-FAST) ĐỂ TÍCH LŨY TÀI SẢN SỐ</span>
 
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Đánh đổi giấc ngủ và sức khỏe thể chất để cày việc, coi đó là biểu tượng của tinh thần cống hiến.</p>
-                <p><strong>🔬 Bản chất:</strong> Cơ chế sinh học ty thể: khi nồng độ lactate tăng cao và tế bào thiếu oxy, thùy trán (nơi kiểm soát tư duy dài hạn) bị ức chế, nhường chỗ cho hạch hạnh nhân kích hoạt nỗi sợ.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Khóa cố định lịch ngủ 7 tiếng và bổ sung 30 phút vận động cường độ cao mỗi sáng trước khi tiếp xúc với email hay thông báo công việc.</p>
-              </div>
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Các dự án thử nghiệm tại Tata Digital được cấp ngân sách "Fail-Fast" trong 6 tuần để kiểm chứng giả định trước khi rót hàng chục triệu USD.
 
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Thân thể yếu ớt mỏi mòn / Trí tuệ chiến lược chẳng còn sắc sảo"
-              </div>
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Cố đấm ăn xôi bảo vệ một tính năng thất bại đến cùng vì sợ mang tiếng yếu kém năng lực.
+• Bản chất: Suy luận Bayes: Thất bại là quá trình thu thập dữ liệu xác suất thực tế để hiệu chỉnh niềm tin tiên nghiệm, giúp lần thử nghiệm kế tiếp tiệm cận chân lý.
+• Đòn bẩy thực chiến: Đặt ra ngưỡng cắt lỗ (stop-loss) về mặt thời gian (tối đa 4-6 tuần) và kinh phí cố định ngay từ ngày đầu bấm nút khởi động dự án mới.
+
+<span class="code-mantra">📜 MANTRA: "Thất bại gom lại thành tài — Rút ra kinh nghiệm ngày mai huy hoàng"</span></pre>
+      </div>
+
+      <!-- INSIGHT #07 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
             </div>
-            
-            <div class="apple-card" style="--card-delay: 240ms;">
-              <div class="apple-card__num font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full w-fit mb-3">
-                INSIGHT #08
-              </div>
-              <h3 class="apple-card__title">Xây dựng di sản công nghệ vượt thời gian</h3>
-              
-              <div class="apple-card__quote italic text-xs text-slate-500 bg-slate-50 border-l-2 border-blue-500 p-2.5 rounded my-3">
-                🎙️ <strong>Dữ kiện:</strong> Những kiến trúc sư vĩ đại không tự hào về số dòng code họ viết, mà tự hào về việc hệ thống đó phục vụ được bao nhiêu triệu người tiêu dùng bình dân.
-              </div>
+            <span class="insight-block__tag">INSIGHT #07 // THỂ CHẤT LÀ RAM NÃO BỘ</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-7')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-7"><span class="code-title">🎯 INSIGHT #07: THỂ CHẤT LÀ DUNG LƯỢNG BỘ NHỚ RAM CỦA NÃO BỘ CHIẾN LƯỢC</span>
 
-              <div class="space-y-2 text-xs text-slate-600">
-                <p><strong>👁️ Bề mặt:</strong> Theo đuổi các thuật ngữ thời thượng phức tạp (buzzwords) để khoe khoang với cộng đồng kỹ thuật.</p>
-                <p><strong>🔬 Bản chất:</strong> Định luật tối giản Occam: giải pháp vĩ đại nhất luôn là giải pháp giải quyết được bài toán phức tạp bằng cấu trúc thanh lịch và ít điểm gãy nhất.</p>
-                <p class="text-blue-700 font-medium"><strong>⚙️ Đòn bẩy:</strong> Mỗi giải pháp kỹ thuật đều phải trả lời được câu hỏi: &#x27;Người mẹ ở vùng nông thôn có được hưởng lợi gì trực tiếp từ tính năng này không?&#x27;.</p>
-              </div>
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Sauvik duy trì chế độ tập luyện kháng lực và dinh dưỡng nghiêm ngặt vì suy giảm thể lực lập tức làm suy giảm chất lượng các quyết định đàm phán quan trọng.
 
-              <div class="mt-4 pt-3 border-t border-slate-100 text-center text-xs italic font-serif text-slate-500">
-                📜 "Đỉnh cao công nghệ đơn sơ / Giúp đời bớt khổ dựng cơ đồ bền"
-              </div>
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Thức khuya triền miên, nhịn ăn cày việc và coi đó là huy chương của tinh thần cống hiến.
+• Bản chất: Sinh học tế bào ty thể: Khi nồng độ lactate tăng cao và não thiếu oxy, thùy trán (kiểm soát tư duy dài hạn) bị tắt quyền ưu tiên, nhường chỗ cho hạch hạnh nhân kích hoạt nỗi sợ và phòng thủ.
+• Đòn bẩy thực chiến: Khóa chặt lịch ngủ tối thiểu 7 tiếng; bổ sung 30 phút vận động trước khi mở email hoặc tiếp xúc thông báo công việc buổi sáng.
+
+<span class="code-mantra">📜 MANTRA: "Thân thể yếu ớt mỏi mòn — Trí tuệ chiến lược chẳng còn sắc sảo"</span></pre>
+      </div>
+
+      <!-- INSIGHT #08 -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
             </div>
-            
+            <span class="insight-block__tag">INSIGHT #08 // DI SẢN VƯỢT THỜI GIAN</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-insight-8')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-insight-8"><span class="code-title">🎯 INSIGHT #08: XÂY DỰNG DI SẢN CÔNG NGHỆ VƯỢT THỜI GIAN (TỐI GIẢN OCCAM)</span>
+
+🎙️ DỮ KIỆN THỰC ĐỊA:
+Những kỹ sư vĩ đại không tự hào về số dòng code họ viết, mà tự hào về việc hệ thống đó giúp được bao nhiêu triệu người bình dân sống thuận tiện hơn.
+
+⚡ BÓC TÁCH 3 TẦNG THẤU SUỐT:
+• Bề mặt: Chạy theo các thuật ngữ công nghệ thời thượng phức tạp (buzzwords) để gây ấn tượng với đồng nghiệp.
+• Bản chất: Dao cạo Occam: Giải pháp vĩ đại nhất luôn là giải pháp giải quyết bài toán hóc búa bằng cấu trúc đơn giản nhất và ít điểm gãy nhất.
+• Đòn bẩy thực chiến: Mọi tính năng kỹ thuật xuất xưởng đều phải trả lời được câu hỏi: "Người nông dân bình thường có được hưởng lợi trực tiếp từ sự phức tạp này không?".
+
+<span class="code-mantra">📜 MANTRA: "Đỉnh cao công nghệ đơn sơ — Giúp đời bớt khổ dựng cơ đồ bền"</span></pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 05: KHUNG THIẾT KẾ KHÔNG GIAN & BẢO TOÀN CẢM XÚC (LIGHT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--light" id="sec-execution">
+    <div class="read-container">
+      <div class="cl-badge">04 / KHUNG THỰC THI THỰC CHIẾN</div>
+      <h2 class="title-sec">THIẾT KẾ KHÔNG GIAN & BẢO TOÀN TÂM THÁI</h2>
+      
+      <p class="body-p">
+        Bộ não chiến lược không thể hoạt động trong môi trường ma sát cao và bị phân mảnh dopamine liên tục. Dưới đây là bộ checklist thực hành hàng ngày được kiểm chứng qua các phòng họp điều hành cấp cao:
+      </p>
+
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-item__icon">✓</div>
+          <div class="action-item__content">
+            <strong>Khu Vực Không Thiết Bị (Zero Device Zone):</strong> Cấm hoàn toàn điện thoại và smartwatch trong các phiên họp hoạch định kiến trúc. Chỉ dùng bảng trắng vật lý để vẽ luồng dữ liệu.
+          </div>
+        </div>
+
+        <div class="action-item">
+          <div class="action-item__icon">✓</div>
+          <div class="action-item__content">
+            <strong>Khung Giờ Bất Khả Xâm Phạm (Deep Work Protocol):</strong> Cố định từ 8h00 - 11h00 sáng là khoảng thời gian không họp, tắt thông báo Slack để tập trung giải quyết 1 bài toán kiến trúc then chốt.
+          </div>
+        </div>
+
+        <div class="action-item">
+          <div class="action-item__icon">✓</div>
+          <div class="action-item__content">
+            <strong>Bộ Lọc Cảm Xúc Nhịp Tim 90:</strong> Tuyệt đối không bấm gửi phản hồi cho email công kích hay sự cố khẩn cấp khi nhịp tim đang vượt ngưỡng 90 nhịp/phút.
+          </div>
+        </div>
+
+        <div class="action-item">
+          <div class="action-item__icon">✓</div>
+          <div class="action-item__content">
+            <strong>Nguyên Lý Tự Phục Hồi (Resilience Over Perfection):</strong> Chấp nhận không có hệ thống nào hoàn hảo 100%. Lợi thế cạnh tranh nằm ở tốc độ cô lập lỗi và phục hồi sau sự cố.
+          </div>
+        </div>
+      </div>
+
+      <!-- Actionable Checklist Code Block -->
+      <div class="insight-block">
+        <div class="insight-block__header">
+          <div class="insight-block__left">
+            <div class="mac-dots">
+              <div class="mac-dot mac-dot--red"></div>
+              <div class="mac-dot mac-dot--amber"></div>
+              <div class="mac-dot mac-dot--green"></div>
+            </div>
+            <span class="insight-block__tag">CHECKLIST HÀNH ĐỘNG // 1-CLICK COPY</span>
+          </div>
+          <div class="insight-block__right">
+            <button class="copy-btn" onclick="copySnippet(this, 'code-checklist-action')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Sao chép</span>
+            </button>
+          </div>
+        </div>
+        <pre class="insight-block__pre" id="code-checklist-action"><span class="code-title">📋 CHECKLIST VẬN HÀNH BẢN THÂN CHO NHÀ QUẢN TRỊ CÔNG NGHỆ</span>
+
+[BUỔI SÁNG - THIẾT LẬP ĐÒN BẨY]
+[ ] 07:00 - 07:30: 30 phút vận động thể chất kháng lực kích hoạt ty thể thùy trán.
+[ ] 08:00 - 08:45: 45 phút "Zero Screen" xác định 1 quyết định đinh của ngày.
+[ ] 09:00 - 11:30: Block Deep Work không họp hành, không đọc tin nhắn chat.
+
+[TRONG NGÀY - BẢO VỆ NĂNG LƯỢNG]
+[ ] Phân quyền RACI: Mọi việc dưới 10.000 USD trao quyền cho Lead tự quyết.
+[ ] Giao tiếp EQ: Lặp lại ý đối phương ("Anh hiểu đúng ý tôi") trước khi phản biện logic.
+[ ] Kiểm soát cảm xúc: Dừng 10 nhịp thở sâu nếu nhịp tim > 90 bpm trước khi phản hồi email gay gắt.
+
+[BUỔI CHIỀU - ĐÓNG GÓI BÀI HỌC]
+[ ] 17:00 - 17:30: Rà soát các sự cố trong ngày; cập nhật giả định vào quy trình để không vấp lại.
+
+<span class="code-mantra">"Môi trường dọn sạch âu lo — Tâm an trí sáng tự do tung hoành"</span></pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       KHỐI 06: ĐỐI THOẠI & ĐIỀU HƯỚNG (TINT)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="read-section read-section--tint" id="sec-footer">
+    <div class="read-container">
+      <div class="cl-badge">05 / ĐIỀU HƯỚNG & KẾT NỐI</div>
+      <h2 class="title-sec">TIẾP TỤC HÀNH TRÌNH TRI THỨC</h2>
+      
+      <p class="body-p">
+        Bài phân tích này thuộc chuỗi 21 podcast tinh hoa của Raj Shamani (đã lọc sạch hoàn toàn yếu tố chính trị/chiến tranh), được biên soạn theo chuẩn hệ thống thiết kế đọc của FEDU.
+      </p>
+
+      <div class="cta-row">
+        <a href="https://www.youtube.com/watch?v=XwawXRaNfzM" target="_blank" class="cl-btn">
+          <span>Xem Podcast Gốc Trên YouTube ↗</span>
+        </a>
+        <a href="21-podcast-raj-shamani-khong-chinh-tri.html" class="cl-btn cl-btn--secondary">
+          <span>← Quay Về Bảng 21 Podcast</span>
+        </a>
+        <a href="vaibhav-sisinty-ai-second-brain-podcast.html" class="cl-btn cl-btn--secondary">
+          <span>Tập Tiếp Theo: Vaibhav Sisinty →</span>
+        </a>
+      </div>
+
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--cl-line); font-size: 13.5px; color: var(--cl-text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <span>Phát triển bởi FEDU System • Chuẩn đọc 30ngayviral.fedu.vn</span>
+        <span>Cập nhật mới nhất: 2026</span>
       </div>
     </div>
   </section>
 
-  <!-- KHỐI 5: THIẾT KẾ KHÔNG GIAN (LIGHT) -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-environment">
-    <div class="cl-sec-container apple-reveal">
-      <div class="cl-badge">04 / THIẾT KẾ KHÔNG GIAN</div>
-      <h2 class="title-short">BÀI TRÍ MÔI TRƯỜNG & GIẢM MA SÁT</h2>
-      <p class="editorial-hook">"Môi trường dọn sạch âu lo / Tâm an trí sáng tự do tung hoành"</p>
-
-      <div class="apple-list">
-        
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">✓</div>
-      <div class="apple-list-item__content">Loại bỏ hoàn toàn điện thoại và thiết bị đeo thông minh khỏi phòng họp chiến lược.</div>
-    </div>
-    
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">✓</div>
-      <div class="apple-list-item__content">Sử dụng bảng trắng vật lý kích thước lớn để vẽ luồng dữ liệu thay vì nhìn vào màn hình máy tính chật hẹp.</div>
-    </div>
-    
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">✓</div>
-      <div class="apple-list-item__content">Thiết lập khung giờ cố định từ 8h00 - 11h00 sáng là khoảng thời gian &#x27;Zero Interruption&#x27; (không họp, không chat Slack).</div>
-    </div>
-    
-      </div>
-    </div>
-  </section>
-
-  <!-- KHỐI 6: BẢO TOÀN CẢM XÚC (TINT) -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-emotions">
-    <div class="cl-sec-container apple-reveal">
-      <div class="cl-badge">05 / BẢO TOÀN CẢM XÚC</div>
-      <h2 class="title-short">QUẢN TRỊ TÂM THÁI & DOPAMINE</h2>
-      <p class="editorial-hook">"Thương trường sóng gió cuộn trào / Giữ tâm bình thản mới cao tay nghề"</p>
-
-      <div class="apple-list">
-        
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">★</div>
-      <div class="apple-list-item__content">Coi sự cố hệ thống là bài kiểm tra tự động của thực tế giúp vá lỗ hổng kiến trúc.</div>
-    </div>
-    
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">★</div>
-      <div class="apple-list-item__content">Không phản hồi email gay gắt khi nhịp tim đang trên 90 nhịp/phút.</div>
-    </div>
-    
-    <div class="apple-list-item">
-      <div class="apple-list-item__bullet">★</div>
-      <div class="apple-list-item__content">Chấp nhận nguyên lý bất toàn: không có hệ thống nào hoàn hảo 100%, chỉ có hệ thống có khả năng tự phục hồi nhanh nhất.</div>
-    </div>
-    
-      </div>
-    </div>
-  </section>
-
-  <!-- KHỐI 7: TỔNG KẾT & HÀNH ĐỘNG (LIGHT) -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-action">
-    <div class="cl-sec-container apple-reveal">
-      <div class="cl-badge">06 / HÀNH ĐỘNG & KẾT NỐI</div>
-      <h2 class="title-short">ĐƯA BÀI HỌC VÀO ĐỜI SỐNG</h2>
-      <p class="editorial-hook">"Làm đúng từ bước đầu tiên để không phải sửa chữa về sau."</p>
-      <p class="cl-body">Diễn giả: <strong>Sauvik Banerjjee</strong>. Sauvik Banerjjee</p>
-
-      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="https://www.youtube.com/watch?v=XwawXRaNfzM" target="_blank" class="cl-btn">XEM PODCAST GỐC YOUTUBE ↗</a>
-        <a href="21-podcast-raj-shamani-khong-chinh-tri.html" class="cl-btn cl-btn--secondary">← VỀ BẢNG 21 PODCAST</a>
-      </div>
-    </div>
-  </section>
-
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS: SCROLL PROGRESS & 1-CLICK COPY
+       ═══════════════════════════════════════════════════════ -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.apple-reveal, .apple-card').forEach(el => observer.observe(el));
+    // 1. Reading Progress Bar & Percentage
+    window.addEventListener('scroll', () => {
+      const docEl = document.documentElement;
+      const scrollTop = docEl.scrollTop || document.body.scrollTop;
+      const scrollHeight = docEl.scrollHeight - docEl.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      
+      const bar = document.getElementById('readingProgressBar');
+      if (bar) bar.style.width = progress + '%';
+      
+      const percentLabel = document.getElementById('readingPercent');
+      if (percentLabel) percentLabel.innerText = Math.round(progress) + '% ĐÃ ĐỌC';
     });
+
+    // 2. One-click Copy Function for Code Blocks
+    function copySnippet(buttonEl, snippetId) {
+      const snippetEl = document.getElementById(snippetId);
+      if (!snippetEl) return;
+      
+      // Extract clean plain text
+      const textToCopy = snippetEl.innerText;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalHTML = buttonEl.innerHTML;
+        buttonEl.classList.add('copied');
+        buttonEl.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Đã sao chép!</span>
+        `;
+        
+        setTimeout(() => {
+          buttonEl.classList.remove('copied');
+          buttonEl.innerHTML = originalHTML;
+        }, 2200);
+      }).catch(err => {
+        console.error('Không thể sao chép:', err);
+      });
+    }
   </script>
 </body>
 </html>
