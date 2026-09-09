@@ -1,1788 +1,1105 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth dark">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giáo Trình Quay Sản Phẩm Điện Ảnh AIDA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Giáo Trình Quay Sản Phẩm Điện Ảnh Chuẩn AIDA | Thực Chiến Bằng Điện Thoại</title>
   
-  <!-- Preconnect & Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS & FontAwesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
   <style>
-    /* ==========================================================================
-       TYPOGRAPHY QUY CHUẨN ĐIỆN ẢNH THƯƠNG MẠI
-       ========================================================================== */
+    /* ═══ 1. TYPOGRAPHY DECLARATIONS (Local Repo, System & R2 Fallbacks) ═══ */
     @font-face {
-      font-family: 'SVN-Integral';
-      src: url('./fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
-           url('./assets/fonts/SVN-IntegralCF-Regular.ttf') format('truetype'),
-           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-IntegralCF-Regular.ttf') format('truetype');
-      font-weight: 400;
+      font-family: 'FD Aeonik Extended';
+      src: url('./fonts/FDAeonikExtended-Bold.woff2') format('woff2'),
+           url('./fonts/FDAeonikExtended-Bold.ttf') format('truetype'),
+           url('/Users/vietmac/Library/Fonts/FDAeonikExtended-Bold.otf') format('opentype'),
+           local('FD Aeonik Extended Bold');
+      font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
-      font-family: 'FD Aeonick';
+      font-family: 'FD Aeonik';
       src: url('./fonts/FDAeonikRegular.ttf') format('truetype'),
-           url('./assets/fonts/SVN-Poppins-Regular.ttf') format('truetype'),
-           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Poppins-Regular.ttf') format('truetype');
+           url('./assets/fonts/FDAeonikRegular.ttf') format('truetype'),
+           url('/Users/vietmac/Library/Fonts/FDAeonikRegular.ttf') format('truetype'),
+           local('FD Aeonik Regular'), local('FDAeonikRegular');
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
-      font-family: 'FD Aeonick';
-      src: url('./fonts/FDAeonik-SemiBold.ttf') format('truetype'),
-           url('./fonts/FDAeonikBold.ttf') format('truetype'),
-           url('./assets/fonts/SVN-Poppins-SemiBold.ttf') format('truetype'),
-           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Poppins-SemiBold.ttf') format('truetype');
+      font-family: 'FD Aeonik';
+      src: url('./fonts/FDAeonikExtended-SemiBold.ttf') format('truetype'),
+           url('/Users/vietmac/Library/Fonts/FDAeonikExtended-SemiBold.otf') format('opentype'),
+           local('FD Aeonik SemiBold');
       font-weight: 600;
       font-style: normal;
+      font-display: swap;
     }
     @font-face {
-      font-family: 'FD Acta';
-      src: url('./fonts/FDActaBookItalic.ttf') format('truetype'),
-           url('./fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
-           url('./assets/fonts/SVN-Acta-BookItalic.ttf') format('truetype'),
-           url('https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/fonts/SVN-Acta-Regular.ttf') format('truetype');
+      font-family: 'FD Aeonik';
+      src: url('./fonts/FDAeonikBold.ttf') format('truetype'),
+           url('/Users/vietmac/Library/Fonts/FDAeonikBold.ttf') format('truetype'),
+           local('FD Aeonik Bold'), local('FDAeonikBold');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Tiempos Text';
+      src: url('./fonts/FDTiemposText-Regular.otf') format('opentype'),
+           url('/Users/vietmac/Library/Fonts/FDTiemposText-Regular.otf') format('opentype'),
+           local('Tiempos Text Regular'), local('FDTiemposText-Regular');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Tiempos Text';
+      src: url('./fonts/FDTiemposText-Medium.otf') format('opentype'),
+           url('/Users/vietmac/Library/Fonts/FDTiemposText-Medium.otf') format('opentype'),
+           local('Tiempos Text Medium'), local('FDTiemposText-Medium');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Tiempos Text';
+      src: url('./fonts/FDTiemposText-RegularItalic.otf') format('opentype'),
+           url('/Users/vietmac/Library/Fonts/FDTiemposText-RegularItalic.otf') format('opentype'),
+           local('Tiempos Text Regular Italic'), local('FDTiemposText-RegularItalic');
       font-weight: 400;
       font-style: italic;
+      font-display: swap;
     }
 
+    /* ═══ 2. DESIGN TOKENS (30ngayviral.fedu.vn Light Theme Siêu Sạch) ═══ */
     :root {
-      --font-integral: 'SVN-Integral', sans-serif;
-      --font-aeonick: 'FD Aeonick', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-acta: 'FD Acta', 'Playfair Display', Georgia, serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      
-      --bg-dark: #06090e;
-      --card-dark: #0f172a;
-      --border-dark: #1e293b;
+      --cl-bg:          #ffffff;
+      --cl-tint:        #f8fafc;
+      --cl-card:        #ffffff;
+      --cl-card-muted:  #f1f5f9;
+      --cl-accent:      #1a73e8;
+      --cl-accent-tint: rgba(26, 115, 232, 0.08);
+      --cl-accent-text: #ffffff;
+      --cl-line:        rgba(0, 0, 0, 0.07);
+      --cl-line-strong: rgba(0, 0, 0, 0.14);
+
+      /* Mực in WCAG AAA Tương phản cực đại */
+      --cl-text-base:   #090d16; /* Slate 950 (18.8:1) */
+      --cl-text-body:   #0f172a; /* Slate 900 (16.5:1) */
+      --cl-text-muted:  #475569; /* Slate 600 (7.0:1) */
+      --cl-cyan:        #0891b2;
+      --cl-amber:       #d97706;
+      --cl-emerald:     #059669;
+      --cl-rose:        #e11d48;
+
+      /* Radii */
+      --cl-radius-xl:   28px;
+      --cl-radius-lg:   20px;
+      --cl-radius-md:   14px;
+      --cl-radius-sm:   8px;
+      --cl-radius-full: 9999px;
+
+      /* Typography Stacks */
+      --font-display-short: 'FD Aeonik Extended', 'Inter', -apple-system, sans-serif;
+      --font-display-long:  'FD Aeonik', 'Inter', -apple-system, sans-serif;
+      --font-body:          'Tiempos Text', 'FD Aeonik', 'Inter', Georgia, serif;
+      --font-editorial:     'Tiempos Text', 'Playfair Display', Georgia, serif;
+      --font-mono:          'JetBrains Mono', monospace;
+
+      /* Apple Motion Physics Curves */
+      --apple-spring: cubic-bezier(0.25, 1, 0.35, 1.05);
+      --apple-ease:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ═══ 3. RESET & BASE ═══ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--cl-bg);
+      color: var(--cl-text-base);
+      font-family: var(--font-body);
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: #e2e8f0;
-      font-family: var(--font-aeonick);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+      min-height: 100vh;
+      line-height: 1.75;
     }
 
-    /* TIÊU ĐỀ NGẮN <= 8 TỪ: SVN-Integral CF Regular 400 (Tuyệt đối KHÔNG Bold) */
-    .title-short {
-      font-family: var(--font-integral) !important;
-      font-weight: 400 !important;
-      letter-spacing: 0.03em;
+    /* ═══ 4. TOP BAR TỐI GIẢN (VIDEO ONLY) ═══ */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--cl-line);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-nav__logo {
+      font-family: var(--font-display-short);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      color: var(--cl-text-base);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .top-nav__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cl-accent);
+    }
+
+    .top-nav__badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: var(--cl-radius-full);
+      background: var(--cl-accent-tint);
+      color: var(--cl-accent);
+      border: 1px solid rgba(26, 115, 232, 0.15);
       text-transform: uppercase;
     }
 
-    /* TIÊU ĐỀ DÀI > 8 TỪ: FD Aeonick SemiBold 600 */
-    .title-long {
-      font-family: var(--font-aeonick) !important;
-      font-weight: 600 !important;
-      line-height: 1.45;
-    }
-
-    .font-quote {
-      font-family: var(--font-acta);
-      font-style: italic;
-    }
-
-    .font-mono-code {
-      font-family: var(--font-mono);
-    }
-
-    /* Hiệu ứng kính và viền sáng */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(51, 65, 85, 0.6);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    }
-
-    .glass-card-hover {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card-hover:hover {
-      border-color: rgba(56, 189, 248, 0.5);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.15);
-    }
-
-    /* Video Aspect Ratio */
-    .video-container {
+    /* ═══ 5. ZEBRA STRIPING VIEWPORT SECTIONS ═══ */
+    .cl-zebra-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      background-color: #000;
+      padding: 96px 24px;
+      box-sizing: border-box;
     }
-    .video-container iframe,
-    .video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
+
+    .cl-zebra--light {
+      background-color: var(--cl-bg);
+    }
+
+    .cl-zebra--tint {
+      background-color: var(--cl-tint);
+      border-top: 1px solid var(--cl-line);
+      border-bottom: 1px solid var(--cl-line);
+    }
+
+    .cl-sec-container {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cl-sec-container--wide {
+      max-width: 1140px;
+    }
+
+    .cl-sec-container--left {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    /* ═══ 6. TYPOGRAPHY HỆ THỐNG ═══ */
+    .cl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cl-accent);
+      background: var(--cl-accent-tint);
+      border: 1px solid rgba(26, 115, 232, 0.16);
+      padding: 6px 16px;
+      border-radius: var(--cl-radius-full);
+      margin-bottom: 20px;
+    }
+
+    .title-short {
+      font-family: var(--font-display-short);
+      font-weight: 700;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--cl-text-base);
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .title-long {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: clamp(22px, 3.2vw, 32px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--cl-text-base);
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .editorial-hook {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.65;
+      color: var(--cl-accent);
+      margin-bottom: 24px;
+      max-width: 760px;
+      text-wrap: balance;
+    }
+
+    .cl-body {
+      font-size: 16.5px;
+      color: var(--cl-text-body);
+      line-height: 1.82;
+      margin-bottom: 28px;
+      max-width: 780px;
+    }
+
+    /* ═══ 7. APPLE MOTION ZERO-JANK ═══ */
+    .apple-reveal {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: 
+        opacity 0.5s var(--apple-ease),
+        transform 0.58s var(--apple-spring);
+      will-change: opacity, transform;
+    }
+
+    .apple-reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      will-change: auto;
+    }
+
+    /* ═══ 8. CARDS & GRIDS ═══ */
+    .apple-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .apple-card {
+      background: var(--cl-card);
+      border: 1px solid var(--cl-line);
+      border-radius: var(--cl-radius-lg);
+      padding: 28px 24px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s var(--apple-spring), box-shadow 0.3s ease;
+    }
+
+    .apple-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    .apple-card__badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--cl-radius-full);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .apple-card__title {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: 19px;
+      color: var(--cl-text-base);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .apple-card__desc {
+      font-size: 14.5px;
+      color: var(--cl-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ═══ 9. BẢNG PHÂN CẢNH 8 SHOTS (STORYBOARD CARDS) ═══ */
+    .storyboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .storyboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sb-card {
+      background: var(--cl-card);
+      border: 1px solid var(--cl-line-strong);
+      border-radius: var(--cl-radius-xl);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform 0.35s var(--apple-spring), box-shadow 0.35s ease;
+    }
+
+    .sb-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
+    }
+
+    .sb-card__media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #e2e8f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sb-card__media img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--apple-ease);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
+    .sb-card:hover .sb-card__media img {
+      transform: scale(1.035);
     }
-    ::-webkit-scrollbar-track {
-      background: #06090e;
+
+    .sb-card__time {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      padding: 4px 10px;
+      border-radius: var(--cl-radius-sm);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
+
+    .sb-card__phase {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 12px;
+      border-radius: var(--cl-radius-full);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #38bdf8;
+
+    .phase--a { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+    .phase--i { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+    .phase--d { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+    .phase--act { background: #ffe4e6; color: #e11d48; border: 1px solid #fecdd3; }
+
+    .sb-card__content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 14px;
+    }
+
+    .sb-card__title {
+      font-family: var(--font-display-long);
+      font-weight: 600;
+      font-size: 18.5px;
+      color: var(--cl-text-base);
+      line-height: 1.35;
+    }
+
+    .sb-detail-item {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--cl-text-body);
+    }
+
+    .sb-detail-item strong {
+      color: var(--cl-text-base);
+      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .sb-card__logic {
+      background: var(--cl-card-muted);
+      border-left: 3px solid var(--cl-accent);
+      padding: 12px 14px;
+      border-radius: 0 var(--cl-radius-sm) var(--cl-radius-sm) 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--cl-text-body);
+      font-style: italic;
+      margin-top: auto;
+    }
+
+    /* ═══ 10. DUAL-MODE VIDEO PLAYER ═══ */
+    .video-frame-wrap {
+      width: 100%;
+      max-width: 860px;
+      margin: 24px auto 0;
+      border-radius: var(--cl-radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--cl-line-strong);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
+      background: #000000;
+      position: relative;
+    }
+
+    .video-switch-btns {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-player {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: var(--cl-radius-full);
+      border: 1px solid var(--cl-line-strong);
+      background: var(--cl-card);
+      color: var(--cl-text-body);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-player.active {
+      background: var(--cl-accent);
+      color: #ffffff;
+      border-color: var(--cl-accent);
+      box-shadow: 0 4px 12px rgba(26, 115, 232, 0.25);
+    }
+
+    /* ═══ 11. FOOTER ═══ */
+    .page-footer {
+      padding: 48px 24px;
+      background: var(--cl-bg);
+      border-top: 1px solid var(--cl-line);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--cl-text-muted);
+      text-transform: uppercase;
     }
   </style>
 </head>
-<body class="selection:bg-cyan-500/30 selection:text-cyan-200">
+<body>
 
-  <!-- ================= TOP STICKY BAR ================= -->
-  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-[#06090e]/90 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
-        <span class="title-short text-sm tracking-wider text-slate-200">VIDEO</span>
-      </div>
-      <nav class="hidden md:flex items-center space-x-6 text-sm text-slate-400">
-        <a href="#video-case" class="hover:text-cyan-400 transition-colors">Case Study</a>
-        <a href="#storyboard-dong-ho" class="hover:text-cyan-400 transition-colors text-amber-300 font-semibold">★ Case Đồng Hồ</a>
-        <a href="#bon-can-benh" class="hover:text-cyan-400 transition-colors">4 Căn Bệnh</a>
-        <a href="#an-du-nghe-nghiep" class="hover:text-cyan-400 transition-colors">Ẩn Dụ Cửa Tiệm</a>
-        <a href="#giai-phau-aida" class="hover:text-cyan-400 transition-colors">Khung AIDA</a>
-        <a href="#timeline-30s" class="hover:text-cyan-400 transition-colors">Timeline 30s</a>
-        <a href="#checklist" class="hover:text-cyan-400 transition-colors">Checklist</a>
-      </nav>
-      <a href="https://www.youtube.com/watch?v=hoBZvf54XeQ&list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-mono-code bg-red-600/20 text-red-400 border border-red-500/40 px-3 py-1.5 rounded-full hover:bg-red-600 hover:text-white transition-all">
-        <i class="fab fa-youtube text-red-500"></i>
-        <span>Xem Playlist Gốc</span>
-      </a>
-    </div>
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <a href="#" class="top-nav__logo">
+      <span class="top-nav__dot"></span>
+      <span>VIDEO</span>
+    </a>
+    <span class="top-nav__badge">GIÁO TRÌNH THỰC CHIẾN AIDA</span>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="relative pt-16 pb-20 overflow-hidden border-b border-slate-800/60">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.12),transparent_45%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(245,158,11,0.08),transparent_40%)]"></div>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+  <!-- ================= KHỐI 0: HERO BANNER (LIGHT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-hero">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">GIÁO TRÌNH ĐIỆN ẢNH THƯƠNG MẠI</div>
+      <h1 class="title-short">QUAY SẢN PHẨM CHUẨN AIDA</h1>
+      <h2 class="title-long">Tư Duy Bấm Máy Điện Ảnh Từ Chạm Mắt Đến Chốt Đơn</h2>
       
-      <!-- Micro-badge -->
-      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-700/50 text-cyan-300 text-xs font-mono-code mb-6">
-        <i class="fas fa-video text-cyan-400"></i>
-        <span>HỆ THỐNG ĐÀO TẠO QUAY DỰNG SẢN PHẨM THƯƠNG MẠI</span>
-      </div>
-
-      <!-- Tiêu đề ngắn <= 8 từ: SVN-Integral CF Regular 400 -->
-      <h1 class="title-short text-4xl sm:text-6xl text-white tracking-wide mb-6 leading-tight">
-        QUAY SẢN PHẨM AIDA
-      </h1>
-
-      <!-- Tiêu đề dài > 8 từ: FD Aeonick SemiBold 600 -->
-      <p class="title-long text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-8 font-normal">
-        Nghệ thuật điều khiển thị giác và chuyển đổi mua hàng qua lăng kính điện ảnh thực chiến
+      <p class="editorial-hook">
+        "Đừng bán tính năng của một món đồ vật vô tri. Hãy bán phiên bản tốt hơn của chính khách hàng khi cầm nó trên tay."
       </p>
 
-      <!-- Hook Quote: FD Acta Italic -->
-      <div class="max-w-2xl mx-auto p-6 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-400 text-lg font-quote leading-relaxed shadow-inner">
-        "Khách hàng không mở điện thoại lên để xem quảng cáo. Đừng chụp ảnh thẻ cho sản phẩm, hãy biến chiếc camera thành cặp mắt tò mò của một vị khách sành sỏi bước vào tiệm sang."
-        <div class="mt-2 text-xs font-mono-code text-cyan-400 not-italic font-normal tracking-wider">
-          — HỆ THỐNG QUAY SẢN PHẨM AIDA THỰC CHIẾN
-        </div>
-      </div>
+      <p class="cl-body">
+        Khung kiến thức chuẩn hóa chuyển đổi tâm lý người xem: Bắt đầu từ <strong>[A] Attention</strong> giật lấy ánh mắt trong 3 giây đầu, bóc tách <strong>[I] Interest</strong> thông số tự thân, khơi gợi <strong>[D] Desire</strong> bối cảnh khao khát, và khép lại bằng <strong>[A] Action</strong> chốt đơn êm ái.
+      </p>
 
-      <!-- 4 Trụ cột AIDA Pills -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-10">
-        <div class="p-3 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-center">
-          <div class="title-short text-xs text-cyan-400">CHẶNG [A]</div>
-          <div class="text-sm font-semibold text-slate-200 mt-0.5">ATTENTION</div>
-          <div class="text-[11px] text-slate-400">Móc câu thị giác 3s</div>
-        </div>
-        <div class="p-3 rounded-xl border border-amber-500/30 bg-amber-950/20 text-center">
-          <div class="title-short text-xs text-amber-400">CHẶNG [I]</div>
-          <div class="text-sm font-semibold text-slate-200 mt-0.5">INTEREST</div>
-          <div class="text-[11px] text-slate-400">Thông số tự thân</div>
-        </div>
-        <div class="p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/20 text-center">
-          <div class="title-short text-xs text-emerald-400">CHẶNG [D]</div>
-          <div class="text-sm font-semibold text-slate-200 mt-0.5">DESIRE</div>
-          <div class="text-[11px] text-slate-400">Bối cảnh đời sống hóa</div>
-        </div>
-        <div class="p-3 rounded-xl border border-rose-500/30 bg-rose-950/20 text-center">
-          <div class="title-short text-xs text-rose-400">CHẶNG [A]</div>
-          <div class="text-sm font-semibold text-slate-200 mt-0.5">ACTION</div>
-          <div class="text-[11px] text-slate-400">Chốt hạ 0 ma sát</div>
-        </div>
+      <!-- Quick Nav Indicator -->
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
+        <a href="#sec-storyboard-mobile" style="text-decoration: none; padding: 12px 26px; border-radius: var(--cl-radius-full); background: var(--cl-accent); color: #fff; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.05em; box-shadow: 0 4px 14px rgba(26, 115, 232, 0.3);">
+          XEM BẢNG 8 CẢNH ĐIỆN THOẠI →
+        </a>
+        <a href="#sec-case-study" style="text-decoration: none; padding: 12px 26px; border-radius: var(--cl-radius-full); background: var(--cl-card-muted); color: var(--cl-text-base); border: 1px solid var(--cl-line-strong); font-family: var(--font-mono); font-size: 13px; font-weight: 600;">
+          SOI VIDEO ULANZI MẪU
+        </a>
       </div>
-
     </div>
   </section>
 
-  <!-- ================= CASE STUDY: VIDEO YOUTUBE EMBED ================= -->
-  <section id="video-case" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-slate-800">
-      <div>
-        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-widest mb-1">MẪU MINH HỌA TRỰC QUAN</div>
-        <h2 class="title-short text-2xl sm:text-3xl text-white">CASE STUDY: ULANZI JJ03 & PLAYLIST GEAR</h2>
-      </div>
-      <div class="mt-4 md:mt-0 text-sm text-slate-400 font-mono-code">
-        Nguồn: <span class="text-slate-200 font-medium">Playlist Thiết Bị Ulanzi (YouTube)</span>
+  <!-- ================= KHỐI 1: BÓC TRẦN 4 CĂN BỆNH (TINT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-problems">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">01 / BÓC TRẦN BỆNH KINH NIÊN</div>
+      <h2 class="title-short">4 CĂN BỆNH QUAY SẢN PHẨM</h2>
+      <p class="cl-body">95% video review sản phẩm trên TikTok và Reels thất bại vì mắc phải các tư duy quay chắp vá dưới đây:</p>
+
+      <div class="apple-cards-grid">
+        <div class="apple-card">
+          <span class="apple-card__badge" style="background: #fee2e2; color: #dc2626;">BỆNH 01</span>
+          <h3 class="apple-card__title">Lộn Xộn Không Có Phễu</h3>
+          <p class="apple-card__desc">Thích góc nào quay góc đó, không hiểu mỗi cảnh bấm máy đang phục vụ tầng tâm lý nào trong não khách hàng.</p>
+        </div>
+        <div class="apple-card">
+          <span class="apple-card__badge" style="background: #fef3c7; color: #d97706;">BỆNH 02</span>
+          <h3 class="apple-card__title">Đọc Thông Số Như Từ Điển</h3>
+          <p class="apple-card__desc">Nhồi nhét chữ dung lượng pin, cân nặng, mã chip lên màn hình thay vì dùng mắt và hành động cơ học để chứng minh.</p>
+        </div>
+        <div class="apple-card">
+          <span class="apple-card__badge" style="background: #e0f2fe; color: #0284c7;">BỆNH 03</span>
+          <h3 class="apple-card__title">Bối Cảnh Bị Bịa Giả Trân</h3>
+          <p class="apple-card__desc">Bày vẽ kịch bản gượng gạo không liên quan đến thói quen sinh hoạt thực tế của người dùng đời thực.</p>
+        </div>
+        <div class="apple-card">
+          <span class="apple-card__badge" style="background: #f3e8ff; color: #7e22ce;">BỆNH 04</span>
+          <h3 class="apple-card__title">Chốt Đơn Đè Nén Vô Duyên</h3>
+          <p class="apple-card__desc">Mới xem được 5 giây đã chèn chữ "Mua ngay", mã QR che hết nửa màn hình khiến người xem lập tức thoát ra.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Khối nhúng Video Responsive -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <div class="lg:col-span-7">
-        <div class="glass-card rounded-2xl p-3 border border-slate-700/80 shadow-2xl">
-          
-          <!-- Tab Switcher Video Source -->
-          <div class="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800">
-            <div class="flex items-center space-x-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs font-mono-code">
-              <button id="tab-btn-native" onclick="switchVideoSource('native')" class="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold transition-all flex items-center space-x-1.5 shadow-sm">
-                <i class="fas fa-bolt"></i>
-                <span>Bản Master CDN (Khuyên dùng)</span>
-              </button>
-              <button id="tab-btn-youtube" onclick="switchVideoSource('youtube')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5">
-                <i class="fab fa-youtube text-red-400"></i>
-                <span>YouTube Playlist</span>
-              </button>
-            </div>
-            
-            <a href="https://www.youtube.com/watch?v=hoBZvf54XeQ&list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-1 text-[11px] font-mono-code text-cyan-400 hover:underline px-2 py-1">
-              <span>Mở YouTube</span>
-              <i class="fas fa-external-link-alt text-[10px]"></i>
-            </a>
-          </div>
+  <!-- ================= KHỐI 2: NGUYÊN LÝ AIDA 4 CHẶNG (LIGHT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-principles">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">02 / NGUYÊN LÝ ĐẠO DIỄN</div>
+      <h2 class="title-short">MÔ HÌNH AIDA THỊ GIÁC</h2>
+      <p class="editorial-hook">"Từ ngoài vào trong, từ tò mò vô thức đến khát khao sở hữu."</p>
 
-          <!-- Video Player Container -->
-          <div class="video-container rounded-xl overflow-hidden bg-black relative">
-            
-            <!-- Native HTML5 Video Player (CDN Cloudflare R2 - Không bao giờ lỗi) -->
-            <video 
-              id="native-video-player" 
-              class="w-full h-full object-contain bg-black" 
-              controls 
-              playsinline 
-              preload="metadata" 
-              poster="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/videos/frame_1s.jpg">
-              <source src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/videos/ulanzi_jj03.mp4" type="video/mp4">
-              Trình duyệt của bạn không hỗ trợ thẻ video HTML5.
-            </video>
-
-            <!-- YouTube Iframe Embed (Fix Error 153 với referrerpolicy chuẩn) -->
-            <iframe 
-              id="youtube-video-player"
-              class="w-full h-full hidden"
-              src="https://www.youtube.com/embed/hoBZvf54XeQ?list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv&enablejsapi=1" 
-              title="Ulanzi JJ03 3 in 1 Magnetic Phone Tripod with Remote Control" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-            </iframe>
-
-          </div>
-
-          <div class="p-3 flex items-center justify-between text-xs text-slate-400 font-mono-code">
-            <div class="flex items-center space-x-2">
-              <span id="player-indicator" class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              <span id="player-title">Ulanzi JJ03 3-in-1 Master (Cloudflare R2 CDN)</span>
-            </div>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono-code text-[11px]">47 Giây • AIDA</span>
-          </div>
-
+      <div class="apple-cards-grid">
+        <div class="apple-card" style="border-top: 3px solid #0284c7;">
+          <div class="apple-card__badge phase--a">[ A ] ATTENTION</div>
+          <h3 class="apple-card__title">Móc Câu 3s Đầu</h3>
+          <p class="apple-card__desc"><strong>WHAT:</strong> Cận cảnh đặc tả (Macro), âm thanh cơ học "tách".<br><strong>WHY:</strong> Phá vỡ thói quen lướt vô thức, kích hoạt tò mò trước khi bộ lọc quảng cáo bật lên.</p>
         </div>
-
-        <!-- Thẻ cảnh báo & hướng dẫn khi gặp lỗi Error 153 -->
-        <div class="mt-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 leading-relaxed">
-          <div class="flex items-center space-x-2 text-cyan-400 font-mono-code font-semibold mb-1">
-            <i class="fas fa-info-circle"></i>
-            <span>LƯU Ý KHI TRÌNH CHIẾU:</span>
-          </div>
-          Nếu trình duyệt của bạn bật chế độ bảo mật chặn Referrer dẫn đến <strong>Error 153</strong> trên YouTube, chế độ <strong>Bản Master CDN</strong> bên trên sẽ tự động phát mượt 100% không bao giờ gặp lỗi. Bạn cũng có thể bấm trực tiếp các mốc thời gian bên phải để tua ngay tới phân cảnh tương ứng.
+        <div class="apple-card" style="border-top: 3px solid #d97706;">
+          <div class="apple-card__badge phase--i">[ I ] INTEREST</div>
+          <h3 class="apple-card__title">Bóc Tách Cơ Khí</h3>
+          <p class="apple-card__desc"><strong>WHAT:</strong> Thao tác rút thanh, bung chân, xoay khớp.<br><strong>WHY:</strong> Não trái cần bằng chứng vật lý để tin tưởng sản phẩm gia công chuẩn xác và bền bỉ.</p>
+        </div>
+        <div class="apple-card" style="border-top: 3px solid #16a34a;">
+          <div class="apple-card__badge phase--d">[ D ] DESIRE</div>
+          <h3 class="apple-card__title">Bối Cảnh Sống Thật</h3>
+          <p class="apple-card__desc"><strong>WHAT:</strong> Bàn cafe, góc làm việc Deep Work, tự quay vlog.<br><strong>WHY:</strong> Khách tự ướm bản thân vào khung hình: "Có món này, cuộc sống mình sẽ tiện nghi như thế".</p>
+        </div>
+        <div class="apple-card" style="border-top: 3px solid #e11d48;">
+          <div class="apple-card__badge phase--act">[ A ] ACTION</div>
+          <h3 class="apple-card__title">Chốt Đơn Tự Nhiên</h3>
+          <p class="apple-card__desc"><strong>WHAT:</strong> Món đồ gấp gọn trong tay, bảo hành rõ ràng.<br><strong>WHY:</strong> Giảm ma sát quyết định, hành vi mua hàng diễn ra êm đềm như một lẽ tất yếu.</p>
         </div>
       </div>
-
-      <!-- Bóc tách Timestamps khớp thẳng vào AIDA (Interactive Seek) -->
-      <div class="lg:col-span-5 space-y-3">
-        <div class="flex items-center justify-between text-xs font-mono-code text-slate-400 tracking-wider uppercase mb-1">
-          <span>BÓC TÁCH MỐC THỜI GIAN VIDEO:</span>
-          <span class="text-cyan-400 text-[11px] lowercase italic">(bấm để tua video)</span>
-        </div>
-        
-        <!-- Chặng A trong video -->
-        <div onclick="seekVideo(0)" class="p-3.5 rounded-xl border border-cyan-500/40 bg-cyan-950/20 glass-card-hover cursor-pointer group transition-all">
-          <div class="flex items-center justify-between text-xs font-mono-code text-cyan-400 mb-1">
-            <span class="font-bold uppercase flex items-center space-x-1.5">
-              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-cyan-400"></i>
-              <span>[A] ATTENTION (00:00 - 00:03)</span>
-            </span>
-            <span class="px-1.5 py-0.5 rounded bg-cyan-900/60 text-[11px]">▶ Tua tới 0s</span>
-          </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-300 transition-colors">Móc câu: Kéo dài gậy + Hít nam châm MagSafe</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Cô gái bước đi ngoài trời, kéo dài thanh kim loại làm gậy selfie (<code class="text-cyan-300">Selfie Stick</code>). Đưa điện thoại vào là hít chặt ngay lập tức. Âm thanh cơ học và chuyển động mở rộng ngay lập tức bắt giữ mắt người xem.
-          </p>
-        </div>
-
-        <!-- Chặng I trong video -->
-        <div onclick="seekVideo(4)" class="p-3.5 rounded-xl border border-amber-500/40 bg-amber-950/20 glass-card-hover cursor-pointer group transition-all">
-          <div class="flex items-center justify-between text-xs font-mono-code text-amber-400 mb-1">
-            <span class="font-bold uppercase flex items-center space-x-1.5">
-              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-amber-400"></i>
-              <span>[I] INTEREST (00:04 - 00:10)</span>
-            </span>
-            <span class="px-1.5 py-0.5 rounded bg-amber-900/60 text-[11px]">▶ Tua tới 4s</span>
-          </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-amber-300 transition-colors">Thông số tự thân: Rút từ túi xách mini & Khớp xoay</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Chứng minh độ nhỏ gọn bằng hành động thực tế: Rút trơn tru từ chiếc túi xách nữ nhỏ xíu (<code class="text-amber-300">Fits in Your Pocket</code>). Bóc tách khớp gập cơ học, remote Bluetooth gắn chìm thông minh.
-          </p>
-        </div>
-
-        <!-- Chặng D trong video -->
-        <div onclick="seekVideo(11)" class="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-950/20 glass-card-hover cursor-pointer group transition-all">
-          <div class="flex items-center justify-between text-xs font-mono-code text-emerald-400 mb-1">
-            <span class="font-bold uppercase flex items-center space-x-1.5">
-              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-emerald-400"></i>
-              <span>[D] DESIRE (00:11 - 00:28)</span>
-            </span>
-            <span class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-[11px]">▶ Tua tới 11s</span>
-          </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-emerald-300 transition-colors">Bối cảnh: Cafe dạo phố, selfie camera sau có gương</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Chuyển cảnh đến quán cafe buổi tối. Biến hình thành báng cầm máy ảnh chuyên nghiệp (Camera grip) selfie camera sau bằng gương lồi phụ. Bung 3 chân đứng vững trên bàn, cầm remote tự chụp một mình cực kỳ thảnh thơi.
-          </p>
-        </div>
-
-        <!-- Chặng A trong video -->
-        <div onclick="seekVideo(29)" class="p-3.5 rounded-xl border border-rose-500/40 bg-rose-950/20 glass-card-hover cursor-pointer group transition-all">
-          <div class="flex items-center justify-between text-xs font-mono-code text-rose-400 mb-1">
-            <span class="font-bold uppercase flex items-center space-x-1.5">
-              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-rose-400"></i>
-              <span>[A] ACTION (00:29 - 00:47)</span>
-            </span>
-            <span class="px-1.5 py-0.5 rounded bg-rose-900/60 text-[11px]">▶ Tua tới 29s</span>
-          </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-rose-300 transition-colors">Hero Packshot: Trọn bộ thiết bị & Kêu gọi hành động</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Sản phẩm được gấp gọn hoàn chỉnh, hiển thị đầy đủ các chế độ quay ngang/dọc, tương thích MagSafe. Chốt lại bằng biểu tượng Ulanzi chỉn chu, mở lối giỏ hàng không gây ức chế.
-          </p>
-        </div>
-
-      </div>
-
     </div>
+  </section>
 
-    <!-- Script điều khiển Trình phát Video Kép & Nhảy Mốc Giây -->
-    <script>
-      function switchVideoSource(source) {
-        const nativePlayer = document.getElementById('native-video-player');
-        const youtubePlayer = document.getElementById('youtube-video-player');
-        const btnNative = document.getElementById('tab-btn-native');
-        const btnYoutube = document.getElementById('tab-btn-youtube');
-        const indicator = document.getElementById('player-indicator');
-        const title = document.getElementById('player-title');
+  <!-- ================= KHỐI 3: CASE STUDY ULANZI JJ03 VIDEO MASTER (TINT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-case-study">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">03 / BÓC TÁCH VIDEO MẪU</div>
+      <h2 class="title-short">CASE STUDY: ULANZI JJ03 MAGSAFE</h2>
+      <p class="cl-body">
+        Một video 47 giây nhưng chứa tới 24 cảnh cắt siêu nhanh (trung bình 2 giây/cảnh). Xem trực tiếp bản Master CDN mượt 100% bên dưới:
+      </p>
 
-        if (source === 'native') {
-          nativePlayer.classList.remove('hidden');
-          youtubePlayer.classList.add('hidden');
-          
-          btnNative.className = 'px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold transition-all flex items-center space-x-1.5 shadow-sm';
-          btnYoutube.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5';
-          
-          indicator.className = 'w-2 h-2 rounded-full bg-cyan-400 animate-pulse';
-          title.textContent = 'Ulanzi JJ03 Master (Cloudflare R2 CDN - Mượt 100%)';
-        } else {
-          nativePlayer.pause();
-          nativePlayer.classList.add('hidden');
-          youtubePlayer.classList.remove('hidden');
-
-          btnYoutube.className = 'px-3 py-1.5 rounded-lg bg-red-600 text-white font-bold transition-all flex items-center space-x-1.5 shadow-sm';
-          btnNative.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5';
-
-          indicator.className = 'w-2 h-2 rounded-full bg-red-500 animate-pulse';
-          title.textContent = 'Ulanzi Gear Playlist (YouTube Embed)';
-        }
-      }
-
-      function seekVideo(seconds) {
-        switchVideoSource('native');
-        const vid = document.getElementById('native-video-player');
-        if (vid) {
-          vid.currentTime = seconds;
-          vid.play().catch(e => console.log('Autoplay policy prevented audio:', e));
-        }
-      }
-    <!-- ================= THƯ VIỆN ĐẠO DIỄN: 10 CẢNH 3 GIÂY CHO TỪNG PHA A - I - D ================= -->
-    <div class="mt-16 pt-12 border-t border-slate-800/80">
-      
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-700/50 text-cyan-300 text-xs font-mono-code mb-3">
-          <i class="fas fa-film text-cyan-400"></i>
-          <span>BÓC TÁCH VIDEO ULANZI: MỖI PHA TỐI THIỂU 10 CẢNH (3s/CẢNH)</span>
-        </div>
-        <h3 class="title-short text-2xl sm:text-3xl text-white mb-3">KHO CẢNH ĐIỆN ẢNH: 10 SHOT MẪU CHO TỪNG PHA A - I - D</h3>
-        <p class="text-sm text-slate-300 leading-relaxed font-normal">
-          Video Ulanzi dài 47 giây nhưng có tới 24 cảnh cắt liên tục (~2 giây/cảnh). Dưới đây là thư viện chuẩn hóa <strong>10 góc quay thực chiến</strong> cho từng pha để học viên bốc cảnh ghép thành video hoàn chỉnh mà không bao giờ bị bí ý tưởng.
-        </p>
-      </div>
-
-      <!-- Tab Switcher cho 3 Pha A - I - D -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
-        <button onclick="switchAidaTab('tab-a')" id="btn-tab-a" class="px-5 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs font-mono-code transition-all shadow-md flex items-center space-x-2">
-          <i class="fas fa-eye"></i>
-          <span>PHA [A] ATTENTION (10 Cảnh Móc Câu)</span>
+      <!-- Video Player Controls -->
+      <div class="video-switch-btns">
+        <button id="btn-play-r2" class="btn-player active" onclick="switchVideoMode('r2')">
+          ▶ BẢN MASTER CDN (MƯỢT 100%)
         </button>
-        <button onclick="switchAidaTab('tab-i')" id="btn-tab-i" class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 font-bold text-xs font-mono-code transition-all flex items-center space-x-2">
-          <i class="fas fa-cogs"></i>
-          <span>PHA [I] INTEREST (10 Cảnh Thông Số Cơ Khí)</span>
-        </button>
-        <button onclick="switchAidaTab('tab-d')" id="btn-tab-d" class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 font-bold text-xs font-mono-code transition-all flex items-center space-x-2">
-          <i class="fas fa-heart"></i>
-          <span>PHA [D] DESIRE (10 Cảnh Đời Sống Thực Tế)</span>
+        <button id="btn-play-yt" class="btn-player" onclick="switchVideoMode('yt')">
+          PLAYLIST YOUTUBE EMBED
         </button>
       </div>
 
-      <!-- ================= TAB CONTENT A: 10 CẢNH ATTENTION ================= -->
-      <div id="content-tab-a" class="space-y-4">
-        <div class="p-3 rounded-xl bg-cyan-950/30 border border-cyan-800/50 text-xs text-cyan-200 mb-4 flex items-center justify-between">
-          <span>🎯 <strong>Mục tiêu pha [A]:</strong> Dừng ngón tay lướt trong 3s đầu bằng kích thích thị giác vô thức (Visual Disruption).</span>
-          <span class="font-mono-code text-[11px] text-cyan-300">10 Cảnh • 3s/cảnh</span>
-        </div>
+      <!-- Player Frame -->
+      <div class="video-frame-wrap">
+        <video 
+          id="native-r2-video" 
+          controls 
+          preload="metadata"
+          playsinline 
+          class="w-full h-auto block"
+          style="width: 100%; aspect-ratio: 16/9; background: #000;"
+        >
+          <source src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/videos/ulanzi_jj03.mp4" type="video/mp4">
+          Trình duyệt không hỗ trợ thẻ video.
+        </video>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <!-- A1 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A1: THE MAGSAFE SNAP (HÍT TỨC THÌ 0.5s)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Macro ECU</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Đưa lưng iPhone lướt qua ngàm, hai mặt tự hút dính chặt "cạch", phát âm thanh cơ học đanh giòn.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Macro 100mm f/2.8, đèn Rim light gắt viền kim loại tách khỏi nền tối.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Mắt người phản ứng với lực hút vô hình. Không có kẹp lò xo lỏng lẻo ➔ Gây tò mò ngay lập tức.</p>
-          </div>
-
-          <!-- A2 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A2: THE TELESCOPE EXTENSION (RÚT DÀI THẦN TỐC)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Low-angle</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Tay vung kéo dứt khoát, các ống nhôm bên trong rút vút dài ra gấp 5 lần kích thước ban đầu.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Góc thấp nhìn chếch lên trời xanh, lia máy theo đà mở rộng.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Tương phản kích thước cực đại (từ 20cm vươn thành 1 mét trong 1 giây) tạo cảm giác ngoạn mục.</p>
-          </div>
-
-          <!-- A3 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A3: THE SPECULAR SWEEP (VỆT SÁNG QUÉT LOGO)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Tilt-up</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Vệt đèn tube light quét ngang qua đường vát kim cương CNC và logo kim loại.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> 45 độ nghiêng, nền tối luxury, khẩu mở lớn xóa phông bokeh.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Bản năng mắt người bị lóa sáng bởi điểm catchlight, gắn nhãn ngay đây là sản phẩm cao cấp đắt tiền.</p>
-          </div>
-
-          <!-- A4 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A4: THE HANDBAG DRAW (RÚT TỪ TÚI XÁCH MINI)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • POV</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Bàn tay thò vào chiếc túi xách nữ nhỏ xíu, rút trơn tru cây gậy ra ngoài nhẹ tênh.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Góc nhìn thứ nhất (POV) từ trên bàn cafe nhìn xuống chiếc túi.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Đánh thẳng vào định kiến "Tripod rất nặng và cồng kềnh", kích hoạt ham muốn xem tiếp.</p>
-          </div>
-
-          <!-- A5 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A5: THE 180° FLIP ROTATION (XOAY LẬT MÀN HÌNH)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Cực cận</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Búng tay xoay điện thoại từ chế độ dọc (TikTok) sang ngang (YouTube) có tiếng khấc định vị.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Cận cảnh trục xoay bi cầu xoay tròn tốc độ 60fps.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Chuyển động xoay cơ học (Rotational kinetic) luôn thu hút thị giác tốt gấp 3 lần ảnh tĩnh.</p>
-          </div>
-
-          <!-- A6 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A6: THE DROP & LOCK TRIPOD (ĐẬP BUNG 3 CHÂN)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Table Skim</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Đặt đuôi gậy chạm nhẹ mặt bàn, 3 chân đế tự động bung xòe bám chặt "bộp" vững như bàn thạch.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Góc sát mặt bàn (Table-level), bắt nét vào đệm cao su chân đế.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Thao tác 1 giây bung chân chứng minh sự tiện lợi vượt trội so với tripod vặn ốc truyền thống.</p>
-          </div>
-
-          <!-- A7 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A7: THE TACTILE SHUTTER CLICK (ASMR BẤM NÚT)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Macro ASMR</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Ngón tay cái nhấn mạnh vào nút bấm Bluetooth, đèn LED nháy xanh báo tín hiệu ăn ngay.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Macro cự ly 3cm thấy rõ vân tay và hành trình phím nảy.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Thỏa mãn cảm giác xúc giác (Haptic feedback), kích thích dopamine như tiếng gõ phím cơ.</p>
-          </div>
-
-          <!-- A8 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A8: THE HIGH DYNAMIC WALK (DẠO BƯỚC GÓC CAO)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • High-Angle</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Nhân vật giơ gậy vươn cao 45 độ dạo bước ngoài phố, camera góc rộng bắt trọn bầu trời và kiến trúc.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Góc cực cao nhìn xéo xuống khuôn mặt thon gọn tự nhiên.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Mở toang không gian thị giác, tạo cảm giác điện ảnh tự do, khác biệt hoàn toàn góc quay tay dí sát mặt.</p>
-          </div>
-
-          <!-- A9 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A9: THE INVERTED SHAKE TEST (DỐC NGƯỢC VUNG LẮC)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • High Tension</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Cầm ngược gậy, để iPhone treo lơ lửng bên dưới rồi vung lắc mạnh mà máy vẫn dính chặt cứng.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Góc trung ngang tầm mắt, ánh sáng kịch tính tạo hồi hộp.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Gây thót tim sợ rơi vỡ điện thoại ➔ Giữ người xem nín thở ➔ Khẳng định lực hút nam châm vô địch.</p>
-          </div>
-
-          <!-- A10 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-cyan-500/50 transition-colors">
-            <div class="flex items-center justify-between text-cyan-400 font-mono-code font-bold">
-              <span>CẢNH A10: SPEED-RAMP MORPH (BIẾN HÌNH 3 TRONG 1)</span>
-              <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-[10px]">3s • Speed-ramp</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Cùng 1 vị trí cố định, tua nhanh 3 hình thái: Gậy selfie ➔ Báng máy ảnh ➔ Tripod để bàn.</p>
-            <p class="text-slate-400"><strong>Góc máy & Đèn:</strong> Khung hình khóa chết (Lock-off shot) trên mặt bàn gỗ sang trọng.</p>
-            <p class="text-cyan-300/90 italic">💡 Logic: Nhồi 3 công năng trong 3 giây khiến não bộ cảm nhận giá trị nhận được cực kỳ hời.</p>
-          </div>
-        </div>
+        <iframe 
+          id="yt-video-frame" 
+          src="" 
+          class="w-full h-full"
+          style="display: none; width: 100%; aspect-ratio: 16/9; border: none;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
       </div>
 
-      <!-- ================= TAB CONTENT I: 10 CẢNH INTEREST ================= -->
-      <div id="content-tab-i" class="space-y-4 hidden">
-        <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-800/50 text-xs text-amber-200 mb-4 flex items-center justify-between">
-          <span>⚙️ <strong>Mục tiêu pha [I]:</strong> Thuyết phục não trái bằng bằng chứng cơ học và độ hoàn thiện có thật (Visual Proof).</span>
-          <span class="font-mono-code text-[11px] text-amber-300">10 Cảnh • 3s/cảnh</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <!-- I1 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I1: ĐẶT LÊN CÂN TIỂU LY ĐIỆN TỬ (160G)</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Close-Up</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Đặt gậy lên mặt cân điện tử, số nhảy hiển thị <code class="text-amber-300">160g</code> (nhẹ hơn một quả táo).</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cận cảnh màn hình LED của cân và chiếc gậy nhỏ nhắn.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Biến tính từ "siêu nhẹ" thành con số khoa học mắt thấy tai nghe, không thể chối cãi.</p>
-          </div>
-
-          <!-- I2 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I2: NAM CHÂM N52 HÚT THANH SẮT NẶNG</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Macro Proof</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Đưa ngàm gậy lại gần thanh kim loại, tiếng "cạch" đanh vang, nhấc bổng thanh kim loại lên dễ dàng.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Macro góc nghiêng, ánh sáng chiếu rõ vòng nam châm vát kim cương.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Chứng minh lực hút nam châm Neodymium N52 cực mạnh, loại bỏ 100% nỗi sợ rơi rớt.</p>
-          </div>
-
-          <!-- I3 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I3: TRƯỢT THÁO REMOTE BLUETOOTH TÍCH HỢP</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Detail Close</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Ngón tay gạt nhẹ, chiếc remote nhỏ gọn tách rời khỏi báng cầm, lộ ra cổng sạc Type-C.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cận cảnh ngón tay trượt remote ra và nhét lại vào khay khít khao.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Minh chứng thiết kế nguyên khối thông minh, không sợ để quên hay làm rơi remote khi đi du lịch.</p>
-          </div>
-
-          <!-- I4 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I4: 3 CHÂN ĐỆM CAO SU SILICON CHỐNG TRƯỢT</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Worm's Eye</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Bàn tay ấn mạnh cây gậy trên mặt kính bóng, 3 chân đế cao su bám chặt không xê dịch 1mm.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Góc cực thấp sát mặt kính nhìn lên, thấy rõ độ ma sát đệm cao su.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Xóa nỗi sợ tripod giá rẻ bị trơn trượt trên mặt bàn làm rơi vỡ điện thoại.</p>
-          </div>
-
-          <!-- I5 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I5: GƯƠNG LỒI PHỤ (CONVEX MIRROR) TỰ CĂN GÓC</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Macro Lens</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Ngón tay lau nhẹ chiếc gương tròn sau ngàm, phản chiếu nụ cười nhân vật ở cự ly 50cm.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Macro lấy nét vào hình ảnh phản chiếu trong gương lồi cầu.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Khám phá tính năng tinh tế độc quyền: Chụp camera sau 48MP mà vẫn tự ngắm được khung hình.</p>
-          </div>
-
-          <!-- I6 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I6: TRỤC BI XOAY 360° VÀ GẬP 180° MƯỢT MÀ</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Pan & Tilt</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Hai tay vặn xoay khớp cầu theo mọi hướng: Ngửa lên trời, chúc xuống đất, xoay tròn không khựng.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cận cảnh khớp cầu kim loại có ren định vị chắc chắn.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Phô diễn độ linh hoạt: Quay flatlay từ trên xuống, quay góc thấp từ dưới đất đều dễ dàng.</p>
-          </div>
-
-          <!-- I7 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I7: THANH NHÔM HÀNG KHÔNG ĐA KHÚC CHỐNG LẮC</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Slide Track</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Kéo từng nấc thanh nhôm ra, máy quay lia vào rãnh định hướng kép chống xoay lắc khi vươn dài.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Lia dọc theo ống nhôm phay xước sáng bóng.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Khẳng định chất liệu hợp kim nhôm máy bay bền bỉ, không bị võng gãy như ống sắt mỏng.</p>
-          </div>
-
-          <!-- I8 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I8: VÂN NHÁM CÔNG THÁI HỌC CHỐNG MỒ HÔI TAY</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Texture Scan</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Bàn tay miết trên báng cầm, phô diễn lớp vân nhám lì cao cấp không bám vân tay.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cực cận bề mặt chất liệu dưới ánh đèn ven nghiêng.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Cảm giác cầm nắm đầm tay, chắc chắn, không lo trơn tuột khi tay ướt mồ hôi.</p>
-          </div>
-
-          <!-- I9 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I9: TẢI TRỌNG THỰC TẾ GẮN IPAD VÀ ĐÈN LED</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Stress Test</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Gắn iPad mini hoặc điện thoại nặng kèm đèn LED trợ sáng, chân gậy vẫn đứng thẳng tắp.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Góc trung bên hông, phô diễn trọng tâm tháp tam giác vững vàng.</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Vượt kỳ vọng của người mua về độ bền của một thiết bị kích thước mini.</p>
-          </div>
-
-          <!-- I10 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-amber-500/50 transition-colors">
-            <div class="flex items-center justify-between text-amber-400 font-mono-code font-bold">
-              <span>CẢNH I10: TƯƠNG THÍCH MỌI DÒNG IPHONE & ANDROID</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-950 text-[10px]">3s • Quick Cut</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Hành động:</strong> Hít iPhone trần ➔ Hít iPhone có ốp MagSafe ➔ Hít Samsung dán vòng kim loại từ tính đi kèm.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cắt nhanh 3 cú hít liên tiếp (1s/cú).</p>
-            <p class="text-amber-300/90 italic">💡 Logic: Xóa bỏ rào cản phân vân: Dù khách dùng bất kỳ điện thoại nào cũng dùng được ngay.</p>
-          </div>
-        </div>
+      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--cl-text-muted); margin-top: 14px;">
+        Nguồn tham chiếu: <span style="color: var(--cl-text-base); font-weight: 600;">Ulanzi JJ03 3-in-1 Magnetic Phone Tripod with Remote Control</span>
       </div>
-
-      <!-- ================= TAB CONTENT D: 10 CẢNH DESIRE ================= -->
-      <div id="content-tab-d" class="space-y-4 hidden">
-        <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-800/50 text-xs text-emerald-200 mb-4 flex items-center justify-between">
-          <span>🌿 <strong>Mục tiêu pha [D]:</strong> Đánh thức khao khát sở hữu qua cơ chế tự chiếu bản thân (Self-Projection Lifestyle).</span>
-          <span class="font-mono-code text-[11px] text-emerald-300">10 Cảnh • 3s/cảnh</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <!-- D1 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D1: SOLO STREET VLOGGER TỰ QUAY NGOÀI PHỐ</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Tracking Shot</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Phố đi bộ rực nắng, nhân vật vừa bước đi thong thả vừa cầm gậy nói chuyện tự tin vào camera.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Góc trung di chuyển trước mặt nhân vật, hậu cảnh mờ nhòe điện ảnh.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Bán sự tự do: Không cần ai cầm máy hộ, 1 mình vẫn tạo ra những thước phim lung linh.</p>
-          </div>
-
-          <!-- D2 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D2: QUÁN CAFE CHILLOUT CHECK-IN SANG CHẢNH</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Wide 1/3</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Bàn cafe bên khung kính cây xanh, ly cafe bốc khói, tripod bung gọn tự quay nhân vật đang đọc sách.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Góc rộng điện ảnh 1/3, ánh sáng tự nhiên ấm áp.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Khách nhìn thấy phong cách sống thong thả, có gu thẩm mỹ cao mà họ luôn ao ước.</p>
-          </div>
-
-          <!-- D3 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D3: TỰ SELFIE CAMERA SAU 48MP NHỜ GƯƠNG PHỤ</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Over-the-shoulder</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Quán cafe tối lung linh đèn vàng, nhân vật nhìn vào gương phụ chỉnh tóc rồi bấm nút chụp.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Qua vai, thấy cả nhân vật và hình ảnh phản chiếu trong gương.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Giải quyết trúng nỗi đau: Chụp camera trước mờ nhạt, camera sau thì sợ lệch góc.</p>
-          </div>
-
-          <!-- D4 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D4: ĐI ĂN UỐNG TRÒ CHUYỆN RẢNH CẢ HAI TAY</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Eye-Level</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Bàn ăn ấm cúng, tripod đứng cao ngang mắt, nhân vật vừa ăn vừa gọi video call cho bạn bè.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Ngang tầm mắt tự nhiên, không gian gần gũi đời thường.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Không còn cảnh phải tìm cốc nước hay hộp khăn giấy để kê điện thoại rồi bị trượt đổ.</p>
-          </div>
-
-          <!-- D5 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D5: BÁNG CẦM MÁY ẢNH CHỤP ẢNH ĐƯỜNG PHỐ</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Street Photo</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Nhân vật đứng bên hè phố, cầm gậy ở tư thế báng máy ảnh cơ, ngón trỏ bấm nút chụp khoảnh khắc.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cận vào đôi tay và dáng đứng như một nhiếp ảnh gia chuyên nghiệp.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Biến chiếc điện thoại bình thường thành một chiếc máy ảnh compact chuyên nghiệp.</p>
-          </div>
-
-          <!-- D6 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D6: BỎ TÚI QUẦN JEAN / TÚI ĐEO CHÉO NHẸ TÊNH</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • EDC Lifestyle</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Đứng dậy rời quán cafe, gập gậy cái "tách", nhét nhẹ vào túi quần sau rồi rảo bước đi.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Cận cảnh thao tác đút túi mượt mà, không vướng víu.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Đồ quay phim tiện lợi như mang theo một chiếc chìa khóa xe, sẵn sàng đi bất cứ đâu.</p>
-          </div>
-
-          <!-- D7 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D7: QUAY TIMELAPSE HOÀNG HÔN BỜ HỒ GÓC THẤP</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Sunset Timelapse</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Bờ hồ lộng gió lúc hoàng hôn đỏ rực, tripod đứng vững trên lan can ghi lại cảnh mây trời cuộn trôi.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Góc thấp nhìn lên bầu trời hoàng hôn rực rỡ.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Khơi dậy cảm hứng làm content nghệ thuật cho dân du lịch, phượt thủ.</p>
-          </div>
-
-          <!-- D8 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D8: BÀN LÀM VIỆC DEEP WORK / HỌP ZOOM TRỰC TUYẾN</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Desk Setup</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Bàn gỗ tối giản, tripod đỡ điện thoại ngang tầm mắt cạnh laptop để họp online hoặc quay TikTok.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Sau lưng nhân vật nhìn thấy không gian làm việc chuyên nghiệp.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Ứng dụng thực tế ngay tại nhà cho dân văn phòng, kinh doanh online và creator.</p>
-          </div>
-
-          <!-- D9 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D9: TỰ CHỤP ẢNH TỪ XA 10M BẰNG REMOTE BÍ MẬT</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Long Shot 10m</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Bãi cỏ công viên xanh mướt, nhân vật đứng cách xa 10 mét tạo dáng, tay giấu remote trong túi bấm "tách".</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Toàn cảnh (Long Shot) đẹp mắt như có thợ ảnh riêng đi cùng.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Xóa nỗi ngại đi du lịch một mình: Không phải nhờ người lạ chụp hộ rồi nhận về ảnh xấu.</p>
-          </div>
-
-          <!-- D10 -->
-          <div class="p-4 rounded-xl glass-card border border-slate-800 space-y-1.5 hover:border-emerald-500/50 transition-colors">
-            <div class="flex items-center justify-between text-emerald-400 font-mono-code font-bold">
-              <span>CẢNH D10: RÚT RA BẮM MÁY TRONG 3S KHI ĐANG ĐI XE ĐẠP</span>
-              <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-[10px]">3s • Run-and-Gun</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed"><strong>Bối cảnh:</strong> Cung đường sương sớm, dừng xe đạp, rút gậy hít điện thoại quay cảnh sương rồi đi tiếp.</p>
-            <p class="text-slate-400"><strong>Góc máy:</strong> Thể thao năng động, nhịp thở khỏe khoắn.</p>
-            <p class="text-emerald-300/90 italic">💡 Logic: Đồng hành cùng lối sống năng động, không bỏ lỡ bất kỳ khoảnh khắc quý giá nào.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Script Chuyển Tab A - I - D -->
-      <script>
-        function switchAidaTab(tabId) {
-          const contents = ['content-tab-a', 'content-tab-i', 'content-tab-d'];
-          const buttons = ['btn-tab-a', 'btn-tab-i', 'btn-tab-d'];
-          
-          contents.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.classList.add('hidden');
-          });
-
-          buttons.forEach(id => {
-            const btn = document.getElementById(id);
-            if (btn) {
-              btn.className = 'px-5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 font-bold text-xs font-mono-code transition-all flex items-center space-x-2';
-            }
-          });
-
-          if (tabId === 'tab-a') {
-            document.getElementById('content-tab-a').classList.remove('hidden');
-            const btn = document.getElementById('btn-tab-a');
-            btn.className = 'px-5 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs font-mono-code transition-all shadow-md flex items-center space-x-2';
-          } else if (tabId === 'tab-i') {
-            document.getElementById('content-tab-i').classList.remove('hidden');
-            const btn = document.getElementById('btn-tab-i');
-            btn.className = 'px-5 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs font-mono-code transition-all shadow-md flex items-center space-x-2';
-          } else if (tabId === 'tab-d') {
-            document.getElementById('content-tab-d').classList.remove('hidden');
-            const btn = document.getElementById('btn-tab-d');
-            btn.className = 'px-5 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs font-mono-code transition-all shadow-md flex items-center space-x-2';
-          }
-        }
-      </script>
-
     </div>
+  </section>
 
-    <!-- ================= PHƯƠNG ÁN 2: QUY TRÌNH 8 CẢNH AIDA DỄ QUAY 100% BẰNG ĐIỆN THOẠI ================= -->
-    <div class="mt-16 pt-12 border-t border-slate-800">
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 text-xs font-mono-code mb-3">
-          <i class="fas fa-mobile-alt text-emerald-400"></i>
-          <span>PHƯƠNG ÁN 2: THỰC CHIẾN 100% BẰNG ĐIỆN THOẠI (SOLO CREATOR)</span>
-        </div>
-        <h3 class="title-short text-2xl sm:text-3xl text-white mb-3">QUY TRÌNH 8 CẢNH VÀNG: DỄ QUAY – LOGIC CHẶT CHẼ</h3>
-        <p class="text-sm text-slate-300 leading-relaxed">
-          Không cần máy ảnh cơ, không cần lens Macro đắt tiền, không cần đèn studio phức tạp. Dành riêng cho học viên tự làm <strong>1 người (Solo)</strong> chỉ với 1 chiếc smartphone và 1 mặt bàn cạnh cửa sổ.
-        </p>
-      </div>
+  <!-- ================= KHỐI 4: BẢNG PHÂN CẢNH 8 CẢNH ĐIỆN THOẠI (LIGHT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-storyboard-mobile">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">04 / BẢNG PHÂN CẢNH THỰC CHIẾN BẰNG ĐIỆN THOẠI</div>
+      <h2 class="title-short">8 CẢNH VÀNG: DỄ QUAY – LOGIC CHẶT CHẼ</h2>
+      <p class="editorial-hook">
+        "Không cần máy ảnh cơ, không cần lens macro hay đèn đắt tiền. 1 người tự quay 100% bằng điện thoại trong 30 phút."
+      </p>
 
-      <!-- 3 Mẹo Vàng Quay Bằng Điện Thoại -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-start space-x-3">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold font-mono-code text-sm">1</div>
-          <div>
-            <div class="text-xs font-bold text-white mb-1">BẬT ZOOM 2X / 3X</div>
-            <div class="text-[11px] text-slate-400 leading-relaxed">Lùi xa 40-50cm và zoom 2X. Khung hình phẳng lì, xóa sạch méo viền và tuyệt đối không bị bóng bàn tay đè lên sản phẩm.</div>
-          </div>
+      <!-- 3 Mẹo Quang Học Điện Thoại -->
+      <div class="apple-cards-grid" style="margin-bottom: 32px;">
+        <div class="apple-card" style="padding: 20px 22px;">
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--cl-accent); margin-bottom: 6px;">MẸO 1: BẬT ZOOM 2X / 3X</div>
+          <p style="font-size: 13.5px; color: var(--cl-text-muted); line-height: 1.6;">Lùi máy 40-50cm và zoom 2X. Xóa sạch méo viền góc rộng, ánh sáng cửa sổ tràn vào tự nhiên không bị bóng người đè lên.</p>
         </div>
-        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-start space-x-3">
-          <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 font-bold font-mono-code text-sm">2</div>
-          <div>
-            <div class="text-xs font-bold text-white mb-1">KHÓA NÉT & HẠ SÁNG (-0.5 EV)</div>
-            <div class="text-[11px] text-slate-400 leading-relaxed">Nhấn giữ 1.5s để khóa AE/AF Lock, kéo thanh mặt trời xuống nhẹ. Tránh hiện tượng nhảy sáng phập phồng, màu sắc đậm đà chất điện ảnh.</div>
-          </div>
+        <div class="apple-card" style="padding: 20px 22px;">
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--cl-accent); margin-bottom: 6px;">MẸO 2: KHÓA AE/AF & HẠ SÁNG</div>
+          <p style="font-size: 13.5px; color: var(--cl-text-muted); line-height: 1.6;">Nhấn giữ màn hình 1.5s để khóa sáng/nét, kéo nhẹ thanh mặt trời xuống -0.5 EV để màu sắc đậm đà, khử nhảy sáng phập phồng.</p>
         </div>
-        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-start space-x-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 font-bold font-mono-code text-sm">3</div>
-          <div>
-            <div class="text-xs font-bold text-white mb-1">LẬT NGƯỢC ĐIỆN THOẠI</div>
-            <div class="text-[11px] text-slate-400 leading-relaxed">Cầm điện thoại chúc cụm camera sát mặt bàn. Tạo góc siêu thấp (Worm-eye view) biến chiếc tripod nhỏ trở nên bề thế, đồ sộ.</div>
-          </div>
+        <div class="apple-card" style="padding: 20px 22px;">
+          <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--cl-accent); margin-bottom: 6px;">MẸO 3: LẬT NGƯỢC ĐIỆN THOẠI</div>
+          <p style="font-size: 13.5px; color: var(--cl-text-muted); line-height: 1.6;">Cầm điện thoại chúc cụm camera sát mặt bàn để tạo góc siêu thấp (Worm-eye view), biến chiếc tripod nhỏ trở nên bề thế, kiên cố.</p>
         </div>
       </div>
 
-      <!-- Grid 8 Cảnh Thực Chiến Bằng Điện Thoại -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <!-- GRID 8 CẢNH HOÀN CHỈNH KÈM ẢNH AI CHUẨN R2 CDN -->
+      <div class="storyboard-grid">
 
-        <!-- Cảnh 1 -->
-        <div class="p-4 rounded-2xl glass-card border border-cyan-500/30 space-y-2 hover:border-cyan-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono-code font-bold">CẢNH 1 • ATTENTION</span>
-            <span class="text-slate-400 font-mono-code">00s - 03s (3s)</span>
+        <!-- CẢNH 1 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c1_snap_1788946584085.jpg" 
+              alt="Cảnh 1: Cú hít MagSafe 1 chạm" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">00s - 03s (3s)</span>
+            <span class="sb-card__phase phase--a">CẢNH 1 • ATTENTION</span>
           </div>
-          <div class="text-sm font-bold text-white">Cú Hít MagSafe "1 Chạm" & Vứt Bỏ Ngàm Kẹp Cũ</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-cyan-300">Cách đặt ĐT quay:</strong> Tựa điện thoại vào cốc nước trên bàn, nghiêng 45°, bật <strong>Zoom 2X</strong>.<br>
-            <strong class="text-cyan-300">Hành động:</strong> Một tay cầm gậy, tay kia đưa điện thoại lướt qua. Lực từ tính tự kéo phập vào đầu gậy phát tiếng "TÁCH" cực đanh.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cú Hít MagSafe "1 Chạm" & Vứt Bỏ Ngàm Kẹp Cũ</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Tựa điện thoại vào cốc nước trên bàn gỗ, nghiêng 45°, bật <code>Zoom 2X</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Tay trái cầm gậy, tay phải đưa điện thoại lướt qua. Lực từ tính tự kéo phập vào đầu gậy phát tiếng "TÁCH" cơ học cực đanh.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Chặn đứng thói quen lướt màn hình trong 3s đầu. Đập tan nỗi sợ bị kẹp đau móng tay của ngàm kẹp lò xo đời cũ.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-cyan-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Giải quyết ngay nỗi sợ kẹp đau ngón tay của ngàm kẹp lò xo truyền thống. Âm thanh cơ học hút chặt tai người nghe.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 2 -->
-        <div class="p-4 rounded-2xl glass-card border border-cyan-500/30 space-y-2 hover:border-cyan-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono-code font-bold">CẢNH 2 • ATTENTION</span>
-            <span class="text-slate-400 font-mono-code">03s - 06s (3s)</span>
+        <!-- CẢNH 2 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c2_shake_1788946602568.jpg" 
+              alt="Cảnh 2: Dốc ngược lắc mạnh thách thức trọng lực" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">03s - 06s (3s)</span>
+            <span class="sb-card__phase phase--a">CẢNH 2 • ATTENTION</span>
           </div>
-          <div class="text-sm font-bold text-white">Dốc Ngược Lắc Mạnh Thách Thức Trọng Lực</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-cyan-300">Cách đặt ĐT quay:</strong> Cầm điện thoại quay ngang ngực (Eye-level, 1X), đứng trước phông tường sạch.<br>
-            <strong class="text-cyan-300">Hành động:</strong> Dốc ngược chiếc gậy chúc đầu máy xuống đất, lắc mạnh 2-3 nhịp liên hồi. Điện thoại vẫn bám chặt không xê dịch.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Dốc Ngược Lắc Mạnh Thách Thức Trọng Lực</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Cầm điện thoại quay ngang ngực (Eye-level, 1X), đứng trước tường sạch.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt dốc ngược gậy chúc đầu máy xuống đất, lắc mạnh tay 2-3 nhịp dứt khoát. Điện thoại dính chặt như keo không hề xê dịch.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Xóa tan hoài nghi lớn nhất: "Nam châm hút liệu có rơi vỡ máy không?". Chứng minh độ tin cậy bằng hành động mắt thấy tai nghe.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-cyan-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Xóa tan nghi ngờ: "Hút nam châm liệu có rơi vỡ điện thoại không?". Chứng minh độ tin cậy tuyệt đối bằng hành động thật.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 3 -->
-        <div class="p-4 rounded-2xl glass-card border border-amber-500/30 space-y-2 hover:border-amber-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-mono-code font-bold">CẢNH 3 • INTEREST</span>
-            <span class="text-slate-400 font-mono-code">06s - 09s (3s)</span>
+        <!-- CẢNH 3 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c3_deploy_1788946618478.jpg" 
+              alt="Cảnh 3: Đập nhẹ bung 3 chân đế tự động" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">06s - 09s (3s)</span>
+            <span class="sb-card__phase phase--i">CẢNH 3 • INTEREST</span>
           </div>
-          <div class="text-sm font-bold text-white">Đập Nhẹ Bung 3 Chân Đế Tự Động (Drop & Deploy)</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-amber-300">Cách đặt ĐT quay:</strong> Áp dụng mẹo <strong>Lật ngược điện thoại</strong> sát mặt bàn gỗ.<br>
-            <strong class="text-amber-300">Hành động:</strong> Đưa đuôi gậy chạm nhẹ mặt bàn, 3 chân đế tự bung xòe ra hình kiềng 3 chân, đứng thăng bằng vững như bàn thạch.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Đập Nhẹ Bung 3 Chân Đế Tự Động (Drop & Deploy)</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Áp dụng mẹo <code>Lật ngược điện thoại</code> sát mặt bàn gỗ (góc siêu thấp).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Hạ nhẹ đuôi gậy chạm bàn, 3 chân đế tự bung xòe kiềng 3 chân, màn hình điện thoại dựng thẳng đứng thăng bằng vững chãi.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Tốc độ triển khai 1 giây: Đặt xuống là đứng ngay, không mất thời gian vặn ốc hay kéo chân lích kích.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-amber-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Tốc độ triển khai 1 giây: Đặt xuống là đứng, không cần vặn ốc hay kéo chân rườm rà.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 4 -->
-        <div class="p-4 rounded-2xl glass-card border border-amber-500/30 space-y-2 hover:border-amber-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-mono-code font-bold">CẢNH 4 • INTEREST</span>
-            <span class="text-slate-400 font-mono-code">09s - 12s (3s)</span>
+        <!-- CẢNH 4 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c4_extend_1788946638391.jpg" 
+              alt="Cảnh 4: Rút vút thân nhôm đa khúc lên cao" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">09s - 12s (3s)</span>
+            <span class="sb-card__phase phase--i">CẢNH 4 • INTEREST</span>
           </div>
-          <div class="text-sm font-bold text-white">Rút Vút Thân Nhôm Đa Khúc Lên Cao</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-amber-300">Cách đặt ĐT quay:</strong> Tay trái cầm điện thoại quay từ dưới hất lên (Low-angle, 1X).<br>
-            <strong class="text-amber-300">Hành động:</strong> Tay phải kéo vút thân nhôm từ 20cm vươn dài thành 70cm chỉ trong 1 nhịp thở.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Rút Vút Thân Nhôm Đa Khúc Lên Cao</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Tay trái cầm điện thoại quay hất từ dưới lên góc 60° (Low-angle, 1X).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt kéo vút thân nhôm từ 20cm vươn dài thành 70cm chỉ trong 1 nhịp thở, để lộ các rãnh định vị kim loại bóng sáng.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Thị giác hóa độ tương phản: Gấp lại bé bằng gang tay, nhưng rút ra cao ngang ngực, thay thế hoàn toàn gậy selfie cồng kềnh.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-amber-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Tương phản kích thước thị giác: Gấp lại bằng bàn tay nhưng mở ra cao ngang ngực, thay thế gậy selfie cồng kềnh.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 5 -->
-        <div class="p-4 rounded-2xl glass-card border border-amber-500/30 space-y-2 hover:border-amber-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-mono-code font-bold">CẢNH 5 • INTEREST</span>
-            <span class="text-slate-400 font-mono-code">12s - 15s (3s)</span>
+        <!-- CẢNH 5 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c5_swivel_1788946659612.jpg" 
+              alt="Cảnh 5: Gạt nhẹ xoay ngang dọc bằng 1 ngón tay" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">12s - 15s (3s)</span>
+            <span class="sb-card__phase phase--i">CẢNH 5 • INTEREST</span>
           </div>
-          <div class="text-sm font-bold text-white">Gạt Nhẹ Xoay Ngang - Dọc Bằng 1 Ngón Tay</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-amber-300">Cách đặt ĐT quay:</strong> Đặt điện thoại quay đối diện ngang tầm, zoom <strong>2X</strong>.<br>
-            <strong class="text-amber-300">Hành động:</strong> Dùng đúng 1 ngón tay trỏ đẩy mép điện thoại, máy xoay 90° từ dọc (TikTok) sang ngang (YouTube) êm ru.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Gạt Nhẹ Xoay Ngang - Dọc Bằng 1 Ngón Tay</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Đặt điện thoại quay đối diện ngang tầm mắt, bật <code>Zoom 2X</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Dùng đúng 1 ngón tay trỏ đẩy mép điện thoại, máy xoay trơn tru 90° từ chế độ dọc (TikTok) sang chế độ ngang (YouTube) êm ái.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khẳng định độ gia công cơ khí chính xác: Khớp xoay có độ ghì cơ học đầm chắc, chuyển hệ linh hoạt cho mọi nền tảng video.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-amber-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Độ mượt của khớp xoay (ball head): Không kẹt cứng, không lỏng lẻo, chuyển hệ linh hoạt cho mọi nền tảng mạng xã hội.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 6 -->
-        <div class="p-4 rounded-2xl glass-card border border-emerald-500/30 space-y-2 hover:border-emerald-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono-code font-bold">CẢNH 6 • DESIRE</span>
-            <span class="text-slate-400 font-mono-code">15s - 18s (3s)</span>
+        <!-- CẢNH 6 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c6_deepwork_1788946686071.jpg" 
+              alt="Cảnh 6: Bàn làm việc Deep Work rảnh tay giải trí" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">15s - 18s (3s)</span>
+            <span class="sb-card__phase phase--d">CẢNH 6 • DESIRE</span>
           </div>
-          <div class="text-sm font-bold text-white">Bàn Làm Việc Deep Work / Rảnh Tay Giải Trí</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-emerald-300">Cách đặt ĐT quay:</strong> Đặt điện thoại quay góc rộng (1X) lùi xa 1.2m, lấy sáng xiên từ cửa sổ.<br>
-            <strong class="text-emerald-300">Hành động:</strong> Chiếc gậy đỡ điện thoại ngang tầm mắt cạnh ly cafe ấm, hai tay nhân vật thoải mái gõ bàn phím laptop.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Bàn Làm Việc Deep Work / Rảnh Tay Giải Trí</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Đặt điện thoại quay góc rộng (1X lùi xa 1.2m), lấy sáng xiên từ cửa sổ.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Gậy tripod đỡ điện thoại ngang tầm mắt cạnh ly cafe ấm, anh Việt thoải mái gõ bàn phím laptop trong không gian làm việc tĩnh lặng.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Bán phong cách sống: Giải phóng đôi bàn tay, bàn làm việc ngăn nắp, tinh tế, nâng cao hiệu suất làm việc mỗi ngày.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-emerald-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Bán phong cách sống: Giải phóng đôi bàn tay, bàn làm việc ngăn nắp, tinh tế, nâng cao hiệu suất làm việc.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 7 -->
-        <div class="p-4 rounded-2xl glass-card border border-emerald-500/30 space-y-2 hover:border-emerald-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono-code font-bold">CẢNH 7 • DESIRE</span>
-            <span class="text-slate-400 font-mono-code">18s - 21s (3s)</span>
+        <!-- CẢNH 7 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c7_vlog_1788946812092.jpg" 
+              alt="Cảnh 7: Tự quay Vlog một mình bước đi trước gương hoặc ban công" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">18s - 21s (3s)</span>
+            <span class="sb-card__phase phase--d">CẢNH 7 • DESIRE</span>
           </div>
-          <div class="text-sm font-bold text-white">Tự Quay Vlog Một Mình Bước Đi Trước Gương / Ban Công</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-emerald-300">Cách đặt ĐT quay:</strong> Dùng chính chiếc điện thoại đang gắn trên gậy quay lại chính mình (hoặc quay trước gương lớn).<br>
-            <strong class="text-emerald-300">Hành động:</strong> Vừa bước đi tự tin vừa bấm remote Bluetooth chụp bức ảnh nụ cười rạng rỡ.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Tự Quay Vlog Một Mình Bước Đi Ban Công</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Sử dụng chính camera máy gắn trên gậy tự quay mình (hoặc quay trước gương).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt vừa bước đi tự tin ngoài ban công nhiều cây xanh vừa cầm remote Bluetooth bấm chụp ảnh với nụ cười rạng rỡ.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khách hàng thấy ngay kết quả mong ước: Tự mình đi du lịch, đi cafe hay sáng tạo nội dung mà không cần phụ thuộc người khác.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-emerald-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Trực quan hóa kết quả: Người xem thấy rõ thành quả video họ sẽ tạo ra khi tự đi chơi hoặc đi làm một mình.
-          </div>
-        </div>
+        </article>
 
-        <!-- Cảnh 8 -->
-        <div class="p-4 rounded-2xl glass-card border border-rose-500/30 space-y-2 hover:border-rose-400 transition-all">
-          <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 font-mono-code font-bold">CẢNH 8 • ACTION</span>
-            <span class="text-slate-400 font-mono-code">21s - 24s (3s)</span>
+        <!-- CẢNH 8 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/ulanzi_mobile_c8_action_1788946835630.jpg" 
+              alt="Cảnh 8: Gấp gọn trong lòng bàn tay và kêu gọi hành động" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">21s - 24s (3s)</span>
+            <span class="sb-card__phase phase--act">CẢNH 8 • ACTION</span>
           </div>
-          <div class="text-sm font-bold text-white">Gấp Gọn Trong Lòng Bàn Tay & Kêu Gọi Hành Động</div>
-          <div class="text-slate-300 leading-relaxed">
-            <strong class="text-rose-300">Cách đặt ĐT quay:</strong> Đặt điện thoại trên bàn đối diện, zoom <strong>2X</strong>.<br>
-            <strong class="text-rose-300">Hành động:</strong> 1 giây thu chân gậy lại, cầm trọn trong lòng bàn tay đưa gần vào camera, tay kia chỉ nhẹ xuống góc dưới màn hình kèm text ưu đãi.
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Gấp Gọn Trong Lòng Bàn Tay & Kêu Gọi Hành Động</h3>
+            <div class="sb-detail-item">
+              <strong>SETUP ĐT:</strong> Đặt điện thoại trên bàn đối diện, zoom <code>Zoom 2X</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Trong 1 giây thao tác thu gọn 3 chân, cầm trọn chiếc gậy nhỏ xíu trong lòng bàn tay đưa gần vào camera, kèm lời kêu gọi dứt khoát.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Nhắc lại tính nhỏ gọn bỏ túi (Everyday Carry) và kích hoạt hành vi mua hàng ngay khi cảm xúc người xem đang ở mức cao nhất.
+            </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/90 text-rose-200/90 italic border border-slate-800">
-            💡 <strong>Logic:</strong> Nhắc lại tính nhỏ gọn bỏ túi (EDC) và kích hoạt hành vi mua hàng ngay khi cảm xúc đạt đỉnh.
-          </div>
-        </div>
+        </article>
 
       </div>
     </div>
   </section>
 
-  <!-- ================= PHẦN 1: 4 CĂN BỆNH KINH NIÊN ================= -->
-  <section id="bon-can-benh" class="py-16 bg-slate-950/40 border-t border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono-code text-rose-400 uppercase tracking-widest mb-1">CHẨN ĐOÁN THỰC TẾ</div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-4">4 CĂN BỆNH KHIẾN VIDEO SẢN PHẨM CHẾT YỂU</h2>
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Đa phần người quay phim sản phẩm thông thường đều thất bại vì mắc kẹt trong tư duy "khoe đồ nghề" thay vì dẫn dắt trải nghiệm tâm lý của người xem.
-        </p>
+  <!-- ================= KHỐI 5: CASE STUDY 2: ĐỒNG HỒ BẤM GIỜ (TINT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-pomodoro">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">05 / BÀI TẬP THỰC HÀNH SỐ 2</div>
+      <h2 class="title-short">BẢNG PHÂN CẢNH ĐỒNG HỒ POMODORO</h2>
+      <p class="editorial-hook">
+        "Chuyển hóa chiếc đồng hồ xanh bơ - phím cam đời thực sang kịch bản 4 phân cảnh AIDA chuẩn điện ảnh."
+      </p>
+
+      <div class="storyboard-grid">
+
+        <!-- POMODORO 1 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_hook_macro_1788945697414.jpg" 
+              alt="Phân cảnh 1: Attention Pomodoro - Bấm nút cam số nhảy lùi" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">00s - 03s (3s)</span>
+            <span class="sb-card__phase phase--a">POMODORO • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cú Bấm Dứt Khoát & Số Nhảy Lùi</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cực cận đặc tả (ECU), góc nghiêng 45° sát mặt bàn gỗ tối màu, đèn ven kim loại.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Ngón tay nhấn phím cam to <code>Play/Pause</code>. Con số trên màn hình LCD giật lùi: <code>25:00 ➔ 24:59</code>, tiếng "tách" đanh giòn.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic:</strong> Tương phản màu sắc xanh bơ + cam rực rỡ. Chuyển động số nhảy giật lùi kích hoạt bản năng tò mò: Cái này để làm gì?
+            </div>
+          </div>
+        </article>
+
+        <!-- POMODORO 2 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_interest_back_1788945731551.jpg" 
+              alt="Phân cảnh 2: Interest Pomodoro - Bóc tách cơ học mặt sau" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">03s - 09s (6s)</span>
+            <span class="sb-card__phase phase--i">POMODORO • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Bóc Tách Chân Chống Nghiêng 45° & Nam Châm</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh trượt chậm (Slider), bắt nét vào mặt sau vỏ nhựa.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Ngón tay bật nhẹ chân chống kickstand đặt vững chãi trên bàn, hít phập vào bề mặt tủ lạnh kim loại.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic:</strong> Chứng minh sự tinh xảo: Đặt bàn cũng được, hít tủ lạnh cũng xong, dây xích treo cặp cũng tiện lợi.
+            </div>
+          </div>
+        </article>
+
+        <!-- POMODORO 3 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_desire_deepwork_1788945672322.jpg" 
+              alt="Phân cảnh 3: Desire Pomodoro - Bàn làm việc Deep Work tập trung sâu" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">09s - 16s (7s)</span>
+            <span class="sb-card__phase phase--d">POMODORO • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Không Gian Làm Việc Tập Trung Sâu (Deep Work)</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Trung cảnh ngang tầm mắt, ánh đèn vàng ấm áp chiếu lên bàn gỗ sồi.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt úp điện thoại sang một bên, tập trung gõ bàn phím laptop; chiếc đồng hồ đứng kiêu hãnh đếm lùi bên ly cafe.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic:</strong> Khách không mua cái đồng hồ nhựa, họ mua trạng thái "LÀM CHỦ THỜI GIAN", thoát khỏi cạm bẫy xao nhãng của smartphone.
+            </div>
+          </div>
+        </article>
+
+        <!-- POMODORO 4 -->
+        <article class="sb-card">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_action_hero_1788945770527.jpg" 
+              alt="Phân cảnh 4: Action Pomodoro - Hero Shot và đóng gói" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">16s - 20s (4s)</span>
+            <span class="sb-card__phase phase--act">POMODORO • ACTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Món Quà Kỷ Luật & Kêu Gọi Hành Động</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Hero Shot chính diện, ánh sáng studio sang trọng.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Bàn tay nâng chiếc đồng hồ nằm gọn gàng bên cạnh hộp sản phẩm chỉn chu, cam kết bảo hành 1 đổi 1.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic:</strong> Xóa tan rào cản cuối cùng về sự an tâm. Chuyển hóa cảm xúc tích cực thành quyết định đặt hàng ngay lập tức.
+            </div>
+          </div>
+        </article>
+
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Bệnh 1 -->
-        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-rose-500">
-          <div class="flex items-center space-x-3 mb-3">
-            <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono-code font-bold text-sm">01</span>
-            <h3 class="title-long text-lg text-white font-semibold">Bệnh "Chụp Ảnh Thẻ Cho Sản Phẩm"</h3>
-          </div>
-          <div class="text-xs font-mono-code text-rose-300 mb-2">TRIỆU CHỨNG: Đặt món đồ trơ trọi giữa phông bạt, quay xoay tròn vô hồn</div>
-          <p class="text-sm text-slate-300 leading-relaxed mb-3">
-            Đặt chiếc máy ảnh hay cái hộp giữa bàn trắng toát, bật đèn sáng trưng phẳng lì không chút bóng đổ (Flat light). Video trông như ảnh sản phẩm trên sàn thương mại điện tử bị kéo dài thời lượng, không có chiều sâu điện ảnh.
-          </p>
-          <div class="p-3 rounded-lg bg-slate-900/80 text-xs text-cyan-300 border border-slate-800">
-            <strong>✅ Thuốc chữa AIDA:</strong> Phải bẻ góc máy sang <em>cực cận (Macro)</em>, đánh đèn ven (Rim Light) để nổi viền kim loại, biến đồ vật thành một kỳ quan vi mô.
-          </div>
-        </div>
-
-        <!-- Bệnh 2 -->
-        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-amber-500">
-          <div class="flex items-center space-x-3 mb-3">
-            <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono-code font-bold text-sm">02</span>
-            <h3 class="title-long text-lg text-white font-semibold">Bệnh "Khoe Kỹ Xảo Giật Mắt Thay Vì Giá Trị"</h3>
-          </div>
-          <div class="text-xs font-mono-code text-amber-300 mb-2">TRIỆU CHỨNG: Lia máy chớp nhoáng, chuyển cảnh chóng mặt</div>
-          <p class="text-sm text-slate-300 leading-relaxed mb-3">
-            Lạm dụng whip-pan, zoom rung lắc, hiệu ứng chuyển cảnh CapCut rực rỡ. Người xem xem xong thấy hoa mày chóng mặt nhưng 5 giây sau không nhớ nổi sản phẩm tên gì, chất liệu ra sao và giải quyết được vấn đề gì.
-          </p>
-          <div class="p-3 rounded-lg bg-slate-900/80 text-xs text-cyan-300 border border-slate-800">
-            <strong>✅ Thuốc chữa AIDA:</strong> Giữ vững <em>Gaze Anchor (điểm neo mắt)</em>, chuyển cảnh bằng Match Cut hoặc chuyển động trượt chậm để mắt kịp thưởng thức độ hoàn thiện.
-          </div>
-        </div>
-
-        <!-- Bệnh 3 -->
-        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-purple-500">
-          <div class="flex items-center space-x-3 mb-3">
-            <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-mono-code font-bold text-sm">03</span>
-            <h3 class="title-long text-lg text-white font-semibold">Bệnh "Bắt Khách Đọc Từ Điển Kỹ Thuật"</h3>
-          </div>
-          <div class="text-xs font-mono-code text-purple-300 mb-2">TRIỆU CHỨNG: Dán chằng chịt chữ thông số (Pin 5000mAh, Nhôm T6, Bluetooth 5.3)</div>
-          <p class="text-sm text-slate-300 leading-relaxed mb-3">
-            Khách hàng không mua bảng thông số kỹ thuật. Đối với não bộ người mua, những con số này là "tiếng ồn trắng". Họ chỉ quan tâm: <em>"Cái này có nhẹ không? Có nhét vừa túi xách không? Nam châm có hít chắc không?"</em>.
-          </p>
-          <div class="p-3 rounded-lg bg-slate-900/80 text-xs text-cyan-300 border border-slate-800">
-            <strong>✅ Thuốc chữa AIDA:</strong> Chuyển hóa số liệu thành <em>bằng chứng cơ học (Visual Proof)</em>: rút từ túi xách ra, dốc ngược lắc mạnh điện thoại không rơi.
-          </div>
-        </div>
-
-        <!-- Bệnh 4 -->
-        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-red-500">
-          <div class="flex items-center space-x-3 mb-3">
-            <span class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center font-mono-code font-bold text-sm">04</span>
-            <h3 class="title-long text-lg text-white font-semibold">Bệnh "Bán Hàng Kiểu Cướp Giật"</h3>
-          </div>
-          <div class="text-xs font-mono-code text-red-300 mb-2">TRIỆU CHỨNG: Vừa vào đã gào thét "Mua ngay", "Giảm giá duy nhất hôm nay"</div>
-          <p class="text-sm text-slate-300 leading-relaxed mb-3">
-            Chưa kịp để người xem cảm nhận được vẻ đẹp và sự tiện lợi đã vội dí giỏ hàng vào mặt. Não người lập tức kích hoạt phản xạ phòng vệ tự nhiên: <em>"Lại lừa bán hàng rồi"</em> $\rightarrow$ Lướt ngón tay sang video khác.
-          </p>
-          <div class="p-3 rounded-lg bg-slate-900/80 text-xs text-cyan-300 border border-slate-800">
-            <strong>✅ Thuốc chữa AIDA:</strong> Nuôi dưỡng cảm xúc qua 3 chặng A-I-D trước, chỉ chốt hạ ở giây 25 trở đi bằng lời mời lịch sự, văn minh và rủi ro bằng 0.
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
-  <!-- ================= PHẦN 2: ẨN DỤ CỬA TIỆM ================= -->
-  <section id="an-du-nghe-nghiep" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-widest mb-1">ẨN DỤ NGHỀ NGHIỆP</div>
-      <h2 class="title-short text-2xl sm:text-3xl text-white mb-3">CẶP MẮT CỦA VỊ KHÁCH SÀNH SỎI</h2>
-      <p class="text-slate-400 text-sm">
-        Đừng quay như người tiếp thị dạo. Hãy hình dung chiếc camera chính là ánh mắt của một vị khách khó tính khi bước chân vào một cửa tiệm sang trọng:
+  <!-- ================= KHỐI 6: LỜI DẶN DÒ ĐẠO DIỄN (LIGHT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-wisdom">
+    <div class="cl-sec-container apple-reveal">
+      <div class="cl-badge">LỜI DẶN DÒ CỦA ANH VIỆT</div>
+      <blockquote class="editorial-hook" style="border-left: 3px solid var(--cl-accent); padding-left: 24px; text-align: left; margin: 0 auto 24px;">
+        "Mỗi góc máy bạn đặt xuống là một câu trả lời cho sự nghi ngờ của khách hàng. Khi bạn giải quyết hết nỗi sợ của họ bằng hành động quang học và âm thanh cơ học chân thật, việc mua hàng chỉ là một kết quả tự nhiên."
+      </blockquote>
+      <p class="cl-body" style="font-size: 15px; color: var(--cl-text-muted);">
+        — Đúc kết từ quy trình thực chiến sáng tạo nội dung chuyển đổi cao.
       </p>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      
-      <div class="glass-card rounded-xl p-5 border border-slate-800 text-center relative overflow-hidden">
-        <div class="w-10 h-10 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto mb-3 font-mono-code font-bold">1</div>
-        <div class="title-short text-xs text-cyan-400 mb-1">BƯỚC QUA TỦ KÍNH</div>
-        <div class="text-xs font-mono-code text-slate-500 mb-2">[A - ATTENTION]</div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Chưa hề có ý định mua. Nhưng một tia sáng lóe lên từ mép kính cong làm mắt bị "bắt cóc". Bắt buộc phải dừng chân ngoái nhìn.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-xl p-5 border border-slate-800 text-center relative overflow-hidden">
-        <div class="w-10 h-10 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto mb-3 font-mono-code font-bold">2</div>
-        <div class="title-short text-xs text-amber-400 mb-1">CẦM LÊN SĂM SOI</div>
-        <div class="text-xs font-mono-code text-slate-500 mb-2">[I - INTEREST]</div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Ngón tay chạm vào độ mát của kim loại, tai nghe tiếng cơ học "tách... tách". Não trái bị thuyết phục bởi sự tinh xảo có thật.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-xl p-5 border border-slate-800 text-center relative overflow-hidden">
-        <div class="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-3 font-mono-code font-bold">3</div>
-        <div class="title-short text-xs text-emerald-400 mb-1">ƯỚM THỬ TRƯỚC GƯƠNG</div>
-        <div class="text-xs font-mono-code text-slate-500 mb-2">[D - DESIRE]</div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Đeo vào người, mường tượng ngày mai bước vào phòng họp hay dạo phố. Khách không mua món đồ, họ mua phiên bản tốt hơn của chính họ.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-xl p-5 border border-slate-800 text-center relative overflow-hidden">
-        <div class="w-10 h-10 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mx-auto mb-3 font-mono-code font-bold">4</div>
-        <div class="title-short text-xs text-rose-400 mb-1">ĐÓN CHIẾC HỘP NHUNG</div>
-        <div class="text-xs font-mono-code text-slate-500 mb-2">[A - ACTION]</div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Món đồ nằm trọn vẹn trong hộp, bảo hành 1 đổi 1 rõ ràng. Điểm chạm thanh toán êm ái, việc mua hàng diễn ra như lẽ tất yếu.
-        </p>
-      </div>
-
-    </div>
   </section>
 
-  <!-- ================= PHẦN 3: GIẢI PHẪU CHI TIẾT AIDA (WHAT - WHY - HOW) ================= -->
-  <section id="giai-phau-aida" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-widest mb-1">HƯỚNG DẪN KỸ THUẬT BẤM MÁY</div>
-      <h2 class="title-short text-3xl sm:text-4xl text-white mb-3">GIẢI PHẪU CHI TIẾT 4 CHẶNG A - I - D - A</h2>
-      <p class="text-slate-400 text-sm">
-        Khung kiến thức chuẩn xác từ lý thuyết nhận thức sinh học đến từng góc máy, khẩu độ, ánh sáng và âm thanh thực chiến.
-      </p>
-    </div>
-
-    <div class="space-y-12">
-      
-      <!-- ================= CHẶNG A ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-cyan-500/30 relative">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-400 font-mono-code font-bold text-base">CHẶNG 1</span>
-            <h3 class="title-short text-2xl sm:text-3xl text-white tracking-wide">[ A ] – ATTENTION (MÓC CÂU THỊ GIÁC)</h3>
-          </div>
-          <div class="text-xs font-mono-code text-cyan-300 px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 self-start sm:self-auto">
-            Thời lượng: 00:00 - 00:03 (3 Giây Đầu)
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <!-- WHAT -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-cyan-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-eye"></i>
-              <span>1. WHAT (KHUNG HÌNH CHỨA GÌ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Cảnh <strong>cực cận (Macro / ECU)</strong> vào điểm đắt giá nhất: Vệt sáng quét qua gân kim loại, một đường cắt vát CNC sắc sảo, hạt bụi phản quang, hoặc thao tác hít nam châm biến hình cực nhanh. Tuyệt đối không đưa toàn bộ sản phẩm ra đầu tiên.
-            </p>
-          </div>
-
-          <!-- WHY -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-cyan-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-brain"></i>
-              <span>2. WHY (VÌ SAO NÃO PHẢN XẠ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Mắt người không bao giờ nhìn đồ vật ở cự ly 2cm ngoài đời thực. Khung hình vi mô kích hoạt trạng thái <em>tò mò vô thức</em>. Người xem chưa nhận diện được sản phẩm nên bộ lọc chống quảng cáo chưa kịp bật lên.
-            </p>
-          </div>
-
-          <!-- HOW -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-cyan-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-video"></i>
-              <span>3. HOW (THỰC CHIẾN BẤM MÁY)</span>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
-              <li>• <strong>Lens:</strong> 85mm - 100mm Macro, khẩu f/2.8 - f/4.</li>
-              <li>• <strong>Ánh sáng:</strong> Rim Light (đèn ven) đánh sau lưng chéo tới để tách mép kim loại ra khỏi phông tối.</li>
-              <li>• <strong>Tốc độ:</strong> 60fps hoặc 120fps (Slow-motion mềm mại).</li>
-              <li>• <strong>Âm thanh:</strong> ASMR tiếng "cạch" đanh gọn, tiếng giọt nước hoặc tiếng rít cơ học.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Case Study Linkage -->
-        <div class="p-4 rounded-xl bg-cyan-950/30 border border-cyan-700/40 text-xs text-slate-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <div>
-            <strong class="text-cyan-300">🎬 Soi vào Video Ulanzi JJ03:</strong> Ở 00:01, cô gái cầm chiếc gậy rút dài vút lên (<code class="text-cyan-200">Selfie Stick</code>), điện thoại ốp vào là hít nam châm "cạch". Chuyển động cơ học này giật mắt người xem ngay lập tức, chặn đứng ngón tay lướt qua.
-          </div>
-          <span class="text-slate-500 font-mono-code text-[11px] shrink-0">Clip 00:00 - 00:03</span>
-        </div>
-      </div>
-
-      <!-- ================= CHẶNG I ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 relative">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-400 font-mono-code font-bold text-base">CHẶNG 2</span>
-            <h3 class="title-short text-2xl sm:text-3xl text-white tracking-wide">[ I ] – INTEREST (THÔNG SỐ TỰ THÂN)</h3>
-          </div>
-          <div class="text-xs font-mono-code text-amber-300 px-3 py-1 rounded-full bg-amber-950 border border-amber-800 self-start sm:self-auto">
-            Thời lượng: 00:04 - 00:10 (6 Giây Kế Tiếp)
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <!-- WHAT -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-amber-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-cogs"></i>
-              <span>1. WHAT (KHUNG HÌNH CHỨA GÌ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Trưng bày <strong>bằng chứng thị giác cơ học (Visual Proof)</strong>: Vòng ren khít khao, khớp gập xoay 360 độ, lực hút nam châm N52 dốc ngược không rơi, nút bấm remote nảy nhẹ. Tuyệt đối không đọc bảng thông số như đọc từ điển.
-            </p>
-          </div>
-
-          <!-- WHY -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-amber-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-balance-scale"></i>
-              <span>2. WHY (VÌ SAO NÃO PHẢN XẠ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Não trái đòi hỏi lý lẽ: <em>"Đẹp rồi đấy, nhưng chất lượng có xịn thật không? Đáng tiền chỗ nào?"</em>. Người mua thời nay ghét tính từ chung chung, họ chỉ tin vào thứ tận mắt nhìn thấy độ hoàn thiện vật lý.
-            </p>
-          </div>
-
-          <!-- HOW -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-amber-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-sliders-h"></i>
-              <span>3. HOW (THỰC CHIẾN BẤM MÁY)</span>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
-              <li>• <strong>Cỡ cảnh:</strong> Cận trung (Close-up), giữ khung hình liền mạch không cắt cúp để chứng minh độ thật.</li>
-              <li>• <strong>Tương tác tay:</strong> Bàn tay rút ra, gập vào, xoay khớp nghe tiếng lách cách đanh giòn.</li>
-              <li>• <strong>Đồ họa:</strong> Text thông số cực ngắn hiện ra ngay tại điểm ngón tay chạm vào (<code class="text-amber-300">Fits in Your Pocket</code>).</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Case Study Linkage -->
-        <div class="p-4 rounded-xl bg-amber-950/30 border border-amber-700/40 text-xs text-slate-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <div>
-            <strong class="text-amber-300">🎬 Soi vào Video Ulanzi JJ03:</strong> Ở 00:06 - 00:08, video chứng minh độ nhỏ gọn bằng cách cho cô gái rút trơn tru chiếc gậy từ một chiếc túi xách nữ mini. Tiếp đó là góc quay cận bóc tách remote tháo rời. Thông số "nhỏ gọn" được chứng minh bằng mắt, không cần một lời giải thích.
-          </div>
-          <span class="text-slate-500 font-mono-code text-[11px] shrink-0">Clip 00:04 - 00:10</span>
-        </div>
-      </div>
-
-      <!-- ================= CHẶNG D ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/30 relative">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono-code font-bold text-base">CHẶNG 3</span>
-            <h3 class="title-short text-2xl sm:text-3xl text-white tracking-wide">[ D ] – DESIRE (BỐI CẢNH ĐỜI SỐNG HÓA)</h3>
-          </div>
-          <div class="text-xs font-mono-code text-emerald-300 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 self-start sm:self-auto">
-            Thời lượng: 00:11 - 00:28 (15 Giây Cốt Lõi)
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <!-- WHAT -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-emerald-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-coffee"></i>
-              <span>1. WHAT (KHUNG HÌNH CHỨA GÌ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Đưa sản phẩm ra khỏi studio đèn led để bước vào <strong>bối cảnh đời sống của khách hàng mục tiêu</strong>: Quán cafe check-in, góc phố dạo chơi, chiếc bàn gỗ làm việc ấm cúng. Con người xuất hiện tương tác tự nhiên, thảnh thơi.
-            </p>
-          </div>
-
-          <!-- WHY -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-emerald-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-heart"></i>
-              <span>2. WHY (VÌ SAO NÃO PHẢN XẠ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Cơ chế <strong>tự phản chiếu bản thân (Self-projection)</strong>: Khách hàng không mua món đồ vô tri, họ mua cảm giác tự do, tự tin khi sở hữu nó: <em>"Nếu mình có cái này, mình đi du lịch hay đi cafe một mình vẫn có ảnh đẹp lung linh mà không phải nhờ ai!"</em>.
-            </p>
-          </div>
-
-          <!-- HOW -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-emerald-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-sun"></i>
-              <span>3. HOW (THỰC CHIẾN BẤM MÁY)</span>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
-              <li>• <strong>Cỡ cảnh:</strong> Mở rộng sang Trung cảnh (Medium Shot) và Toàn cảnh (Wide Shot).</li>
-              <li>• <strong>Ánh sáng:</strong> Ánh sáng tự nhiên ấm áp (Golden Hour) hoặc ánh đèn vàng quán cafe dễ chịu.</li>
-              <li>• <strong>Diễn xuất:</strong> Tự nhiên, không gượng gạo, nụ cười hài lòng khi chụp được tấm ảnh ưng ý.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Case Study Linkage -->
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-700/40 text-xs text-slate-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <div>
-            <strong class="text-emerald-300">🎬 Soi vào Video Ulanzi JJ03:</strong> Ở 00:15 - 00:25, video đặt cô gái vào bối cảnh quán cafe ngoài trời buổi tối. Cô gập báng cầm lại thành tay cầm máy ảnh chuyên nghiệp, dùng chiếc gương lồi nhỏ phía sau để tự căn góc chụp selfie bằng camera chính siêu nét. Nỗi đau "quay camera sau không thấy mặt" được giải quyết ngọt ngào.
-          </div>
-          <span class="text-slate-500 font-mono-code text-[11px] shrink-0">Clip 00:11 - 00:28</span>
-        </div>
-      </div>
-
-      <!-- ================= CHẶNG ACTION ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-rose-500/30 relative">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-400 font-mono-code font-bold text-base">CHẶNG 4</span>
-            <h3 class="title-short text-2xl sm:text-3xl text-white tracking-wide">[ A ] – ACTION (CHỐT HẠ KHÔNG MA SÁT)</h3>
-          </div>
-          <div class="text-xs font-mono-code text-rose-300 px-3 py-1 rounded-full bg-rose-950 border border-rose-800 self-start sm:self-auto">
-            Thời lượng: 00:29 - 00:47 (Hạ Màn)
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <!-- WHAT -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-rose-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-shopping-bag"></i>
-              <span>1. WHAT (KHUNG HÌNH CHỨA GÌ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              <strong>Hero Packshot hoàn chỉnh:</strong> Sản phẩm đứng vững chãi ở góc đẹp nhất, full combo hộp quà và phụ kiện đi kèm. Badge bảo hành 1 đổi 1, mã QR quét ngay hoặc mũi tên tinh tế trỏ xuống giỏ hàng góc trái.
-            </p>
-          </div>
-
-          <!-- WHY -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-rose-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-shield-alt"></i>
-              <span>2. WHY (VÌ SAO NÃO PHẢN XẠ?)</span>
-            </div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Cảm xúc thèm muốn ở chữ D sẽ nguội lạnh trong vòng vài giây. Cần một cú hích dứt khoát và <strong>hạ ma sát ra quyết định về 0</strong>: Khách biết ngay mua ở đâu, chính sách ra sao, loại bỏ nỗi sợ bị lừa.
-            </p>
-          </div>
-
-          <!-- HOW -->
-          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-            <div class="flex items-center space-x-2 text-rose-400 text-xs font-mono-code font-bold mb-2">
-              <i class="fas fa-check-circle"></i>
-              <span>3. HOW (THỰC CHIẾN BẤM MÁY)</span>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
-              <li>• <strong>Khung hình Hero:</strong> Góc 1/3 vững chãi, ánh sáng top light rọi từ trên xuống sang trọng.</li>
-              <li>• <strong>Bảo hiểm rủi ro:</strong> Badge bảo hành 12 tháng, giao hỏa tốc, tương thích 100% điện thoại.</li>
-              <li>• <strong>Lời kêu gọi:</strong> Gãy gọn, văn minh, không chèo kéo giá rẻ: <em>"Link trải nghiệm và ưu đãi tuần này ghim sẵn ở nút góc trái..."</em>.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Case Study Linkage -->
-        <div class="p-4 rounded-xl bg-rose-950/30 border border-rose-700/40 text-xs text-slate-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <div>
-            <strong class="text-rose-300">🎬 Soi vào Video Ulanzi JJ03:</strong> Ở 00:35 - 00:47, video kết thúc bằng cảnh tổng hợp tất cả các hình thái biến hình của chiếc gậy: Gậy selfie kéo dài, báng cầm máy ảnh, tripod để bàn. Logo Ulanzi xuất hiện tinh tế, chuyển giao toàn bộ quyền ra quyết định vào tay khách hàng.
-          </div>
-          <span class="text-slate-500 font-mono-code text-[11px] shrink-0">Clip 00:29 - 00:47</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= CASE STUDY 2: BẢNG PHÂN CẢNH ĐỒNG HỒ BẤM GIỜ AIDA ================= -->
-  <section id="storyboard-dong-ho" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
-    
-    <!-- Tiêu đề Section -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-950/60 border border-amber-700/50 text-amber-300 text-xs font-mono-code mb-4">
-        <i class="fas fa-stopwatch text-amber-400"></i>
-        <span>CASE STUDY THỰC HÀNH SỐ 2: BẢNG PHÂN CẢNH 1-1</span>
-      </div>
-      <h2 class="title-short text-3xl sm:text-4xl text-white mb-4">QUAY ĐỒNG HỒ BẤM GIỜ POMODORO</h2>
-      <p class="title-long text-slate-300 text-base sm:text-lg font-normal">
-        Chuyển hóa chiếc đồng hồ xanh bơ - phím cam đời thực sang kịch bản 4 phân cảnh AIDA chuẩn điện ảnh để học viên bắt chước theo được ngay
-      </p>
-    </div>
-
-    <!-- Tóm tắt bài toán & Insight sản phẩm -->
-    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-12 border border-slate-800">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-xs font-mono-code text-rose-400 font-bold mb-1 uppercase">1. Nỗi Đau Người Dùng (Pain Point)</div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Dùng điện thoại để bấm giờ Pomodoro thì 99% sẽ bị sa vào bẫy xao nhãng: Thông báo tin nhắn nổ, tiện tay mở TikTok lướt mất cả tiếng đồng hồ.
-          </p>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-xs font-mono-code text-amber-400 font-bold mb-1 uppercase">2. Giá Trị Tự Thân (Product Core)</div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Một thiết bị độc lập vật lý: Vỏ xanh bơ bo tròn, 3 phím cam êm ái, chân chống nghiêng 45° vững chãi, nam châm tròn hít tủ lạnh, còi báo to rõ.
-          </p>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-xs font-mono-code text-emerald-400 font-bold mb-1 uppercase">3. Trạng Thái Khao Khát (Desire)</div>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Khách không mua cái đồng hồ nhựa, họ mua cảm giác <strong>"LÀM CHỦ THỜI GIAN & TẬP TRUNG SÂU"</strong>, đặt điện thoại sang một bên để hoàn thành công việc.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Danh sách 4 Phân Cảnh Storyboard Chi Tiết -->
-    <div class="space-y-16">
-
-      <!-- ================= SCENE 1: ATTENTION ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-cyan-500/30 overflow-hidden">
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono-code font-bold text-sm">01</span>
-            <div>
-              <div class="title-short text-xl sm:text-2xl text-white">[ A ] – ATTENTION (00s - 03s)</div>
-              <div class="text-xs font-mono-code text-cyan-400">Móc Câu Thị Giác: Cú Bấm Dứt Khoát & Số Nhảy Lùi</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-300">3 Giây Đầu</span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7">
-            <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative group">
-              <img 
-                src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_hook_macro_1788945697414.jpg" 
-                alt="Phân cảnh 1: Attention - Macro bấm nút cam số nhảy lùi" 
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[11px] font-mono-code text-cyan-300 border border-cyan-500/30">
-                Góc máy: Macro ECU • 100mm f/2.8 • 60fps
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-4">
-            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-2">
-              <div><strong class="text-cyan-300 font-mono-code">GÓC MÁY:</strong> Cực cận đặc tả (Extreme Close-Up), góc nghiêng 45° sát mặt bàn gỗ tối màu.</div>
-              <div><strong class="text-cyan-300 font-mono-code">ÁNH SÁNG:</strong> Đèn ven (Rim light) đánh chếch từ sau lưng làm nổi bật đường bo cong xanh bơ và dây xích bi kim loại lấp lánh.</div>
-              <div><strong class="text-cyan-300 font-mono-code">HÀNH ĐỘNG:</strong> Ngón tay cái nhấn dứt khoát vào phím cam to <code class="text-amber-300">Play/Pause</code>. Con số trên màn hình LCD lập tức nhảy giật lùi: <code class="text-cyan-300">25:00 ➔ 24:59</code>.</div>
-              <div><strong class="text-cyan-300 font-mono-code">ÂM THANH FOLEY:</strong> Tiếng click cơ học "tách" giòn tan, tiếp nối bằng nhịp kim giây đếm lùi rất khẽ (ASMR thính giác).</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-cyan-950/20 border border-cyan-800/40 text-xs text-cyan-200 leading-relaxed">
-              <strong>💡 Logic Đạo Diễn Vì Sao:</strong> Mắt người xem bị "bắt cóc" ngay lập tức nhờ cặp màu tương phản cao (Xanh bơ + Phím cam). Chuyển động số nhảy giật lùi phá vỡ trạng thái tĩnh, kích hoạt bản năng tò mò: <em>"Cái này để làm gì mà bấm số chạy ngược?"</em>.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= SCENE 2: INTEREST ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 overflow-hidden">
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono-code font-bold text-sm">02</span>
-            <div>
-              <div class="title-short text-xl sm:text-2xl text-white">[ I ] – INTEREST (04s - 09s)</div>
-              <div class="text-xs font-mono-code text-amber-400">Thông Số Tự Thân: Bóc Tách Cơ Học Kickstand & Nam Châm</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-amber-950 border border-amber-800 text-amber-300">6 Giây Kế Tiếp</span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 order-1 lg:order-2">
-            <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative group">
-              <img 
-                src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_interest_back_1788945731551.jpg" 
-                alt="Phân cảnh 2: Interest - Bóc tách cơ học mặt sau" 
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[11px] font-mono-code text-amber-300 border border-amber-500/30">
-                Góc máy: Cận cảnh (Close-Up) • Lia máy trượt chậm
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-4 order-2 lg:order-1">
-            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-2">
-              <div><strong class="text-amber-300 font-mono-code">GÓC MÁY:</strong> Cận cảnh (Close-up), máy quay trượt ngang (slider track) theo chuyển động tay người.</div>
-              <div><strong class="text-amber-300 font-mono-code">ÁNH SÁNG:</strong> Đèn softbox xiên góc để phô diễn rõ rệt kết cấu mặt sau: Nắp pin dạng trượt, chân chống nhựa, nam châm tròn và lỗ thoát âm thanh.</div>
-              <div><strong class="text-amber-300 font-mono-code">HÀNH ĐỘNG:</strong> Tay lật mặt lưng, ngón tay gạt mở thanh kickstand "tách", đặt đứng vững trên mặt bàn ở góc nghiêng 45°. Sau đó nhấc lên đưa vào cạnh giá sắt hít "cạch" chắc chắn.</div>
-              <div><strong class="text-amber-300 font-mono-code">ÂM THANH FOLEY:</strong> Tiếng gập mở khớp nhựa đanh chắc, tiếng hít nam châm "cạch" dính chặt vào bề mặt kim loại.</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-amber-950/20 border border-amber-800/40 text-xs text-amber-200 leading-relaxed">
-              <strong>💡 Logic Đạo Diễn Vì Sao:</strong> Thuyết phục não trái bằng tính năng cơ học thực tế: Món đồ này giải quyết 3 tư thế (để bàn nghiêng dễ nhìn, hít tủ lạnh khi nấu ăn, treo móc balo khi di chuyển). Không cần đọc bảng thông số, mắt thấy tai nghe là tin ngay.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= SCENE 3: DESIRE ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/30 overflow-hidden">
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono-code font-bold text-sm">03</span>
-            <div>
-              <div class="title-short text-xl sm:text-2xl text-white">[ D ] – DESIRE (10s - 22s)</div>
-              <div class="text-xs font-mono-code text-emerald-400">Bối Cảnh Đời Sống: Anh Việt Ngồi Deep Work Tập Trung Tuyệt Đối</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300">12 Giây Cốt Lõi</span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7">
-            <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative group">
-              <img 
-                src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_desire_deepwork_1788945672322.jpg" 
-                alt="Phân cảnh 3: Desire - Anh Việt ngồi Deep Work thảnh thơi bên bàn gỗ" 
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[11px] font-mono-code text-emerald-300 border border-emerald-500/30">
-                Góc máy: Trung cảnh (Medium Shot) • 50mm f/2.0 • Ánh sáng tự nhiên
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-4">
-            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-2">
-              <div><strong class="text-emerald-300 font-mono-code">GÓC MÁY:</strong> Trung cảnh (Medium Shot). Chiếc đồng hồ đứng vững chãi ở tiền cảnh góc 1/3, nhân vật anh Việt ngồi tập trung làm việc ở hậu cảnh.</div>
-              <div><strong class="text-emerald-300 font-mono-code">ÁNH SÁNG:</strong> Ánh sáng tự nhiên từ cửa sổ rọi xiên (Golden Hour) tạo cảm giác tĩnh tại, tập trung sâu, không gian phòng làm việc ấm cúng.</div>
-              <div><strong class="text-emerald-300 font-mono-code">HÀNH ĐỘNG:</strong> Anh Việt (mặc áo phông đen tối giản) gạt nhẹ chiếc điện thoại úp mặt xuống góc bàn xa, quay lại gõ phím laptop và ghi chép sổ tay với ánh mắt điềm tĩnh. Chiếc đồng hồ âm thầm đếm ngược trong yên lặng.</div>
-              <div><strong class="text-emerald-300 font-mono-code">ÂM THANH:</strong> Nhạc nền Lofi / Ambient êm dịu vang lên, loại bỏ mọi tiếng ồn xao nhãng.</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-800/40 text-xs text-emerald-200 leading-relaxed">
-              <strong>💡 Logic Đạo Diễn Vì Sao:</strong> Kích hoạt cơ chế tự chiếu bản thân (Self-projection). Khách hàng không mua cái đồng hồ nhựa, họ thèm muốn <em>trạng thái bình an và năng suất cao</em> của nhân vật: Được ngồi làm việc thảnh thơi 25 phút mà không bị mạng xã hội thao túng.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= SCENE 4: ACTION ================= -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-rose-500/30 overflow-hidden">
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3">
-            <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono-code font-bold text-sm">04</span>
-            <div>
-              <div class="title-short text-xl sm:text-2xl text-white">[ A ] – ACTION (23s - 30s)</div>
-              <div class="text-xs font-mono-code text-rose-400">Chốt Hạ: Nụ Cười Anh Việt, Hết Giờ 00:00 & Kêu Gọi Sở Hữu</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-rose-950 border border-rose-800 text-rose-300">Hạ Màn 8s</span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 order-1 lg:order-2">
-            <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative group">
-              <img 
-                src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_action_hero_1788945770527.jpg" 
-                alt="Phân cảnh 4: Action - Anh Việt mỉm cười chốt hạ" 
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[11px] font-mono-code text-rose-300 border border-rose-500/30">
-                Góc máy: Hero Medium Close-Up • Studio Catchlight
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-4 order-2 lg:order-1">
-            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-2">
-              <div><strong class="text-rose-300 font-mono-code">GÓC MÁY:</strong> Hero Shot cận trung trực diện (Medium Close-Up), giao tiếp bằng mắt (eye contact) với người xem.</div>
-              <div><strong class="text-rose-300 font-mono-code">ÁNH SÁNG:</strong> Đèn key light ấm áp, ánh mắt có catchlight sáng sống động, nụ cười tươi tắn hở răng trên tạo độ tin cậy tối đa.</div>
-              <div><strong class="text-rose-300 font-mono-code">HÀNH ĐỘNG:</strong> Màn hình nhảy về <code class="text-rose-300">00:00</code>, chuông reo "bíp... bíp...". Anh Việt ngẩng lên mỉm cười thỏa mãn, một tay nâng nhẹ chiếc đồng hồ nhỏ nhắn xinh xắn giới thiệu trước camera.</div>
-              <div><strong class="text-rose-300 font-mono-code">LỜI KÊU GỌI (CTA):</strong> <em>"Muốn làm việc tập trung 25 phút không đụng tới điện thoại, bấm vào nút góc trái rinh một bé về bàn làm việc ngay nhé!"</em>.</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-rose-950/20 border border-rose-800/40 text-xs text-rose-200 leading-relaxed">
-              <strong>💡 Logic Đạo Diễn Vì Sao:</strong> Hạ ma sát ra quyết định về 0. Sau khi đã chứng kiến sự tiện lợi và cảm xúc thảnh thơi ở chữ D, người xem nhận được một lời mời chân thành từ chủ nhà. Mức giá chỉ vài chục nghìn (bằng 2 cốc cà phê) khiến hành vi bấm mua diễn ra ngay tức thì.
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ================= PHẦN 4: TIMELINE 30S ĐIỆN ẢNH ================= -->
-  <section id="timeline-30s" class="py-16 bg-slate-950/50 border-t border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-widest mb-1">CÔNG THỨC DỰNG NHỊP</div>
-        <h2 class="title-short text-2xl sm:text-4xl text-white mb-3">TIMELINE TIÊU CHUẨN: VIDEO SẢN PHẨM 30 GIÂY</h2>
-        <p class="text-slate-400 text-sm">
-          Bản đồ điều phối cỡ cảnh, ánh sáng, âm thanh foley và nhịp thở tâm lý cho từng giây bấm máy.
-        </p>
-      </div>
-
-      <!-- Bảng Timeline trực quan -->
-      <div class="overflow-x-auto rounded-2xl border border-slate-800 glass-card">
-        <table class="w-full text-left border-collapse text-sm">
-          <thead>
-            <tr class="border-b border-slate-800 bg-slate-900/90 text-xs font-mono-code text-slate-400 uppercase">
-              <th class="py-4 px-4 sm:px-6">Mốc Giây</th>
-              <th class="py-4 px-4 sm:px-6">Chặng AIDA</th>
-              <th class="py-4 px-4 sm:px-6">Cỡ Cảnh & Góc Máy</th>
-              <th class="py-4 px-4 sm:px-6">Nội Dung Thị Giác (Visual)</th>
-              <th class="py-4 px-4 sm:px-6">Thiết Kế Âm Thanh (Sound)</th>
-              <th class="py-4 px-4 sm:px-6">Tâm Lý Người Xem</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800/60 font-normal">
-            
-            <tr class="hover:bg-cyan-950/10 transition-colors">
-              <td class="py-4 px-4 sm:px-6 font-mono-code text-cyan-400 font-bold">00s - 03s</td>
-              <td class="py-4 px-4 sm:px-6 font-semibold text-cyan-300">[ A ] Attention</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Macro / Cực cận (ECU), lia trượt chéo</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Ánh sáng quét mép viền, nam châm hít "cạch", thanh nhôm rút dài</td>
-              <td class="py-4 px-4 sm:px-6 text-xs font-mono-code text-slate-400">Foley ASMR đanh gọn, không nhạc nền</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-cyan-200 font-medium font-quote">"Cái gì mà lạ và đã mắt thế này?"</td>
-            </tr>
-
-            <tr class="hover:bg-amber-950/10 transition-colors">
-              <td class="py-4 px-4 sm:px-6 font-mono-code text-amber-400 font-bold">04s - 09s</td>
-              <td class="py-4 px-4 sm:px-6 font-semibold text-amber-300">[ I ] Interest</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Cận trung (CU), bóc tách chi tiết cơ khí</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Rút từ túi xách mini, gập xoay khớp bi cầu 360°, remote tháo rời</td>
-              <td class="py-4 px-4 sm:px-6 text-xs font-mono-code text-slate-400">Tiếng khớp nảy "tách", nhạc nền bắt đầu nổi lên</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-amber-200 font-medium font-quote">"Gọn gàng và cơ học xịn thật sự."</td>
-            </tr>
-
-            <tr class="hover:bg-emerald-950/10 transition-colors">
-              <td class="py-4 px-4 sm:px-6 font-mono-code text-emerald-400 font-bold">10s - 22s</td>
-              <td class="py-4 px-4 sm:px-6 font-semibold text-emerald-300">[ D ] Desire</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Trung cảnh (MS) & Toàn cảnh (WS)</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Ngồi cafe dạo phố, selfie camera sau bằng gương lồi, tự bấm chụp từ xa</td>
-              <td class="py-4 px-4 sm:px-6 text-xs font-mono-code text-slate-400">Nhạc du dương, tiếng môi trường cafe thảnh thơi</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-emerald-200 font-medium font-quote">"Đi chơi một mình mà có cái này thì tiện quá!"</td>
-            </tr>
-
-            <tr class="hover:bg-rose-950/10 transition-colors">
-              <td class="py-4 px-4 sm:px-6 font-mono-code text-rose-400 font-bold">23s - 30s</td>
-              <td class="py-4 px-4 sm:px-6 font-semibold text-rose-300">[ A ] Action</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Hero Shot kiêu hãnh + Packshot hộp quà</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-slate-300">Gấp gọn trọn bộ combo, mã QR, badge bảo hành 12 tháng 1 đổi 1</td>
-              <td class="py-4 px-4 sm:px-6 text-xs font-mono-code text-slate-400">Nhạc dứt khoát, tiếng "ting" mở lối giỏ hàng</td>
-              <td class="py-4 px-4 sm:px-6 text-xs text-rose-200 font-medium font-quote">"Bấm vào xem giá luôn kẻo hết."</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= PHẦN 5: CHECKLIST KIỂM TOÁN TRƯỚC KHI BẤM MÁY ================= -->
-  <section id="checklist" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <div class="text-xs font-mono-code text-cyan-400 uppercase tracking-widest mb-1">BẢO CHỨNG CHẤT LƯỢNG</div>
-      <h2 class="title-short text-2xl sm:text-3xl text-white mb-3">CHECKLIST KIỂM TOÁN VIDEO AIDA (10 ĐIỂM)</h2>
-      <p class="text-slate-400 text-sm">
-        Tự rà soát lại kịch bản và bản dựng của bạn trước khi bấm nút Render xuất xưởng.
-      </p>
-    </div>
-
-    <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-4">
-      
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c1" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c1" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">1. Cắt đuôi logo 3 giây đầu:</strong> 3 giây đầu hoàn toàn không có logo hãng hay lời chào hỏi sáo rỗng, dồn 100% vào chi tiết cực cận (Macro) giật mắt.
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c2" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c2" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">2. Ánh sáng có đường viền (Rim Light):</strong> Sản phẩm có vệt phản quang tách rời khỏi phông nền tối, tuyệt đối không bị dẹt phẳng (flat light).
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c3" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c3" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">3. Bằng chứng cơ học thay chữ viết:</strong> Độ bền, độ nhẹ, độ nhỏ gọn được chứng minh bằng bàn tay thao tác thực tế chứ không phải một đoạn text dài ngoằng.
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c4" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c4" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">4. Bối cảnh sống khớp chuẩn tệp khách:</strong> Không gian quay (quán cafe, phòng làm việc, bàn gỗ) phản ánh đúng lối sống mà khách hàng mục tiêu khao khát.
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c5" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c5" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">5. Giải quyết nỗi đau trực diện:</strong> Video cho thấy khoảnh khắc món đồ giải quyết một phiền toái hàng ngày (ví dụ: tự quay camera sau không bị lệch góc, đút vừa túi xách).
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c6" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c6" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">6. Âm thanh Foley ASMR sống động:</strong> Có tiếng tách kim loại, tiếng khớp ren nảy, tiếng hít nam châm rõ nét kích thích thính giác người nghe.
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c7" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c7" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">7. Hero Shot kiêu hãnh cuối video:</strong> Khung hình chốt hạ trọn bộ sản phẩm và hộp phụ kiện sang trọng, không bị cắt cụp màn hình tối đen đột ngột.
-        </label>
-      </div>
-
-      <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-900/50 border border-slate-800/80">
-        <input type="checkbox" id="c8" class="mt-1 w-4 h-4 rounded text-cyan-500 bg-slate-950 border-slate-700 focus:ring-0 cursor-pointer">
-        <label for="c8" class="text-sm text-slate-300 cursor-pointer leading-relaxed">
-          <strong class="text-white">8. Điểm chạm mua hàng không ma sát:</strong> Vị trí giỏ hàng, link bio hoặc mã QR được chỉ dẫn rõ ràng, không bắt người xem phải inbox hỏi giá dông dài.
-        </label>
-      </div>
-
-    </div>
-
-    <!-- Tóm tắt triết lý 1 câu -->
-    <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-amber-950/40 border border-slate-700/80 text-center">
-      <div class="text-xs font-mono-code text-cyan-400 mb-2 uppercase tracking-wider">CÔNG THỨC 1 DÒNG NẰM LÒNG</div>
-      <p class="text-base sm:text-lg text-white font-quote leading-relaxed">
-        "Dùng cái vi mô (A) để bắt mắt người xem ➔ Dùng độ hoàn thiện (I) để thuyết phục lý trí ➔ Dùng không gian sống (D) để khơi dậy lòng tham ➔ Dùng sự rõ ràng tử tế (A) để mở hầu bao."
-      </p>
-    </div>
-
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="py-10 border-t border-slate-800/80 bg-[#04060a] text-center text-xs text-slate-500 font-mono-code">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <div class="flex items-center justify-center space-x-2 text-slate-300">
-        <span class="title-short text-sm tracking-wider text-slate-200">VIDEO</span>
-      </div>
-      <p class="text-slate-500 text-xs">
-        Hệ thống kiến thức chuẩn điện ảnh và chuyển đổi thực chiến.
-      </p>
-    </div>
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div style="font-weight: 700; color: var(--cl-text-base); margin-bottom: 6px;">VIDEO</div>
+    <div>GIÁO TRÌNH QUAY DỰNG SẢN PHẨM ĐIỆN ẢNH CHUẨN AIDA</div>
   </footer>
+
+  <!-- Script: Video Switching & IntersectionObserver for Apple Spring Motion -->
+  <script>
+    // Dual-Mode Video Switcher
+    function switchVideoMode(mode) {
+      const r2Video = document.getElementById('native-r2-video');
+      const ytIframe = document.getElementById('yt-video-frame');
+      const btnR2 = document.getElementById('btn-play-r2');
+      const btnYt = document.getElementById('btn-play-yt');
+
+      if (mode === 'r2') {
+        r2Video.style.display = 'block';
+        ytIframe.style.display = 'none';
+        ytIframe.src = '';
+        btnR2.classList.add('active');
+        btnYt.classList.remove('active');
+      } else {
+        r2Video.pause();
+        r2Video.style.display = 'none';
+        ytIframe.style.display = 'block';
+        ytIframe.src = 'https://www.youtube-nocookie.com/embed/videoseries?list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv&autoplay=1&enablejsapi=1';
+        btnYt.classList.add('active');
+        btnR2.classList.remove('active');
+      }
+    }
+
+    // Zero-Jank Apple Spring Reveal with IntersectionObserver
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.apple-reveal');
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
 
 </body>
 </html>
