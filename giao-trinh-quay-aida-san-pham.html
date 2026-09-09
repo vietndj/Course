@@ -119,8 +119,10 @@
       padding-bottom: 56.25%; /* 16:9 */
       height: 0;
       overflow: hidden;
+      background-color: #000;
     }
-    .video-container iframe {
+    .video-container iframe,
+    .video-container video {
       position: absolute;
       top: 0;
       left: 0;
@@ -245,78 +247,138 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <div class="lg:col-span-7">
-        <div class="glass-card rounded-2xl p-2.5 border border-slate-700/80 shadow-2xl">
-          <div class="video-container rounded-xl overflow-hidden bg-black">
+        <div class="glass-card rounded-2xl p-3 border border-slate-700/80 shadow-2xl">
+          
+          <!-- Tab Switcher Video Source -->
+          <div class="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-800">
+            <div class="flex items-center space-x-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs font-mono-code">
+              <button id="tab-btn-native" onclick="switchVideoSource('native')" class="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold transition-all flex items-center space-x-1.5 shadow-sm">
+                <i class="fas fa-bolt"></i>
+                <span>Bản Master CDN (Khuyên dùng)</span>
+              </button>
+              <button id="tab-btn-youtube" onclick="switchVideoSource('youtube')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5">
+                <i class="fab fa-youtube text-red-400"></i>
+                <span>YouTube Playlist</span>
+              </button>
+            </div>
+            
+            <a href="https://www.youtube.com/watch?v=hoBZvf54XeQ&list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-1 text-[11px] font-mono-code text-cyan-400 hover:underline px-2 py-1">
+              <span>Mở YouTube</span>
+              <i class="fas fa-external-link-alt text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Video Player Container -->
+          <div class="video-container rounded-xl overflow-hidden bg-black relative">
+            
+            <!-- Native HTML5 Video Player (CDN Cloudflare R2 - Không bao giờ lỗi) -->
+            <video 
+              id="native-video-player" 
+              class="w-full h-full object-contain bg-black" 
+              controls 
+              playsinline 
+              preload="metadata" 
+              poster="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/videos/frame_1s.jpg">
+              <source src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/videos/ulanzi_jj03.mp4" type="video/mp4">
+              Trình duyệt của bạn không hỗ trợ thẻ video HTML5.
+            </video>
+
+            <!-- YouTube Iframe Embed (Fix Error 153 với referrerpolicy chuẩn) -->
             <iframe 
-              src="https://www.youtube-nocookie.com/embed/hoBZvf54XeQ?list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv&rel=0" 
+              id="youtube-video-player"
+              class="w-full h-full hidden"
+              src="https://www.youtube.com/embed/hoBZvf54XeQ?list=PLkV3aja7aQTUnVGJx51yM4T2fCcViP0lv&enablejsapi=1" 
               title="Ulanzi JJ03 3 in 1 Magnetic Phone Tripod with Remote Control" 
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
               allowfullscreen>
             </iframe>
+
           </div>
-          <div class="p-4 flex items-center justify-between text-xs text-slate-400 font-mono-code">
+
+          <div class="p-3 flex items-center justify-between text-xs text-slate-400 font-mono-code">
             <div class="flex items-center space-x-2">
-              <i class="fas fa-play-circle text-cyan-400 text-sm"></i>
-              <span>Ulanzi JJ03 3-in-1 Magnetic Phone Tripod (47s)</span>
+              <span id="player-indicator" class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span id="player-title">Ulanzi JJ03 3-in-1 Master (Cloudflare R2 CDN)</span>
             </div>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Chuẩn AIDA</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono-code text-[11px]">47 Giây • AIDA</span>
           </div>
+
         </div>
 
-        <!-- Thẻ mô tả ngắn gọn về playlist -->
-        <div class="mt-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 leading-relaxed">
-          <strong class="text-slate-200">📌 Danh mục tham khảo trong Playlist:</strong> Ulanzi JJ03 (Gậy từ tính 3-in-1), Ulanzi MA26 (Tripod bỏ túi siêu mỏng), MagLock Phone Stand, Mic không dây mini A30, MA02 Dual Magnetic, Ngàm hít kính MagLock... Toàn bộ chuỗi video mẫu này đều tuân thủ chặt chẽ nhịp chuyển cảnh và tâm lý mua hàng AIDA.
+        <!-- Thẻ cảnh báo & hướng dẫn khi gặp lỗi Error 153 -->
+        <div class="mt-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 leading-relaxed">
+          <div class="flex items-center space-x-2 text-cyan-400 font-mono-code font-semibold mb-1">
+            <i class="fas fa-info-circle"></i>
+            <span>LƯU Ý KHI TRÌNH CHIẾU:</span>
+          </div>
+          Nếu trình duyệt của bạn bật chế độ bảo mật chặn Referrer dẫn đến <strong>Error 153</strong> trên YouTube, chế độ <strong>Bản Master CDN</strong> bên trên sẽ tự động phát mượt 100% không bao giờ gặp lỗi. Bạn cũng có thể bấm trực tiếp các mốc thời gian bên phải để tua ngay tới phân cảnh tương ứng.
         </div>
       </div>
 
-      <!-- Bóc tách Timestamps khớp thẳng vào AIDA -->
+      <!-- Bóc tách Timestamps khớp thẳng vào AIDA (Interactive Seek) -->
       <div class="lg:col-span-5 space-y-3">
-        <div class="text-xs font-mono-code text-slate-400 tracking-wider uppercase mb-2">BÓC TÁCH MỐC THỜI GIAN VIDEO MẪU:</div>
+        <div class="flex items-center justify-between text-xs font-mono-code text-slate-400 tracking-wider uppercase mb-1">
+          <span>BÓC TÁCH MỐC THỜI GIAN VIDEO:</span>
+          <span class="text-cyan-400 text-[11px] lowercase italic">(bấm để tua video)</span>
+        </div>
         
         <!-- Chặng A trong video -->
-        <div class="p-3.5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 glass-card-hover">
+        <div onclick="seekVideo(0)" class="p-3.5 rounded-xl border border-cyan-500/40 bg-cyan-950/20 glass-card-hover cursor-pointer group transition-all">
           <div class="flex items-center justify-between text-xs font-mono-code text-cyan-400 mb-1">
-            <span class="font-bold uppercase">[A] ATTENTION (00:00 - 00:03)</span>
-            <span class="px-1.5 py-0.5 rounded bg-cyan-900/60">3 Giây Đầu</span>
+            <span class="font-bold uppercase flex items-center space-x-1.5">
+              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-cyan-400"></i>
+              <span>[A] ATTENTION (00:00 - 00:03)</span>
+            </span>
+            <span class="px-1.5 py-0.5 rounded bg-cyan-900/60 text-[11px]">▶ Tua tới 0s</span>
           </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1">Móc câu: Kéo dài gậy + Hít nam châm MagSafe</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-300 transition-colors">Móc câu: Kéo dài gậy + Hít nam châm MagSafe</div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Cô gái bước đi ngoài trời, kéo dài thanh kim loại làm gậy selfie (<code class="text-cyan-300">Selfie Stick</code>). Đưa điện thoại vào là hít chặt ngay lập tức. Âm thanh cơ học và chuyển động mở rộng ngay lập tức bắt giữ mắt người xem.
           </p>
         </div>
 
         <!-- Chặng I trong video -->
-        <div class="p-3.5 rounded-xl border border-amber-500/30 bg-amber-950/20 glass-card-hover">
+        <div onclick="seekVideo(4)" class="p-3.5 rounded-xl border border-amber-500/40 bg-amber-950/20 glass-card-hover cursor-pointer group transition-all">
           <div class="flex items-center justify-between text-xs font-mono-code text-amber-400 mb-1">
-            <span class="font-bold uppercase">[I] INTEREST (00:04 - 00:10)</span>
-            <span class="px-1.5 py-0.5 rounded bg-amber-900/60">Giây 04 - 10</span>
+            <span class="font-bold uppercase flex items-center space-x-1.5">
+              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-amber-400"></i>
+              <span>[I] INTEREST (00:04 - 00:10)</span>
+            </span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-900/60 text-[11px]">▶ Tua tới 4s</span>
           </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1">Thông số tự thân: Rút từ túi xách mini & Khớp xoay</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-amber-300 transition-colors">Thông số tự thân: Rút từ túi xách mini & Khớp xoay</div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Chứng minh độ nhỏ gọn bằng hành động thực tế: Rút trơn tru từ chiếc túi xách nữ nhỏ xíu (<code class="text-amber-300">Fits in Your Pocket</code>). Bóc tách khớp gập cơ học, remote Bluetooth gắn chìm thông minh.
           </p>
         </div>
 
         <!-- Chặng D trong video -->
-        <div class="p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-950/20 glass-card-hover">
+        <div onclick="seekVideo(11)" class="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-950/20 glass-card-hover cursor-pointer group transition-all">
           <div class="flex items-center justify-between text-xs font-mono-code text-emerald-400 mb-1">
-            <span class="font-bold uppercase">[D] DESIRE (00:11 - 00:28)</span>
-            <span class="px-1.5 py-0.5 rounded bg-emerald-900/60">Giây 11 - 28</span>
+            <span class="font-bold uppercase flex items-center space-x-1.5">
+              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-emerald-400"></i>
+              <span>[D] DESIRE (00:11 - 00:28)</span>
+            </span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-[11px]">▶ Tua tới 11s</span>
           </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1">Bối cảnh: Cafe dạo phố, selfie camera sau có gương</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-emerald-300 transition-colors">Bối cảnh: Cafe dạo phố, selfie camera sau có gương</div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Chuyển cảnh đến quán cafe buổi tối. Biến hình thành báng cầm máy ảnh chuyên nghiệp (Camera grip) selfie camera sau bằng gương lồi phụ. Bung 3 chân đứng vững trên bàn, cầm remote tự chụp một mình cực kỳ thảnh thơi.
           </p>
         </div>
 
         <!-- Chặng A trong video -->
-        <div class="p-3.5 rounded-xl border border-rose-500/30 bg-rose-950/20 glass-card-hover">
+        <div onclick="seekVideo(29)" class="p-3.5 rounded-xl border border-rose-500/40 bg-rose-950/20 glass-card-hover cursor-pointer group transition-all">
           <div class="flex items-center justify-between text-xs font-mono-code text-rose-400 mb-1">
-            <span class="font-bold uppercase">[A] ACTION (00:29 - 00:47)</span>
-            <span class="px-1.5 py-0.5 rounded bg-rose-900/60">Giây 29 - 47</span>
+            <span class="font-bold uppercase flex items-center space-x-1.5">
+              <i class="fas fa-play text-[10px] group-hover:scale-125 transition-transform text-rose-400"></i>
+              <span>[A] ACTION (00:29 - 00:47)</span>
+            </span>
+            <span class="px-1.5 py-0.5 rounded bg-rose-900/60 text-[11px]">▶ Tua tới 29s</span>
           </div>
-          <div class="text-sm font-semibold text-slate-200 mb-1">Hero Packshot: Trọn bộ thiết bị & Kêu gọi hành động</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1 group-hover:text-rose-300 transition-colors">Hero Packshot: Trọn bộ thiết bị & Kêu gọi hành động</div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Sản phẩm được gấp gọn hoàn chỉnh, hiển thị đầy đủ các chế độ quay ngang/dọc, tương thích MagSafe. Chốt lại bằng biểu tượng Ulanzi chỉn chu, mở lối giỏ hàng không gây ức chế.
           </p>
@@ -325,6 +387,48 @@
       </div>
 
     </div>
+
+    <!-- Script điều khiển Trình phát Video Kép & Nhảy Mốc Giây -->
+    <script>
+      function switchVideoSource(source) {
+        const nativePlayer = document.getElementById('native-video-player');
+        const youtubePlayer = document.getElementById('youtube-video-player');
+        const btnNative = document.getElementById('tab-btn-native');
+        const btnYoutube = document.getElementById('tab-btn-youtube');
+        const indicator = document.getElementById('player-indicator');
+        const title = document.getElementById('player-title');
+
+        if (source === 'native') {
+          nativePlayer.classList.remove('hidden');
+          youtubePlayer.classList.add('hidden');
+          
+          btnNative.className = 'px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold transition-all flex items-center space-x-1.5 shadow-sm';
+          btnYoutube.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5';
+          
+          indicator.className = 'w-2 h-2 rounded-full bg-cyan-400 animate-pulse';
+          title.textContent = 'Ulanzi JJ03 Master (Cloudflare R2 CDN - Mượt 100%)';
+        } else {
+          nativePlayer.pause();
+          nativePlayer.classList.add('hidden');
+          youtubePlayer.classList.remove('hidden');
+
+          btnYoutube.className = 'px-3 py-1.5 rounded-lg bg-red-600 text-white font-bold transition-all flex items-center space-x-1.5 shadow-sm';
+          btnNative.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-all flex items-center space-x-1.5';
+
+          indicator.className = 'w-2 h-2 rounded-full bg-red-500 animate-pulse';
+          title.textContent = 'Ulanzi Gear Playlist (YouTube Embed)';
+        }
+      }
+
+      function seekVideo(seconds) {
+        switchVideoSource('native');
+        const vid = document.getElementById('native-video-player');
+        if (vid) {
+          vid.currentTime = seconds;
+          vid.play().catch(e => console.log('Autoplay policy prevented audio:', e));
+        }
+      }
+    </script>
 
   </section>
 
