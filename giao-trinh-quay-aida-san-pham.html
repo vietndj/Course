@@ -537,6 +537,93 @@
       color: var(--cl-text-muted);
       text-transform: uppercase;
     }
+  
+    /* --- POMODORO 22 SHOTS ENHANCEMENTS --- */
+    .sb-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 36px;
+      justify-content: center;
+    }
+
+    .sb-filter-btn {
+      padding: 9px 18px;
+      border-radius: var(--cl-radius-full);
+      background: var(--cl-card);
+      border: 1px solid var(--cl-line-strong);
+      color: var(--cl-text-muted);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.25s var(--apple-spring);
+    }
+
+    .sb-filter-btn:hover {
+      background: var(--cl-card-muted);
+      color: var(--cl-text-base);
+      border-color: var(--cl-text-base);
+    }
+
+    .sb-filter-btn.active {
+      background: var(--cl-text-base);
+      color: #ffffff;
+      border-color: var(--cl-text-base);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .sb-phase-header {
+      grid-column: 1 / -1;
+      margin-top: 32px;
+      margin-bottom: 4px;
+      padding: 16px 22px;
+      background: var(--cl-card-muted);
+      border-left: 4px solid var(--cl-accent);
+      border-radius: var(--cl-radius-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sb-phase-header__title {
+      font-family: var(--font-display-short);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+      color: var(--cl-text-base);
+      text-transform: uppercase;
+    }
+
+    .sb-phase-header__meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cl-text-muted);
+    }
+
+    .sb-detail-item--tech {
+      background: #f1f5f9;
+      padding: 8px 12px;
+      border-radius: var(--cl-radius-sm);
+      border-left: 3px solid #d97706;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 11.5px;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 2px;
+      border: 1px solid #fde68a;
+    }
+
   </style>
 </head>
 <body>
@@ -927,109 +1014,657 @@
   <section class="cl-zebra-section cl-zebra--tint" id="sec-pomodoro">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
       <div class="cl-badge">05 / BÀI TẬP THỰC HÀNH SỐ 2</div>
-      <h2 class="title-short">BẢNG PHÂN CẢNH ĐỒNG HỒ POMODORO</h2>
+      <h2 class="title-short">BẢNG PHÂN CẢNH ĐỒNG HỒ POMODORO (22 CẢNH CHUẨN AIDA)</h2>
       <p class="editorial-hook">
-        "Chuyển hóa chiếc đồng hồ xanh bơ - phím cam đời thực sang kịch bản 4 phân cảnh AIDA chuẩn điện ảnh."
+        "Chuyển hóa chiếc đồng hồ xanh bơ – phím cam thành thước phim bán lẻ 22 phân cảnh AIDA thực chiến: 5 cảnh móc câu thị giác, 7 cảnh bóc trần thông số cơ học, 7 cảnh đời sống đánh thức khao khát và 3 cảnh chốt đơn dứt khoát."
       </p>
+
+      <!-- PHASE FILTER TABS -->
+      <div class="sb-filter-bar">
+        <button class="sb-filter-btn active" data-phase="all">TẤT CẢ (22 CẢNH)</button>
+        <button class="sb-filter-btn" data-phase="phase-a">A • ATTENTION (5 CẢNH)</button>
+        <button class="sb-filter-btn" data-phase="phase-i">I • INTEREST (7 CẢNH)</button>
+        <button class="sb-filter-btn" data-phase="phase-d">D • DESIRE (7 CẢNH)</button>
+        <button class="sb-filter-btn" data-phase="phase-act">A • ACTION (3 CẢNH)</button>
+      </div>
 
       <div class="storyboard-grid">
 
-        <!-- POMODORO 1 -->
-        <article class="sb-card">
+        <!-- Phase Header: phase-a -->
+        <div class="sb-phase-header" data-phase="phase-a">
+          <span class="sb-phase-header__title">🎯 PHA A: ATTENTION — 5 CẢNH CẬN MÓC CÂU THỊ GIÁC (00s - 06s)</span>
+          <span class="sb-phase-header__meta">Mục tiêu: Dừng ngón tay lướt trong 3s đầu bằng chuyển động cơ học & tương phản màu sắc</span>
+        </div>
+        <!-- CARD A.01 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-a">
           <div class="sb-card__media">
             <img 
-              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_hook_macro_1788945697414.jpg" 
-              alt="Phân cảnh 1: Attention Pomodoro - Bấm nút cam số nhảy lùi" 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_a1_click_1788947361904.jpg" 
+              alt="Cảnh A.01: Cú bấm nút cam số nhảy lùi" 
               loading="lazy"
             />
-            <span class="sb-card__time">00s - 03s (3s)</span>
-            <span class="sb-card__phase phase--a">POMODORO • ATTENTION</span>
+            <span class="sb-card__time">00s - 02s (2s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
           </div>
           <div class="sb-card__content">
-            <h3 class="sb-card__title">Cú Bấm Dứt Khoát & Số Nhảy Lùi</h3>
+            <h3 class="sb-card__title">Cảnh A.01: Cú Bấm Dứt Khoát & Số Nhảy Lùi</h3>
             <div class="sb-detail-item">
-              <strong>GÓC MÁY:</strong> Cực cận đặc tả (ECU), góc nghiêng 45° sát mặt bàn gỗ tối màu, đèn ven kim loại.
+              <strong>GÓC MÁY:</strong> Cực cận đặc tả (ECU), tiêu cự 85mm Macro, góc nghiêng 45° sát mặt bàn gỗ sồi tối màu.
             </div>
             <div class="sb-detail-item">
-              <strong>HÀNH ĐỘNG:</strong> Ngón tay nhấn phím cam to <code>Play/Pause</code>. Con số trên màn hình LCD giật lùi: <code>25:00 ➔ 24:59</code>, tiếng "tách" đanh giòn.
+              <strong>HÀNH ĐỘNG:</strong> Ngón tay nhấn dứt khoát vào phím cam to tròn. Màn hình LCD nhảy giật lùi tức thì: <code>25:00 ➔ 24:59</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng click cơ học 'TÁCH' đanh giòn, kèm âm kim giây đếm lùi rất khẽ 'tíc... tắc...'.
             </div>
             <div class="sb-card__logic">
-              💡 <strong>Logic:</strong> Tương phản màu sắc xanh bơ + cam rực rỡ. Chuyển động số nhảy giật lùi kích hoạt bản năng tò mò: Cái này để làm gì?
+              💡 <strong>Logic đạo diễn:</strong> Đập tan trạng thái lướt vô thức trong 2s đầu. Con số nhảy giật lùi kích thích trực tiếp não bộ: 'Cái gì đang đếm ngược vậy?'.
+            </div>
+          </div>
+        </article>
+        <!-- CARD A.02 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-a">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_a2_edge_light_1788947387005.jpg" 
+              alt="Cảnh A.02: Vệt sáng quét qua dây xích bi inox" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">02s - 03s (1s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh A.02: Vệt Sáng Bo Cong & Dây Xích Bi Inox</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh Macro trượt ngang (Slider Pan), DOF mỏng làm mờ hậu cảnh.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Vệt sáng rim light quét qua gờ bo cong màu xanh bơ và sợi dây xích bi inox sáng loáng buông lơi trên mặt bàn.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Âm whoosh lướt êm ái kết hợp tiếng bi kim loại chạm nhau lách cách leng keng.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khẳng định ngay độ hoàn thiện cao cấp, vật liệu tinh xảo; đập tan định kiến 'nhựa ọp ẹp vài chục nghìn ngoài chợ'.
+            </div>
+          </div>
+        </article>
+        <!-- CARD A.03 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-a">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_a3_magnet_snap_1788947413725.jpg" 
+              alt="Cảnh A.03: Hít phập vào tủ lạnh kim loại" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">03s - 04s (1s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh A.03: Hít Phập Vào Cửa Tủ Lạnh Kim Loại</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh góc chéo 45° áp sát bề mặt cửa tủ lạnh inox phay xước.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Bàn tay vừa đưa đồng hồ lại gần tủ lạnh, lực nam châm đã tự hút phập vào mặt thép phát ra tiếng kêu chắc nịch.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng 'CẠCH' nam châm hít chặt kim loại đanh chắc, dứt khoát cực đã tai.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Thị phạm ngay tính cơ học độc đáo: Không cần khoan đục hay dán keo, cứ gặp kim loại là bám chặt như keo dán sắt.
+            </div>
+          </div>
+        </article>
+        <!-- CARD A.04 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-a">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_a4_stand_1788947440102.jpg" 
+              alt="Cảnh A.04: Bật chân chống nghiêng 45 độ" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">04s - 05s (1s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh A.04: Bật Chân Chống Nghiêng 45° Đứng Vững</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh mặt sau máy, lấy nét chuẩn xác vào rãnh gập kickstand.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Ngón tay gạt nhẹ lẫy chân chống phía sau, đặt xuống bàn: Máy đứng vững chãi ở góc nghiêng công thái học 45°.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Khớp nhựa nhảy nấc phát tiếng 'Khực' đầm chắc.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Người mua thấy ngay sự tiện lợi: Đặt trên bàn làm việc vừa đúng tầm mắt lướt nhìn, không cần cúi gập cổ hay cầm tay.
+            </div>
+          </div>
+        </article>
+        <!-- CARD A.05 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-a">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_a5_alarm_flash_1788947467132.jpg" 
+              alt="Cảnh A.05: Màn hình LCD chớp sáng báo hết giờ" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">05s - 06s (1s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh A.05: Màn Hình Chớp Sáng & Chuông Báo Hết Giờ</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Chính diện màn hình LCD, trung cận bắt trọn biểu tượng quả chuông.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Con số đếm lùi chạm mốc <code>00:00</code>, biểu tượng chuông rung nhấp nháy, viền phím cam chớp sáng báo hiệu hết hiệp.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng chuông điện tử thanh thoát vang lên 3 nhịp: 'Tít - Tít - Tít'.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Tạo cú hích cảm xúc thỏa mãn (Dopamine reward): Cảm giác chinh phục xong 1 phiên làm việc 25 phút không ngắt quãng.
             </div>
           </div>
         </article>
 
-        <!-- POMODORO 2 -->
-        <article class="sb-card">
+        <!-- Phase Header: phase-i -->
+        <div class="sb-phase-header" data-phase="phase-i">
+          <span class="sb-phase-header__title">⚙️ PHA I: INTEREST — 7 CẢNH THÔNG SỐ KỸ THUẬT & VẬT LIỆU (06s - 18s)</span>
+          <span class="sb-phase-header__meta">Mục tiêu: Mắt thấy tai nghe kích thước, trọng lượng 48g, nhựa ABS, pin 180 ngày & nam châm N52</span>
+        </div>
+        <!-- CARD I.01 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
           <div class="sb-card__media">
             <img 
-              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_interest_back_1788945731551.jpg" 
-              alt="Phân cảnh 2: Interest Pomodoro - Bóc tách cơ học mặt sau" 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i1_half_phone_1788947490290.jpg" 
+              alt="Cảnh I.01: Kích thước bằng nửa điện thoại đút túi quần" 
               loading="lazy"
             />
-            <span class="sb-card__time">03s - 09s (6s)</span>
-            <span class="sb-card__phase phase--i">POMODORO • INTEREST</span>
+            <span class="sb-card__time">06s - 08s (2s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
           </div>
           <div class="sb-card__content">
-            <h3 class="sb-card__title">Bóc Tách Chân Chống Nghiêng 45° & Nam Châm</h3>
-            <div class="sb-detail-item">
-              <strong>GÓC MÁY:</strong> Cận cảnh trượt chậm (Slider), bắt nét vào mặt sau vỏ nhựa.
+            <h3 class="sb-card__title">Cảnh I.01: Kích Thước Bằng 1/2 Điện Thoại — Đút Túi Quần</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">KÍCH THƯỚC: 6.5 x 6.5 cm • CHỈ BẰNG 1/2 ĐIỆN THOẠI</span>
             </div>
             <div class="sb-detail-item">
-              <strong>HÀNH ĐỘNG:</strong> Ngón tay bật nhẹ chân chống kickstand đặt vững chãi trên bàn, hít phập vào bề mặt tủ lạnh kim loại.
+              <strong>GÓC MÁY:</strong> Top-down góc nhìn 90° từ trên cao xuống mặt bàn gỗ.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Đặt đồng hồ nằm cạnh một chiếc smartphone: Kích thước chỉ vừa vặn bằng nửa thân máy. Bàn tay nhấc nhẹ thả lọt thỏm vào túi quần jean.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng vải denim ma sát nhẹ, kèm âm gõ đồ họa 'pop' xuất hiện text.
             </div>
             <div class="sb-card__logic">
-              💡 <strong>Logic:</strong> Chứng minh sự tinh xảo: Đặt bàn cũng được, hít tủ lạnh cũng xong, dây xích treo cặp cũng tiện lợi.
+              💡 <strong>Logic đạo diễn:</strong> Phá tan định kiến 'đồng hồ hẹn giờ là cục sắt để bàn vướng víu'. Chứng minh bằng mắt thực: Nhỏ như bao diêm, đút túi mang đi khắp nơi.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.02 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i2_scale_48g_1788947523362.jpg" 
+              alt="Cảnh I.02: Trọng lượng 48g trên cân tiểu ly" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">08s - 10s (2s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.02: Trọng Lượng Siêu Nhẹ 48g Trên Cân Tiểu Ly</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">TRỌNG LƯỢNG: 48.0g SIÊU NHẸ • KHÔNG NẶNG TÚI</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh màn hình LED cân tiểu ly điện tử, ánh sáng trắng chuyên nghiệp.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Đặt nhẹ chiếc đồng hồ lên đĩa cân inox: Màn hình cân nhảy số dứt khoát và khóa cứng ở <code>48.0g</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng bíp xác nhận cân 'Bíp' kèm tiếng lách cách khi chạm đĩa cân.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Dữ liệu khách quan đập tan mọi nghi ngờ: 48g nhẹ hơn cả quả trứng gà, đeo cổ hay bỏ balo cả ngày không thấy nặng.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.03 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i3_abs_texture_1788947545900.jpg" 
+              alt="Cảnh I.03: Vỏ nhựa ABS nhám mờ chống trầy xước" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">10s - 12s (2s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.03: Vỏ Nhựa ABS Nhám Mờ Chống Bám Vân Tay</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">CHẤT LIỆU: NHỰA ABS NGUYÊN SINH • CHỐNG BÁM VÂN TAY</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Macro siêu phóng đại bề mặt hạt sần của lớp vỏ xanh bơ.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Đầu móng tay miết mạnh qua thân máy: Bề mặt hạt sần mịn không để lại vết xước móng, không dính mồ hôi vân tay.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Âm ma sát sột soạt đanh của bề mặt nhựa nguyên sinh cao cấp.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Chứng minh độ bền chất liệu thực tế: Dùng 2-3 năm va quệt chìa khóa, bút viết trong túi vẫn không trầy tróc cũ kĩ.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.04 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i4_keys_press_1788947576348.jpg" 
+              alt="Cảnh I.04: 3 phím silicon đàn hồi bấm mù" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">12s - 14s (2s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.04: 3 Phím Silicon Cam Đàn Hồi Cực Êm</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">3 PHÍM BẤM ĐÀN HỒI: START/STOP • MIN • SEC • BẤM MÙ</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh góc 30° bắt nét vào ngón tay cái đang nhấn phím.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Ngón tay nhấn tuần tự phím MIN, SEC và START: Nút lún sâu êm ái, độ đàn hồi phản hồi lực cực nhạy mà không cần nhìn.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng 'Tách... tách... tách' êm ái không gây ồn phòng họp hay thư viện.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Thiết kế tối giản công thái học: Không menu rườm rà, người lớn tuổi hay học sinh lớp 1 đều có thể thao tác mù sau 3 giây.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.05 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i5_viewangle_1788947628220.jpg" 
+              alt="Cảnh I.05: Màn hình LCD góc nhìn nghiêng 60 độ sắc nét" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">14s - 15s (1s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.05: Màn Hình LCD 2.2 Inch Nghiêng 60° Vẫn Nét</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">MÀN HÌNH LCD 2.2 INCH • CHỐNG LÓA GÓC RỘNG 60°</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Góc xiên 60° lệch bên hông, tái hiện góc nhìn của người ngồi gõ phím.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Camera lướt từ góc nghiêng: Con số đen đậm <code>24:59</code> vẫn hiển thị tương phản rực rỡ, không bị bóng mờ hay biến sắc.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Âm thanh trượt camera mượt mà, hiệu ứng lấp lánh nhẹ.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Giải quyết bài toán trải nghiệm làm việc: Đặt cách xa 1 mét ở góc bàn vẫn liếc thấy rõ từng giây mà không phải nghiêng người hay với tay.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.06 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i6_gym_magnet_1788947653889.jpg" 
+              alt="Cảnh I.06: Nam châm N52 hít khung sắt máy chạy bộ" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">15s - 17s (2s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.06: Nam Châm Kép N52 Hít Chặt Khung Sắt Rung Lắc</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">NAM CHÂM KÉP N52: LỰC HÚT 1.5KG • CHỐNG RƠI TUỘT</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh khung trụ thép máy chạy bộ tại phòng gym.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Đồng hồ hít chặt vào cột kim loại, máy chạy bộ đang rung lắc mạnh theo bước chạy tốc độ cao, nhưng chiếc đồng hồ vẫn đứng im như gắn đinh.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng rung trầm của động cơ máy chạy bộ, đồng hồ không hề kêu rung rè rè.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Kiểm chứng độ bền cực hạn: Nam châm công nghiệp N52 chịu rung lắc thể thao, mang đi tập gym hay gắn bếp chiên xào đều bất khả xâm phạm.
+            </div>
+          </div>
+        </article>
+        <!-- CARD I.07 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-i">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_i7_battery_1788947701284.jpg" 
+              alt="Cảnh I.07: Khay pin 1 viên AAA dùng 180 ngày" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">17s - 18s (1s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh I.07: 1 Viên Pin AAA Dùng 180 Ngày — Không Cần Sạc</h3>
+            <div class="sb-detail-item sb-detail-item--tech">
+              <strong>TEXT ĐỒ HỌA:</strong> <span class="tech-badge">NGUỒN ĐIỆN: 1 PIN AAA PHỔ THÔNG • SỬ DỤNG 180 NGÀY</span>
+            </div>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh nắp lưng pin trượt mở nhẹ nhàng.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Nắp pin trượt mở để lộ khoang chứa 1 viên pin AAA con thỏ. Viên pin được đẩy vào lách cách, đóng nắp dùng ngay nửa năm.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng lò xo nén 'Cách' và nắp lưng trượt khớp đầm tay.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Giải phóng người dùng khỏi mớ dây sạc nhằng nhịt: Pin con thỏ bán ở mọi tiệm tạp hóa, 6 tháng mới phải thay 1 lần, không lo chai pin phù nắp.
             </div>
           </div>
         </article>
 
-        <!-- POMODORO 3 -->
-        <article class="sb-card">
+        <!-- Phase Header: phase-d -->
+        <div class="sb-phase-header" data-phase="phase-d">
+          <span class="sb-phase-header__title">❤️ PHA D: DESIRE — 7 BỐI CẢNH DÙNG THỰC CHIẾN ĐỜI SỐNG (18s - 35s)</span>
+          <span class="sb-phase-header__meta">Mục tiêu: Đưa sản phẩm vào từng nhịp sống: Deep Work, gym, nấu ăn, chạy bộ, đọc sách, họp & kèm con</span>
+        </div>
+        <!-- CARD D.01 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
           <div class="sb-card__media">
             <img 
-              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_desire_deepwork_1788945672322.jpg" 
-              alt="Phân cảnh 3: Desire Pomodoro - Bàn làm việc Deep Work tập trung sâu" 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d1_deepwork_1788947809902.jpg" 
+              alt="Cảnh D.01: Bàn làm việc Deep Work tập trung sâu" 
               loading="lazy"
             />
-            <span class="sb-card__time">09s - 16s (7s)</span>
-            <span class="sb-card__phase phase--d">POMODORO • DESIRE</span>
+            <span class="sb-card__time">18s - 21s (3s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
           </div>
           <div class="sb-card__content">
-            <h3 class="sb-card__title">Không Gian Làm Việc Tập Trung Sâu (Deep Work)</h3>
+            <h3 class="sb-card__title">Cảnh D.01: Bàn Làm Việc Deep Work — Tập Trung Sâu 25 Phút</h3>
             <div class="sb-detail-item">
-              <strong>GÓC MÁY:</strong> Trung cảnh ngang tầm mắt, ánh đèn vàng ấm áp chiếu lên bàn gỗ sồi.
+              <strong>GÓC MÁY:</strong> Trung cảnh góc nhìn ngang tầm mắt, ánh sáng cửa sổ buổi sáng chiếu xiên lên mặt bàn gỗ sồi.
             </div>
             <div class="sb-detail-item">
-              <strong>HÀNH ĐỘNG:</strong> Anh Việt úp điện thoại sang một bên, tập trung gõ bàn phím laptop; chiếc đồng hồ đứng kiêu hãnh đếm lùi bên ly cafe.
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt mặc áo phông đen tối giản, úp điện thoại sang một bên; tập trung gõ code trên laptop. Chiếc đồng hồ xanh bơ đếm lùi tĩnh lặng bên ly cafe.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng gõ phím cơ êm ái, tiếng gió sớm thoang thoảng tạo không khí tập trung sâu.
             </div>
             <div class="sb-card__logic">
-              💡 <strong>Logic:</strong> Khách không mua cái đồng hồ nhựa, họ mua trạng thái "LÀM CHỦ THỜI GIAN", thoát khỏi cạm bẫy xao nhãng của smartphone.
+              💡 <strong>Logic đạo diễn:</strong> Đánh trúng khao khát thoát khỏi xao nhãng của dân tri thức: Đồng hồ trở thành 'người gác cổng' kỷ luật, giúp hoàn thành công việc nhanh gấp đôi.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.02 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d2_gym_1788947853606.jpg" 
+              alt="Cảnh D.02: Tập gym Cali kiểm soát thời gian nghỉ" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">21s - 23s (2s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.02: Phòng Gym Cali — Kiểm Soát 45 Giây Nghỉ Giữa Hiệp</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Trung cảnh góc thấp tôn vinh thần thái thể thao mạnh mẽ.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt lau mồ hôi sau set tạ nặng, mắt liếc nhìn chiếc đồng hồ đang hít trên giàn sắt đếm ngược đúng 45s nghỉ trước khi bước vào hiệp tiếp theo.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng thở điều hòa nhịp nhàng, tiếng tạ chạm khẽ trong nền nhạc gym sôi động.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Chạm vào nỗi đau của gymer: Nghỉ quá lâu làm nguội cơ bắp, cầm điện thoại lướt mạng là mất buổi tập. Đồng hồ này giữ đúng kỷ luật thể hình.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.03 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d3_kitchen_1788947880339.jpg" 
+              alt="Cảnh D.03: Gian bếp ấm cúng canh nồi súp ninh" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">23s - 26s (3s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.03: Căn Bếp Ấm Cúng — Canh Nồi Súp Ninh 12 Phút</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Trung cảnh ấm cúng, khói bếp bốc lên nhẹ nhàng bên nồi canh đang sôi.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Chiếc đồng hồ dính trên máy hút mùi inox đếm lùi <code>12:00</code>. Người nấu thảnh thơi đọc sách, nhâm nhi tách trà mà không lo canh lửa trào canh.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng sôi ùng ục ấm cúng của nồi súp, không gian gia đình yên ả.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Cứu cánh cho người bận rộn hay quên: Không sợ cháy nồi, không sợ quên tắt bếp làm hỏng món ăn đắt tiền.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.04 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d4_running_1788947924512.jpg" 
+              alt="Cảnh D.04: Chạy bộ công viên bấm giờ nước rút" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">26s - 28s (2s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.04: Đường Chạy Thể Thao — Bấm Giờ Nước Rút 500m</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Góc máy theo chân người chạy (Tracking Shot) trên đường rợp bóng cây xanh.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt xỏ ngón tay vào sợi dây xích bi kim loại, vừa vung tay chạy vừa bấm giờ đo thành tích nước rút 500m với nụ cười sảng khoái.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng bước chân giày thể thao nện nhịp nhàng trên mặt đường, tiếng chim hót sớm.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Bật tính năng Stop-Watch thể thao: Siêu nhẹ, xỏ ngón tay không sợ tuột rơi, tiện dụng hơn nhiều so với việc cầm cả chiếc điện thoại to đùng khi chạy.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.05 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d5_reading_1788947966428.jpg" 
+              alt="Cảnh D.05: Đọc sách bên bàn trà chiều tĩnh lặng" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">28s - 30s (2s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.05: Bàn Trà Chiều — 30 Phút Đọc Sách Tĩnh Lặng</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh nghệ thuật bên khung cửa sổ ngập tràn ánh hoàng hôn ấm áp.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Cuốn sách mở trang thơm mùi giấy mới. Đồng hồ dựng chân chống 45° đếm lùi 30 phút tĩnh tâm, hoàn toàn không tiếng tích tắc cơ học quấy rầy.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng lật trang sách xào xạc, tiếng chim chiều yên bình.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Nuôi dưỡng phong cách sống tinh tế (Lifestyle): Giúp người đọc giữ trọn vẹn sự tĩnh tại, biến việc đọc sách thành nghi thức thư giãn mỗi ngày.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.06 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d6_presentation_1788948000375.jpg" 
+              alt="Cảnh D.06: Thuyết trình phòng họp doanh nghiệp" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">30s - 32s (2s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.06: Phòng Họp Doanh Nghiệp — Kiểm Soát 15 Phút Thuyết Trình</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Trung cảnh góc nhìn người nghe hướng về bục phát biểu hội nghị.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Anh Việt tự tin đứng tại bục, chiếc đồng hồ đặt trước mặt đếm lùi chính xác bài phát biểu 15 phút. Toàn bộ cuộc họp kết thúc chuẩn từng giây.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Giọng nói đĩnh đạc, tiếng vỗ tay giòn giã của các đồng nghiệp phía dưới.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khẳng định phẩm chất chuyên nghiệp: Người biết kiểm soát thời lượng bài nói luôn tạo ấn tượng uy tín, quyết đoán trước đối tác và nhân viên.
+            </div>
+          </div>
+        </article>
+        <!-- CARD D.07 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-d">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_d7_study_1788948057956.jpg" 
+              alt="Cảnh D.07: Kèm con học bài kỷ luật gia đình" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">32s - 35s (3s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh D.07: Góc Bàn Học Gia Đình — Kèm Con Tự Giác 20 Phút</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Trung cảnh ấm áp gia đình, màu sắc tươi sáng trẻ trung.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Bé gái cười rạng rỡ tập trung giải toán. Chiếc đồng hồ xanh bơ đếm lùi hiệp học 20 phút. Bố mỉm cười đặt tay khích lệ khi chuông reo hoàn thành bài tập.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng bút viết trên trang giấy, tiếng cười khúc khích hồn nhiên của con trẻ.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Đánh vào trái tim của các bậc cha mẹ: Biến việc học bài thành một trò chơi thi đua tính giờ hào hứng, rèn thói quen tự giác không cần quát mắng.
             </div>
           </div>
         </article>
 
-        <!-- POMODORO 4 -->
-        <article class="sb-card">
+        <!-- Phase Header: phase-act -->
+        <div class="sb-phase-header" data-phase="phase-act">
+          <span class="sb-phase-header__title">🚀 PHA A: ACTION — 3 CẢNH CHỐT ĐƠN, MÃ QR & THƯƠNG HIỆU (35s - 40s)</span>
+          <span class="sb-phase-header__meta">Mục tiêu: Xóa tan rào cản rủi ro (bảo hành 1 đổi 1), quét QR Shopee Mall giảm 30K & nhận diện VIDEO</span>
+        </div>
+        <!-- CARD Act.01 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-act">
           <div class="sb-card__media">
             <img 
-              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/timer_aida_action_hero_1788945770527.jpg" 
-              alt="Phân cảnh 4: Action Pomodoro - Hero Shot và đóng gói" 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_act1_unboxing_1788948093127.jpg" 
+              alt="Cảnh Act.01: Mở hộp quà sang trọng bảo hành 1 đổi 1" 
               loading="lazy"
             />
-            <span class="sb-card__time">16s - 20s (4s)</span>
-            <span class="sb-card__phase phase--act">POMODORO • ACTION</span>
+            <span class="sb-card__time">35s - 37s (2s)</span>
+            <span class="sb-card__phase phase--act">A • ACTION</span>
           </div>
           <div class="sb-card__content">
-            <h3 class="sb-card__title">Món Quà Kỷ Luật & Kêu Gọi Hành Động</h3>
+            <h3 class="sb-card__title">Cảnh Act.01: Mở Hộp Quà Sang Trọng & Bảo Hành 1 Đổi 1</h3>
             <div class="sb-detail-item">
-              <strong>GÓC MÁY:</strong> Hero Shot chính diện, ánh sáng studio sang trọng.
+              <strong>GÓC MÁY:</strong> Hero shot unboxing góc 45°, ánh sáng studio đánh bóng sản phẩm.
             </div>
             <div class="sb-detail-item">
-              <strong>HÀNH ĐỘNG:</strong> Bàn tay nâng chiếc đồng hồ nằm gọn gàng bên cạnh hộp sản phẩm chỉn chu, cam kết bảo hành 1 đổi 1.
+              <strong>HÀNH ĐỘNG:</strong> Nắp hộp trắng tinh tế mở ra: Chiếc đồng hồ nằm gọn trong khay mút đen, bên cạnh là thẻ vàng cam kết: <code>BẢO HÀNH 1 ĐỔI 1 TRONG 12 THÁNG</code>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng mở nắp hộp giấy cao cấp mượt mà, âm thanh đồ họa uy tín.
             </div>
             <div class="sb-card__logic">
-              💡 <strong>Logic:</strong> Xóa tan rào cản cuối cùng về sự an tâm. Chuyển hóa cảm xúc tích cực thành quyết định đặt hàng ngay lập tức.
+              💡 <strong>Logic đạo diễn:</strong> Triệt tiêu hoàn toàn rào cản sợ rủi ro: Khách an tâm 100% khi nhận hàng, đóng gói chỉn chu có thể dùng làm quà tặng bạn bè, người thân.
+            </div>
+          </div>
+        </article>
+        <!-- CARD Act.02 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-act">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_act2_qr_shopee_1788948268367.jpg" 
+              alt="Cảnh Act.02: Quét mã QR Shopee Mall nhận voucher" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">37s - 39s (2s)</span>
+            <span class="sb-card__phase phase--act">A • ACTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh Act.02: Quét Mã QR Shopee Mall — Nhận Voucher Giảm 30K</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Cận cảnh màn hình điện thoại hiển thị mã QR và nút mua hàng.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Mã QR Shopee Mall sắc nét trên màn hình kèm nút bấm cam rực lửa: <code>NHẬN VOUCHER 30K - MUA NGAY</code>. Ngón tay chạm quét vào link mua lập tức.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng 'Ting' thông báo nhận voucher thành công, kích hoạt bản năng săn sale.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Loại bỏ mọi rào cản tìm kiếm: Không cần search tên sản phẩm, chỉ cần quét mã QR hoặc bấm nút giỏ hàng là tiền về đơn chốt.
+            </div>
+          </div>
+        </article>
+        <!-- CARD Act.03 -->
+        <article class="sb-card sb-pomo-card" data-phase="phase-act">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/pomo_act3_brand_1788948312169.jpg" 
+              alt="Cảnh Act.03: Nhận diện thương hiệu VIDEO bấm giỏ hàng" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">39s - 40s (1s)</span>
+            <span class="sb-card__phase phase--act">A • ACTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h3 class="sb-card__title">Cảnh Act.03: Thương Hiệu VIDEO — Nhấn Giỏ Hàng Sở Hữu Ngay</h3>
+            <div class="sb-detail-item">
+              <strong>GÓC MÁY:</strong> Hero Shot chính diện kết màn, sản phẩm hướng thẳng về phía người xem.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Bàn tay đưa chiếc đồng hồ xanh bơ kiêu hãnh về phía ống kính, logo <code>VIDEO</code> màu trắng nổi khối đanh thép: <i>'Bấm vào góc trái màn hình rinh ngay hôm nay!'</i>.
+            </div>
+            <div class="sb-detail-item">
+              <strong>ÂM THANH:</strong> Tiếng bass drop uy lực kết màn, âm thanh chuyển động dứt khoát.
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khắc sâu dấu ấn nhận diện thương hiệu VIDEO trong tâm trí. Lời kêu gọi hành động (CTA) dứt khoát, đẩy tỷ lệ chuyển đổi lên mức tối đa.
             </div>
           </div>
         </article>
@@ -1099,6 +1734,36 @@
 
       reveals.forEach(el => observer.observe(el));
     });
+
+      // Pomodoro Phase Filter Interaction
+      const filterBtns = document.querySelectorAll('.sb-filter-btn');
+      const pomoCards = document.querySelectorAll('.sb-pomo-card');
+      const phaseHeaders = document.querySelectorAll('.sb-phase-header');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const phase = btn.getAttribute('data-phase');
+
+          pomoCards.forEach(card => {
+            if (phase === 'all' || card.getAttribute('data-phase') === phase) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          phaseHeaders.forEach(header => {
+            if (phase === 'all' || header.getAttribute('data-phase') === phase) {
+              header.style.display = 'flex';
+            } else {
+              header.style.display = 'none';
+            }
+          });
+        });
+      });
+
   </script>
 
 </body>
