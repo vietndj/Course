@@ -624,6 +624,50 @@
       border: 1px solid #fde68a;
     }
 
+  
+    /* --- YOUTUBE SHORT SHOWCASE ENHANCEMENT --- */
+    .short-video-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 28px 0 36px;
+    }
+
+    .short-video-frame {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 9 / 16;
+      border-radius: var(--cl-radius-xl);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      border: 2px solid var(--cl-line-strong);
+      background: #000;
+    }
+
+    .short-video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .short-aida-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .short-video-frame {
+        max-width: 100%;
+      }
+      .short-aida-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -652,22 +696,209 @@
         Khung kiến thức chuẩn hóa chuyển đổi tâm lý người xem: Bắt đầu từ <strong>[A] Attention</strong> giật lấy ánh mắt trong 3 giây đầu, bóc tách <strong>[I] Interest</strong> thông số tự thân, khơi gợi <strong>[D] Desire</strong> bối cảnh khao khát, và khép lại bằng <strong>[A] Action</strong> chốt đơn êm ái.
       </p>
 
-      <!-- Quick Nav Indicator -->
+            <!-- Quick Nav Indicator -->
       <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
-        <a href="#sec-storyboard-mobile" style="text-decoration: none; padding: 12px 26px; border-radius: var(--cl-radius-full); background: var(--cl-accent); color: #fff; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.05em; box-shadow: 0 4px 14px rgba(26, 115, 232, 0.3);">
-          XEM BẢNG 8 CẢNH ĐIỆN THOẠI →
+        <a href="#sec-case-tripod" style="text-decoration: none; padding: 12px 24px; border-radius: var(--cl-radius-full); background: var(--cl-accent); color: #ffffff; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(26, 115, 232, 0.3);">
+          <span>▶ VÍ DỤ TÂN THỦ: TRIPOD SÂN THƯỢNG (AIDA)</span>
         </a>
-        <a href="#sec-case-study" style="text-decoration: none; padding: 12px 26px; border-radius: var(--cl-radius-full); background: var(--cl-card-muted); color: var(--cl-text-base); border: 1px solid var(--cl-line-strong); font-family: var(--font-mono); font-size: 13px; font-weight: 600;">
-          SOI VIDEO ULANZI MẪU
+        <a href="#sec-pomodoro" style="text-decoration: none; padding: 12px 24px; border-radius: var(--cl-radius-full); background: var(--cl-text-base); color: #ffffff; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px;">
+          <span>🎯 22 CẢNH POMODORO</span>
+        </a>
+        <a href="#sec-storyboard-mobile" style="text-decoration: none; padding: 12px 24px; border-radius: var(--cl-radius-full); background: var(--cl-card); border: 1px solid var(--cl-line-strong); color: var(--cl-text-base); font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px;">
+          <span>📱 8 CẢNH ĐIỆN THOẠI</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ================= KHỐI 1: BÓC TRẦN 4 CĂN BỆNH (TINT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-problems">
+  
+  <!-- ================= KHỐI 01: VÍ DỤ THỰC HÀNH MỞ ĐẦU (SHORT AIDA SÂN THƯỢNG) ================= -->
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-case-tripod">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">01 / BÓC TRẦN BỆNH KINH NIÊN</div>
+      <div class="cl-badge">01 / VÍ DỤ THỰC HÀNH MỞ ĐẦU</div>
+      <h2 class="title-short">NHIỆM VỤ TÂN THỦ #3: QUAY CHÂN MÁY TRIPOD CHUẨN AIDA TRONG 10 PHÚT</h2>
+      <h3 class="title-long">Thực Hành Bấm Máy Trên Sân Thượng – Không Setup Phức Tạp, Bắt Tay Vào Quay Luôn!</h3>
+      
+      <p class="editorial-hook">
+        "Nhiều bạn cứ nghĩ phải có studio tiền triệu, đèn đóm hầm hố mới quay được quảng cáo. Bước lên sân thượng tận dụng ánh sáng trời tự nhiên, 2 người bấm máy trong đúng 10 phút theo công thức AIDA là có ngay video bán hàng triệu view!"
+      </p>
+
+      <!-- Video Player Showcase -->
+      <div class="short-video-wrapper">
+        <div class="short-video-frame">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/tC04iGhpsgE?rel=0&modestbranding=1" 
+            title="Nhiệm vụ tân thủ #3: Thực hành Quay 1 video quảng cáo theo chuẩn AIDA trên Sân Thượng trong 10 phút!" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen 
+            loading="lazy">
+          </iframe>
+        </div>
+        <div style="margin-top: 14px; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <a href="https://www.youtube.com/shorts/tC04iGhpsgE" target="_blank" rel="noopener" class="cl-btn" style="padding: 8px 20px; font-size: 13px;">
+            ▶ MỞ XEM TRỰC TIẾP TRÊN YOUTUBE SHORTS →
+          </a>
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--cl-text-muted);">
+            ⏱ Thời lượng: 01:32 • Bối cảnh: Sân thượng Times City Park Hill • Nhân vật: Anh Việt & Học viên
+          </span>
+        </div>
+      </div>
+
+      <!-- 4 Pha AIDA Cards -->
+      <div class="short-aida-grid">
+        
+        <!-- CARD A: ATTENTION -->
+        <article class="sb-card" style="--card-delay: 0ms;">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/tripod_aida_a_attention.jpg" 
+              alt="Pha A - Attention: Cảnh cận liên tục giữ chân người xem" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">00s - 05s (5s)</span>
+            <span class="sb-card__phase phase--a">A • ATTENTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h4 class="sb-card__title">Pha A: Cảnh Cận Liên Tục Ngắt Nhịp Lướt</h4>
+            <div class="sb-detail-item">
+              <strong>CỠ CẢNH:</strong> Cực cận đặc tả (ECU) & Cận cảnh (CU).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Bạn nữ cầm chân máy gập gọn, thực hiện chuỗi thao tác xoay mở khóa dứt khoát, tiếng cơ học giòn tan.
+            </div>
+            <div class="sb-detail-item">
+              <strong>TEXT MÀN HÌNH:</strong> <code>SỬ DỤNG CẢNH CẬN LIÊN TỤC ➔ Giữ chân người xem</code>
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> 3 giây đầu TUYỆT ĐỐI KHÔNG quay toàn cảnh hay đứng giải thích. Mắt người phản xạ tự nhiên với chuyển động cận cảnh dồn dập, ép não bộ phải dừng ngón tay lại để xem tiếp.
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD I: INTEREST -->
+        <article class="sb-card" style="--card-delay: 100ms;">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/tripod_aida_i_interest.jpg" 
+              alt="Pha I - Interest: Cảnh trung + cận mô tả tính năng tự thân" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">05s - 18s (13s)</span>
+            <span class="sb-card__phase phase--i">I • INTEREST</span>
+          </div>
+          <div class="sb-card__content">
+            <h4 class="sb-card__title">Pha I: Trung + Cận Bóc Trần 3 Tính Năng</h4>
+            <div class="sb-detail-item">
+              <strong>CỠ CẢNH:</strong> Đan xen Cảnh Trung (Medium) và Cận Cảnh (Close-up).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Kéo dài hết cỡ thanh tripod 1.5m ➔ Rút remote Bluetooth nhỏ gọn từ thân máy ➔ Mở đầu kẹp nam châm MagSafe hít điện thoại.
+            </div>
+            <div class="sb-detail-item">
+              <strong>TEXT MÀN HÌNH:</strong> <code>Kéo dài 1.5m • bluetooth • Hỗ trợ magsafe</code>
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Trả lời ngay câu hỏi: "Cây gậy này có gì xịn?". Dùng mắt thấy tai nghe chứng minh thông số tự thân, giải quyết mọi thắc mắc về độ dài và sự tiện dụng.
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD D: DESIRE -->
+        <article class="sb-card" style="--card-delay: 200ms;">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/tripod_aida_d_desire.jpg" 
+              alt="Pha D - Desire: Cảnh trung và rộng gắn vào bối cảnh thực tế" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">18s - 25s (7s)</span>
+            <span class="sb-card__phase phase--d">D • DESIRE</span>
+          </div>
+          <div class="sb-card__content">
+            <h4 class="sb-card__title">Pha D: Gắn Sản Phẩm Vào Đời Sống Thực Tế</h4>
+            <div class="sb-detail-item">
+              <strong>CỠ CẢNH:</strong> Cảnh Trung & Cảnh Rộng (Medium & Wide Shot).
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Giơ gậy lên cao cười tươi chụp ảnh tự sướng (Selfie) ➔ Dựng chân 3 càng trên sàn sân thượng nhún nhảy quay clip TikTok.
+            </div>
+            <div class="sb-detail-item">
+              <strong>TEXT MÀN HÌNH:</strong> <code>Tự sướng • Quay tiktok • Bối cảnh sử dụng</code>
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Khách hàng không mua một thanh nhôm vô tri. Họ mua cảm giác tự tin quay clip đẹp và tự sướng lung linh khi đi du lịch mà không cần phiền ai chụp hộ!
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD A: ACTION -->
+        <article class="sb-card" style="--card-delay: 300ms;">
+          <div class="sb-card__media">
+            <img 
+              src="https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/course/images/tripod_aida_act_action.jpg" 
+              alt="Pha A - Action: Quét mã QR Shopee Mall chốt đơn ngay" 
+              loading="lazy"
+            />
+            <span class="sb-card__time">25s - 30s (5s)</span>
+            <span class="sb-card__phase phase--act">A • ACTION</span>
+          </div>
+          <div class="sb-card__content">
+            <h4 class="sb-card__title">Pha A: Chốt Đơn & Mã QR Shopee Mall</h4>
+            <div class="sb-detail-item">
+              <strong>CỠ CẢNH:</strong> Cảnh toàn đứng cạnh sản phẩm dựng thẳng kiêu hãnh.
+            </div>
+            <div class="sb-detail-item">
+              <strong>HÀNH ĐỘNG:</strong> Chân máy đứng vững vàng bên cạnh bạn nữ, mã QR Shopee Mall hiện to rõ kèm lời kêu gọi bấm link bio mua hàng.
+            </div>
+            <div class="sb-detail-item">
+              <strong>TEXT MÀN HÌNH:</strong> <code>Link shopee • Mua hàng, QR, hoặc gắn thương hiệu</code>
+            </div>
+            <div class="sb-card__logic">
+              💡 <strong>Logic đạo diễn:</strong> Loại bỏ 100% ma sát tìm kiếm. Người xem vừa thấy sướng mắt là có ngay cổng mua hàng, biến cảm xúc tích cực thành đơn hàng thực tế.
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- BTS & Director Takeaways -->
+      <div style="margin-top: 32px; background: var(--cl-card); border: 1px solid var(--cl-line-strong); border-radius: var(--cl-radius-xl); padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+          <span style="font-size: 22px;">🎬</span>
+          <h4 style="font-family: var(--font-display-long); font-weight: 600; font-size: 18px; color: var(--cl-text-base); margin: 0;">
+            HẬU TRƯỜNG THỰC CHIẾN: 3 BÀI HỌC VÀNG TỪ ANH VIỆT (30s - 92s)
+          </h4>
+        </div>
+        <div class="apple-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="padding: 16px; background: var(--cl-card-muted); border-radius: var(--cl-radius-md); border-left: 3px solid var(--cl-accent);">
+            <div style="font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: var(--cl-accent); margin-bottom: 6px;">01 / ZERO-BUDGET STUDIO</div>
+            <div style="font-size: 14px; line-height: 1.6; color: var(--cl-text-body);">
+              <strong>Sân thượng là studio tốt nhất:</strong> Tận dụng ánh sáng tự nhiên ban ngày, hậu cảnh thoáng đãng, không tốn 1 đồng thuê bối cảnh hay mua đèn công suất lớn.
+            </div>
+          </div>
+          <div style="padding: 16px; background: var(--cl-card-muted); border-radius: var(--cl-radius-md); border-left: 3px solid #16a34a;">
+            <div style="font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: #16a34a; margin-bottom: 6px;">02 / TỐC ĐỘ 10 PHÚT</div>
+            <div style="font-size: 14px; line-height: 1.6; color: var(--cl-text-body);">
+              <strong>Quay nhanh, edit gọn:</strong> 2 người chỉ mất đúng 10 phút để bấm đủ 4 pha (1 người quay, 1 người diễn). Tự quay 1 mình chỉ mất 20 phút. Vứt vào CapCut cắt gọt là xong trong buổi sáng.
+            </div>
+          </div>
+          <div style="padding: 16px; background: var(--cl-card-muted); border-radius: var(--cl-radius-md); border-left: 3px solid #d97706;">
+            <div style="font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: #d97706; margin-bottom: 6px;">03 / PHẢN XẠ NHƯ SELFIE</div>
+            <div style="font-size: 14px; line-height: 1.6; color: var(--cl-text-body);">
+              <strong>Kỹ năng sống của thời đại video:</strong> Đừng ngồi chờ hoàn hảo mới quay. Hãy biến việc quay video AIDA thành thói quen tự nhiên như chụp ảnh selfie. Giờ chẳng còn ai đọc bài viết bán hàng chữ dài nữa đâu!
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= KHỐI 1: BÓC TRẦN 4 CĂN BỆNH (TINT THEME) ================= -->
+  <section class="cl-zebra-section cl-zebra--light" id="sec-problems">
+    <div class="cl-sec-container cl-sec-container--wide apple-reveal">
+      <div class="cl-badge">02 / BÓC TRẦN BỆNH KINH NIÊN</div>
       <h2 class="title-short">4 CĂN BỆNH QUAY SẢN PHẨM</h2>
       <p class="cl-body">95% video review sản phẩm trên TikTok và Reels thất bại vì mắc phải các tư duy quay chắp vá dưới đây:</p>
 
@@ -697,9 +928,9 @@
   </section>
 
   <!-- ================= KHỐI 2: NGUYÊN LÝ AIDA 4 CHẶNG (LIGHT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-principles">
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-principles">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">02 / NGUYÊN LÝ ĐẠO DIỄN</div>
+      <div class="cl-badge">03 / NGUYÊN LÝ ĐẠO DIỄN</div>
       <h2 class="title-short">MÔ HÌNH AIDA THỊ GIÁC</h2>
       <p class="editorial-hook">"Từ ngoài vào trong, từ tò mò vô thức đến khát khao sở hữu."</p>
 
@@ -729,9 +960,9 @@
   </section>
 
   <!-- ================= KHỐI 3: CASE STUDY ULANZI JJ03 VIDEO MASTER (TINT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-case-study">
+  <section class="cl-zebra-section cl-zebra--light" id="sec-case-study">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">03 / BÓC TÁCH VIDEO MẪU</div>
+      <div class="cl-badge">04 / BÓC TÁCH VIDEO MẪU: ULANZI MAGSAFE</div>
       <h2 class="title-short">CASE STUDY: ULANZI JJ03 MAGSAFE</h2>
       <p class="cl-body">
         Một video 47 giây nhưng chứa tới 24 cảnh cắt siêu nhanh (trung bình 2 giây/cảnh). Xem trực tiếp bản Master CDN mượt 100% bên dưới:
@@ -779,9 +1010,9 @@
   </section>
 
   <!-- ================= KHỐI 4: BẢNG PHÂN CẢNH 8 CẢNH ĐIỆN THOẠI (LIGHT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-storyboard-mobile">
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-storyboard-mobile">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">04 / BẢNG PHÂN CẢNH THỰC CHIẾN BẰNG ĐIỆN THOẠI</div>
+      <div class="cl-badge">05 / BẢNG PHÂN CẢNH THỰC CHIẾN BẰNG ĐIỆN THOẠI (8 CẢNH)</div>
       <h2 class="title-short">8 CẢNH VÀNG: DỄ QUAY – LOGIC CHẶT CHẼ</h2>
       <p class="editorial-hook">
         "Không cần máy ảnh cơ, không cần lens macro hay đèn đắt tiền. 1 người tự quay 100% bằng điện thoại trong 30 phút."
@@ -1011,9 +1242,9 @@
   </section>
 
   <!-- ================= KHỐI 5: CASE STUDY 2: ĐỒNG HỒ BẤM GIỜ (TINT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--tint" id="sec-pomodoro">
+  <section class="cl-zebra-section cl-zebra--light" id="sec-pomodoro">
     <div class="cl-sec-container cl-sec-container--wide apple-reveal">
-      <div class="cl-badge">05 / BÀI TẬP THỰC HÀNH SỐ 2</div>
+      <div class="cl-badge">06 / BÀI TẬP THỰC HÀNH CHUYÊN SÂU: ĐỒNG HỒ POMODORO</div>
       <h2 class="title-short">BẢNG PHÂN CẢNH ĐỒNG HỒ POMODORO (22 CẢNH CHUẨN AIDA)</h2>
       <p class="editorial-hook">
         "Chuyển hóa chiếc đồng hồ xanh bơ – phím cam thành thước phim bán lẻ 22 phân cảnh AIDA thực chiến: 5 cảnh móc câu thị giác, 7 cảnh bóc trần thông số cơ học, 7 cảnh đời sống đánh thức khao khát và 3 cảnh chốt đơn dứt khoát."
@@ -1674,7 +1905,7 @@
   </section>
 
   <!-- ================= KHỐI 6: LỜI DẶN DÒ ĐẠO DIỄN (LIGHT THEME) ================= -->
-  <section class="cl-zebra-section cl-zebra--light" id="sec-wisdom">
+  <section class="cl-zebra-section cl-zebra--tint" id="sec-wisdom">
     <div class="cl-sec-container apple-reveal">
       <div class="cl-badge">LỜI DẶN DÒ CỦA ANH VIỆT</div>
       <blockquote class="editorial-hook" style="border-left: 3px solid var(--cl-accent); padding-left: 24px; text-align: left; margin: 0 auto 24px;">
